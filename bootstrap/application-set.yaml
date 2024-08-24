@@ -1,0 +1,70 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: infrastructure
+  namespace: argocd
+  # labels:
+  #   syncPriority: infrastructure
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  generators:
+    - git:
+        repoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot
+        revision: HEAD
+        directories:
+          - path: bootstrap/init
+
+  # goTemplate: true
+  # goTemplateOptions: ["missingkey=error"]
+
+  # strategy:
+  #   type: RollingSync
+  #   rollingSync:
+  #     steps:
+  #     - matchExpressions:
+  #       - key: syncPriority
+  #         operator: In
+  #         values:
+  #         - stage1 # crds
+  #       maxUpdate: 100%
+  #     - matchExpressions:
+  #       - key: syncPriority
+  #         operator: In
+  #         values:
+  #         - stage2 # storage
+  #       maxUpdate: 100%
+  #     - matchExpressions:
+  #       - key: syncPriority
+  #         operator: In
+  #         values:
+  #         - stage3 # infra
+  #       maxUpdate: 100%
+  #     - matchExpressions:
+  #       - key: syncPriority
+  #         operator: In
+  #         values:
+  #         - stage4 # monitoring
+  #       maxUpdate: 0%
+
+  template:
+    metadata:
+      name: '{{ path.basename }}'
+      labels:
+        dev.stonegarden: infrastructure
+      finalizers:
+        - resources-finalizer.argocd.argoproj.io
+    spec:
+      project: infrastructure
+      source:
+        path: '{{ path }}'
+        repoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot
+        targetRevision: HEAD
+      destination:
+        name: in-cluster
+        namespace: argocd
+      syncPolicy:
+        automated:
+          selfHeal: false
+          prune: true
