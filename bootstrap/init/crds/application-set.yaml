@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: appSet-crds
+  name: appset-crds
   namespace: argocd
   labels:
     dev-k3s: crds
