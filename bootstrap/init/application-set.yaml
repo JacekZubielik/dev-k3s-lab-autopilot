@@ -48,7 +48,7 @@ spec:
 
   template:
     metadata:
-      name: '{{ path.basename }}'
+      name: init
       labels:
         dev.k3s: init
       finalizers:
