@@ -6,7 +6,7 @@ destServer: https://kubernetes.default.svc
 exclude: ""
 include: ""
 labels: ""
-srcPath: apps
+srcPath: apps/
 srcRepoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot.git
 srcTargetRevision: ""
 syncPriority: ""
