@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: appset-crds
+  name: crds
   namespace: argocd
   labels:
     dev-k3s: crds
@@ -9,12 +9,51 @@ metadata:
 
 spec:
   generators:
-    - git:
-        repoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot.git
-        revision: HEAD
-        directories:
-          # - path: bootstrap/init/crds/apps/*
-          - path: apps/crds
+  - git:
+      files:
+      - path: apps/crds/**/config.json
+      repoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot.git
+      requeueAfterSeconds: 20
+      revision: ""
+      template:
+        metadata:
+          labels:
+            app.kubernetes.io/managed-by: argocd-autopilot
+        spec:
+          destination: {}
+          project: ""
+          source:
+            repoURL: ""
+  - git:
+      files:
+      - path: apps/crds/**/config_dir.json
+      repoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot.git
+      requeueAfterSeconds: 20
+      revision: ""
+      template:
+        metadata:
+          labels:
+            app.kubernetes.io/managed-by: argocd-autopilot
+        spec:
+          destination: {}
+          project: ""
+          source:
+            directory:
+              exclude: '{{ .exclude }}'
+              include: '{{ .include }}'
+              jsonnet: {}
+              recurse: true
+            repoURL: ""
+
+# spec:
+#   generators:
+#     - git:
+#         repoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot.git
+#         revision: HEAD
+#         directories:
+#           # - path: bootstrap/init/crds/apps/*
+#           - path: apps/crds
+
   goTemplate: true
   goTemplateOptions: ["missingkey=error"]
 
@@ -49,26 +88,68 @@ spec:
 
   template:
     metadata:
-      name: '{{ .path.basename }}'
+      annotations:
+        argocd.argoproj.io/sync-wave: '{{ .syncWave }}'
       labels:
-        dev-k3s: crds
-      finalizers:
-        - resources-finalizer.argocd.argoproj.io
+        app.kubernetes.io/managed-by: argocd-autopilot
+        app.kubernetes.io/name: '{{ .appName }}'
+        application-role: '{{ .appRole }}'
+        syncPriority: '{{ .syncPriority }}'
+      name: dev-{{ .userGivenName }}
+      namespace: argocd
     spec:
-      project: crds
-      source:
-        path: apps/crds/*
-        repoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot.git
-        targetRevision: HEAD
-
       destination:
-        name: in-cluster
-        namespace: argocd
+        namespace: '{{ .destNamespace }}'
+        server: '{{ .destServer }}'
+      ignoreDifferences:
+      - group: argoproj.io
+        kind: Application
+        jsonPointers:
+        - /status
+      - group: argoproj.io
+        kind: Application
+        jsonPointers:
+        - /operation
+
+      project: dev
+      source:
+        path: '{{ .srcPath }}'
+        repoURL: '{{ .srcRepoURL }}'
+        targetRevision: '{{ .srcTargetRevision }}'
       syncPolicy:
         automated:
-          selfHeal: false
+          allowEmpty: true
           prune: true
+          selfHeal: false
         syncOptions:
-        - CreateNamespace=true
-        - ServerSideApply=true
         - ApplyOutOfSyncOnly=true
+        - CreateNamespace=true
+        - PrunePropagationPolicy=foreground
+        - ServerSideApply=true
+        - SkipDryRunOnMissingResource=true
+
+  # template:
+  #   metadata:
+  #     name: '{{ .path.basename }}'
+  #     labels:
+  #       dev-k3s: crds
+  #     finalizers:
+  #       - resources-finalizer.argocd.argoproj.io
+  #   spec:
+  #     project: crds
+  #     source:
+  #       path: apps/crds/*
+  #       repoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot.git
+  #       targetRevision: HEAD
+
+  #     destination:
+  #       name: in-cluster
+  #       namespace: argocd
+  #     syncPolicy:
+  #       automated:
+  #         selfHeal: false
+  #         prune: true
+  #       syncOptions:
+  #       - CreateNamespace=true
+  #       - ServerSideApply=true
+  #       - ApplyOutOfSyncOnly=true
