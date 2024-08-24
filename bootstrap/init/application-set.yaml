@@ -56,11 +56,9 @@ spec:
     spec:
       project: infrastructure
       source:
-        # plugin:
-        #   name: kustomize-build-with-helm
+        path: bootstrap/init
         repoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot
         targetRevision: HEAD
-        path: '{{ path }}'
       destination:
         name: in-cluster
         namespace: argocd
