@@ -11,5 +11,5 @@ resources:
 - argo-cd.yaml
 - cluster-resources.yaml
 - projects.yaml
-- init-bootstrap.yaml
+- bootstrap.yaml
 # - root-app.yaml
