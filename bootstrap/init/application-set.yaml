@@ -13,7 +13,7 @@ spec:
         repoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot
         revision: HEAD
         directories:
-          - path: bootstrap/init/*
+          - path: bootstrap/init
 
   goTemplate: true
   goTemplateOptions: ["missingkey=error"]
