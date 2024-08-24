@@ -47,7 +47,6 @@ spec:
         repoURL: '{{ .srcRepoURL }}'
         targetRevision: '{{ .srcTargetRevision }}'
       destination:
-        name: in-cluster
         namespace: '{{ .destNamespace }}'
         server: '{{ .destServer }}'
 
