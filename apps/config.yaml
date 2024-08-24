@@ -9,6 +9,6 @@ labels: ""
 srcPath: apps
 srcRepoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot.git
 srcTargetRevision: ""
-syncPriority: stage1
+syncPriority: ""
 syncWave: -1
-userGivenName: apps
+userGivenName: apps-bootstrap
