@@ -1,10 +1,11 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: crds
+  name: appSet-crds
   namespace: argocd
   labels:
-    dev.k3s-init: crds
+    dev-k3s: crds
+    syncPriority: stage1
 
 spec:
   generators:
@@ -50,7 +51,7 @@ spec:
     metadata:
       name: '{{ path.basename }}'
       labels:
-        dev.k3s-init: crds
+        dev-k3s: crds
       finalizers:
         - resources-finalizer.argocd.argoproj.io
     spec:

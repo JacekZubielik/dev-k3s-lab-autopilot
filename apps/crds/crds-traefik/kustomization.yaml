@@ -5,6 +5,8 @@ kind: Kustomization
 metadata:
   annotations:
     argocd.argoproj.io/compare-options: IgnoreExtraneous
+  labels:
+    syncPriority: stage4
 
 resources:
 - https://raw.githubusercontent.com/traefik/traefik/v3.1/docs/content/reference/dynamic-configuration/kubernetes-crd-definition-v1.yml

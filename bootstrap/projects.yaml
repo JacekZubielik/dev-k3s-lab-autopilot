@@ -6,9 +6,9 @@ metadata:
     argocd.argoproj.io/sync-wave: "-3"
   finalizers:
   - resources-finalizer.argocd.argoproj.io
-  # labels:
-  #   app.kubernetes.io/managed-by: argocd-autopilot
-  #   app.kubernetes.io/name: projects
+  labels:
+    app.kubernetes.io/managed-by: argocd-autopilot
+    app.kubernetes.io/name: projects
   name: projects
   namespace: argocd
 spec:
