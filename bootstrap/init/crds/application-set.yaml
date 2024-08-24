@@ -12,8 +12,8 @@ spec:
         repoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot
         revision: HEAD
         directories:
-          - path: bootstrap/init/crds/apps/*
-
+          # - path: bootstrap/init/crds/apps/*
+          - path: apps/crds/*
   # goTemplate: true
   # goTemplateOptions: ["missingkey=error"]
 
