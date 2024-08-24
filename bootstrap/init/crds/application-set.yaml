@@ -14,7 +14,7 @@ spec:
         revision: HEAD
         directories:
           # - path: bootstrap/init/crds/apps/*
-          - path: apps/crds
+          - path: apps/crds/*
   goTemplate: true
   goTemplateOptions: ["missingkey=error"]
 
