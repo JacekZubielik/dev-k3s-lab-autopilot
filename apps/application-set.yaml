@@ -32,34 +32,34 @@ spec:
         namespace: argocd
       syncPolicy:
         automated:
-          selfHeal: false
+          selfHeal: true
           prune: true
 
-  # strategy:
-  #   type: RollingSync
-  #   rollingSync:
-  #     steps:
-  #     - matchExpressions:
-  #       - key: syncPriority
-  #         operator: In
-  #         values:
-  #         - stage1 # crds
-  #       maxUpdate: 100%
-  #     - matchExpressions:
-  #       - key: syncPriority
-  #         operator: In
-  #         values:
-  #         - stage2 # storage
-  #       maxUpdate: 100%
-  #     - matchExpressions:
-  #       - key: syncPriority
-  #         operator: In
-  #         values:
-  #         - stage3 # infra
-  #       maxUpdate: 100%
-  #     - matchExpressions:
-  #       - key: syncPriority
-  #         operator: In
-  #         values:
-  #         - stage4 # monitoring
-  #       maxUpdate: 100%
+  strategy:
+    type: RollingSync
+    rollingSync:
+      steps:
+      - matchExpressions:
+        - key: syncPriority
+          operator: In
+          values:
+          - stage1 # crds
+        maxUpdate: 100%
+      - matchExpressions:
+        - key: syncPriority
+          operator: In
+          values:
+          - stage2 # storage
+        maxUpdate: 100%
+      - matchExpressions:
+        - key: syncPriority
+          operator: In
+          values:
+          - stage3 # infra
+        maxUpdate: 100%
+      - matchExpressions:
+        - key: syncPriority
+          operator: In
+          values:
+          - stage4 # monitoring
+        maxUpdate: 100%
