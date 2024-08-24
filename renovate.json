@@ -1,6 +1,30 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:recommended"
-  ]
+    "config:base", 
+    ":dependencyDashboardApproval",
+    "helpers:pinGitHubActionDigests"
+  ],
+  "packageRules": [
+    {
+      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+      "matchCurrentVersion": "!/^0/",
+      "automerge": true
+    },
+    {
+      "matchDepTypes": ["devDependencies"],
+      "automerge": true
+    }
+  ],
+  "kubernetes": {
+    "enabled": true,
+    "fileMatch": ["\\.yaml$"]
+  },
+  "argocd": {
+    "enabled": true,
+    "fileMatch": [
+    "apps/.+\\.yaml$", 
+    "bootstrap/.+\\.yaml$"
+    ]
+  }
 }
