@@ -1,0 +1,70 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: init
+  namespace: argocd
+  labels:
+    dev.k3s: init
+
+spec:
+  generators:
+    - git:
+        repoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot-autopilot
+        revision: HEAD
+        directories:
+          - path: bootstrap/init/*
+
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
+
+  strategy:
+    type: RollingSync
+    rollingSync:
+      steps:
+      - matchExpressions:
+        - key: syncPriority
+          operator: In
+          values:
+          - stage1 # crds
+        maxUpdate: 100%
+      - matchExpressions:
+        - key: syncPriority
+          operator: In
+          values:
+          - stage2 # storage
+        maxUpdate: 100%
+      - matchExpressions:
+        - key: syncPriority
+          operator: In
+          values:
+          - stage3 # infra
+        maxUpdate: 100%
+      - matchExpressions:
+        - key: syncPriority
+          operator: In
+          values:
+          - stage4 # monitoring
+        maxUpdate: 0%
+
+  template:
+    metadata:
+      name: '{{ path.basename }}'
+      labels:
+        dev.k3s: init
+      finalizers:
+        - resources-finalizer.argocd.argoproj.io
+    spec:
+      project: infrastructure
+      source:
+        # plugin:
+        #   name: kustomize-build-with-helm
+        repoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot-autopilot
+        targetRevision: HEAD
+        path: '{{ path }}'
+      destination:
+        name: in-cluster
+        namespace: argocd
+      syncPolicy:
+        automated:
+          selfHeal: true
+          prune: true

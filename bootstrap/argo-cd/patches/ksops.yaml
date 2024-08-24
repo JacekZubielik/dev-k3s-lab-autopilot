@@ -1,0 +1,106 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: argocd-repo-server
+spec:
+  template:
+    spec:
+      volumes:
+      - name: custom-tools
+        emptyDir: {}
+      - name: sops-age
+        secret:
+          secretName: sops-age
+          defaultMode: 420
+      - name: sops-pgp
+        secret:
+          secretName: sops-pgp
+          defaultMode: 420
+      - name: ssh-known-hosts
+        configMap:
+          name: argocd-ssh-known-hosts-cm
+          defaultMode: 420
+      - name: tls-certs
+        configMap:
+          name: argocd-tls-certs-cm
+          defaultMode: 420
+      - name: gpg-keys
+        configMap:
+          name: argocd-gpg-keys-cm
+          defaultMode: 420
+      - name: gpg-keyring
+        emptyDir: {}
+      - name: var-files
+        emptyDir: {}
+      - name: plugins
+        emptyDir: {}
+      - name: tmp
+        emptyDir: {}
+      - name: helm-working-dir
+        emptyDir: {}
+
+      initContainers:
+      - name: install-ksops
+        image: viaductoss/ksops:v4.3.2
+        command: ["/bin/sh", "-c"]
+        args:
+        - echo "Installing KSOPS...";
+          mv ksops /custom-tools/;
+          mv kustomize /custom-tools/;
+          echo "Done.";
+        volumeMounts:
+        - mountPath: /custom-tools
+          name: custom-tools
+
+      containers:
+      - name: argocd-repo-server
+        # command: ["gpg", "--import", "/.config/sops/gpg/sops.gpg.pub.asc"]
+        env:
+        - name: XDG_CONFIG_HOME
+          value: /.config
+        - name: SOPS_AGE_KEY_FILE
+          value: /.config/sops/age/keys.txt
+        # - name: GNUPGHOME
+        #   value: /home/argocd/.gnupg
+        # - name: AWS_ACCESS_KEY_ID
+        #   valueFrom:
+        #     secretKeyRef:
+        #       name: argocd-aws-credentials
+        #       key: accesskey
+        # - name: AWS_SECRET_ACCESS_KEY
+        #   valueFrom:
+        #     secretKeyRef:
+        #       name: argocd-aws-credentials
+        #       key: secretkey
+        volumeMounts:
+        - name: custom-tools
+          mountPath: /usr/local/bin/ksops
+          subPath: ksops
+        - name: custom-tools
+          mountPath: /usr/local/bin/kustomize
+          subPath: kustomize
+        - name: sops-age
+          mountPath: /.config/sops/age/keys.txt
+          subPath: keys.txt
+        - name: tmp
+          mountPath: /tmp
+        - name: helm-working-dir
+          mountPath: /helm-working-dir
+        - name: plugins
+          mountPath: /home/argocd/cmp-server/plugins
+        - name: custom-tools
+          mountPath: /.config/kustomize/plugin/viaduct.ai/v1/ksops/ksops
+          subPath: ksops
+        - name: ssh-known-hosts
+          mountPath: /app/config/ssh
+        - name: tls-certs
+          mountPath: /app/config/tls
+        - name: gpg-keys
+          mountPath: /app/config/gpg/source
+        - name: gpg-keyring
+          mountPath: /app/config/gpg/keys
+        - name: argocd-repo-server-tls
+          mountPath: /app/config/reposerver/tls
+        - name: custom-tools
+          mountPath: /custom-tools

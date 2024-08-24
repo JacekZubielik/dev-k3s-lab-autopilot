@@ -1,0 +1,22 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    kube-vip.io/loadbalancerIPs: 192.168.40.182
+  name: argocd-server-ui
+  namespace: argocd
+spec:
+  ports:
+  - name: http
+    protocol: TCP
+    port: 80
+    targetPort: 8080
+  - name: https
+    protocol: TCP
+    port: 443
+    targetPort: 8080
+  type: LoadBalancer
+  selector:
+    app.kubernetes.io/name: argocd-server
+    # app: argocd-server

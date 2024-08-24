@@ -1,0 +1,11 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+metadata:
+  annotations:
+    argocd.argoproj.io/compare-options: IgnoreExtraneous
+
+resources:
+- resources/snapshot.storage.k8s.io_volumesnapshotclasses.yaml
+- resources/snapshot.storage.k8s.io_volumesnapshotcontents.yaml
+- resources/snapshot.storage.k8s.io_volumesnapshots.yaml

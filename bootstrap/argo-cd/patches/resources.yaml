@@ -1,0 +1,14 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-cm
+data:
+  resource.exclusions: |
+    - apiGroups:
+      - snapshot.storage.k8s.io
+      kinds:
+      - VolumeSnapshot
+      - VolumeSnapshotContent
+      clusters:
+      - "*"

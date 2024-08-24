@@ -1,0 +1,9 @@
+**/monitoring/system/kube-prometheus-stack/base/dashboards
+**/monitoring/system/kube-prometheus-stack/base/appdata
+**/.git
+**/.vscode
+**/.archive
+**/*.sops.*
+**/*.sec.*
+**/decrypted-secrets/secret*.y*ml
+**/temp-off/*.*

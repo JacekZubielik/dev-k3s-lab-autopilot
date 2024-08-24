@@ -1,0 +1,29 @@
+---
+area/github:
+- changed-files:
+  - any-glob-to-any-file: ".github/**/*"
+area/bootstrap:
+- changed-files:
+  - any-glob-to-any-file: "bootstrap/**/*"
+area/project:
+- changed-files:
+  - any-glob-to-any-file: "project/*"
+area/apps/iot:
+- changed-files:
+  - any-glob-to-any-file: "apps/iot/**/*"
+area/apps/media:
+- changed-files:
+  - any-glob-to-any-file: "apps/media/**/*"
+area/apps/trade:
+- changed-files:
+  - any-glob-to-any-file: "apps/trade/**/*"
+area/apps/user:
+- changed-files:
+  - any-glob-to-any-file: "apps/user/**/*"
+area/infrastructure:
+- changed-files:
+  - any-glob-to-any-file: "infrastructure/**/*"
+feature:
+- head-branch: ['^feature', 'feature']
+release:
+- base-branch: 'main'
