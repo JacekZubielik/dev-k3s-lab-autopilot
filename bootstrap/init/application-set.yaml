@@ -49,7 +49,7 @@ spec:
 
   template:
     metadata:
-      name: '{{ path.basename }}'
+      name: '{{ .path.basename }}'
       labels:
         dev-k3s: init
       finalizers:
@@ -57,7 +57,7 @@ spec:
     spec:
       project: init
       source:
-        path: '{{ path }}' # bootstrap/init/
+        path: '{{ .path }}' # bootstrap/init/
         repoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot
         targetRevision: HEAD
       destination:
