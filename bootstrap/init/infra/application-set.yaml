@@ -5,12 +5,12 @@ metadata:
   namespace: argocd
   labels:
     dev-k3s: infra
-    syncPriority: stage1
+    syncPriority: stage2
 
 spec:
   generators:
     - git:
-        repoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot
+        repoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot.git
         revision: HEAD
         directories:
           # - path: bootstrap/init/crds/apps/*
@@ -58,7 +58,7 @@ spec:
       project: infra
       source:
         path: '{{ .path }}'
-        repoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot
+        repoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot.git
         targetRevision: HEAD
 
       destination:

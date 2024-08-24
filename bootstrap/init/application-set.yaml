@@ -10,7 +10,7 @@ metadata:
 spec:
   generators:
     - git:
-        repoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot
+        repoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot.git
         revision: HEAD
         directories:
           - path: bootstrap/init/*
@@ -58,7 +58,7 @@ spec:
       project: init
       source:
         path: '{{ .path }}' # bootstrap/init/
-        repoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot
+        repoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot.git
         targetRevision: HEAD
       destination:
         name: in-cluster

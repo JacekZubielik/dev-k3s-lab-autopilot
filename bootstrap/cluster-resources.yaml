@@ -11,7 +11,7 @@ spec:
   - git:
       files:
       - path: bootstrap/cluster-resources/*.json
-      repoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot
+      repoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot.git
       requeueAfterSeconds: 10
       revision: ""
       template:

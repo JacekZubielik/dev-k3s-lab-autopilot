@@ -23,7 +23,7 @@ spec:
   project: default
   source:
     path: projects
-    repoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot
+    repoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot.git
   syncPolicy:
     automated:
       allowEmpty: true

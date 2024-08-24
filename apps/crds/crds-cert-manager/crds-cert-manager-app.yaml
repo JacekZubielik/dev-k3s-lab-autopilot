@@ -24,7 +24,7 @@ spec:
   project: crds
   source:
     path: apps/crds/crds-cert-manager
-    repoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot
+    repoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot.git
     targetRevision: ""
   syncPolicy:
     automated:
