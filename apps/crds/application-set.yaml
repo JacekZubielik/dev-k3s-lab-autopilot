@@ -39,31 +39,31 @@ spec:
         - ServerSideApply=true
         - SkipDryRunOnMissingResource=true
 
-  # strategy:
-  #   type: RollingSync
-  #   rollingSync:
-  #     steps:
-  #     - matchExpressions:
-  #       - key: syncPriority
-  #         operator: In
-  #         values:
-  #         - stage1 #
-  #       maxUpdate: 100%
-  #     - matchExpressions:
-  #       - key: syncPriority
-  #         operator: In
-  #         values:
-  #         - stage2 #
-  #       maxUpdate: 100%
-  #     - matchExpressions:
-  #       - key: syncPriority
-  #         operator: In
-  #         values:
-  #         - stage3 #
-  #       maxUpdate: 100%
-  #     - matchExpressions:
-  #       - key: syncPriority
-  #         operator: In
-  #         values:
-  #         - stage4 #
-  #       maxUpdate: 100%
+  strategy:
+    type: RollingSync
+    rollingSync:
+      steps:
+      - matchExpressions:
+        - key: syncPriority
+          operator: In
+          values:
+          - stage1 #
+        maxUpdate: 0%
+      - matchExpressions:
+        - key: syncPriority
+          operator: In
+          values:
+          - stage2 #
+        maxUpdate: 100%
+      - matchExpressions:
+        - key: syncPriority
+          operator: In
+          values:
+          - stage3 #
+        maxUpdate: 100%
+      - matchExpressions:
+        - key: syncPriority
+          operator: In
+          values:
+          - stage4 #
+        maxUpdate: 100%
