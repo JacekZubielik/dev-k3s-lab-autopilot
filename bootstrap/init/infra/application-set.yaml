@@ -1,10 +1,10 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: appset-crds
+  name: infra
   namespace: argocd
   labels:
-    dev-k3s: crds
+    dev-k3s: infra
     syncPriority: stage1
 
 spec:
@@ -14,7 +14,7 @@ spec:
         revision: HEAD
         directories:
           # - path: bootstrap/init/crds/apps/*
-          - path: apps/crds/*
+          - path: apps/infra/*
   goTemplate: true
   goTemplateOptions: ["missingkey=error"]
 
@@ -51,13 +51,13 @@ spec:
     metadata:
       name: '{{ .path.basename }}'
       labels:
-        dev-k3s: crds
+        dev-k3s: infra
       finalizers:
         - resources-finalizer.argocd.argoproj.io
     spec:
-      project: crds
+      project: infra
       source:
-        path: apps/crds/*
+        path: '{{ .path }}'
         repoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot
         targetRevision: HEAD
 
