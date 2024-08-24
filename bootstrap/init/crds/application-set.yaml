@@ -9,7 +9,7 @@ metadata:
 spec:
   generators:
     - git:
-        repoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot-autopilot
+        repoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot
         revision: HEAD
         directories:
           - path: bootstrap/init/crds/apps/*
@@ -58,7 +58,7 @@ spec:
       source:
         plugin:
           name: kustomize-build-with-helm
-        repoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot-autopilot
+        repoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot
         targetRevision: HEAD
         path: '{{ path }}'
       destination:
