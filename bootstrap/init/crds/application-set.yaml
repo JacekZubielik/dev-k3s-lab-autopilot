@@ -49,7 +49,7 @@ spec:
 
   template:
     metadata:
-      name: '{{ path.basename }}'
+      name: '{{ .path.basename }}'
       labels:
         dev-k3s: crds
       finalizers:
@@ -57,11 +57,10 @@ spec:
     spec:
       project: crds
       source:
-        # plugin:
-        #   name: kustomize-build-with-helm
+        path: '{{ .path }}'
         repoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot
         targetRevision: HEAD
-        path: '{{ path }}'
+
       destination:
         name: in-cluster
         namespace: argocd
