@@ -57,7 +57,7 @@ spec:
     spec:
       project: crds
       source:
-        path: '{{ .path }}'
+        path: apps/crds/* # '{{ .path }}'
         repoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot
         targetRevision: HEAD
 
