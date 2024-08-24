@@ -237,7 +237,6 @@ defaultSettings:
   # -- Maximum snapshot count for a volume. The value should be between 2 to 250
   snapshotMaxCount: "10"
   autoCleanupSnapshotWhenDeleteBackup: "true"
-  autoCleanupSystemGeneratedSnapshot: "true"
   freezeFilesystemForSnapshot: "true"
 
 privateRegistry:
