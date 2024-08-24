@@ -1,0 +1,33 @@
+---
+apiVersion: longhorn.io/v1beta1
+kind: RecurringJob
+metadata:
+  name: 24-hour-backups
+  namespace: longhorn-system
+spec:
+  cron: "0 */24 * * *"
+  task: "backup"
+  groups:
+  - default
+  - group1
+  retain: 3
+  concurrency: 2
+  labels:
+    job: 24-hour-backups
+
+---
+apiVersion: longhorn.io/v1beta1
+kind: RecurringJob
+metadata:
+  name: 48-hour-backups
+  namespace: longhorn-system
+spec:
+  cron: "0 */48 * * *"
+  task: "backup"
+  groups:
+  - default
+  - group1
+  retain: 3
+  concurrency: 2
+  labels:
+    job: 48-hour-backups

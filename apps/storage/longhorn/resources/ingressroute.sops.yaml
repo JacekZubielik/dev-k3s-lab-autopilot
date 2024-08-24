@@ -1,0 +1,109 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+    annotations:
+        argocd.argoproj.io/sync-wave: "3"
+        cert-manager.io/cluster-issuer: letsencrypt-production
+        cert-manager.io/common-name: longhorn.storage.anotherlife.org.pl
+        external-dns.alpha.kubernetes.io/target: ENC[AES256_GCM,data:akBw7XJTSKP4BiEaQTMo6qywfNrWfaaVhKM=,iv:6zWWS0h2a8VGeO4Y0MwZkY/7GFWANIuS+Iz9faraBJU=,tag:LSl1U9N5z2fHZwQ9mE730g==,type:str]
+        kubernetes.io/ingress.class: traefik-external
+    name: longhorn-frontend
+    namespace: longhorn-system
+spec:
+    entryPoints:
+        - websecure
+    routes:
+        - kind: Rule
+          match: ENC[AES256_GCM,data:aFV/sj5B7NEwADAXGUsGr4QQmFfpHqRgU/XBHfGPDjuLGYLq0kXOo6HxHg==,iv:cHqbQl8uLeykcSb8guO4mB+7vCJCvCIakOWfu1jJKm4=,tag:ubn6Di0MvqwvgmC1cQDtGA==,type:str]
+          middlewares:
+            - name: longhorn-dashboard
+              namespace: traefik
+          services:
+            - kind: TraefikService
+              name: longhorn-frontend
+              namespace: longhorn-system
+    tls:
+        domains:
+            - main: ENC[AES256_GCM,data:c/E7eu/cFW28JA52h9WrkvvRFcwe4YzHOBQ=,iv:MOAAWLQ+swVuwgCv8X9Iw1UG7C4Rlm2d91gQ7Sl+408=,tag:FEU61nWuaOYsP+jdbolWqQ==,type:str]
+              sans:
+                - ENC[AES256_GCM,data:p0hN7ERMqMzIkiTDYL63VNZIHU55lSrdjRK/,iv:E8hKobDc2j3bxMZLw+fhbmdCmi5XFwzmBoCgD66h5VI=,tag:IzfffrqWKxVb3AcdtZDcvg==,type:str]
+        options:
+            name: tls-ver13
+            namespace: traefik
+        secretName: longhorn-cf-production
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age: []
+    lastmodified: "2024-08-21T15:37:44Z"
+    mac: ENC[AES256_GCM,data:UXHJ6Nplc72HnBwbP6ULRgMhnERRU2PqrdBUAa/jVCSy/wWFWZHPkX9xdKsWQ+niPSEDe9tjISg/8VW34l2vDmkirUVpx92/JqBNeeeH86rqi5z+WmEda705ME5+vNoNtWw6CbSZWn5mLNk/b6BvB14gAHlLot53Q5DtsJYisrA=,iv:0l0OFibVXksqXNMNnAs7DVE1sbTYdwkPkKBcQ+lqy7Y=,tag:YTRR0MSvLJfdpO1YG638qg==,type:str]
+    pgp:
+        - created_at: "2024-07-07T11:13:17Z"
+          enc: |-
+            -----BEGIN PGP MESSAGE-----
+
+            hQIMA0R6oz1GmNjVARAAsnuYLvhipCKFDeUsclCJsjO1sLgknfYSsBmWWi7cv7wV
+            upvRAXW/p0NnbX/R3xZWelJvX7i08ajlWHb4maN7rYRB6vEtGNAqL8Lq0XvFlBYQ
+            +a+Gz2Lp1zbT3byYIWRoqfBmy3Ilmsl5wQgLCh1j4aKcT1VWO6GlDmjT0C8KbsNx
+            o76a3wr8zlWX/Bn3dkA71PpqUsq3yhb3yb6yAtRSUz4NM5mOkZx4Kbrsxv8LbGjo
+            vNyTB9ZXx9rTTPDI9cQcDO8M4T32hJCJ9DtkmA7sM+fZ8BEVaXgH0svabNrtt6cv
+            EAKB7lOGoi0BdMNfIaxqKoI+AQI37/pTpX76n9V1tPXBBPDRJFu2qgR/SaEepacf
+            ra398/wVU1uxq+DpTblAFVDL47jgHF1VY8CXozMtKDJ4ZzKWPA5owvu13hLen+T4
+            bYhk5R5t5YpOXRVZrqFmvQvjz/F2eFqMn2Gmm1gwvXKV+VPs2gCSxrnxXXVMyRV2
+            jvNsTj6l+am54XxnItj/GWjnNdmgf30SkWinkGnISB0LfX/4lw56HFIYFxwv5Lct
+            bV6PviYTywBESaRLNodH2DZnxiLn4C+PP4/tIZU0ry/Tldk2gsdnoez+p7KVkRmF
+            GMc6KKX63XSYIsowKJ2+ZCnt2yK56hCFJiRVRER3jxH328X8H6pzIXziq+HFC9rS
+            XgEC5OJ2o9bIbDzowDzO3D9C09FPSaJLPnbT162RVhZSVT1PoMzgocqGBHQn/iNx
+            H8ZAXjGBSgVxslc+01ttLlicrssx9BUx26VPWm93zbShQaNxAMH4jVAXJJc1TdM=
+            =GpVG
+            -----END PGP MESSAGE-----
+          fp: 6D3FE55384B558E06A1BA364586EFA784A32C981
+    encrypted_regex: ^(externalName|external-dns.alpha.kubernetes.io/hostname|sans|main|match|external-dns.alpha.kubernetes.io/target|dnsNames|commonName|data|stringData|dnsNames|email|accessKeyID|region|hostedZoneID|role|dnsZones)$
+    version: 3.8.1
+---
+apiVersion: traefik.io/v1alpha1
+kind: TraefikService
+metadata:
+    annotations:
+        argocd.argoproj.io/sync-wave: "2"
+    name: longhorn-frontend
+    namespace: longhorn-system
+spec:
+    weighted:
+        services:
+            - name: longhorn-frontend
+              port: 80
+              weight: 1
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age: []
+    lastmodified: "2024-08-21T15:37:44Z"
+    mac: ENC[AES256_GCM,data:UXHJ6Nplc72HnBwbP6ULRgMhnERRU2PqrdBUAa/jVCSy/wWFWZHPkX9xdKsWQ+niPSEDe9tjISg/8VW34l2vDmkirUVpx92/JqBNeeeH86rqi5z+WmEda705ME5+vNoNtWw6CbSZWn5mLNk/b6BvB14gAHlLot53Q5DtsJYisrA=,iv:0l0OFibVXksqXNMNnAs7DVE1sbTYdwkPkKBcQ+lqy7Y=,tag:YTRR0MSvLJfdpO1YG638qg==,type:str]
+    pgp:
+        - created_at: "2024-07-07T11:13:17Z"
+          enc: |-
+            -----BEGIN PGP MESSAGE-----
+
+            hQIMA0R6oz1GmNjVARAAsnuYLvhipCKFDeUsclCJsjO1sLgknfYSsBmWWi7cv7wV
+            upvRAXW/p0NnbX/R3xZWelJvX7i08ajlWHb4maN7rYRB6vEtGNAqL8Lq0XvFlBYQ
+            +a+Gz2Lp1zbT3byYIWRoqfBmy3Ilmsl5wQgLCh1j4aKcT1VWO6GlDmjT0C8KbsNx
+            o76a3wr8zlWX/Bn3dkA71PpqUsq3yhb3yb6yAtRSUz4NM5mOkZx4Kbrsxv8LbGjo
+            vNyTB9ZXx9rTTPDI9cQcDO8M4T32hJCJ9DtkmA7sM+fZ8BEVaXgH0svabNrtt6cv
+            EAKB7lOGoi0BdMNfIaxqKoI+AQI37/pTpX76n9V1tPXBBPDRJFu2qgR/SaEepacf
+            ra398/wVU1uxq+DpTblAFVDL47jgHF1VY8CXozMtKDJ4ZzKWPA5owvu13hLen+T4
+            bYhk5R5t5YpOXRVZrqFmvQvjz/F2eFqMn2Gmm1gwvXKV+VPs2gCSxrnxXXVMyRV2
+            jvNsTj6l+am54XxnItj/GWjnNdmgf30SkWinkGnISB0LfX/4lw56HFIYFxwv5Lct
+            bV6PviYTywBESaRLNodH2DZnxiLn4C+PP4/tIZU0ry/Tldk2gsdnoez+p7KVkRmF
+            GMc6KKX63XSYIsowKJ2+ZCnt2yK56hCFJiRVRER3jxH328X8H6pzIXziq+HFC9rS
+            XgEC5OJ2o9bIbDzowDzO3D9C09FPSaJLPnbT162RVhZSVT1PoMzgocqGBHQn/iNx
+            H8ZAXjGBSgVxslc+01ttLlicrssx9BUx26VPWm93zbShQaNxAMH4jVAXJJc1TdM=
+            =GpVG
+            -----END PGP MESSAGE-----
+          fp: 6D3FE55384B558E06A1BA364586EFA784A32C981
+    encrypted_regex: ^(externalName|external-dns.alpha.kubernetes.io/hostname|sans|main|match|external-dns.alpha.kubernetes.io/target|dnsNames|commonName|data|stringData|dnsNames|email|accessKeyID|region|hostedZoneID|role|dnsZones)$
+    version: 3.8.1
