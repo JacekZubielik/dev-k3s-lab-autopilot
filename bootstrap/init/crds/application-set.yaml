@@ -14,37 +14,37 @@ spec:
         directories:
           - path: bootstrap/init/crds/apps/*
 
-  goTemplate: true
-  goTemplateOptions: ["missingkey=error"]
+  # goTemplate: true
+  # goTemplateOptions: ["missingkey=error"]
 
-  strategy:
-    type: RollingSync
-    rollingSync:
-      steps:
-      - matchExpressions:
-        - key: syncPriority
-          operator: In
-          values:
-          - stage1 # crds
-        maxUpdate: 100%
-      - matchExpressions:
-        - key: syncPriority
-          operator: In
-          values:
-          - stage2 # storage
-        maxUpdate: 100%
-      - matchExpressions:
-        - key: syncPriority
-          operator: In
-          values:
-          - stage3 # infra
-        maxUpdate: 100%
-      - matchExpressions:
-        - key: syncPriority
-          operator: In
-          values:
-          - stage4 # monitoring
-        maxUpdate: 100%
+  # strategy:
+  #   type: RollingSync
+  #   rollingSync:
+  #     steps:
+  #     - matchExpressions:
+  #       - key: syncPriority
+  #         operator: In
+  #         values:
+  #         - stage1 # crds
+  #       maxUpdate: 100%
+  #     - matchExpressions:
+  #       - key: syncPriority
+  #         operator: In
+  #         values:
+  #         - stage2 # storage
+  #       maxUpdate: 100%
+  #     - matchExpressions:
+  #       - key: syncPriority
+  #         operator: In
+  #         values:
+  #         - stage3 # infra
+  #       maxUpdate: 100%
+  #     - matchExpressions:
+  #       - key: syncPriority
+  #         operator: In
+  #         values:
+  #         - stage4 # monitoring
+  #       maxUpdate: 100%
 
   template:
     metadata:
@@ -56,8 +56,8 @@ spec:
     spec:
       project: crds
       source:
-        plugin:
-          name: kustomize-build-with-helm
+        # plugin:
+        #   name: kustomize-build-with-helm
         repoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot
         targetRevision: HEAD
         path: '{{ path }}'
