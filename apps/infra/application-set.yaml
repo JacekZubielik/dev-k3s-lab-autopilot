@@ -1,11 +1,11 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: apps
+  name: infra
   namespace: argocd
-  # labels:
-  #   dev-k3s: apps
-  #   syncPriority: stage1
+  labels:
+    dev-k3s: infra
+    syncPriority: stage2
 
 spec:
   goTemplate: true
@@ -15,14 +15,15 @@ spec:
       repoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot.git
       revision: HEAD
       directories:
-        - path: apps/*
+        - path: apps/infra/*
   template:
     metadata:
       name: '{{.path.basename}}'
     spec:
-      project: infrastructure
+      project: infra
       source:
-
+        # plugin:
+        #   name: kustomize-build-with-helm
         repoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot.git
         targetRevision: HEAD
         path: '{{.path.path}}'
