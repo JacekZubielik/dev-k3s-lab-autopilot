@@ -1,3 +1,4 @@
+---
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
@@ -5,7 +6,7 @@ metadata:
   namespace: argocd
   labels:
     dev-k3s: infra
-    syncPriority: stage2
+    syncPriority: stage3
 
 spec:
   goTemplate: true

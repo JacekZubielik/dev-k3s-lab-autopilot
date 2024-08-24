@@ -2,11 +2,11 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: crds
+  name: storage
   namespace: argocd
   labels:
-    dev-k3s: crds
-    syncPriority: stage1
+    dev-k3s: storage
+    syncPriority: stage2
 
 spec:
   goTemplate: true
@@ -16,12 +16,12 @@ spec:
       repoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot.git
       revision: HEAD
       directories:
-        - path: apps/crds/*
+        - path: apps/storage/*
   template:
     metadata:
       name: '{{.path.basename}}'
     spec:
-      project: infrastructure
+      project: storage
       source:
         repoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot.git
         targetRevision: HEAD
@@ -33,11 +33,6 @@ spec:
         automated:
           selfHeal: false
           prune: true
-        syncOptions:
-        - CreateNamespace=true
-        - PrunePropagationPolicy=foreground
-        - ServerSideApply=true
-        - SkipDryRunOnMissingResource=true
 
   strategy:
     type: RollingSync
