@@ -1,3 +1,4 @@
+---
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
@@ -64,5 +65,5 @@ spec:
         namespace: argocd
       syncPolicy:
         automated:
-          selfHeal: true
+          selfHeal: false
           prune: true

@@ -8,7 +8,7 @@ metadata:
 
 resources:
 # - application-set.yaml
-- init.yaml
+- boot.yaml
 - argo-cd.yaml
 - cluster-resources.yaml
 - projects.yaml
