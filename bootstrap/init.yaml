@@ -9,7 +9,7 @@ spec:
   project: init
   source:
     path: bootstrap/init
-    repoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot-autopilot
+    repoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot
     targetRevision: HEAD
   destination:
     namespace: argocd
