@@ -5,8 +5,8 @@ kind: Kustomization
 metadata:
   annotations:
     argocd.argoproj.io/compare-options: IgnoreExtraneous
-  labels:
-    syncPriority: stage2
+  # labels:
+  #   syncPriority: stage2
 
 resources:
 - resources/snapshot.storage.k8s.io_volumesnapshotclasses.yaml

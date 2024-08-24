@@ -1,0 +1,14 @@
+annotations: ''
+appName: crds
+appRole: applicationset
+destNamespace: ""
+destServer: https://kubernetes.default.svc
+exclude: ""
+include: ""
+labels: ""
+srcPath: apps/crds
+srcRepoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot.git
+srcTargetRevision: ""
+syncPriority: stage1
+syncWave: -1
+userGivenName: crds

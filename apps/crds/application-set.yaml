@@ -14,21 +14,67 @@ spec:
   generators:
   - git:
       repoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot.git
-      revision: HEAD
-      directories:
-        - path: apps/crds/*
+      requeueAfterSeconds: 20
+      revision: ""
+      files:
+      - path: apps/crds/**/config.yaml
+      template:
+        metadata:
+          labels:
+            app.kubernetes.io/managed-by: argocd-autopilot
+        spec:
+          destination: {}
+          project: ""
+          source:
+            repoURL: ""
+
   template:
     metadata:
-      name: '{{.path.basename}}'
+      annotations:
+        argocd.argoproj.io/sync-wave: '{{ .syncWave }}'
+      labels:
+        app.kubernetes.io/managed-by: argocd-autopilot
+        app.kubernetes.io/name: '{{ .appName }}'
+        application-role: '{{ .appRole }}'
+        syncPriority: '{{ .syncPriority }}'
+      name: {{ .userGivenName }}
+      namespace: argocd
+
     spec:
-      project: infrastructure
+      project: crds
       source:
-        repoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot.git
-        targetRevision: HEAD
-        path: '{{.path.path}}'
+        path: '{{ .srcPath }}'
+        repoURL: '{{ .srcRepoURL }}'
+        targetRevision: '{{ .srcTargetRevision }}'
       destination:
-        name: in-cluster
-        namespace: argocd
+        namespace: '{{ .destNamespace }}'
+        server: '{{ .destServer }}'
+
+      ignoreDifferences:
+      - group: argoproj.io
+        kind: Application
+        jsonPointers:
+        - /status
+      - group: argoproj.io
+        kind: Application
+        jsonPointers:
+        - /operation
+      - group: "apps"
+        kind: "Deployment"
+        jsonPointers:
+        - /spec/template/metadata/annotations
+        - /spec/template/metadata/labels
+      - group: "apps"
+        kind: "StatefulSet"
+        jsonPointers:
+        - /spec/template/metadata/annotations
+        - /spec/template/metadata/labels
+      - kind: PersistentVolume
+        jsonPointers:
+        - /spec/claimRef/resourceVersion
+        - /spec/claimRef/uid
+        - /status/lastPhaseTransitionTime
+
       syncPolicy:
         automated:
           selfHeal: true
