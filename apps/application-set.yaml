@@ -14,7 +14,7 @@ spec:
       requeueAfterSeconds: 20
       revision: ""
       files:
-      - path: apps/config.yaml
+      - path: apps/*
       template:
         metadata:
           labels:
