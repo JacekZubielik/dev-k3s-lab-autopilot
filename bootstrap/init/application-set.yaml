@@ -56,7 +56,7 @@ spec:
     spec:
       project: init
       source:
-        path: bootstrap/init/
+        path: '{{ path }}' # bootstrap/init/
         repoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot
         targetRevision: HEAD
       destination:
