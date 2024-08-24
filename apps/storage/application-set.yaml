@@ -33,6 +33,11 @@ spec:
         automated:
           selfHeal: false
           prune: true
+        syncOptions:
+        - CreateNamespace=true
+        - PrunePropagationPolicy=foreground
+        - ServerSideApply=true
+        - SkipDryRunOnMissingResource=true
 
   strategy:
     type: RollingSync
