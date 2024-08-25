@@ -7,11 +7,11 @@ kind: Kustomization
 #     cert-manager.io/inject-ca-from-secret: "lb/cert-manager-webhook-tls"
 #     argocd.argoproj.io/compare-options: IgnoreExtraneous
 
-# resources:
+resources:
+- resources/servicemonitor.yaml
 # - resources/cert.default.svc.yaml
 # - resources/issuer.default.svc.yaml
 # - resources/issuer.k3s.ca-cluster.yaml
-- resources/servicemonitor.yaml
 
 generators:
 - ksops-generator.yaml
