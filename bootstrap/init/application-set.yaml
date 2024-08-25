@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: apps
+  name: bootstrap
   namespace: argocd
 
 spec:
@@ -34,7 +34,7 @@ spec:
         app.kubernetes.io/name: '{{ .appName }}'
         application-role: '{{ .appRole }}'
         syncPriority: '{{ .syncPriority }}'
-      name: apps-{{ .userGivenName }}
+      name: bootstrap-{{ .userGivenName }}
       namespace: argocd
 
     spec:
