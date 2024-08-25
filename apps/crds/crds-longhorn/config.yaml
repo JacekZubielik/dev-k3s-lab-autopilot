@@ -1,0 +1,14 @@
+annotations: 'argocd.argoproj.io/compare-options: IgnoreExtraneous'
+appName: crds-longhorn
+appRole: longhorn
+destNamespace: ""
+destServer: https://kubernetes.default.svc
+exclude: ""
+include: ""
+labels: ""
+srcPath: apps/crds/crds-longhorn
+srcRepoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot.git
+srcTargetRevision: ""
+syncPriority: stage5
+syncWave: -1
+userGivenName: crds-longhorn
