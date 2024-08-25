@@ -9,7 +9,7 @@ metadata:
 spec:
   project: default
   source:
-    path: apps # bootstrap/init
+    path: bootstrap/init # apps
     repoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot.git
     targetRevision: HEAD
   destination:
