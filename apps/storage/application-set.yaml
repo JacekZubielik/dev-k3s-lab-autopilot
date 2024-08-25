@@ -94,7 +94,7 @@ spec:
           operator: In
           values:
           - stage1 #
-        # maxUpdate: 0%
+        maxUpdate: 100%
       - matchExpressions:
         - key: syncPriority
           operator: In
