@@ -5,13 +5,13 @@ metadata:
   annotations:
     argocd-autopilot.argoproj-labs.io/default-dest-server: https://kubernetes.default.svc
     argocd.argoproj.io/sync-wave: "-2"
-  name: infrastructure
+  name: infra
   namespace: argocd
 spec:
   clusterResourceWhitelist:
   - group: '*'
     kind: '*'
-  description: infrastructure project
+  description: infra project
   destinations:
   - namespace: '*'
     server: '*'
