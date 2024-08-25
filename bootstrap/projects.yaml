@@ -25,10 +25,10 @@ spec:
     path: projects
     repoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot.git
   syncPolicy:
-    # automated:
-    #   allowEmpty: true
-    #   prune: true
-    #   selfHeal: true
+    automated:
+      allowEmpty: true
+      prune: true
+      selfHeal: true
     syncOptions:
     - allowEmpty=true
 status: {}
