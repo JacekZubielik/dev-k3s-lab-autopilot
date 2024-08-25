@@ -59,21 +59,21 @@ spec:
         kind: Application
         jsonPointers:
         - /operation
-      - group: "apps"
-        kind: "Deployment"
-        jsonPointers:
-        - /spec/template/metadata/annotations
-        - /spec/template/metadata/labels
-      - group: "apps"
-        kind: "StatefulSet"
-        jsonPointers:
-        - /spec/template/metadata/annotations
-        - /spec/template/metadata/labels
-      - kind: PersistentVolume
-        jsonPointers:
-        - /spec/claimRef/resourceVersion
-        - /spec/claimRef/uid
-        - /status/lastPhaseTransitionTime
+      # - group: "apps"
+      #   kind: "Deployment"
+      #   jsonPointers:
+      #   - /spec/template/metadata/annotations
+      #   - /spec/template/metadata/labels
+      # - group: "apps"
+      #   kind: "StatefulSet"
+      #   jsonPointers:
+      #   - /spec/template/metadata/annotations
+      #   - /spec/template/metadata/labels
+      # - kind: PersistentVolume
+      #   jsonPointers:
+      #   - /spec/claimRef/resourceVersion
+      #   - /spec/claimRef/uid
+      #   - /status/lastPhaseTransitionTime
 
       syncPolicy:
         automated:
@@ -113,4 +113,10 @@ spec:
           operator: In
           values:
           - stage4 #
+        maxUpdate: 100%
+      - matchExpressions:
+        - key: syncPriority
+          operator: In
+          values:
+          - stage5 #
         maxUpdate: 100%
