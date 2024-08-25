@@ -9,4 +9,5 @@ kind: Kustomization
 #     syncPriority: stage4
 
 resources:
-- https://raw.githubusercontent.com/longhorn/longhorn/master/chart/templates/crds.yaml
+# - https://raw.githubusercontent.com/longhorn/longhorn/master/chart/templates/crds.yaml
+- https://github.com/longhorn/longhorn/blob/master/chart/templates/crds.yaml
