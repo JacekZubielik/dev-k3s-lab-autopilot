@@ -3,7 +3,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: pvc-kube-grafana
-  namespace: monitoring
+  # namespace: monitoring
 spec:
   # dataSource:
   #   name: pv-kube-grafana-backup

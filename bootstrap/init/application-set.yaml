@@ -67,15 +67,15 @@ spec:
       #   - /spec/template/metadata/annotations
       #   - /spec/template/metadata/labels
 
-      syncPolicy:
-        automated:
-          selfHeal: true
-          prune: true
-        syncOptions:
-        - CreateNamespace=true
-        - PrunePropagationPolicy=foreground
-        - ServerSideApply=true
-        - SkipDryRunOnMissingResource=true
+      # syncPolicy:
+      #   automated:
+      #     selfHeal: true
+      #     prune: true
+      #   syncOptions:
+      #   - CreateNamespace=true
+      #   - PrunePropagationPolicy=foreground
+      #   - ServerSideApply=true
+      #   - SkipDryRunOnMissingResource=true
 
   strategy:
     type: RollingSync
@@ -86,7 +86,7 @@ spec:
           operator: In
           values:
           - stage1 #
-        # maxUpdate: 0%
+        maxUpdate: 100%
       - matchExpressions:
         - key: syncPriority
           operator: In
