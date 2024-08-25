@@ -1,0 +1,15 @@
+---
+apiVersion: longhorn.io/v1beta2
+kind: BackingImage
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "-2"
+  name: pvc-kuma
+  namespace: longhorn-system
+spec:
+  sourceType: restore
+  sourceParameters:
+    backup-url: s3://k3s-longhorn-backup@us-east-1/?backingImage=pvc-kuma
+    concurrent-limit: '2'
+  checksum: 2d20c865dc5dde76e2f8bfd9cdd7c23a50a92cb7ab6d1c65bfd9b31255cc7254a88e7729aa85fa6b3724c8f628a5f4acb550eaff70188aba2105149840ea6627
+  minNumberOfCopies: 1

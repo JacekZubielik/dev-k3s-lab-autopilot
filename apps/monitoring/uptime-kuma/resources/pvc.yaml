@@ -1,0 +1,17 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-kuma
+spec:
+  # dataSource:
+  #   name: pvc-lms-config-backup
+  #   kind: VolumeSnapshot
+  #   apiGroup: snapshot.storage.k8s.io
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 8Gi
+  volumeName: pv-kuma # must reference Persistent Volume
+  storageClassName: longhorn-retain

@@ -2,11 +2,11 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: infra
+  name: monitoring
   namespace: argocd
   labels:
-    dev-k3s: infra
-    syncPriority: stage2
+    dev-k3s: monitoring
+    syncPriority: stage3
 
 spec:
   goTemplate: true
@@ -17,7 +17,7 @@ spec:
       requeueAfterSeconds: 20
       revision: ""
       files:
-      - path: apps/infra/**/config.yaml
+      - path: apps/monitoring/**/config.yaml
       template:
         metadata:
           labels:
@@ -37,11 +37,11 @@ spec:
         app.kubernetes.io/name: '{{ .appName }}'
         application-role: '{{ .appRole }}'
         syncPriority: '{{ .syncPriority }}'
-      name: infra-{{ .userGivenName }}
+      name: monitoring-{{ .userGivenName }}
       namespace: argocd
 
     spec:
-      project: infra
+      project: monitoring
       source:
         path: '{{ .srcPath }}'
         repoURL: '{{ .srcRepoURL }}'
@@ -112,22 +112,4 @@ spec:
           operator: In
           values:
           - stage4 #
-        maxUpdate: 100%
-      - matchExpressions:
-        - key: syncPriority
-          operator: In
-          values:
-          - stage5 #
-        maxUpdate: 100%
-      - matchExpressions:
-        - key: syncPriority
-          operator: In
-          values:
-          - stage6 #
-        maxUpdate: 100%
-      - matchExpressions:
-        - key: syncPriority
-          operator: In
-          values:
-          - stage7 #
         maxUpdate: 100%

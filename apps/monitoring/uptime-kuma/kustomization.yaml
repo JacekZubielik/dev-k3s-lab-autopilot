@@ -1,0 +1,34 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+# metadata:
+#   annotations:
+#     argocd.argoproj.io/compare-options: IgnoreExtraneous
+
+resources:
+- resources/backing-image.yaml
+- resources/pv.yaml
+- resources/pvc.yaml
+- resources/volume.yaml
+# - resources/volume.snapshot.yaml
+
+generators:
+- ksops-generator.yaml
+
+configMapGenerator:
+- name: kuma-config
+  literals:
+  - UPTIME_KUMA_PORT=3001
+- name: kuma-tz
+  literals:
+  - TZ=CET
+
+helmCharts:
+- name: uptime-kuma
+  repo: https://jacekzubielik.github.io/jz-helm-charts
+  version: 0.0.4
+  includeCRDs: false
+  namespace: uptime-kuma
+  releaseName: uptime-kuma
+  valuesFile: values.yaml
