@@ -1,7 +1,7 @@
 annotations: ''
 appName: external-dns
 appRole: infra
-destNamespace: cert-manager
+destNamespace: external-dns
 destServer: https://kubernetes.default.svc
 exclude: ""
 include: ""
