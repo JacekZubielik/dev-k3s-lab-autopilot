@@ -14,7 +14,7 @@ spec:
       requeueAfterSeconds: 20
       revision: ""
       files:
-      - path: apps/*/config.yaml
+      - path: apps/*/config-dir.yaml
       template:
         metadata:
           labels:
@@ -47,25 +47,25 @@ spec:
         namespace: '{{ .destNamespace }}'
         server: '{{ .destServer }}'
 
-      ignoreDifferences:
-      - group: argoproj.io
-        kind: Application
-        jsonPointers:
-        - /status
-      - group: argoproj.io
-        kind: Application
-        jsonPointers:
-        - /operation
-      - group: "apps"
-        kind: "Deployment"
-        jsonPointers:
-        - /spec/template/metadata/annotations
-        - /spec/template/metadata/labels
-      - group: "apps"
-        kind: "StatefulSet"
-        jsonPointers:
-        - /spec/template/metadata/annotations
-        - /spec/template/metadata/labels
+      # ignoreDifferences:
+      # - group: argoproj.io
+      #   kind: Application
+      #   jsonPointers:
+      #   - /status
+      # - group: argoproj.io
+      #   kind: Application
+      #   jsonPointers:
+      #   - /operation
+      # - group: "apps"
+      #   kind: "Deployment"
+      #   jsonPointers:
+      #   - /spec/template/metadata/annotations
+      #   - /spec/template/metadata/labels
+      # - group: "apps"
+      #   kind: "StatefulSet"
+      #   jsonPointers:
+      #   - /spec/template/metadata/annotations
+      #   - /spec/template/metadata/labels
 
       syncPolicy:
         automated:

@@ -1,12 +1,12 @@
 annotations: ''
-appName: apps
+appName: apps-bootstrap
 appRole: applicationset
 destNamespace: ""
 destServer: https://kubernetes.default.svc
 exclude: ""
 include: ""
 labels: ""
-srcPath: apps/
+srcPath: bootstrap/init
 srcRepoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot.git
 srcTargetRevision: ""
 syncPriority: ""
