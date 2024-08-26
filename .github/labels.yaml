@@ -2,40 +2,31 @@
 # Area
 - name: area/github
   color: '#72ccf3'
-  description: >-
-    Changes made in the github directory
+  description: Changes made in the github directory
 - name: area/bootstrap
   color: '#ed0a0a'
-  description: >-
-    Changes made in the bootstrap directory
+  description: Changes made in the bootstrap directory
 - name: area/project
   color: '#72ccf3'
-  description: >-
-    Changes made in the project directory
+  description: Changes made in the project directory
 - name: area/apps/iot
   color: '#009900'
-  description: >-
-    Changes made in the iot directory
+  description: Changes made in the iot directory
 - name: area/apps/media
   color: '#005555'
-  description: >-
-    Changes made in the media directory
+  description: Changes made in the media directory
 - name: area/apps/trade
   color: '#84b6eb'
-  description: >-
-    Changes made in the trade directory
+  description: Changes made in the trade directory
 - name: area/apps/dev
   color: '#77bb00'
-  description: >-
-    Changes made in the dev directory
+  description: Changes made in the dev directory
 - name: area/apps/crds
   color: '#72ccf3'
-  description: >-
-    Changes made in the crds directory
+  description: Changes made in the crds directory
 - name: area/infra
   color: '#fd670d'
-  description: >-
-    Changes made in the infrastructure directory
+  description: Changes made in the infrastructure directory
 # # Renovate
 - name: renovate/container
   color: '#ffc300'
