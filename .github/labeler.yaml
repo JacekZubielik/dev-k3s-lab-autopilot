@@ -17,12 +17,15 @@ area/apps/media:
 area/apps/trade:
 - changed-files:
   - any-glob-to-any-file: "apps/trade/**/*"
-area/apps/user:
+area/apps/dev:
 - changed-files:
-  - any-glob-to-any-file: "apps/user/**/*"
-area/infrastructure:
+  - any-glob-to-any-file: "apps/dev/**/*"
+area/apps/crds:
 - changed-files:
-  - any-glob-to-any-file: "infrastructure/**/*"
+  - any-glob-to-any-file: "apps/crds/**/*"
+area/apps/infra:
+- changed-files:
+  - any-glob-to-any-file: "apps/infra/**/*"
 feature:
 - head-branch: ['^feature', 'feature']
 release:
