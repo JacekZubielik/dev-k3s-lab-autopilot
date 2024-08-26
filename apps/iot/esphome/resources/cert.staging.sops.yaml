@@ -1,0 +1,45 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+    name: esphome-staging
+spec:
+    issuerRef:
+        kind: ClusterIssuer
+        name: letsencrypt-staging
+    commonName: ENC[AES256_GCM,data:0dJJl3wV5ppNcprv8WQuSW3HppDjNH3zXP1ZF7Y2,iv:iwaRF0rpen+wGmzr7ual7koSV4las9oFlhjtwGkO8j4=,tag:GsiyLhnQIER/9DbQi9qeyw==,type:str]
+    dnsNames:
+        - ENC[AES256_GCM,data:YKd+3gCaiVp218yJKd8ANQMemHdv2putys8alODa,iv:jOfaz5PBu+N32HurBUv3SO86gZWRDXS0hWn8cmu8Q7w=,tag:NQIrZTQWdtyPRwSJnQXhfA==,type:str]
+    secretName: esphome-cf-staging
+    duration: 2160h0m0s
+    renewBefore: 720h0m0s
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age: []
+    lastmodified: "2024-08-22T20:13:15Z"
+    mac: ENC[AES256_GCM,data:Dabb/XOsrOp5UZrcEs5HGrHWiSCUyAw6n4hAH3FwNhvPkVRs9E6cTVWFQ3yEQHB0hTU6ghYw0HTN4BpxwMY0MHv4O9yieSRYtRiKffh5uX5FRjnrL8tpL0eHXipf0N6iFiEj3YP0K4Ef7CKXgZpzugDcGYU/5lk+kiaMIrW9hK0=,iv:kG2dCVB3se0a8Uy0uTcdyHJNYsShJTNk8XMWxZOVw38=,tag:/QDATU3KIsHgdA3yhS1Erw==,type:str]
+    pgp:
+        - created_at: "2024-08-22T20:13:15Z"
+          enc: |-
+            -----BEGIN PGP MESSAGE-----
+
+            hQIMA0R6oz1GmNjVAQ//Rsk1c3ArvO58uaCTv8K2Gci7yEC9hWxzxrRbeRLMV4Qr
+            ha2264D3IzZztJ8gMku9oDNyaicoJ270DIMWJqjDrwF15ZTiOGDsdhmU9CfsAT+b
+            oMc5UBorvMOV8AJpRrP/j3j9giyEIrysj/XkYHWpPryz1F0zOtuzZMFq0132HJPl
+            uaLSOSMRyOec13hkgiW/kkK5eMLhwNxnyjLmvhBWnml+Y5P73Q+t14wFMoMFh26b
+            Kcu7GTcoQL6W72MyyvuiY7HP2ZjbtSzEo05LvbPqEFBz3riKG2wAnLnFfAJGEMbm
+            Rg//93BMvJJOTcNpgv8CQd3waWS5ElJu7jmhT17Zne/N7FSup+ou8uPsXkuQLDL6
+            UvLats6siqcbNVX6ADI3q4Gp112aNlyApR9+bnvohAoZRg2OTsmDmXIiAAq2BIS1
+            0ohes6U/+GMlUHuf/eFy5A8hyQYE0MNFR8cEqTbAInI93QDv19zEH5vgrwKSaqKf
+            zYPyHGbGVu6/Nz5aDn1Smb+EoS5jtKgzwSq3RoTGrn+8bgTkgVQfhZ47QbU8DGIP
+            JKuDK2trZBfN/bW8zDeUw7kZk7uxDcX+ALOgteP5DVRVZTUMeUuMx8eP8dll+/s6
+            eicJ1hOiTNNGOi2ZtB322Tx5xvjJTGbhlDsHXRtti8mQ7zZUp6F2Uukf9EEmPFDS
+            XgE6O6nH2Ouhbn1CxPklQ0uj+5PfHHKCuXnQ/dYMKS226E7pgeVESWW/+ijB8WpU
+            0EnlYbZerJS/vwWeDn2IpSsNbq17gRyQ8OuogOfb/HICvzAjWAlw1eQ3JriKQoQ=
+            =gFrD
+            -----END PGP MESSAGE-----
+          fp: 6D3FE55384B558E06A1BA364586EFA784A32C981
+    encrypted_regex: ^(externalName|external-dns.alpha.kubernetes.io/hostname|sans|main|match|external-dns.alpha.kubernetes.io/target|dnsNames|commonName|data|stringData|dnsNames|email|accessKeyID|region|hostedZoneID|role|dnsZones)$
+    version: 3.8.1
