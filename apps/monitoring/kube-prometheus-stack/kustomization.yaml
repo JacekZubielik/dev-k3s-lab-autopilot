@@ -43,13 +43,13 @@ helmCharts:
     prometheusOperator:
       admissionWebhooks:
         failurePolicy: Ignore
-    spec:
-      ignoreDifferences:
-      - kind: PersistentVolume
-        jsonPointers:
-        - /spec/claimRef/resourceVersion
-        - /spec/claimRef/uid
-        - /status/lastPhaseTransitionTime
+    # spec:
+    #   ignoreDifferences:
+    #   - kind: PersistentVolume
+    #     jsonPointers:
+    #     - /spec/claimRef/resourceVersion
+    #     - /spec/claimRef/uid
+    #     - /status/lastPhaseTransitionTime
 
 patches:
 - patch: |-
