@@ -40,13 +40,13 @@ loki:
   useTestSchema: true
   testSchemaConfig:
     configs:
-      - from: 2024-04-01
-        store: tsdb
-        object_store: filesystem
-        schema: v13
-        index:
-          prefix: index_
-          period: 24h
+    - from: 2024-04-01
+      store: tsdb
+      object_store: filesystem
+      schema: v13
+      index:
+        prefix: index_
+        period: 24h
 
 # Configuration for the write
 write:
@@ -55,24 +55,21 @@ write:
     volumeClaimsEnabled: false
     enableStatefulSetAutoDeletePVC: false
 
-
-
-
   # Enable environment variables in config file
   # https://grafana.com/docs/loki/latest/configuration/#use-environment-variables-in-the-configuration
   extraArgs:
-    - '-config.expand-env=true'
+  - '-config.expand-env=true'
   extraEnv:
-    - name: MINIO_ACCESS_KEY_ID
-      valueFrom:
-        secretKeyRef:
-          name: loki-s3-secret
-          key: MINIO_ACCESS_KEY_ID
-    - name: MINIO_SECRET_ACCESS_KEY
-      valueFrom:
-        secretKeyRef:
-          name: loki-s3-secret
-          key: MINIO_SECRET_ACCESS_KEY
+  - name: MINIO_ACCESS_KEY_ID
+    valueFrom:
+      secretKeyRef:
+        name: loki-s3-secret
+        key: MINIO_ACCESS_KEY_ID
+  - name: MINIO_SECRET_ACCESS_KEY
+    valueFrom:
+      secretKeyRef:
+        name: loki-s3-secret
+        key: MINIO_SECRET_ACCESS_KEY
 
 # Configuration for the read
 read:
@@ -85,18 +82,18 @@ read:
   # Enable environment variables in config file
   # https://grafana.com/docs/loki/latest/configuration/#use-environment-variables-in-the-configuration
   extraArgs:
-    - '-config.expand-env=true'
+  - '-config.expand-env=true'
   extraEnv:
-    - name: MINIO_ACCESS_KEY_ID
-      valueFrom:
-        secretKeyRef:
-          name: loki-s3-secret
-          key: MINIO_ACCESS_KEY_ID
-    - name: MINIO_SECRET_ACCESS_KEY
-      valueFrom:
-        secretKeyRef:
-          name: loki-s3-secret
-          key: MINIO_SECRET_ACCESS_KEY
+  - name: MINIO_ACCESS_KEY_ID
+    valueFrom:
+      secretKeyRef:
+        name: loki-s3-secret
+        key: MINIO_ACCESS_KEY_ID
+  - name: MINIO_SECRET_ACCESS_KEY
+    valueFrom:
+      secretKeyRef:
+        name: loki-s3-secret
+        key: MINIO_SECRET_ACCESS_KEY
 
 # Configuration for the backend
 backend:
@@ -110,18 +107,18 @@ backend:
   # Enable environment variables in config file
   # https://grafana.com/docs/loki/latest/configuration/#use-environment-variables-in-the-configuration
   extraArgs:
-    - '-config.expand-env=true'
+  - '-config.expand-env=true'
   extraEnv:
-    - name: MINIO_ACCESS_KEY_ID
-      valueFrom:
-        secretKeyRef:
-          name: loki-s3-secret
-          key: MINIO_ACCESS_KEY_ID
-    - name: MINIO_SECRET_ACCESS_KEY
-      valueFrom:
-        secretKeyRef:
-          name: loki-s3-secret
-          key: MINIO_SECRET_ACCESS_KEY
+  - name: MINIO_ACCESS_KEY_ID
+    valueFrom:
+      secretKeyRef:
+        name: loki-s3-secret
+        key: MINIO_ACCESS_KEY_ID
+  - name: MINIO_SECRET_ACCESS_KEY
+    valueFrom:
+      secretKeyRef:
+        name: loki-s3-secret
+        key: MINIO_SECRET_ACCESS_KEY
 
 # Configuration for the gateway
 gateway:
@@ -141,7 +138,7 @@ monitoring:
     grafanaAgent:
       installOperator: false
   lokiCanary:
-      enabled: false
+    enabled: false
 
 # Disable helm-test
 test:
