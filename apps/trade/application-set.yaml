@@ -2,11 +2,11 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: media
+  name: trade
   namespace: argocd
   labels:
-    dev-k3s: media
-    syncPriority: stage5
+    dev-k3s: trade
+    syncPriority: stage6
 
 spec:
   goTemplate: true
@@ -17,7 +17,7 @@ spec:
       requeueAfterSeconds: 10
       revision: ""
       files:
-      - path: apps/media/**/config.yaml
+      - path: apps/trade/**/config.yaml
       template:
         metadata:
           labels:
@@ -37,11 +37,11 @@ spec:
         app.kubernetes.io/name: '{{ .appName }}'
         application-role: '{{ .appRole }}'
         syncPriority: '{{ .syncPriority }}'
-      name: media-{{ .userGivenName }}
+      name: trade-{{ .userGivenName }}
       namespace: argocd
 
     spec:
-      project: media
+      project: trade
       source:
         path: '{{ .srcPath }}'
         repoURL: '{{ .srcRepoURL }}'
@@ -95,13 +95,13 @@ spec:
           operator: In
           values:
           - stage1 #
-        # maxUpdate: 100% # if undefined, all applications matched are updated together (default is 100%)
+        maxUpdate: 100% # if undefined, all applications matched are updated together (default is 100%)
       - matchExpressions:
         - key: syncPriority
           operator: In
           values:
           - stage2 #
-        # maxUpdate: 100%
+        maxUpdate: 100%
       - matchExpressions:
         - key: syncPriority
           operator: In

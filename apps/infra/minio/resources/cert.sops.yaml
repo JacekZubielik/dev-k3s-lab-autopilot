@@ -2,7 +2,6 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
     annotations:
-        argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
         argocd.argoproj.io/sync-wave: "1"
     name: s3
     namespace: argocd
@@ -32,8 +31,8 @@ sops:
             TDB1cmVWZFNRZVJMZTFzTk1DUllEdzQKph8vkAdGo8yqHLBZrOHBqW33wYAE98SE
             uFt0cj3djxR2w7K0iMT4GlW5XHdxPvAD1towenhVJ6oVtb6k7IBIjw==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-07-06T21:35:38Z"
-    mac: ENC[AES256_GCM,data:bfcrDOoRU8eAwWCsliwOzO32ru0y19AEkGkhC9LrnUzvVRqkJ4oLEG9rJy0/X4ER0TnKwlbVKzlecJCjQsDOZWhJ8YvTPbwuIc0S1Ck3CJoOpgC54pB4Wk5t9Sz+x2+hEi6UzFVsAZzCweOSCykA5PFCEkFQoXqEBjY7slRuhCc=,iv:/Kw3Pv+pSoaHK0SSlN2vo+nn3DHwphPNBoz8au0Bpbo=,tag:2RVV+qz+fgmHz4nFoshFJw==,type:str]
+    lastmodified: "2024-08-26T21:09:09Z"
+    mac: ENC[AES256_GCM,data:VDnhLILKcLEmJ0yJCVxhq9LgwkhMZr6DZ4BxyjCCLVrMfNqnkGFPNcVpyiW7/zQaxcr3A2GLU31FHAhXgs9zkerTMsKRFghG+JxTgsO7l6D8RduJBgxgf+nsBTMS1HBiFKswUfkXBuWPSbktxPj2YSnO3BeOb7MRtviYYMafC70=,iv:glvrTzcJkDO2no/fxljb3HrcjHdYBUhHpLPvEsqxIjU=,tag:sgMzM/lb+RfDbCnHRttG1A==,type:str]
     pgp:
         - created_at: "2024-06-22T20:23:12Z"
           enc: |-

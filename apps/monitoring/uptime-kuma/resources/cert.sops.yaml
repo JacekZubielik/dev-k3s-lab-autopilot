@@ -1,6 +1,8 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
+    annotations:
+        argocd.argoproj.io/sync-wave: "1"
     name: uptime-kuma
 spec:
     issuerRef:
@@ -18,8 +20,8 @@ sops:
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2024-08-22T22:20:31Z"
-    mac: ENC[AES256_GCM,data:RzlcFwqi+aG5mqmVpjWAeb+vHihHh/5rVQuPhpkcTP7gKSikM2cQEnmbZBuHVVU0EAc+SN6/I7OU5kN7kLIi1BGwh2b+Cqe7C0uucJwDFkTZV00M2OxISVqAe0B2JGn9GmH9pxxb3AJCQalgGYJPQS5SGjzPTFm8/14kuNbx61c=,iv:OHs7hS6Jt6yyFAYTyuQw8Ch+CZKVxQPon9y6FyJ0l4Y=,tag:kZyIAtpFVsEuaPUMLdwXjA==,type:str]
+    lastmodified: "2024-08-26T21:11:43Z"
+    mac: ENC[AES256_GCM,data:OpZTHm2DM0NuIqqtR9q+O43isD9LNRypPdGtELKGqXUATNMdOoFHbtd1DhdHOAAom+kr/as7/tZK1fZVbJBESmRuXIFqsjGNl7wrc3UOGgCkWguIQe/lhv08OznCGYJqnbiUZytX+Q3HRt8VXro9y/5wHmPK3rJpzhRWaObXIy4=,iv:yQdE+h7kSwwfkQyA1evzu6gD7R9u+Nrvs67Ne5Lb1eo=,tag:dDm6SohVDc5df+kSDfvmoQ==,type:str]
     pgp:
         - created_at: "2024-08-22T22:20:31Z"
           enc: |-

@@ -1,6 +1,8 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
+    annotations:
+        argocd.argoproj.io/sync-wave: "1"
     name: home-assistant-staging
 spec:
     issuerRef:
@@ -27,8 +29,8 @@ sops:
             bVVQZmw5NWUrdzlzOFE0aHJFT0tLSjgKrtsUCnKymjWFcY4W8LP+qn6TLaT80BGl
             kCiacgHP57nQ0ngXwMWq2aVUiOj6huuh44Vc+KuHGDINGaREJzXQzA==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-08-26T20:32:15Z"
-    mac: ENC[AES256_GCM,data:jNXH7k9xPbaweekkOIOYYTOyFRhnNjVN7cgA1K4Dz2Gjb+gbRQ8SxQU46ul4uno69dhwqROSRL7Zy1i6lArZgCaZ2uwYysofobzQCT82S9dRavXqD31fk+LKM5JOPI0QzFWzuVFcV/ffYjWsmAHoP36U7M0oHZeNe+DTZbMESRo=,iv:NFaV7d2ELF2DXETmaoO07fPh6AyS1BqH1C5t9WVu3JY=,tag:ZlVMaK+3EZN35GBRdcQdgw==,type:str]
+    lastmodified: "2024-08-26T21:07:50Z"
+    mac: ENC[AES256_GCM,data:zdA1gVaiOjTI/X4NV0o6QsPh6nWfJuGyri/alP3hIUPMvPAOGOzZb3BrZKhH0PxRK6HVqo7RgR4w0ejev03of922kTdQ7SYWgxLc9vn8SYCQcvUzXYAd2WYSa//b4g3RerO0aVoNb58U9akSvq7gpBiA+SqWztPfkPtsoOxIOUY=,iv:JNunVSJPDaG+NisryGjlDUpUqgw8tCwIr/c784zTmCY=,tag:Zq/Pox+bf4ZCB4Jvy9INMw==,type:str]
     pgp:
         - created_at: "2024-08-26T20:32:15Z"
           enc: |-

@@ -6,10 +6,16 @@ metadata:
     argocd.argoproj.io/sync-wave: "-2"
   name: pvc-lms-config
   namespace: longhorn-system
+# spec:
+#   sourceType: restore
+#   sourceParameters:
+#     backup-url: s3://k3s-longhorn-backup@us-east-1/?backingImage=pvc-lms-config
+#     concurrent-limit: '2'
+#   checksum: 6b7aa7cc8a30b7b07429daaaf65334b34659b4481d00f159701d50fc71a128211302a9c154b1ddf849257acb06fe326dece227397fee01305f9fca417b85fd3a
+#   minNumberOfCopies: 1
+
 spec:
-  sourceType: restore
+  sourceType: export-from-volume
   sourceParameters:
-    backup-url: s3://k3s-longhorn-backup@us-east-1/?backingImage=pvc-lms-config
-    concurrent-limit: '2'
-  checksum: 6b7aa7cc8a30b7b07429daaaf65334b34659b4481d00f159701d50fc71a128211302a9c154b1ddf849257acb06fe326dece227397fee01305f9fca417b85fd3a
-  minNumberOfCopies: 1
+    volume-name: pvc-lms-config
+    export-type: qcow2

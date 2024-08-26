@@ -1,6 +1,8 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
+    annotations:
+        argocd.argoproj.io/sync-wave: "1"
     name: home-assistant
 spec:
     issuerRef:
@@ -27,8 +29,8 @@ sops:
             TDB1cmVWZFNRZVJMZTFzTk1DUllEdzQKph8vkAdGo8yqHLBZrOHBqW33wYAE98SE
             uFt0cj3djxR2w7K0iMT4GlW5XHdxPvAD1towenhVJ6oVtb6k7IBIjw==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-08-22T20:53:46Z"
-    mac: ENC[AES256_GCM,data:DGltESpLMH+wOG2mgkompQJk+wUgAMdQwmHGZKWX2PKND3K8ubkD7NPbgULnLyemh5Yjbwsgvih6QXrokcPM34Q3z4aWYKjWlv0T6BOdkxFA6AkTuxrhC2uns5+p3zopiG6HJaWzS9J3yKdhLBtKhrTyA2oEI5JlEXex3wdxqaA=,iv:guDuwoujE1fZenSyvah//++xbw3/AsiVu+lMDhf8rv4=,tag:C1hySyiEvpwtO5m8WRDUSg==,type:str]
+    lastmodified: "2024-08-26T21:08:02Z"
+    mac: ENC[AES256_GCM,data:dOxyKIZafXeXzSSr0pmLnD+etUVdhozsQL4OOBVIwGD9w2pxsV+vxLtwfHkjdrlsfFutBqach5+616wgxaCPoXNItqLRPXF4N93TdyyP1DmAvScMVdIyjM5pC7243u7gEgSZmyWDveJTfkYvdFHnq9qaCCIX7z9adWQmvfFz7ec=,iv:PDBjsIceXWz+HMYYlhbbbNl/bJNyHuszMQgSBSfQJm4=,tag:jh+Gzzn2+DXiV44rC9K7hA==,type:str]
     pgp:
         - created_at: "2024-06-22T20:23:12Z"
           enc: |-
