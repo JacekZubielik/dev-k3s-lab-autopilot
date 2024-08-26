@@ -1,80 +1,80 @@
 ---
 # Area
 - name: area/github
-  color: "#72ccf3"
+  color: '#72ccf3'
   description: >-
     Changes made in the github directory
 - name: area/bootstrap
-  color: "#ed0a0a"
+  color: '#ed0a0a'
   description: >-
     Changes made in the bootstrap directory
 - name: area/project
-  color: "#72ccf3"
+  color: '#72ccf3'
   description: >-
     Changes made in the project directory
 - name: area/apps/iot
-  color: "#009900"
+  color: '#009900'
   description: >-
     Changes made in the iot directory
 - name: area/apps/media
-  color: "#005555"
+  color: '#005555'
   description: >-
     Changes made in the media directory
 - name: area/apps/trade
-  color: "#84b6eb"
+  color: '#84b6eb'
   description: >-
     Changes made in the trade directory
 - name: area/apps/dev
-  color: "#77bb00"
+  color: '#77bb00'
   description: >-
     Changes made in the dev directory
 - name: area/apps/crds
-  color: "#72ccf3"
+  color: '#72ccf3'
   description: >-
     Changes made in the crds directory
 - name: area/infra
-  color: "#fd670d"
+  color: '#fd670d'
   description: >-
     Changes made in the infrastructure directory
 # # Renovate
 - name: renovate/container
-  color: "#ffc300"
+  color: '#ffc300'
 - name: renovate/github-action
-  color: "#ffc300"
+  color: '#ffc300'
 - name: renovate/github-release
-  color: "#ffc300"
+  color: '#ffc300'
 - name: renovate/helm
-  color: "#ffc300"
+  color: '#ffc300'
 # Semantic Type
 - name: dep/patch
-  color: "#FFEC19"
+  color: '#FFEC19'
 - name: dep/minor
-  color: "#FF9800"
+  color: '#FF9800'
 - name: dep/major
-  color: "#F6412D"
+  color: '#F6412D'
 # Size
 - name: size/XS
-  color: "#009900"
+  color: '#009900'
   description: >-
     Denotes a PR that changes 0-9 lines, ignoring generated files.
 - name: size/S
-  color: "#77bb00"
+  color: '#77bb00'
   description: >-
     Denotes a PR that changes 10-29 lines, ignoring generated files.
 - name: size/M
-  color: "#eebb00"
+  color: '#eebb00'
   description: >-
     Denotes a PR that changes 30-99 lines, ignoring generated files.
 - name: size/L
-  color: "#ee9900"
+  color: '#ee9900'
   description: >-
     Denotes a PR that changes 100-499 lines, ignoring generated files.
 - name: size/XL
-  color: "#ee5500"
+  color: '#ee5500'
   description: >-
     Denotes a PR that changes 500-999 lines, ignoring generated files.
 - name: size/XXL
-  color: "#ee0701"
+  color: '#ee0701'
   description: >-
     Denotes a PR that changes 1000+ lines, ignoring generated files.
 # Uncategorized
