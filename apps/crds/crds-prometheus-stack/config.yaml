@@ -1,4 +1,4 @@
-annotations: 'argocd.argoproj.io/compare-options: IgnoreExtraneous'
+annotations: ''
 appName: crds-prometheus-stack
 appRole: prometheus-stack
 destNamespace: ""

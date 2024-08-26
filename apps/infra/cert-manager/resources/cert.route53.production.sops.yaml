@@ -1,6 +1,8 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
+    annotations:
+        argocd.argoproj.io/sync-wave: "3"
     name: letsencrypt-production
 spec:
     dnsNames:
@@ -29,8 +31,8 @@ sops:
             L3NyQ1N3clJUUUNJWGJMWUxPYW1jREkKvcbdQ84DsRoicOgsfXfvSStW1HMcl5Jf
             XhOuCCFphpIZYkpG22Ib4K/8xmQhE3RXHyBN0jGb1TfCrPaNtNuHug==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-07-03T14:49:25Z"
-    mac: ENC[AES256_GCM,data:Dc2Hb1KG01mgLbZo84qc0rFeKYxxh5FQdMTl5UdD8zyRFlFhAvV1joRrTNxP6j1xQYlXV+T24oGoCSpMG9FB+P87AoKv764SUcfw+yoKalkkXU3iMpSVqNDzR+TYL6ZHeLhqaPFPnVtrF0Go27qJ1g53mBDwFZPsCpa/9fSnSsE=,iv:BDX/a1+HwmUJ82xqlYAMSHByebSU6sPFM5B8S5WJfik=,tag:+66UngD6dKTCc+F1CG77TA==,type:str]
+    lastmodified: "2024-08-26T12:00:02Z"
+    mac: ENC[AES256_GCM,data:Z1BR4DYNLDF0Baw81aOJge47Ev700PLOwL2OzMPPm2i3bQWLqnlsLehqtfUlTvjrHyZbxZ4CJpqWCgcgXzYPtuekD5xUiDSzEf0ekW3EncSIm/eLumuG/DgMxsIIFaoWzNLVAzgGOuu55FCxGKb/BbQuIr2R/MX3UDCNYF+X17I=,iv:xGu9x4fLkLYktXLEqJdsWNVcj2vdYOR/WU0HuvsyPuw=,tag:PQSFJAKgmtBiyFJf7fFzdw==,type:str]
     pgp:
         - created_at: "2024-06-19T18:28:01Z"
           enc: |-

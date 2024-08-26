@@ -95,7 +95,7 @@ spec:
           operator: In
           values:
           - stage1 #
-        maxUpdate: 100%
+        maxUpdate: 100% # if undefined, all applications matched are updated together (default is 100%)
       - matchExpressions:
         - key: syncPriority
           operator: In
@@ -107,7 +107,7 @@ spec:
           operator: In
           values:
           - stage3 #
-        maxUpdate: 100%
+        # maxUpdate: 100%
       - matchExpressions:
         - key: syncPriority
           operator: In

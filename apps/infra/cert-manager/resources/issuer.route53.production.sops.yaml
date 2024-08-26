@@ -1,6 +1,8 @@
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
 metadata:
+    annotations:
+        argocd.argoproj.io/sync-wave: "2"
     name: letsencrypt-production
     namespace: traefik
 spec:
@@ -33,8 +35,8 @@ sops:
             SnRzdU10SXJmRkd3Y1hKK0tuLzFnU0UKs+F6CvIsVW4htx/Ank5QisSx1G0OqGNi
             Ir5+TKiiUeIDT+diAyocxXHi7SdjjRochsxhgsAdMQw19jt3qWJFGw==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-07-03T14:46:00Z"
-    mac: ENC[AES256_GCM,data:197DfxCwuvg+bqM7TUmUu/IBwV0h1w+LU83SR4hKdJqCUwnV2OT4MxhZ1qYn3pOTuqaNBgJtONNYage3OVWWAXYODJ2aegb3GhwrK1mydRXzaTzMq5UghSokTZ+GlB30iq+NB+wOcWxhaKXRErFGT5u+9gA4TNV9U7NnjWD/pkA=,iv:g03WMmd+kFQiB6DFnMeUXrCDtIT9WmNIe37NR0Wz84w=,tag:yRUIXabkQ9Qtu5rGIc6rAA==,type:str]
+    lastmodified: "2024-08-26T11:59:23Z"
+    mac: ENC[AES256_GCM,data:ErrDxpwiZt8u8n6zKMfTCndd41v7bvZ4Wcok6byN1bckJNVEIFZchSlfx6VdHoDpJL99HK8X5enCQtES+xK23OXGlrELQpO32sTSLqXK1VcO0R1OydVu7aC6tS+Hv73oA3hTY6JLVxGeNGKns3aIi3evnczo//dpWrubpqRnZRc=,iv:BUPvHx6WZPnW3nyhF4TSlg6eA/wHyJO4uBT2LJfIfUw=,tag:oewuHu6pP1wuD7sdLX1hbg==,type:str]
     pgp:
         - created_at: "2024-06-19T18:26:51Z"
           enc: |-

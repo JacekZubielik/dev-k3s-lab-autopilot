@@ -5,8 +5,6 @@ kind: Kustomization
 metadata:
   annotations:
     argocd.argoproj.io/compare-options: IgnoreExtraneous
-  # labels:
-  #   syncPriority: stage3
 
 resources:
 - resources/crd-alertmanagerconfigs.yaml
