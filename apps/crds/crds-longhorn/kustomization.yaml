@@ -10,4 +10,4 @@ kind: Kustomization
 
 resources:
 # - https://raw.githubusercontent.com/longhorn/longhorn/master/chart/templates/crds.yaml
-- https://github.com/longhorn/longhorn/blob/master/chart/templates/crds.yaml
+- resources/crds.yaml
