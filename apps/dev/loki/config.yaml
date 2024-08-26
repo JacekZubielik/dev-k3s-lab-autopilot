@@ -1,0 +1,14 @@
+annotations: ''
+appName: loki
+appRole: monitoring
+destNamespace: loki
+destServer: https://kubernetes.default.svc
+exclude: ""
+include: ""
+labels: ""
+srcPath: apps/dev/loki
+srcRepoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot.git
+srcTargetRevision: "loki"
+syncPriority: stage3
+syncWave: 0
+userGivenName: loki
