@@ -10,5 +10,5 @@ srcPath: apps/crds/crds-prometheus-stack
 srcRepoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot.git
 srcTargetRevision: ""
 syncPriority: stage3
-syncWave: -1
+syncWave: 0
 userGivenName: crds-prometheus-stack

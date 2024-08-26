@@ -10,5 +10,5 @@ srcPath: apps/crds/crds-csi-external-snapshotter
 srcRepoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot.git
 srcTargetRevision: ""
 syncPriority: stage2
-syncWave: -1
+syncWave: 0
 userGivenName: crds-csi-snapshotter
