@@ -1,0 +1,15 @@
+---
+apiVersion: longhorn.io/v1beta2
+kind: BackingImage
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "-2"
+  name: pvc-esphome-data
+  namespace: longhorn-system
+spec:
+  sourceType: restore
+  sourceParameters:
+    backup-url: s3://k3s-longhorn-backup@us-east-1/?backingImage=pvc-mosquitto
+    concurrent-limit: '2'
+  checksum: 1fad98de45ad89d59694a6f29cc4488188484455ac9566841d4521d9afc98594c9f7a5caac8f4d5069704149fd04e319d296125a1863225c7bc0f42564862a94
+  minNumberOfCopies: 2
