@@ -102,33 +102,33 @@ spec:
           values:
           - stage2 #
         maxUpdate: 0%
-      - matchExpressions:
-        - key: syncPriority
-          operator: In
-          values:
-          - stage3 #
-        maxUpdate: 0%
-      - matchExpressions:
-        - key: syncPriority
-          operator: In
-          values:
-          - stage4 #
-        maxUpdate: 100%
-      - matchExpressions:
-        - key: syncPriority
-          operator: In
-          values:
-          - stage5 #
-        maxUpdate: 100%
-      - matchExpressions:
-        - key: syncPriority
-          operator: In
-          values:
-          - stage6 #
-        maxUpdate: 100%
-      - matchExpressions:
-        - key: syncPriority
-          operator: In
-          values:
-          - stage7 #
-        maxUpdate: 100%
+      # - matchExpressions:
+      #   - key: syncPriority
+      #     operator: In
+      #     values:
+      #     - stage3 #
+      #   maxUpdate: 0%
+      # - matchExpressions:
+      #   - key: syncPriority
+      #     operator: In
+      #     values:
+      #     - stage4 #
+      #   maxUpdate: 100%
+      # - matchExpressions:
+      #   - key: syncPriority
+      #     operator: In
+      #     values:
+      #     - stage5 #
+      #   maxUpdate: 100%
+      # - matchExpressions:
+      #   - key: syncPriority
+      #     operator: In
+      #     values:
+      #     - stage6 #
+      #   maxUpdate: 100%
+      # - matchExpressions:
+      #   - key: syncPriority
+      #     operator: In
+      #     values:
+      #     - stage7 #
+      #   maxUpdate: 100%
