@@ -1,0 +1,8 @@
+---
+apiVersion: viaduct.ai/v1
+kind: ksops
+metadata:
+  name: ksops-generator
+type: Opaque
+files:
+- secrets/secret.sops.yaml
