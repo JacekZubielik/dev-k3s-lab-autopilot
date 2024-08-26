@@ -49,35 +49,41 @@ spec:
         namespace: '{{ .destNamespace }}'
         server: '{{ .destServer }}'
 
-      # ignoreDifferences:
-      # - group: argoproj.io
-      #   kind: Application
-      #   jsonPointers:
-      #   - /status
-      # - group: argoproj.io
-      #   kind: Application
-      #   jsonPointers:
-      #   - /operation
-      # - group: "apps"
-      #   kind: "Deployment"
-      #   jsonPointers:
-      #   - /spec/template/metadata/annotations
-      #   - /spec/template/metadata/labels
-      # - group: "apps"
-      #   kind: "StatefulSet"
-      #   jsonPointers:
-      #   - /spec/template/metadata/annotations
-      #   - /spec/template/metadata/labels
+      ignoreDifferences:
+      - group: argoproj.io
+        kind: Application
+        jsonPointers:
+        - /status
+      - group: argoproj.io
+        kind: Application
+        jsonPointers:
+        - /operation
+      - group: "apps"
+        kind: "Deployment"
+        jsonPointers:
+        - /spec/template/metadata/annotations
+        - /spec/template/metadata/labels
+      - group: "apps"
+        kind: "StatefulSet"
+        jsonPointers:
+        - /spec/template/metadata/annotations
+        - /spec/template/metadata/labels
+      - kind: PersistentVolume
+        jsonPointers:
+        - /spec/claimRef/resourceVersion
+        - /spec/claimRef/uid
+        - /status/lastPhaseTransitionTime
 
-      # syncPolicy:
-      #   automated:
-      #     selfHeal: true
-      #     prune: true
-      #   syncOptions:
-      #   - CreateNamespace=true
-      #   - PrunePropagationPolicy=foreground
-      #   - ServerSideApply=true
-      #   - SkipDryRunOnMissingResource=true
+      syncPolicy:
+        automated:
+          selfHeal: false
+          prune: true
+        syncOptions:
+        - CreateNamespace=true
+        - PrunePropagationPolicy=foreground
+        - RespectIgnoreDifferences=true
+        - ServerSideApply=true
+        - SkipDryRunOnMissingResource=true
 
   strategy:
     type: RollingSync
