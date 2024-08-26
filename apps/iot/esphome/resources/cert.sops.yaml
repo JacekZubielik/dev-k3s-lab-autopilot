@@ -1,6 +1,8 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
+    annotations:
+        argocd.argoproj.io/sync-wave: "1"
     name: esphome-production
 spec:
     issuerRef:
@@ -27,8 +29,8 @@ sops:
             TDB1cmVWZFNRZVJMZTFzTk1DUllEdzQKph8vkAdGo8yqHLBZrOHBqW33wYAE98SE
             uFt0cj3djxR2w7K0iMT4GlW5XHdxPvAD1towenhVJ6oVtb6k7IBIjw==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-08-22T20:13:36Z"
-    mac: ENC[AES256_GCM,data:6/ziOMdMn0pyfl6ouE05cYq04OZFRD8whsk4L2gfLWqxH42OlMPFgW8gONPo9qDhZEg2Izif+Ir6jXjhlHjoOVVVYrJlJ7CTBHKb/TSn4Q3J7qmZp130S1UWl9Uj7hXO2jWcjN7/ivjeiZS54O64HT8LRPO2qcL4+CSoFndbJkw=,iv:U3V2xqEjMFcOsNv6Xo04XkJ8n1HyDqitAl/1LH4C/HQ=,tag:wc0Ts5TnVImrPqaks83ILw==,type:str]
+    lastmodified: "2024-08-26T21:06:49Z"
+    mac: ENC[AES256_GCM,data:yTmO6vavqkiKx9++x+85dfrA6Q+N6hmUGfLVOgdD+T/AT4jVknQEgqYc2IRS9fM/X3qYCpNTevhGRDK7gPC30iId0DpNe+BpIGLOpbOI7bbc37d19fWN9zOE6JQ5ePE7azCuSb2hTOukYbXrWzqwR4TEwLwYJEeGhjYpm4Gp9z0=,iv:LQK2LRsmeP2vIM7xKwxaakNWEd45ITrZiHCLiw2A+QM=,tag:EeSEA28yTcipQJu/Ar74pA==,type:str]
     pgp:
         - created_at: "2024-06-22T20:23:12Z"
           enc: |-
