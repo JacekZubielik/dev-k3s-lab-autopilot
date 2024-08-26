@@ -6,7 +6,7 @@ metadata:
   namespace: argocd
   labels:
     dev-k3s: monitoring
-    # syncPriority: stage3
+    syncPriority: stage3
 
 spec:
   goTemplate: true
