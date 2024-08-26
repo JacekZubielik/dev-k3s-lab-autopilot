@@ -15,7 +15,7 @@ generators:
 helmCharts:
 - name: minio
   version: 5.2.0
-  repo: https://operator.min.io/ # https://charts.min.io/
+  repo: https://charts.min.io/
   includeCRDs: true
   namespace: minio
   releaseName: minio
