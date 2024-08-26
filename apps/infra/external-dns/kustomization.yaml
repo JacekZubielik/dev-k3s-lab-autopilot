@@ -20,6 +20,9 @@ configMapGenerator:
   literals:
   - TZ=CET
 
+generatorOptions:
+  disableNameSuffixHash: true
+
 patches:
 - path: patches/deployment.patch.yaml
   target:

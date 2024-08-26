@@ -19,3 +19,6 @@ configMapGenerator:
 - name: mktxp-exporter-tz
   literals:
   - TZ=CET
+
+generatorOptions:
+  disableNameSuffixHash: true

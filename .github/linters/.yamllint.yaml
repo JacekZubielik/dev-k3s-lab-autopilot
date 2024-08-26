@@ -16,6 +16,7 @@ ignore: |
   **/temp-off/*.*
   *crds*.yaml
   **/job/*
+  *-off/
 extends: default
 rules:
   truthy:

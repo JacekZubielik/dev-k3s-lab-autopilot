@@ -16,6 +16,9 @@ resources:
 generators:
 - ksops-generator.yaml
 
+generatorOptions:
+  disableNameSuffixHash: true
+
 helmCharts:
 - name: authentik
   version: 2024.6.4

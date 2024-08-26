@@ -12,6 +12,9 @@ resources:
 generators:
 - ksops-generator.yaml
 
+generatorOptions:
+  disableNameSuffixHash: true
+
 helmCharts:
 - name: minio
   version: 5.2.0

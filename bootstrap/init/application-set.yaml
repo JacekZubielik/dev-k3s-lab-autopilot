@@ -113,3 +113,21 @@ spec:
           values:
           - stage4 #
         maxUpdate: 100%
+      - matchExpressions:
+        - key: syncPriority
+          operator: In
+          values:
+          - stage5 #
+        maxUpdate: 100%
+      - matchExpressions:
+        - key: syncPriority
+          operator: In
+          values:
+          - stage6 #
+        maxUpdate: 100%
+      - matchExpressions:
+        - key: syncPriority
+          operator: In
+          values:
+          - stage7 #
+        maxUpdate: 100%

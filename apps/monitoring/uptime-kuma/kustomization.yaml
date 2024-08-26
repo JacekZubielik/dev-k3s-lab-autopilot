@@ -24,6 +24,9 @@ configMapGenerator:
   literals:
   - TZ=CET
 
+generatorOptions:
+  disableNameSuffixHash: true
+
 helmCharts:
 - name: uptime-kuma
   repo: https://jacekzubielik.github.io/jz-helm-charts

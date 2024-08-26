@@ -28,9 +28,12 @@ configMapGenerator:
 #   - dashboards/argocd-performance.json
 #   - dashboards/authentik.json
 
+generatorOptions:
+  disableNameSuffixHash: true
+
 helmCharts:
 - name: kube-prometheus-stack
-  version: 62.1.0
+  version: 62.3.0
   repo: https://prometheus-community.github.io/helm-charts
   includeCRDs: false
   namespace: monitoring

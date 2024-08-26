@@ -16,4 +16,3 @@ resources:
 - resources/crd-prometheusrules.yaml
 - resources/crd-scrapeconfigs.yaml
 - resources/crd-servicemonitors.yaml
-- resources/crd-thanosrulers.yaml

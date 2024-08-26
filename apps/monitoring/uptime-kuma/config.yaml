@@ -9,6 +9,6 @@ labels: ""
 srcPath: apps/monitoring/uptime-kuma
 srcRepoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot.git
 srcTargetRevision: ""
-syncPriority: stage3
+syncPriority: stage4
 syncWave: 0
 userGivenName: uptime-kuma

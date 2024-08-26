@@ -16,6 +16,9 @@ resources:
 generators:
 - ksops-generator.yaml
 
+generatorOptions:
+  disableNameSuffixHash: true
+
 helmCharts:
 - name: cert-manager
   version: v1.14.4 # 1.15.2
@@ -33,5 +36,3 @@ patches:
   target:
     kind: CustomResourceDefinition
     labelSelector: app.kubernetes.io/instance=cert-manager
-
-

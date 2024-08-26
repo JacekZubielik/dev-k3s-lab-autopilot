@@ -2,38 +2,6 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: dev
-  annotations:
-    argocd.argoproj.io/sync-wave: "-1"
-
----
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: prod
-  annotations:
-    argocd.argoproj.io/sync-wave: "-1"
-
----
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: staging
-  annotations:
-    argocd.argoproj.io/sync-wave: "-1"
-
----
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: iot
-  annotations:
-    argocd.argoproj.io/sync-wave: "-1"
-
----
-apiVersion: v1
-kind: Namespace
-metadata:
   name: monitoring
   annotations:
     argocd.argoproj.io/sync-wave: "-1"
@@ -59,5 +27,93 @@ apiVersion: v1
 kind: Namespace
 metadata:
   name: external-dns
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
+
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: homepage
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
+
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: esphome
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
+
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: home-assistant
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
+
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: mosquitto
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
+
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: zigbee2mqtt
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
+
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: lms
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
+
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: syncthing
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
+
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: loki
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
+
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: mktxp
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
+
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: uptime-kuma
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
+
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: binance-proxy
   annotations:
     argocd.argoproj.io/sync-wave: "-1"

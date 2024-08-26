@@ -9,6 +9,6 @@ labels: ""
 srcPath: apps/monitoring/kube-prometheus-stack
 srcRepoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot.git
 srcTargetRevision: ""
-syncPriority: stage1
+syncPriority: stage2
 syncWave: 0
 userGivenName: kube-prometheus-stack

@@ -14,6 +14,9 @@ resources:
 generators:
 - ksops-generator.yaml
 
+generatorOptions:
+  disableNameSuffixHash: true
+
 helmCharts:
 - name: longhorn
   version: 1.7.0

@@ -6,7 +6,7 @@ metadata:
         cert-manager.io/cluster-issuer: letsencrypt-production
         external-dns.alpha.kubernetes.io/target: ENC[AES256_GCM,data:euc/5qEF7SFOWI/EZYku+TQNmF+TfYCm,iv:STBK5bFOu8uxVDI1bidU8qFlNENLor4Lw2yxGaFeCrg=,tag:FoiEcHrPJjV7ji0moSg21Q==,type:str]
         kubernetes.io/ingress.class: traefik-external
-    name: authentik-production
+    name: authentik
     namespace: authentik
 spec:
     entryPoints:
@@ -45,8 +45,8 @@ sops:
             Q3J1OXg2UW1xMnpSWm5CeDAzRVBBT1EKY6pK/2zbNfyoOcM1zAOBFeNUbxmLc01P
             mCE83TpKhr7WNi6cE25gg2ql3a2iCmlQBza3NTJ7Ko/A13jXeVoPNw==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-08-21T13:59:25Z"
-    mac: ENC[AES256_GCM,data:v8DV+qEO5BgJj4zWn0om/je5ueaZvusF8kmrslwhFZCtnl5K2G+8ScF3mP9nLKHnuRSwotUkK3/y5teEtTwNqUPOcf0ChyhWfIQxiCNvqy2q53Q3830kplJ1Ny2msg80s0IjoQBmavr/EMdudpiyjG7JmBjPRgL3koqI706xWRI=,iv:UPMBk7SVY2d8xCHawBEgHlUd6Zjl+BwZA6LWsCNS3/8=,tag:FhZco5wNTc57bAunS8fnNw==,type:str]
+    lastmodified: "2024-08-26T18:33:20Z"
+    mac: ENC[AES256_GCM,data:/CqADTzl9m4ZAfEZOOJ1uwm6P4wC4qnv43wKX90KCKsegfDBCYRR59J0lIezF58CyGqUyW0rnp5Eth1qgbRN+y6EzCoIS4oi1vIuqqMnSVrRMgel7tdjWqTtoInbPJJoBXeLaACRSrWFcvHPZF6dyjw9tArvBdNnP7nBxkPeiUo=,iv:xAyg0F+NwpKGC8jAjnhzxKUQnW7U5Tex1y8Z+JcXnaA=,tag:LLqbCRqxzjWkMz/Z1bcWTA==,type:str]
     pgp:
         - created_at: "2024-06-30T14:57:46Z"
           enc: |-
@@ -99,8 +99,8 @@ sops:
             Q3J1OXg2UW1xMnpSWm5CeDAzRVBBT1EKY6pK/2zbNfyoOcM1zAOBFeNUbxmLc01P
             mCE83TpKhr7WNi6cE25gg2ql3a2iCmlQBza3NTJ7Ko/A13jXeVoPNw==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-08-21T13:59:25Z"
-    mac: ENC[AES256_GCM,data:v8DV+qEO5BgJj4zWn0om/je5ueaZvusF8kmrslwhFZCtnl5K2G+8ScF3mP9nLKHnuRSwotUkK3/y5teEtTwNqUPOcf0ChyhWfIQxiCNvqy2q53Q3830kplJ1Ny2msg80s0IjoQBmavr/EMdudpiyjG7JmBjPRgL3koqI706xWRI=,iv:UPMBk7SVY2d8xCHawBEgHlUd6Zjl+BwZA6LWsCNS3/8=,tag:FhZco5wNTc57bAunS8fnNw==,type:str]
+    lastmodified: "2024-08-26T18:33:20Z"
+    mac: ENC[AES256_GCM,data:/CqADTzl9m4ZAfEZOOJ1uwm6P4wC4qnv43wKX90KCKsegfDBCYRR59J0lIezF58CyGqUyW0rnp5Eth1qgbRN+y6EzCoIS4oi1vIuqqMnSVrRMgel7tdjWqTtoInbPJJoBXeLaACRSrWFcvHPZF6dyjw9tArvBdNnP7nBxkPeiUo=,iv:xAyg0F+NwpKGC8jAjnhzxKUQnW7U5Tex1y8Z+JcXnaA=,tag:LLqbCRqxzjWkMz/Z1bcWTA==,type:str]
     pgp:
         - created_at: "2024-06-30T14:57:46Z"
           enc: |-

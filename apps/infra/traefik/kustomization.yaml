@@ -17,6 +17,9 @@ configMapGenerator:
   literals:
   - TZ=CET
 
+generatorOptions:
+  disableNameSuffixHash: true
+
 helmCharts:
 - name: traefik
   version: 30.1.0
