@@ -1,6 +1,8 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
+    annotations:
+        argocd.argoproj.io/sync-wave: "1"
     name: authentik-staging
 spec:
     issuerRef:
@@ -27,8 +29,8 @@ sops:
             bkExLytNUXY2ckVEZG84SW9xUzFBd3cKTxv5nRFr9nnPyl2uBWSaOWW9ee/yMzJy
             nhOfuMF133YKwjV5dtNrYfouQdUe8UoiTR+fzGuNvoIey5TbmxQrgA==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-07-06T17:07:06Z"
-    mac: ENC[AES256_GCM,data:HIhv2yzRVtcllAgSjOnX++U9dBkulaBK1blnC1Lg13OOv/yNa54xD3i5bURHP6hUTerBhLtHSKmcuJfYIYYQ/GRgItv5SxRsfLIDmurF5TE0TvmVvvG1tft1LYVeZn6DyQ3LHDluL5dwvucEtRf2Gq2m4tpoKULJGIuq9fJPBzI=,iv:Q8Lqhv1issLoGLMK18CZVreP4mFaMvV3p7yH+zqCih4=,tag:bcU57txf9fSu9xkGGO1Ojg==,type:str]
+    lastmodified: "2024-08-26T09:32:05Z"
+    mac: ENC[AES256_GCM,data:WU3ZobLUatvDlKrMhbnESeUb/rgYGQJmd+bhifwY6zcGtWMD3aCvzDzVP+5UgiWgfD9/Bp4sd6m3xQoL0awTrlCXaWlpvXTg4vP9n1jdIrUfZmE+l9kA/hBbg78U1QP+lEOLfHPvhxYf7pvGgfY6fsqu4thSo8kd/sNxkNwspb4=,iv:Y1RDxSXryS1sxcDqlIG+hwm2MrZxUbDbFZ66QP7fFWY=,tag:RqU9pDj6u3pI0LvOTAihcg==,type:str]
     pgp:
         - created_at: "2024-06-21T23:03:00Z"
           enc: |-

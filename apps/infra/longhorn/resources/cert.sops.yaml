@@ -1,6 +1,8 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
+    annotations:
+        argocd.argoproj.io/sync-wave: "1"
     name: longhorn
 spec:
     issuerRef:
@@ -27,8 +29,8 @@ sops:
             cm5neEduSlY4ZXhGbHlJUDFwSHQ3QVUKrSm4uP5J8uY+KN63+BQXISrO6FDIlfCw
             CZtJLWXm1bxe9oJ84Et3413QIBCJ+edYZMRkoThMjS1Cxt/lb96EYQ==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-08-21T19:39:15Z"
-    mac: ENC[AES256_GCM,data:75zrPTIfjaw6A9oGq1vHUgvcjB1kkOCFi55ihX57o6xC8KfAKsi562o8dVzq2ttt9PPhdRy3JNZON2MT9e37RQAikIHAmw61xtoAEXrMY1PolotBTZDulh0hdb6Ux3557nLUKS7Unjdz8hA/ir+uHYgeNPsbP/dSg8I9HTSFpVE=,iv:SyQE+mVjwvyO9GxfcTpZ+KNHT2XMpOWhCsmXv4MEBrY=,tag:EFEWL9ERH8PQu+pKuJaBmQ==,type:str]
+    lastmodified: "2024-08-26T09:34:23Z"
+    mac: ENC[AES256_GCM,data:IV1KWsUgl2KX6DAfo92Z3/2cbVltdE5ONRKsnc4GrYqgcu0SgWoDYgYX0PjEUNKr34TGX4iyz3kIt7BjharniXUw+tzVrqC7j0vGc23y/P3H1SrnmGCGTLBy0YCMHMnanfZRjsb2i9Ef+FyiubUa2o+m5t9xx6+j1NugEQ0Prpc=,iv:joYJS2uAMLfYT/YaPin4v3UnQASbijSrG8Ven2uqQtw=,tag:eogEMoEt6mcYEo2l8uh4NA==,type:str]
     pgp:
         - created_at: "2024-06-19T19:41:33Z"
           enc: |-

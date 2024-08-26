@@ -1,6 +1,8 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
+    annotations:
+        argocd.argoproj.io/sync-wave: "1"
     name: longhorn-staging
 spec:
     issuerRef:
@@ -27,8 +29,8 @@ sops:
             MFh5cUhoYjlNV21HRW9qQUwycnQvaEkKThKzFlmKrbh4nG0X9yQ+sPyV+uXxV7XU
             1WwF5ZUf0qkD2IbhHGYzKIGCMXctwUbqetY3P0N3XdiD7neIUxsgXg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-08-25T15:10:40Z"
-    mac: ENC[AES256_GCM,data:Fi+ffSfSRuS+VglP4BXqjb6BgC2Zgdb1l2Ul+lYDvQoiDvbks8nj602PvKwIbw7gL6tefBlWXEbB3p6BAHvgDodtG2+1x8RVw9iG1hAzgRV9DVbjlRbABYkoqr0tsNkyzCuZRorJAnh7H5gz/pprSheb5/MhkeDycihhgHZuckg=,iv:BXiQvcQpwL+nHvlkZ2PrWgeIoz6lqlOTgjpAS/R8MW8=,tag:PcGryXWdLzrSDtOWLZanTQ==,type:str]
+    lastmodified: "2024-08-26T09:34:15Z"
+    mac: ENC[AES256_GCM,data:bVYwNGINZvRrE2oY6ArOVAol5iV5/B0tqDEG5t92q+TWdyJKTixm715fwQ/rVZ7gC89UnpbbXzWMXPbFROZ9i0kDXrBj812km/aVhuCvm7xUxkfH3Z0FzbnvkDXn8lEHBYBgx0g16NsXSoQqlimh5dV4FklkZoCGAyPVlR7H6Mo=,iv:EH3ZBOP4XP0wkecKz9JIwgZDBot0HJmNuhf57yElM2o=,tag:YCzxRWF1nEGexAS1cJiKUQ==,type:str]
     pgp:
         - created_at: "2024-08-25T15:10:40Z"
           enc: |-
