@@ -6,7 +6,7 @@ metadata:
   namespace: argocd
   labels:
     dev-k3s: infra
-    syncPriority: stage2
+  #   syncPriority: stage2
 
 spec:
   goTemplate: true
@@ -14,7 +14,7 @@ spec:
   generators:
   - git:
       repoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot.git
-      requeueAfterSeconds: 20
+      requeueAfterSeconds: 10
       revision: ""
       files:
       - path: apps/infra/**/config.yaml
@@ -82,6 +82,7 @@ spec:
         syncOptions:
         - CreateNamespace=true
         - PrunePropagationPolicy=foreground
+        - RespectIgnoreDifferences=true
         - ServerSideApply=true
         - SkipDryRunOnMissingResource=true
 

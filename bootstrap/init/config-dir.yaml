@@ -10,5 +10,5 @@ srcPath: bootstrap/init
 srcRepoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot.git
 srcTargetRevision: ""
 syncPriority: ""
-syncWave: -1
+syncWave: "-1"
 userGivenName: apps-bootstrap

@@ -10,5 +10,5 @@ srcPath: apps/infra
 srcRepoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot.git
 srcTargetRevision: ""
 syncPriority: stage2
-syncWave: -1
+syncWave: "-1"
 userGivenName: infra

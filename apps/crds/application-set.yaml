@@ -6,7 +6,7 @@ metadata:
   namespace: argocd
   labels:
     dev-k3s: crds
-    syncPriority: stage1
+    # syncPriority: stage1
 
 spec:
   goTemplate: true
@@ -14,7 +14,7 @@ spec:
   generators:
   - git:
       repoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot.git
-      requeueAfterSeconds: 20
+      requeueAfterSeconds: 10
       revision: ""
       files:
       - path: apps/crds/**/config.yaml
