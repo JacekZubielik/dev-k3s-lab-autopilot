@@ -52,7 +52,7 @@ loki:
 write:
   replicas: 1
   persistence:
-    volumeClaimsEnabled: false
+    volumeClaimsEnabled: true
     enableStatefulSetAutoDeletePVC: false
 
   # Enable environment variables in config file
@@ -101,7 +101,7 @@ backend:
   persistence:
     # size: 8Gi
     # storageClass: local-path
-    volumeClaimsEnabled: false
+    volumeClaimsEnabled: true
     enableStatefulSetAutoDeletePVC: false
 
   # Enable environment variables in config file
