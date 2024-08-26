@@ -1,0 +1,15 @@
+---
+apiVersion: longhorn.io/v1beta2
+kind: BackingImage
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "-2"
+  name: pvc-ha-data
+  namespace: longhorn-system
+spec:
+  sourceType: restore
+  sourceParameters:
+    backup-url: s3://k3s-longhorn-backup@us-east-1/?backingImage=pvc-ha-data
+    concurrent-limit: '2'
+  checksum: 1aeec29269cb2f0b9cf0ab79620e66dc49982a984d3b3268be4a62ef779be25b655ed70e2be2afd009d61aba6127740113e97a78547d657074650d3f3768eb75
+  minNumberOfCopies: 1
