@@ -16,7 +16,7 @@ spec:
       requeueAfterSeconds: 10
       revision: ""
       files:
-      - path: bootstrap/init/config-dir.yaml # apps/*/config-dir.yaml
+      - path: apps/*/config-dir.yaml
       template:
         metadata:
           labels:

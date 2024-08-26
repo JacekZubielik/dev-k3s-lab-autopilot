@@ -6,6 +6,8 @@ metadata:
   namespace: argocd
   labels:
     dev-k3s: infra
+    '{{ .labels }}'
+    syncPriority: '{{ .syncPriority }}'
   #   syncPriority: stage2
 
 spec:

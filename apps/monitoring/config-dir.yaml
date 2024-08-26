@@ -5,7 +5,7 @@ destNamespace: ""
 destServer: https://kubernetes.default.svc
 exclude: ""
 include: ""
-labels: ""
+labels: "syncPriority: stage3"
 srcPath: apps/monitoring
 srcRepoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot.git
 srcTargetRevision: ""
