@@ -2,6 +2,7 @@ annotations: ''
 appName: external-dns
 appRole: infra
 destNamespace: external-dns
+destProject: "infra"
 destServer: https://kubernetes.default.svc
 exclude: ""
 include: ""
@@ -9,6 +10,6 @@ labels: ""
 srcPath: apps/infra/external-dns
 srcRepoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot.git
 srcTargetRevision: ""
-syncPriority: stage5
+syncPriority: stage4
 syncWave: 0
 userGivenName: external-dns

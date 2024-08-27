@@ -2,6 +2,7 @@ annotations: ''
 appName: csi-external-snapshotter
 appRole: infra
 destNamespace: kube-system
+destProject: "infra"
 destServer: https://kubernetes.default.svc
 exclude: ""
 include: ""
@@ -9,6 +10,6 @@ labels: ""
 srcPath: apps/infra/csi-external-snapshotter
 srcRepoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot.git
 srcTargetRevision: ""
-syncPriority: stage6
+syncPriority: stage4
 syncWave: 0
 userGivenName: csi-external-snapshotter
