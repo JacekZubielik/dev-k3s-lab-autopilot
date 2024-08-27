@@ -8,8 +8,8 @@ metadata:
     app.kubernetes.io/name: homepage
   name: homepage
 spec:
-  type: ExternalName
-  externalName: 192.168.40.183
+  type: LoadBalancer
+  loadBalancerIP: 192.168.40.183
   ports:
   - name: homepage
     port: 3000
