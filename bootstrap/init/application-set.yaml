@@ -100,10 +100,10 @@ spec:
           operator: In
           values:
           - prod
-        maxUpdate: 90%
+        maxUpdate: 0%
       - matchExpressions:
         - key: syncPriority
           operator: In
           values:
           - dev
-        maxUpdate: 50%
+        maxUpdate: 0%
