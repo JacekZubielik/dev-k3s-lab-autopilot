@@ -14,12 +14,12 @@ metadata:
   name: pvc-esphome-data
   namespace: longhorn-system
 spec:
-  backingImage: pvc-esphome-data
+  # backingImage: pvc-esphome-data
   dataLocality: best-effort
   diskSelector:
   - data
   # - fast
-  # fromBackup: s3://k3s-longhorn-backup@us-east-1/?backup=backup-4957a7ca5c374d59&volume=pvc-esphome-data
+  fromBackup: s3://k3s-longhorn-backup@us-east-1/?backup=backup-4957a7ca5c374d59&volume=pvc-esphome-data
   frontend: blockdev
   # migratable: false
   nodeSelector:
