@@ -1,0 +1,9 @@
+creation_rules:
+- encrypted_regex: '^(externalName|external-dns.alpha.kubernetes.io/hostname|sans|main|match|external-dns.alpha.kubernetes.io/target|dnsNames|commonName|data|stringData|dnsNames|email|accessKeyID|region|hostedZoneID|role|dnsZones)$'
+  pgp: '6D3FE55384B558E06A1BA364586EFA784A32C981'
+  age: 'age1deg9tqt7jtddnqme6nvcl72czns80z0n25u8k9pw5830dn4arsks5pua4h'
+
+
+- unencrypted_regex: "^(apiVersion|metadata|kind|type)$"
+  pgp: '6D3FE55384B558E06A1BA364586EFA784A32C981'
+  age: 'age1deg9tqt7jtddnqme6nvcl72czns80z0n25u8k9pw5830dn4arsks5pua4h'
