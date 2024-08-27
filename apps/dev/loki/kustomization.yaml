@@ -26,3 +26,12 @@ helmCharts:
   namespace: loki
   releaseName: loki
   valuesFile: values.yaml
+
+patches:
+- path: patches/mutation-patch.yaml
+  target:
+    kind: Deployment
+- path: patches/remove-instance-patch.yaml
+  target:
+    kind: CustomResourceDefinition
+    labelSelector: app.kubernetes.io/instance=loki
