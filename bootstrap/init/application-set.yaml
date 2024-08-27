@@ -29,8 +29,8 @@ spec:
 
   template:
     metadata:
-      # annotations:
-      #   argocd.argoproj.io/sync-wave: '{{ .syncWave }}'
+      annotations:
+        argocd.argoproj.io/sync-wave: '{{ .syncWave }}'
       labels:
         app.kubernetes.io/managed-by: argocd-autopilot
         app.kubernetes.io/name: '{{ .appName }}'
