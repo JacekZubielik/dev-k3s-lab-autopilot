@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: prod-bootstrap
+  name: bootstrap-bump-prod
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io

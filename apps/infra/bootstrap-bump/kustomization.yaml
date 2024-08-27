@@ -7,4 +7,4 @@ metadata:
   namespace: argocd
 
 resources:
-- bootstrap-bump-infra.yaml
+- bootstrap-bump-prod.yaml

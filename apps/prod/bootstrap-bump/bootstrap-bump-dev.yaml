@@ -2,14 +2,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: infra-bootstrap
+  name: bootstrap-bump-dev
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   source:
-    path: apps/infra
+    path: apps/dev
     repoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot.git
     targetRevision: HEAD
   destination:
