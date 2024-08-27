@@ -15,7 +15,7 @@ metadata:
   name: pvc-kube-alertmanager
   namespace: longhorn-system
 spec:
-  dataLocality: best-effort
+  # dataLocality: best-effort
   diskSelector:
   - data
   # - fast
@@ -25,9 +25,8 @@ spec:
   nodeSelector:
   - fast
   # - storage
-  # numberOfReplicas: 1
+  numberOfReplicas: 1
   # restoreVolumeRecurringJob: enabled
-  # revisionCounterDisabled: false
   size: '4294967296'
   snapshotMaxCount: 20
 
@@ -46,7 +45,7 @@ metadata:
   name: pvc-kube-grafana
   namespace: longhorn-system
 spec:
-  backingImage: pvc-kube-grafana
+  # backingImage: pvc-kube-grafana
   dataLocality: best-effort
   diskSelector:
   - data
@@ -57,9 +56,8 @@ spec:
   nodeSelector:
   - fast
   # - storage
-  # numberOfReplicas: 1
+  numberOfReplicas: 1
   # restoreVolumeRecurringJob: enabled
-  # revisionCounterDisabled: false
   size: '21474836480'
   snapshotMaxCount: 20
 
@@ -80,7 +78,7 @@ metadata:
   name: pvc-kube-prometheus
   namespace: longhorn-system
 spec:
-  backingImage: pvc-kube-prometheus
+  # backingImage: pvc-kube-prometheus
   dataLocality: best-effort
   diskSelector:
   - data
@@ -91,8 +89,7 @@ spec:
   nodeSelector:
   - fast
   # - storage
-  # numberOfReplicas: 1
+  numberOfReplicas: 1
   # restoreVolumeRecurringJob: enabled
-  # revisionCounterDisabled: false
   size: '21474836480'
   snapshotMaxCount: 20

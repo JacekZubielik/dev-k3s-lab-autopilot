@@ -14,7 +14,7 @@ metadata:
   name: pvc-lms-config
   namespace: longhorn-system
 spec:
-  backingImage: pvc-lms-config
+  # backingImage: pvc-lms-config
   dataLocality: best-effort
   diskSelector:
   - data
