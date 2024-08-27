@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: pvc-loki-backend
+  name: pvc-loki-backend-0
 spec:
   # dataSource:
   #   name: pvc-lms-config-backup
@@ -20,7 +20,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: pvc-loki-write
+  name: pvc-loki-write-0
 spec:
   # dataSource:
   #   name: pvc-lms-config-backup
