@@ -143,7 +143,7 @@ buckets:
   versioning: false
 
 - name: k3s-longhorn-backup
-  objectlocking: true # false
+  objectlocking: false
   policy: private
   purge: false
   # versioning: false
@@ -183,16 +183,18 @@ policies:
     - 'arn:aws:s3:::k3s-authentik-backup'
     - 'arn:aws:s3:::k3s-authentik-backup/*'
     actions:
-    - "s3:DeleteObject"
+    - "s3:AbortMultipartUpload"
     - "s3:GetObject"
-    - "s3:ListBucket"
+    - "s3:DeleteObject"
     - "s3:PutObject"
+    - "s3:ListMultipartUploadParts"
+    - "s3:GetBucketLocation"
+    - "s3:ListBucket"
+    - "s3:ListBucketMultipartUploads"
 
 - name: backend
   statements:
   - resources:
-    - 'arn:aws:s3:::k3s-audio'
-    - 'arn:aws:s3:::k3s-audio/*'
     - 'arn:aws:s3:::k3s-authentik-backup'
     - 'arn:aws:s3:::k3s-authentik-backup/*'
     - 'arn:aws:s3:::k3s-backend'
@@ -201,12 +203,8 @@ policies:
     - 'arn:aws:s3:::k3s-loki/*'
     - 'arn:aws:s3:::k3s-longhorn-backup'
     - 'arn:aws:s3:::k3s-longhorn-backup/*'
-    - 'arn:aws:s3:::k3s-syncthing'
-    - 'arn:aws:s3:::k3s-syncthing/*'
     - 'arn:aws:s3:::k3s-tempo'
     - 'arn:aws:s3:::k3s-tempo/*'
-    - 'arn:aws:s3:::k3s-video'
-    - 'arn:aws:s3:::k3s-video/*'
     actions:
     - "s3:AbortMultipartUpload"
     - "s3:GetObject"
@@ -236,13 +234,13 @@ policies:
     actions:
     - "s3:AbortMultipartUpload"
     - "s3:GetObject"
-    # - "s3:DeleteObject"
+    - "s3:DeleteObject"
     - "s3:PutObject"
     - "s3:ListMultipartUploadParts"
     - "s3:GetBucketLocation"
     - "s3:ListBucket"
     - "s3:ListBucketMultipartUploads"
-    # effect: "Allow"
+    effect: "Allow"
 
 - name: tempo
   statements:
