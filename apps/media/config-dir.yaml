@@ -10,5 +10,5 @@ srcPath: apps/media
 srcRepoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot.git
 srcTargetRevision: ""
 syncPriority: stage5
-syncWave: "-1"
+syncWave: "5"
 userGivenName: media

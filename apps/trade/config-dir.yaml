@@ -10,5 +10,5 @@ srcPath: apps/trade
 srcRepoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot.git
 srcTargetRevision: ""
 syncPriority: stage6
-syncWave: "-1"
+syncWave: "6"
 userGivenName: trade

@@ -10,5 +10,5 @@ srcPath: apps/iot
 srcRepoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot.git
 srcTargetRevision: ""
 syncPriority: stage4
-syncWave: "-1"
+syncWave: "4"
 userGivenName: iot

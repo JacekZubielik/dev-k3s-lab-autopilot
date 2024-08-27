@@ -10,5 +10,5 @@ srcPath: apps/dev
 srcRepoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot.git
 srcTargetRevision: ""
 syncPriority: stage7
-syncWave: "-1"
+syncWave: "7"
 userGivenName: "dev"
