@@ -2,7 +2,7 @@ annotations: ''
 appName: prod-bootstrap
 appRole: infra
 destNamespace: ""
-destProject: "infra"
+destProject: "default"
 destServer: https://kubernetes.default.svc
 exclude: ""
 include: ""
