@@ -1,0 +1,43 @@
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  labels:
+    longhornvolume: pvc-loki-backend
+  name: pv-loki-backend
+spec:
+  capacity:
+    storage: 12Gi
+  volumeMode: Filesystem
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Delete
+  storageClassName: longhorn
+  csi:
+    driver: driver.longhorn.io
+    fsType: ext4
+    volumeAttributes:
+      staleReplicaTimeout: "2880"
+    volumeHandle: pvc-loki-backend # must match volume name from Longhorn
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  labels:
+    longhornvolume: pvc-loki-write
+  name: pv-loki-write
+spec:
+  capacity:
+    storage: 12Gi
+  volumeMode: Filesystem
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Delete
+  storageClassName: longhorn
+  csi:
+    driver: driver.longhorn.io
+    fsType: ext4
+    volumeAttributes:
+      staleReplicaTimeout: "2880"
+    volumeHandle: pvc-loki-write # must match volume name from Longhorn

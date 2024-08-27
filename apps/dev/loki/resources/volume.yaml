@@ -1,0 +1,65 @@
+---
+apiVersion: longhorn.io/v1beta2
+kind: Volume
+metadata:
+  finalizers:
+  - longhorn.io
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
+  labels:
+    longhornvolume: pvc-loki-backend
+    recurring-job-group.longhorn.io/group1: enabled
+    recurring-job.longhorn.io/24-hour-snapshots: enabled
+    recurring-job.longhorn.io/48-hour-backups: enabled
+  name: pvc-loki-backend
+  namespace: longhorn-system
+spec:
+  # backingImage: ''
+  dataLocality: "best-effort"
+  diskSelector:
+  - data
+  # - fast
+  # fromBackup: "s3://k3s-longhorn-backup@us-east-1/?backup=backup-86deae32bf5648ed&volume=pvc-esphome-data"
+  frontend: blockdev
+  # migratable: false
+  nodeSelector:
+  - fast
+  # - storage
+  # numberOfReplicas: 1
+  # restoreVolumeRecurringJob: enabled
+  # revisionCounterDisabled: false
+  size: '12884901888'
+  snapshotMaxCount: 20
+
+---
+apiVersion: longhorn.io/v1beta2
+kind: Volume
+metadata:
+  finalizers:
+  - longhorn.io
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
+  labels:
+    longhornvolume: pvc-loki-write
+    recurring-job-group.longhorn.io/group1: enabled
+    recurring-job.longhorn.io/24-hour-snapshots: enabled
+    recurring-job.longhorn.io/48-hour-backups: enabled
+  name: pvc-loki-write
+  namespace: longhorn-system
+spec:
+  # backingImage: ''
+  dataLocality: "best-effort"
+  diskSelector:
+  - data
+  # - fast
+  # fromBackup: "s3://k3s-longhorn-backup@us-east-1/?backup=backup-86deae32bf5648ed&volume=pvc-esphome-data"
+  frontend: blockdev
+  # migratable: false
+  nodeSelector:
+  - fast
+  # - storage
+  # numberOfReplicas: 1
+  # restoreVolumeRecurringJob: enabled
+  # revisionCounterDisabled: false
+  size: '12884901888'
+  snapshotMaxCount: 20
