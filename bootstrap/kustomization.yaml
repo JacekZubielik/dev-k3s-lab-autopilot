@@ -9,7 +9,6 @@ metadata:
 resources:
 - argo-cd.yaml
 - cluster-resources.yaml
-- init/application-set.yaml
+#### - init/application-set.yaml
 - projects.yaml
-# - bootstrap.yaml
-# - root-app.yaml
+- init/bootstrap.yaml

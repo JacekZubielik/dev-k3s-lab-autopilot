@@ -7,5 +7,4 @@ metadata:
   namespace: argocd
 
 resources:
-# - application-set.yaml
-- bootstrap.yaml
+- application-set.yaml
