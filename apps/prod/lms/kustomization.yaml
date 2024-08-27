@@ -1,0 +1,37 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+# metadata:
+#   annotations:
+#     argocd.argoproj.io/compare-options: IgnoreExtraneous
+
+resources:
+# - resources/backing-image.yaml
+- resources/pv.yaml
+- resources/pvc.yaml
+- resources/volume.yaml
+# - resources/volume.snapshot.yaml
+
+generators:
+- ksops-generator.yaml
+
+generatorOptions:
+  disableNameSuffixHash: true
+
+helmCharts:
+- name: lms
+  version: 0.0.15
+  repo: https://jacekzubielik.github.io/jz-helm-charts
+  includeCRDs: false
+  namespace: lms
+  releaseName: lms
+  valuesFile: values.yaml
+
+# configMapGenerator:
+# - name: lms-env
+#   behavior: create
+#   literals:
+#   - TZ=CET
+#   - PUID=1000
+#   - PGID=1000

@@ -1,0 +1,23 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+metadata:
+  annotations:
+    argocd.argoproj.io/compare-options: IgnoreExtraneous
+
+helmCharts:
+- name: binance-proxy
+  version: 0.0.4
+  repo: https://jacekzubielik.github.io/jz-helm-charts
+  includeCRDs: false
+  namespace: binance-proxy
+  releaseName: binance-proxy
+  valuesFile: values.yaml
+
+patches:
+- target:
+    kind: CustomResourceDefinition
+  patch: |-
+    - op: remove
+      path: /metadata/labels/app.kubernetes.io~1instance

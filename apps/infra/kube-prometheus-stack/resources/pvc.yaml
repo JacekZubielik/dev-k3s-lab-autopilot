@@ -1,0 +1,18 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-kube-grafana
+  # namespace: monitoring
+spec:
+  # dataSource:
+  #   name: pv-kube-grafana-backup
+  #   kind: VolumeSnapshot
+  #   apiGroup: snapshot.storage.k8s.io
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 20Gi
+  volumeName: pv-kube-grafana # must reference Persistent Volume
+  storageClassName: longhorn-retain

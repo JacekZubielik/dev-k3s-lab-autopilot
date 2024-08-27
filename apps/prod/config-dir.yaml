@@ -1,0 +1,14 @@
+annotations: ''
+appName: prod
+appRole: applicationset
+destNamespace: ""
+destServer: https://kubernetes.default.svc
+exclude: ""
+include: ""
+labels: ""
+srcPath: apps/prod
+srcRepoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot.git
+srcTargetRevision: ""
+syncPriority: prod
+# syncWave: ""
+userGivenName: prod
