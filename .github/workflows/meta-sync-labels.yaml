@@ -19,7 +19,7 @@ jobs:
       with:
         fetch-depth: 0
     - name: Sync Labels
-      uses: EndBug/label-sync@v2
+      uses: EndBug/label-sync@52074158190acb45f3077f9099fea818aa43f97a # v2
       with:
         config-file: .github/labels.yaml
         token: ${{ secrets.GITHUB_TOKEN }}
