@@ -19,7 +19,7 @@ spec:
   diskSelector:
   - data
   # - fast
-  fromBackup: s3://k3s-longhorn-backup@us-east-1/?backup=backup-4957a7ca5c374d59&volume=pvc-esphome-data
+  fromBackup: s3://k3s-longhorn-backup@us-east-1/?backup=backup-433d96f29ba347c1&volume=pvc-esphome-data
   frontend: blockdev
   # migratable: false
   nodeSelector:
