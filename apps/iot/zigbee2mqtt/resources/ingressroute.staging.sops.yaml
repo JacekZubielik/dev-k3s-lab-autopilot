@@ -7,7 +7,7 @@ metadata:
         external-dns.alpha.kubernetes.io/target: ENC[AES256_GCM,data:W+0MKgEz8Nblp7SzxS3wWeosb/qi1A==,iv:mJvnbC995n+YnbiuqjE+9sbWoN1QIfatF0GM60Ob3HE=,tag:8RPBHubA0+kvfD6kENkCbQ==,type:str]
         kubernetes.io/ingress.class: traefik-external
     name: zigbee2mqtt-staging
-    namespace: iot
+    namespace: zigbee2mqtt
 spec:
     entryPoints:
         - websecure
@@ -45,8 +45,8 @@ sops:
             SWZvWUJGb2tjQ0VyQzMzQUtyUXFZVHMK/0QEiB3pyHXHSqZ9qOx936cUAPPcraw+
             91rRd0AAP6RJxZUmF0Oax4oZHOvaeMCNTPijdHto/yAvV5subkO2lg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-08-26T17:41:14Z"
-    mac: ENC[AES256_GCM,data:5czQQK8KuOfcKtEmT3IgjUG8Gxm/swTihV9Ne/vZVTGJp8ybXYBmPXUXj2VbZeTu2fXkXP7qg2sASvCthhukvhFwTSoRjPckBCdJRbmnwGerskNTQCXWLZH59JBHMau6CS21A1P+GuXdNqGxiWvUiCpT0SZdSarGyOWaSiHLCyc=,iv:6UcIcu+pzApSiaGY22b4Bf4dXYfpsvLq7j0tXjSNfIY=,tag:l3w0rBr+K1cpFYH/kebVcg==,type:str]
+    lastmodified: "2024-08-27T09:48:41Z"
+    mac: ENC[AES256_GCM,data:OWSQ6OYupaJVJYUq7sH6vUlY6F5gVMfaHIPYuVru/m07BuB3kkNCHEU0hOL1m2mDjaGEZGSphZZOl72OW5Q8ZmfhpXCFrgtWb4KCGw5BBNMn8ndWnTiJwY8Lrw2aSHX4WJIWb5r3BGD6KPs/twYlIYweGQ0AG6PYTj+yguFRNk4=,iv:ZNsUth1SB5Q2Wtbu3gXnZJebsaYh79CHSKyz3GGy1yw=,tag:bG9Zbe5VG1kjUuNV2SQPDA==,type:str]
     pgp:
         - created_at: "2024-06-22T20:23:56Z"
           enc: |-
@@ -99,8 +99,8 @@ sops:
             SWZvWUJGb2tjQ0VyQzMzQUtyUXFZVHMK/0QEiB3pyHXHSqZ9qOx936cUAPPcraw+
             91rRd0AAP6RJxZUmF0Oax4oZHOvaeMCNTPijdHto/yAvV5subkO2lg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-08-26T17:41:14Z"
-    mac: ENC[AES256_GCM,data:5czQQK8KuOfcKtEmT3IgjUG8Gxm/swTihV9Ne/vZVTGJp8ybXYBmPXUXj2VbZeTu2fXkXP7qg2sASvCthhukvhFwTSoRjPckBCdJRbmnwGerskNTQCXWLZH59JBHMau6CS21A1P+GuXdNqGxiWvUiCpT0SZdSarGyOWaSiHLCyc=,iv:6UcIcu+pzApSiaGY22b4Bf4dXYfpsvLq7j0tXjSNfIY=,tag:l3w0rBr+K1cpFYH/kebVcg==,type:str]
+    lastmodified: "2024-08-27T09:48:41Z"
+    mac: ENC[AES256_GCM,data:OWSQ6OYupaJVJYUq7sH6vUlY6F5gVMfaHIPYuVru/m07BuB3kkNCHEU0hOL1m2mDjaGEZGSphZZOl72OW5Q8ZmfhpXCFrgtWb4KCGw5BBNMn8ndWnTiJwY8Lrw2aSHX4WJIWb5r3BGD6KPs/twYlIYweGQ0AG6PYTj+yguFRNk4=,iv:ZNsUth1SB5Q2Wtbu3gXnZJebsaYh79CHSKyz3GGy1yw=,tag:bG9Zbe5VG1kjUuNV2SQPDA==,type:str]
     pgp:
         - created_at: "2024-06-22T20:23:56Z"
           enc: |-
