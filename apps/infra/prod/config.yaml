@@ -1,15 +1,17 @@
 annotations: ''
-appName: authentik
+appName: prod
 appRole: infra
-destNamespace: authentik
+destNamespace: traefik
 destProject: "infra"
 destServer: https://kubernetes.default.svc
 exclude: ""
 include: ""
 labels: ""
-srcPath: apps/infra/authentik
+srcPath: init/application-set.yaml # apps/infra/prod
 srcRepoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot.git
 srcTargetRevision: ""
-syncPriority: stage5
+syncPriority: stage6
 syncWave: 0
-userGivenName: authentik
+userGivenName: traefik
+
+init/application-set.yaml
