@@ -2,6 +2,7 @@ annotations: ''
 appName: minio
 appRole: infra
 destNamespace: minio
+destProject: "infra"
 destServer: https://kubernetes.default.svc
 exclude: ""
 include: ""

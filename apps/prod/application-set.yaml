@@ -2,10 +2,13 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: bootstrap
-  namespace: argocd
+  # annotations:
+  #   argocd.argoproj.io/sync-wave: "5"
   labels:
-    dev-k3s: bootstrap
+    dev-k3s: prod
+    syncPriority: prod
+  name: prod
+  namespace: argocd
 
 spec:
   goTemplate: true
@@ -16,7 +19,7 @@ spec:
       requeueAfterSeconds: 10
       revision: ""
       files:
-      - path: apps/*/config-dir.yaml
+      - path: apps/prod/**/config.yaml
       template:
         metadata:
           labels:
@@ -29,56 +32,57 @@ spec:
 
   template:
     metadata:
-      # annotations:
-      #   argocd.argoproj.io/sync-wave: '{{ .syncWave }}'
+      annotations:
+        argocd.argoproj.io/sync-wave: '{{ .syncWave }}'
       labels:
         app.kubernetes.io/managed-by: argocd-autopilot
         app.kubernetes.io/name: '{{ .appName }}'
         application-role: '{{ .appRole }}'
         syncPriority: '{{ .syncPriority }}'
-      name: bootstrap-{{ .userGivenName }}
+      name: prod-{{ .userGivenName }}
       namespace: argocd
 
     spec:
-      project: bootstrap
+      project: '{{ .destProject }}'
       source:
         path: '{{ .srcPath }}'
         repoURL: '{{ .srcRepoURL }}'
         targetRevision: '{{ .srcTargetRevision }}'
       destination:
-        # namespace: '{{ .destNamespace }}'
+        namespace: '{{ .destNamespace }}'
         server: '{{ .destServer }}'
 
-      # ignoreDifferences:
-      # - group: argoproj.io
-      #   kind: Application
-      #   jsonPointers:
-      #   - /status
-      # - group: argoproj.io
-      #   kind: Application
-      #   jsonPointers:
-      #   - /operation
-      # - group: "apps"
-      #   kind: "Deployment"
-      #   jsonPointers:
-      #   - /spec/template/metadata/annotations
-      #   - /spec/template/metadata/labels
-      # - group: "apps"
-      #   kind: "StatefulSet"
-      #   jsonPointers:
-      #   - /spec/template/metadata/annotations
-      #   - /spec/template/metadata/labels
-      # - kind: PersistentVolume
-      #   jsonPointers:
-      #   - /spec/claimRef/resourceVersion
-      #   - /spec/claimRef/uid
-      #   - /status/lastPhaseTransitionTime
+      ignoreDifferences:
+      - group: argoproj.io
+        kind: Application
+        jsonPointers:
+        - /status
+      - group: argoproj.io
+        kind: Application
+        jsonPointers:
+        - /operation
+      - group: "apps"
+        kind: "Deployment"
+        jsonPointers:
+        - /spec/template/metadata/annotations
+        - /spec/template/metadata/labels
+      - group: "apps"
+        kind: "StatefulSet"
+        jsonPointers:
+        - /spec/template/metadata/annotations
+        - /spec/template/metadata/labels
+      - kind: PersistentVolume
+        jsonPointers:
+        - /spec/claimRef/resourceVersion
+        - /spec/claimRef/uid
+        - /status/lastPhaseTransitionTime
 
       syncPolicy:
         automated:
           selfHeal: false
           prune: true
         syncOptions:
+        - ApplyOutOfSyncOnly=true
         - CreateNamespace=true
         - PrunePropagationPolicy=foreground
         - RespectIgnoreDifferences=true
@@ -93,17 +97,11 @@ spec:
         - key: syncPriority
           operator: In
           values:
-          - infra
-        maxUpdate: 100%
+          - stage1
+        # maxUpdate: 100% # if undefined, all applications matched are updated together (default is 100%)
       - matchExpressions:
         - key: syncPriority
           operator: In
           values:
-          - prod
-        maxUpdate: 100%
-      - matchExpressions:
-        - key: syncPriority
-          operator: In
-          values:
-          - dev
-        maxUpdate: 100%
+          - stage2
+        # maxUpdate: 100%

@@ -2,6 +2,7 @@ annotations: ''
 appName: authentik
 appRole: infra
 destNamespace: authentik
+destProject: "crds"
 destServer: https://kubernetes.default.svc
 exclude: ""
 include: ""

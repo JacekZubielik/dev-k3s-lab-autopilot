@@ -2,6 +2,7 @@ annotations: ''
 appName: longhorn
 appRole: infra
 destNamespace: longhorn-system
+destProject: "infra"
 destServer: https://kubernetes.default.svc
 exclude: ""
 include: ""

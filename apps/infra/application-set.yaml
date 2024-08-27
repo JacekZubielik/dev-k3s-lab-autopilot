@@ -2,11 +2,11 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  annotations:
-    argocd.argoproj.io/sync-wave: "2"
+  # annotations:
+  #   argocd.argoproj.io/sync-wave: "2"
   labels:
     dev-k3s: infra
-    syncPriority: stage2
+    syncPriority: infra
   name: infra
   namespace: argocd
 
@@ -43,7 +43,7 @@ spec:
       namespace: argocd
 
     spec:
-      project: infra
+      project: '{{ .destProject }}'
       source:
         path: '{{ .srcPath }}'
         repoURL: '{{ .srcRepoURL }}'
@@ -97,41 +97,29 @@ spec:
         - key: syncPriority
           operator: In
           values:
-          - stage1 #
-        maxUpdate: 100% # if undefined, all applications matched are updated together (default is 100%)
+          - stage1
+        # maxUpdate: 100% # if undefined, all applications matched are updated together (default is 100%)
       - matchExpressions:
         - key: syncPriority
           operator: In
           values:
           - stage2 #
-        maxUpdate: 100%
+        # maxUpdate: 100%
       - matchExpressions:
         - key: syncPriority
           operator: In
           values:
           - stage3 #
-        maxUpdate: 100%
+        # maxUpdate: 100%
       - matchExpressions:
         - key: syncPriority
           operator: In
           values:
           - stage4 #
-        maxUpdate: 100%
+        # maxUpdate: 100%
       - matchExpressions:
         - key: syncPriority
           operator: In
           values:
           - stage5 #
-        maxUpdate: 100%
-      - matchExpressions:
-        - key: syncPriority
-          operator: In
-          values:
-          - stage6 #
-        maxUpdate: 100%
-      - matchExpressions:
-        - key: syncPriority
-          operator: In
-          values:
-          - stage7 #
-        maxUpdate: 100%
+        # maxUpdate: 100%

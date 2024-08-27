@@ -2,6 +2,7 @@ annotations: ''
 appName: traefik
 appRole: infra
 destNamespace: traefik
+destProject: "infra"
 destServer: https://kubernetes.default.svc
 exclude: ""
 include: ""
