@@ -72,7 +72,7 @@ persistence:
   #   whenDeleted: Retain
 
 service:
-  type: LoadBalancer # LoadBalancer/ClusterIP
+  type: LoadBalancer
   clusterIP: ~
   port: 9000
   nodePort: 32000
@@ -81,7 +81,7 @@ service:
   annotations: {}
 
 consoleService:
-  type: LoadBalancer # LoadBalancer
+  type: LoadBalancer
   clusterIP: ~
   port: 9001
   nodePort: 32001
