@@ -8,7 +8,7 @@ metadata:
   labels:
     app.kubernetes.io/name: homepage
   name: homepage
-  namespace: dev
+  # namespace: dev
 spec:
   type: LoadBalancer
   ports:
