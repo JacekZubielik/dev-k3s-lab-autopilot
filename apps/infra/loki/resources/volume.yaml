@@ -27,7 +27,6 @@ spec:
   # - storage
   numberOfReplicas: 1
   # restoreVolumeRecurringJob: enabled
-  # revisionCounterDisabled: false
   size: '12884901888'
   snapshotMaxCount: 20
 
@@ -60,6 +59,5 @@ spec:
   # - storage
   numberOfReplicas: 1
   # restoreVolumeRecurringJob: enabled
-  # revisionCounterDisabled: false
   size: '12884901888'
   snapshotMaxCount: 20

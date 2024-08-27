@@ -14,7 +14,7 @@ metadata:
   name: pvc-kuma
   namespace: longhorn-system
 spec:
-  backingImage: pvc-kuma
+  # backingImage: pvc-kuma
   dataLocality: best-effort
   diskSelector:
   - data
@@ -25,8 +25,7 @@ spec:
   nodeSelector:
   - fast
   # - storage
-  # numberOfReplicas: 1
+  numberOfReplicas: 1
   # restoreVolumeRecurringJob: enabled
-  # revisionCounterDisabled: false
   size: '8589934592'
   snapshotMaxCount: 20

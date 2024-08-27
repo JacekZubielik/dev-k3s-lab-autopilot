@@ -6,13 +6,19 @@ metadata:
     argocd.argoproj.io/sync-wave: "-2"
   name: pvc-authentik-psql
   namespace: longhorn-system
+# spec:
+#   sourceType: restore
+#   sourceParameters:
+#     backup-url: s3://k3s-longhorn-backup@us-east-1/?backingImage=pvc-authentik-psql
+#     concurrent-limit: '2'
+#   checksum: ""
+#   minNumberOfCopies: 1
+
 spec:
-  sourceType: restore
+  sourceType: export-from-volume
   sourceParameters:
-    backup-url: s3://k3s-longhorn-backup@us-east-1/?backingImage=pvc-authentik-psql
-    concurrent-limit: '2'
-  checksum: 45a567a047eacd03109c4c3ea42b280fe7897d72ba7c867860f2a10ba3a086961fc7650cf90fce94ca5e6f05b72755ae0e4e5bc910ced15cc7158feea9ab8b84
-  minNumberOfCopies: 1
+    volume-name: pvc-authentik-psql
+    export-type: qcow2
 
 ---
 apiVersion: longhorn.io/v1beta2
@@ -22,10 +28,16 @@ metadata:
     argocd.argoproj.io/sync-wave: "-2"
   name: pvc-authentik-redis
   namespace: longhorn-system
+# spec:
+#   sourceType: restore
+#   sourceParameters:
+#     backup-url: s3://k3s-longhorn-backup@us-east-1/?backingImage=pvc-authentik-redis
+#     concurrent-limit: '2'
+#   checksum: ""
+#   minNumberOfCopies: 1
+
 spec:
-  sourceType: restore
+  sourceType: export-from-volume
   sourceParameters:
-    backup-url: s3://k3s-longhorn-backup@us-east-1/?backingImage=pvc-authentik-redis
-    concurrent-limit: '2'
-  checksum: fb27a26c11c85fc261469fb8061f6ba31464c9a2db0cae497a9c9ce0502cd5599a9303167644e9657975c9af5e64e0c539a82368d5db733bba3b0bfd6f466857
-  minNumberOfCopies: 1
+    volume-name: pvc-authentik-redis
+    export-type: qcow2

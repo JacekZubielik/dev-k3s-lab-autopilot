@@ -6,13 +6,20 @@ metadata:
     argocd.argoproj.io/sync-wave: "-2"
   name: pvc-kube-grafana
   namespace: longhorn-system
+# spec:
+#   sourceType: restore
+#   sourceParameters:
+#     backup-url: s3://k3s-longhorn-backup@us-east-1/?backingImage=pvc-kube-grafana
+#     concurrent-limit: '2'
+#   checksum: ""
+#   minNumberOfCopies: 1
+
 spec:
-  sourceType: restore
+  sourceType: export-from-volume
   sourceParameters:
-    backup-url: s3://k3s-longhorn-backup@us-east-1/?backingImage=pvc-kube-grafana
-    concurrent-limit: '2'
-  checksum: 9551e59ebb4ca81a04a3a3fb441fbca63993d9c50cee4e7c759185070d03e700ef3b2952e8cade6ad9fa2c60124bf76a4ac06866d88809ebbfb730c330de3d9c
-  minNumberOfCopies: 1
+    volume-name: pvc-kube-grafana
+    export-type: qcow2
+
 
 ---
 apiVersion: longhorn.io/v1beta2
@@ -22,10 +29,16 @@ metadata:
     argocd.argoproj.io/sync-wave: "-2"
   name: pvc-kube-prometheus
   namespace: longhorn-system
+# spec:
+#   sourceType: restore
+#   sourceParameters:
+#     backup-url: s3://k3s-longhorn-backup@us-east-1/?backingImage=pvc-kube-prometheus
+#     concurrent-limit: '2'
+#   checksum: ""
+#   minNumberOfCopies: 1
+
 spec:
-  sourceType: restore
+  sourceType: export-from-volume
   sourceParameters:
-    backup-url: s3://k3s-longhorn-backup@us-east-1/?backingImage=pvc-kube-prometheus
-    concurrent-limit: '2'
-  checksum: 7154f78676964dadc3cabfa1124b65ca910145bd71571dbc40ccdd07a07578e1986eff97d5154ff15f139e147e4b614fbb7f8128cdb2f5f7bee1b3ce548677dc
-  minNumberOfCopies: 1
+    volume-name: pvc-kube-prometheus
+    export-type: qcow2
