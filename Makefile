@@ -33,7 +33,7 @@ password-grafana: ## Show admin password for Grafana.
 
 login-argocd: ## Login to ArgoCD CLI.
 	@echo "\nLogin to ArgoCD CLI ...\n"
-	@argocd login 192.168.40.200 --insecure --username admin --password $$(kubectl get secret -n argocd argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d)
+	@argocd login 192.168.40.182 --insecure --username admin --password $$(kubectl get secret -n argocd argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d)
 
 help: ## Display this help.
 	@echo "\nDisplay this help ..."
