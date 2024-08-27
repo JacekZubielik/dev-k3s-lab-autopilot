@@ -2,11 +2,13 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: monitoring
-  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "3"
   labels:
     dev-k3s: monitoring
     syncPriority: stage3
+  name: monitoring
+  namespace: argocd
 
 spec:
   goTemplate: true
@@ -80,6 +82,7 @@ spec:
           selfHeal: false
           prune: true
         syncOptions:
+        - ApplyOutOfSyncOnly=true
         - CreateNamespace=true
         - PrunePropagationPolicy=foreground
         - RespectIgnoreDifferences=true

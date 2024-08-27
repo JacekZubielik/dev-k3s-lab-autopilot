@@ -2,11 +2,13 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: infra
-  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
   labels:
     dev-k3s: infra
     syncPriority: stage2
+  name: infra
+  namespace: argocd
 
 spec:
   goTemplate: true
@@ -80,6 +82,7 @@ spec:
           selfHeal: false
           prune: true
         syncOptions:
+        - ApplyOutOfSyncOnly=true
         - CreateNamespace=true
         - PrunePropagationPolicy=foreground
         - RespectIgnoreDifferences=true
@@ -107,7 +110,7 @@ spec:
           operator: In
           values:
           - stage3 #
-        # maxUpdate: 100%
+        maxUpdate: 100%
       - matchExpressions:
         - key: syncPriority
           operator: In

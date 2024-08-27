@@ -2,11 +2,13 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: dev
-  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "7"
   labels:
     dev-k3s: dev
     syncPriority: stage7
+  name: dev
+  namespace: argocd
 
 spec:
   goTemplate: true
@@ -80,6 +82,7 @@ spec:
           selfHeal: false
           prune: true
         syncOptions:
+        - ApplyOutOfSyncOnly=true
         - CreateNamespace=true
         - PrunePropagationPolicy=foreground
         - RespectIgnoreDifferences=true
@@ -95,13 +98,13 @@ spec:
           operator: In
           values:
           - stage1 #
-        maxUpdate: 0% # if undefined, all applications matched are updated together (default is 100%)
+        maxUpdate: 100% # if undefined, all applications matched are updated together (default is 100%)
       - matchExpressions:
         - key: syncPriority
           operator: In
           values:
           - stage2 #
-        maxUpdate: 0%
+        maxUpdate: 100%
       - matchExpressions:
         - key: syncPriority
           operator: In

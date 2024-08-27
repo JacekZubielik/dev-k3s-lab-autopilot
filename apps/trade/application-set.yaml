@@ -2,11 +2,13 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: trade
-  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "6"
   labels:
     dev-k3s: trade
     syncPriority: stage6
+  name: trade
+  namespace: argocd
 
 spec:
   goTemplate: true
@@ -80,6 +82,7 @@ spec:
           selfHeal: false
           prune: true
         syncOptions:
+        - ApplyOutOfSyncOnly=true
         - CreateNamespace=true
         - PrunePropagationPolicy=foreground
         - RespectIgnoreDifferences=true
@@ -107,7 +110,7 @@ spec:
           operator: In
           values:
           - stage3 #
-        # maxUpdate: 100%
+        maxUpdate: 0%
       - matchExpressions:
         - key: syncPriority
           operator: In
