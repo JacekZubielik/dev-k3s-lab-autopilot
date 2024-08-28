@@ -152,7 +152,7 @@ persistence:
   musicstorage:
     enabled: true
     existingClaim: pvc-musicstorage
-    hostPath: /mnt/fast-storage/media/audio
+    hostPath: /mnt/fast-backup/media/audio
 
 # Mount devices or folders from the host machine. Can be used for USB device mounting.
 hostMounts: []
