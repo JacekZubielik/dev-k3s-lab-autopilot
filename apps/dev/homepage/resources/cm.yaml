@@ -18,10 +18,10 @@ data:
     providers:
       openweathermap: openweathermapapikey
       weatherapi: weatherapiapikey
-      longhorn:
-        url: "{{HOMEPAGE_VAR_LONGHORN_URL}}"
-        # username: "{{HOMEPAGE_VAR_LONGHORN_USERNAME}}"
-        # password: "{{HOMEPAGE_VAR_LONGHORN_PASSWORD}}"
+      # longhorn:
+      #   url: "{{HOMEPAGE_VAR_LONGHORN_URL}}"
+      #   # username: "{{HOMEPAGE_VAR_LONGHORN_USERNAME}}"
+      #   # password: "{{HOMEPAGE_VAR_LONGHORN_PASSWORD}}"
     theme: dark
     color: slate
     useEqualHeights: true
@@ -99,7 +99,7 @@ data:
             href: "{{HOMEPAGE_VAR_UPTIME_KUMA_URL}}"
             description: Monitoring
             app: uptime-kuma
-            namespace: monitoring
+            namespace: uptime-kuma
             pod-selector: >-
               app.kubernetes.io/instance in (
                   uptime-kuma
@@ -177,7 +177,7 @@ data:
             href: "{{HOMEPAGE_VAR_SYNCTHING_URL}}"
             description: Syncthing Relay Server
             app: syncthing
-            namespace: storage
+            namespace: syncthing
             pod-selector: >-
               app.kubernetes.io/instance in (
                   syncthing
@@ -191,7 +191,7 @@ data:
             href: "{{HOMEPAGE_VAR_MINIO_URL}}"
             description: S3 object storage
             app: minio
-            namespace: storage
+            namespace: minio
             pod-selector: >-
               app.kubernetes.io/instance in (
                   storage-minio,
@@ -225,7 +225,7 @@ data:
             href: "{{HOMEPAGE_VAR_LMS_URL}}"
             description: Logitech Media Server
             app: lms
-            namespace: media
+            namespace: lms
             pod-selector: >-
               app.kubernetes.io/instance in (
                   lms
@@ -242,7 +242,7 @@ data:
             href: "{{HOMEPAGE_VAR_HOME_ASSISTANT_URL}}"
             description: Home Assistant
             app: home-assistant
-            namespace: iot
+            namespace: home-assistant
             pod-selector: >-
               app.kubernetes.io/instance in (
                   dev-home-assistant
@@ -257,7 +257,7 @@ data:
             href: "{{HOMEPAGE_VAR_ZIGBEE2MQTT_URL}}"
             description: zigbee2mqtt
             app: zigbee2mqtt
-            namespace: iot
+            namespace: zigbee2mqtt
             pod-selector: >-
               app.kubernetes.io/instance in (
                   zigbee2mqtt
@@ -268,7 +268,7 @@ data:
             href: "{{HOMEPAGE_VAR_ESPHOME_URL}}"
             description: esphome
             app: esphome
-            namespace: iot
+            namespace: esphome
             pod-selector: >-
               app.kubernetes.io/instance in (
                   esphome
