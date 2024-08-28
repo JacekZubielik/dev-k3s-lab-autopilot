@@ -1,8 +1,8 @@
-# replicas: 1
+replicas: 1
 nameOverride: ""
 fullnameOverride: ""
 revisionHistoryLimit: 4
-hostNetwork: false
+hostNetwork: true # false
 
 updateStrategy:
   type: RollingUpdate
@@ -58,9 +58,9 @@ service:
     prometheus.io/scrape: "true"
     prometheus.io/port: 9100
   labels: {}
-  type: LoadBalancer
-  externalIPs: []
-  loadBalancerIP: "192.168.40.188"
+  type: ClusterIP # LoadBalancer
+  externalIPs: 192.168.40.188 # []
+  loadBalancerIP: [] "192.168.40.188"
   externalTrafficPolicy: {}
   loadBalancerSourceRanges: []
   publishNotReadyAddresses: false
