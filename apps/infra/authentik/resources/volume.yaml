@@ -1,0 +1,62 @@
+---
+apiVersion: longhorn.io/v1beta2
+kind: Volume
+metadata:
+  finalizers:
+  - longhorn.io
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
+  labels:
+    longhornvolume: pvc-authentik-psql
+    recurring-job-group.longhorn.io/group1: enabled
+    recurring-job.longhorn.io/24-hour-snapshots: enabled
+    recurring-job.longhorn.io/48-hour-backups: enabled
+  name: pvc-authentik-psql
+  namespace: longhorn-system
+spec:
+  # backingImage: pvc-authentik-psql
+  dataLocality: best-effort
+  diskSelector:
+  - data
+  # - fast
+  # fromBackup: "s3://k3s-longhorn-backup@us-east-1/?backup=backup-3bc3347310464b5b&volume=pvc-authentik-psql"
+  frontend: blockdev
+  # migratable: false
+  nodeSelector:
+  - fast
+  # - storage
+  numberOfReplicas: 1
+  # restoreVolumeRecurringJob: enabled
+  # revisionCounterDisabled: false
+  size: '8589934592'
+  snapshotMaxCount: 10
+
+---
+apiVersion: longhorn.io/v1beta2
+kind: Volume
+metadata:
+  finalizers:
+  - longhorn.io
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
+  labels:
+    longhornvolume: pvc-authentik-redis
+  name: pvc-authentik-redis
+  namespace: longhorn-system
+spec:
+  # backingImage: pvc-authentik-redis
+  dataLocality: best-effort
+  diskSelector:
+  - data
+  # - fast
+  # fromBackup: "s3://k3s-longhorn-backup@us-east-1/?backup=backup-7a3e462c5bca4c8c&volume=pvc-authentik-redis"
+  frontend: blockdev
+  # migratable: false
+  nodeSelector:
+  - fast
+  # - storage
+  numberOfReplicas: 1
+  # restoreVolumeRecurringJob: enabled
+  # revisionCounterDisabled: false
+  size: '8589934592'
+  snapshotMaxCount: 10
