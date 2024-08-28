@@ -2,11 +2,8 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  annotations:
-    argocd.argoproj.io/sync-wave: "3"
   labels:
     dev-k3s: dev
-    syncPriority: dev
   name: dev
   namespace: argocd
 
@@ -103,12 +100,12 @@ spec:
         - key: syncPriority
           operator: In
           values:
-          - stage2 #
+          - stage2
         # maxUpdate: 100%
       - matchExpressions:
         - key: syncPriority
           operator: In
           values:
-          - stage3 #
+          - stage3
         # maxUpdate: 0%
 
