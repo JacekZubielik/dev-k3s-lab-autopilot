@@ -11,7 +11,7 @@ resources:
 - resources/pv.yaml
 - resources/pvc.yaml
 - resources/volume.snapshot.yaml
-- resources/volume.yaml
+# - resources/volume.yaml
 # - resources/backing-image.yaml
 # - resources/backup.backing-image.yaml
 
