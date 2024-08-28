@@ -5,7 +5,7 @@ metadata:
   name: pvc-zigbee2mqtt-data
 spec:
   # dataSource:
-  #   name: pvc-zigbee2mqtt-data
+  #   name: pvc-zigbee2mqtt-data-backup
   #   kind: VolumeSnapshot
   #   apiGroup: snapshot.storage.k8s.io
   accessModes:
