@@ -150,9 +150,9 @@ persistence:
     existingClaim: pvc-lms-config
 
   musicstorage:
-    enabled: false
+    enabled: true
     existingClaim: pvc-musicstorage
-    # hostPath: /mnt/hdd-0/media/audio
+    hostPath: /mnt/fast-storage/media/audio
 
 # Mount devices or folders from the host machine. Can be used for USB device mounting.
 hostMounts: []

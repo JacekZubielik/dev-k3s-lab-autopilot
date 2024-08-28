@@ -20,30 +20,30 @@ spec:
       staleReplicaTimeout: "2880"
     volumeHandle: pvc-lms-config
 
-# ---
-# apiVersion: v1
-# kind: PersistentVolume
-# metadata:
-#   name: pv-musicstorage
-# spec:
-#   accessModes:
-#     - ReadWriteMany
-#   capacity:
-#     storage: 180Gi
-#   persistentVolumeReclaimPolicy: Retain
-#   volumeMode: Filesystem
-#   storageClassName: host-path
-#   hostPath:
-#     path: "/mnt/hdd-0/media/audio"
-#     type: DirectoryOrCreate
-  # nodeAffinity:
-  #   required:
-  #     nodeSelectorTerms:
-  #     - matchExpressions:
-  #       - key: kubernetes.io/hostname
-  #         operator: In
-  #         values:
-  #         - dev-k3s-master-0
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-musicstorage
+spec:
+  accessModes:
+    - ReadWriteMany
+  capacity:
+    storage: 180Gi
+  persistentVolumeReclaimPolicy: Retain
+  volumeMode: Filesystem
+  storageClassName: host-path
+  hostPath:
+    path: "/mnt/fast-backup/media/audio"
+    type: DirectoryOrCreate
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - dev-k3s-master-0
 
 # ---
 # apiVersion: v1

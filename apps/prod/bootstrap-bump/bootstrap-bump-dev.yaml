@@ -11,7 +11,7 @@ spec:
   source:
     path: apps/dev
     repoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot.git
-    targetRevision: HEAD
+    targetRevision: ""
   destination:
     namespace: argocd
     name: in-cluster
