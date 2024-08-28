@@ -19,7 +19,7 @@ spec:
   diskSelector:
   - data
   # - fast
-  fromBackup: s3://k3s-longhorn-backup@us-east-1/?backup=volume=pvc-zigbee2mqtt-dataata
+  fromBackup: s3://k3s-longhorn-backup@us-east-1/?backup=backup-4a5b6440f16041b7&volume=pvc-zigbee2mqtt-data
   frontend: blockdev
   # migratable: true
   nodeSelector:
@@ -27,4 +27,4 @@ spec:
   # - storage
   numberOfReplicas: 1
   size: '4294967296'
-  snapshotMaxCount: 20
+  snapshotMaxCount: 10
