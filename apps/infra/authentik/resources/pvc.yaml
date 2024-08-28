@@ -26,4 +26,4 @@ spec:
     requests:
       storage: 8Gi
   volumeName: pv-authentik-redis  # must reference Persistent Volume
-  storageClassName: longhorn-retain
+  storageClassName: longhorn
