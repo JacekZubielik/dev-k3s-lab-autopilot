@@ -59,7 +59,7 @@ service:
     prometheus.io/port: 9100
   labels: {}
   type: ClusterIP # LoadBalancer
-  externalIPs: "192.168.40.188" # []
+  externalIPs: []
   loadBalancerIP: [] # "192.168.40.188"
   externalTrafficPolicy: {}
   loadBalancerSourceRanges: []
