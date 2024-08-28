@@ -4,10 +4,6 @@ kind: PersistentVolumeClaim
 metadata:
   name: mosquitto
 spec:
-  # dataSource:
-  #   name: pv-mosquitto
-  #   kind: VolumeSnapshot
-  #   apiGroup: snapshot.storage.k8s.io
   accessModes:
   - ReadWriteOnce
   resources:

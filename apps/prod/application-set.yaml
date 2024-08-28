@@ -87,7 +87,7 @@ spec:
         - PrunePropagationPolicy=foreground
         - RespectIgnoreDifferences=true
         - ServerSideApply=true
-        # - SkipDryRunOnMissingResource=true
+        - SkipDryRunOnMissingResource=true
 
   strategy:
     type: RollingSync
