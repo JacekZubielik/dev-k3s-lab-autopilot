@@ -19,7 +19,7 @@ spec:
   diskSelector:
   - data
   # - fast
-  # fromBackup: "s3://k3s-longhorn-backup@us-east-1/?backup=backup-b1ff700692954c4c&volume=pvc-kuma"
+  fromBackup: s3://k3s-longhorn-backup@us-east-1/?backup=backup-6d482542d9254116&volume=pvc-kuma
   frontend: blockdev
   # migratable: true
   nodeSelector:
