@@ -1,0 +1,35 @@
+---
+apiVersion: longhorn.io/v1beta2
+kind: BackingImage
+metadata:
+  annotations:
+    # argocd.argoproj.io/sync-wave: "-2"
+  name: pvc-zigbee2mqtt-data
+  namespace: longhorn-system
+spec:
+  sourceType: restore
+  sourceParameters:
+    backup-url: s3://k3s-longhorn-backup@us-east-1/?backingImage=pvc-zigbee2mqtt-data
+    concurrent-limit: '2'
+  checksum: ""
+  minNumberOfCopies: 1
+  diskSelector:
+  - data
+  # - fast
+  nodeSelector:
+  - fast
+  - storage
+
+
+# spec:
+#   sourceType: export-from-volume
+#   sourceParameters:
+#     volume-name: pvc-zigbee2mqtt-data
+#     export-type: qcow2
+#   minNumberOfCopies: 1
+#   diskSelector:
+#   - data
+#   # - fast
+#   nodeSelector:
+#   - fast
+#   - storage
