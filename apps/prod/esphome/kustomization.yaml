@@ -1,0 +1,35 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+metadata:
+  annotations:
+    argocd.argoproj.io/compare-options: IgnoreExtraneous
+
+resources:
+- resources/pv.yaml
+- resources/pvc.yaml
+- resources/volume.yaml
+
+generators:
+- ksops-generator.yaml
+
+generatorOptions:
+  disableNameSuffixHash: true
+
+helmCharts:
+- name: esphome
+  version: 0.0.13
+  repo: https://jacekzubielik.github.io/jz-helm-charts
+  includeCRDs: false
+  namespace: esphome
+  releaseName: esphome
+  valuesFile: values.yaml
+
+configMapGenerator:
+- name: esphome-dashboard
+  literals:
+  - ESPHOME_DASHBOARD_USE_PING=true
+- name: esphome-tz
+  literals:
+  - TZ=CET
