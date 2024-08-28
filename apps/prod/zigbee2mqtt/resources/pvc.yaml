@@ -4,10 +4,10 @@ kind: PersistentVolumeClaim
 metadata:
   name: pvc-zigbee2mqtt-data
 spec:
-  dataSource:
-    name: pvc-zigbee2mqtt-data
-    kind: VolumeSnapshot
-    apiGroup: snapshot.storage.k8s.io
+  # dataSource:
+  #   name: pvc-zigbee2mqtt-data
+  #   kind: VolumeSnapshot
+  #   apiGroup: snapshot.storage.k8s.io
   accessModes:
   - ReadWriteOnce
   resources:

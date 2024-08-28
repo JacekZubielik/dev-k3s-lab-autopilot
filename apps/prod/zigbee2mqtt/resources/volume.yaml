@@ -19,7 +19,7 @@ spec:
   diskSelector:
   - data
   # - fast
-  # fromBackup: s3://k3s-longhorn-backup@us-east-1/?backup=backup-6c0ae52cdf9a4d87&volume=pvc-zigbee2mqtt-data
+  fromBackup: s3://k3s-longhorn-backup@us-east-1/?backup=volume=pvc-zigbee2mqtt-dataata
   frontend: blockdev
   # migratable: true
   nodeSelector:
