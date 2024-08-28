@@ -1,0 +1,31 @@
+---
+apiVersion: longhorn.io/v1beta2
+kind: Volume
+metadata:
+  finalizers:
+  - longhorn.io
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
+  labels:
+    longhornvolume: pvc-kuma
+    recurring-job-group.longhorn.io/group1: enabled
+    recurring-job.longhorn.io/24-hour-snapshots: enabled
+    recurring-job.longhorn.io/48-hour-backups: enabled
+  name: pvc-kuma
+  namespace: longhorn-system
+spec:
+  # backingImage: pvc-kuma
+  dataLocality: best-effort
+  diskSelector:
+  - data
+  # - fast
+  # fromBackup: "s3://k3s-longhorn-backup@us-east-1/?backup=backup-b1ff700692954c4c&volume=pvc-kuma"
+  frontend: blockdev
+  # migratable: true
+  nodeSelector:
+  - fast
+  # - storage
+  numberOfReplicas: 1
+  # restoreVolumeRecurringJob: enabled
+  size: '8589934592'
+  snapshotMaxCount: 20
