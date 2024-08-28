@@ -3,7 +3,7 @@ apiVersion: longhorn.io/v1beta2
 kind: BackingImage
 metadata:
   annotations:
-    argocd.argoproj.io/sync-wave: "-2"
+    # argocd.argoproj.io/sync-wave: "-2"
   name: pvc-zigbee2mqtt-data
   namespace: longhorn-system
 # spec:
