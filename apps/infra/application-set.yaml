@@ -128,4 +128,4 @@ spec:
           operator: In
           values:
           - bump-prod
-        maxUpdate: 100%
+        # maxUpdate: 100%

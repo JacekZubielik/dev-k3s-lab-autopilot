@@ -116,4 +116,4 @@ spec:
           operator: In
           values:
           - bump-dev
-        maxUpdate: 100%
+        # maxUpdate: 100%
