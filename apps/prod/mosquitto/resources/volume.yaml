@@ -13,7 +13,7 @@ metadata:
   name: pvc-mosquitto
   namespace: longhorn-system
 spec:
-  backingImage: pvc-mosquitto
+  # backingImage: pvc-mosquitto
   dataLocality: best-effort
   diskSelector:
   - data
