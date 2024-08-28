@@ -1,0 +1,21 @@
+.decrypted*
+.vscode
+*.crt
+*.csr
+*.key
+*.txt
+**-off
+**-old
+certs
+$HOME
+### apps
+archive
+cert
+charts
+decrypted-secrets
+freqtrader
+job
+pre-commit-config.yaml
+readme-draft
+README.md
+old-backup
