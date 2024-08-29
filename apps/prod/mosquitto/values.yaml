@@ -118,5 +118,5 @@ tolerations: []
 
 persistence:
   enabled: true
-  existingClaim: mosquitto
+  existingClaim: pvc-mosquitto
   annotations: {}
