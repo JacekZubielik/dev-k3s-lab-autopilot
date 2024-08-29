@@ -41,7 +41,6 @@ metadata:
 spec:
   cron: "0/5 * * * *"
   task: "backup-force-create" #"backup"
-  full-backup-interval: 0
   groups:
   - group1
   retain: 3

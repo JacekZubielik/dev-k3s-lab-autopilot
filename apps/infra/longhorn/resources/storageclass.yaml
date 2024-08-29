@@ -16,7 +16,7 @@ volumeBindingMode: Immediate
 parameters:
   # numberOfReplicas: "1"
   # disableRevisionCounter: "false"
-  staleReplicaTimeout: "2880" # 48 hours in minutes
+  staleReplicaTimeout: "30" # 48 hours in minutes
   # fromBackup: ""
   # migratable: "true"
   fsType: "ext4"
