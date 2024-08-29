@@ -47,6 +47,7 @@ kind: VolumeSnapshotClass
 metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "-1"
+    argocd.argoproj.io/instance: longhorn
   name: longhorn-snapshot-vsc-bi
 driver: driver.longhorn.io
 deletionPolicy: Delete # Retain
