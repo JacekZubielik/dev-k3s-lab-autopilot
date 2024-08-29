@@ -27,3 +27,4 @@ spec:
   numberOfReplicas: 1
   size: '1073741824'
   snapshotMaxCount: 20
+
