@@ -11,5 +11,5 @@ srcPath: apps/infra/traefik
 srcRepoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot.git
 srcTargetRevision: ""
 syncPriority: stage2
-syncWave: 0
+syncWave: 1
 userGivenName: traefik

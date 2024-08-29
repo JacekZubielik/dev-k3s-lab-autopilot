@@ -1,7 +1,7 @@
 ---
 # Default VolumeSnapshotClass
-kind: VolumeSnapshotClass
 apiVersion: snapshot.storage.k8s.io/v1
+kind: VolumeSnapshotClass
 metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "-1"
@@ -12,8 +12,8 @@ deletionPolicy: Delete
 
 ---
 # CSI VolumeSnapshot Associated With Longhorn Snapshot
-kind: VolumeSnapshotClass
 apiVersion: snapshot.storage.k8s.io/v1
+kind: VolumeSnapshotClass
 metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "-1"
@@ -27,8 +27,8 @@ parameters:
 
 ---
 # CSI VolumeSnapshot Associated With Longhorn Backup
-kind: VolumeSnapshotClass
 apiVersion: snapshot.storage.k8s.io/v1
+kind: VolumeSnapshotClass
 metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "-1"
@@ -42,14 +42,14 @@ parameters:
 
 ---
 # CSI VolumeSnapshot Associated With Longhorn BackingImage
-kind: VolumeSnapshotClass
 apiVersion: snapshot.storage.k8s.io/v1
+kind: VolumeSnapshotClass
 metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "-1"
   name: longhorn-snapshot-vsc-bi
 driver: driver.longhorn.io
-deletionPolicy: Retain # Delete
+deletionPolicy: Delete # Retain
 parameters:
   type: bi
   export-type: qcow2
