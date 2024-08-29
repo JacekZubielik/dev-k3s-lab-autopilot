@@ -5,6 +5,10 @@ metadata:
   name: pvc-kuma
   namespace: uptime-kuma
 spec:
+  dataSource:
+    apiGroup: snapshot.storage.k8s.io
+    kind: VolumeSnapshot
+    name: pvc-kuma-csi-backing-image
   accessModes:
   - ReadWriteOnce
   resources:

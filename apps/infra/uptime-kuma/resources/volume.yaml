@@ -9,6 +9,7 @@ metadata:
   labels:
     longhornvolume: pvc-kuma
     recurring-job-group.longhorn.io/group1: enabled
+    recurring-job.longhorn.io/5-minutes-backups: enabled
     recurring-job.longhorn.io/24-hour-snapshots: enabled
     recurring-job.longhorn.io/48-hour-backups: enabled
   name: pvc-kuma
@@ -19,7 +20,7 @@ spec:
   diskSelector:
   - data
   # - fast
-  fromBackup: s3://k3s-longhorn-backup@us-east-1/?backup=backup-6d482542d9254116&volume=pvc-kuma
+  # fromBackup: s3://k3s-longhorn-backup@us-east-1/?backup=backup-6d482542d9254116&volume=pvc-kuma
   frontend: blockdev
   # migratable: true
   nodeSelector:
