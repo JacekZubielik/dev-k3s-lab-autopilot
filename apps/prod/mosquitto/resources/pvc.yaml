@@ -5,6 +5,10 @@ metadata:
   name: pvc-mosquitto
   namespace: mosquitto
 spec:
+  dataSource:
+    apiGroup: snapshot.storage.k8s.io
+    kind: VolumeSnapshot
+    name: pvc-mosquitto-csi-backing-image
   accessModes:
   - ReadWriteOnce
   resources:
