@@ -50,7 +50,7 @@ metadata:
     argocd.argoproj.io/instance: longhorn
   name: longhorn-snapshot-vsc-bi
 driver: driver.longhorn.io
-deletionPolicy: Delete # Retain
+deletionPolicy: Delete
 parameters:
   type: bi
   export-type: qcow2
