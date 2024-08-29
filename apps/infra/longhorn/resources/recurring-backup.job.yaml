@@ -31,3 +31,19 @@ spec:
   concurrency: 2
   labels:
     job: 48-hour-backups
+
+---
+apiVersion: longhorn.io/v1beta1
+kind: RecurringJob
+metadata:
+  name: 5-minutes-backups
+  namespace: longhorn-system
+spec:
+  cron: "0/5 * * * *"
+  task: "backup"
+  groups:
+  - group1
+  retain: 3
+  concurrency: 2
+  labels:
+    job: 5-minutes-backups
