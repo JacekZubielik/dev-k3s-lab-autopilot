@@ -1,0 +1,61 @@
+initContainers:
+  - name: velero-plugin-for-aws
+    image: velero/velero-plugin-for-aws:v1.10.0
+    imagePullPolicy: IfNotPresent
+    volumeMounts:
+      - mountPath: /target
+        name: plugins
+  - name: velero-plugin-for-csi
+    image: velero/velero-plugin-for-csi:v0.7.1
+    imagePullPolicy: IfNotPresent
+    volumeMounts:
+      - mountPath: /target
+        name: plugins
+
+# Velero Configuration
+configuration:
+  backupStorageLocation:
+    - provider: aws
+      bucket: k3s-velero
+      config:
+        region: us-east-1
+        s3ForcePathStyle: true
+        # s3Url:
+      insecureSkipTLSVerify: true
+  # Enable CSI snapshot support
+  features: EnableCSI
+credentials:
+  existingSecret: velero-secret
+
+# Disable VolumeSnapshotLocation CRD. It is not needed for CSI integration
+snapshotsEnabled: false
+
+metrics:
+  enabled: true
+  scrapeInterval: 30s
+  scrapeTimeout: 10s
+
+  service:
+    annotations: {}
+    labels: {}
+
+  podAnnotations:
+    prometheus.io/scrape: "true"
+    prometheus.io/port: "8085"
+    prometheus.io/path: "/metrics"
+
+  serviceMonitor:
+    autodetect: true
+    enabled: false
+    annotations: {}
+    additionalLabels: {}
+
+  nodeAgentPodMonitor:
+    autodetect: true
+    enabled: false
+    annotations: {}
+    additionalLabels: {}
+
+  prometheusRule:
+    autodetect: true
+    enabled: false

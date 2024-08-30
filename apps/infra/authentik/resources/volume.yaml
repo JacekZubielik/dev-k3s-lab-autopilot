@@ -19,7 +19,7 @@ spec:
   diskSelector:
   - data
   # - fast
-  fromBackup: s3://k3s-longhorn-backup@us-east-1/?backup=backup-648f107f76c34ad9&volume=pvc-authentik-psql
+  # fromBackup: s3://k3s-longhorn-backup@us-east-1/?backup=backup-648f107f76c34ad9&volume=pvc-authentik-psql
   frontend: blockdev
   nodeSelector:
   - fast

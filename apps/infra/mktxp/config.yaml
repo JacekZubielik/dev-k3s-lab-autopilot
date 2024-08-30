@@ -10,6 +10,6 @@ labels: ""
 srcPath: apps/infra/mktxp
 srcRepoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot.git
 srcTargetRevision: ""
-syncPriority: stage4
-syncWave: 0
+syncPriority: stage_4
+syncWave: 3
 userGivenName: mktxp
