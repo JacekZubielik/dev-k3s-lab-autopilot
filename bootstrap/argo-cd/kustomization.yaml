@@ -40,14 +40,15 @@ configMapGenerator:
         command: [ "sh", "-c" ]
         args: [ "kustomize build --enable-helm" ]
 
-  # - |
-  #   resource.exclusions=- apiGroups:
-  #       - "snapshot.storage.k8s.io"
-  #       kinds:
-  #       - "VolumeSnapshot"
-  #       - "VolumeSnapshotContent"
-  #       clusters:
-  #       - "*"
+  - |
+  resourceExclusions: |
+    - apiGroups:
+      - velero.io
+      kinds:
+      - Backup
+      - Restore
+      clusters:
+      - "*"
 
 - behavior: merge
   name: argocd-cmd-params-cm
@@ -61,5 +62,5 @@ configMapGenerator:
 patches:
 - path: patches/ksops.yaml
 - path: patches/rbac-cm.yaml
-- path: patches/resources.yaml
+# - path: patches/resources.yaml
 # - path: patches/argocd-cm.yaml
