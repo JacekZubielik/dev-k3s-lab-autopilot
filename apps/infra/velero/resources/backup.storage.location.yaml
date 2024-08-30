@@ -14,13 +14,12 @@ spec:
   validationFrequency: 10m0s
   objectStorage:
     bucket: k3s-velero
-  # credential:
-  #   name: secret-name
-  #   key: key-in-secret
+  credential:
+    name: velero-secret
+    key: AWS_ACCESS_KEY_ID
   config:
     region: us-east-1
-    profile: "default"
-    s3ForcePathStyle: true
+    # profile: "default"
+    s3ForcePathStyle: 'true'
     s3Url: http://minio.minio.svc:9000
     # publicUrl: https://
-  insecureSkipTLSVerify: true

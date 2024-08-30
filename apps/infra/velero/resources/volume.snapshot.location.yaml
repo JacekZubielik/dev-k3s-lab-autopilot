@@ -10,9 +10,9 @@ metadata:
   namespace: velero
 spec:
   provider: aws
-  # credential:
-  #   name: secret-name
-  #   key: key-in-secret
+  credential:
+    name: velero-secret
+    key: AWS_ACCESS_KEY_ID
   config:
     region: us-east-1
     profile: "default"

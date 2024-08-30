@@ -10,6 +10,6 @@ labels: ""
 srcPath: apps/infra/csi-external-snapshotter
 srcRepoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot.git
 srcTargetRevision: ""
-syncPriority: stage_4
-syncWave: 1
+syncPriority: stage_1
+syncWave: 2
 userGivenName: csi-external-snapshotter
