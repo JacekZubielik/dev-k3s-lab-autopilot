@@ -20,28 +20,28 @@ configuration:
   features: EnableCSI
 
   backupStorageLocation:
-    - name: minio
-      provider: aws
-      bucket: k3s-velero
-      validationFrequency: 10m0s
-      accessMode: ReadWrite
-      credential:
-        name: velero-secret
-        key: AWS_ACCESS_KEY_ID
-      config:
-        region: us-east-1
-        s3ForcePathStyle: true
-        s3Url: http://minio.minio.svc:9000
-        publicUrl: http://localhost:9000
+  - name: minio
+    provider: aws
+    bucket: k3s-velero
+    validationFrequency: 10m0s
+    accessMode: ReadWrite
+    credential:
+      name: velero-secret
+      key: AWS_ACCESS_KEY_ID
+    config:
+      region: us-east-1
+      s3ForcePathStyle: true
+      s3Url: http://minio.minio.svc:9000
+      publicUrl: http://localhost:9000
 
-    volumeSnapshotLocation:
-      - name: default
-        provider: aws
-        credential:
-          name: velero-secret
-          key: AWS_ACCESS_KEY_ID
-        config:
-          region: us-east-1
+  volumeSnapshotLocation:
+  - name: default
+    provider: aws
+    credential:
+      name: velero-secret
+      key: AWS_ACCESS_KEY_ID
+    config:
+      region: us-east-1
 
     features: EnableCSI
 
