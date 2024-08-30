@@ -1,0 +1,18 @@
+---
+apiVersion: velero.io/v1
+kind: Backup
+metadata:
+  name: test-backup
+  namespace: velero
+  annotations:
+    velero.io/csi-volumesnapshot-class_driver.longhorn.io: "longhorn-backup-vsc"
+    scheduled: "yes"
+  labels:
+    scheduled: "yes"
+    velero.io/schedule-name: "full-backup"
+spec:
+  defaultVolumesToFsBackup: false
+  includedNamespaces:
+    - uptime-kuma
+  ttl: 720h0m0s
+  storageLocation: minio

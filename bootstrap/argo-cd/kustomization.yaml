@@ -61,4 +61,5 @@ configMapGenerator:
 patches:
 - path: patches/ksops.yaml
 - path: patches/rbac-cm.yaml
+- path: patches/resources.yaml
 # - path: patches/argocd-cm.yaml

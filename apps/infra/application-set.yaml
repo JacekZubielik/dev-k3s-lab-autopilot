@@ -131,4 +131,4 @@ spec:
       #     operator: In
       #     values:
       #     - bump_prod
-        # maxUpdate: 100%
+      #   # maxUpdate: 100%

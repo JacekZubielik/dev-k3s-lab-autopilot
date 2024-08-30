@@ -1,0 +1,20 @@
+---
+apiVersion: velero.io/v1
+kind: Restore
+metadata:
+  name: test-restore-schedule
+  namespace: velero
+spec:
+  backupName: test-backup
+  includedNamespaces:
+  - 'uptime-kuma'
+  includedResources:
+  - 'pv'
+  - 'pvc'
+  restoreStatus:
+    includedResources:
+    - workflows
+    excludedResources: []
+  includeClusterResources: null
+  restorePVs: true
+  scheduleName: full-backup
