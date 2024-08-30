@@ -4,18 +4,17 @@ namespace: velero
 
 resources:
 - resources/ns.yaml
-- resources/velero-externalsecret.yaml
-- resources/volume-snapshot.yaml
-- resources/servicemonitor.yaml
 - resources/schedule.yaml
+- resources/servicemonitor.yaml
+
+generators:
+- ksops-generator.yaml
 
 helmCharts:
   - name: velero
-    repo: https://vmware-tanzu.github.io/helm-charts
     version: 7.1.5
-    releaseName: "velero"
-    namespace: velero
-    valuesFile: values.yaml
+    repo: https://vmware-tanzu.github.io/helm-charts
     includeCRDs: true
-    additionalValuesFiles:
-      - values.yaml
+    namespace: velero
+    releaseName: velero
+    valuesFile: values.yaml
