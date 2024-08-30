@@ -2,38 +2,34 @@ replicas: 1
 updateStrategy:
   type: RollingUpdate
 
-
 initContainers:
-  - name: velero-plugin-for-aws
-    image: velero/velero-plugin-for-aws:v1.10.0
-    imagePullPolicy: IfNotPresent
-    volumeMounts:
-      - mountPath: /target
-        name: plugins
-  # - name: velero-plugin-for-csi
-  #   image: velero/velero-plugin-for-csi:v0.7.1
-  #   imagePullPolicy: IfNotPresent
-  #   volumeMounts:
-  #     - mountPath: /target
-  #       name: plugins
+- name: velero-plugin-for-aws
+  image: velero/velero-plugin-for-aws:v1.10.0
+  imagePullPolicy: IfNotPresent
+  volumeMounts:
+  - mountPath: /target
+    name: plugins
+- name: velero-plugin-for-csi
+  image: velero/velero-plugin-for-csi:v0.7.1
+  imagePullPolicy: IfNotPresent
+  volumeMounts:
+  - mountPath: /target
+    name: plugins
 
-# Velero Configuration
 configuration:
-  backupStorageLocation:
-    - provider: aws
-      bucket: k3s-velero
-      config:
-        region: us-east-1
-        s3ForcePathStyle: true
-        # s3Url:
-      insecureSkipTLSVerify: true
-  # Enable CSI snapshot support
   features: EnableCSI
+
+
 credentials:
   existingSecret: velero-secret
 
 # Disable VolumeSnapshotLocation CRD. It is not needed for CSI integration
-snapshotsEnabled: false
+snapshotsEnabled: true
+backupsEnabled: true
+
+deployNodeAgent: true
+
+upgradeCRDs: true
 
 metrics:
   enabled: true
