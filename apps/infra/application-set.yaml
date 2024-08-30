@@ -126,9 +126,9 @@ spec:
           values:
           - stage_5
         # maxUpdate: 100%
-      - matchExpressions:
-        - key: syncPriority
-          operator: In
-          values:
-          - bump_prod
+      # - matchExpressions:
+      #   - key: syncPriority
+      #     operator: In
+      #     values:
+      #     - bump_prod
         # maxUpdate: 100%
