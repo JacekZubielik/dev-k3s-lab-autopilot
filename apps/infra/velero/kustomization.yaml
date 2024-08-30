@@ -18,10 +18,10 @@ generatorOptions:
   disableNameSuffixHash: true
 
 helmCharts:
-  - name: velero
-    version: 7.1.5
-    repo: https://vmware-tanzu.github.io/helm-charts
-    includeCRDs: true
-    namespace: velero
-    releaseName: velero
-    valuesFile: values.yaml
+- name: velero
+  version: 7.1.5
+  repo: https://vmware-tanzu.github.io/helm-charts
+  includeCRDs: true
+  namespace: velero
+  releaseName: velero
+  valuesFile: values.yaml

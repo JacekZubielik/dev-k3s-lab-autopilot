@@ -13,6 +13,6 @@ metadata:
 spec:
   defaultVolumesToFsBackup: false
   includedNamespaces:
-    - uptime-kuma
+  - uptime-kuma
   ttl: 720h0m0s
   storageLocation: minio
