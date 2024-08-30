@@ -3,7 +3,7 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-- resources/backup.storage.location.yaml
+# - resources/backup.storage.location.yaml
 - resources/ns.yaml
 - resources/servicemonitor.yaml
 - resources/volume.snapshot.location.yaml
@@ -25,3 +25,27 @@ helmCharts:
   namespace: velero
   releaseName: velero
   valuesFile: values.yaml
+
+patchesStrategicMerge:
+  - |
+    apiVersion: velero.io/v1
+    kind: BackupStorageLocation
+    metadata:
+      name: default
+      namespace: velero
+    spec:
+      accessMode: ReadWrite
+      backupSyncPeriod: 2m0s
+      provider: aws
+      validationFrequency: 10m0s
+      objectStorage:
+        bucket: k3s-velero
+      credential:
+        name: velero-secret
+        key: AWS_ACCESS_KEY_ID
+      config:
+        region: us-east-1
+        # profile: "default"
+        s3ForcePathStyle: 'true'
+        s3Url: http://minio.minio.svc:9000
+        # publicUrl: https://
