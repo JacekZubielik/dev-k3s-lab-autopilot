@@ -10,6 +10,6 @@ labels: ""
 srcPath: apps/prod
 srcRepoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot.git
 srcTargetRevision: ""
-syncPriority: bump-prod
+syncPriority: bump_prod
 syncWave: 0
 userGivenName: bootstrap-bump-prod

@@ -154,6 +154,12 @@ buckets:
   purge: true
   versioning: false
 
+- name: k3s-velero
+  objectlocking: false
+  policy: private
+  purge: true
+  versioning: false
+
 users:
 - accessKey: authentik
   existingSecret: minio-secret
@@ -175,6 +181,10 @@ users:
   existingSecret: minio-secret
   existingSecretKey: tempoPassword
   policy: tempo
+- accessKey: velero
+  existingSecret: minio-secret
+  existingSecretKey: veleroPassword
+  policy: velero
 
 policies:
 - name: authentik
@@ -256,6 +266,24 @@ policies:
   - resources:
     - 'arn:aws:s3:::k3s-tempo'
     - 'arn:aws:s3:::k3s-tempo/*'
+    actions:
+    - "s3:AbortMultipartUpload"
+    - "s3:GetObject"
+    - "s3:DeleteObject"
+    - "s3:PutObject"
+    - "s3:ListMultipartUploadParts"
+    - "s3:GetBucketLocation"
+    - "s3:ListBucket"
+    - "s3:ListBucketMultipartUploads"
+    - "s3:GetObjectTagging"
+    - "s3:PutObjectTagging"
+    effect: "Allow"
+
+- name: velero
+  statements:
+  - resources:
+    - 'arn:aws:s3:::k3s-velero'
+    - 'arn:aws:s3:::k3s-velero/*'
     actions:
     - "s3:AbortMultipartUpload"
     - "s3:GetObject"

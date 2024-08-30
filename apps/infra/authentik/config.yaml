@@ -10,6 +10,6 @@ labels: ""
 srcPath: apps/infra/authentik
 srcRepoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot.git
 srcTargetRevision: ""
-syncPriority: stage5
-syncWave: 0
+syncPriority: stage_5
+syncWave: 1
 userGivenName: authentik
