@@ -6,7 +6,7 @@
 apiVersion: velero.io/v1
 kind: VolumeSnapshotLocation
 metadata:
-  name: minio
+  name: default
   namespace: velero
 spec:
   provider: aws
