@@ -31,7 +31,7 @@ apiVersion: snapshot.storage.k8s.io/v1
 kind: VolumeSnapshotClass
 metadata:
   annotations:
-    argocd.argoproj.io/sync-wave: "-1"
+    # argocd.argoproj.io/sync-wave: "-1"
     argocd.argoproj.io/instance: longhorn
   labels:
     velero.io/csi-volumesnapshot-class: "true"
