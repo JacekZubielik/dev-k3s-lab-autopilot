@@ -29,4 +29,4 @@ spec:
   numberOfReplicas: 1
   # restoreVolumeRecurringJob: enabled
   size: '8589934592'
-  snapshotMaxCount: 20
+  snapshotMaxCount: 10
