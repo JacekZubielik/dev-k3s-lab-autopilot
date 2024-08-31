@@ -12,7 +12,7 @@ spec:
   provider: aws
   credential:
     name: velero-secret
-    key: cloud
+    key: default
   config:
     region: us-east-1
     profile: "default"
