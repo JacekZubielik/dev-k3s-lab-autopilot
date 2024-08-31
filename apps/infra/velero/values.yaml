@@ -49,8 +49,8 @@ credentials:
   secretContents:
     cloud: |
       [default]
-      aws_access_key_id= MEh5a0pDbWJmZmJUNjFWQ01TNFQ=
-      aws_secret_access_key= bnlLdFBZeVl0VUVpS045ZkpzWnZKVHNiZkFSMlZ4alk5eTlmYmFpWA==
+      aws_access_key_id= TVRXRkR0VUlEUTRNaXZ0MnprZjk=
+      aws_secret_access_key= bmVucDh5Z2JURXQyRjJScGdrZ0xIRFNXT0VVZVJEOVVUSjdiV3cwdQ==
 
 
 # Disable VolumeSnapshotLocation CRD. It is not needed for CSI integration
