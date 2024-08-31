@@ -2,7 +2,7 @@
 apiVersion: velero.io/v1
 kind: Backup
 metadata:
-  name: test-backup-longhorn-backup-vsc
+  name: test-backup-longhorn-snapshot-vsc-bi
   namespace: velero
   annotations:
     # argocd.argoproj.io/hook: PostSync

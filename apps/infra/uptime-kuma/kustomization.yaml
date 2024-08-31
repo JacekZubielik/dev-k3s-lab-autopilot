@@ -8,6 +8,7 @@ metadata:
 
 resources:
 - resources/backing-image.yaml
+- resources/backup.backing-image.yaml
 - resources/pv.yaml
 - resources/pvc.yaml
 - resources/volume.yaml
