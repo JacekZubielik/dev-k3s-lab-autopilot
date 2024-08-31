@@ -21,5 +21,5 @@ spec:
     region: us-east-1
     # profile: "default"
     s3ForcePathStyle: 'true'
-    s3Url: http://minio.minio.svc:9000
+    s3Url: http://192.168.40.187:9000
     # publicUrl: https://
