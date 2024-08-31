@@ -20,7 +20,7 @@ configuration:
   features: EnableCSI
 
   backupStorageLocation:
-  - name: minio
+  - name: default
     provider: aws
     bucket: k3s-velero
     validationFrequency: 10m0s

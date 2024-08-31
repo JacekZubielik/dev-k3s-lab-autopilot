@@ -5,7 +5,7 @@
 apiVersion: velero.io/v1
 kind: BackupStorageLocation
 metadata:
-  name: default
+  name: minio
   namespace: velero
 spec:
   accessMode: ReadWrite
