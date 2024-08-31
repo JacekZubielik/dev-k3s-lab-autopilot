@@ -6,3 +6,4 @@ metadata:
   labels:
     velero.io/csi-volumesnapshot-class: "true"
 driver: disk.csi.cloud.com
+deletionPolicy: Delete
