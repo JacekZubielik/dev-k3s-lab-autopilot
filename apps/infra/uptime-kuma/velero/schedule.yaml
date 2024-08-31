@@ -15,7 +15,7 @@ spec:
     includedNamespaces:
     - '*'
     includedResources:
-    - '*'
+    # - '*'
     - 'pv'
     - 'pvc'
     includeClusterResources: true
