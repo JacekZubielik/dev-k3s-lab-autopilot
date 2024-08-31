@@ -15,8 +15,8 @@ spec:
   objectStorage:
     bucket: k3s-velero
   credential:
-    name: velero-secret
-    key: minio # cloud
+    name: cloud
+    key: default
   config:
     region: us-east-1
     profile: "default"
