@@ -2,11 +2,11 @@
 apiVersion: velero.io/v1
 kind: Backup
 metadata:
-  name: test-backup
+  name: test-backup-longhorn-backup-vsc
   namespace: velero
   annotations:
-    # velero.io/csi-volumesnapshot-class_driver.longhorn.io: "longhorn-backup-vsc"
-    velero.io/csi-volumesnapshot-class_disk.csi.cloud.com: "test-snapclass"
+    velero.io/csi-volumesnapshot-class_driver.longhorn.io: "longhorn-backup-vsc"
+    # velero.io/csi-volumesnapshot-class_disk.csi.cloud.com: "test-snapclass"
     scheduled: "yes"
   labels:
     scheduled: "yes"
