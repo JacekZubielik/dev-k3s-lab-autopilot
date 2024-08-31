@@ -10,7 +10,7 @@ resources:
 # - resources/backup.yaml
 # - resources/restore.yaml
 # - resources/schedule.yaml
-# - resources/volume.snapshotclass.yaml
+- resources/volume.snapshotclass.yaml
 
 generators:
 - ksops-generator.yaml
