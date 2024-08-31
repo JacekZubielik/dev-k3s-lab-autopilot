@@ -10,6 +10,6 @@ labels: ""
 srcPath: apps/infra/velero
 srcRepoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot.git
 srcTargetRevision: ""
-syncPriority: stage_3
-syncWave: 0
+syncPriority: stage_2
+syncWave: 1
 userGivenName: velero

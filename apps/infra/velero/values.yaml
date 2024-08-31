@@ -17,7 +17,7 @@ initContainers:
     name: plugins
 
 configuration:
-  # features: EnableCSI
+  features: EnableCSI
 
   backupStorageLocation:
   - name: default
