@@ -14,9 +14,9 @@ spec:
   validationFrequency: 10m0s
   objectStorage:
     bucket: k3s-velero
-  credential:
-    name: velero-secret
-    key: default
+  # credential:
+  #   name: velero-secret
+  #   key: default
   config:
     region: us-east-1
     profile: "default"
