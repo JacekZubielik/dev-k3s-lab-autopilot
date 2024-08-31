@@ -42,8 +42,7 @@ spec:
   cron: "0/5 * * * *"
   task: "backup-force-create" # "backup"
   groups:
-  - default
-  - group1
+  - group2
   retain: 3
   concurrency: 2
   labels:
