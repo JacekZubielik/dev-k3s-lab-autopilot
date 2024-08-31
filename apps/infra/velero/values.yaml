@@ -25,9 +25,9 @@ configuration:
     bucket: k3s-velero
     validationFrequency: 10m0s
     accessMode: ReadWrite
-    credential:
-      name: velero-secret
-      key: AWS_ACCESS_KEY_ID
+    # credential:
+    #   name: velero-secret
+    #   key: AWS_ACCESS_KEY_ID
     config:
       region: us-east-1
       s3ForcePathStyle: true
@@ -37,14 +37,11 @@ configuration:
   volumeSnapshotLocation:
   - name: default
     provider: aws
-    credential:
-      name: velero-secret
-      key: AWS_ACCESS_KEY_ID
+    # credential:
+    #   name: velero-secret
+    #   key: AWS_ACCESS_KEY_ID
     config:
       region: us-east-1
-
-    features: EnableCSI
-
 
 
 credentials:
