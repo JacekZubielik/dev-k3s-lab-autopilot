@@ -39,7 +39,7 @@ metadata:
 driver: driver.longhorn.io
 deletionPolicy: Delete
 parameters:
-  type: full # bak
+  type: bak
   # type: longhorn-backup
 
 ---
