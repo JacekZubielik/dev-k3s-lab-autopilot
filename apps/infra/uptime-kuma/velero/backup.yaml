@@ -11,7 +11,7 @@ metadata:
     scheduled: "yes"
     velero.io/schedule-name: "full-backup"
 spec:
-  defaultVolumesToFsBackup: false
+  defaultVolumesToFsBackup: true
   includedNamespaces:
   - uptime-kuma
   ttl: 1h0m0s
