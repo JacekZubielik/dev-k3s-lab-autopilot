@@ -11,7 +11,7 @@ metadata:
 spec:
   provider: aws
   credential:
-    name: cloud
+    name: velero-secret
     key: default
   config:
     region: us-east-1

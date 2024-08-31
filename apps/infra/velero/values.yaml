@@ -25,9 +25,9 @@ configuration:
     bucket: k3s-velero
     validationFrequency: 10m0s
     accessMode: ReadWrite
-    # credential:
-    #   name: cloud
-    #   key: default
+    credential:
+      name: velero-secret
+      key: default
     config:
       region: us-east-1
       s3ForcePathStyle: true
@@ -37,20 +37,21 @@ configuration:
   volumeSnapshotLocation:
   - name: default
     provider: aws
-    # credential:
-    #   name: cloud
-    #   key: default
+    credential:
+      name: velero-secret
+      key: default
     config:
       region: us-east-1
 
 credentials:
-  # existingSecret: velero-secret
+  useSecret: true
+  existingSecret: velero-secret
 
-  secretContents:
-    cloud: |
-      [default]
-      aws_access_key_id= MTWFDtUIDQ4Mivt2zkf9
-      aws_secret_access_key= nenp8ygbTEt2F2RpgkgLHDSWOEUeRD9UTJ7bWw0u
+  # secretContents:
+  #   cloud: |
+  #     [default]
+  #     aws_access_key_id= MTWFDtUIDQ4Mivt2zkf9
+  #     aws_secret_access_key= nenp8ygbTEt2F2RpgkgLHDSWOEUeRD9UTJ7bWw0u
 
 
 # Disable VolumeSnapshotLocation CRD. It is not needed for CSI integration
