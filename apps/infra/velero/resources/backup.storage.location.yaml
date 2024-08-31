@@ -16,7 +16,7 @@ spec:
     bucket: k3s-velero
   credential:
     name: velero-secret
-    key: AWS_ACCESS_KEY_ID
+    key: cloud
   config:
     region: us-east-1
     # profile: "default"
