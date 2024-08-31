@@ -1,0 +1,164 @@
+---
+image:
+  repository: louislam/uptime-kuma
+  tag: ""
+  pullPolicy: IfNotPresent
+  PullSecrets: []
+
+# If this option  set to false a StateFulset instead of a Deployment is used
+useDeploy: false
+
+nameOverride: ""
+fullnameOverride: ""
+revisionHistoryLimit: 4
+hostNetwork: false
+
+# strategyType: RollingUpdate
+
+replicas: 1
+updateStrategy:
+  type: RollingUpdate
+  # rollingUpdate:
+  #   maxUnavailable: 0
+  #   maxSurge: 1
+
+serviceAccount:
+  create: true
+  annotations: {}
+  automountServiceAccountToken: false
+
+podAnnotations: {}
+podLabels: {}
+
+extraEnv: {}
+
+env:
+- name: TZ
+  valueFrom:
+    configMapKeyRef:
+      name: kuma-tz
+      key: TZ
+- name: UPTIME_KUMA_PORT
+  valueFrom:
+    configMapKeyRef:
+      name: kuma-config
+      key: UPTIME_KUMA_PORT
+
+extraEnvSecrets:
+  # This will set ${MQTT_PASSWORD} to the 'password' key from the 'mqtt' secret
+  # MQTT_PASSWORD:
+  #   secret: mqtt
+  #   key: password
+
+## If you'd like to provide your own Kubernetes Secret object instead of passing your values
+## individually, pass in the name of a created + populated Secret.
+## All secrets will be mounted as environment variables, with each key/value mapping to a
+## corresponding environment variable.
+extraSecretForEnvFrom: []
+# - esphome-secrets
+
+podSecurityContext: {}
+  # fsGroup: 2000
+  # privileged: true
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+service:
+  annotations:
+    prometheus.io/scrape: "true"
+    prometheus.io/port: 9100
+  labels: {}
+  type: LoadBalancer
+  externalIPs: []
+  loadBalancerIP: "192.168.40.192"
+  externalTrafficPolicy: {}
+  loadBalancerSourceRanges: []
+  publishNotReadyAddresses: false
+  httpPort: 3001
+  metricsPort: 9100
+
+monitoring:
+  enabled: true
+  serviceMonitor:
+    enabled: true
+    annotations:
+      prometheus.io/scrape: "true"
+      prometheus.io/port: 9100
+    labels: {}
+    honorLabels: true
+    interval: 60s
+    selector: {}
+    namespace: monitoring
+    scrapeTimeout: 10s
+    scheme: http
+    tlsConfig: {}
+    relabelings:
+    - action: replace
+      regex: ^(.*)$
+      replacement: $1
+      separator: ;
+      sourceLabels:
+      - __meta_kubernetes_pod_node_name
+      targetLabel: nodename
+    metricRelabelings:
+    - action: keep
+      regex: 'kube_(daemonset|deployment|pod|namespace|node|statefulset).+'
+      sourceLabels:
+      - __name__
+    bearerTokenFile: {}
+    # (use long lived access tokens)
+    bearerTokenSecret: {}
+      # name:
+      # key:
+      # optional:
+
+livenessProbe:
+  enabled: true
+  periodSeconds: 60
+  timeoutSeconds: 10
+  successThreshold: 1
+  failureThreshold: 6
+  initialDelaySeconds: 30
+readinessProbe:
+  enabled: true
+  periodSeconds: 60
+  timeoutSeconds: 10
+  successThreshold: 1
+  failureThreshold: 6
+  initialDelaySeconds: 30
+startupProbe:
+  enabled: true
+  successThreshold: 1
+  failureThreshold: 6
+
+ingress:
+  enabled: false
+
+resources: {}
+#   requests:
+#     cpu: "1"
+#     memory: "256Mi"
+#   limits:
+#     cpu: "1"
+#     memory: "512Mi"
+
+nodeSelector:
+  kubernetes.io/hostname: dev-k3s-master-0
+affinity: {}
+tolerations: []
+
+persistence:
+  enabled: true
+  existingClaim: pvc-kuma
+
+# Mount devices or folders from the host machine. Can be used for USB device mounting.
+hostMounts: []
+  # Example
+  # - name: cdrw
+  #   hostPath: /dev/cdrw
