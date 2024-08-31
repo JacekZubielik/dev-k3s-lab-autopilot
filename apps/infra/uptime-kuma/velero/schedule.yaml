@@ -10,7 +10,7 @@ metadata:
 spec:
   schedule: '0/5 * * * *'
   template:
-    storageLocation: minio
+    storageLocation: default
     hooks: {}
     includedNamespaces:
     - '*'

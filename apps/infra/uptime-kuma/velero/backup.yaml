@@ -15,4 +15,4 @@ spec:
   includedNamespaces:
   - uptime-kuma
   ttl: 1h0m0s
-  storageLocation: minio
+  storageLocation: default
