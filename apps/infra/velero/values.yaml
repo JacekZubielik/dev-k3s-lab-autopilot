@@ -27,7 +27,7 @@ configuration:
     accessMode: ReadWrite
     credential:
       name: velero-secret
-    #   key: AWS_ACCESS_KEY_ID
+      key: cloud
     config:
       region: us-east-1
       s3ForcePathStyle: true
@@ -39,7 +39,7 @@ configuration:
     provider: aws
     credential:
       name: velero-secret
-    #   key: AWS_ACCESS_KEY_ID
+      key: cloud
     config:
       region: us-east-1
 
