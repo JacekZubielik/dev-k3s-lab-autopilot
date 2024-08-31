@@ -8,12 +8,13 @@ metadata:
 
 resources:
 - resources/backing-image.yaml
-- resources/backup.backing-image.yaml
+
 - resources/pv.yaml
 - resources/pvc.yaml
 - resources/volume.yaml
 - velero/backup.yaml # velero backup test
 - velero/schedule.yaml # velero backup test
+- velero/backup.backing-image.yaml
 # - velero/restore.yaml
 
 # generators:
