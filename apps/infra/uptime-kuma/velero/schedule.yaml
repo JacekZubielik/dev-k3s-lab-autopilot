@@ -10,7 +10,7 @@ metadata:
 spec:
   schedule: '0/5 * * * *' # 5-minutes-backups
   template:
-    storageLocation: minio
+    storageLocation: default
     hooks: {}
     includedNamespaces:
     - '*'
