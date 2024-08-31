@@ -8,6 +8,7 @@ kind: Kustomization
 #     argocd.argoproj.io/compare-options: IgnoreExtraneous
 
 resources:
+- resources/ns.yaml
 - resources/servicemonitor.yaml
 # - resources/cert.default.svc.yaml
 # - resources/issuer.default.svc.yaml
