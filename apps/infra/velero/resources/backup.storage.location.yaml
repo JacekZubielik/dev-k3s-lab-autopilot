@@ -8,18 +8,19 @@ metadata:
   name: minio
   namespace: velero
 spec:
-  accessMode: ReadWrite
-  backupSyncPeriod: 2m0s
   provider: aws
-  validationFrequency: 10m0s
   objectStorage:
     bucket: k3s-velero
   credential: # optional (if not set, default credentials secret is used)
     name: velero-secret
     key: cloud
   config:
+    profile: "minio" # AWS profile within the credentials file to use for the volume snapshot location.
     region: us-east-1
-    profile: "minio"
     s3ForcePathStyle: 'true'
     s3Url: http://minio.minio.svc:9000
-    # publicUrl: https://
+    publicUrl: "https://minio.mycluster.com"
+    serverSideEncryption: AES256
+    insecureSkipTLSVerify: "true"
+    checksumAlgorithm: "CRC32"
+    tagging: ""

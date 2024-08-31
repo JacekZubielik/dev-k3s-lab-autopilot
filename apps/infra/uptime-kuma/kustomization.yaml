@@ -10,10 +10,9 @@ resources:
 - resources/pv.yaml
 - resources/pvc.yaml
 - resources/volume.yaml
-# velero backup test
-- velero/backup.yaml
+- velero/backup.yaml # velero backup test
+- velero/schedule.yaml # velero backup test
 # - velero/restore.yaml
-- velero/schedule.yaml
 
 # generators:
 # - ksops-generator.yaml

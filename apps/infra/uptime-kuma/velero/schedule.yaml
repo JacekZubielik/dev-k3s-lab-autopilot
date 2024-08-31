@@ -5,17 +5,17 @@ metadata:
   annotations:
     argocd.argoproj.io/compare-options: IgnoreExtraneous
     argocd.argoproj.io/sync-options: Delete=false,Prune=false
-  name: full-backup
+  name: 5-minutes-full-backup
   namespace: velero
 spec:
-  schedule: '0/5 * * * *' # 5-minutes-backups
+  schedule: '0/5 * * * *'
   template:
     storageLocation: minio
     hooks: {}
     includedNamespaces:
     - '*'
     includedResources:
-    # - '*'
+    - '*'
     - 'pv'
     - 'pvc'
     includeClusterResources: true
