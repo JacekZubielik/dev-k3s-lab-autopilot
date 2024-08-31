@@ -9,7 +9,7 @@ metadata:
     scheduled: "yes"
   labels:
     scheduled: "yes"
-    velero.io/schedule-name: "full-backup"
+    velero.io/schedule-name: "5-minutes-full-backup"
 spec:
   defaultVolumesToFsBackup: true
   includedNamespaces:
