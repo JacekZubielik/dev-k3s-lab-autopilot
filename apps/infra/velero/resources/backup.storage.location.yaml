@@ -14,12 +14,12 @@ spec:
   validationFrequency: 10m0s
   objectStorage:
     bucket: k3s-velero
-  # credential:
-  #   name: velero-secret
-  #   key: default
+  credential: # optional (if not set, default credentials secret is used)
+    name: velero-secret
+    key: cloud
   config:
     region: us-east-1
-    profile: "default"
+    profile: "minio"
     s3ForcePathStyle: 'true'
-    s3Url: http://192.168.40.187:9000
+    s3Url: http://minio.minio.svc:9000
     # publicUrl: https://
