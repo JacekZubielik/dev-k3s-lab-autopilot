@@ -27,9 +27,10 @@ configuration:
     accessMode: ReadWrite
     credential:
       name: velero-secret
-      key: default
+      key: cloud
     config:
       region: us-east-1
+      profile: "default"
       s3ForcePathStyle: true
       s3Url: http://minio.minio.svc:9000
       # publicUrl: http://localhost:9000
@@ -39,9 +40,10 @@ configuration:
     provider: aws
     credential:
       name: velero-secret
-      key: default
+      key: cloud
     config:
       region: us-east-1
+      profile: "default"
 
 credentials:
   useSecret: true
