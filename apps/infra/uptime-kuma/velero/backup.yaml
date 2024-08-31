@@ -14,5 +14,5 @@ spec:
   defaultVolumesToFsBackup: false
   includedNamespaces:
   - uptime-kuma
-  ttl: 720h0m0s
-  storageLocation: minio
+  ttl: 1h0m0s
+  storageLocation: default
