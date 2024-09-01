@@ -19,6 +19,8 @@ generators:
 
 generatorOptions:
   disableNameSuffixHash: true
+  labels:
+    component: cert-manager
 
 helmCharts:
 - name: cert-manager

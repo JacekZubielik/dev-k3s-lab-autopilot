@@ -31,6 +31,8 @@ configMapGenerator:
 
 generatorOptions:
   disableNameSuffixHash: true
+  labels:
+    component: uptime-kuma
 
 helmCharts:
 - name: uptime-kuma

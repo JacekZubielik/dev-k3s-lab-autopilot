@@ -2,11 +2,11 @@
 apiVersion: velero.io/v1
 kind: Backup
 metadata:
-  name: test-backup-longhorn-snapshot-vsc-bi
+  name: test-backup-longhorn-backup-vsc-bi
   namespace: velero
   annotations:
-    # argocd.argoproj.io/hook: PostSync
-    argocd.argoproj.io/sync-wave: "4"
+    argocd.argoproj.io/hook: PostSync
+    # argocd.argoproj.io/sync-wave: "4"
     velero.io/csi-volumesnapshot-class_driver.longhorn.io: "longhorn-backup-vsc-bi"
     scheduled: "yes"
   labels:
