@@ -11,7 +11,7 @@ metadata:
 spec:
   schedule: '0/5 * * * *'
   template:
-    storageLocation: s3-minio
+    storageLocation: minio
     hooks: {}
     includedNamespaces:
     - uptime-kuma
