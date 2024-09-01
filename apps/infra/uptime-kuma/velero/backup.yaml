@@ -20,9 +20,9 @@ spec:
   storageLocation: default
   orderedResources:
     persistentvolumes: pvc-uptime-kuma
-  snapshotVolumes: pvc-uptime-kuma
-  volumeSnapshotLocations:
-  - default
+  # snapshotVolumes: pvc-uptime-kuma
+  # volumeSnapshotLocations:
+  # - default
   snapshotMoveData: true
   datamover: velero
   uploaderConfig:
