@@ -8,7 +8,6 @@ metadata:
     argocd.argoproj.io/hook: PostSync
     # argocd.argoproj.io/sync-wave: "2"
     velero.io/csi-volumesnapshot-class_driver.longhorn.io: "longhorn-backup-vsc"
-    # velero.io/csi-volumesnapshot-class_disk.csi.cloud.com: "test-snapclass"
     scheduled: "yes"
   labels:
     scheduled: "yes"
@@ -19,3 +18,12 @@ spec:
   - uptime-kuma
   ttl: 1h0m0s
   storageLocation: default
+  orderedResources:
+    persistentvolumes: pvc-uptime-kuma
+  snapshotVolumes: pvc-uptime-kuma
+  volumeSnapshotLocations:
+  - default
+  snapshotMoveData: true
+  datamover: velero
+  uploaderConfig:
+      parallelFilesUpload: 10
