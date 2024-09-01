@@ -24,6 +24,8 @@ configMapGenerator:
 
 generatorOptions:
   disableNameSuffixHash: true
+  labels:
+    component: home-assistant
 
 helmCharts:
 - name: home-assistant

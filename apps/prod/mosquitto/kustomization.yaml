@@ -22,6 +22,8 @@ configMapGenerator:
 
 generatorOptions:
   disableNameSuffixHash: true
+  labels:
+    component: mosquitto
 
 helmCharts:
 - name: mosquitto

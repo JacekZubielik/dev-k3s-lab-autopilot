@@ -16,6 +16,8 @@ generators:
 
 generatorOptions:
   disableNameSuffixHash: true
+  labels:
+    component: syncthing
 
 helmCharts:
 - name: syncthing

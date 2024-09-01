@@ -17,6 +17,8 @@ generators:
 
 generatorOptions:
   disableNameSuffixHash: true
+  labels:
+    component: lms
 
 helmCharts:
 - name: lms

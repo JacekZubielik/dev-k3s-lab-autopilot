@@ -17,6 +17,8 @@ generators:
 
 generatorOptions:
   disableNameSuffixHash: true
+  labels:
+    component: zigbee2mqtt
 
 helmCharts:
 - name: zigbee2mqtt
