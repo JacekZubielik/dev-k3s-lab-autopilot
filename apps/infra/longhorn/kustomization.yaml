@@ -2,15 +2,20 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
+metadata:
+  annotations:
+    argocd.argoproj.io/compare-options: IgnoreExtraneous
+    argocd.argoproj.io/sync-options: Delete=true,Prune=true
+
 resources:
 - resources/ns.yaml
 - resources/prometheus.rule.yaml
-- resources/recurring-backup.job.yaml
-- resources/recurring-snapshot.job.yaml
+- resources/recurring.backup.job.yaml
+- resources/recurring.snapshot.job.yaml
 - resources/service.yaml
-- resources/servicemonitor.yaml
-- resources/storageclass.yaml
-- resources/volume.snapshotclass.yaml
+- resources/service.monitor.yaml
+- resources/storage.class.yaml
+- resources/volume.snapshot.class.yaml
 
 generators:
 - ksops-generator.yaml
