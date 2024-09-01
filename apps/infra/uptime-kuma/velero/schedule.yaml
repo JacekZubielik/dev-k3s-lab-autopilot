@@ -5,13 +5,13 @@ metadata:
   annotations:
     argocd.argoproj.io/compare-options: IgnoreExtraneous
     argocd.argoproj.io/sync-wave: "2"
-    # argocd.argoproj.io/sync-options: Delete=false,Prune=false
+    argocd.argoproj.io/sync-options: Delete=false,Prune=false
   name: schedule-5-min-full-backup
   namespace: velero
 spec:
   schedule: '0/5 * * * *'
   template:
-    storageLocation: default
+    storageLocation: s3-minio
     hooks: {}
     includedNamespaces:
     - uptime-kuma

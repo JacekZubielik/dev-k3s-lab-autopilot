@@ -17,12 +17,12 @@ spec:
   includedNamespaces:
   - uptime-kuma
   ttl: 1h0m0s
-  storageLocation: default
+  storageLocation: s3-minio
   orderedResources:
     persistentvolumes: pvc-uptime-kuma
   # snapshotVolumes: pvc-uptime-kuma
   # volumeSnapshotLocations:
-  # - default
+  # - s3-minio
   snapshotMoveData: true
   datamover: velero
   uploaderConfig:

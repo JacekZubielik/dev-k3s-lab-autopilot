@@ -14,7 +14,7 @@ configuration:
   features: EnableCSI, EnableAPIGroupVersions
 
   backupStorageLocation:
-  - name: default
+  - name: s3-minio
     provider: aws
     bucket: k3s-velero
     # validationFrequency: 10m0s
@@ -31,7 +31,7 @@ configuration:
       tagging: ""
 
   volumeSnapshotLocation:
-  - name: default
+  - name: s3-minio
     provider: aws
     credential:
       name: velero-secret

@@ -8,14 +8,15 @@ metadata:
     argocd.argoproj.io/sync-options: Delete=true,Prune=true
 
 resources:
-- resources/backing-image.yaml
 - resources/ns.yaml
 - resources/pv.yaml
 - resources/pvc.yaml
+- resources/volume.backingimage.snapshot.yaml # longhorn backup test
+- resources/volume.backingimage.yaml # longhorn backup test
 - resources/volume.yaml
+- velero/backup.backing-image.yaml
 - velero/backup.yaml # velero backup test
 - velero/schedule.yaml # velero backup test
-- velero/backup.backing-image.yaml
 # - velero/restore.yaml
 
 # generators:
