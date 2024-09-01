@@ -1,0 +1,12 @@
+---
+apiVersion: snapshot.storage.k8s.io/v1
+kind: VolumeSnapshot
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
+    argocd.argoproj.io/instance: longhorn
+  name: pvc-kuma-csi-backing-image
+spec:
+  volumeSnapshotClassName: longhorn-backup-vsc-bi
+  source:
+    persistentVolumeClaimName: pvc-kuma
