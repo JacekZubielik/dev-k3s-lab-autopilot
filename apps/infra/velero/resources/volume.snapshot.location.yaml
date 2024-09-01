@@ -9,6 +9,7 @@ metadata:
   name: minio
   namespace: velero
 spec:
+  default: true
   provider: aws
   credential:
     name: velero-secret
