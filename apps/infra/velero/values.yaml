@@ -17,17 +17,18 @@ configuration:
   - name: default
     provider: aws
     bucket: k3s-velero
-    validationFrequency: 10m0s
+    # validationFrequency: 10m0s
     accessMode: ReadWrite
     credential:
       name: velero-secret
       key: cloud
     config:
-      region: us-east-1
       profile: "default"
+      region: us-east-1
       s3ForcePathStyle: true
       s3Url: http://minio.minio.svc:9000
-      # publicUrl: http://localhost:9000
+      checksumAlgorithm: "CRC32"
+      tagging: ""
 
   volumeSnapshotLocation:
   - name: default
@@ -43,12 +44,9 @@ credentials:
   useSecret: true
   existingSecret: velero-secret
 
-# Disable VolumeSnapshotLocation CRD. It is not needed for CSI integration
 snapshotsEnabled: true
 backupsEnabled: true
-
 deployNodeAgent: true
-
 upgradeCRDs: true
 
 metrics:

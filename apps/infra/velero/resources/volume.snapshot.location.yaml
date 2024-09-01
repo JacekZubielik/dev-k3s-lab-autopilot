@@ -10,9 +10,9 @@ metadata:
   namespace: velero
 spec:
   provider: aws
-  credential: # optional (if not set, default credentials secret is used)
+  credential:
     name: velero-secret
     key: cloud
   config:
     region: us-east-1
-    profile: "minio" # AWS profile within the credentials file to use for the volume snapshot location.
+    profile: "minio"
