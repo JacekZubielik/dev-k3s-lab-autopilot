@@ -7,10 +7,10 @@ metadata:
   name: pvc-kuma
   namespace: uptime-kuma
 spec:
-  dataSource:
-    apiGroup: snapshot.storage.k8s.io
-    kind: VolumeSnapshot
-    name: test-backup-longhorn-backup-vsc
+  # dataSource:
+  #   apiGroup: snapshot.storage.k8s.io
+  #   kind: VolumeSnapshot
+  #   name: test-backup-longhorn-backup-vsc
   accessModes:
   - ReadWriteOnce
   resources:
