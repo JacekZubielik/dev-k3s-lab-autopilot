@@ -5,7 +5,7 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "2"
     argocd.argoproj.io/instance: longhorn
-  name: pvc-kuma-csi-backing-image
+  name: pvc-kuma-csi-backing-image-bi
 spec:
   volumeSnapshotClassName: longhorn-backup-vsc-bi
   source:

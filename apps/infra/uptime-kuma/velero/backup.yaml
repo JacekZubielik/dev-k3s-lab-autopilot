@@ -26,4 +26,4 @@ spec:
   snapshotMoveData: true
   datamover: velero
   uploaderConfig:
-      parallelFilesUpload: 10
+    parallelFilesUpload: 10

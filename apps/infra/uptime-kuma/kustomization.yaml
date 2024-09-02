@@ -14,6 +14,7 @@ resources:
 - resources/volume.backingimage.snapshot.yaml # longhorn backup test
 - resources/volume.backingimage.yaml # longhorn backup test
 - resources/volume.yaml
+- resources/volume.snapshot.content.yaml
 - velero/backup.backingimage.yaml
 - velero/backup.yaml # velero backup test
 - velero/schedule.yaml # velero backup test
