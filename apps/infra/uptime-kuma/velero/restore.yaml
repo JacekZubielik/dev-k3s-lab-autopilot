@@ -12,7 +12,6 @@ spec:
   includedNamespaces:
   - uptime-kuma
   includedResources:
-  - volume.longhorn.io
   # - 'pv'
   - 'pvc'
   restoreStatus:

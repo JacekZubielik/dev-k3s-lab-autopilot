@@ -9,7 +9,7 @@ metadata:
 
 resources:
 - resources/ns.yaml
-# - resources/pv.yaml
+- resources/pv.yaml
 - resources/pvc.yaml
 # - resources/volume.yaml
 # - resources/volume.backingimage.snapshot.yaml # longhorn backup test
