@@ -18,4 +18,4 @@ spec:
     fsType: ext4
     volumeAttributes:
       staleReplicaTimeout: "2880"
-    volumeHandle: pvc-kuma # must match volume name from Longhorn
+    # volumeHandle: pvc-kuma # must match volume name from Longhorn
