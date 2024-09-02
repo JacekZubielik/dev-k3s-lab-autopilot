@@ -10,7 +10,7 @@ spec:
   dataSource:
     apiGroup: snapshot.storage.k8s.io
     kind: VolumeSnapshot
-    name: pvc-kuma-csi-backing-image-bi
+    name: test-backup-longhorn-backup-vsc
   accessModes:
   - ReadWriteOnce
   resources:
