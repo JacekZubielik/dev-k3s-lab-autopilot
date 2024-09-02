@@ -8,7 +8,7 @@ metadata:
   name: test-restore-backup
   namespace: velero
 spec:
-  backupName: schedule-5-min-full-backup
+  # backupName: schedule-5-min-full-backup
   includedNamespaces:
   - uptime-kuma
   includedResources:
