@@ -12,9 +12,6 @@ resources:
 - resources/ns.yaml
 - resources/servicemonitor.yaml
 # - resources/volume.snapshot.location.yaml
-# - resources/backup.yaml
-# - resources/restore.yaml
-# - resources/schedule.yaml
 # - resources/volume.snapshot.class.yaml
 
 generators:
