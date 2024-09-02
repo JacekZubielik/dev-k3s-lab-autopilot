@@ -1,0 +1,29 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-authentik-psql
+  namespace: authentik
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 8Gi
+  volumeName: pv-authentik-psql # must reference Persistent Volume
+  storageClassName: longhorn-retain
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-authentik-redis
+  namespace: authentik
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 8Gi
+  volumeName: pv-authentik-redis  # must reference Persistent Volume
+  storageClassName: longhorn
