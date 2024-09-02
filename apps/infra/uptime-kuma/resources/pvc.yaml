@@ -8,7 +8,7 @@ metadata:
   namespace: uptime-kuma
 spec:
   dataSource:
-    apiGroup: velero.io/v1 #snapshot.storage.k8s.io
+    apiGroup: schedule.velero.io/v1 #snapshot.storage.k8s.io
     kind: VolumeSnapshot
     name: schedule-5-min-full-backup # test-restore-backup
   accessModes:
