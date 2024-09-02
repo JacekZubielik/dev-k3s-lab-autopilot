@@ -8,7 +8,7 @@ metadata:
   name: minio
   namespace: velero
 spec:
-  default: true
+  # default: true
   provider: aws
   objectStorage:
     bucket: k3s-velero
