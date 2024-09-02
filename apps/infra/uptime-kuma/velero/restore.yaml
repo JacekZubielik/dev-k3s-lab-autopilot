@@ -1,0 +1,20 @@
+---
+apiVersion: velero.io/v1
+kind: Restore
+metadata:
+  name: test-restore-schedule
+  namespace: velero
+spec:
+  backupName: 5-minutes-full-backup
+  includedNamespaces:
+  - 'uptime-kuma'
+  includedResources:
+  - 'pv'
+  - 'pvc'
+  restoreStatus:
+    includedResources:
+    - workflows
+    excludedResources: []
+  includeClusterResources: null
+  restorePVs: true
+  scheduleName: 5-minutes-full-backup
