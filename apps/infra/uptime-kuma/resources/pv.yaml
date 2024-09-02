@@ -2,8 +2,8 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  labels:
-    longhornvolume: pvc-kuma
+  # labels:
+  #   longhornvolume: pvc-kuma
   name: pv-kuma
 spec:
   capacity:

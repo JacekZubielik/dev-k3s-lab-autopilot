@@ -10,7 +10,7 @@ spec:
   dataSource:
     apiGroup: snapshot.storage.k8s.io
     kind: VolumeSnapshot
-    name: test-restore-backup
+    name: schedule-5-min-full-backup # test-restore-backup
   accessModes:
   - ReadWriteOnce
   resources:
