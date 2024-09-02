@@ -1,0 +1,17 @@
+---
+apiVersion: snapshot.storage.k8s.io/v1
+kind: VolumeSnapshotContent
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "-3"
+    argocd.argoproj.io/instance: longhorn
+  name: pvc-kuma
+spec:
+  volumeSnapshotClassName: longhorn-snapshot-vsc
+  driver: driver.longhorn.io
+  deletionPolicy: Retain
+  source:
+    snapshotHandle: bi://backing?backingImageDataSourceType=export-from-volume&backingImage=pvc-kuma&volume-name=pvc-kuma&export-type=qcow2
+  volumeSnapshotRef:
+    name: pvc-kuma
+    namespace: longhorn-system
