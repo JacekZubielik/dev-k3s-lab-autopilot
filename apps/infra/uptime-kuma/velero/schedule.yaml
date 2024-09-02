@@ -12,18 +12,24 @@ metadata:
 spec:
   schedule: '0/5 * * * *'
   template:
-    storageLocation: s3-minio
+    csiSnapshotTimeout: 10m
     hooks: {}
+    includeClusterResources: false
+    snapshotMoveData: true
+    snapshotVolumes: true
+    storageLocation: s3-minio
     includedNamespaces:
     - uptime-kuma
     includedResources:
-    - 'pv'
+    - volume.longhorn.io
+    # - 'pv'
     - 'pvc'
-    includeClusterResources: true
-    excludedNamespaces:
-    - default
-    - kube-system
-    - minio
+    # excludedNamespaces:
+    # - default
+    # - kube-system
+    # - minio
+    uploaderConfig:
+        parallelFilesUpload: 10
     metadata:
       labels:
         type: 'full'

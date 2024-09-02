@@ -17,7 +17,7 @@ resources:
 # - resources/volume.snapshot.content.yaml
 # - velero/backup.backingimage.yaml
 # - velero/backup.yaml # velero backup test
-# - velero/restore.yaml
+- velero/restore.yaml
 # - velero/schedule.yaml # velero backup test
 
 # generators:

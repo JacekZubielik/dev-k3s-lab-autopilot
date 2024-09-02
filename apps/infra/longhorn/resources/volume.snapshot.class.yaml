@@ -8,7 +8,7 @@ metadata:
     argocd.argoproj.io/instance: longhorn
   name: longhorn
 driver: driver.longhorn.io
-deletionPolicy: Delete
+deletionPolicy: Retain
 
 ---
 # CSI VolumeSnapshot Associated With Longhorn Snapshot
@@ -20,7 +20,7 @@ metadata:
     argocd.argoproj.io/instance: longhorn
   name: longhorn-snapshot-vsc
 driver: driver.longhorn.io
-deletionPolicy: Delete
+deletionPolicy: Retain
 parameters:
   type: snap
   # type: longhorn-snapshot
@@ -32,7 +32,7 @@ kind: VolumeSnapshotClass
 metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "-1"
-    argocd.argoproj.io/instance: longhorn
+    # argocd.argoproj.io/instance: longhorn
   labels:
     velero.io/csi-volumesnapshot-class: "true"
   name: longhorn-backup-vsc
@@ -40,7 +40,6 @@ driver: driver.longhorn.io
 deletionPolicy: Retain
 parameters:
   type: bak
-  # type: longhorn-backup
 
 ---
 # CSI VolumeSnapshot Associated With Longhorn BackingImage

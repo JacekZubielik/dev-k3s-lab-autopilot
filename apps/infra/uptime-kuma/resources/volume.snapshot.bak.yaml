@@ -5,8 +5,8 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "1"
     argocd.argoproj.io/instance: longhorn
-  name: pvc-kuma-config-snapshot
+  name: pvc-kuma-snapshot-bak
 spec:
-  volumeSnapshotClassName: longhorn-snapshot-vsc
+  volumeSnapshotClassName: longhorn-backup-vsc
   source:
     persistentVolumeClaimName: pvc-kuma
