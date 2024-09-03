@@ -45,5 +45,3 @@ spec:
   concurrency: 2
   labels:
     job: 5-minutes-backups
-parameters:
-  full-backup-interval: 5
