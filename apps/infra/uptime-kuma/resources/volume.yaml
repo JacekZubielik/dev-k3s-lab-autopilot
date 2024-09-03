@@ -7,7 +7,7 @@ metadata:
   annotations:
     argocd.argoproj.io/compare-options: IgnoreExtraneous
     argocd.argoproj.io/hook: PreSync
-    argocd.argoproj.io/sync-wave: "1"
+    argocd.argoproj.io/sync-wave: "-1"
   labels:
     longhornvolume: pvc-kuma
     recurring-job-group.longhorn.io/group3: enabled
@@ -17,7 +17,7 @@ metadata:
   name: pvc-kuma
   namespace: longhorn-system
 spec:
-  # backingImage: pvc-kuma
+  backingImage: pvc-kuma
   dataLocality: best-effort
   diskSelector:
   - data

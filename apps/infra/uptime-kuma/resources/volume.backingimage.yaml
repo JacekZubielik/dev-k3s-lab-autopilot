@@ -5,7 +5,7 @@ metadata:
   annotations:
     argocd.argoproj.io/compare-options: IgnoreExtraneous
     argocd.argoproj.io/hook: PreSync
-    argocd.argoproj.io/sync-wave: "0"
+    argocd.argoproj.io/sync-wave: "-2"
   name: pvc-kuma
   namespace: longhorn-system
 spec:
