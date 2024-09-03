@@ -10,11 +10,11 @@ spec:
   dataSource:
     apiGroup: snapshot.storage.k8s.io # schedule.velero.io/v1
     kind: VolumeSnapshot
-    name: pvc-kuma # test-restore-backup
+    name: pvc-kuma-snapshot-bak #pvc-kuma # test-restore-backup
   accessModes:
   - ReadWriteOnce
   resources:
     requests:
       storage: 8Gi
-  # volumeName: pv-kuma # must reference Persistent Volume
+  volumeName: pv-kuma # must reference Persistent Volume
   storageClassName: longhorn-retain

@@ -17,7 +17,7 @@ spec:
     includeClusterResources: false
     snapshotMoveData: true
     snapshotVolumes: true
-    storageLocation: s3-minio
+    storageLocation: minio
     includedNamespaces:
     - uptime-kuma
     includedResources:

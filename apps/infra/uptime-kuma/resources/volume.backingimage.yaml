@@ -13,6 +13,13 @@ metadata:
 #     concurrent-limit: '2'
 #   checksum: ""
 #   minNumberOfCopies: 1
+#   diskSelector:
+#     - data
+#     - fast
+#   nodeSelector:
+#     - fast
+#     - storage
+
 
 spec:
   sourceType: export-from-volume
@@ -20,11 +27,9 @@ spec:
     volume-name: pvc-kuma
     export-type: qcow2
   minNumberOfCopies: 1
-
   diskSelector:
     - data
     - fast
-
   nodeSelector:
     - fast
     - storage

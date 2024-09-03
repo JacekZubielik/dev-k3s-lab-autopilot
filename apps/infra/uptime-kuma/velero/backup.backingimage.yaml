@@ -17,7 +17,7 @@ spec:
   includedNamespaces:
   - uptime-kuma
   ttl: 1h0m0s
-  storageLocation: s3-minio
+  storageLocation: minio
   orderedResources:
     persistentvolumes: pvc-uptime-kuma
   # snapshotVolumes: pvc-uptime-kuma

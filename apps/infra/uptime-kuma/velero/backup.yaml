@@ -6,7 +6,7 @@ metadata:
   namespace: velero
   annotations:
     argocd.argoproj.io/hook: PostSync
-    # argocd.argoproj.io/sync-wave: "2"
+    argocd.argoproj.io/sync-wave: "1"
     velero.io/csi-volumesnapshot-class_driver.longhorn.io: "longhorn-backup-vsc"
     scheduled: "yes"
   labels:
@@ -17,7 +17,7 @@ spec:
   includedNamespaces:
   - uptime-kuma
   ttl: 1h0m0s
-  storageLocation: s3-minio
+  storageLocation: minio
   orderedResources:
     persistentvolumes: pvc-uptime-kuma
   # snapshotVolumes: pvc-uptime-kuma
