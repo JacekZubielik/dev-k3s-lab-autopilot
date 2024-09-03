@@ -8,10 +8,10 @@ metadata:
     argocd.argoproj.io/sync-options: Delete=true,Prune=true
 
 resources:
-# - resources/backup.storage.location.yaml
+- resources/backup.storage.location.yaml
 - resources/ns.yaml
 - resources/servicemonitor.yaml
-# - resources/volume.snapshot.location.yaml
+- resources/volume.snapshot.location.yaml
 # - resources/volume.snapshot.class.yaml
 
 generators:
