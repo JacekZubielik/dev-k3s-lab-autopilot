@@ -17,7 +17,7 @@ metadata:
   name: pvc-kuma
   namespace: longhorn-system
 spec:
-  # backingImage: pvc-kuma
+  backingImage: pvc-kuma
   dataLocality: best-effort
   diskSelector:
   - data
