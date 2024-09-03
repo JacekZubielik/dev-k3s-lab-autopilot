@@ -8,7 +8,7 @@ metadata:
     argocd.argoproj.io/sync-wave: "-1"
   labels:
     longhornvolume: pvc-kuma
-    recurring-job-group.longhorn.io/group2: enabled
+    recurring-job-group.longhorn.io/group3: enabled
     # recurring-job.longhorn.io/5-minutes-backups: enabled
     # recurring-job.longhorn.io/24-hour-snapshots: enabled
     # recurring-job.longhorn.io/48-hour-backups: enabled
