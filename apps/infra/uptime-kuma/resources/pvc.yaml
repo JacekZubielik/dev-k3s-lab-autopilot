@@ -4,13 +4,10 @@ kind: PersistentVolumeClaim
 metadata:
   annotations:
     velero.io/csi-volumesnapshot-class: "longhorn-backup-vsc"
+  labels:
+    backup: "pvc-kuma"
   name: pvc-kuma
   namespace: uptime-kuma
-spec:
-  # dataSource:
-  #   apiGroup: snapshot.storage.k8s.io # schedule.velero.io/v1
-  #   kind: VolumeSnapshot
-  #   name: pvc-kuma-snapshot-bak #pvc-kuma # test-restore-backup
   accessModes:
   - ReadWriteOnce
   resources:
@@ -18,3 +15,8 @@ spec:
       storage: 8Gi
   volumeName: pv-kuma # must reference Persistent Volume
   storageClassName: longhorn-retain
+# spec:
+#   dataSource:
+#     apiGroup: snapshot.storage.k8s.io
+#     kind: VolumeSnapshot
+#     name: backup-pvc-kuma

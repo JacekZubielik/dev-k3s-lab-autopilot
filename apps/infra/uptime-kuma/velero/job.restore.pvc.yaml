@@ -1,0 +1,25 @@
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  annotations:
+    argocd.argoproj.io/compare-options: IgnoreExtraneous
+    argocd.argoproj.io/hook: PreSync
+    argocd.argoproj.io/sync-wave: "-1"
+  name: restore-pvc-kuma
+  namespace: velero
+spec:
+  template:
+    spec:
+      restartPolicy: OnFailure
+      containers:
+      - name: pvc-kuma
+        image: velero/velero:latest
+        command:
+        - /velero
+        - restore
+        - create
+        - --from-backup
+        - backup-pvc-kuma
+        - --restore-volumes
+        - true
