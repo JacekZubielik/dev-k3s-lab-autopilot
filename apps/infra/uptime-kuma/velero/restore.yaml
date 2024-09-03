@@ -1,0 +1,23 @@
+---
+apiVersion: velero.io/v1
+kind: Restore
+metadata:
+  annotations:
+    argocd.argoproj.io/compare-options: IgnoreExtraneous
+    argocd.argoproj.io/hook: PreSync
+  name: test-restore-backup
+  namespace: velero
+spec:
+  backupName: schedule-5-min-full-backup
+  includedNamespaces:
+  - uptime-kuma
+  includedResources:
+  # - 'pv'
+  - 'pvc'
+  restoreStatus:
+    includedResources:
+    - workflows
+    excludedResources: []
+  includeClusterResources: null
+  restorePVs: true
+  # scheduleName: schedule-5-min-full-backup

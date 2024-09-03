@@ -1,0 +1,20 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  annotations:
+    velero.io/csi-volumesnapshot-class: "longhorn-backup-vsc"
+  name: pvc-kuma
+  namespace: uptime-kuma
+spec:
+  # dataSource:
+  #   apiGroup: schedule.velero.io/v1 #snapshot.storage.k8s.io
+  #   kind: VolumeSnapshot
+  #   name: schedule-5-min-full-backup # test-restore-backup
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 8Gi
+  volumeName: pv-kuma # must reference Persistent Volume
+  storageClassName: longhorn-retain
