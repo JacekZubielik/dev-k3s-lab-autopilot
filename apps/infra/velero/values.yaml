@@ -24,7 +24,7 @@ configuration:
       name: velero-secret
       key: cloud
     config:
-      profile: "default"
+      profile: "minio" # "default"
       region: us-east-1
       s3ForcePathStyle: true
       s3Url: http://192.168.40.17:9000 # http://minio.minio.svc:9000
@@ -39,7 +39,7 @@ configuration:
       key: cloud
     config:
       region: us-east-1
-      profile: "default"
+      profile: "minio" # "default"
 
 credentials:
   useSecret: true
