@@ -33,8 +33,8 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "-1"
     # argocd.argoproj.io/instance: longhorn
-  # labels:
-  #   velero.io/csi-volumesnapshot-class: "true"
+  labels:
+    velero.io/csi-volumesnapshot-class: "true"
   name: longhorn-backup-vsc
 driver: driver.longhorn.io
 deletionPolicy: Retain
@@ -49,8 +49,6 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "-1"
     argocd.argoproj.io/instance: longhorn
-  labels:
-    velero.io/csi-volumesnapshot-class: "true"
   name: longhorn-backup-vsc-bi
 driver: driver.longhorn.io
 deletionPolicy: Retain
