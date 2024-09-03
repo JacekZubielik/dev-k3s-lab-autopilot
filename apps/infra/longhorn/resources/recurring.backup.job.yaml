@@ -8,7 +8,6 @@ spec:
   cron: "0 */24 * * *"
   task: "backup"
   groups:
-  - default
   - group1
   retain: 3
   concurrency: 2
@@ -25,7 +24,6 @@ spec:
   cron: "0 */48 * * *"
   task: "backup"
   groups:
-  - default
   - group1
   retain: 3
   concurrency: 2
@@ -47,3 +45,5 @@ spec:
   concurrency: 2
   labels:
     job: 5-minutes-backups
+parameters:
+  full-backup-interval: 5
