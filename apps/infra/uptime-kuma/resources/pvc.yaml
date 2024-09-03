@@ -8,6 +8,7 @@ metadata:
     # argocd.argoproj.io/sync-wave: "-1"
   name: pvc-kuma
   namespace: uptime-kuma
+spec:
   accessModes:
   - ReadWriteOnce
   resources:
@@ -15,7 +16,6 @@ metadata:
       storage: 8Gi
   volumeName: pv-kuma # must reference Persistent Volume
   storageClassName: longhorn-retain
-# spec:
 #   dataSource:
 #     apiGroup: snapshot.storage.k8s.io
 #     kind: VolumeSnapshot
