@@ -13,7 +13,7 @@ metadata:
   resources:
     requests:
       storage: 8Gi
-  volumeName: pv-kuma # must reference Persistent Volume
+  # volumeName: pv-kuma # must reference Persistent Volume
   storageClassName: longhorn-retain
 # spec:
 #   dataSource:
