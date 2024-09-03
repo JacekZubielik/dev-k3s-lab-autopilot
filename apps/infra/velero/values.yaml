@@ -15,7 +15,7 @@ configuration:
 
   backupStorageLocation:
   - name: s3-minio
-    default: true
+    # default: true
     provider: aws
     bucket: k3s-velero
     # validationFrequency: 10m0s
