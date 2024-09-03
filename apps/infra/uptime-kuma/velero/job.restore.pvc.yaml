@@ -20,6 +20,6 @@ spec:
         - restore
         - create
         - --from-backup
-        - backup-pvc-kuma
+        - backup-pvc-kuma-20240903201008
         - --restore-volumes
         - "true"
