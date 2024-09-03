@@ -14,7 +14,7 @@ configuration:
   features: EnableCSI, EnableAPIGroupVersions
 
   backupStorageLocation:
-  - name: s3-minio
+  - name: minio
     # default: true
     provider: aws
     bucket: k3s-velero
@@ -27,12 +27,12 @@ configuration:
       profile: "default"
       region: us-east-1
       s3ForcePathStyle: true
-      s3Url: http://192.168.40.187:9000 # http://minio.minio.svc:9000
+      s3Url: http://192.168.40.17:9000 # http://minio.minio.svc:9000
       checksumAlgorithm: "CRC32"
       tagging: ""
 
   volumeSnapshotLocation:
-  - name: s3-minio
+  - name: minio
     provider: aws
     credential:
       name: velero-secret
