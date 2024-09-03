@@ -10,7 +10,7 @@ spec:
   dataSource:
     apiGroup: snapshot.storage.k8s.io # schedule.velero.io/v1
     kind: VolumeSnapshot
-    name: 5-minutes-backups # test-restore-backup
+    name: pvc-kuma # 5-minutes-backups # test-restore-backup
   accessModes:
   - ReadWriteOnce
   resources:
