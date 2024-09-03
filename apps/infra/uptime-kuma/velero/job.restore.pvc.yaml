@@ -15,6 +15,7 @@ spec:
       containers:
       - name: pvc-kuma
         image: velero/velero:latest
+        imagePullPolicy: IfNotPresent
         command:
         - /velero
         - restore
