@@ -37,7 +37,7 @@ metadata:
   #   velero.io/csi-volumesnapshot-class: "true"
   name: longhorn-backup-vsc
 driver: driver.longhorn.io
-deletionPolicy: Delete
+deletionPolicy: Retain
 parameters:
   type: bak
 
