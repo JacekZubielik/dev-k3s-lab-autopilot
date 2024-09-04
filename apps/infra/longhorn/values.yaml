@@ -1,6 +1,10 @@
-fullnameOverride: longhorn
+# fullnameOverride: longhorn
 
 global:
+  # -- Toleration for nodes allowed to run user-deployed components such as Longhorn Manager, Longhorn UI, and Longhorn Driver Deployer.
+  tolerations: []
+  # -- Node selector for nodes allowed to run user-deployed components such as Longhorn Manager, Longhorn UI, and Longhorn Driver Deployer.
+  nodeSelector: {}
   cattle:
     systemDefaultRegistry: ""
     windowsCluster:

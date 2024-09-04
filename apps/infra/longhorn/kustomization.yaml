@@ -8,7 +8,7 @@ metadata:
     argocd.argoproj.io/sync-options: Delete=true,Prune=true
 
 resources:
-- resources/ns.yaml
+# - resources/ns.yaml
 - resources/prometheus.rule.yaml
 - resources/recurring.backup.job.yaml
 - resources/recurring.snapshot.job.yaml
@@ -27,7 +27,7 @@ generatorOptions:
 
 helmCharts:
 - name: longhorn
-  version: 1.7.0
+  version: 1.6.2
   repo: https://charts.longhorn.io
   includeCRDs: true
   namespace: longhorn-system
