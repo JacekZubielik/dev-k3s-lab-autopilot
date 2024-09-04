@@ -2,9 +2,9 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
-metadata:
-  annotations:
-    argocd.argoproj.io/compare-options: IgnoreExtraneous
+# metadata:
+#   annotations:
+#     argocd.argoproj.io/compare-options: IgnoreExtraneous
     # argocd.argoproj.io/sync-options: Delete=true,Prune=true
 
 resources:
@@ -35,10 +35,10 @@ helmCharts:
   valuesFile: values.yaml
 
 patches:
-- path: patches/remove-instance-patch.yaml
-  target:
-    kind: CustomResourceDefinition
-    labelSelector: app.kubernetes.io/instance=longhorn
+# - path: patches/remove-instance-patch.yaml
+#   target:
+#     kind: CustomResourceDefinition
+#     labelSelector: app.kubernetes.io/instance=longhorn
 - path: patches/hook.yaml
   target:
     name: pre-hook
