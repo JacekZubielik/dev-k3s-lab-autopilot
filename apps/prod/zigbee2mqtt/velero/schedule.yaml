@@ -7,10 +7,10 @@ metadata:
     argocd.argoproj.io/hook: PostSync
     argocd.argoproj.io/sync-wave: "2"
     argocd.argoproj.io/sync-options: Delete=false,Prune=false
-  name: backup-pvc-zigbee2mqtt-data
+  name: 24-hour-backup-pvc-zigbee2mqtt
   namespace: velero
 spec:
-  schedule: '0 * * * *'
+  schedule: '0 */24 * * *'
   template:
     csiSnapshotTimeout: 10m
     hooks: {}
