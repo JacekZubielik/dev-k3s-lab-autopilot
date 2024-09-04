@@ -83,8 +83,8 @@ spec:
         - CreateNamespace=true
         - PrunePropagationPolicy=foreground
         - RespectIgnoreDifferences=true
-        - ServerSideApply=true
-        - SkipDryRunOnMissingResource=true
+        - ServerSideApply=false
+        - SkipDryRunOnMissingResource=false
 
   strategy:
     type: RollingSync
