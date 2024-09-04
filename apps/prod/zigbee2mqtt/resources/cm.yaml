@@ -4,7 +4,7 @@ kind: ConfigMap
 metadata:
   name: zigbee2mqtt
   labels:
-    app.kubernetes.io/name: zigbee2mqtt # mqtt://192.168.40.189:8883
+    app.kubernetes.io/name: zigbee2mqtt
 data:
   configuration.yaml: |-
     devices: devices.yaml
@@ -19,7 +19,7 @@ data:
       port: 8080
     mqtt:
       base_topic: zigbee2mqtt
-      server: mqtt://mosquitto.mosquitto.svc:8883
+      server: mqtt://192.168.40.189:8883
       client_id: zigbee2mqtt
       force_disable_retain: false
       keepalive: 60
