@@ -6,15 +6,29 @@ global:
   # -- Node selector for nodes allowed to run user-deployed components such as Longhorn Manager, Longhorn UI, and Longhorn Driver Deployer.
   nodeSelector: {}
   cattle:
+    # -- Default system registry.
     systemDefaultRegistry: ""
     windowsCluster:
+      # -- Setting that allows Longhorn to run on a Rancher Windows cluster.
       enabled: false
-      tolerations: []
-      nodeSelector: []
+      # -- Toleration for Linux nodes that can run user-deployed Longhorn components.
+      tolerations:
+      - key: "cattle.io/os"
+        value: "linux"
+        effect: "NoSchedule"
+        operator: "Equal"
+      # -- Node selector for Linux nodes that can run user-deployed Longhorn components.
+      nodeSelector:
+        kubernetes.io/os: "linux"
+      defaultSetting:
+        # -- Toleration for system-managed Longhorn components.
+        taintToleration: cattle.io/os=linux:NoSchedule
+        # -- Node selector for system-managed Longhorn components.
+        systemManagedComponentsNodeSelector: kubernetes.io/os:linux
 
 networkPolicies:
   # -- Setting that allows you to enable network policies that control access to Longhorn pods.
-  enabled: true
+  enabled: false
   # -- Distribution that determines the policy for allowing access for an ingress. (Options: "k3s", "rke2", "rke1")
   type: "k3s"
 
@@ -78,7 +92,7 @@ preUpgradeChecker:
   # -- Setting that allows Longhorn to perform pre-upgrade checks. Disable this setting when installing Longhorn using Argo CD or other GitOps solutions.
   jobEnabled: false
   # -- Setting that allows Longhorn to perform upgrade version checks after starting the Longhorn Manager DaemonSet Pods. Disabling this setting also disables `preUpgradeChecker.jobEnabled`. Longhorn recommends keeping this setting enabled.
-  upgradeVersionCheck: true
+  upgradeVersionCheck: false
 
 csi:
   # -- kubelet root directory. When unspecified, Longhorn uses the default value.

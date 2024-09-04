@@ -35,10 +35,10 @@ helmCharts:
   valuesFile: values.yaml
 
 patches:
-# - path: patches/remove-instance-patch.yaml
-#   target:
-#     kind: CustomResourceDefinition
-#     labelSelector: app.kubernetes.io/instance=longhorn
+- path: patches/remove-instance-patch.yaml
+  target:
+    kind: CustomResourceDefinition
+    labelSelector: app.kubernetes.io/instance=longhorn
 - path: patches/hook.yaml
   target:
     name: pre-hook
