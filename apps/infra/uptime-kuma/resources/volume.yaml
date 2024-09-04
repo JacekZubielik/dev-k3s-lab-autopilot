@@ -24,7 +24,7 @@ spec:
   - data
   - fast
   restoreVolumeRecurringJob: enabled
-  # fromBackup: s3://k3s-longhorn-backup@us-east-1/?backup=backup-6d482542d9254116&volume=pvc-kuma
+  fromBackup: s3://k3s-longhorn-backup@us-east-1/?backup=backup-26cb99777f0345f2&volume=pvc-kuma
   frontend: blockdev
   # migratable: true
   nodeSelector:

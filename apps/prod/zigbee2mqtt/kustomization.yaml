@@ -14,7 +14,6 @@ resources:
 - resources/pvc.yaml
 - resources/volume.yaml
 - velero/schedule.yaml
-# - resources/volume.backingimage.yaml
 
 generators:
 - ksops-generator.yaml

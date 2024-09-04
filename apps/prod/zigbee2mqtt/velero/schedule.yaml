@@ -35,5 +35,5 @@ spec:
     metadata:
       labels:
         type: 'full'
-        schedule: 'hourly'
+        schedule: 'daily'
     ttl: 720h0m0s
