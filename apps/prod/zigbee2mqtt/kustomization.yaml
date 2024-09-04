@@ -5,6 +5,7 @@ kind: Kustomization
 metadata:
   annotations:
     argocd.argoproj.io/compare-options: IgnoreExtraneous
+    argocd.argoproj.io/sync-options: Delete=true,Prune=true
 
 resources:
 - resources/cm.yaml
@@ -12,8 +13,8 @@ resources:
 - resources/pvc.yaml
 - resources/volume.yaml
 
-# generators:
-# - ksops-generator.yaml
+generators:
+- ksops-generator.yaml
 
 generatorOptions:
   disableNameSuffixHash: true
