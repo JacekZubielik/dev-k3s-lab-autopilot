@@ -1,0 +1,45 @@
+---
+apiVersion: snapshot.storage.k8s.io/v1
+kind: VolumeSnapshot
+metadata:
+  name: pvc-mosquitto-csi-backing-image # test-csi-volume-snapshot-longhorn-backing-image
+  namespace: mosquitto
+spec:
+  volumeSnapshotClassName: longhorn-snapshot-vsc-bi
+  source:
+    persistentVolumeClaimName: pvc-mosquitto # test-vol
+
+
+---
+apiVersion: snapshot.storage.k8s.io/v1
+kind: VolumeSnapshotContent
+metadata:
+  name: pvc-mosquitto-backing # test-on-demand-backing
+  namespace: mosquitto # longhorn-system
+spec:
+  volumeSnapshotClassName: longhorn-snapshot-vsc-bi
+  driver: driver.longhorn.io
+  deletionPolicy: Delete
+  source:
+    snapshotHandle: bi://backing?backingImageDataSourceType=export-from-volume&backingImage=${GENERATED_SNAPSHOT_NAME}&volume-name=pvc-mosquitto&export-type=qcow2
+  volumeSnapshotRef:
+    name: pvc-mosquitto-csi-backing-image # test-snapshot-on-demand-backing
+    namespace: mosquitto # longhorn-system
+
+
+
+# ---
+# apiVersion: snapshot.storage.k8s.io/v1
+# kind: VolumeSnapshotContent
+# metadata:
+#   name: pvc-mosquitto-backing # test-on-demand-backing
+#   namespace: mosquitto # longhorn-system
+# spec:
+#   volumeSnapshotClassName: longhorn-snapshot-vsc-bi
+#   driver: driver.longhorn.io
+#   deletionPolicy: Delete
+#   source:
+#     snapshotHandle: bi://backing?backingImageDataSourceType=export-from-volume&backingImage=${GENERATED_SNAPSHOT_NAME}&volume-name=pvc-mosquitto&export-type=qcow2
+#   volumeSnapshotRef:
+#     name: pvc-mosquitto-csi-backing-image # test-snapshot-on-demand-backing
+#     namespace: mosquitto # longhorn-system
