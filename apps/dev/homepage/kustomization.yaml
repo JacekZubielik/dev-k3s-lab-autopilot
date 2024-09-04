@@ -5,11 +5,13 @@ kind: Kustomization
 metadata:
   annotations:
     argocd.argoproj.io/compare-options: IgnoreExtraneous
+    argocd.argoproj.io/sync-options: Delete=true,Prune=true
 
 resources:
 - resources/cluster-role.yaml
 - resources/cm.yaml
 - resources/deployment.yaml
+- resources/ns.yaml
 - resources/service.yaml
 - resources/serviceaccount.yaml
 
@@ -18,6 +20,8 @@ generators:
 
 generatorOptions:
   disableNameSuffixHash: true
+  labels:
+    component: homepage
 
 patches:
 - path: patches/homepage-secret-deployment.yaml
