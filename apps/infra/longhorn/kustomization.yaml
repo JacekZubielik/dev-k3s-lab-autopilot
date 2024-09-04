@@ -22,8 +22,8 @@ generators:
 
 generatorOptions:
   disableNameSuffixHash: true
-  labels:
-    component: longhorn
+  # labels:
+  #   component: longhorn
 
 helmCharts:
 - name: longhorn
