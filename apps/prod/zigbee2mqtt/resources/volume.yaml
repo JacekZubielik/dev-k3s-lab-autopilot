@@ -1,0 +1,33 @@
+---
+apiVersion: longhorn.io/v1beta2
+kind: Volume
+metadata:
+  finalizers:
+  - longhorn.io
+  annotations:
+    argocd.argoproj.io/compare-options: IgnoreExtraneous
+    argocd.argoproj.io/hook: PreSync
+    argocd.argoproj.io/sync-wave: "-1"
+  labels:
+    longhornvolume: pvc-zigbee2mqtt-data
+    recurring-job-group.longhorn.io/group3: enabled
+    # recurring-job.longhorn.io/5-minutes-backups: enabled
+    # recurring-job.longhorn.io/24-hour-snapshots: enabled
+    # recurring-job.longhorn.io/48-hour-backups: enabled
+  name: pvc-zigbee2mqtt-data
+  namespace: longhorn-system
+spec:
+  backingImage: pvc-zigbee2mqtt-data
+  dataLocality: best-effort
+  diskSelector:
+  - data
+  - fast
+  # fromBackup: s3://k3s-longhorn-backup@us-east-1/?backup=backup-5aac51b6759440c6&volume=pvc-zigbee2mqtt-data
+  frontend: blockdev
+  # migratable: true
+  nodeSelector:
+  - fast
+  - storage
+  numberOfReplicas: 1
+  size: '4294967296'
+  snapshotMaxCount: 10

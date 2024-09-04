@@ -1,0 +1,22 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  annotations:
+    # argocd.argoproj.io/compare-options: IgnoreExtraneous
+    # argocd.argoproj.io/sync-wave: "-1"
+    velero.io/csi-volumesnapshot-class: "longhorn-backup-vsc"
+  name: pvc-zigbee2mqtt-data
+  namespace: zigbee2mqtt
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 4Gi
+  volumeName: pv-zigbee2mqtt-data
+  storageClassName: longhorn-retain
+#   dataSource:
+#     apiGroup: snapshot.storage.k8s.io
+#     kind: VolumeSnapshot
+#     name: backup-zigbee2mqtt-data
