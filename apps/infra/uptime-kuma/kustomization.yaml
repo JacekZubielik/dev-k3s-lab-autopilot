@@ -11,15 +11,15 @@ resources:
 - resources/ns.yaml
 - resources/pv.yaml
 - resources/pvc.yaml
-- resources/volume.yaml
 - resources/volume.backingimage.yaml
-# - resources/volume.snapshot.backingimage.yaml # longhorn backup test
+- resources/volume.yaml
+- velero/schedule.yaml
 # - resources/volume.backingimage.yaml # longhorn backup test
+# - resources/volume.snapshot.backingimage.yaml # longhorn backup test
 # - resources/volume.snapshot.content.yaml
 # - velero/backup.backingimage.yaml
 # - velero/backup.yaml # velero backup test
 # - velero/restore.yaml
-- velero/schedule.yaml
 
 # generators:
 # - ksops-generator.yaml
