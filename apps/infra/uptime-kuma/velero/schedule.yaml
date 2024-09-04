@@ -1,0 +1,39 @@
+---
+apiVersion: velero.io/v1
+kind: Schedule
+metadata:
+  annotations:
+    argocd.argoproj.io/compare-options: IgnoreExtraneous
+    argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/sync-wave: "2"
+    argocd.argoproj.io/sync-options: Delete=false,Prune=false
+  name: 24-hour-backup--pvc-kuma
+  namespace: velero
+spec:
+  schedule: '0 */24 * * *'
+  template:
+    csiSnapshotTimeout: 10m
+    hooks: {}
+    includeClusterResources: false
+    snapshotMoveData: true
+    snapshotVolumes: true
+    storageLocation: minio
+    includedNamespaces:
+    - uptime-kuma
+    includedResources:
+    - persistentvolumeclaims
+    labelSelector:
+      matchLabels:
+        backup: "pvc-kuma"
+    excludedNamespaces:
+    - default
+    - kube-system
+    - minio
+    - velero
+    uploaderConfig:
+        parallelFilesUpload: 10
+    metadata:
+      labels:
+        type: 'full'
+        schedule: 'daily'
+    ttl: 720h0m0s

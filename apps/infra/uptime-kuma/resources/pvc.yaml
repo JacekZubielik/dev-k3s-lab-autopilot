@@ -1,0 +1,22 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  annotations:
+    # argocd.argoproj.io/compare-options: IgnoreExtraneous
+    velero.io/csi-volumesnapshot-class: "longhorn-backup-vsc"
+    # argocd.argoproj.io/sync-wave: "-1"
+  name: pvc-kuma
+  namespace: uptime-kuma
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 8Gi
+  volumeName: pv-kuma # must reference Persistent Volume
+  storageClassName: longhorn-retain
+#   dataSource:
+#     apiGroup: snapshot.storage.k8s.io
+#     kind: VolumeSnapshot
+#     name: backup-pvc-kuma
