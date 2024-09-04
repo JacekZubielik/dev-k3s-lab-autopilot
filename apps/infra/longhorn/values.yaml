@@ -94,7 +94,7 @@ defaultSettings:
   # -- Name of the Kubernetes secret associated with the backup target.
   backupTargetCredentialSecret: s3-backup
   # -- Setting that allows Longhorn to automatically attach a volume and create snapshots or backups when recurring jobs are run.
-  allowRecurringJobWhileVolumeDetached: "true"
+  allowRecurringJobWhileVolumeDetached: "false"
   # -- Setting that allows Longhorn to automatically create a default disk only on nodes with the label "node.longhorn.io/create-default-disk=true" (if no other disks exist).
   # When this setting is disabled, Longhorn creates a default disk on each node that is added to the cluster.
   createDefaultDiskLabeledNodes: "true"
@@ -124,7 +124,7 @@ defaultSettings:
   # -- Number of minutes that Longhorn keeps a failed backup resource. When the value is "0", automatic deletion is disabled.
   failedBackupTTL: ~
   # -- Setting that restores recurring jobs from a backup volume on a backup target and creates recurring jobs if none exist during backup restoration.
-  restoreVolumeRecurringJobs: "false"
+  restoreVolumeRecurringJobs: "enabled"
   # -- Maximum number of successful recurring backup and snapshot jobs to be retained. When the value is "0", a history of successful recurring jobs is not retained.
   recurringSuccessfulJobsHistoryLimit: ~
   # -- Maximum number of failed recurring backup and snapshot jobs to be retained. When the value is "0", a history of failed recurring jobs is not retained.
