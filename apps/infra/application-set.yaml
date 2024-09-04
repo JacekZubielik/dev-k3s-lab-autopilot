@@ -68,21 +68,21 @@ spec:
         jsonPointers:
         - /spec/template/metadata/annotations
         - /spec/template/metadata/labels
-      - kind: PersistentVolume
-        jsonPointers:
-        - /spec/claimRef/resourceVersion
-        - /spec/claimRef/uid
-        - /status/lastPhaseTransitionTime
+      # - kind: PersistentVolume
+      #   jsonPointers:
+      #   - /spec/claimRef/resourceVersion
+      #   - /spec/claimRef/uid
+      #   - /status/lastPhaseTransitionTime
 
       syncPolicy:
         automated:
           selfHeal: false
-          prune: true
+          prune: false
         syncOptions:
         - ApplyOutOfSyncOnly=true
         - CreateNamespace=true
         - PrunePropagationPolicy=foreground
-        - RespectIgnoreDifferences=true
+        - RespectIgnoreDifferences=false
         - ServerSideApply=false
         - SkipDryRunOnMissingResource=false
 
