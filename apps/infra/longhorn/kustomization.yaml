@@ -2,10 +2,10 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
-# metadata:
-#   annotations:
-#     argocd.argoproj.io/compare-options: IgnoreExtraneous
-    # argocd.argoproj.io/sync-options: Delete=true,Prune=true
+metadata:
+  annotations:
+    argocd.argoproj.io/compare-options: IgnoreExtraneous
+    argocd.argoproj.io/sync-options: Delete=false,Prune=false
 
 resources:
 # - resources/ns.yaml
@@ -27,12 +27,12 @@ generatorOptions:
 
 helmCharts:
 - name: longhorn
-  version: 1.6.2
+  version: 1.7.1
   repo: https://charts.longhorn.io
   includeCRDs: true
   namespace: longhorn-system
   releaseName: longhorn
-  valuesFile: values.yaml
+  valuesFile: values-default.yaml
 
 patches:
 - path: patches/remove-instance-patch.yaml
