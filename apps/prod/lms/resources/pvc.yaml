@@ -5,6 +5,8 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "-1"
     velero.io/csi-volumesnapshot-class: "longhorn-backup-vsc"
+  labels:
+    backup: pvc-lms
   name: pvc-lms-config
   namespace: lms
 spec:

@@ -24,7 +24,7 @@ spec:
     - persistentvolumeclaims
     labelSelector:
       matchLabels:
-        backup: "pvc-lms-config"
+        backup: "pvc-lms"
     excludedNamespaces:
     - default
     - kube-system
