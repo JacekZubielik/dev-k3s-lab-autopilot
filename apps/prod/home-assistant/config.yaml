@@ -1,0 +1,15 @@
+annotations: ''
+appName: home-assistant
+appRole: iot
+destNamespace: home-assistant
+destProject: "iot"
+destServer: https://kubernetes.default.svc
+exclude: ""
+include: ""
+labels: ""
+srcPath: apps/prod/home-assistant
+srcRepoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot.git
+srcTargetRevision: ""
+syncPriority: stage_2
+syncWave: 1
+userGivenName: home-assistant
