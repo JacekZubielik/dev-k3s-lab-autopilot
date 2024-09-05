@@ -22,8 +22,8 @@ generators:
 
 generatorOptions:
   disableNameSuffixHash: true
-  # labels:
-  #   component: longhorn
+  labels:
+    component: longhorn
 
 helmCharts:
 - name: longhorn
@@ -32,7 +32,7 @@ helmCharts:
   includeCRDs: true
   namespace: longhorn-system
   releaseName: longhorn
-  valuesFile: values2.yaml
+  valuesFile: values.yaml
 
 patches:
 - path: patches/remove-instance-patch.yaml
