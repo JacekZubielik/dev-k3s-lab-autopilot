@@ -211,13 +211,13 @@ defaultSettings:
   # -- Percentage of storage that can be allocated relative to hard drive capacity. The default value is "100".
   storageOverProvisioningPercentage: ~
   # -- Percentage of minimum available disk capacity. When the minimum available capacity exceeds the total available capacity, the disk becomes unschedulable until more space is made available for use. The default value is "25".
-  storageMinimalAvailablePercentage: ~
+  storageMinimalAvailablePercentage: 5
   # -- Percentage of disk space that is not allocated to the default disk on each new Longhorn node.
   storageReservedPercentageForDefaultDisk: ~
   # -- Upgrade Checker that periodically checks for new Longhorn versions. When a new version is available, a notification appears on the Longhorn UI. This setting is enabled by default
-  upgradeChecker: ~
+  upgradeChecker: false
   # -- Default number of replicas for volumes created using the Longhorn UI. For Kubernetes configuration, modify the `numberOfReplicas` field in the StorageClass. The default value is "3".
-  defaultReplicaCount: ~
+  defaultReplicaCount: 1
   # -- Default Longhorn StorageClass. "storageClassName" is assigned to PVs and PVCs that are created for an existing Longhorn volume. "storageClassName" can also be used as a label, so it is possible to use a Longhorn StorageClass to bind a workload to an existing PV without creating a Kubernetes StorageClass object. The default value is "longhorn-static".
   defaultLonghornStaticStorageClass: "longhorn" # ~
   # -- Number of seconds that Longhorn waits before checking the backupstore for new backups. The default value is "300". When the value is "0", polling is disabled.
@@ -244,7 +244,7 @@ defaultSettings:
   # Notice that this will be applied to Longhorn user-deployed components by default if there are no priority class values set yet, such as `longhornManager.priorityClass`.
   priorityClass: &defaultPriorityClassNameRef "longhorn-critical"
   # -- Setting that allows Longhorn to automatically salvage volumes when all replicas become faulty (for example, when the network connection is interrupted). Longhorn determines which replicas are usable and then uses these replicas for the volume. This setting is enabled by default.
-  autoSalvage: ~
+  autoSalvage: true
   # -- Setting that allows Longhorn to automatically delete a workload pod that is managed by a controller (for example, daemonset) whenever a Longhorn volume is detached unexpectedly (for example, during Kubernetes upgrades). After deletion, the controller restarts the pod and then Kubernetes handles volume reattachment and remounting.
   autoDeletePodWhenVolumeDetachedUnexpectedly: ~
   # -- Setting that prevents Longhorn Manager from scheduling replicas on a cordoned Kubernetes node. This setting is enabled by default.
@@ -286,7 +286,7 @@ defaultSettings:
   # -- Setting that notifies Longhorn that the cluster is using the Kubernetes Cluster Autoscaler.
   kubernetesClusterAutoscalerEnabled: ~
   # -- Setting that allows Longhorn to automatically delete an orphaned resource and the corresponding data (for example, stale replicas). Orphaned resources on failed or unknown nodes are not automatically cleaned up.
-  orphanAutoDeletion: ~
+  orphanAutoDeletion: true
   # -- Storage network for in-cluster traffic. When unspecified, Longhorn uses the Kubernetes cluster network.
   storageNetwork: ~
   # -- Flag that prevents accidental uninstallation of Longhorn.
@@ -300,7 +300,7 @@ defaultSettings:
   # -- Setting that defines when Longhorn checks the integrity of data in snapshot disk files. You must use the Unix cron expression format.
   snapshotDataIntegrityCronjob: ~
   # -- Setting that allows Longhorn to automatically mark the latest snapshot and its parent files as removed during a filesystem trim. Longhorn does not remove snapshots containing multiple child files.
-  removeSnapshotsDuringFilesystemTrim: ~
+  removeSnapshotsDuringFilesystemTrim: true
   # -- Setting that allows fast rebuilding of replicas using the checksum of snapshot disk files. Before enabling this setting, you must set the snapshot-data-integrity value to "enable" or "fast-check".
   fastReplicaRebuildEnabled: ~
   # -- Number of seconds that an HTTP client waits for a response from a File Sync server before considering the connection to have failed.
@@ -338,9 +338,9 @@ defaultSettings:
   # -- Setting that allows you to configure the log flags of the SPDK target daemon (spdk_tgt) of the V2 Data Engine.
   v2DataEngineLogFlags: ~
   # -- Setting that freezes the filesystem on the root partition before a snapshot is created.
-  freezeFilesystemForSnapshot: ~
+  freezeFilesystemForSnapshot: true
   # -- Setting that automatically cleans up the snapshot when the backup is deleted.
-  autoCleanupSnapshotWhenDeleteBackup: ~
+  autoCleanupSnapshotWhenDeleteBackup: true
   # -- Turn on logic to detect and move RWX volumes quickly on node failure.
   rwxVolumeFastFailover: ~
 
