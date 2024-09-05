@@ -1,0 +1,15 @@
+annotations: ''
+appName: esphome
+appRole: iot
+destNamespace: esphome
+destProject: "iot"
+destServer: https://kubernetes.default.svc
+exclude: ""
+include: ""
+labels: ""
+srcPath: apps/prod/esphome
+srcRepoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot.git
+srcTargetRevision: ""
+syncPriority: stage_1
+syncWave: 3
+userGivenName: esphome
