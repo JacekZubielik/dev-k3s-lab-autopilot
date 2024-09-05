@@ -124,7 +124,7 @@ service:
 
 persistence:
   # -- Setting that allows you to specify the default Longhorn StorageClass.
-  defaultClass: true
+  defaultClass: false
   # -- Filesystem type of the default Longhorn StorageClass.
   defaultFsType: ext4
   # -- mkfs parameters of the default Longhorn StorageClass.
@@ -171,7 +171,7 @@ persistence:
     # -- Node selector for the default Longhorn StorageClass. Longhorn uses only nodes with the specified tags for storing volume data. (Examples: "storage,fast")
     selector: "fast,storage"
   # -- Setting that allows you to enable automatic snapshot removal during filesystem trim for a Longhorn StorageClass. (Options: "ignored", "enabled", "disabled")
-  removeSnapshotsDuringFilesystemTrim: enabled
+  removeSnapshotsDuringFilesystemTrim: "enabled"
 
 preUpgradeChecker:
   # -- Setting that allows Longhorn to perform pre-upgrade checks. Disable this setting when installing Longhorn using Argo CD or other GitOps solutions.
@@ -199,9 +199,9 @@ defaultSettings:
   # -- Setting that allows Longhorn to automatically attach a volume and create snapshots or backups when recurring jobs are run.
   allowRecurringJobWhileVolumeDetached: "false"
   # -- Setting that allows Longhorn to automatically create a default disk only on nodes with the label "node.longhorn.io/create-default-disk=true" (if no other disks exist). When this setting is disabled, Longhorn creates a default disk on each node that is added to the cluster.
-  createDefaultDiskLabeledNodes: "true" # "config" "true"
+  createDefaultDiskLabeledNodes: "config" # "true"
   # -- Default path for storing data on a host. The default value is "/var/lib/longhorn/".
-  defaultDataPath: "/mnt/data"
+  defaultDataPath: "/mnt/data/"
   # -- Default data locality. A Longhorn volume has data locality if a local replica of the volume exists on the same node as the pod that is using the volume.
   defaultDataLocality: ~
   # -- Setting that allows scheduling on nodes with healthy replicas of the same volume. This setting is disabled by default.
@@ -340,7 +340,7 @@ defaultSettings:
   # -- Setting that freezes the filesystem on the root partition before a snapshot is created.
   freezeFilesystemForSnapshot: "true"
   # -- Setting that automatically cleans up the snapshot when the backup is deleted.
-  autoCleanupSnapshotWhenDeleteBackup: "enabled"
+  autoCleanupSnapshotWhenDeleteBackup: "true"
   # -- Turn on logic to detect and move RWX volumes quickly on node failure.
   rwxVolumeFastFailover: ~
 
