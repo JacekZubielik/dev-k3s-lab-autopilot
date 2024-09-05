@@ -4,8 +4,8 @@ kind: PersistentVolumeClaim
 metadata:
   annotations:
     # argocd.argoproj.io/compare-options: IgnoreExtraneous
-    velero.io/csi-volumesnapshot-class: "longhorn-backup-vsc"
     # argocd.argoproj.io/sync-wave: "-1"
+    velero.io/csi-volumesnapshot-class: "longhorn-backup-vsc"
   name: pvc-kuma
   namespace: uptime-kuma
 spec:

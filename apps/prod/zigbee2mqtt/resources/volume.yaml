@@ -24,7 +24,7 @@ spec:
   - data
   - fast
   restoreVolumeRecurringJob: enabled
-  fromBackup: s3://k3s-longhorn-backup@us-east-1/?backup=backup-89ddf2e1529c49f8&volume=pvc-zigbee2mqtt-data
+  fromBackup: s3://k3s-longhorn-backup@us-east-1/?backup=backup-21ea3d7e0524409c&volume=pvc-zigbee2mqtt-data
   frontend: blockdev
   # migratable: true
   nodeSelector:
