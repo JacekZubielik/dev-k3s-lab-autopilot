@@ -6,8 +6,8 @@ metadata:
   - longhorn.io
   annotations:
     argocd.argoproj.io/compare-options: IgnoreExtraneous
-    argocd.argoproj.io/hook: PreSync
-    argocd.argoproj.io/sync-wave: "-1"
+    # argocd.argoproj.io/hook: PreSync
+    argocd.argoproj.io/sync-wave: "-3"
   labels:
     longhornvolume: pvc-mosquitto
     recurring-job-group.longhorn.io/group1: enabled
