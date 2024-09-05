@@ -1,0 +1,15 @@
+annotations: ''
+appName: authentik
+appRole: infra
+destNamespace: authentik
+destProject: "infra"
+destServer: https://kubernetes.default.svc
+exclude: ""
+include: ""
+labels: ""
+srcPath: apps/infra/authentik
+srcRepoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot.git
+srcTargetRevision: ""
+syncPriority: stage_5
+syncWave: 1
+userGivenName: authentik
