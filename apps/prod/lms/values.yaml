@@ -1,0 +1,161 @@
+replicas: 1
+nameOverride: ""
+fullnameOverride: ""
+revisionHistoryLimit: 4
+hostNetwork: true # false
+
+updateStrategy:
+  type: RollingUpdate
+  # rollingUpdate:
+  #   maxUnavailable: 20%
+
+serviceAccount:
+  create: true
+  annotations: {}
+  automountServiceAccountToken: false
+
+podAnnotations: {}
+podLabels: {}
+
+extraEnv: {}
+
+# - name: TZ
+#   valueFrom:
+#     configMapKeyRef:
+#       name: lms-env
+#       key: TZ
+
+extraEnvSecrets: []
+  # This will set ${MQTT_PASSWORD} to the 'password' key from the 'mqtt' secret
+  # MQTT_PASSWORD:
+  #   secret: mqtt
+  #   key: password
+
+## If you'd like to provide your own Kubernetes Secret object instead of passing your values
+## individually, pass in the name of a created + populated Secret.
+## All secrets will be mounted as environment variables, with each key/value mapping to a
+## corresponding environment variable.
+extraSecretForEnvFrom: []
+# extraSecretForEnvFrom:
+# # - lms-secrets
+#   - configMapRef:
+#       name: lms-tz
+
+podSecurityContext: {}
+  # fsGroup: 2000
+  # privileged: true
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+service:
+  annotations:
+    prometheus.io/scrape: "true"
+    prometheus.io/port: 9100
+  labels: {}
+  type: ClusterIP # LoadBalancer
+  externalIPs: []
+  loadBalancerIP: [] # "192.168.40.188"
+  externalTrafficPolicy: {}
+  loadBalancerSourceRanges: []
+  publishNotReadyAddresses: false
+  httpPort: "9000"
+  cliPort: "9090"
+  controlPort: "3483"
+  discoveryPort: "3483"
+  metricsPort: "9100"
+  spotifyPort: "4070"
+
+monitoring:
+  enabled: true
+  serviceMonitor:
+    enabled: true
+    annotations:
+      prometheus.io/scrape: "true"
+      prometheus.io/port: 9100
+    labels:
+      release: kube-prometheus-stack
+    honorLabels: true
+    interval: 60s
+    selector: {}
+    namespace: monitoring
+    scrapeTimeout: 10s
+    scheme: http
+    tlsConfig: {}
+    relabelings:
+    - action: replace
+      regex: ^(.*)$
+      replacement: $1
+      separator: ;
+      sourceLabels:
+      - __meta_kubernetes_pod_node_name
+      targetLabel: nodename
+    metricRelabelings:
+    - action: keep
+      regex: 'kube_(daemonset|deployment|pod|namespace|node|statefulset).+'
+      sourceLabels:
+      - __name__
+    bearerTokenFile: {}
+    # (use long lived access tokens)
+    bearerTokenSecret: {}
+      # name:
+      # key:
+      # optional:
+
+livenessProbe:
+  enabled: true
+  scheme: HTTP
+  periodSeconds: 60
+  timeoutSeconds: 10
+  successThreshold: 1
+  failureThreshold: 6
+  initialDelaySeconds: 30
+readinessProbe:
+  enabled: true
+  scheme: HTTP
+  periodSeconds: 60
+  timeoutSeconds: 10
+  successThreshold: 1
+  failureThreshold: 6
+  initialDelaySeconds: 30
+startupProbe:
+  enabled: true
+  successThreshold: 1
+  failureThreshold: 6
+
+ingress:
+  enabled: false
+
+resources:
+  requests:
+    cpu: 850m
+    memory: 0.4Gi
+  limits:
+    cpu: 2000m
+    memory: 1.2Gi
+
+nodeSelector:
+  kubernetes.io/hostname: dev-k3s-master-0
+affinity: {}
+tolerations: []
+
+persistence:
+  lmsconfig:
+    enabled: true
+    existingClaim: pvc-lms-config
+
+  musicstorage:
+    enabled: true
+    existingClaim: pvc-musicstorage
+    hostPath: /mnt/fast-backup/media/audio
+
+# Mount devices or folders from the host machine. Can be used for USB device mounting.
+hostMounts: []
+  # Example
+  # - name: pvc-musicstorage
+  #   hostPath: /mnt/hdd-0/media/audio
