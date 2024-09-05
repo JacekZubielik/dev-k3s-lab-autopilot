@@ -130,7 +130,7 @@ persistence:
   # -- mkfs parameters of the default Longhorn StorageClass.
   defaultMkfsParams: ""
   # -- Replica count of the default Longhorn StorageClass.
-  defaultClassReplicaCount: 3
+  defaultClassReplicaCount: 1
   # -- Data locality of the default Longhorn StorageClass. (Options: "disabled", "best-effort")
   defaultDataLocality: disabled
   # -- Reclaim policy that provides instructions for handling of a volume after its claim is released. (Options: "Retain", "Delete")
@@ -140,7 +140,7 @@ persistence:
   # -- Setting that disables the revision counter and thereby prevents Longhorn from tracking all write operations to a volume. When salvaging a volume, Longhorn uses properties of the volume-head-xxx.img file (the last file size and the last time the file was modified) to select the replica to be used for volume recovery.
   disableRevisionCounter: "true"
   # -- Set NFS mount options for Longhorn StorageClass for RWX volumes
-  nfsOptions: ""
+  nfsOptions: "hard,timeo=50,retrans=1"
   recurringJobSelector:
     # -- Setting that allows you to enable the recurring job selector for a Longhorn StorageClass.
     enable: false
@@ -171,7 +171,7 @@ persistence:
     # -- Node selector for the default Longhorn StorageClass. Longhorn uses only nodes with the specified tags for storing volume data. (Examples: "storage,fast")
     selector: ""
   # -- Setting that allows you to enable automatic snapshot removal during filesystem trim for a Longhorn StorageClass. (Options: "ignored", "enabled", "disabled")
-  removeSnapshotsDuringFilesystemTrim: ignored
+  removeSnapshotsDuringFilesystemTrim: enabled
 
 preUpgradeChecker:
   # -- Setting that allows Longhorn to perform pre-upgrade checks. Disable this setting when installing Longhorn using Argo CD or other GitOps solutions.
@@ -199,7 +199,7 @@ defaultSettings:
   # -- Setting that allows Longhorn to automatically attach a volume and create snapshots or backups when recurring jobs are run.
   allowRecurringJobWhileVolumeDetached: "false"
   # -- Setting that allows Longhorn to automatically create a default disk only on nodes with the label "node.longhorn.io/create-default-disk=true" (if no other disks exist). When this setting is disabled, Longhorn creates a default disk on each node that is added to the cluster.
-  createDefaultDiskLabeledNodes: "true"
+  createDefaultDiskLabeledNodes: "config" #"true"
   # -- Default path for storing data on a host. The default value is "/var/lib/longhorn/".
   defaultDataPath: "/mnt/data"
   # -- Default data locality. A Longhorn volume has data locality if a local replica of the volume exists on the same node as the pod that is using the volume.
@@ -211,21 +211,21 @@ defaultSettings:
   # -- Percentage of storage that can be allocated relative to hard drive capacity. The default value is "100".
   storageOverProvisioningPercentage: ~
   # -- Percentage of minimum available disk capacity. When the minimum available capacity exceeds the total available capacity, the disk becomes unschedulable until more space is made available for use. The default value is "25".
-  storageMinimalAvailablePercentage: ~
+  storageMinimalAvailablePercentage: "10"
   # -- Percentage of disk space that is not allocated to the default disk on each new Longhorn node.
-  storageReservedPercentageForDefaultDisk: ~
+  storageReservedPercentageForDefaultDisk: "10"
   # -- Upgrade Checker that periodically checks for new Longhorn versions. When a new version is available, a notification appears on the Longhorn UI. This setting is enabled by default
   upgradeChecker: ~
   # -- Default number of replicas for volumes created using the Longhorn UI. For Kubernetes configuration, modify the `numberOfReplicas` field in the StorageClass. The default value is "3".
-  defaultReplicaCount: ~
+  defaultReplicaCount: "1"
   # -- Default Longhorn StorageClass. "storageClassName" is assigned to PVs and PVCs that are created for an existing Longhorn volume. "storageClassName" can also be used as a label, so it is possible to use a Longhorn StorageClass to bind a workload to an existing PV without creating a Kubernetes StorageClass object. The default value is "longhorn-static".
-  defaultLonghornStaticStorageClass: ~
+  defaultLonghornStaticStorageClass: "longhorn"
   # -- Number of seconds that Longhorn waits before checking the backupstore for new backups. The default value is "300". When the value is "0", polling is disabled.
-  backupstorePollInterval: ~
+  backupstorePollInterval: "60"
   # -- Number of minutes that Longhorn keeps a failed backup resource. When the value is "0", automatic deletion is disabled.
   failedBackupTTL: ~
   # -- Setting that restores recurring jobs from a backup volume on a backup target and creates recurring jobs if none exist during backup restoration.
-  restoreVolumeRecurringJobs: ~
+  restoreVolumeRecurringJobs: "enabled"
   # -- Maximum number of successful recurring backup and snapshot jobs to be retained. When the value is "0", a history of successful recurring jobs is not retained.
   recurringSuccessfulJobsHistoryLimit: ~
   # -- Maximum number of failed recurring backup and snapshot jobs to be retained. When the value is "0", a history of failed recurring jobs is not retained.
@@ -246,7 +246,7 @@ defaultSettings:
   # -- Setting that allows Longhorn to automatically salvage volumes when all replicas become faulty (for example, when the network connection is interrupted). Longhorn determines which replicas are usable and then uses these replicas for the volume. This setting is enabled by default.
   autoSalvage: "true"
   # -- Setting that allows Longhorn to automatically delete a workload pod that is managed by a controller (for example, daemonset) whenever a Longhorn volume is detached unexpectedly (for example, during Kubernetes upgrades). After deletion, the controller restarts the pod and then Kubernetes handles volume reattachment and remounting.
-  autoDeletePodWhenVolumeDetachedUnexpectedly: ~
+  autoDeletePodWhenVolumeDetachedUnexpectedly: "true"
   # -- Setting that prevents Longhorn Manager from scheduling replicas on a cordoned Kubernetes node. This setting is enabled by default.
   disableSchedulingOnCordonedNode: ~
   # -- Setting that allows Longhorn to schedule new replicas of a volume to nodes in the same zone as existing healthy replicas. Nodes that do not belong to any zone are treated as existing in the zone that contains healthy replicas. When identifying zones, Longhorn relies on the label "topology.kubernetes.io/zone=<Zone name of the node>" in the Kubernetes node object.
@@ -256,7 +256,7 @@ defaultSettings:
   # -- Policy that defines the action Longhorn takes when a volume is stuck with a StatefulSet or Deployment pod on a node that failed.
   nodeDownPodDeletionPolicy: ~
   # -- Policy that defines the action Longhorn takes when a node with the last healthy replica of a volume is drained.
-  nodeDrainPolicy: ~
+  nodeDrainPolicy: "always-allow"
   # -- Setting that allows automatic detaching of manually-attached volumes when a node is cordoned.
   detachManuallyAttachedVolumesWhenCordoned: ~
   # -- Number of seconds that Longhorn waits before reusing existing data on a failed replica instead of creating a new replica of a degraded volume.
@@ -300,7 +300,7 @@ defaultSettings:
   # -- Setting that defines when Longhorn checks the integrity of data in snapshot disk files. You must use the Unix cron expression format.
   snapshotDataIntegrityCronjob: ~
   # -- Setting that allows Longhorn to automatically mark the latest snapshot and its parent files as removed during a filesystem trim. Longhorn does not remove snapshots containing multiple child files.
-  removeSnapshotsDuringFilesystemTrim: ~
+  removeSnapshotsDuringFilesystemTrim: "true"
   # -- Setting that allows fast rebuilding of replicas using the checksum of snapshot disk files. Before enabling this setting, you must set the snapshot-data-integrity value to "enable" or "fast-check".
   fastReplicaRebuildEnabled: ~
   # -- Number of seconds that an HTTP client waits for a response from a File Sync server before considering the connection to have failed.
@@ -332,7 +332,7 @@ defaultSettings:
   # -- Setting that temporarily prevents all attempts to purge volume snapshots.
   disableSnapshotPurge: ~
   # -- Maximum snapshot count for a volume. The value should be between 2 to 250
-  snapshotMaxCount: ~
+  snapshotMaxCount: "100"
   # -- Setting that allows you to configure the log level of the SPDK target daemon (spdk_tgt) of the V2 Data Engine.
   v2DataEngineLogLevel: ~
   # -- Setting that allows you to configure the log flags of the SPDK target daemon (spdk_tgt) of the V2 Data Engine.
