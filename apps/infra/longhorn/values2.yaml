@@ -197,9 +197,9 @@ defaultSettings:
   # -- Name of the Kubernetes secret associated with the backup target.
   backupTargetCredentialSecret: s3-backup
   # -- Setting that allows Longhorn to automatically attach a volume and create snapshots or backups when recurring jobs are run.
-  allowRecurringJobWhileVolumeDetached: ~
+  allowRecurringJobWhileVolumeDetached: "false"
   # -- Setting that allows Longhorn to automatically create a default disk only on nodes with the label "node.longhorn.io/create-default-disk=true" (if no other disks exist). When this setting is disabled, Longhorn creates a default disk on each node that is added to the cluster.
-  createDefaultDiskLabeledNodes: ~
+  createDefaultDiskLabeledNodes: "true" # ~
   # -- Default path for storing data on a host. The default value is "/var/lib/longhorn/".
   defaultDataPath: "/mnt/data"
   # -- Default data locality. A Longhorn volume has data locality if a local replica of the volume exists on the same node as the pod that is using the volume.
@@ -219,7 +219,7 @@ defaultSettings:
   # -- Default number of replicas for volumes created using the Longhorn UI. For Kubernetes configuration, modify the `numberOfReplicas` field in the StorageClass. The default value is "3".
   defaultReplicaCount: ~
   # -- Default Longhorn StorageClass. "storageClassName" is assigned to PVs and PVCs that are created for an existing Longhorn volume. "storageClassName" can also be used as a label, so it is possible to use a Longhorn StorageClass to bind a workload to an existing PV without creating a Kubernetes StorageClass object. The default value is "longhorn-static".
-  defaultLonghornStaticStorageClass: ~
+  defaultLonghornStaticStorageClass: "longhorn" ~
   # -- Number of seconds that Longhorn waits before checking the backupstore for new backups. The default value is "300". When the value is "0", polling is disabled.
   backupstorePollInterval: ~
   # -- Number of minutes that Longhorn keeps a failed backup resource. When the value is "0", automatic deletion is disabled.
