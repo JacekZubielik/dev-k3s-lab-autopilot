@@ -1,0 +1,32 @@
+---
+apiVersion: longhorn.io/v1beta2
+kind: Volume
+metadata:
+  finalizers:
+  - longhorn.io
+  annotations:
+    argocd.argoproj.io/compare-options: IgnoreExtraneous
+    argocd.argoproj.io/hook: PreSync
+    argocd.argoproj.io/sync-wave: "-1"
+  labels:
+    longhornvolume: pvc-mosquitto
+    recurring-job-group.longhorn.io/group1: enabled
+    recurring-job.longhorn.io/24-hour-snapshots: enabled
+  name: pvc-mosquitto
+  namespace: longhorn-system
+spec:
+  # backingImage: pvc-mosquitto
+  dataLocality: best-effort
+  diskSelector:
+  - data
+  - fast
+  restoreVolumeRecurringJob: enabled
+  # fromBackup: s3://k3s-longhorn-backup@us-east-1/?backup=system-backup-6e0044ee5d464ba9&volume=pvc-mosquitto
+  frontend: blockdev
+  # migratable: true
+  nodeSelector:
+  - fast
+  - storage
+  numberOfReplicas: 1
+  size: '1073741824'
+  snapshotMaxCount: 10
