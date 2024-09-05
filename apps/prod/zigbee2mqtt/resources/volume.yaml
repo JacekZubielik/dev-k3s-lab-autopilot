@@ -6,8 +6,8 @@ metadata:
   - longhorn.io
   annotations:
     argocd.argoproj.io/compare-options: IgnoreExtraneous
-    argocd.argoproj.io/hook: PreSync
-    argocd.argoproj.io/sync-wave: "-1"
+    # argocd.argoproj.io/hook: PreSync
+    argocd.argoproj.io/sync-wave: "-3"
   labels:
     longhornvolume: pvc-zigbee2mqtt-data
     recurring-job-group.longhorn.io/group3: enabled
@@ -29,4 +29,4 @@ spec:
   - storage
   numberOfReplicas: 1
   size: '4294967296'
-  snapshotMaxCount: 100
+  snapshotMaxCount: 10

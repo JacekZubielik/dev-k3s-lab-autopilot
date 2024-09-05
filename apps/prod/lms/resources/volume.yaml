@@ -29,4 +29,4 @@ spec:
   - storage
   numberOfReplicas: 1
   size: '10737418240'
-  snapshotMaxCount: 20
+  snapshotMaxCount: 10
