@@ -32,7 +32,7 @@ helmCharts:
   includeCRDs: true
   namespace: longhorn-system
   releaseName: longhorn
-  valuesFile: values-default.yaml
+  valuesFile: values2.yaml
 
 patches:
 - path: patches/remove-instance-patch.yaml
