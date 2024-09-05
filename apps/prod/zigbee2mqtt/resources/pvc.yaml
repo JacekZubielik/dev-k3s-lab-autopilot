@@ -5,6 +5,8 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "-1"
     velero.io/csi-volumesnapshot-class: "longhorn-backup-vsc"
+  labels:
+    backup: pvc-zigbee2mqtt-data
   name: pvc-zigbee2mqtt-data
   namespace: zigbee2mqtt
 spec:
