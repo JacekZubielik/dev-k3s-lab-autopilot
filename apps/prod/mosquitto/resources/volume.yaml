@@ -10,7 +10,7 @@ metadata:
     argocd.argoproj.io/sync-wave: "-3"
   labels:
     longhornvolume: pvc-mosquitto
-    recurring-job-group.longhorn.io/group1: enabled
+    recurring-job-group.longhorn.io/group3: enabled
     recurring-job.longhorn.io/24-hour-snapshots: enabled
   name: pvc-mosquitto
   namespace: longhorn-system
