@@ -5,6 +5,8 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "-1"
     velero.io/csi-volumesnapshot-class: "longhorn-backup-vsc"
+  labels:
+    backup: pvc-authentik
   name: pvc-authentik-psql
   namespace: authentik
 spec:
@@ -23,6 +25,8 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "-1"
     velero.io/csi-volumesnapshot-class: "longhorn-backup-vsc"
+  labels:
+    backup: pvc-authentik
   name: pvc-authentik-redis
   namespace: authentik
 spec:
