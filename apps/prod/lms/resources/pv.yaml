@@ -34,7 +34,7 @@ spec:
   volumeMode: Filesystem
   storageClassName: host-path
   hostPath:
-    path: "/mnt/media/audio"
+    path: "/mnt/media/music"
     type: DirectoryOrCreate
   nodeAffinity:
     required:
@@ -60,7 +60,7 @@ spec:
 #     - ReadWriteMany
 #   nfs:
 #     server: 192.168.40.110 # nfs-server.default.svc.cluster.local
-#     path: "/mnt/hdd-0/nfs_share/audio"
+#     path: "/mnt/hdd-0/nfs_share/music"
 #     readOnly: true
 #   mountOptions:
 #     - nfsvers=4.2
