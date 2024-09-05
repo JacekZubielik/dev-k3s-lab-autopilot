@@ -12,9 +12,6 @@ metadata:
     longhornvolume: pvc-zigbee2mqtt-data
     recurring-job-group.longhorn.io/group3: enabled
     recurring-job.longhorn.io/24-hour-backups: enabled
-    # recurring-job.longhorn.io/24-hour-snapshots: enabled
-    # recurring-job.longhorn.io/48-hour-backups: enabled
-    # recurring-job.longhorn.io/5-minutes-backups: enabled
   name: pvc-zigbee2mqtt-data
   namespace: longhorn-system
 spec:

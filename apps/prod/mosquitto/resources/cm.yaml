@@ -1,6 +1,5 @@
 # https://mosquitto.org/man/mosquitto-conf-5.html
 # password_file /mosquitto/password_file
-# listener 8883 0.0.0.0
 ---
 apiVersion: v1
 kind: ConfigMap

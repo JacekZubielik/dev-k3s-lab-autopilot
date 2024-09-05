@@ -1,0 +1,41 @@
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: syncthing-discovery-proxy
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+  labels:
+    app.kubernetes.io/name: syncthing-discovery
+spec:
+  externalName: 192.168.40.193
+  ports:
+  - protocol: TCP
+    port: 21027
+    targetPort: 21027
+    # name: discovery
+  type: ExternalName
+  selector:
+    app.kubernetes.io/instance: syncthing
+    app.kubernetes.io/name: syncthing
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: syncthing-web-proxy
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+  labels:
+    app.kubernetes.io/name: syncthing-web
+spec:
+  externalName: 192.168.40.193
+  ports:
+  - protocol: TCP
+    port: 8384
+    targetPort: 8384
+    # name: web
+  type: ExternalName
+  selector:
+    app.kubernetes.io/instance: syncthing
+    app.kubernetes.io/name: syncthing

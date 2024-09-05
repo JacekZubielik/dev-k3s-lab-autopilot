@@ -34,7 +34,7 @@ spec:
   volumeMode: Filesystem
   storageClassName: host-path
   hostPath:
-    path: "/mnt/fast-backup/media/audio"
+    path: "/mnt/media/audio"
     type: DirectoryOrCreate
   nodeAffinity:
     required:
