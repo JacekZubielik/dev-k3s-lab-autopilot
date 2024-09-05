@@ -7,8 +7,8 @@ metadata:
 spec:
   cron: "0 */12 * * *"
   task: "snapshot"
-  groups:
-  - group1
+  # groups:
+  # - group1
   retain: 3
   concurrency: 2
   labels:
@@ -22,8 +22,8 @@ metadata:
 spec:
   cron: "0 */24 * * *"
   task: "snapshot"
-  groups:
-  - group1
+  # groups:
+  # - group1
   retain: 3
   concurrency: 2
   labels:
@@ -37,8 +37,8 @@ metadata:
 spec:
   cron: "0 */48 * * *"
   task: "snapshot"
-  groups:
-  - group1
+  # groups:
+  # - group1
   retain: 3
   concurrency: 2
   labels:
