@@ -4,4 +4,4 @@ kind: Namespace
 metadata:
   name: syncthing
   annotations:
-    argocd.argoproj.io/sync-wave: "-1"
+    argocd.argoproj.io/sync-wave: "-4"
