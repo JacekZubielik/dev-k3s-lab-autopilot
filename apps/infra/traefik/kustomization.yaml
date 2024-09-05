@@ -1,0 +1,45 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+- resources/ns.yaml
+- resources/chains.yaml
+- resources/middlewares.yaml
+- resources/tlsoption.yaml
+# - resources/servicemonitor.yaml
+# - resources/tlsstore.yaml
+
+generators:
+- ksops-generator.yaml
+
+configMapGenerator:
+- name: traefik-tz
+  literals:
+  - TZ=CET
+
+generatorOptions:
+  disableNameSuffixHash: true
+  labels:
+    component: traefik
+
+
+helmCharts:
+- name: traefik
+  version: 30.1.0
+  repo: https://helm.traefik.io/traefik
+  includeCRDs: false
+  namespace: traefik
+  releaseName: traefik
+  valuesFile: values.yaml
+
+patches:
+- patch: |-
+    - op: add
+      path: /subjects/0/namespace
+      value: traefik
+  target:
+    group: rbac.authorization.k8s.io
+    kind: ClusterRoleBinding
+    name: traefik-role-binding
+    version: v1

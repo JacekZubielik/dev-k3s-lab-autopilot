@@ -1,0 +1,18 @@
+# Parameters for the VolumeSnapshotLocation(s).
+# Configure multiple by adding other element(s) to the volumeSnapshotLocation slice.
+# See https://velero.io/docs/v1.6/api-types/volumesnapshotlocation/
+
+---
+apiVersion: velero.io/v1
+kind: VolumeSnapshotLocation
+metadata:
+  name: minio
+  namespace: velero
+spec:
+  provider: aws
+  credential:
+    name: velero-secret
+    key: cloud
+  config:
+    region: us-east-1
+    profile: "minio"
