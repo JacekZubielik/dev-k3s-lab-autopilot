@@ -8,7 +8,7 @@ metadata:
     argocd.argoproj.io/sync-options: Delete=true,Prune=true
 
 resources:
-- resources/ns.yaml
+# - resources/ns.yaml
 - resources/pv.yaml
 - resources/pvc.yaml
 - resources/volume.yaml
