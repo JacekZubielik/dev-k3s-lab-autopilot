@@ -79,7 +79,7 @@ defaultSettings:
   defaultLonghornStaticStorageClass: longhorn
   backupstorePollInterval: ~
   failedBackupTTL: ~
-  restoreVolumeRecurringJobs: ~ # enabled
+  restoreVolumeRecurringJobs: enabled
   recurringSuccessfulJobsHistoryLimit: ~
   recurringFailedJobsHistoryLimit: ~
   recurringJobMaxRetention: ~
