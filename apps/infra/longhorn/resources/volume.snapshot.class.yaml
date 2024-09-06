@@ -1,0 +1,57 @@
+---
+# Default VolumeSnapshotClass
+apiVersion: snapshot.storage.k8s.io/v1
+kind: VolumeSnapshotClass
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
+    argocd.argoproj.io/instance: longhorn
+  name: longhorn
+driver: driver.longhorn.io
+deletionPolicy: Retain
+
+---
+# CSI VolumeSnapshot Associated With Longhorn Snapshot
+apiVersion: snapshot.storage.k8s.io/v1
+kind: VolumeSnapshotClass
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
+    argocd.argoproj.io/instance: longhorn
+  name: longhorn-snapshot-vsc
+driver: driver.longhorn.io
+deletionPolicy: Retain
+parameters:
+  type: snap
+  # type: longhorn-snapshot
+
+---
+# CSI VolumeSnapshot Associated With Longhorn Backup
+apiVersion: snapshot.storage.k8s.io/v1
+kind: VolumeSnapshotClass
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
+    # argocd.argoproj.io/instance: longhorn
+  labels:
+    velero.io/csi-volumesnapshot-class: "true"
+  name: longhorn-backup-vsc
+driver: driver.longhorn.io
+deletionPolicy: Retain
+parameters:
+  type: bak
+
+---
+# CSI VolumeSnapshot Associated With Longhorn BackingImage
+apiVersion: snapshot.storage.k8s.io/v1
+kind: VolumeSnapshotClass
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
+    argocd.argoproj.io/instance: longhorn
+  name: longhorn-backup-vsc-bi
+driver: driver.longhorn.io
+deletionPolicy: Retain
+parameters:
+  type: bi
+  export-type: qcow2
