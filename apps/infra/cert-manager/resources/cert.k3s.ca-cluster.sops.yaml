@@ -1,0 +1,81 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+    name: dev-k3s-homelab-net
+    namespace: cert-manager
+spec:
+    commonName: dev.k3s.homelab.net
+    # 90d
+    duration: 2160h0m0s
+    isCA: true
+    # 30d
+    renewBefore: 720h0m0s
+    secretName: dev.k3s.homelab.tls
+    subject:
+        organizations:
+            - ENC[AES256_GCM,data:gSB0ZMo6hTZcHw3MjwQEqw==,iv:jHGiPoD2O7Ad4+F8prG1I7FzlIzFmIkN4lzyHYTwYhE=,tag:0Mct50liNhwQ9a7cIt371Q==,type:str]
+            - ENC[AES256_GCM,data:CFti7T1GtazqLvdWrAyYT6zUQrP9,iv:6D0OuMoa6CTmn884eb9q8+4XjPXFIt88tVmZ9lmrVgU=,tag:2SnCaHSDJ5v4CuWZWfzK3g==,type:comment]
+            - ENC[AES256_GCM,data:ijB2MMheKsBcjs6ptpDor4cU9n0B/VBEoQl57yg=,iv:KnnQgnC0IWOchAASAguWqabjNlLGLkWUpJeIhtqZQU0=,tag:gqhUf0fKGGNCoA0ncAYx0A==,type:comment]
+    privateKey:
+        rotationPolicy: Always
+        # algorithm: RSA
+        # encoding: PKCS8
+        # size: 2048
+        algorithm: ECDSA
+        encoding: PKCS1
+        size: 256
+    usages:
+        - cert sign
+        - server auth
+        - client auth
+    dnsNames:
+        - ENC[AES256_GCM,data:DdiBnJL+sRqe/YkcEAh+YZ9HqA==,iv:+vR426P71JKCC4Qner/ue7rXwmts58qRxSn00TlWas4=,tag:ygiIXdaE4fjdg4niqJDSow==,type:str]
+        - ENC[AES256_GCM,data:yzT2QVts3aRHinKwv4g5kecwHMug,iv:XNmCv3iHVSmU+PntkUNxSQTOI0QzCbIE5svZXqWAWN0=,tag:laDBaNXCxIRnqLINitloJg==,type:str]
+    ipAddresses:
+        - 127.0.0.1
+        - ::1
+    issuerRef:
+        group: cert-manager.io
+        kind: ClusterIssuer
+        #k3s-ca-cluster-issuer
+        name: default-issuer-selfsigned
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1deg9tqt7jtddnqme6nvcl72czns80z0n25u8k9pw5830dn4arsks5pua4h
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBubUlSb0ZLZ3FmZzlPUzhE
+            aG80TDhocDYzMzZQZlVLOWJXa3h2b2x1UENZCnpLTkVuVjVLc2pSRlRVK3N5SmpO
+            RHFlWlZKdndNZkZxK2ZTbi95aWdmeFUKLS0tIGc3SXhGSzdsZ29aOEVHcll5QytM
+            U1E5UnRLbUxRUDd1R1JqdEtwNVhsNjQKVrSCtQ0kFALs4BoLIPOHrIku7Fx5yLj5
+            eKYLYmw2IuMsBTiCF8nHDAPogojbOmP8dkcURPu592AkZFf/tfRn9w==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2024-08-03T18:01:34Z"
+    mac: ENC[AES256_GCM,data:G2KgMV0kzL/Uy8/9C6pTFgatXZDDlsiz/QjctDvZ95xXbs9OXyvjA/shQ8Tx2FxLiAQyxXPHM4gPIednNiEQcF2fpRrC745yy+TD3eewSG49cU4692iu6g+no9eTmE03kpN7SaVqt1+KMQX2vQsd88gkrYXI4pwJQ+MoDY4+WIU=,iv:GUJOfjNEHYHflkpZqjDn3YZFC54rrHDOx24BdRHgc+o=,tag:EsvC8X9leYSBVOvjgKp+1w==,type:str]
+    pgp:
+        - created_at: "2024-08-03T18:01:34Z"
+          enc: |-
+            -----BEGIN PGP MESSAGE-----
+
+            hQIMA0R6oz1GmNjVARAAp+CfQvKtL3bhW4oVppAlgPJUR21Kzs2BHeiIMyN5DmlM
+            9AfEh4wizuwkhGGJK6Ti5eOqJu7GjsSeUcNl6ggS/A3CNhlsfGJoqw2sCeTHw/qZ
+            J7LA41PhF1ilge9YP6p1t4Ppo7LKe1Lrhabj09NRz96qgdWnkwjTogejrmf47et5
+            l3ULJbgMfifrlDaZsU0X4qX/pa8EomGhnCaJR3yRl14e2S6fQq+bgkWBf9EXH4Tf
+            YCE9Vfw8Y4rNAj0t97UoEUChuDEZJ4q6Vdt/5fQud/77yd+p9JZj3U8vyqAnc+jw
+            RXa9IzzTBv/LkYW81a98Nbe8NL93CiA4Pix/yAumSJhVeDcLxpZ2agPxRKOQuM9J
+            vppI8FmK3wMaxUSiBGK59uBDtUiagZV6fso7AeiOCszjaVCd2r6wMGe7N29pJSem
+            YwOuj5iuadFwCuapbI6rqcVPUmqoJoAn5V+Zpw03euo1WTv85Q1vcEAS7QUyyxNr
+            OMzC8uuX4AMaCeDCq7eDhoTXxs4KtlWQmKjmWwsGziBXFJl32DqpbWIXjMljAKzq
+            5PTVG6P5Lxse3hluR+XiFLMELTP8uzkOiYnl7/jYgV4lp4XUHqtclg2FMKfbKlgF
+            IHUkLI0x/HoghzfQw/N1+xJtJQtd4oT9d/FzmcHXZbdGH0lpGbXYQwy2p+OFoXjS
+            XgEZKAgzLw1cN7Fmo8LfRs7soaE9TAi+5kzFianfNt247M6xOigdzJu9iIb/W8yh
+            Y5MFxShGMVZI+8jvLtejDory12SWOT3funGqCg2wVG+dhUn9/nhDn2mg4hO4OAc=
+            =1ieT
+            -----END PGP MESSAGE-----
+          fp: 6D3FE55384B558E06A1BA364586EFA784A32C981
+    encrypted_regex: ^(data|stringData|dnsNames|email|organizations|accessKeyID|region|hostedZoneID|role|dnsZones)$
+    version: 3.8.1

@@ -1,0 +1,56 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+    annotations:
+        argocd.argoproj.io/sync-wave: "3"
+    name: letsencrypt-staging
+spec:
+    dnsNames:
+        - ENC[AES256_GCM,data:tu/0LqIP24Q0LZAO9smF/hCK,iv:J7xd46M08zK6ztcZR5swDRyshpDKkwnFrTFj0US2BE4=,tag:RL8n4i037HICZDMCqFS82w==,type:str]
+        - ENC[AES256_GCM,data:MAweOeg07oPK5ANgDb2e3URww2A=,iv:M3a1TB53dIeHwe3zmqRJemoQDeeGUOviYkGGrNPCPKA=,tag:fLYD6WDYUSdmCJoVmEiqtQ==,type:str]
+    issuerRef:
+        kind: ClusterIssuer
+        name: letsencrypt-staging
+    secretName: letsencrypt-staging
+    duration: 2160h0m0s
+    renewBefore: 720h0m0s
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1deg9tqt7jtddnqme6nvcl72czns80z0n25u8k9pw5830dn4arsks5pua4h
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSAwNzd5Wjh6dkkrRUUxZkFk
+            OC9lNWFXMVE1eWJOejBLTmU3ZEJEaE5DQ1ZRCkZYeGxZbmJnRURDZms5bk9hVmwy
+            WHBzdzNGVS8yMFNOcFJnTDdVRnFrck0KLS0tIEp6eUswS3dkUHpHQnkxcGkwMFB2
+            Q1E3YjR2NHl0enI5WXZibWtHVkdhS1UKCHvTxnsvsaQPvZX9OfbrWbBsAjD6jAmP
+            eTLeueHxjpZ3tGAuQ51Q866+QCVn6D98s6V/KtCb1OC2H8zmAjwxew==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2024-08-10T16:06:09Z"
+    mac: ENC[AES256_GCM,data:lTJbAFbW5tbRcdFCLccKeAGnzZ1Zm/z4rVizfpH+xj/5rphs2aHGFI1xRiX1De/SWSPpQbMpfnveD6jQ6vezr3I/IRDj9uy0TFm8ZmFtRAsRsBcYasYfR23Z1V6uCH3sLf8MS+tsj/ZOoA2N61l+3tL6ujh5iFFlbe+OFrAptKI=,iv:YToR7oYZLgP9Lo5g0R1JyJjKRQgBeUXItVyIl8R2GKs=,tag:rkWEiEPd0OUlEkciA3jfvA==,type:str]
+    pgp:
+        - created_at: "2024-06-18T10:57:28Z"
+          enc: |-
+            -----BEGIN PGP MESSAGE-----
+
+            hQIMA0R6oz1GmNjVAQ//aXFXi3sGyfeCW+/RjMMxgKQdPxf/0xAYOQXu0Y1ppktR
+            SsyhXqM/kOe0H5+X23wBmgHDlb1iRh0bBg3Yr4gYWgJ/Om2CJJT3Pjh9SqmggC+i
+            I+NeFQ5NQLB2jwao1QK2gMywzppRbtNjW6nqN0xd1ntpv4OOZA/y1bwXCsJmGbd5
+            yFpyCB509xrKb2jbV9gvWtfMamoeZgZOnRZqR8MbEjSaGLWkrG8S5cKdesjnodND
+            /dDA/tagWatw8DqNyhOHtUuIQABcFsL4HF69Kegu8p45gawC1kQ5K47gNuh65RzJ
+            DD1MTO9GZSFVlxu/1VI0HqjCvlUj3moMnppj00bII2Inhj55kTJPntyRA6afxks5
+            9GKHiRl4g+sy85V9WzEipzOrW0X1kpEBrwBa1qHuA61kSS8dVt26bUuss+jSCdkf
+            EvoSp8bBxwKX17Q2gK5BnGyqh4rr35Kdh0wFBpLlsGaOS/XX1+eC6GhpzV1En5ps
+            lMTFyBTwmH99W48OUwMtm/DPckwNQMWQCDLDMFS+JWqv4o/N3xhQvGu5Cq1PLKie
+            jLb1YOU3SUP2zzQXWaBt6ZzDkFfJF5ohSrGJTn/+pASqmAy4pfZJ2qPYxytkPXeE
+            SuZRVvo/2QfG7oFkNqmVF84fOqUXXFSna9KV2ZMkfLXA955/tTjnqQa24GLEhFPS
+            XgGAaZbuTzsRovXNyDPF7SBj8D214ANWweKwRFXev5Q2S6OYs/t1yXytDfR3MVFT
+            /Jmg2wxJxCwgnPt7xql+eTD+v3iJktycLLLO2j6LMycvWUv4NrNgjWlsSUfuGe4=
+            =W3am
+            -----END PGP MESSAGE-----
+          fp: 6D3FE55384B558E06A1BA364586EFA784A32C981
+    encrypted_regex: ^(data|stringData|dnsNames|email|accessKeyID|region|hostedZoneID|role|dnsZones)$
+    version: 3.8.1
