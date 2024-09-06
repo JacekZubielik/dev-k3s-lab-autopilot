@@ -1,20 +1,20 @@
 global:
   tolerations: []
   nodeSelector: {}
-  cattle:
-    systemDefaultRegistry: ""
-    windowsCluster:
-      enabled: false
-      tolerations:
-      - key: "cattle.io/os"
-        value: "linux"
-        effect: "NoSchedule"
-        operator: "Equal"
-      nodeSelector:
-        kubernetes.io/os: "linux"
-      defaultSetting:
-        taintToleration: cattle.io/os=linux:NoSchedule
-        systemManagedComponentsNodeSelector: kubernetes.io/os:linux
+  # cattle:
+  #   systemDefaultRegistry: ""
+  #   windowsCluster:
+  #     enabled: false
+  #     tolerations:
+  #     - key: "cattle.io/os"
+  #       value: "linux"
+  #       effect: "NoSchedule"
+  #       operator: "Equal"
+  #     nodeSelector:
+  #       kubernetes.io/os: "linux"
+  #     defaultSetting:
+  #       taintToleration: cattle.io/os=linux:NoSchedule
+  #       systemManagedComponentsNodeSelector: kubernetes.io/os:linux
 
 networkPolicies:
   enabled: false
@@ -68,76 +68,76 @@ defaultSettings:
   allowRecurringJobWhileVolumeDetached: "false"
   createDefaultDiskLabeledNodes: true
   defaultDataPath: /mnt/data
-  defaultDataLocality: "best-effort"
-  replicaSoftAntiAffinity: ~
-  replicaAutoBalance: ~
-  storageOverProvisioningPercentage: ~
-  storageMinimalAvailablePercentage: 5
-  storageReservedPercentageForDefaultDisk: 5
-  upgradeChecker: false
-  defaultReplicaCount: 1
-  defaultLonghornStaticStorageClass: "longhorn"
-  backupstorePollInterval: ~
-  failedBackupTTL: ~
-  restoreVolumeRecurringJobs: enabled
-  recurringSuccessfulJobsHistoryLimit: ~
-  recurringFailedJobsHistoryLimit: ~
-  recurringJobMaxRetention: ~
-  supportBundleFailedHistoryLimit: ~
-  taintToleration: node-role.kubernetes.io/master:NoSchedule #~
-  systemManagedComponentsNodeSelector: ~
-  priorityClass: &defaultPriorityClassNameRef "longhorn-critical"
-  autoSalvage: true
-  autoDeletePodWhenVolumeDetachedUnexpectedly: true
-  disableSchedulingOnCordonedNode: ~
-  replicaZoneSoftAntiAffinity: ~
-  replicaDiskSoftAntiAffinity: ~
-  nodeDownPodDeletionPolicy: "delete-both-statefulset-and-deployment-pod"
-  nodeDrainPolicy: "always-allow"
-  detachManuallyAttachedVolumesWhenCordoned: ~
-  replicaReplenishmentWaitInterval: ~
-  concurrentReplicaRebuildPerNodeLimit: ~
-  concurrentVolumeBackupRestorePerNodeLimit: 5
-  disableRevisionCounter: "true"
-  systemManagedPodsImagePullPolicy: "if-not-present"
-  allowVolumeCreationWithDegradedAvailability: true
-  autoCleanupSystemGeneratedSnapshot: true
-  autoCleanupRecurringJobBackupSnapshot: true
-  concurrentAutomaticEngineUpgradePerNodeLimit: ~
-  backingImageCleanupWaitInterval: 60
-  backingImageRecoveryWaitInterval: 4
-  guaranteedInstanceManagerCPU: ~
-  kubernetesClusterAutoscalerEnabled: ~
-  orphanAutoDeletion: true
-  storageNetwork: ~
-  deletingConfirmationFlag: ~
-  engineReplicaTimeout: 10
-  snapshotDataIntegrity: ~
-  snapshotDataIntegrityImmediateCheckAfterSnapshotCreation: ~
-  snapshotDataIntegrityCronjob: ~
-  removeSnapshotsDuringFilesystemTrim: true
-  fastReplicaRebuildEnabled: ~
-  replicaFileSyncHttpClientTimeout: ~
-  longGRPCTimeOut: ~
-  # -- Log levels that indicate the type and severity of logs in Longhorn Manager. The default value is "Info". (Options: "Panic", "Fatal", "Error", "Warn", "Info", "Debug", "Trace")
-  logLevel: ~
-  backupCompressionMethod: ~
-  backupConcurrentLimit: 10
-  restoreConcurrentLimit: 2
-  v1DataEngine: ~
-  v2DataEngine: ~
-  v2DataEngineHugepageLimit: ~
-  v2DataEngineGuaranteedInstanceManagerCPU: ~
-  allowEmptyNodeSelectorVolume: ~
-  allowEmptyDiskSelectorVolume: ~
-  allowCollectingLonghornUsageMetrics: ~
-  disableSnapshotPurge: ~
-  snapshotMaxCount: 100
-  v2DataEngineLogLevel: ~
-  v2DataEngineLogFlags: ~
-  freezeFilesystemForSnapshot: true
-  autoCleanupSnapshotWhenDeleteBackup: true
-  rwxVolumeFastFailover: ~
+  # defaultDataLocality: "best-effort"
+  # replicaSoftAntiAffinity: ~
+  # replicaAutoBalance: ~
+  # storageOverProvisioningPercentage: ~
+  # storageMinimalAvailablePercentage: 5
+  # storageReservedPercentageForDefaultDisk: 5
+  # upgradeChecker: false
+  # defaultReplicaCount: 1
+  # defaultLonghornStaticStorageClass: "longhorn"
+  # backupstorePollInterval: ~
+  # failedBackupTTL: ~
+  # restoreVolumeRecurringJobs: enabled
+  # recurringSuccessfulJobsHistoryLimit: ~
+  # recurringFailedJobsHistoryLimit: ~
+  # recurringJobMaxRetention: ~
+  # supportBundleFailedHistoryLimit: ~
+  # taintToleration: node-role.kubernetes.io/master:NoSchedule #~
+  # systemManagedComponentsNodeSelector: ~
+  # priorityClass: &defaultPriorityClassNameRef "longhorn-critical"
+  # autoSalvage: true
+  # autoDeletePodWhenVolumeDetachedUnexpectedly: true
+  # disableSchedulingOnCordonedNode: ~
+  # replicaZoneSoftAntiAffinity: ~
+  # replicaDiskSoftAntiAffinity: ~
+  # nodeDownPodDeletionPolicy: "delete-both-statefulset-and-deployment-pod"
+  # nodeDrainPolicy: "always-allow"
+  # detachManuallyAttachedVolumesWhenCordoned: ~
+  # replicaReplenishmentWaitInterval: ~
+  # concurrentReplicaRebuildPerNodeLimit: ~
+  # concurrentVolumeBackupRestorePerNodeLimit: 5
+  # disableRevisionCounter: "true"
+  # systemManagedPodsImagePullPolicy: "if-not-present"
+  # allowVolumeCreationWithDegradedAvailability: true
+  # autoCleanupSystemGeneratedSnapshot: true
+  # autoCleanupRecurringJobBackupSnapshot: true
+  # concurrentAutomaticEngineUpgradePerNodeLimit: ~
+  # backingImageCleanupWaitInterval: 60
+  # backingImageRecoveryWaitInterval: 4
+  # guaranteedInstanceManagerCPU: ~
+  # kubernetesClusterAutoscalerEnabled: ~
+  # orphanAutoDeletion: true
+  # storageNetwork: ~
+  # deletingConfirmationFlag: ~
+  # engineReplicaTimeout: 10
+  # snapshotDataIntegrity: ~
+  # snapshotDataIntegrityImmediateCheckAfterSnapshotCreation: ~
+  # snapshotDataIntegrityCronjob: ~
+  # removeSnapshotsDuringFilesystemTrim: true
+  # fastReplicaRebuildEnabled: ~
+  # replicaFileSyncHttpClientTimeout: ~
+  # longGRPCTimeOut: ~
+  # # -- Log levels that indicate the type and severity of logs in Longhorn Manager. The default value is "Info". (Options: "Panic", "Fatal", "Error", "Warn", "Info", "Debug", "Trace")
+  # logLevel: ~
+  # backupCompressionMethod: ~
+  # backupConcurrentLimit: 10
+  # restoreConcurrentLimit: 2
+  # v1DataEngine: ~
+  # v2DataEngine: ~
+  # v2DataEngineHugepageLimit: ~
+  # v2DataEngineGuaranteedInstanceManagerCPU: ~
+  # allowEmptyNodeSelectorVolume: ~
+  # allowEmptyDiskSelectorVolume: ~
+  # allowCollectingLonghornUsageMetrics: ~
+  # disableSnapshotPurge: ~
+  # snapshotMaxCount: 100
+  # v2DataEngineLogLevel: ~
+  # v2DataEngineLogFlags: ~
+  # freezeFilesystemForSnapshot: true
+  # autoCleanupSnapshotWhenDeleteBackup: true
+  # rwxVolumeFastFailover: ~
 
 privateRegistry:
   createSecret: ~
