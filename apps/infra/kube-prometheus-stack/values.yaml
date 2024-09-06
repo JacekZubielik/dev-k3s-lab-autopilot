@@ -349,7 +349,6 @@ alertmanager:
           labels:
             backup: pvc-kube-stack
           name: pvc-kube-alertmanager
-          namespace: monitoring
 
         spec:
           accessModes:
@@ -2929,7 +2928,6 @@ prometheus:
           labels:
             backup: pvc-kube-stack
           name: pvc-kube-prometheus
-          namespace: monitoring
 
         spec:
           accessModes:
