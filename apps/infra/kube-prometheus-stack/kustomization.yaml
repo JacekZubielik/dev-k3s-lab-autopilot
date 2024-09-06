@@ -19,6 +19,9 @@ resources:
 # - resources/servicemonitor.yaml
 # - resources/volume.snapshot.yaml
 
+generators:
+- ksops-generator.yaml
+
 configMapGenerator:
 - name: prometheus-server-conf
   files:
