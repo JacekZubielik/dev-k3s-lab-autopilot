@@ -68,7 +68,7 @@ defaultSettings:
   allowRecurringJobWhileVolumeDetached: false
   createDefaultDiskLabeledNodes: true
   defaultDataPath: /mnt/data
-  defaultDataLocality: best-effort
+  defaultDataLocality: ~ # best-effort
   replicaSoftAntiAffinity: ~
   replicaAutoBalance: ~
   storageOverProvisioningPercentage: ~
@@ -79,43 +79,43 @@ defaultSettings:
   defaultLonghornStaticStorageClass: longhorn
   backupstorePollInterval: ~
   failedBackupTTL: ~
-  restoreVolumeRecurringJobs: enabled
+  restoreVolumeRecurringJobs: ~ # enabled
   recurringSuccessfulJobsHistoryLimit: ~
   recurringFailedJobsHistoryLimit: ~
   recurringJobMaxRetention: ~
   supportBundleFailedHistoryLimit: ~
-  taintToleration: node-role.kubernetes.io/master:NoSchedule
+  taintToleration: ~ # node-role.kubernetes.io/master:NoSchedule
   systemManagedComponentsNodeSelector: ~
   priorityClass: &defaultPriorityClassNameRef "longhorn-critical"
-  # autoSalvage: true
-  # autoDeletePodWhenVolumeDetachedUnexpectedly: true
+  autoSalvage: ~ # true
+  autoDeletePodWhenVolumeDetachedUnexpectedly: ~ # true
   disableSchedulingOnCordonedNode: ~
   replicaZoneSoftAntiAffinity: ~
   replicaDiskSoftAntiAffinity: ~
-  nodeDownPodDeletionPolicy: delete-both-statefulset-and-deployment-pod
-  nodeDrainPolicy: always-allow
+  nodeDownPodDeletionPolicy: ~ # delete-both-statefulset-and-deployment-pod
+  nodeDrainPolicy: ~ # always-allow
   detachManuallyAttachedVolumesWhenCordoned: ~
   replicaReplenishmentWaitInterval: ~
   concurrentReplicaRebuildPerNodeLimit: ~
   concurrentVolumeBackupRestorePerNodeLimit: 5
-  # disableRevisionCounter: true
-  systemManagedPodsImagePullPolicy: if-not-present
-  # allowVolumeCreationWithDegradedAvailability: true
-  # autoCleanupSystemGeneratedSnapshot: true
-  # autoCleanupRecurringJobBackupSnapshot: true
+  disableRevisionCounter: ~ # true
+  systemManagedPodsImagePullPolicy: ~ # if-not-present
+  allowVolumeCreationWithDegradedAvailability: ~ # true
+  autoCleanupSystemGeneratedSnapshot: ~ # true
+  autoCleanupRecurringJobBackupSnapshot: ~ # true
   concurrentAutomaticEngineUpgradePerNodeLimit: ~
   backingImageCleanupWaitInterval: 60
   backingImageRecoveryWaitInterval: 4
   guaranteedInstanceManagerCPU: ~
   kubernetesClusterAutoscalerEnabled: ~
-  # orphanAutoDeletion: true
+  orphanAutoDeletion: ~ # true
   storageNetwork: ~
   deletingConfirmationFlag: ~
   engineReplicaTimeout: 10
   snapshotDataIntegrity: ~
   snapshotDataIntegrityImmediateCheckAfterSnapshotCreation: ~
   snapshotDataIntegrityCronjob: ~
-  # removeSnapshotsDuringFilesystemTrim: true
+  removeSnapshotsDuringFilesystemTrim: ~ # true
   fastReplicaRebuildEnabled: ~
   replicaFileSyncHttpClientTimeout: ~
   longGRPCTimeOut: ~
@@ -134,8 +134,8 @@ defaultSettings:
   snapshotMaxCount: 10
   v2DataEngineLogLevel: ~
   v2DataEngineLogFlags: ~
-  # freezeFilesystemForSnapshot: true
-  # autoCleanupSnapshotWhenDeleteBackup: true
+  freezeFilesystemForSnapshot: ~ # true
+  autoCleanupSnapshotWhenDeleteBackup: ~ # true
   rwxVolumeFastFailover: ~
 
 privateRegistry:
