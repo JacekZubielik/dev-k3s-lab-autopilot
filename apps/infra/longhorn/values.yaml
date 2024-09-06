@@ -101,21 +101,21 @@ defaultSettings:
   disableRevisionCounter: ~ # true
   systemManagedPodsImagePullPolicy: ~ # if-not-present
   allowVolumeCreationWithDegradedAvailability: ~ # true
-  autoCleanupSystemGeneratedSnapshot: ~ # true
-  autoCleanupRecurringJobBackupSnapshot: ~ # true
+  autoCleanupSystemGeneratedSnapshot: true
+  autoCleanupRecurringJobBackupSnapshot: true
   concurrentAutomaticEngineUpgradePerNodeLimit: ~
   backingImageCleanupWaitInterval: 60
   backingImageRecoveryWaitInterval: 4
   guaranteedInstanceManagerCPU: ~
   kubernetesClusterAutoscalerEnabled: ~
-  orphanAutoDeletion: ~ # true
+  orphanAutoDeletion: true
   storageNetwork: ~
   deletingConfirmationFlag: ~
   engineReplicaTimeout: 10
   snapshotDataIntegrity: ~
   snapshotDataIntegrityImmediateCheckAfterSnapshotCreation: ~
   snapshotDataIntegrityCronjob: ~
-  removeSnapshotsDuringFilesystemTrim: ~ # true
+  removeSnapshotsDuringFilesystemTrim: true
   fastReplicaRebuildEnabled: ~
   replicaFileSyncHttpClientTimeout: ~
   longGRPCTimeOut: ~
