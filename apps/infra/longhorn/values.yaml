@@ -1,20 +1,20 @@
 global:
   tolerations: []
   nodeSelector: {}
-  # cattle:
-  #   systemDefaultRegistry: ""
-  #   windowsCluster:
-  #     enabled: false
-  #     tolerations:
-  #     - key: "cattle.io/os"
-  #       value: "linux"
-  #       effect: "NoSchedule"
-  #       operator: "Equal"
-  #     nodeSelector:
-  #       kubernetes.io/os: "linux"
-  #     defaultSetting:
-  #       taintToleration: cattle.io/os=linux:NoSchedule
-  #       systemManagedComponentsNodeSelector: kubernetes.io/os:linux
+  cattle:
+    systemDefaultRegistry: ""
+    windowsCluster:
+      enabled: false
+      tolerations:
+      - key: "cattle.io/os"
+        value: "linux"
+        effect: "NoSchedule"
+        operator: "Equal"
+      nodeSelector:
+        kubernetes.io/os: "linux"
+      defaultSetting:
+        taintToleration: cattle.io/os=linux:NoSchedule
+        systemManagedComponentsNodeSelector: kubernetes.io/os:linux
 
 networkPolicies:
   enabled: false
@@ -63,11 +63,11 @@ csi:
   snapshotterReplicaCount: ~
 
 defaultSettings:
-  backupTarget: "s3://k3s-longhorn-backup@us-east-1/"
-  backupTargetCredentialSecret: "s3-backup"
+  backupTarget: s3://k3s-longhorn-backup@us-east-1/
+  backupTargetCredentialSecret: s3-backup
   allowRecurringJobWhileVolumeDetached: false
-  createDefaultDiskLabeledNodes: true
-  defaultDataPath: "/mnt/data"
+  createDefaultDiskLabeledNodes: config # true
+  defaultDataPath: /mnt/data
   defaultDataLocality: ~ # best-effort
   replicaSoftAntiAffinity: ~
   replicaAutoBalance: ~
@@ -85,7 +85,7 @@ defaultSettings:
   recurringJobMaxRetention: ~
   supportBundleFailedHistoryLimit: ~
   taintToleration: ~ # node-role.kubernetes.io/master:NoSchedule
-  systemManagedComponentsNodeSelector: ~
+  systemManagedComponentsNodeSelector: ~ # "storage:longhorn"
   priorityClass: &defaultPriorityClassNameRef "longhorn-critical"
   autoSalvage: ~ # true
   autoDeletePodWhenVolumeDetachedUnexpectedly: ~ # true
@@ -149,20 +149,20 @@ longhornManager:
   log:
     format: plain
   priorityClass: *defaultPriorityClassNameRef
-  tolerations:
-  - key: ""
-    operator: "Exists"
-    effect: "NoSchedule"
+  tolerations: []
+  # - key: ""
+  #   operator: "Exists"
+  #   effect: "NoSchedule"
 
   nodeSelector: {}
   serviceAnnotations: {}
 
 longhornDriver:
   priorityClass: *defaultPriorityClassNameRef
-  tolerations:
-  - key: ""
-    operator: "Exists"
-    effect: "NoSchedule"
+  tolerations: []
+  # - key: ""
+  #   operator: "Exists"
+  #   effect: "NoSchedule"
   nodeSelector: {}
 
 longhornUI:
