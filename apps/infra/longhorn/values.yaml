@@ -63,11 +63,11 @@ csi:
   snapshotterReplicaCount: ~
 
 defaultSettings:
-  backupTarget: s3://k3s-longhorn-backup@us-east-1/
-  backupTargetCredentialSecret: s3-backup
+  backupTarget: "s3://k3s-longhorn-backup@us-east-1/"
+  backupTargetCredentialSecret: "s3-backup"
   allowRecurringJobWhileVolumeDetached: false
   createDefaultDiskLabeledNodes: true
-  defaultDataPath: /mnt/data
+  defaultDataPath: "/mnt/data"
   defaultDataLocality: ~ # best-effort
   replicaSoftAntiAffinity: ~
   replicaAutoBalance: ~
