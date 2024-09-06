@@ -63,13 +63,12 @@ csi:
   snapshotterReplicaCount: ~
 
 defaultSettings:
-  backupTarget: "s3://k3s-longhorn-backup@us-east-1/"
+  backupTarget: s3://k3s-longhorn-backup@us-east-1/
   backupTargetCredentialSecret: s3-backup
-  allowRecurringJobWhileVolumeDetached: "false"
-  allowRecurringJobWhileVolumeDetached: ~
+  allowRecurringJobWhileVolumeDetached: false
   createDefaultDiskLabeledNodes: true
   defaultDataPath: /mnt/data
-  defaultDataLocality: "best-effort"
+  defaultDataLocality: best-effort
   replicaSoftAntiAffinity: ~
   replicaAutoBalance: ~
   storageOverProvisioningPercentage: ~
@@ -77,7 +76,7 @@ defaultSettings:
   storageReservedPercentageForDefaultDisk: 5
   upgradeChecker: false
   defaultReplicaCount: 1
-  defaultLonghornStaticStorageClass: "longhorn"
+  defaultLonghornStaticStorageClass: longhorn
   backupstorePollInterval: ~
   failedBackupTTL: ~
   restoreVolumeRecurringJobs: enabled
@@ -88,39 +87,38 @@ defaultSettings:
   taintToleration: node-role.kubernetes.io/master:NoSchedule
   systemManagedComponentsNodeSelector: ~
   priorityClass: &defaultPriorityClassNameRef "longhorn-critical"
-  autoSalvage: true
-  autoDeletePodWhenVolumeDetachedUnexpectedly: true
+  # autoSalvage: true
+  # autoDeletePodWhenVolumeDetachedUnexpectedly: true
   disableSchedulingOnCordonedNode: ~
   replicaZoneSoftAntiAffinity: ~
   replicaDiskSoftAntiAffinity: ~
-  nodeDownPodDeletionPolicy: "delete-both-statefulset-and-deployment-pod"
-  nodeDrainPolicy: "always-allow"
+  nodeDownPodDeletionPolicy: delete-both-statefulset-and-deployment-pod
+  nodeDrainPolicy: always-allow
   detachManuallyAttachedVolumesWhenCordoned: ~
   replicaReplenishmentWaitInterval: ~
   concurrentReplicaRebuildPerNodeLimit: ~
   concurrentVolumeBackupRestorePerNodeLimit: 5
-  disableRevisionCounter: "true"
-  systemManagedPodsImagePullPolicy: "if-not-present"
-  allowVolumeCreationWithDegradedAvailability: true
-  autoCleanupSystemGeneratedSnapshot: true
-  autoCleanupRecurringJobBackupSnapshot: true
+  # disableRevisionCounter: true
+  systemManagedPodsImagePullPolicy: if-not-present
+  # allowVolumeCreationWithDegradedAvailability: true
+  # autoCleanupSystemGeneratedSnapshot: true
+  # autoCleanupRecurringJobBackupSnapshot: true
   concurrentAutomaticEngineUpgradePerNodeLimit: ~
   backingImageCleanupWaitInterval: 60
   backingImageRecoveryWaitInterval: 4
   guaranteedInstanceManagerCPU: ~
   kubernetesClusterAutoscalerEnabled: ~
-  orphanAutoDeletion: true
+  # orphanAutoDeletion: true
   storageNetwork: ~
   deletingConfirmationFlag: ~
   engineReplicaTimeout: 10
   snapshotDataIntegrity: ~
   snapshotDataIntegrityImmediateCheckAfterSnapshotCreation: ~
   snapshotDataIntegrityCronjob: ~
-  removeSnapshotsDuringFilesystemTrim: true
+  # removeSnapshotsDuringFilesystemTrim: true
   fastReplicaRebuildEnabled: ~
   replicaFileSyncHttpClientTimeout: ~
   longGRPCTimeOut: ~
-  # # -- Log levels that indicate the type and severity of logs in Longhorn Manager. The default value is "Info". (Options: "Panic", "Fatal", "Error", "Warn", "Info", "Debug", "Trace")
   logLevel: ~
   backupCompressionMethod: ~
   backupConcurrentLimit: 10
@@ -133,11 +131,11 @@ defaultSettings:
   allowEmptyDiskSelectorVolume: ~
   allowCollectingLonghornUsageMetrics: ~
   disableSnapshotPurge: ~
-  snapshotMaxCount: 100
+  snapshotMaxCount: 10
   v2DataEngineLogLevel: ~
   v2DataEngineLogFlags: ~
-  freezeFilesystemForSnapshot: true
-  autoCleanupSnapshotWhenDeleteBackup: true
+  # freezeFilesystemForSnapshot: true
+  # autoCleanupSnapshotWhenDeleteBackup: true
   rwxVolumeFastFailover: ~
 
 privateRegistry:
