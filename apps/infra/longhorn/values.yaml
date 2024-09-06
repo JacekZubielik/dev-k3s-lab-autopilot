@@ -29,42 +29,42 @@ service:
     nodePort: ""
 
 persistence:
-  defaultClass: true
-  defaultFsType: ext4
+  defaultClass: "true"
+  defaultFsType: "ext4"
   defaultMkfsParams: "-I 256 -b 4096 -O ^metadata_csum,^64bit"
-  defaultClassReplicaCount: 1
-  defaultDataLocality: disabled
-  reclaimPolicy: Delete
-  migratable: false
+  defaultClassReplicaCount: "1"
+  defaultDataLocality: "disabled"
+  reclaimPolicy: "Delete"
+  migratable: "false"
   disableRevisionCounter: "true"
   nfsOptions: "hard,timeo=50,retrans=1"
   recurringJobSelector:
-    enable: false
+    enable: "false"
     jobList: []
   backingImage:
-    enable: false
+    enable: "false"
   defaultDiskSelector:
-    enable: true
+    enable: "true"
     selector: "data,fast"
   defaultNodeSelector:
-    enable: true
+    enable: "true"
     selector: "fast,storage"
-  removeSnapshotsDuringFilesystemTrim: enabled
+  removeSnapshotsDuringFilesystemTrim: "enabled"
 
 preUpgradeChecker:
-  jobEnabled: false
-  upgradeVersionCheck: false
+  jobEnabled: "false"
+  upgradeVersionCheck: "false"
 
 csi:
   kubeletRootDir: ~
-  attacherReplicaCount: "1"
-  provisionerReplicaCount: "1"
-  resizerReplicaCount: "1"
-  snapshotterReplicaCount: "1"
+  attacherReplicaCount: "2"
+  provisionerReplicaCount: "2"
+  resizerReplicaCount: "2"
+  snapshotterReplicaCount: "2"
 
 defaultSettings:
   backupTarget: "s3://k3s-longhorn-backup@us-east-1/"
-  backupTargetCredentialSecret: s3-backup
+  backupTargetCredentialSecret: "s3-backup"
   allowRecurringJobWhileVolumeDetached: "false"
   createDefaultDiskLabeledNodes: "true"
   defaultDataPath: "/mnt/data"
@@ -72,14 +72,14 @@ defaultSettings:
   replicaSoftAntiAffinity: ~
   replicaAutoBalance: ~
   storageOverProvisioningPercentage: ~
-  storageMinimalAvailablePercentage: 5
-  storageReservedPercentageForDefaultDisk: 5
-  upgradeChecker: false
-  defaultReplicaCount: 1
+  storageMinimalAvailablePercentage: "5"
+  storageReservedPercentageForDefaultDisk: "5"
+  upgradeChecker: "false"
+  defaultReplicaCount: "1"
   defaultLonghornStaticStorageClass: "longhorn"
   backupstorePollInterval: ~
   failedBackupTTL: ~
-  restoreVolumeRecurringJobs: enabled
+  restoreVolumeRecurringJobs: "enabled"
   recurringSuccessfulJobsHistoryLimit: ~
   recurringFailedJobsHistoryLimit: ~
   recurringJobMaxRetention: ~
@@ -87,8 +87,8 @@ defaultSettings:
   taintToleration: ~
   systemManagedComponentsNodeSelector: ~
   priorityClass: &defaultPriorityClassNameRef "longhorn-critical"
-  autoSalvage: true
-  autoDeletePodWhenVolumeDetachedUnexpectedly: true
+  autoSalvage: "true"
+  autoDeletePodWhenVolumeDetachedUnexpectedly: "true"
   disableSchedulingOnCordonedNode: ~
   replicaZoneSoftAntiAffinity: ~
   replicaDiskSoftAntiAffinity: ~
@@ -97,33 +97,33 @@ defaultSettings:
   detachManuallyAttachedVolumesWhenCordoned: ~
   replicaReplenishmentWaitInterval: ~
   concurrentReplicaRebuildPerNodeLimit: ~
-  concurrentVolumeBackupRestorePerNodeLimit: 5
+  concurrentVolumeBackupRestorePerNodeLimit: "5"
   disableRevisionCounter: "true"
   systemManagedPodsImagePullPolicy: "if-not-present"
-  allowVolumeCreationWithDegradedAvailability: true
-  autoCleanupSystemGeneratedSnapshot: true
-  autoCleanupRecurringJobBackupSnapshot: true
+  allowVolumeCreationWithDegradedAvailability: "true"
+  autoCleanupSystemGeneratedSnapshot: "true"
+  autoCleanupRecurringJobBackupSnapshot: "true"
   concurrentAutomaticEngineUpgradePerNodeLimit: ~
-  backingImageCleanupWaitInterval: 60
-  backingImageRecoveryWaitInterval: 4
+  backingImageCleanupWaitInterval: "60"
+  backingImageRecoveryWaitInterval: "10"
   guaranteedInstanceManagerCPU: ~
   kubernetesClusterAutoscalerEnabled: ~
-  orphanAutoDeletion: true
+  orphanAutoDeletion: "true"
   storageNetwork: ~
   deletingConfirmationFlag: ~
-  engineReplicaTimeout: 10
+  engineReplicaTimeout: "10"
   snapshotDataIntegrity: ~
   snapshotDataIntegrityImmediateCheckAfterSnapshotCreation: ~
   snapshotDataIntegrityCronjob: ~
-  removeSnapshotsDuringFilesystemTrim: true
+  removeSnapshotsDuringFilesystemTrim: "true"
   fastReplicaRebuildEnabled: ~
   replicaFileSyncHttpClientTimeout: ~
   longGRPCTimeOut: ~
   # -- Log levels that indicate the type and severity of logs in Longhorn Manager. The default value is "Info". (Options: "Panic", "Fatal", "Error", "Warn", "Info", "Debug", "Trace")
   logLevel: ~
   backupCompressionMethod: ~
-  backupConcurrentLimit: 10
-  restoreConcurrentLimit: 2
+  backupConcurrentLimit: "10"
+  restoreConcurrentLimit: "2"
   v1DataEngine: ~
   v2DataEngine: ~
   v2DataEngineHugepageLimit: ~
@@ -132,11 +132,11 @@ defaultSettings:
   allowEmptyDiskSelectorVolume: ~
   allowCollectingLonghornUsageMetrics: ~
   disableSnapshotPurge: ~
-  snapshotMaxCount: 100
+  snapshotMaxCount: "10"
   v2DataEngineLogLevel: ~
   v2DataEngineLogFlags: ~
-  freezeFilesystemForSnapshot: true
-  autoCleanupSnapshotWhenDeleteBackup: true
+  freezeFilesystemForSnapshot: "true"
+  autoCleanupSnapshotWhenDeleteBackup: "true"
   rwxVolumeFastFailover: ~
 
 privateRegistry:
