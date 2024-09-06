@@ -10,8 +10,8 @@ metadata:
 resources:
 - resources/ns.yaml
 - resources/servicemonitor.yaml
-- resources/backup.storage.location.yaml
-- resources/volume.snapshot.location.yaml
+# - resources/backup.storage.location.yaml
+# - resources/volume.snapshot.location.yaml
 
 generators:
 - ksops-generator.yaml
