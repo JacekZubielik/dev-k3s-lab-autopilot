@@ -33,7 +33,7 @@ persistence:
   defaultFsType: ext4
   defaultMkfsParams: "-I 256 -b 4096 -O ^metadata_csum,^64bit"
   defaultClassReplicaCount: 1
-  defaultDataLocality: disabled
+  defaultDataLocality: best-effort
   reclaimPolicy: Delete
   migratable: false
   disableRevisionCounter: "true"
@@ -93,14 +93,14 @@ defaultSettings:
   replicaZoneSoftAntiAffinity: ~
   replicaDiskSoftAntiAffinity: ~
   nodeDownPodDeletionPolicy: ~ # delete-both-statefulset-and-deployment-pod
-  nodeDrainPolicy: ~ # always-allow
+  nodeDrainPolicy: always-allow
   detachManuallyAttachedVolumesWhenCordoned: ~
   replicaReplenishmentWaitInterval: ~
   concurrentReplicaRebuildPerNodeLimit: ~
   concurrentVolumeBackupRestorePerNodeLimit: 5
   disableRevisionCounter: ~ # true
   systemManagedPodsImagePullPolicy: if-not-present
-  allowVolumeCreationWithDegradedAvailability: false
+  allowVolumeCreationWithDegradedAvailability: true # false
   autoCleanupSystemGeneratedSnapshot: true
   autoCleanupRecurringJobBackupSnapshot: true
   concurrentAutomaticEngineUpgradePerNodeLimit: ~
