@@ -27,7 +27,7 @@ generators:
 
 helmCharts:
 - name: longhorn
-  version: 1.6.2
+  version: 1.7.1
   repo: https://charts.longhorn.io
   includeCRDs: true
   namespace: longhorn-system
