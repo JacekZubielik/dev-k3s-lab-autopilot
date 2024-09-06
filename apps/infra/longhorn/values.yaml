@@ -66,8 +66,8 @@ defaultSettings:
   backupTarget: s3://k3s-longhorn-backup@us-east-1/
   backupTargetCredentialSecret: s3-backup
   allowRecurringJobWhileVolumeDetached: false
-  createDefaultDiskLabeledNodes: config # true
-  defaultDataPath: /mnt/data
+  createDefaultDiskLabeledNodes: ~ # config # true
+  defaultDataPath: /mnt/data/
   defaultDataLocality: ~ # best-effort
   replicaSoftAntiAffinity: ~
   replicaAutoBalance: ~
@@ -87,7 +87,7 @@ defaultSettings:
   taintToleration: ~ # node-role.kubernetes.io/master:NoSchedule
   systemManagedComponentsNodeSelector: ~ # "storage:longhorn"
   priorityClass: &defaultPriorityClassNameRef "longhorn-critical"
-  autoSalvage: ~ # true
+  autoSalvage: ~
   autoDeletePodWhenVolumeDetachedUnexpectedly: ~ # true
   disableSchedulingOnCordonedNode: ~
   replicaZoneSoftAntiAffinity: ~
