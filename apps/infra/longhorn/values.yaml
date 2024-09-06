@@ -75,7 +75,7 @@ defaultSettings:
   storageMinimalAvailablePercentage: 5
   storageReservedPercentageForDefaultDisk: 5
   upgradeChecker: false
-  defaultReplicaCount: 1
+  defaultReplicaCount: 2
   defaultLonghornStaticStorageClass: longhorn
   backupstorePollInterval: ~
   failedBackupTTL: ~
@@ -88,7 +88,7 @@ defaultSettings:
   systemManagedComponentsNodeSelector: ~ # "storage:longhorn"
   priorityClass: &defaultPriorityClassNameRef "longhorn-critical"
   autoSalvage: ~
-  autoDeletePodWhenVolumeDetachedUnexpectedly: ~ # true
+  autoDeletePodWhenVolumeDetachedUnexpectedly: true
   disableSchedulingOnCordonedNode: ~
   replicaZoneSoftAntiAffinity: ~
   replicaDiskSoftAntiAffinity: ~
@@ -99,8 +99,8 @@ defaultSettings:
   concurrentReplicaRebuildPerNodeLimit: ~
   concurrentVolumeBackupRestorePerNodeLimit: 5
   disableRevisionCounter: ~ # true
-  systemManagedPodsImagePullPolicy: ~ # if-not-present
-  allowVolumeCreationWithDegradedAvailability: ~ # true
+  systemManagedPodsImagePullPolicy: if-not-present
+  allowVolumeCreationWithDegradedAvailability: false
   autoCleanupSystemGeneratedSnapshot: true
   autoCleanupRecurringJobBackupSnapshot: true
   concurrentAutomaticEngineUpgradePerNodeLimit: ~
