@@ -1,0 +1,92 @@
+---
+apiVersion: longhorn.io/v1beta2
+kind: Volume
+metadata:
+  finalizers:
+  - longhorn.io
+  annotations:
+    argocd.argoproj.io/compare-options: IgnoreExtraneous
+    argocd.argoproj.io/sync-wave: "-3"
+  labels:
+    longhornvolume: pvc-kube-alertmanager
+    recurring-job-group.longhorn.io/group3: enabled
+    recurring-job.longhorn.io/24-hour-backups: enabled
+  name: pvc-kube-alertmanager
+  namespace: longhorn-system
+spec:
+  dataLocality: best-effort
+  diskSelector:
+  - data
+  - fast
+  restoreVolumeRecurringJob: enabled
+  # fromBackup: "s3://k3s-longhorn-backup@us-east-1/?backup=system-backup-6e0044ee5d464ba9&volume=pvc-kube-alertmanager"
+  frontend: blockdev
+  # migratable: false
+  nodeSelector:
+  - fast
+  - storage
+  numberOfReplicas: 1
+  size: '4294967296'
+  snapshotMaxCount: 10
+
+---
+apiVersion: longhorn.io/v1beta2
+kind: Volume
+metadata:
+  annotations:
+    argocd.argoproj.io/compare-options: IgnoreExtraneous
+    argocd.argoproj.io/sync-wave: "-3"
+  labels:
+    longhornvolume: pvc-kube-grafana
+    recurring-job-group.longhorn.io/group3: enabled
+    recurring-job.longhorn.io/24-hour-backups: enabled
+  name: pvc-kube-grafana
+  namespace: longhorn-system
+spec:
+  # backingImage: pvc-kube-grafana
+  dataLocality: best-effort
+  diskSelector:
+  - data
+  - fast
+  restoreVolumeRecurringJob: enabled
+  # fromBackup: 's3://k3s-longhorn-backup@us-east-1/?backup=backup-5b9118d3e59d4768&volume=pvc-kube-grafana'
+  frontend: blockdev
+  # migratable: false
+  nodeSelector:
+  - fast
+  - storage
+  numberOfReplicas: 1
+  size: '21474836480'
+  snapshotMaxCount: 10
+
+---
+apiVersion: longhorn.io/v1beta2
+kind: Volume
+metadata:
+  finalizers:
+  - longhorn.io
+  annotations:
+    argocd.argoproj.io/compare-options: IgnoreExtraneous
+    argocd.argoproj.io/sync-wave: "-3"
+  labels:
+    longhornvolume: pvc-kube-prometheus
+    recurring-job-group.longhorn.io/group3: enabled
+    recurring-job.longhorn.io/24-hour-backups: enabled
+  name: pvc-kube-prometheus
+  namespace: longhorn-system
+spec:
+  # backingImage: pvc-kube-prometheus
+  dataLocality: best-effort
+  diskSelector:
+  - data
+  - fast
+  restoreVolumeRecurringJob: enabled
+  # fromBackup: s3://k3s-longhorn-backup@us-east-1/?backup=backup-c43034e9781042d0&volume=pvc-kube-prometheus
+  frontend: blockdev
+  # migratable: false
+  nodeSelector:
+  - fast
+  - storage
+  numberOfReplicas: 1
+  size: '21474836480'
+  snapshotMaxCount: 10
