@@ -1,0 +1,15 @@
+annotations: ''
+appName: mktxp
+appRole: monitoring
+destNamespace: mktxp
+destProject: "infra"
+destServer: https://kubernetes.default.svc
+exclude: ""
+include: ""
+labels: ""
+srcPath: apps/infra/mktxp
+srcRepoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot.git
+srcTargetRevision: ""
+syncPriority: stage_4
+syncWave: 3
+userGivenName: mktxp
