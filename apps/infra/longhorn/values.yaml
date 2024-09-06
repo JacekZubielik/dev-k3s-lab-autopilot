@@ -66,9 +66,9 @@ defaultSettings:
   backupTarget: s3://k3s-longhorn-backup@us-east-1/
   backupTargetCredentialSecret: s3-backup
   allowRecurringJobWhileVolumeDetached: false
-  createDefaultDiskLabeledNodes: ~ # config # true
-  defaultDataPath: /mnt/data/
-  defaultDataLocality: ~ # best-effort
+  createDefaultDiskLabeledNodes: config # true
+  defaultDataPath: /mnt/data
+  defaultDataLocality: best-effort
   replicaSoftAntiAffinity: ~
   replicaAutoBalance: ~
   storageOverProvisioningPercentage: ~
@@ -134,8 +134,8 @@ defaultSettings:
   snapshotMaxCount: 10
   v2DataEngineLogLevel: ~
   v2DataEngineLogFlags: ~
-  freezeFilesystemForSnapshot: ~ # true
-  autoCleanupSnapshotWhenDeleteBackup: ~ # true
+  freezeFilesystemForSnapshot: true
+  autoCleanupSnapshotWhenDeleteBackup: true
   rwxVolumeFastFailover: ~
 
 privateRegistry:
