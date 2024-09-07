@@ -4,6 +4,16 @@ scrape_configs:
   static_configs:
   - targets: ['mktxp.mktxp.svc:49090']
 
+- job_name: 'pve'
+  static_configs:
+    - targets:
+      - 192.168.1.18:9221
+  metrics_path: /pve
+  params:
+    module: [default]
+    cluster: ['1']
+    node: ['1']
+
 - job_name: 'kubernetes-apiservers'
   kubernetes_sd_configs:
   - role: endpoints
