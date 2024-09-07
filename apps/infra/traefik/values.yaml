@@ -279,36 +279,6 @@ envFrom: []
 # - secretRef:
 #     name: secret-name
 
-# ports:
-#   ping:
-#     port: 8081
-#   traefik:
-#     port: 9000
-#     expose: true
-#     exposedPort: 9000
-#     protocol: TCP
-#   web:
-#     redirectTo:
-#       port: websecure
-#     port: 80
-#     expose: true
-#     exposedPort: 80
-#     protocol: TCP
-#   websecure:
-#     port: 443
-#     expose: true
-#     exposedPort: 443
-#     protocol: TCP
-#     # http3:
-#     #   enabled: false
-#     # advertisedPort: 4443
-#     middlewares: []
-#   metrics:
-#     port: 9100
-#     expose: true
-#     exposedPort: 9100
-#     protocol: TCP
-
 ports:
   ping:
     port: 8081
@@ -516,14 +486,14 @@ prometheus:
   enabled: true
   servicemonitor:
     enabled: true
-    prometheusInstance: kube-prometheus-stack
+    prometheusInstance: infra-kube-prometheus-stack
     targetPort: 9100
     path: /metrics
     interval: 60s
     scrapeTimeout: 30s
     labels:
-      release: kube-prometheus-stack
-      prometheus.io/scrap-with: kube-prometheus-stack
+      release: kube-prometheus-stack-prometheus
+      prometheus.io/scrap-with: kube-prometheus-stack-prometheus
     annotations: {}
     honorLabels: false
     endpointAdditionalProperties: {}
