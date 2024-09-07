@@ -2,12 +2,10 @@
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
-  name: mktxp-exporter
-  namespace: mktxp
   labels:
     app: mktxp-exporter
-    # release: kube-prometheus-stack
-    # prometheus.io/scrap-with: kube-prometheus-stack
+  name: mktxp-exporter
+  namespace: mktxp
 spec:
   selector:
     matchLabels:
