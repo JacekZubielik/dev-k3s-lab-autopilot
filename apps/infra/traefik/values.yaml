@@ -493,7 +493,7 @@ prometheus:
     scrapeTimeout: 30s
     labels:
       release: kube-prometheus-stack
-      prometheus.io/scrap-with: traefik
+      prometheus.io/scrap-with: prometheus
     annotations: {}
     honorLabels: false
     endpointAdditionalProperties: {}
