@@ -13,6 +13,13 @@ scrape_configs:
     module: [default]
     cluster: ['1']
     node: ['1']
+  relabel_configs:
+    - source_labels: [__address__]
+      target_label: __param_target
+    - source_labels: [__param_target]
+      target_label: instance
+    - target_label: __address__
+      replacement: 192.168.1.18:9221
 
 - job_name: 'kubernetes-apiservers'
   kubernetes_sd_configs:
