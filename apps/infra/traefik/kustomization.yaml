@@ -7,7 +7,7 @@ resources:
 - resources/chains.yaml
 - resources/middlewares.yaml
 - resources/tlsoption.yaml
-# - resources/servicemonitor.yaml
+- resources/service.monitor.yaml
 # - resources/tlsstore.yaml
 
 generators:

@@ -3,11 +3,10 @@ apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
   annotations:
-    argocd.argoproj.io/hook: PostSync
     argocd.argoproj.io/instance: longhorn
   labels:
-    name: longhorn-prometheus-servicemonitor
-  name: longhorn-prometheus-servicemonitor
+    name: longhorn
+  name: longhorn
   namespace: longhorn-system
 spec:
   selector:

@@ -9,7 +9,7 @@ kind: Kustomization
 
 resources:
 - resources/ns.yaml
-- resources/servicemonitor.yaml
+- resources/service.monitor.yaml
 # - resources/cert.default.svc.yaml
 # - resources/issuer.default.svc.yaml
 # - resources/issuer.k3s.ca-cluster.yaml
