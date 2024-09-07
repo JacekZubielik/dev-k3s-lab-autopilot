@@ -7,7 +7,7 @@ scrape_configs:
 - job_name: 'pve'
   static_configs:
     - targets:
-      - 192.168.1.18:9221
+      - 192.168.40.18:9221
   metrics_path: /pve
   params:
     module: [default]
@@ -19,7 +19,7 @@ scrape_configs:
     - source_labels: [__param_target]
       target_label: instance
     - target_label: __address__
-      replacement: 192.168.1.18:9221
+      replacement: 192.168.40.18:9221
 
 - job_name: 'kubernetes-apiservers'
   kubernetes_sd_configs:
