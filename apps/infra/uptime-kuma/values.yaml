@@ -94,7 +94,7 @@ monitoring:
     honorLabels: true
     interval: 60s
     selector: {}
-    namespace: monitoring
+    namespace: uptime-kuma
     scrapeTimeout: 10s
     scheme: http
     tlsConfig: {}
