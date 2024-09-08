@@ -176,7 +176,7 @@ metrics:
     addInternals: true
     addRoutersLabels: true
     addServicesLabels: true
-    manualRouting: true
+    # manualRouting: true
     entryPoint: metrics
     buckets: "0.5,1.0,5"
     headerLabels:
@@ -320,8 +320,6 @@ service:
   single: true
   type: LoadBalancer
   annotations:
-    prometheus.io/port: 9100
-    prometheus.io/scrape: true
     kube-vip.io/loadbalancerIPs: "192.168.40.180"
     # metallb.universe.tf/loadBalancerIPs: "192.168.40.180"
     # service.beta.kubernetes.io/aws-load-balancer-internal: "true"
@@ -504,14 +502,11 @@ prometheus:
 
   serviceMonitor:
     enabled: true
-    annotations:
-      prometheus.io/scrape: "true"
-      prometheus.io/port: 9100
     labels: {}
     honorLabels: true
     interval: 60s
     selector: {}
-    namespace: monitoring
+    namespace: traefik
     scrapeTimeout: 10s
     scheme: http
     tlsConfig: {}
@@ -534,8 +529,6 @@ prometheus:
       # name:
       # key:
       # optional:
-
-
 
   # Note: Enabling both PodMonitor and ServiceMonitor is mutually exclusive, enabling both will result in a error.
   # podmonitor:
