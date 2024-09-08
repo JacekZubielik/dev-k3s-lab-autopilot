@@ -6,28 +6,15 @@ metadata:
     release: kube-prometheus-stack
   name: traefik
   namespace: traefik
+
 spec:
   jobLabel: traefik-metrics
-  selector:
-    matchLabels:
-      app: traefik
-  namespaceSelector:
-    matchNames:
-      - traefik
   endpoints:
     - port: "9100"
       path: /metrics
-
-
-# spec:
-#   jobLabel: traefik-metrics
-#   selector:
-#     matchLabels:
-#       app.kubernetes.io/instance: infra-traefik
-#       app.kubernetes.io/name: traefik-dashboard
-#   namespaceSelector:
-#     matchNames:
-#     - prometheus
-#   endpoints:
-#   - port: traefik
-#     path: /metrics
+  namespaceSelector:
+    matchNames:
+      - traefik
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: traefik
