@@ -6,11 +6,12 @@ metadata:
     release: kube-prometheus-stack
   name: longhorn
   namespace: longhorn-system
-
 spec:
-  jobLabel: app.kubernetes.io/name
   endpoints:
-  - port: manager
+  - interval: 30s
+    port: manager
+    scrapeTimeout: 30s
+  jobLabel: app.kubernetes.io/name
   namespaceSelector:
     matchNames:
     - longhorn-system
