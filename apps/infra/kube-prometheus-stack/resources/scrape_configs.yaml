@@ -3,7 +3,7 @@ scrape_configs:
 
 - job_name: 'traefik'
   static_configs:
-    - targets: ['traefik.traefik:9100']
+    - targets: ['traefik.traefik.svc:9100']
 
 - job_name: 'mktxp-exporter'
   static_configs:
