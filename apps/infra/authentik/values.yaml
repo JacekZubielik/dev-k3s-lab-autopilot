@@ -399,7 +399,7 @@ serviceAccount:
 prometheus:
   rules:
     enabled: true
-    namespace: "monitoring"
+    namespace: "authentik"
     selector:
       prometheus: kube-prometheus-stack
     labels: {}
