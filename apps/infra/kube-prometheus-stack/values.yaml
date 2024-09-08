@@ -553,6 +553,16 @@ grafana:
         options:
           path: /var/lib/grafana/dashboards/storage
 
+      - name: "general"
+        orgId: 1
+        folder: "General"
+        type: file
+        disableDeletion: false
+        editable: true
+        allowUiUpdates: true
+        options:
+          path: /var/lib/grafana/dashboards/general
+
   ## Configure grafana dashboard
   dashboards:
     devices:
@@ -656,7 +666,7 @@ grafana:
       annotations: {}
       defaultFolderName: "General"
       enabled: true
-      enableNewTablePanelSyntax: false
+      # enableNewTablePanelSyntax: false
       folderAnnotation: grafana_folder
       label: grafana_dashboard
       labelValue: "1"
@@ -667,13 +677,13 @@ grafana:
         etcd:
           enabled: false
       provider:
-        allowUiUpdates: true
-        disableDelete: false
-        folder: ""
+        # allowUiUpdates: true
+        # disableDelete: false
+        # folder: ""
         foldersFromFilesStructure: true
-        name: sidecarProvider
-        orgid: "1"
-        type: file
+        # name: sidecarProvider
+        # orgid: "1"
+        # type: file
 
     datasources:
       enabled: true
