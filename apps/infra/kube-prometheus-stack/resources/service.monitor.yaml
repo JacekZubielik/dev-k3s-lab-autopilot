@@ -13,12 +13,12 @@ spec:
     matchLabels:
       app: kube-prometheus-stack-prometheus
 
----
-apiVersion: monitoring.coreos.com/v1
-kind: ServiceMonitor
-  endpoints:
-  - port: http-metrics
-    relabelings:
-    - action: replace
-      sourceLabels: [ __meta_kubernetes_node_name]
-      targetLabel: nodename
+# ---
+# apiVersion: monitoring.coreos.com/v1
+# kind: ServiceMonitor
+#   endpoints:
+#   - port: http-metrics
+#     relabelings:
+#     - action: replace
+#       sourceLabels: [ __meta_kubernetes_node_name]
+#       targetLabel: nodename
