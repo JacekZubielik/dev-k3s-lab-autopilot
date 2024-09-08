@@ -3,28 +3,24 @@ apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
   labels:
-    app: cert-manager
-    app.kubernetes.io/component: controller
-    app.kubernetes.io/instance: cert-manager
-    app.kubernetes.io/name: cert-manager
-    prometheus.io/scrap-with: kube-prometheus-stack
     release: kube-prometheus-stack
   name: cert-manager
   namespace: cert-manager
 spec:
-  jobLabel: app.kubernetes.io/name
   endpoints:
-  - port: "9402"
-    interval: 30s
+  - interval: 30s
     path: /metrics
+    port: "9402"
     scheme: http
     scrapeTimeout: 30s
+  jobLabel: app.kubernetes.io/name
+  namespaceSelector:
+    matchNames:
+    - cert-manager
   selector:
     matchLabels:
       app: cert-manager
       app.kubernetes.io/component: controller
       app.kubernetes.io/instance: cert-manager
       app.kubernetes.io/name: cert-manager
-  namespaceSelector:
-    matchNames:
-    - cert-manager
+

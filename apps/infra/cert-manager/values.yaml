@@ -423,7 +423,7 @@ enableServiceLinks: false
 # +docs:section=Prometheus
 
 prometheus:
-  enabled: false
+  enabled: true
   # servicemonitor:
   #   enabled: true
   #   prometheusInstance: kube-prometheus-stack
