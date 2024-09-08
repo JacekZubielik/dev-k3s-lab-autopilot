@@ -17,4 +17,5 @@ spec:
       - traefik
   selector:
     matchLabels:
+      app.kubernetes.io/instance: traefik
       app.kubernetes.io/name: traefik
