@@ -4,6 +4,7 @@ kind: ServiceMonitor
 metadata:
   labels:
     release: kube-prometheus-stack
+    prometheus.io/scrap-with: kube-prometheus-stack
   name: traefik
   namespace: traefik
 spec:

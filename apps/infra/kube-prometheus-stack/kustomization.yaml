@@ -16,7 +16,7 @@ resources:
 
 # - resources/backing-image.yaml
 # - resources/pve-scrape-config.yaml
-# - resources/service.monitor.yaml
+- resources/service.monitor.yaml
 # - resources/volume.snapshot.yaml
 
 generators:
