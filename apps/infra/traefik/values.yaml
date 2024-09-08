@@ -173,8 +173,10 @@ entryPoints:
 metrics:
   prometheus:
     addEntryPointsLabels: true
+    addInternals: true
     addRoutersLabels: true
     addServicesLabels: true
+    manualRouting: true
     entryPoint: metrics
     buckets: "0.5,1.0,5"
     headerLabels:
@@ -499,7 +501,6 @@ prometheus:
   #   annotations: {}
   #   honorLabels: false
   #   endpointAdditionalProperties: {}
-
 
   serviceMonitor:
     enabled: true

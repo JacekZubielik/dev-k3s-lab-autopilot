@@ -13,6 +13,7 @@ resources:
 - resources/middlewares.yaml
 - resources/tlsoption.yaml
 - resources/service.monitor.yaml
+- resources/prometheus-configmap.yaml
 # - resources/tlsstore.yaml
 
 generators:
