@@ -620,18 +620,6 @@ grafana:
         datasource:
         - name: DS_PROMETHEUS
           value: Prometheus
-      mikrotik2:
-        gnetId: 13679
-        revision: 21
-        datasource:
-        - name: DS_PROMETHEUS
-          value: Prometheus
-      mikrotik3:
-        gnetId: 13679
-        revision: 20
-        datasource:
-        - name: DS_PROMETHEUS
-          value: Prometheus
       traefik:
         gnetId: 17347
         revision: 8
@@ -664,26 +652,37 @@ grafana:
           value: Prometheus
 
   sidecar:
+
     dashboards:
+      
+
+      folderAnnotation: grafana_folder
+
+
+
+
+    dashboards:
+      annotations: {}
+      defaultFolderName: "General"
       enabled: true
+      enableNewTablePanelSyntax: false
+      folderAnnotation: grafana_folder
       label: grafana_dashboard
       labelValue: "1"
       searchNamespace: ALL
-      enableNewTablePanelSyntax: false
-      annotations: {}
       multicluster:
         global:
           enabled: false
         etcd:
           enabled: false
       provider:
+        allowUiUpdates: true
+        disableDelete: false
+        folder: ""
+        foldersFromFilesStructure: true
         name: sidecarProvider
         orgid: "1"
-        folder: ""
         type: file
-        disableDelete: false
-        allowUiUpdates: true
-        foldersFromFilesStructure: true
 
     datasources:
       enabled: true
