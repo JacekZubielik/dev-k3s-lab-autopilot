@@ -652,15 +652,6 @@ grafana:
           value: Prometheus
 
   sidecar:
-
-    dashboards:
-      
-
-      folderAnnotation: grafana_folder
-
-
-
-
     dashboards:
       annotations: {}
       defaultFolderName: "General"
