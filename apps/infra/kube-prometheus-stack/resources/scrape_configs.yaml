@@ -1,13 +1,13 @@
 ---
 scrape_configs:
 
-- job_name: "velero"
+- job_name: 'velero'
   static_configs:
-    - targets: ["velero.velero.svc:8085"]
+    - targets: ['velero.velero.svc:8085']
 
 - job_name: 'traefik'
   static_configs:
-    - targets: ['traefik.traefik.svc:9100']
+    - targets: ['traefik.traefik.svc.cluster.local:9100']
 
 - job_name: 'mktxp-exporter'
   static_configs:

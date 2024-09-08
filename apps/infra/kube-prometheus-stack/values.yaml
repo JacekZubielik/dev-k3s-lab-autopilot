@@ -767,18 +767,12 @@ grafana:
     scheme: http
     tlsConfig: {}
     scrapeTimeout: 30s
-    relabelings: []
-
-    ## RelabelConfigs to apply to samples before scraping
-    ## ref: https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api.md#relabelconfig
-    ##
-    # relabelings: []
-    # - sourceLabels: [__meta_kubernetes_pod_node_name]
-    #   separator: ;
-    #   regex: ^(.*)$
-    #   targetLabel: nodename
-    #   replacement: $1
-    #   action: replace
+    relabelings:
+      - sourceLabels:
+        - __address__
+        action: replace
+        targetLabel: job
+        replacement: grafana
 
 ## Flag to disable all the kubernetes component scrapers
 kubernetesServiceMonitors:
@@ -1663,7 +1657,12 @@ prometheusOperator:
     labelValueLengthLimit: 0
     scrapeTimeout: ""
     metricRelabelings: []
-    relabelings: []
+    relabelings:
+    - sourceLabels:
+      - __address__
+      action: replace
+      targetLabel: job
+      replacement: prometheus-operator
     additionalLabels:
       prometheus.io/scrap-with: kube-prometheus-stack
 
@@ -2207,7 +2206,12 @@ prometheus:
     tlsConfig: {}
     bearerTokenFile:
     metricRelabelings: []
-    relabelings: []
+    relabelings:
+      - sourceLabels:
+        - __address__
+        action: replace
+        targetLabel: job
+        replacement: prometheus
     additionalEndpoints: []
   ## Settings affecting prometheusSpec
   ## ref: https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api.md#prometheusspec
