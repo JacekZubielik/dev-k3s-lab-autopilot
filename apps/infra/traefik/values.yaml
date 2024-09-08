@@ -318,6 +318,8 @@ service:
   single: true
   type: LoadBalancer
   annotations:
+    prometheus.io/port: 9100
+    prometheus.io/scrape: true
     kube-vip.io/loadbalancerIPs: "192.168.40.180"
     # metallb.universe.tf/loadBalancerIPs: "192.168.40.180"
     # service.beta.kubernetes.io/aws-load-balancer-internal: "true"
