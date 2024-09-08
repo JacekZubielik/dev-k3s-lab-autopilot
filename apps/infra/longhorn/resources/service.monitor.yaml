@@ -3,7 +3,9 @@ apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
   labels:
+    app: longhorn
     release: kube-prometheus-stack
+    prometheus.io/scrap-with: kube-prometheus-stack
   name: longhorn
   namespace: longhorn-system
 spec:

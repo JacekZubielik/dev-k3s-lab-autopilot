@@ -3,7 +3,9 @@ apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
   labels:
+    app: cert-manager
     release: kube-prometheus-stack
+    prometheus.io/scrap-with: kube-prometheus-stack
   name: cert-manager
   namespace: cert-manager
 spec:
