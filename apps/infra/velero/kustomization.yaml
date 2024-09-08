@@ -9,7 +9,7 @@ metadata:
 
 resources:
 - resources/ns.yaml
-- resources/servicemonitor.yaml
+- resources/service.monitor.yaml
 # - resources/backup.storage.location.yaml
 # - resources/volume.snapshot.location.yaml
 
