@@ -1,6 +1,10 @@
 ---
 scrape_configs:
 
+- job_name: "velero"
+  static_configs:
+    - targets: ["velero.velero.svc:8085"]
+
 - job_name: 'traefik'
   static_configs:
     - targets: ['traefik.traefik.svc:9100']
