@@ -501,7 +501,7 @@ prometheus:
   #   endpointAdditionalProperties: {}
 
   serviceMonitor:
-    enabled: true
+    enabled: false
     labels: {}
     honorLabels: true
     interval: 60s
