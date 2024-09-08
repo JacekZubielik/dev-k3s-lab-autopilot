@@ -2,6 +2,9 @@
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
+  annotations:
+    prometheus.io/port: 9100
+    prometheus.io/scrape: true
   labels:
     release: kube-prometheus-stack
   name: traefik
