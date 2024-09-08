@@ -179,15 +179,15 @@ annotations:
 serviceAccount:
   annotations: {}
 
-metrics:
-  serviceMonitor:
-    enabled: false
-    additionalLabels: {}
-    annotations: {}
-    interval: ""
-    scrapeTimeout: ""
-    relabelings: []
-    metricRelabelings: []
+# metrics:
+#   serviceMonitor:
+#     enabled: true
+#     additionalLabels: {}
+#     annotations: {}
+#     interval: ""
+#     scrapeTimeout: ""
+#     relabelings: []
+#     metricRelabelings: []
 
 openshift:
   enabled: false

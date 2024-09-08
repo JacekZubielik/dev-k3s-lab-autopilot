@@ -497,6 +497,8 @@ prometheus:
   #   annotations: {}
   #   honorLabels: false
   #   endpointAdditionalProperties: {}
+
+
   serviceMonitor:
     enabled: true
     annotations:

@@ -2,18 +2,22 @@
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
-  annotations:
-    argocd.argoproj.io/instance: longhorn
   labels:
-    name: longhorn
+    release: kube-prometheus-stack
   name: longhorn
   namespace: longhorn-system
+
 spec:
-  selector:
-    matchLabels:
-      app: longhorn-manager
+  jobLabel: app.kubernetes.io/name
+  endpoints:
+  - port: manager
   namespaceSelector:
     matchNames:
     - longhorn-system
-  endpoints:
-  - port: '32452' # manager
+  selector:
+    matchLabels:
+      app: longhorn-manager
+
+
+
+

@@ -8,13 +8,13 @@ metadata:
   namespace: traefik
 
 spec:
-  jobLabel: traefik-metrics
+  jobLabel: app.kubernetes.io/name
   endpoints:
-    - port: "9100"
-      path: /metrics
+  - port: "9100"
+    path: /metrics
   namespaceSelector:
     matchNames:
-      - traefik
+    - traefik
   selector:
     matchLabels:
       app.kubernetes.io/instance: traefik
