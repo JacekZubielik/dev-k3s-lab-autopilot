@@ -22,10 +22,20 @@ resources:
 generators:
 - ksops-generator.yaml
 
+commonLabels:
+  grafana_dashboard: "1"
+
 configMapGenerator:
 - name: prometheus-server-conf
   files:
   - resources/scrape_configs.yaml
+
+- name: grafana-k8s-pod-count
+  namespace: prom
+  # specify name of locally downloaded json
+  files:
+  - dashboard/k8s-views-pods.json
+
 
 generatorOptions:
   disableNameSuffixHash: true

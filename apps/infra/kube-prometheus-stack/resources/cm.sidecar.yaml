@@ -3,7 +3,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: test-grafana-dashboardprovider-config
-  namespace: "monitoring"
+  namespace: monitoring
 data:
   dashboardproviders.yaml: |
     apiVersion: 1
@@ -22,11 +22,11 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   annotations:
-    grafana_folder: "My Folder"
+    grafana_folder: "test"
   labels:
     grafana_dashboard: "1"
   name: test-grafana-dashboard-config
-  namespace: "monitoring"
+  namespace: monitoring
 data:
   dashboard.yaml: |
     dashboards:
