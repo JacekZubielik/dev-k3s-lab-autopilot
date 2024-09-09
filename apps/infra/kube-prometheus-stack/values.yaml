@@ -13,7 +13,7 @@ defaultRules:
   create: true
   rules:
     alertmanager: true
-    etcd: true
+    etcd: false
     configReloaders: true
     general: true
     k8sContainerCpuUsageSecondsTotal: true
@@ -23,21 +23,21 @@ defaultRules:
     k8sContainerResource: true
     k8sContainerMemoryWorkingSetBytes: true
     k8sPodOwner: true
-    kubeApiserverAvailability: true
-    kubeApiserverBurnrate: true
-    kubeApiserverHistogram: true
-    kubeApiserverSlos: true
-    kubeControllerManager: true
-    kubelet: true
-    kubeProxy: true
+    kubeApiserverAvailability: false
+    kubeApiserverBurnrate: false
+    kubeApiserverHistogram: false
+    kubeApiserverSlos: false
+    kubeControllerManager: false
+    kubelet: false
+    kubeProxy: false
     kubePrometheusGeneral: true
     kubePrometheusNodeRecording: true
-    kubernetesApps: true
-    kubernetesResources: true
-    kubernetesStorage: true
-    kubernetesSystem: true
-    kubeSchedulerAlerting: true
-    kubeSchedulerRecording: true
+    kubernetesApps: false
+    kubernetesResources: false
+    kubernetesStorage: false
+    kubernetesSystem: false
+    kubeSchedulerAlerting: false
+    kubeSchedulerRecording: false
     kubeStateMetrics: true
     network: true
     node: true
@@ -156,6 +156,8 @@ prometheus-windows-exporter:
     collectors:
       enabled: '[defaults],memory,container'
 
+####################################################
+
 alertmanager:
   # fullnameOverride: "alertmanager"
   enabled: true
@@ -267,63 +269,19 @@ alertmanager:
     relabelings: []
 
   ## Settings affecting alertmanagerSpec
-  ## ref: https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api.md#alertmanagerspec
   alertmanagerSpec:
-    ## Standard object's metadata. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#metadata
-    ## Metadata Labels and Annotations gets propagated to the Alertmanager pods.
     podMetadata: {}
     useExistingSecret: false
     secrets: []
     automountServiceAccountToken: true
     configMaps: []
-
-    ## ConfigSecret is the name of a Kubernetes Secret in the same namespace as the Alertmanager object, which contains configuration for
-    ## this Alertmanager instance. Defaults to 'alertmanager-' The secret is mounted into /etc/alertmanager/config.
-    ##
-    # configSecret:
-
-    ## WebTLSConfig defines the TLS parameters for HTTPS
-    ## ref: https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api.md#alertmanagerwebspec
     web: {}
-
     alertmanagerConfigSelector:
       matchLabels:
         prometheus.io/scrap-with: kube-prometheus-stack
-
-    ## Namespaces to be selected for AlertmanagerConfig discovery. If nil, only check own namespace.
-    ##
     alertmanagerConfigNamespaceSelector: {}
-    ## Example which selects all namespaces
-    ## with label "alertmanagerconfig" with values any of "example-namespace" or "example-namespace-2"
-    # alertmanagerConfigNamespaceSelector:
-    #   matchExpressions:
-    #     - key: alertmanagerconfig
-    #       operator: In
-    #       values:
-    #         - example-namespace
-    #         - example-namespace-2
-
-    ## Example which selects all namespaces with label "alertmanagerconfig" set to "enabled"
-    # alertmanagerConfigNamespaceSelector:
-    #   matchLabels:
-    #     alertmanagerconfig: enabled
-
-    ## AlermanagerConfig to be used as top level configuration
-    ##
     alertmanagerConfiguration: {}
-    ## Example with select a global alertmanagerconfig
-    # alertmanagerConfiguration:
-    #   name: global-alertmanager-Configuration
-
-    ## Defines the strategy used by AlertmanagerConfig objects to match alerts. eg:
-    ##
     alertmanagerConfigMatcherStrategy: {}
-    ## Example with use OnNamespace strategy
-    # alertmanagerConfigMatcherStrategy:
-    #   type: OnNamespace
-
-    ## Define Log Format
-    # Use logfmt (default) or json logging
     logFormat: logfmt
     logLevel: info
     replicas: 1
@@ -331,7 +289,6 @@ alertmanager:
 
     storage:
       volumeClaimTemplate:
-
         metadata:
           annotations:
             argocd.argoproj.io/sync-wave: "-1"
@@ -339,7 +296,6 @@ alertmanager:
           labels:
             backup: pvc-kube-stack
           name: pvc-kube-alertmanager
-
         spec:
           accessModes:
           - ReadWriteOnce
@@ -349,46 +305,18 @@ alertmanager:
               storage: 4Gi
           volumeName: pv-kube-alertmanager # must reference Persistent Volume
 
-
-    ## The external URL the Alertmanager instances will be available under. This is necessary to generate correct URLs. This is necessary if Alertmanager is not served from root of a DNS name. string  false
     externalUrl:
     routePrefix: /
-    ## scheme: HTTP scheme to use. Can be used with `tlsConfig` for example if using istio mTLS.
     scheme: ""
-    ## tlsConfig: TLS configuration to use when connect to the endpoint. For example if using istio mTLS.
-    ## Of type: https://github.com/coreos/prometheus-operator/blob/main/Documentation/api.md#tlsconfig
     tlsConfig: {}
-    ## If set to true all actions on the underlying managed objects are not going to be performed, except for delete actions.
     paused: false
     nodeSelector: {}
     resources: {}
     podAntiAffinity: ""
     podAntiAffinityTopologyKey: kubernetes.io/hostname
     affinity: {}
-    # nodeAffinity:
-    #   requiredDuringSchedulingIgnoredDuringExecution:
-    #     nodeSelectorTerms:
-    #     - matchExpressions:
-    #       - key: kubernetes.io/e2e-az-name
-    #         operator: In
-    #         values:
-    #         - e2e-az1
-    #         - e2e-az2
-
     tolerations: []
-    # - key: "key"
-    #   operator: "Equal"
-    #   value: "value"
-    #   effect: "NoSchedule"
-
     topologySpreadConstraints: []
-    # - maxSkew: 1
-    #   topologyKey: topology.kubernetes.io/zone
-    #   whenUnsatisfiable: DoNotSchedule
-    #   labelSelector:
-    #     matchLabels:
-    #       app: alertmanager
-
     securityContext:
       runAsGroup: 2000
       runAsNonRoot: true
@@ -396,30 +324,8 @@ alertmanager:
       fsGroup: 2000
       seccompProfile:
         type: RuntimeDefault
-
-    ## ListenLocal makes the Alertmanager server listen on loopback, so that it does not bind against the Pod IP.
-    ## Note this is only for the Alertmanager UI, not the gossip communication.
     listenLocal: false
-
-    ## Containers allows injecting additional containers. This is meant to allow adding an authentication proxy to an Alertmanager pod.
     containers: []
-    # containers:
-    # - name: oauth-proxy
-    #   image: quay.io/oauth2-proxy/oauth2-proxy:v7.5.1
-    #   args:
-    #   - --upstream=http://127.0.0.1:9093
-    #   - --http-address=0.0.0.0:8081
-    #   - --metrics-address=0.0.0.0:8082
-    #   - ...
-    #   ports:
-    #   - containerPort: 8081
-    #     name: oauth-proxy
-    #     protocol: TCP
-    #   - containerPort: 8082
-    #     name: oauth-metrics
-    #     protocol: TCP
-    #   resources: {}
-
     volumes: []
     volumeMounts: []
     initContainers: []
@@ -427,45 +333,18 @@ alertmanager:
     additionalPeers: []
     portName: "http-web"
     clusterAdvertiseAddress: false
-
-    ## clusterGossipInterval determines interval between gossip attempts.
-    ## Needs to be specified as GoDuration, a time duration that can be parsed by Go’s time.ParseDuration() (e.g. 45ms, 30s, 1m, 1h20m15s)
     clusterGossipInterval: ""
-
-    ## clusterPeerTimeout determines timeout for cluster peering.
-    ## Needs to be specified as GoDuration, a time duration that can be parsed by Go’s time.ParseDuration() (e.g. 45ms, 30s, 1m, 1h20m15s)
     clusterPeerTimeout: ""
-
-    ## clusterPushpullInterval determines interval between pushpull attempts.
-    ## Needs to be specified as GoDuration, a time duration that can be parsed by Go’s time.ParseDuration() (e.g. 45ms, 30s, 1m, 1h20m15s)
     clusterPushpullInterval: ""
-
-    ## ForceEnableClusterMode ensures Alertmanager does not deactivate the cluster mode when running with a single replica.
-    ## Use case is e.g. spanning an Alertmanager cluster across Kubernetes clusters with a single replica in each.
     forceEnableClusterMode: false
-
-    ## Minimum number of seconds for which a newly created pod should be ready without any of its container crashing for it to
-    ## be considered available. Defaults to 0 (pod will be considered available as soon as it is ready).
     minReadySeconds: 0
-
-    ## Additional configuration which is not covered by the properties above. (passed through tpl)
     additionalConfig: {}
-
-    ## Additional configuration which is not covered by the properties above.
-    ## Useful, if you need advanced templating inside alertmanagerSpec.
-    ## Otherwise, use alertmanager.alertmanagerSpec.additionalConfig (passed through tpl)
     additionalConfigString: ""
-
-  ## ExtraSecret can be used to store various data in an extra secret
-  ## (use it for example to store hashed basic auth credentials)
   extraSecret:
-    ## if not set, name will be auto generated
-    # name: ""
     annotations: {}
     data: {}
-  #   auth: |
-  #     foo:$apr1$OFG3Xybp$ckL0FHDAkoXYIlH9.cysT0
-  #     someoneelse:$apr1$DMZX2Z4q$6SbQIfyuLQd.xmo/P0m2c.
+
+####################################################
 
 grafana:
   enabled: true
@@ -568,7 +447,7 @@ grafana:
 
       # - name: 'grafana-dashboards-kubernetes'
       #   orgId: 1
-      #   folder: 'Test'
+      #   folder: 'Test2'
       #   type: file
       #   disableDeletion: true
       #   editable: true
@@ -638,10 +517,9 @@ grafana:
       mikrotik:
         gnetId: 13679
         revision: 22
-        datasource: Prometheus
-        # datasource:
-        # - name: DS_PROMETHEUS
-        #   value: Prometheus
+        datasource:
+        - name: DS_PROMETHEUS
+          value: Prometheus
       traefik:
         gnetId: 17347
         revision: 8
@@ -689,13 +567,15 @@ grafana:
       folder: /var/lib/grafana/dashboards
       folderAnnotation: grafana_folder
       label: grafana_dashboard
-      labelValue: "1"
+      labelValue: kube-prometheus-stack # "1"
       searchNamespace: ALL
       enableNewTablePanelSyntax: false
       provider:
-        allowUiUpdates: false
+        allowUiUpdates: true
         foldersFromFilesStructure: true
-      annotations: {}
+      annotations:
+        # Puts kube-prometheus-stack default dashboards in 'Kubernetes' folder
+        grafana_folder: /tmp/dashboards/Kubernetes
 
     # datasources:
     #   enabled: true
@@ -776,30 +656,30 @@ grafana:
     type: loki
     url: http://loki-gateway.monitoring
   # More config at https://grafana.com/docs/grafana/latest/datasources/tempo/configure-tempo-data-source/
-  - name: Tempo
-    uid: tempo
-    type: tempo
-    access: proxy
-    url: http://tempo.monitoring.svc:3100
-    jsonData:
-      tracesToMetrics:
-        datasourceUid: 'prom'
-        spanStartTimeShift: '1h'
-        spanEndTimeShift: '-1h'
-        tags: [{ key: 'service.name', value: 'service' }]
-        queries:
-        - name: 'latency'
-          query: 'sum(rate(traces_spanmetrics_latency_bucket{$$__tags}[5m]))'
-      serviceMap:
-        datasourceUid: 'prometheus'
-      nodeGraph:
-        enabled: true
-      search:
-        hide: false
-      traceQuery:
-        timeShiftEnabled: true
-        spanStartTimeShift: '1h'
-        spanEndTimeShift: '-1h'
+  # - name: Tempo
+  #   uid: tempo
+  #   type: tempo
+  #   access: proxy
+  #   url: http://tempo.monitoring.svc:3100
+  #   jsonData:
+  #     tracesToMetrics:
+  #       datasourceUid: 'prom'
+  #       spanStartTimeShift: '1h'
+  #       spanEndTimeShift: '-1h'
+  #       tags: [{ key: 'service.name', value: 'service' }]
+  #       queries:
+  #       - name: 'latency'
+  #         query: 'sum(rate(traces_spanmetrics_latency_bucket{$$__tags}[5m]))'
+  #     serviceMap:
+  #       datasourceUid: 'prometheus'
+  #     nodeGraph:
+  #       enabled: true
+  #     search:
+  #       hide: false
+  #     traceQuery:
+  #       timeShiftEnabled: true
+  #       spanStartTimeShift: '1h'
+  #       spanEndTimeShift: '-1h'
   # - name: prometheus-longhorn
   #   uid: longhorn
   #   type: prometheus
@@ -829,7 +709,7 @@ grafana:
         targetLabel: job
         replacement: grafana
 
-## Flag to disable all the kubernetes component scrapers
+####################################################
 kubernetesServiceMonitors:
   enabled: true
 
@@ -846,7 +726,6 @@ kubeApiServer:
     labelNameLengthLimit: 0
     labelValueLengthLimit: 0
     proxyUrl: ""
-
     jobLabel: component
     selector:
       matchLabels:
@@ -1024,35 +903,9 @@ kubeDns:
 
     jobLabel: jobLabel
     selector: {}
-    #  matchLabels:
-    #    k8s-app: kube-dns
-
-    ## MetricRelabelConfigs to apply to samples after scraping, but before ingestion.
-    ## ref: https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api.md#relabelconfig
     metricRelabelings: []
-    # - action: keep
-    #   regex: 'kube_(daemonset|deployment|pod|namespace|node|statefulset).+'
-    #   sourceLabels: [__name__]
-
-    ## RelabelConfigs to apply to samples before scraping
-    ## ref: https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api.md#relabelconfig
     relabelings: []
-    # - sourceLabels: [__meta_kubernetes_pod_node_name]
-    #   separator: ;
-    #   regex: ^(.*)$
-    #   targetLabel: nodename
-    #   replacement: $1
-    #   action: replace
-
-    ## MetricRelabelConfigs to apply to samples after scraping, but before ingestion.
-    ## ref: https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api.md#relabelconfig
     dnsmasqMetricRelabelings: []
-    # - action: keep
-    #   regex: 'kube_(daemonset|deployment|pod|namespace|node|statefulset).+'
-    #   sourceLabels: [__name__]
-
-    ## RelabelConfigs to apply to samples before scraping
-    ## ref: https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api.md#relabelconfig
     dnsmasqRelabelings: []
     additionalLabels:
       prometheus.io/scrap-with: kube-prometheus-stack
@@ -1632,76 +1485,27 @@ prometheusOperator:
       ipFamilies: ["IPv6", "IPv4"]
       ipFamilyPolicy: "PreferDualStack"
 
-  ## Port to expose on each node
-  ## Only used if service.type is 'NodePort'
-  ##
     nodePort: 30080
-
     nodePortTls: 30443
-
-  ## Additional ports to open for Prometheus operator service
-  ## ref: https://kubernetes.io/docs/concepts/services-networking/service/#multi-port-services
-  ##
     additionalPorts: []
-
-  ## Loadbalancer IP
-  ## Only use if service.type is "LoadBalancer"
-  ##
     loadBalancerIP: ""
     loadBalancerSourceRanges: []
-
-    ## Denotes if this Service desires to route external traffic to node-local or cluster-wide endpoints
-    ##
     externalTrafficPolicy: Cluster
-
-  ## Service type
-  ## NodePort, ClusterIP, LoadBalancer
-  ##
     type: ClusterIP
-
-    ## List of IP addresses at which the Prometheus server service is available
-    ## Ref: https://kubernetes.io/docs/user-guide/services/#external-ips
-    ##
     externalIPs: []
 
-  # ## Labels to add to the operator deployment
-  # ##
   labels: {}
-
-  ## Annotations to add to the operator deployment
-  ##
   annotations: {}
-
-  ## Labels to add to the operator pod
-  ##
   podLabels: {}
 
-  ## Annotations to add to the operator pod
-  ##
   podAnnotations: {}
-
-  ## Assign a PriorityClassName to pods if set
-  # priorityClassName: ""
-
-  ## Define Log Format
-  # Use logfmt (default) or json logging
-  # logFormat: logfmt
-
-  ## Decrease log verbosity to errors only
-  # logLevel: error
-
   kubeletService:
-    ## If true, the operator will create and maintain a service for scraping kubelets
-    ## ref: https://github.com/prometheus-operator/prometheus-operator/blob/main/helm/prometheus-operator/README.md
-    ##
-    enabled: true
+    enabled: false # true
     namespace: kube-system
     selector: ""
     ## Use '{{ template "kube-prometheus-stack.fullname" . }}-kubelet' by default
     name: ""
 
-  ## Create a servicemonitor for the operator
-  ##
   serviceMonitor:
     selfMonitor: true
     interval: ""
@@ -1721,64 +1525,14 @@ prometheusOperator:
     additionalLabels:
       prometheus.io/scrap-with: kube-prometheus-stack
 
-  ## Resource limits & requests
-  ##
   resources: {}
-  # limits:
-  #   cpu: 200m
-  #   memory: 200Mi
-  # requests:
-  #   cpu: 100m
-  #   memory: 100Mi
-
-  ## Operator Environment
-  ##  env:
-  ##    VARIABLE: value
   env:
     GOGC: "30"
-
-  # Required for use in managed kubernetes clusters (such as AWS EKS) with custom CNI (such as calico),
-  # because control-plane managed by AWS cannot communicate with pods' IP CIDR and admission webhooks are not working
-  ##
   hostNetwork: false
-
-  ## Define which Nodes the Pods are scheduled on.
-  ## ref: https://kubernetes.io/docs/user-guide/node-selection/
-  ##
   nodeSelector: {}
-
-  ## Tolerations for use with node taints
-  ## ref: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
-  ##
   tolerations: []
-  # - key: "key"
-  #   operator: "Equal"
-  #   value: "value"
-  #   effect: "NoSchedule"
-
-  ## Assign custom affinity rules to the prometheus operator
-  ## ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/
-  ##
   affinity: {}
-    # nodeAffinity:
-    #   requiredDuringSchedulingIgnoredDuringExecution:
-    #     nodeSelectorTerms:
-    #     - matchExpressions:
-    #       - key: kubernetes.io/e2e-az-name
-    #         operator: In
-    #         values:
-    #         - e2e-az1
-    #         - e2e-az2
   dnsConfig: {}
-    # nameservers:
-    #   - 1.2.3.4
-    # searches:
-    #   - ns1.svc.cluster-domain.example
-    #   - my.dns.search.suffix
-    # options:
-    #   - name: ndots
-    #     value: "2"
-  #   - name: edns0
   securityContext:
     fsGroup: 65534
     runAsGroup: 65534
@@ -1786,10 +1540,6 @@ prometheusOperator:
     runAsUser: 65534
     seccompProfile:
       type: RuntimeDefault
-
-  ## Container-specific security context configuration
-  ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
-  ##
   containerSecurityContext:
     allowPrivilegeEscalation: false
     readOnlyRootFilesystem: true
@@ -2302,14 +2052,17 @@ prometheus:
     configMaps: []
     query: {}
     ruleNamespaceSelector: {}
+
     ruleSelectorNilUsesHelmValues: false
     ruleSelector:
       matchLabels:
         prometheus.io/scrap-with: kube-prometheus-stack
+
     serviceMonitorSelectorNilUsesHelmValues: false
     serviceMonitorSelector:
       matchLabels:
         prometheus.io/scrap-with: kube-prometheus-stack
+
     serviceMonitorNamespaceSelector: {}
     podMonitorSelectorNilUsesHelmValues: false
     podMonitorSelector: {}
@@ -2323,6 +2076,7 @@ prometheus:
     probeSelector:
       matchLabels:
         prometheus.io/scrap-with: kube-prometheus-stack
+
     probeNamespaceSelector: {}
     scrapeConfigSelectorNilUsesHelmValues: false
     scrapeConfigSelector:

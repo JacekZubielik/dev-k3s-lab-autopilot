@@ -5,6 +5,7 @@ metadata:
   name: prometheus-self
   labels:
     app: kube-prometheus-stack-prometheus
+    prometheus.io/scrap-with: kube-prometheus-stack
 spec:
   endpoints:
   - interval: 30s
