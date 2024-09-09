@@ -17,6 +17,7 @@ resources:
 # - resources/pve-scrape-config.yaml
 # - resources/ns.yaml
 # - resources/volume.snapshot.yaml
+- resources/cm.sidecar.yaml
 
 generators:
 - ksops-generator.yaml
@@ -29,10 +30,10 @@ configMapGenerator:
   files:
   - resources/scrape_configs.yaml
 
-- name: mikrotik
-  namespace: monitoring
-  files:
-  - dashboard/13679_rev22.json
+# - name: mikrotik
+#   namespace: monitoring
+#   files:
+#   - dashboard/13679_rev22.json
 
 
 generatorOptions:

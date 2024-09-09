@@ -675,13 +675,20 @@ grafana:
 
 ############# sidecar test ##########
   sidecar:
+    image:
+      registry: quay.io
+      repository: kiwigrid/k8s-sidecar
+      tag: "" # 1.27.4
+      sha: ""
+    imagePullPolicy: IfNotPresent
+
     alerts:
       enabled: true
       searchNamespace: ALL
 
     dashboards:
       enabled: true
-      folder: /var/lib/grafana/dashboards
+      folder: /tmp/dashboards # /var/lib/grafana/dashboards
       folderAnnotation: grafana_folder
       label: grafana_dashboard
       labelValue: "1"
@@ -690,9 +697,6 @@ grafana:
       provider:
         allowUiUpdates: false
       annotations: {}
-
-
-
 
     # datasources:
     #   enabled: true
