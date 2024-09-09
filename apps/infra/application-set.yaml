@@ -82,7 +82,7 @@ spec:
         # - ApplyOutOfSyncOnly=true
         - CreateNamespace=true
         # - PrunePropagationPolicy=foreground
-        # - RespectIgnoreDifferences=true
+        - RespectIgnoreDifferences=true
         # - ServerSideApply=true
         # - SkipDryRunOnMissingResource=true
 
