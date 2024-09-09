@@ -9,7 +9,7 @@ data:
     apiVersion: 1
     providers:
     - name: 'test'
-      orgId: 2
+      orgId: 1
       folder: 'Test'
       type: file
       disableDeletion: false
@@ -24,7 +24,7 @@ metadata:
   name: test-grafana-dashboard-config
   namespace: "monitoring"
   labels:
-    grafana_dashboard: "2"
+    grafana_dashboard: "1"
 data:
   dashboard.yaml: |
     dashboards:
