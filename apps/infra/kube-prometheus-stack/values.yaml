@@ -686,7 +686,7 @@ grafana:
 
     dashboards:
       enabled: true
-      folder: /tmp/dashboards # /var/lib/grafana/dashboards
+      folder: /var/lib/grafana/dashboards
       folderAnnotation: grafana_folder
       label: grafana_dashboard
       labelValue: "1"
