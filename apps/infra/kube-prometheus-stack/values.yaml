@@ -565,6 +565,12 @@ grafana:
 
   ## Configure grafana dashboard
   dashboards:
+
+    grafana-dashboards-kubernetes:
+      k8s-system-api-server:
+        url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-system-api-server.json
+        token: ''
+
     devices:
       prometheus-pve-exporter:
         gnetId: 10347
@@ -663,27 +669,37 @@ grafana:
 
   sidecar:
     dashboards:
-      annotations: {}
-      defaultFolderName: "Test"
       enabled: true
-      # enableNewTablePanelSyntax: false
-      folderAnnotation: grafana_folder
+      defaultFolderName: "General"
       label: grafana_dashboard
       labelValue: "1"
+      folderAnnotation: grafana_folder
       searchNamespace: ALL
-      multicluster:
-        global:
-          enabled: false
-        etcd:
-          enabled: false
       provider:
-        # allowUiUpdates: true
-        # disableDelete: false
-        # folder: ""
         foldersFromFilesStructure: true
-        # name: sidecarProvider
-        # orgid: "1"
-        # type: file
+
+    # dashboards:
+    #   annotations: {}
+    #   defaultFolderName: "Test"
+    #   enabled: true
+    #   # enableNewTablePanelSyntax: false
+    #   folderAnnotation: grafana_folder
+    #   label: grafana_dashboard
+    #   labelValue: "1"
+    #   searchNamespace: ALL
+    #   # multicluster:
+    #   #   global:
+    #   #     enabled: false
+    #   #   etcd:
+    #   #     enabled: false
+    #   provider:
+    #     # allowUiUpdates: true
+    #     # disableDelete: false
+    #     # folder: ""
+    #     foldersFromFilesStructure: true
+    #     # name: sidecarProvider
+    #     # orgid: "1"
+    #     # type: file
 
     datasources:
       enabled: true
