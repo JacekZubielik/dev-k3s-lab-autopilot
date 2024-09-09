@@ -10,7 +10,7 @@ data:
     providers:
     - name: 'test'
       orgId: 1
-      folder: 'Test'
+      folder:  /tmp/dashboards
       type: file
       disableDeletion: false
       editable: true
