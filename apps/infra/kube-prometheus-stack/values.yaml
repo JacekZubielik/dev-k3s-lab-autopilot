@@ -495,7 +495,7 @@ grafana:
 
 ##############################
 
-  # dashboardProviders:
+  dashboardProviders: {}
   #   dashboardproviders.yaml:
   #     apiVersion: 1
   #     providers:
@@ -575,7 +575,7 @@ grafana:
       #     path: /var/lib/grafana/dashboards/grafana-dashboards-kubernetes
 
   ## Configure grafana dashboard
-  # dashboards:
+  dashboards: {}
 
   #   devices:
   #     # prometheus-pve-exporter:
