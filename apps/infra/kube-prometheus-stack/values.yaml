@@ -680,12 +680,6 @@ grafana:
 
 ############# sidecar test ##########
   sidecar:
-    image:
-      registry: quay.io
-      repository: kiwigrid/k8s-sidecar
-      tag: 1.27.4
-    imagePullPolicy: IfNotPresent
-
     alerts:
       enabled: true
       searchNamespace: ALL
