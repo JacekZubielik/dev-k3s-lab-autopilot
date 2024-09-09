@@ -495,65 +495,66 @@ grafana:
 
 ##############################
 
-  dashboardProviders: {}
-  #   dashboardproviders.yaml:
-  #     apiVersion: 1
-  #     providers:
-  #     - name: "devices"
-  #       orgId: 1
-  #       folder: "Devices"
-  #       type: file
-  #       disableDeletion: false
-  #       editable: true
-  #       options:
-  #         path: /var/lib/grafana/dashboards/device
+  dashboardProviders:
+    dashboardproviders.yaml:
+      apiVersion: 1
+      providers:
 
-  #     - name: "extra"
-  #       orgId: 1
-  #       folder: "Extra"
-  #       type: file
-  #       disableDeletion: false
-  #       editable: true
-  #       allowUiUpdates: true
-  #       options:
-  #         path: /var/lib/grafana/dashboards/extra
+      - name: "devices"
+        orgId: 1
+        folder: "Devices"
+        type: file
+        disableDeletion: false
+        editable: true
+        options:
+          path: /var/lib/grafana/dashboards/device
 
-  #     - name: "freqtrade"
-  #       orgId: 1
-  #       folder: "Freqtrade"
-  #       type: file
-  #       disableDeletion: false
-  #       editable: true
-  #       options:
-  #         path: /var/lib/grafana/dashboards/freqtrade
+      - name: "extra"
+        orgId: 1
+        folder: "Extra"
+        type: file
+        disableDeletion: false
+        editable: true
+        allowUiUpdates: true
+        options:
+          path: /var/lib/grafana/dashboards/extra
 
-  #     - name: "kubernetes"
-  #       orgId: 1
-  #       folder: "Kubernetes"
-  #       type: file
-  #       disableDeletion: false
-  #       editable: true
-  #       options:
-  #         path: /var/lib/grafana/dashboards/kubernetes
+      - name: "freqtrade"
+        orgId: 1
+        folder: "Freqtrade"
+        type: file
+        disableDeletion: false
+        editable: true
+        options:
+          path: /var/lib/grafana/dashboards/freqtrade
 
-  #     - name: "network"
-  #       orgId: 1
-  #       folder: "Network"
-  #       type: file
-  #       disableDeletion: false
-  #       editable: true
-  #       options:
-  #         path: /var/lib/grafana/dashboards/network
+      - name: "kubernetes"
+        orgId: 1
+        folder: "Kubernetes"
+        type: file
+        disableDeletion: false
+        editable: true
+        options:
+          path: /var/lib/grafana/dashboards/kubernetes
 
-  #     - name: "storage"
-  #       orgId: 1
-  #       folder: "Storage"
-  #       type: file
-  #       disableDeletion: false
-  #       editable: true
-  #       allowUiUpdates: true
-  #       options:
-  #         path: /var/lib/grafana/dashboards/storage
+      - name: "network"
+        orgId: 1
+        folder: "Network"
+        type: file
+        disableDeletion: false
+        editable: true
+        options:
+          path: /var/lib/grafana/dashboards/network
+
+      - name: "storage"
+        orgId: 1
+        folder: "Storage"
+        type: file
+        disableDeletion: false
+        editable: true
+        allowUiUpdates: true
+        options:
+          path: /var/lib/grafana/dashboards/storage
 
       # - name: "test"
       #   orgId: 1
@@ -575,103 +576,107 @@ grafana:
       #     path: /var/lib/grafana/dashboards/grafana-dashboards-kubernetes
 
   ## Configure grafana dashboard
-  dashboards: {}
+  dashboards:
 
-  #   devices:
-  #     # prometheus-pve-exporter:
-  #     #   gnetId: 10347
-  #     #   revision: 5
-  #     #   datasource:
-  #     #   - name: DS_PROMETHEUS
-  #     #     value: Prometheus
-  #     blackbox-exporter-overview:
-  #       gnetId: 5345
-  #       datasource: Prometheus
+    devices:
+      prometheus-pve-exporter:
+        gnetId: 10347
+        revision: 5
+        datasource: Prometheus
+        # datasource:
+        # - name: DS_PROMETHEUS
+        #   value: Prometheus
+      blackbox-exporter-overview:
+        gnetId: 5345
+        datasource: Prometheus
 
-  #   extra:
-  #     argocd-overview:
-  #       gnetId: 14584
-  #       datasource: Prometheus
-  #     authentik:
-  #       gnetId: 14837
-  #       datasource: Prometheus
-  #     cert-manager:
-  #       gnetId: 20842
-  #       datasource:
-  #       - name: DS_PROMETHEUS
-  #         value: Prometheus
-  #     external-dns-overview:
-  #       gnetId: 15038
-  #       datasource: Prometheus
+    extra:
+      argocd-overview:
+        gnetId: 14584
+        datasource: Prometheus
+      authentik:
+        gnetId: 14837
+        datasource: Prometheus
+      cert-manager:
+        gnetId: 20842
+        datasource:
+        - name: DS_PROMETHEUS
+          value: Prometheus
+      external-dns-overview:
+        gnetId: 15038
+        datasource: Prometheus
 
-  #   freqtrade:
-  #     freqtrade:
-  #       gnetId: 14632
-  #       datasource: Prometheus
+    freqtrade:
+      freqtrade:
+        gnetId: 14632
+        datasource: Prometheus
 
-  #   kubernetes:
-  #     k8s-addons-prometheus:
-  #       gnetId: 19105
-  #       datasource: Prometheus
-  #     k8s-addons-trivy-operator:
-  #       gnetId: 16337
-  #       datasource: Prometheus
-  #     k8s-system-api-server:
-  #       gnetId: 15761
-  #       datasource: Prometheus
-  #     k8s-system-coredns:
-  #       gnetId: 15762
-  #       datasource: Prometheus
-  #     k8s-views-global:
-  #       gnetId: 15757
-  #       datasource: Prometheus
-  #     k8s-views-namespaces:
-  #       gnetId: 15758
-  #       datasource: Prometheus
-  #     k8s-views-nodes:
-  #       gnetId: 15759
-  #       datasource: Prometheus
-  #     k8s-views-pods:
-  #       gnetId: 15760
-  #       datasource: Prometheus
+    kubernetes:
+      k8s-addons-prometheus:
+        gnetId: 19105
+        datasource: Prometheus
+      k8s-system-api-server:
+        gnetId: 15761
+        datasource: Prometheus
+      k8s-system-coredns:
+        gnetId: 15762
+        datasource: Prometheus
+      k8s-views-global:
+        gnetId: 15757
+        datasource: Prometheus
+      k8s-views-namespaces:
+        gnetId: 15758
+        datasource: Prometheus
+      k8s-views-nodes:
+        gnetId: 15759
+        datasource: Prometheus
+      k8s-views-pods:
+        gnetId: 15760
+        datasource: Prometheus
 
-  #   network:
-  #     # mikrotik:
-  #     #   gnetId: 13679
-  #     #   revision: 22
-  #     #   datasource:
-  #     #   - name: DS_PROMETHEUS
-  #     #     value: Prometheus
-  #     traefik:
-  #       gnetId: 17347
-  #       revision: 8
-  #       datasource:
-  #       - name: DS_PROMETHEUS
-  #         value: Prometheus
-  #     traefik2:
-  #       gnetId: 17346
-  #       revision: 8
-  #       datasource:
-  #       - name: DS_PROMETHEUS
-  #         value: Prometheus
+    network:
+      mikrotik:
+        gnetId: 13679
+        revision: 22
+        datasource: Prometheus
+        # datasource:
+        # - name: DS_PROMETHEUS
+        #   value: Prometheus
+      traefik:
+        gnetId: 17347
+        revision: 8
+        datasource: Prometheus
+        # datasource:
+        # - name: DS_PROMETHEUS
+        #   value: Prometheus
+      traefik2:
+        gnetId: 17346
+        revision: 8
+        datasource: Prometheus
+        # datasource:
+        # - name: DS_PROMETHEUS
+          # value: Prometheus
 
-  #   storage:
-  #     minio-dashboard:
-  #       gnetId: 13502
-  #       revision: 26
-  #       datasources:
-  #       - name: DS_PROMETHEUS
-  #         value: Prometheus
-  #     minio-bucket:
-  #       gnetId: 19237
-  #       datasources:
-  #       - name: DS_PROMETHEUS
-  #         value: Prometheus
-  #     longhorn:
-  #       gnetId: 16888
-  #       datasource:
-  #       - name: DS_PROMETHEUS
-  #         value: Prometheus
+    storage:
+      minio-dashboard:
+        gnetId: 13502
+        revision: 26
+        datasource: Prometheus
+        # datasources:
+        # - name: DS_PROMETHEUS
+        #   value: Prometheus
+      minio-bucket:
+        gnetId: 19237
+        datasource: Prometheus
+        # datasources:
+        # - name: DS_PROMETHEUS
+        #   value: Prometheus
+      longhorn:
+        gnetId: 16888
+        datasource: Prometheus
+        # datasource:
+        # - name: DS_PROMETHEUS
+        #   value: Prometheus
 
 ############# sidecar test ##########
   sidecar:
@@ -696,6 +701,7 @@ grafana:
       enableNewTablePanelSyntax: false
       provider:
         allowUiUpdates: false
+        foldersFromFilesStructure: true
       annotations: {}
 
     # datasources:
@@ -3127,7 +3133,7 @@ thanosRuler:
     ## prometheus resource to be created with selectors based on values in the helm deployment,
     ## which will also match the PrometheusRule resources created
     ##
-    ruleSelectorNilUsesHelmValues: true
+    ruleSelectorNilUsesHelmValues: false
 
     ## PrometheusRules to be selected for target discovery.
     ## If {}, select all PrometheusRules

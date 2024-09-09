@@ -1,6 +1,20 @@
 ---
 scrape_configs:
 
+- job_name: 'argocd-server-metrics'
+  static_configs:
+  - targets: ['argocd-server-metrics.argocd.svc.cluster.local:8083', 'argocd-repo-server.argocd.svc.cluster.local:8084']
+
+- job_name: 'argocd-metrics'
+  static_configs:
+  - targets: ['argocd-metrics.argocd.svc.cluster.local:8082']
+
+- job_name: node-exporter
+  relabel_configs:
+  - action: replace
+    source_labels: [ __meta_kubernetes_pod_node_name]
+    target_label: nodename
+
 - job_name: 'velero'
   static_configs:
     - targets: ['velero.velero.svc:8085']
@@ -88,22 +102,22 @@ scrape_configs:
   static_configs:
   - targets: ['kube-state-metrics.kube-system.svc.cluster.local:8080']
 
-- job_name: 'kubernetes-cadvisor'
-  scheme: https
-  tls_config:
-    ca_file: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
-  bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
-  kubernetes_sd_configs:
-  - role: node
-  relabel_configs:
-  - action: labelmap
-    regex: __meta_kubernetes_node_label_(.+)
-  - target_label: __address__
-    replacement: kubernetes.default.svc:443
-  - source_labels: [__meta_kubernetes_node_name]
-    regex: (.+)
-    target_label: __metrics_path__
-    replacement: /api/v1/nodes/${1}/proxy/metrics/cadvisor
+# - job_name: 'kubernetes-cadvisor'
+#   scheme: https
+#   tls_config:
+#     ca_file: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+#   bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
+#   kubernetes_sd_configs:
+#   - role: node
+#   relabel_configs:
+#   - action: labelmap
+#     regex: __meta_kubernetes_node_label_(.+)
+#   - target_label: __address__
+#     replacement: kubernetes.default.svc:443
+#   - source_labels: [__meta_kubernetes_node_name]
+#     regex: (.+)
+#     target_label: __metrics_path__
+#     replacement: /api/v1/nodes/${1}/proxy/metrics/cadvisor
 
 - job_name: 'kubernetes-service-endpoints'
   kubernetes_sd_configs:
@@ -136,11 +150,3 @@ scrape_configs:
   - source_labels: [__meta_kubernetes_endpoint_node_name]
     target_label: instance
     action: replace
-
-- job_name: 'argocd-server-metrics'
-  static_configs:
-  - targets: ['argocd-server-metrics.argocd.svc.cluster.local:8083', 'argocd-repo-server.argocd.svc.cluster.local:8084']
-
-- job_name: 'argocd-metrics'
-  static_configs:
-  - targets: ['argocd-metrics.argocd.svc.cluster.local:8082']
