@@ -673,10 +673,10 @@ grafana:
         #   value: Prometheus
       longhorn:
         gnetId: 16888
-        datasource: Prometheus
-        # datasource:
-        # - name: DS_PROMETHEUS
-        #   value: Prometheus
+        # datasource: Prometheus
+        datasource:
+        - name: DS_PROMETHEUS
+          value: Prometheus
 
 ############# sidecar test ##########
   sidecar:
@@ -3103,123 +3103,22 @@ thanosRuler:
   ## ref: https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api.md#thanosrulerspec
   ##
   thanosRulerSpec:
-    ## Standard object's metadata. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#metadata
-    ## Metadata Labels and Annotations gets propagated to the ThanosRuler pods.
-    ##
     podMetadata: {}
-
-    ## Image of ThanosRuler
-    ##
-    # image:
-    #   registry: quay.io
-    #   repository: thanos/thanos
-    #   tag: v0.35.1
-    #   sha: ""
-
-    ## Namespaces to be selected for PrometheusRules discovery.
-    ## If nil, select own namespace. Namespaces to be selected for ServiceMonitor discovery.
-    ## See https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api.md#namespaceselector for usage
-    ##
     ruleNamespaceSelector: {}
-
-    ## If true, a nil or {} value for thanosRuler.thanosRulerSpec.ruleSelector will cause the
-    ## prometheus resource to be created with selectors based on values in the helm deployment,
-    ## which will also match the PrometheusRule resources created
-    ##
     ruleSelectorNilUsesHelmValues: false
-
-    ## PrometheusRules to be selected for target discovery.
-    ## If {}, select all PrometheusRules
-    ##
     ruleSelector: {}
-    ## Example which select all PrometheusRules resources
-    ## with label "prometheus" with values any of "example-rules" or "example-rules-2"
-    # ruleSelector:
-    #   matchExpressions:
-    #     - key: prometheus
-    #       operator: In
-    #       values:
-    #         - example-rules
-    #         - example-rules-2
-    #
-    ## Example which select all PrometheusRules resources with label "role" set to "example-rules"
-    # ruleSelector:
-    #   matchLabels:
-    #     role: example-rules
-
-    ## Define Log Format
-    # Use logfmt (default) or json logging
     logFormat: logfmt
-
-    ## Log level for ThanosRuler to be configured with.
-    ##
     logLevel: info
-
-    ## Size is the expected size of the thanosRuler cluster. The controller will eventually make the size of the
-    ## running cluster equal to the expected size.
     replicas: 1
-
-    ## Time duration ThanosRuler shall retain data for. Default is '24h', and must match the regular expression
-    ## [0-9]+(ms|s|m|h) (milliseconds seconds minutes hours).
-    ##
     retention: 24h
-
-    ## Interval between consecutive evaluations.
-    ##
     evaluationInterval: ""
-
-    ## Storage is the definition of how storage will be used by the ThanosRuler instances.
-    ## ref: https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/user-guides/storage.md
-    ##
     storage: {}
-    # volumeClaimTemplate:
-    #   spec:
-    #     storageClassName: gluster
-    #     accessModes: ["ReadWriteOnce"]
-    #     resources:
-    #       requests:
-    #         storage: 50Gi
-    #   selector: {}
-
-    ## AlertmanagerConfig define configuration for connecting to alertmanager.
-    ## Only available with Thanos v0.10.0 and higher. Maps to the alertmanagers.config Thanos Ruler arg.
     alertmanagersConfig:
-      # use existing secret, if configured, alertmanagersConfig.secret will not be used
       existingSecret: {}
-        # name: ""
-        # key: ""
-      # will render render alertmanagersConfig secret data and configure it to be used by Thanos Ruler custom resource, ignored when alertmanagersConfig.existingSecret is set
-      # https://thanos.io/tip/components/rule.md/#alertmanager
       secret: {}
-        # alertmanagers:
-        # - api_version: v2
-        #   http_config:
-        #     basic_auth:
-        #       username: some_user
-        #       password: some_pass
-        #   static_configs:
-        #     - alertmanager.thanos.io
-        #   scheme: http
-        #   timeout: 10s
-
-    ## DEPRECATED. Define URLs to send alerts to Alertmanager. For Thanos v0.10.0 and higher, alertmanagersConfig should be used instead.
-    ## Note: this field will be ignored if alertmanagersConfig is specified. Maps to the alertmanagers.url Thanos Ruler arg.
-    # alertmanagersUrl:
-
-    ## The external URL the Thanos Ruler instances will be available under. This is necessary to generate correct URLs. This is necessary if Thanos Ruler is not served from root of a DNS name. string false
-    ##
     externalPrefix:
-
-    ## If true, http://{{ template "kube-prometheus-stack.thanosRuler.name" . }}.{{ template "kube-prometheus-stack.namespace" . }}:{{ .Values.thanosRuler.service.port }}
-    ## will be used as value for externalPrefix
     externalPrefixNilUsesHelmValues: true
-
-    ## The route prefix ThanosRuler registers HTTP handlers for. This is useful, if using ExternalURL and a proxy is rewriting HTTP routes of a request, and the actual ExternalURL is still true,
-    ## but the server serves requests under a different route prefix. For example for use with kubectl proxy.
-    ##
     routePrefix: /
-
-    ## ObjectStorageConfig configures object storage in Thanos
     objectStorageConfig:
       # use existing secret, if configured, objectStorageConfig.secret will not be used
       existingSecret: {}
