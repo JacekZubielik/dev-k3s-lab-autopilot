@@ -21,10 +21,12 @@ data:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: test-grafana-dashboard-config
-  namespace: "monitoring"
+  annotations:
+    grafana_folder: "My Folder"
   labels:
     grafana_dashboard: "1"
+  name: test-grafana-dashboard-config
+  namespace: "monitoring"
 data:
   dashboard.yaml: |
     dashboards:

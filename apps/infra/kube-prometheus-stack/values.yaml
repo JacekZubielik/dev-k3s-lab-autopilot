@@ -681,6 +681,7 @@ grafana:
       enabled: true
       folder: /var/lib/grafana/dashboards
       label: grafana_dashboard
+      labelValue: "1"
       searchNamespace: ALL
 
     datasources:
