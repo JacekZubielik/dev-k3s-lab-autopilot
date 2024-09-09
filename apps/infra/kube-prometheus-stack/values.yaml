@@ -563,14 +563,14 @@ grafana:
       #   options:
       #     path: /var/lib/grafana/dashboards/test
 
-      - name: 'grafana-dashboards-kubernetes'
-        orgId: 1
-        folder: 'Test'
-        type: file
-        disableDeletion: true
-        editable: true
-        options:
-          path: /var/lib/grafana/dashboards/grafana-dashboards-kubernetes
+      # - name: 'grafana-dashboards-kubernetes'
+      #   orgId: 1
+      #   folder: 'Test'
+      #   type: file
+      #   disableDeletion: true
+      #   editable: true
+      #   options:
+      #     path: /var/lib/grafana/dashboards/grafana-dashboards-kubernetes
 
   ## Configure grafana dashboard
   dashboards:
