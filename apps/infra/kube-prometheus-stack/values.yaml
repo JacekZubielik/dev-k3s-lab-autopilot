@@ -352,7 +352,7 @@ grafana:
   # fullnameOverride: "grafana"
   forceDeployDatasources: true # false
   forceDeployDashboards: false
-  defaultDashboardsEnabled: false
+  defaultDashboardsEnabled: true # false
   defaultDashboardsTimezone: cet
   defaultDashboardsEditable: true
   admin:
@@ -470,6 +470,10 @@ grafana:
         datasource: Prometheus
 
     extra:
+      mikrotik:
+        gnetId: 13679
+        revision: 22
+        datasource: Prometheus
       argocd-overview:
         gnetId: 14584
         datasource: Prometheus
