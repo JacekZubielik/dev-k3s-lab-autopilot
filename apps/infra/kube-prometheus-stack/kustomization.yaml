@@ -22,8 +22,8 @@ resources:
 generators:
 - ksops-generator.yaml
 
-commonLabels:
-  grafana_dashboard: "1"
+# commonLabels:
+#   grafana_dashboard: "1"
 
 configMapGenerator:
 - name: prometheus-server-conf
