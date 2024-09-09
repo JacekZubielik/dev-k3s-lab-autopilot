@@ -565,7 +565,7 @@ grafana:
 
       - name: 'grafana-dashboards-kubernetes'
         orgId: 1
-        folder: 'Kubernetes'
+        folder: 'Test'
         type: file
         disableDeletion: true
         editable: true
@@ -578,6 +578,9 @@ grafana:
     grafana-dashboards-kubernetes:
       k8s-system-api-server:
         url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-system-api-server.json
+        token: ''
+      k8s-system-coredns:
+        url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-system-coredns.json
         token: ''
 
     devices:
