@@ -686,10 +686,11 @@ grafana:
       label: grafana_dashboard
       labelValue: "1"
       searchNamespace: ALL
+      enableNewTablePanelSyntax: false
+      provider:
+        allowUiUpdates: false
+      annotations: {}
 
-  #     annotations: {}
-  #     defaultFolderName: "Test"
-  #     # enableNewTablePanelSyntax: false
 
 
 
