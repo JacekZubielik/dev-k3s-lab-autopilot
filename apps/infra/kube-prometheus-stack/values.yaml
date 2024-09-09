@@ -664,7 +664,7 @@ grafana:
   sidecar:
     dashboards:
       annotations: {}
-      defaultFolderName: "General"
+      defaultFolderName: "Test"
       enabled: true
       # enableNewTablePanelSyntax: false
       folderAnnotation: grafana_folder
