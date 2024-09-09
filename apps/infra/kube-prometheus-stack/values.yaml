@@ -471,7 +471,7 @@ grafana:
   enabled: true
   namespaceOverride: ""
   # fullnameOverride: "grafana"
-  forceDeployDatasources: false
+  forceDeployDatasources: true # false
   forceDeployDashboards: false
   defaultDashboardsEnabled: false
   defaultDashboardsTimezone: cet
@@ -800,13 +800,13 @@ grafana:
         timeShiftEnabled: true
         spanStartTimeShift: '1h'
         spanEndTimeShift: '-1h'
-  - name: prometheus-longhorn
-    uid: longhorn
-    type: prometheus
-    access: proxy
-    editable: true
-    url: http://prometheus-longhorn.longhorn-system.svc:9090
-    version: 1
+  # - name: prometheus-longhorn
+  #   uid: longhorn
+  #   type: prometheus
+  #   access: proxy
+  #   editable: true
+  #   url: http://prometheus-longhorn.longhorn-system.svc:9090
+  #   version: 1
 
   service:
     portName: http-web
