@@ -575,14 +575,6 @@ grafana:
   ## Configure grafana dashboard
   dashboards:
 
-    grafana-dashboards-kubernetes:
-      k8s-system-api-server:
-        url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-system-api-server.json
-        token: ''
-      k8s-system-coredns:
-        url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-system-coredns.json
-        token: ''
-
     devices:
       prometheus-pve-exporter:
         gnetId: 10347
@@ -679,39 +671,60 @@ grafana:
         - name: DS_PROMETHEUS
           value: Prometheus
 
+############# sidecar test ##########
   sidecar:
+    alerts:
+      enabled: true
+      searchNamespace: ALL
+
     dashboards:
       enabled: true
-      defaultFolderName: "General"
+      folder: /tmp/dashboards
       label: grafana_dashboard
-      labelValue: "1"
-      folderAnnotation: grafana_folder
       searchNamespace: ALL
-      provider:
-        foldersFromFilesStructure: true
 
-    # dashboards:
-    #   annotations: {}
-    #   defaultFolderName: "Test"
-    #   enabled: true
-    #   # enableNewTablePanelSyntax: false
-    #   folderAnnotation: grafana_folder
-    #   label: grafana_dashboard
-    #   labelValue: "1"
-    #   searchNamespace: ALL
-    #   # multicluster:
-    #   #   global:
-    #   #     enabled: false
-    #   #   etcd:
-    #   #     enabled: false
-    #   provider:
-    #     # allowUiUpdates: true
-    #     # disableDelete: false
-    #     # folder: ""
-    #     foldersFromFilesStructure: true
-    #     # name: sidecarProvider
-    #     # orgid: "1"
-    #     # type: file
+    datasources:
+      enabled: true
+      label: grafana_datasource
+      searchNamespace: ALL
+
+###########################
+
+  # sidecar:
+  #   dashboards:
+  #     enabled: true
+  #     defaultFolderName: "General"
+  #     label: grafana_dashboard
+  #     labelValue: "1"
+  #     folderAnnotation: grafana_folder
+  #     searchNamespace: ALL
+  #     provider:
+  #       foldersFromFilesStructure: true
+
+  #   dashboards:
+  #     annotations: {}
+  #     defaultFolderName: "Test"
+  #     enabled: true
+  #     # enableNewTablePanelSyntax: false
+  #     folderAnnotation: grafana_folder
+  #     label: grafana_dashboard
+  #     labelValue: "1"
+  #     searchNamespace: ALL
+  #     # multicluster:
+  #     #   global:
+  #     #     enabled: false
+  #     #   etcd:
+  #     #     enabled: false
+  #     provider:
+  #       # allowUiUpdates: true
+  #       # disableDelete: false
+  #       # folder: ""
+  #       foldersFromFilesStructure: true
+  #       # name: sidecarProvider
+  #       # orgid: "1"
+  #       # type: file
+
+#############################################
 
     datasources:
       enabled: true
