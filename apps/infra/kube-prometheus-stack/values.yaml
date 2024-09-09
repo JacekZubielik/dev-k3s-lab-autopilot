@@ -473,7 +473,7 @@ grafana:
   # fullnameOverride: "grafana"
   forceDeployDatasources: false
   forceDeployDashboards: false
-  defaultDashboardsEnabled: true
+  defaultDashboardsEnabled: false
   defaultDashboardsTimezone: cet
   defaultDashboardsEditable: true
   admin:
