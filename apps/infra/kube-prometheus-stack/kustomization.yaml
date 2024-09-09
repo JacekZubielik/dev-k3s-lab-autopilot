@@ -17,7 +17,7 @@ resources:
 # - resources/pve-scrape-config.yaml
 # - resources/ns.yaml
 # - resources/volume.snapshot.yaml
-- resources/cm.sidecar.yaml
+# - resources/cm.sidecar.yaml
 
 generators:
 - ksops-generator.yaml
@@ -31,8 +31,7 @@ configMapGenerator:
   - resources/scrape_configs.yaml
 
 - name: grafana-k8s-pod-count
-  namespace: prom
-  # specify name of locally downloaded json
+  namespace: monitoring
   files:
   - dashboard/k8s-views-pods.json
 
