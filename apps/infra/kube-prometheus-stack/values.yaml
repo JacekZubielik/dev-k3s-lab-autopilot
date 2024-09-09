@@ -553,15 +553,15 @@ grafana:
         options:
           path: /var/lib/grafana/dashboards/storage
 
-      - name: "general"
+      - name: "test"
         orgId: 1
-        folder: "General"
+        folder: "Test"
         type: file
         disableDeletion: false
         editable: true
         allowUiUpdates: true
         options:
-          path: /var/lib/grafana/dashboards/general
+          path: /var/lib/grafana/dashboards/test
 
   ## Configure grafana dashboard
   dashboards:
