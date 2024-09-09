@@ -1,0 +1,39 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: test-grafana-dashboardprovider-config
+  namespace: "monitoring"
+data:
+  dashboardproviders.yaml: |
+    apiVersion: 1
+    providers:
+    - name: 'test'
+      orgId: 2
+      folder: 'Test'
+      type: file
+      disableDeletion: false
+      editable: true
+      options:
+        path: /var/lib/grafana/dashboards/test
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: test-grafana-dashboard-config
+  namespace: "monitoring"
+  labels:
+    grafana_dashboard: "2"
+data:
+  dashboard.yaml: |
+    dashboards:
+      test:
+        prometheus-pve-exporter:
+          gnetId: 10347
+          revision: 5
+          datasource: Prometheus
+        mikrotik:
+          gnetId: 13679
+          revision: 22
+          datasource: Prometheus

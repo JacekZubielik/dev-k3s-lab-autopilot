@@ -553,15 +553,15 @@ grafana:
         options:
           path: /var/lib/grafana/dashboards/storage
 
-      - name: "test"
-        orgId: 1
-        folder: "Test"
-        type: file
-        disableDeletion: false
-        editable: true
-        allowUiUpdates: true
-        options:
-          path: /var/lib/grafana/dashboards/test
+      # - name: "test"
+      #   orgId: 1
+      #   folder: "Test"
+      #   type: file
+      #   disableDeletion: false
+      #   editable: true
+      #   allowUiUpdates: true
+      #   options:
+      #     path: /var/lib/grafana/dashboards/test
 
       - name: 'grafana-dashboards-kubernetes'
         orgId: 1
@@ -576,12 +576,12 @@ grafana:
   dashboards:
 
     devices:
-      prometheus-pve-exporter:
-        gnetId: 10347
-        revision: 5
-        datasource:
-        - name: DS_PROMETHEUS
-          value: Prometheus
+      # prometheus-pve-exporter:
+      #   gnetId: 10347
+      #   revision: 5
+      #   datasource:
+      #   - name: DS_PROMETHEUS
+      #     value: Prometheus
       blackbox-exporter-overview:
         gnetId: 5345
         datasource: Prometheus
@@ -634,12 +634,12 @@ grafana:
         datasource: Prometheus
 
     network:
-      mikrotik:
-        gnetId: 13679
-        revision: 22
-        datasource:
-        - name: DS_PROMETHEUS
-          value: Prometheus
+      # mikrotik:
+      #   gnetId: 13679
+      #   revision: 22
+      #   datasource:
+      #   - name: DS_PROMETHEUS
+      #     value: Prometheus
       traefik:
         gnetId: 17347
         revision: 8
@@ -679,7 +679,7 @@ grafana:
 
     dashboards:
       enabled: true
-      folder: /tmp/dashboards
+      folder: /var/lib/grafana/dashboards
       label: grafana_dashboard
       searchNamespace: ALL
 

@@ -8,16 +8,16 @@ metadata:
     argocd.argoproj.io/sync-options: Delete=true,Prune=true
 
 resources:
-# - resources/ns.yaml
 - resources/pv.yaml
 - resources/pvc.yaml
+- resources/service.monitor.yaml
 - resources/volume.yaml
 - velero/schedule.yaml
-
 # - resources/backing-image.yaml
 # - resources/pve-scrape-config.yaml
-- resources/service.monitor.yaml
+# - resources/ns.yaml
 # - resources/volume.snapshot.yaml
+- resources/cm.sidecar.yaml
 
 generators:
 - ksops-generator.yaml
@@ -26,11 +26,6 @@ configMapGenerator:
 - name: prometheus-server-conf
   files:
   - resources/scrape_configs.yaml
-
-# - name: grafana-dashboards
-#   files:
-#   - dashboards/argocd-performance.json
-#   - dashboards/authentik.json
 
 generatorOptions:
   disableNameSuffixHash: true
