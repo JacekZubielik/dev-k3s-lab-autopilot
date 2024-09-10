@@ -14,7 +14,6 @@ defaultRules:
   rules:
     alertmanager: true
     etcd: false
-    kubeScheduler: false
     configReloaders: true
     general: true
     k8sContainerCpuUsageSecondsTotal: true
