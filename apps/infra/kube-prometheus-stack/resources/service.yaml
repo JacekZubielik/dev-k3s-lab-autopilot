@@ -28,7 +28,7 @@ subsets:
   ports:
   - name: http-metrics
     port: 9000
-  protocol: TCP
+  # protocol: TCP
 
 ---
 # Headless service for K3S metrics. No selector
@@ -47,6 +47,7 @@ spec:
     protocol: TCP
     targetPort: 10250
   type: ClusterIP
+
 ---
 # Endpoint for the headless service without selector
 apiVersion: v1
