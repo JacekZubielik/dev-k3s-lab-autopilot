@@ -1,6 +1,14 @@
 ---
 scrape_configs:
 
+- job_name: minio-job
+  bearer_token: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJwcm9tZXRoZXVzIiwic3ViIjoicHJvbWV0aGV1cy11c2VyIiwiZXhwIjo0ODc5NjA0MDE0fQ.EAGbxZnYRDkuajp37aElTGxtac1sIX3LS-yD9o7_ogiEtA6A2VPLViXofaEscDWO8C-emd8FFn6lTBtoBBcXZg
+  metrics_path: /minio/v2/metrics/cluster
+  scheme: http
+  static_configs:
+  - targets: ['192.168.40.17:9091']
+
+
 - job_name: 'velero'
   kubernetes_sd_configs:
     - role: pod
