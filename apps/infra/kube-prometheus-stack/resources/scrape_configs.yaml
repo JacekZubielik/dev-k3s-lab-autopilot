@@ -123,17 +123,25 @@ scrape_configs:
   kubernetes_sd_configs:
   - role: endpoints
   relabel_configs:
+
+  # annotation 'prometheus.io/scrape' must be set to 'true'
   - source_labels: [__meta_kubernetes_service_annotation_prometheus_io_scrape]
     action: keep
     regex: true
+
+  # allow override of http scheme
   - source_labels: [__meta_kubernetes_service_annotation_prometheus_io_scheme]
     action: replace
     target_label: __scheme__
     regex: (https?)
+
+  # allow override of default /metrics path
   - source_labels: [__meta_kubernetes_service_annotation_prometheus_io_path]
     action: replace
     target_label: __metrics_path__
     regex: (.+)
+
+  # allow override of default port
   - source_labels: [__address__, __meta_kubernetes_service_annotation_prometheus_io_port]
     action: replace
     target_label: __address__
@@ -141,12 +149,21 @@ scrape_configs:
     replacement: $1:$2
   - action: labelmap
     regex: __meta_kubernetes_service_label_(.+)
+
+  # service cannot be in kube-system or prom namespaces
   - source_labels: [__meta_kubernetes_namespace]
     action: replace
     target_label: kubernetes_namespace
+
   - source_labels: [__meta_kubernetes_service_name]
     action: replace
     target_label: kubernetes_name
+
   - source_labels: [__meta_kubernetes_endpoint_node_name]
     target_label: instance
     action: replace
+
+  # service port name must end with word 'metrics'
+  - action: keep
+    regex: .*metrics
+    source_labels: [__meta_kubernetes_service_port_name]

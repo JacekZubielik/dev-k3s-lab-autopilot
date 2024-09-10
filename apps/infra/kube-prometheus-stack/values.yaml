@@ -127,7 +127,8 @@ defaultRules:
   ## Prefix for runbook URLs. Use this to override the first part of the runbookURLs that is common to all rules.
   runbookUrl: "https://runbooks.prometheus-operator.dev/runbooks"
   ## Disabled PrometheusRule alerts
-  disabled: {}
+  disabled:
+    etcdHighNumberOfFailedGRPCRequests: true
 
 additionalPrometheusRulesMap: {}
 
@@ -822,12 +823,10 @@ kubeControllerManager:
   endpoints: # ips of servers
   - 192.168.40.110
   # - 192.168.40.111
-
   service:
     enabled: true
-    port: null
-    targetPort: null
-
+    port: 10252 # null
+    targetPort: 10252 #null
   serviceMonitor:
     enabled: true
     interval: ""
@@ -840,7 +839,7 @@ kubeControllerManager:
     port: http-metrics
     jobLabel: jobLabel
     selector: {}
-    https: null
+    https: false
     insecureSkipVerify: null
     serverName: null
     metricRelabelings: []
@@ -917,13 +916,9 @@ kubeDns:
 ## Component scraping etcd
 kubeEtcd:
   enabled: true
-
-  ## If your etcd is not deployed as a pod, specify IPs it can be found on
   endpoints: # ips of servers
   - 192.168.40.110
   # - 192.168.40.111
-
-  ## Etcd service. If using kubeEtcd.endpoints only the port and targetPort are used
   service:
     enabled: true
     port: 2381
@@ -960,47 +955,24 @@ kubeEtcd:
 ## Component scraping kube scheduler
 kubeScheduler:
   enabled: true
-  ## If your kube scheduler is not deployed as a pod, specify IPs it can be found on
   endpoints: # ips of servers
   - 192.168.40.110
   # - 192.168.40.111
-  ## If using kubeScheduler.endpoints only the port and targetPort are used
   service:
     enabled: true
-    ## If null or unset, the value is determined dynamically based on target Kubernetes version due to change
-    ## of default port in Kubernetes 1.23.
-    port: null
-    targetPort: null
-    ipDualStack:
-      enabled: false
-      ipFamilies: ["IPv6", "IPv4"]
-      ipFamilyPolicy: "PreferDualStack"
-    # selector:
-    #   component: kube-scheduler
-
+    port: 10251 # null
+    targetPort: 10251 # null
   serviceMonitor:
     enabled: true
-    ## Scrape interval. If not set, the Prometheus default scrape interval is used.
     interval: ""
-    ## SampleLimit defines per-scrape limit on number of scraped samples that will be accepted.
     sampleLimit: 0
-    ## TargetLimit defines a limit on the number of scraped targets that will be accepted.
     targetLimit: 0
-    ## Per-scrape limit on number of labels that will be accepted for a sample. Only valid in Prometheus versions 2.27.0 and newer.
     labelLimit: 0
-    ## Per-scrape limit on length of labels name that will be accepted for a sample. Only valid in Prometheus versions 2.27.0 and newer.
     labelNameLengthLimit: 0
-    ## Per-scrape limit on length of labels value that will be accepted for a sample. Only valid in Prometheus versions 2.27.0 and newer.
     labelValueLengthLimit: 0
-    ## proxyUrl: URL of a proxy that should be used for scraping.
     proxyUrl: ""
-    ## Enable scraping kube-scheduler over https.
-    ## Requires proper certs (not self-signed) and delegated authentication/authorization checks.
-    ## If null or unset, the value is determined dynamically based on target Kubernetes version.
-    https: null
-    ## port: Name of the port the metrics will be scraped from
+    https: false
     port: http-metrics
-
     jobLabel: jobLabel
     selector: {}
     #  matchLabels:
@@ -1027,16 +999,13 @@ kubeScheduler:
 ## Component scraping kube proxy
 kubeProxy:
   enabled: true
-  ## If your kube proxy is not deployed as a pod, specify IPs it can be found on
   endpoints: # ips of servers
   - 192.168.40.110
   # - 192.168.40.111
-
   service:
     enabled: true
     port: 10249
     targetPort: 10249
-
   serviceMonitor:
     enabled: true
     interval: ""
@@ -2088,119 +2057,35 @@ prometheus:
         prometheus.io/scrap-with: kube-prometheus-stack
 
     scrapeConfigNamespaceSelector: {}
-    ## Example which selects scrapeConfig in namespaces with label "prometheus" set to "somelabel"
-    # scrapeConfigNamespaceSelector:
-    #   matchLabels:
-    #     prometheus: somelabel
 
-    ## How long to retain metrics
-    ##
     retention: 10d
-
-    ## Maximum size of metrics
-    ##
     retentionSize: ""
-
-    ## Allow out-of-order/out-of-bounds samples ingested into Prometheus for a specified duration
-    ## See https://prometheus.io/docs/prometheus/latest/configuration/configuration/#tsdb
     tsdb:
       outOfOrderTimeWindow: 0s
-
-    ## Enable compression of the write-ahead log using Snappy.
-    ##
     walCompression: true
-
-    ## If true, the Operator won't process any Prometheus configuration changes
-    ##
     paused: false
-
-    ## Number of replicas of each shard to deploy for a Prometheus deployment.
-    ## Number of replicas multiplied by shards is the total number of Pods created.
-    ##
     replicas: 1
-
-    ## EXPERIMENTAL: Number of shards to distribute targets onto.
-    ## Number of replicas multiplied by shards is the total number of Pods created.
-    ## Note that scaling down shards will not reshard data onto remaining instances, it must be manually moved.
-    ## Increasing shards will not reshard data either but it will continue to be available from the same instances.
-    ## To query globally use Thanos sidecar and Thanos querier or remote write data to a central location.
-    ## Sharding is done on the content of the `__address__` target meta-label.
-    ##
     shards: 1
-
-    ## Log level for Prometheus be configured in
-    ##
     logLevel: info
-
-    ## Log format for Prometheus be configured in
-    ##
     logFormat: logfmt
-
-    ## Prefix used to register routes, overriding externalUrl route.
-    ## Useful for proxies that rewrite URLs.
-    ##
     routePrefix: /
-
-    ## Standard object's metadata. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#metadata
-    ## Metadata Labels and Annotations gets propagated to the prometheus pods.
-    ##
     podMetadata: {}
     # labels:
     #   app: prometheus
     #   k8s-app: prometheus
 
-    ## Pod anti-affinity can prevent the scheduler from placing Prometheus replicas on the same node.
-    ## The default value "soft" means that the scheduler should *prefer* to not schedule two replica pods onto the same node but no guarantee is provided.
-    ## The value "hard" means that the scheduler is *required* to not schedule two replica pods onto the same node.
-    ## The value "" will disable pod anti-affinity so that no anti-affinity rules will be configured.
     podAntiAffinity: ""
-
-    ## If anti-affinity is enabled sets the topologyKey to use for anti-affinity.
-    ## This can be changed to, for example, failure-domain.beta.kubernetes.io/zone
-    ##
     podAntiAffinityTopologyKey: kubernetes.io/hostname
-
-    ## Assign custom affinity rules to the prometheus instance
-    ## ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/
-    ##
     affinity: {}
-    # nodeAffinity:
-    #   requiredDuringSchedulingIgnoredDuringExecution:
-    #     nodeSelectorTerms:
-    #     - matchExpressions:
-    #       - key: kubernetes.io/e2e-az-name
-    #         operator: In
-    #         values:
-    #         - e2e-az1
-    #         - e2e-az2
-
-    ## The remote_read spec configuration for Prometheus.
-    ## ref: https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api.md#remotereadspec
     remoteRead: []
-    # - url: http://remote1/read
-    ## additionalRemoteRead is appended to remoteRead
     additionalRemoteRead: []
-
-    ## The remote_write spec configuration for Prometheus.
-    ## ref: https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api.md#remotewritespec
     remoteWrite: []
-    # - url: http://remote1/push
-    ## additionalRemoteWrite is appended to remoteWrite
     additionalRemoteWrite: []
-
-    ## Enable/Disable Grafana dashboards provisioning for prometheus remote write feature
     remoteWriteDashboards: false
-
-    ## Resource limits & requests
-    ##
     resources: {}
-    # requests:
-    #   memory: 400Mi
-
 
     storageSpec:
       volumeClaimTemplate:
-
         metadata:
           annotations:
             argocd.argoproj.io/sync-wave: "-1"
@@ -2208,7 +2093,6 @@ prometheus:
           labels:
             backup: pvc-kube-stack
           name: pvc-kube-prometheus
-
         spec:
           accessModes:
           - ReadWriteOnce
@@ -2218,29 +2102,9 @@ prometheus:
               storage: 20Gi
           volumeName: pv-kube-prometheus # must reference Persistent Volume
 
-    ## Using tmpfs volume
-    ##
-    #  emptyDir:
-    #    medium: Memory
-
-    # Additional volumes on the output StatefulSet definition.
     volumes: []
-
-    # Additional VolumeMounts on the output StatefulSet definition.
     volumeMounts: []
 
-    ## AdditionalScrapeConfigs allows specifying additional Prometheus scrape configurations. Scrape configurations
-    ## are appended to the configurations generated by the Prometheus Operator. Job configurations must have the form
-    ## as specified in the official Prometheus documentation:
-    ## https://prometheus.io/docs/prometheus/latest/configuration/configuration/#scrape_config. As scrape configs are
-    ## appended, the user is responsible to make sure it is valid. Note that using this feature may expose the possibility
-    ## to break upgrades of Prometheus. It is advised to review Prometheus release notes to ensure that no incompatible
-    ## scrape configs are going to break Prometheus after the upgrade.
-    ## AdditionalScrapeConfigs can be defined as a list or as a templated string.
-    ##
-    ## The scrape configuration example below will find master nodes, provided they have the name .*mst.*, relabel the
-    ## port to 2379 and allow etcd scraping provided it is running on all Kubernetes master nodes
-    ##
     additionalScrapeConfigs: []
     # - job_name: kube-etcd
     #   kubernetes_sd_configs:

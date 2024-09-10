@@ -243,7 +243,8 @@ server:
 
   ## authentik server service configuration
   service:
-    annotations: {}
+    annotations:
+      prometheus.io/scrape=true
     labels: {}
     type: ClusterIP
     nodePortHttp: 30080
