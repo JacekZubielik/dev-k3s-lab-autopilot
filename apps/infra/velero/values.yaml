@@ -50,32 +50,32 @@ backupsEnabled: true
 deployNodeAgent: true
 upgradeCRDs: true
 
-metrics:
-  enabled: true
-  scrapeInterval: 30s
-  scrapeTimeout: 10s
+# metrics:
+#   enabled: true
+#   scrapeInterval: 30s
+#   scrapeTimeout: 10s
 
-  service:
-    annotations: {}
-    labels: {}
+#   service:
+#     annotations: {}
+#     labels: {}
 
-  podAnnotations:
-    prometheus.io/scrape: "true"
-    prometheus.io/port: "8085"
-    prometheus.io/path: "/metrics"
+#   podAnnotations:
+#     prometheus.io/scrape: "true"
+#     prometheus.io/port: "8085"
+#     prometheus.io/path: "/metrics"
 
-  serviceMonitor:
-    autodetect: true
-    enabled: true
-    annotations: {}
-    additionalLabels: {}
+#   serviceMonitor:
+#     autodetect: true
+#     enabled: true
+#     annotations: {}
+#     additionalLabels: {}
 
-  nodeAgentPodMonitor:
-    autodetect: true
-    enabled: false
-    annotations: {}
-    additionalLabels: {}
+#   nodeAgentPodMonitor:
+#     autodetect: true
+#     enabled: false
+#     annotations: {}
+#     additionalLabels: {}
 
-  prometheusRule:
-    autodetect: true
-    enabled: true
+#   prometheusRule:
+#     autodetect: true
+#     enabled: true
