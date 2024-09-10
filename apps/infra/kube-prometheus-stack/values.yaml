@@ -408,14 +408,14 @@ grafana:
         options:
           path: /var/lib/grafana/dashboards/freqtrade
 
-      - name: "kubernetes"
-        orgId: 1
-        folder: "Kubernetes"
-        type: file
-        disableDeletion: false
-        editable: true
-        options:
-          path: /var/lib/grafana/dashboards/kubernetes
+      # - name: "kubernetes"
+      #   orgId: 1
+      #   folder: "Kubernetes"
+      #   type: file
+      #   disableDeletion: false
+      #   editable: true
+      #   options:
+      #     path: /var/lib/grafana/dashboards/kubernetes
 
       - name: "network"
         orgId: 1
@@ -435,25 +435,6 @@ grafana:
         allowUiUpdates: true
         options:
           path: /var/lib/grafana/dashboards/storage
-
-      # - name: "test"
-      #   orgId: 1
-      #   folder: "Test"
-      #   type: file
-      #   disableDeletion: false
-      #   editable: true
-      #   allowUiUpdates: true
-      #   options:
-      #     path: /var/lib/grafana/dashboards/test
-
-      # - name: 'grafana-dashboards-kubernetes'
-      #   orgId: 1
-      #   folder: 'Test2'
-      #   type: file
-      #   disableDeletion: true
-      #   editable: true
-      #   options:
-      #     path: /var/lib/grafana/dashboards/grafana-dashboards-kubernetes
 
   ## Configure grafana dashboard
   dashboards:
@@ -495,28 +476,28 @@ grafana:
         gnetId: 14632
         datasource: Prometheus
 
-    kubernetes:
-      k8s-addons-prometheus:
-        gnetId: 19105
-        datasource: Prometheus
-      k8s-system-api-server:
-        gnetId: 15761
-        datasource: Prometheus
-      k8s-system-coredns:
-        gnetId: 15762
-        datasource: Prometheus
-      k8s-views-global:
-        gnetId: 15757
-        datasource: Prometheus
-      k8s-views-namespaces:
-        gnetId: 15758
-        datasource: Prometheus
-      k8s-views-nodes:
-        gnetId: 15759
-        datasource: Prometheus
-      k8s-views-pods:
-        gnetId: 15760
-        datasource: Prometheus
+    # kubernetes:
+    #   k8s-addons-prometheus:
+    #     gnetId: 19105
+    #     datasource: Prometheus
+    #   k8s-system-api-server:
+    #     gnetId: 15761
+    #     datasource: Prometheus
+    #   k8s-system-coredns:
+    #     gnetId: 15762
+    #     datasource: Prometheus
+    #   k8s-views-global:
+    #     gnetId: 15757
+    #     datasource: Prometheus
+    #   k8s-views-namespaces:
+    #     gnetId: 15758
+    #     datasource: Prometheus
+    #   k8s-views-nodes:
+    #     gnetId: 15759
+    #     datasource: Prometheus
+    #   k8s-views-pods:
+    #     gnetId: 15760
+    #     datasource: Prometheus
 
     network:
       mikrotik:
