@@ -2133,7 +2133,7 @@ prometheus:
     remoteWrite: []
     additionalRemoteWrite: []
     remoteWriteDashboards: false
-resources:
+    resources:
       requests:
         memory: 1Gi
       limits:
