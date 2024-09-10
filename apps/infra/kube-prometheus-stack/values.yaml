@@ -578,9 +578,41 @@ grafana:
       provider:
         allowUiUpdates: true
         foldersFromFilesStructure: true
+        folder: ""
+        foldersFromFilesStructure: true
+        name: sidecarProvider
+        orgid: "1"
+        type: file
+
       annotations:
         # Puts kube-prometheus-stack default dashboards in 'Kubernetes' folder
-        grafana_folder: /var/lib/grafana/dashboards # /tmp/dashboards/Kubernetes
+        grafana_folder: /var/lib/grafana/dashboards/Kubernetes # /tmp/dashboards/Kubernetes
+
+    # dashboards:
+    #   annotations: {}
+    #   defaultFolderName: "Test"
+    #   enabled: true
+    #   # enableNewTablePanelSyntax: false
+    #   folderAnnotation: grafana_folder
+    #   label: grafana_dashboard
+    #   labelValue: "1"
+    #   searchNamespace: ALL
+    #   # multicluster:
+    #   #   global:
+    #   #     enabled: false
+    #   #   etcd:
+    #   #     enabled: false
+    #   provider:
+    #     # allowUiUpdates: true
+    #     # disableDelete: false
+    #     # folder: ""
+    #     foldersFromFilesStructure: true
+    #     # name: sidecarProvider
+    #     # orgid: "1"
+    #     # type: file
+
+
+
 
     # datasources:
     #   enabled: true
