@@ -12,6 +12,7 @@ spec:
   endpoints:
   - port: http-monitoring
     path: /metrics
+    interval: 30s
   jobLabel: app.kubernetes.io/name
   namespaceSelector:
     matchNames:

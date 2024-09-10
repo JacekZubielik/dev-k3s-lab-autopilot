@@ -29,9 +29,9 @@ configMapGenerator:
   files:
   - resources/scrape_configs.yaml
 
-- name: grafana-cm-sidecar
-  files:
-  - resources/cm.sidecar.yaml
+# - name: grafana-cm-sidecar
+#   files:
+#   - resources/cm.sidecar.yaml
 
 generatorOptions:
   disableNameSuffixHash: true
