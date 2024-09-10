@@ -1,18 +1,41 @@
 ---
+# apiVersion: monitoring.coreos.com/v1
+# kind: ServiceMonitor
+# metadata:
+#   labels:
+#     app: velero
+#     release: kube-prometheus-stack
+#     prometheus.io/scrap-with: kube-prometheus-stack
+#   name: velero
+#   namespace: velero
+# spec:
+#   endpoints:
+#   - port: http-monitoring
+#     path: /metrics
+#     interval: 30s
+#   jobLabel: app.kubernetes.io/name
+#   namespaceSelector:
+#     matchNames:
+#     - velero
+#   selector:
+#     matchLabels:
+#       app: velero
+#       # app.kubernetes.io/instance: velero
+#       # app.kubernetes.io/name: velero
+
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
   labels:
-    app: velero
-    release: kube-prometheus-stack
     prometheus.io/scrap-with: kube-prometheus-stack
   name: velero
-  namespace: velero
 spec:
   endpoints:
-  - port: http-monitoring
-    path: /metrics
+  - path: /metrics
+    port: http-monitoring
+    scheme: http
     interval: 30s
+
   jobLabel: app.kubernetes.io/name
   namespaceSelector:
     matchNames:
@@ -20,19 +43,3 @@ spec:
   selector:
     matchLabels:
       app: velero
-      # app.kubernetes.io/instance: velero
-      # app.kubernetes.io/name: velero
-
-# apiVersion: monitoring.coreos.com/v1
-# kind: ServiceMonitor
-# metadata:
-#   name: velero
-#   namespace: velero
-# spec:
-#   selector:
-#     matchLabels:
-#       app.kubernetes.io/name: velero
-#   endpoints:
-#     - port: http-monitoring
-#       path: /metrics
-#       interval: 30s
