@@ -2,6 +2,9 @@ replicas: 1
 updateStrategy:
   type: RollingUpdate
 
+annotations:
+  prometheus.io/scrape: "true"
+
 initContainers:
 - name: velero-plugin-for-aws
   image: velero/velero-plugin-for-aws:v1.10.1
