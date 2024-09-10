@@ -10,9 +10,9 @@ metadata:
   namespace: longhorn-system
 spec:
   endpoints:
-  - interval: 30s
-    port: manager
+  - port: manager
     scrapeTimeout: 30s
+    interval: 30s
   jobLabel: app.kubernetes.io/name
   namespaceSelector:
     matchNames:
