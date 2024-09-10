@@ -572,7 +572,7 @@ grafana:
       folder: /var/lib/grafana/dashboards
       folderAnnotation: grafana_folder
       label: grafana_dashboard
-      labelValue: kube-prometheus-stack # "1"
+      labelValue: "1"
       searchNamespace: ALL
       enableNewTablePanelSyntax: false
       provider:
