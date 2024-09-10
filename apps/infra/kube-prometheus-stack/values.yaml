@@ -14,6 +14,7 @@ defaultRules:
   rules:
     alertmanager: true
     etcd: false
+    kubeScheduler: false
     configReloaders: true
     general: true
     k8sContainerCpuUsageSecondsTotal: true
@@ -364,6 +365,16 @@ grafana:
     pspEnabled: false
   ingress:
     enabled: false
+  affinity:
+    nodeAffinity:
+      preferredDuringSchedulingIgnoredDuringExecution:
+      - weight: 1
+        preference:
+          matchExpressions:
+          - key: preferred
+            operator: In
+            values:
+            - observability
 
   persistence:
     enabled: true
@@ -537,6 +548,12 @@ grafana:
         #   value: Prometheus
       longhorn:
         gnetId: 16888
+        # datasource: Prometheus
+        datasource:
+        - name: DS_PROMETHEUS
+          value: Prometheus
+      velero:
+        gnetId: 15469
         # datasource: Prometheus
         datasource:
         - name: DS_PROMETHEUS
@@ -983,7 +1000,7 @@ kubeEtcd:
 
 ## Component scraping kube scheduler
 kubeScheduler:
-  enabled: true
+  enabled: false
   endpoints: # ips of servers
   - 192.168.40.110
   # - 192.168.40.111
@@ -2105,7 +2122,16 @@ prometheus:
 
     podAntiAffinity: ""
     podAntiAffinityTopologyKey: kubernetes.io/hostname
-    affinity: {}
+    affinity:
+      nodeAffinity:
+        preferredDuringSchedulingIgnoredDuringExecution:
+        - weight: 1
+          preference:
+            matchExpressions:
+            - key: preferred
+              operator: In
+              values:
+              - observability
     remoteRead: []
     additionalRemoteRead: []
     remoteWrite: []
@@ -2431,93 +2457,19 @@ prometheus:
   #    verbs: [ "get", "list", "watch" ]
 
   additionalServiceMonitors: []
-  ## Name of the ServiceMonitor to create
-  ##
-  # - name: ""
-
-    ## Additional labels to set used for the ServiceMonitorSelector. Together with standard labels from
-    ## the chart
-    ##
-    # additionalLabels: {}
-
-    ## Service label for use in assembling a job name of the form <label value>-<port>
-    ## If no label is specified, the service name is used.
-    ##
-    # jobLabel: ""
-
-    ## labels to transfer from the kubernetes service to the target
-    ##
-    # targetLabels: []
-
-    ## labels to transfer from the kubernetes pods to the target
-    ##
-    # podTargetLabels: []
-
-    ## Label selector for services to which this ServiceMonitor applies
-    ##
-    # selector: {}
-
-    ## Namespaces from which services are selected
-    ##
-    # namespaceSelector:
-      ## Match any namespace
-      ##
-      # any: false
-
-      ## Explicit list of namespace names to select
-      ##
-      # matchNames: []
-
-    ## Endpoints of the selected service to be monitored
-    ##
-    # endpoints: []
-      ## Name of the endpoint's service port
-      ## Mutually exclusive with targetPort
-      # - port: ""
-
-      ## Name or number of the endpoint's target port
-      ## Mutually exclusive with port
-      # - targetPort: ""
-
-      ## File containing bearer token to be used when scraping targets
-      ##
-      #   bearerTokenFile: ""
-
-      ## Interval at which metrics should be scraped
-      ##
-      #   interval: 30s
-
-      ## HTTP path to scrape for metrics
-      ##
-      #   path: /metrics
-
-      ## HTTP scheme to use for scraping
-      ##
-      #   scheme: http
-
-      ## TLS configuration to use when scraping the endpoint
-      ##
-      #   tlsConfig:
-
-          ## Path to the CA file
-          ##
-          # caFile: ""
-
-          ## Path to client certificate file
-          ##
-          # certFile: ""
-
-          ## Skip certificate verification
-          ##
-          # insecureSkipVerify: false
-
-          ## Path to client key file
-          ##
-          # keyFile: ""
-
-          ## Server name used to verify host name
-          ##
-          # serverName: ""
+  # - name: "emojivoto-monitor"
+  #   selector:
+  #     matchExpressions:
+  #       - key: app
+  #         operator: In
+  #         values:
+  #           - emoji-svc
+  #           - voting-svc
+  #   namespaceSelector:
+  #     matchNames:
+  #       - emojivoto
+  #   endpoints:
+  #     - port: "prom"
 
     ## MetricRelabelConfigs to apply to samples after scraping, but before ingestion.
     ## ref: https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api.md#relabelconfig
