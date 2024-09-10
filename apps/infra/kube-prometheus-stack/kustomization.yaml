@@ -18,7 +18,6 @@ resources:
 # - resources/ns.yaml
 # - resources/volume.snapshot.yaml
 - resources/service.yaml
-- resources/service.monitor.yaml
 - resources/secret.minio.yaml
 - resources/prometheus.rule.yaml
 
