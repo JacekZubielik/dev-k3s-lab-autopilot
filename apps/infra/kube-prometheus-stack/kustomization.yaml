@@ -45,7 +45,7 @@ helmCharts:
   includeCRDs: false
   namespace: monitoring
   releaseName: kube-prometheus-stack
-  valuesFile: values-2.yaml
+  valuesFile: values.yaml
   valuesInline:
     prometheus-node-exporter:
       hostRootFsMount:
