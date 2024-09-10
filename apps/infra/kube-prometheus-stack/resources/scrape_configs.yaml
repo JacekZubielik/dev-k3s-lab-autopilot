@@ -1,6 +1,14 @@
 ---
 scrape_configs:
 
+- job_name: "cert-manager"
+  static_configs:
+    - targets: ['cert-manager.cert-manager.svc:9402']
+  relabel_configs:
+    - action: replace
+      replacement: 'cert-manager'
+      target_label: instance
+
 - job_name: minio-job
   bearer_token: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJwcm9tZXRoZXVzIiwic3ViIjoicHJvbWV0aGV1cy11c2VyIiwiZXhwIjo0ODc5NjA0MDE0fQ.EAGbxZnYRDkuajp37aElTGxtac1sIX3LS-yD9o7_ogiEtA6A2VPLViXofaEscDWO8C-emd8FFn6lTBtoBBcXZg
   metrics_path: /minio/v2/metrics/cluster
