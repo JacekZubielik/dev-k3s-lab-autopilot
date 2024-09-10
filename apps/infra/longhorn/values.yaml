@@ -173,8 +173,8 @@ longhornUI:
 
 enablePSP: false
 namespaceOverride: ""
-annotations:
-  prometheus.io/scrape: "true"
+# annotations:
+#   prometheus.io/scrape: "true"
 
 serviceAccount:
   annotations: {}
