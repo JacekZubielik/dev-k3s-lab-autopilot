@@ -554,7 +554,9 @@ grafana:
       labelValue: "1"
       searchNamespace: ALL
       enableNewTablePanelSyntax: false
-      annotations: {}
+      annotations:
+        # Puts kube-prometheus-stack default dashboards in 'Kubernetes' folder
+        grafana_folder: /var/lib/grafana/dashboards/Kubernetes
       multicluster:
         global:
           enabled: false
@@ -585,10 +587,6 @@ grafana:
     #     name: sidecarProvider
     #     orgid: "1"
     #     type: file
-
-      annotations:
-        # Puts kube-prometheus-stack default dashboards in 'Kubernetes' folder
-        grafana_folder: /var/lib/grafana/dashboards/Kubernetes
 
     # dashboards:
     #   annotations: {}
