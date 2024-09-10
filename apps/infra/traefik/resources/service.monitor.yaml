@@ -13,13 +13,10 @@ spec:
   - interval: 30s
     port: "9100"
     path: /metrics
-    scrapeTimeout: 30s
-  jobLabel: traefik # app.kubernetes.io/name
+  jobLabel: app.kubernetes.io/name
   namespaceSelector:
     matchNames:
     - traefik
   selector:
     matchLabels:
       app: traefik
-      # app.kubernetes.io/instance: traefik
-      # app.kubernetes.io/name: traefik
