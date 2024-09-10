@@ -580,7 +580,7 @@ grafana:
         foldersFromFilesStructure: true
       annotations:
         # Puts kube-prometheus-stack default dashboards in 'Kubernetes' folder
-        grafana_folder: /tmp/dashboards/Kubernetes
+        grafana_folder: /var/lib/grafana/dashboards # /tmp/dashboards/Kubernetes
 
     # datasources:
     #   enabled: true
