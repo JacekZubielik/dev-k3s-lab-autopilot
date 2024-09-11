@@ -1,0 +1,60 @@
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+    annotations:
+        argocd.argoproj.io/sync-wave: "2"
+    name: letsencrypt-production
+    namespace: cert-manager
+spec:
+    acme:
+        email: ENC[AES256_GCM,data:T6D6s+OHoqQAQG+g4UAAQPUTQdv4,iv:QB5r5ViS1pE8Kp/MfX3TBF6Afv9CVLwTgld7PekJIfg=,tag:G5LVveOsbe65eDJ2ytAAdw==,type:str]
+        server: https://acme-v02.api.letsencrypt.org/directory
+        privateKeySecretRef:
+            name: route53-access-key
+        solvers:
+            - dns01:
+                cloudflare:
+                    email: ENC[AES256_GCM,data:jgQ91J/FQjMMt5PQ/4N8+yFbxOd7,iv:Ht1kFsXxSO4+tzSDwK8/JIQZwDHb0/hS4FwGwdT674Y=,tag:fGQ9RoMIi4oQPKwbSebn1w==,type:str]
+                    apiTokenSecretRef:
+                        name: ENC[AES256_GCM,data:I7YiyNfYO+9lPxaGgOcpHu5Shw==,iv:MAI661yJio2ua7WVlt8+foXKckpB1DgjJ7UsDysWMWo=,tag:zzl4Lzg0B9qfvinI6dKz2Q==,type:str]
+                        key: ENC[AES256_GCM,data:FHhblIRZd8Kt,iv:uB78WnfGpbSL8Uujxa3uX2NCYxiPuA25RM/i09fFYR0=,tag:SZ5RkQMhzGkwZyiso4o5FQ==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1deg9tqt7jtddnqme6nvcl72czns80z0n25u8k9pw5830dn4arsks5pua4h
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBjQmttMkUvakplUDVIQUNv
+            QmtZTmJ1L3BlRnZXNnJ4VDBtMmVuT0s1UlRBCm13NnJqTzRyNnpMZE1BOE1lU3Fa
+            YlZhRFUvazdJZ1JMeHZ2QzhvdTNBNm8KLS0tIFlBWlczWjZCL3VnSmhpZXRseHlZ
+            Z01xZ29SZG1WNThDQStEb2ExRjgrZkUK0UlnppGqErICSr+hjQxQMQ1/fLSy6rDa
+            o5fIeG+erpkPve44JLc1AozSMbGjmCLoVY80RJvgffM1pCJldzm9Bg==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2024-09-11T18:39:31Z"
+    mac: ENC[AES256_GCM,data:wWcoSLfw16IA6nBa0mELeQiMqMJSgfoOUopkz/Rocp636M0odDCem0La0HfTR0GfImaax8ulHAgku+VsHxBabfPkOxZFSDVfL9glmvs7IJYu/sGQlGds/Ajs/JxXb6bxxzKIo3QF/eX4uoWnUJ61ajUD7SfqJ9KAncJf2NOThlA=,iv:og0Cj7lsTbsNv1Hd1wU+QlMLi0i4EZWL8o7aeu8D+nM=,tag:uunmFdREO2dSX5JRYWPpZQ==,type:str]
+    pgp:
+        - created_at: "2024-09-11T18:39:31Z"
+          enc: |-
+            -----BEGIN PGP MESSAGE-----
+
+            hQIMA0R6oz1GmNjVAQ/+JAsg0XyHmxGIxkc6F9hG1BpiLL6ciyZcwJv0PLlERTiK
+            SBJU1nE8zvdLRSsjHtTtBsCjFmyYgaQ/KZoGIre41Rtbdtmf/xdvQR9/GVOoIVfH
+            lhakkJy0IX/IzZozb6wiocFTZOELGsKbGavs+ei4GzawFoyiKArQfuLaYdrL4kSx
+            s6dvrOyscfYs/cF/oE42kJLsQUfk3suybZpZEoCf6pB7bKtwyyNMIlEofJmflap6
+            QnwopvMT0gr5ThyeEHmsHi/LYzO9IuLdZLJt7MRAENLAV++UmE5tBZb04CjMvbfO
+            hMm4mKBG7uGFt5qy6QsaaG0kBYokjsYts7M7aYBPxWvRWkJPuvbeSYgSwkdKNvUJ
+            QttkRpv5F33IG0YrB6hC4qE9cBqwL6zJ/0XBamcvpMPOmu6b9PYVdoOAPfUwey6o
+            /chwwC5SG7uA//b4fBaRQL3ZqJlupy1T61swOhaxn9NLer+9jomuRiObJiRbUQE5
+            6ZAN4H/K3FnNczXKRCs3YI/t1yCN4vkUelQ3eWmJz9C3uOkvgxgZ1vepD5vxLKHG
+            /yyYjewlj1RHo/FzCgeAhDvq6dXkKHcDlQh/FSDqWzGyn/iQp5TVvxr1itFmTs6P
+            bhLYsXd4X9dEYZPXnw2iETnKVyP25XllU0dSrNrWh8lGJkujCPmluyCUGXnJBlHS
+            XgEkgTl50rzKM0TQOc1RHjozQQrUeFKjlYK3IHyLy9KN3wbAVLVxel32QuEXswrK
+            jXAGm/NVe10nJ157OXKTI7BoMwJpPjvz6hU/4sdB4oIrP3YNOxWRXadZxuro3Jo=
+            =xxiU
+            -----END PGP MESSAGE-----
+          fp: 6D3FE55384B558E06A1BA364586EFA784A32C981
+    encrypted_regex: ^(data|stringData|dnsNames|email|organizations|accessKeyID|region|hostedZoneID|role|dnsZones|apiTokenSecretRef)$
+    version: 3.8.1

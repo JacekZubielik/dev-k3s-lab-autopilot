@@ -1,7 +1,0 @@
----
-apiVersion: cert-manager.io/v1
-kind: Issuer # ClusterIssuer
-metadata:
-  name: default-issuer-selfsigned
-spec:
-  selfSigned: {}
