@@ -5,9 +5,9 @@ metadata:
         argocd.argoproj.io/sync-wave: "3"
         cert-manager.io/cluster-issuer: letsencrypt-staging
         cert-manager.io/common-name: longhorn.anotherlife.org.pl
-        external-dns.alpha.kubernetes.io/hostname: ENC[AES256_GCM,data:bIn6T9ejV/XXLDQNXNfxxL/C,iv:c8CnbJKX6dTNRBhXwf3gg5srJHzuyro9YHzLb4YhKtE=,tag:VYPHss4HveUsjAlkbl/IFw==,type:str]
-        external-dns.alpha.kubernetes.io/target: ENC[AES256_GCM,data:YczgtRSv6GGrX1P5I0yWxBHKVWzJCgiXl35Q,iv:0vySJmCw6/ZlJnsbmNSW/YZ2C/optl1iSmc+L0rbSTg=,tag:U59ThoaVtjNHHbKTl4QmWw==,type:str]
-        external-dns.alpha.kubernetes.io/ttl: "120"
+        external-dns.alpha.kubernetes.io/hostname: ENC[AES256_GCM,data:slUpSo7MWEq24OZraJQVqDcV/EjKnpRDDNPR,iv:imGfjb0Sdo7Z4M5++s2/EVXG1Bk+4BzCri67TpeqAyg=,tag:gU2BuVJ7SroxgUK74rUefQ==,type:str]
+        external-dns.alpha.kubernetes.io/target: ENC[AES256_GCM,data:EA4BSMFmhzE2T+5BLWIp9EKk,iv:nyq56O+6txfH1f3G/JsbcAPP22Wn5l552iuTICoRDkU=,tag:KEoouwIqw0jimO+Gi/plXw==,type:str]
+        external-dns.alpha.kubernetes.io/ttl: "300"
         kubernetes.io/ingress.class: traefik-external
     name: longhorn-frontend-staging
     namespace: longhorn-system
@@ -48,8 +48,8 @@ sops:
             a0M5R2o1QnBUMDJQOTcvL3JPbm81dkEKyWyD1kzJJJSdec6MMabEuWxcBt7ahl+T
             0vEP1BDNFpIrFu5ZBwoB9poTGrfqKHbFnB0qXgiXwz6EBECisaDjSg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-09-12T21:02:04Z"
-    mac: ENC[AES256_GCM,data:HUbYh+nHaFyeT5Y8mF+u+zZiB5uLWJHlqDILYneoGb9KIpM+VoA3vWDe1gKu0OUTPiRToZ+VM/BwI0h2w5Pv9sF+m8EbOXIkRzKceNq1Hi0LSq8RM0fcS52nKy10LI6wqLoh7Gbx0WhqFcj24LX7TgDwqcrF6ZQumhEBcwSw+d0=,iv:MBX6/FDDXCNQvvq2Z6c2XSxWoMxuSKKqre+BVMxYTdk=,tag:6qLiDIxV6g9LQ6Ar68D4iw==,type:str]
+    lastmodified: "2024-09-12T22:21:48Z"
+    mac: ENC[AES256_GCM,data:3IoWNc/OQPQw/D38eKrpLUol7zoWYLU+iTzFAWT3vvY3X4aIVZ9xNRsaWo9df0Dyi0yaT2pk05sTUGoqkhMGc2H4UgdGiTEhLobjSv4riTDErCju4Ce3VWEkgxJmzITgDkcYe3TxD/IRqIIstfnlnfXusxQ0/EnaBCrfKHXNMN8=,iv:ezUoElHdQO7bWXrIRcKhf0y3IPTV3c0Z7wCEpXoJKsE=,tag:9GHr8mJFIGa3S7xKE8HRvQ==,type:str]
     pgp:
         - created_at: "2024-07-07T10:31:05Z"
           enc: |-
@@ -102,8 +102,8 @@ sops:
             a0M5R2o1QnBUMDJQOTcvL3JPbm81dkEKyWyD1kzJJJSdec6MMabEuWxcBt7ahl+T
             0vEP1BDNFpIrFu5ZBwoB9poTGrfqKHbFnB0qXgiXwz6EBECisaDjSg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-09-12T21:02:04Z"
-    mac: ENC[AES256_GCM,data:HUbYh+nHaFyeT5Y8mF+u+zZiB5uLWJHlqDILYneoGb9KIpM+VoA3vWDe1gKu0OUTPiRToZ+VM/BwI0h2w5Pv9sF+m8EbOXIkRzKceNq1Hi0LSq8RM0fcS52nKy10LI6wqLoh7Gbx0WhqFcj24LX7TgDwqcrF6ZQumhEBcwSw+d0=,iv:MBX6/FDDXCNQvvq2Z6c2XSxWoMxuSKKqre+BVMxYTdk=,tag:6qLiDIxV6g9LQ6Ar68D4iw==,type:str]
+    lastmodified: "2024-09-12T22:21:48Z"
+    mac: ENC[AES256_GCM,data:3IoWNc/OQPQw/D38eKrpLUol7zoWYLU+iTzFAWT3vvY3X4aIVZ9xNRsaWo9df0Dyi0yaT2pk05sTUGoqkhMGc2H4UgdGiTEhLobjSv4riTDErCju4Ce3VWEkgxJmzITgDkcYe3TxD/IRqIIstfnlnfXusxQ0/EnaBCrfKHXNMN8=,iv:ezUoElHdQO7bWXrIRcKhf0y3IPTV3c0Z7wCEpXoJKsE=,tag:9GHr8mJFIGa3S7xKE8HRvQ==,type:str]
     pgp:
         - created_at: "2024-07-07T10:31:05Z"
           enc: |-
