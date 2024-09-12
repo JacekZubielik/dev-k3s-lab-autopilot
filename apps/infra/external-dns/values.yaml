@@ -7,9 +7,16 @@ containerPorts:
   http: 7979
 
 cloudflare:
-  secretName: external-dns-cloudflare-token
+  # secretName: external-dns-cloudflare-token
   email: zumbik@protonmail.com
   proxied: true
+
+env:
+  - name: CF_API_TOKEN
+    valueFrom:
+      secretKeyRef:
+        name: external-dns-cloudflare-token
+        key: cloudflare_api_token
 
 sources:
   - service
@@ -26,12 +33,12 @@ annotationFilter: ""
 labelFilter: ""
 triggerLoopOnEvent: false
 interval: "1m"
-logLevel: info
+logLevel: debug
 logFormat: text
 registry: "txt"
 txtPrefix: ""
 txtSuffix: ""
-txtOwnerId: "33af84a0213e9602bad71eb8aaca41ff"
+txtOwnerId: ""
 forceTxtOwnerId: false
 extraArgs: {}
 extraEnvVars: []
