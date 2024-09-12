@@ -1,5 +1,5 @@
 apiVersion: cert-manager.io/v1
-kind: ClusterIssuer
+kind: Issuer
 metadata:
     annotations:
         argocd.argoproj.io/sync-wave: "2"
@@ -14,7 +14,6 @@ spec:
         solvers:
             - dns01:
                 cloudflare:
-                    email: ENC[AES256_GCM,data:mQWGlct8VSMkYQWTay7Zd9TFvufo,iv:YeLVOwtyEpDbX1DB+2Qa9gchYs+Xfw+ytS9YFG5WuEA=,tag:+a/egEQhgMvXAZJWQeUpUg==,type:str]
                     apiTokenSecretRef:
                         name: ENC[AES256_GCM,data:Wc7gltFgyCKModky6Z5EdMt+ipIBtQ==,iv:l4raAJ05NxYi5FDypauxTMAz6+Z3MKB6ehRCGzdlt50=,tag:ZuN36bXHwKIwEijG7wUKIw==,type:str]
                         key: ENC[AES256_GCM,data:QzxA0FYQfl0T,iv:r/5dIiFExoXtnK62UHS9ZmG4NEMcO1HCqxPjyAwArVU=,tag:eOjTRS5MHUNxPiaWF0V/tg==,type:str]
@@ -33,8 +32,8 @@ sops:
             d0k3VkFva2dtV3lMTnZFdDBNK1JWdlEK0CwOQpkYd+nK1z2runjb577jrleIMuFc
             ViBuoQmmBKZIRkuyv/05lMksKjkHOFsuKUslrOvJska817ENrPBUAQ==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-09-12T12:15:26Z"
-    mac: ENC[AES256_GCM,data:SCaWvwCR1pJ0t8weg0Eu2UbRJc6sg7kfX2WeCcvB7/qTfhtlxnvDPzHbA9ARa0N9JKeeVGFHGjx7LtOgYaFosAB9W9Orju94X/52tS8a4uStyTtpcgmxiqlQfozI3QUhlpFkGrDIB+x4KF/BtooMRtilGY4FV0lxubWwUq53ZAA=,iv:MMATBpLsaNuzT3D/abVbVimg5Inmc/LM8F29h+DuiIc=,tag:BtGFyavkD2SYXL266EgzPg==,type:str]
+    lastmodified: "2024-09-12T19:14:50Z"
+    mac: ENC[AES256_GCM,data:mmWxDz00VXIOwzr/FP3SzFvY8g2SjD7tB8sCr9TO0UGEumYNSCR1vMNCXG0Yi3ebjLva+PG43Zzoaa7uZMyMpAmFN/usNjU5zIGACOgzfDR84ReRthHc6wA7syI1qziA6nOpH4nB9+gTYMxIb/NE/DO+jLNy9FEt2XN/HZYxQdw=,iv:ikxjCME75VBNdyuvSKXM9XB2J0zbEQt7IbW46QC2at0=,tag:p9wRsgUKBc0DhrQgc0wL7Q==,type:str]
     pgp:
         - created_at: "2024-09-12T12:15:26Z"
           enc: |-
