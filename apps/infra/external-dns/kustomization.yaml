@@ -47,10 +47,3 @@ patches:
     kind: Deployment
     name: external-dns
     namespace: external-dns
-
-- path: patches/serviceaccount.patch.yaml
-  target:
-    version: v1
-    kind: ServiceAccount
-    name: external-dns
-    namespace: external-dns

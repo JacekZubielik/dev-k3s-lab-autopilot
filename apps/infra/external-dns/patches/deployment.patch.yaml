@@ -1,5 +1,3 @@
-# run: kubectl patch deploy external-dns --namespace external-dns --type json --patch "$(cat deployment.patch.yaml)"
-
 ---
 # - op: replace
 #   path: /spec/template/spec/containers/0/args/0
