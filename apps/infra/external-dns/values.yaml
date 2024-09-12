@@ -48,7 +48,7 @@ excludeDomains: []
 regexDomainFilter: ""
 regexDomainExclusion: ""
 zoneNameFilters: []
-zoneIdFilters: anotherlife.org.pl
+zoneIdFilters: []
 annotationFilter: ""
 labelFilter: ""
 triggerLoopOnEvent: false
