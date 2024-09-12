@@ -6,6 +6,8 @@ metadata:
   annotations:
     argocd.argoproj.io/compare-options: IgnoreExtraneous
     argocd.argoproj.io/sync-options: Delete=true,Prune=true
+  labels:
+    app: external-dns
 
 resources:
 - resources/ns.yaml
