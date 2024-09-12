@@ -11,6 +11,11 @@ cloudflare:
   # email: some-machine-account@domain.com
   proxied: true
 
+sources:
+  - service
+  - ingress
+  - ingressroute
+
 domainFilters: []
 excludeDomains: []
 regexDomainFilter: ""
