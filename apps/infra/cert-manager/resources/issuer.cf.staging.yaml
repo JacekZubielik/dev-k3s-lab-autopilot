@@ -20,8 +20,3 @@ spec:
             name: cloudflare-secret
             key:
               - api-token
-              - email
-      selector:
-        apiTokenSecretRef:
-          name: cloudflare-secret
-          key: dnsZones
