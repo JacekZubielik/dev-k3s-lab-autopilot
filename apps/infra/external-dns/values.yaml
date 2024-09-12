@@ -1,5 +1,5 @@
 ---
-dryRun: true
+dryRun: false
 policy: sync
 clusterDomain: kubernetes.default.svc  # cluster.local
 provider: cloudflare
