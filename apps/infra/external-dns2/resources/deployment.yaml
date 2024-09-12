@@ -57,13 +57,13 @@ spec:
         - --provider=cloudflare
         - --cloudflare-proxied
         - --cloudflare-dns-records-per-page=5000
-        - --traefik-disable-legacy
+        - --traefik-disable-legacy=true
         env:
         - name: CF_API_KEY
           valueFrom:
             secretKeyRef:
               name: cloudflare-api-key
-              key: apiKey
+              key: apitoken
         - name: CF_API_EMAIL
           valueFrom:
             secretKeyRef:
