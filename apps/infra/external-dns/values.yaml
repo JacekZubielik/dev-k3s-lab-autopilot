@@ -1,3 +1,6 @@
+# Troubleshooting:
+#
+#   kubectl logs -f -n external-dns deploy/external-dns
 ---
 dryRun: false
 policy: sync
@@ -28,14 +31,10 @@ cloudflare:
   # secretName: cloudflare-api-key
   email: zumbik@protonmail.com
   apiToken: "GkPRK3XJHYvIby-tdrJZTX9q_BWV92bahwYTpJ2m"
-  # apiKey: "cebb3568ad3a7d879cb4ce756c8e5c9149b1c"
   dnsRecordsPerPage: 100
 
-## Compatibility adaptations for Traefik
 traefik:
-  ## @param traefik.disableNew Disable listeners on Resources under traefik.io
   disableNew: false
-  ## @param traefik.disableLegacy Disable listeners on Resources under traefik.containo.us
   disableLegacy: true
 
 sources:
@@ -59,7 +58,7 @@ logFormat: text
 registry: "txt"
 txtPrefix: ""
 txtSuffix: ""
-txtOwnerId: ""
+txtOwnerId: "default"
 forceTxtOwnerId: false
 extraArgs: {}
 extraEnvVars: []
