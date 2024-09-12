@@ -5,7 +5,9 @@ metadata:
         argocd.argoproj.io/sync-wave: "3"
         cert-manager.io/cluster-issuer: letsencrypt-production
         cert-manager.io/common-name: longhorn.storage.anotherlife.org.pl
+        external-dns.alpha.kubernetes.io/hostname: ENC[AES256_GCM,data:zx3KsOwNOwlfvZ8NBSuECqbpUorCzoWz8hSQvcqFSFXyGqU=,iv:/XZyd/s7k4H6vFw9xcYSC2B8/6CtcAVgfJliItJE/x4=,tag:0vgZeePgaaaKA8mQOBYaew==,type:str]
         external-dns.alpha.kubernetes.io/target: ENC[AES256_GCM,data:akBw7XJTSKP4BiEaQTMo6qywfNrWfaaVhKM=,iv:6zWWS0h2a8VGeO4Y0MwZkY/7GFWANIuS+Iz9faraBJU=,tag:LSl1U9N5z2fHZwQ9mE730g==,type:str]
+        external-dns.alpha.kubernetes.io/ttl: "300"
         kubernetes.io/ingress.class: traefik-external
     name: longhorn-frontend
     namespace: longhorn-system
@@ -37,8 +39,8 @@ sops:
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2024-08-21T15:37:44Z"
-    mac: ENC[AES256_GCM,data:UXHJ6Nplc72HnBwbP6ULRgMhnERRU2PqrdBUAa/jVCSy/wWFWZHPkX9xdKsWQ+niPSEDe9tjISg/8VW34l2vDmkirUVpx92/JqBNeeeH86rqi5z+WmEda705ME5+vNoNtWw6CbSZWn5mLNk/b6BvB14gAHlLot53Q5DtsJYisrA=,iv:0l0OFibVXksqXNMNnAs7DVE1sbTYdwkPkKBcQ+lqy7Y=,tag:YTRR0MSvLJfdpO1YG638qg==,type:str]
+    lastmodified: "2024-09-12T22:51:37Z"
+    mac: ENC[AES256_GCM,data:uJV+Ife9GYTvm40YaYRFSmzbl8lb68IAaIITGg4RK7mcBYHEJt11EWDaxrU7x3W7K4cpHBTwow8Kyea0EkmZ+TwyZjRfJ11Z3fNMES7TxzLvz6dTiJBABR5XsuD5JN644rkzg+/qJol3Yif+1UfzzO70XgkIomqWBpDwu9ZO0oo=,iv:plfMzxC22Ui5z4UkkjN1iMIxBPn05tbyTLihbQiDHfA=,tag:PRiUpDEzwQxu944VTdTJGw==,type:str]
     pgp:
         - created_at: "2024-07-07T11:13:17Z"
           enc: |-
@@ -82,8 +84,8 @@ sops:
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2024-08-21T15:37:44Z"
-    mac: ENC[AES256_GCM,data:UXHJ6Nplc72HnBwbP6ULRgMhnERRU2PqrdBUAa/jVCSy/wWFWZHPkX9xdKsWQ+niPSEDe9tjISg/8VW34l2vDmkirUVpx92/JqBNeeeH86rqi5z+WmEda705ME5+vNoNtWw6CbSZWn5mLNk/b6BvB14gAHlLot53Q5DtsJYisrA=,iv:0l0OFibVXksqXNMNnAs7DVE1sbTYdwkPkKBcQ+lqy7Y=,tag:YTRR0MSvLJfdpO1YG638qg==,type:str]
+    lastmodified: "2024-09-12T22:51:37Z"
+    mac: ENC[AES256_GCM,data:uJV+Ife9GYTvm40YaYRFSmzbl8lb68IAaIITGg4RK7mcBYHEJt11EWDaxrU7x3W7K4cpHBTwow8Kyea0EkmZ+TwyZjRfJ11Z3fNMES7TxzLvz6dTiJBABR5XsuD5JN644rkzg+/qJol3Yif+1UfzzO70XgkIomqWBpDwu9ZO0oo=,iv:plfMzxC22Ui5z4UkkjN1iMIxBPn05tbyTLihbQiDHfA=,tag:PRiUpDEzwQxu944VTdTJGw==,type:str]
     pgp:
         - created_at: "2024-07-07T11:13:17Z"
           enc: |-
