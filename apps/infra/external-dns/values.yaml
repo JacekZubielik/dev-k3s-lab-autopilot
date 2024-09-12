@@ -1,0 +1,136 @@
+---
+dryRun: false
+policy: sync
+clusterDomain: kubernetes.default.svc  # cluster.local
+provider: cloudflare
+# env:
+# - name: CF_API_TOKEN
+#   valueFrom:
+#     secretKeyRef:
+#       name: cloudflare-api-key
+#       key: apitoken
+# - name: CF_API_KEY
+#   valueFrom:
+#     secretKeyRef:
+#       name: cloudflare-api-key
+#       key: apiKey
+# - name: CF_API_EMAIL
+#   valueFrom:
+#     secretKeyRef:
+#       name: cloudflare-api-key
+#       key: email
+
+containerPorts:
+  http: 7979
+
+cloudflare:
+  proxied: true
+  secretName: cloudflare-api-key
+  # email: zumbik@protonmail.com
+dnsRecordsPerPage: 100
+
+## Compatibility adaptations for Traefik
+traefik:
+  ## @param traefik.disableNew Disable listeners on Resources under traefik.io
+  disableNew: false
+  ## @param traefik.disableLegacy Disable listeners on Resources under traefik.containo.us
+  disableLegacy: true
+
+sources:
+  # - service
+  # - ingress
+  - traefik-proxy
+
+domainFilters: []
+excludeDomains: []
+regexDomainFilter: ""
+regexDomainExclusion: ""
+zoneNameFilters: []
+zoneIdFilters: []
+annotationFilter: ""
+labelFilter: ""
+triggerLoopOnEvent: false
+interval: "1m"
+logLevel: debug
+logFormat: text
+registry: "txt"
+txtPrefix: ""
+txtSuffix: ""
+txtOwnerId: ""
+forceTxtOwnerId: false
+extraArgs: {}
+extraEnvVars: []
+replicaCount: 1
+priorityClassName: ""
+crd:
+  create: true
+  apiversion: ""
+  kind: ""
+
+service:
+  enabled: true
+  type: ClusterIP
+  ports:
+    http: 7979
+
+serviceAccount:
+  create: true
+  name: ""
+  annotations: {}
+  automountServiceAccountToken: true
+  labels: {}
+
+rbac:
+  create: true
+  clusterRole: true
+  apiVersion: v1
+  pspEnabled: false
+
+containerSecurityContext:
+  runAsNonRoot: true
+  allowPrivilegeEscalation: false
+  readOnlyRootFilesystem: true
+  capabilities:
+    drop: ["ALL"]
+
+podSecurityContext:
+  enabled: true
+  fsGroup: 1001
+  runAsUser: 1001
+
+resources:
+  requests:
+    cpu: 250m
+    memory: 300Mi
+  limits:
+    cpu: 500m
+    memory: 300Mi
+
+podDisruptionBudget: {}
+
+metrics:
+  enabled: false
+  podAnnotations: {}
+  serviceMonitor:
+    enabled: false
+    namespace: ""
+    ## @param metrics.serviceMonitor.interval Interval at which metrics should be scraped
+    ## ref: https://github.com/coreos/prometheus-operator/blob/master/Documentation/api.md#endpoint
+    ##
+    interval: ""
+    scrapeTimeout: ""
+    selector: {}
+    ## @param metrics.serviceMonitor.metricRelabelings Specify Metric Relabelings to add to the scrape endpoint
+    ## ref: https://github.com/coreos/prometheus-operator/blob/master/Documentation/api.md#relabelconfig
+    ##
+    metricRelabelings: []
+    ## @param metrics.serviceMonitor.relabelings [array] Prometheus relabeling rules
+    ##
+    relabelings: []
+    honorLabels: false
+    labels: {}
+    jobLabel: ""
+
+  googlePodMonitor:
+    enabled: false
+
