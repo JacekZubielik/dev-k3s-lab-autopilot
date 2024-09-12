@@ -7,16 +7,25 @@ containerPorts:
   http: 7979
 
 cloudflare:
-  # secretName: external-dns-cloudflare-token
-  email: zumbik@protonmail.com
   proxied: true
 
 env:
   - name: CF_API_TOKEN
     valueFrom:
       secretKeyRef:
-        name: external-dns-cloudflare-token
-        key: cloudflare_api_token
+        name: cloudflare-api-key
+        key: apitoken
+
+  - name: CF_API_KEY
+    valueFrom:
+      secretKeyRef:
+        name: cloudflare-api-key
+        key: apiKey
+  - name: CF_API_EMAIL
+    valueFrom:
+      secretKeyRef:
+        name: cloudflare-api-key
+        key: email
 
 sources:
   - service
