@@ -3,38 +3,37 @@ dryRun: false
 policy: sync
 clusterDomain: cluster.local # kubernetes.default.svc  # cluster.local
 provider: cloudflare
+env:
+- name: CF_API_TOKEN
+  valueFrom:
+    secretKeyRef:
+      name: cloudflare-api-key
+      key: apitoken
+- name: CF_API_KEY
+  valueFrom:
+    secretKeyRef:
+      name: cloudflare-api-key
+      key: apiKey
+- name: CF_API_EMAIL
+  valueFrom:
+    secretKeyRef:
+      name: cloudflare-api-key
+      key: email
+
 containerPorts:
   http: 7979
 
 cloudflare:
   proxied: true
+  secretName: cloudflare-api-key
+  # email: some-machine-account@domain.com
 
 ## Compatibility adaptations for Traefik
-
 traefik:
   ## @param traefik.disableNew Disable listeners on Resources under traefik.io
   disableNew: false
   ## @param traefik.disableLegacy Disable listeners on Resources under traefik.containo.us
   disableLegacy: true
-
-
-env:
-  - name: CF_API_TOKEN
-    valueFrom:
-      secretKeyRef:
-        name: cloudflare-api-key
-        key: apitoken
-
-  - name: CF_API_KEY
-    valueFrom:
-      secretKeyRef:
-        name: cloudflare-api-key
-        key: apiKey
-  - name: CF_API_EMAIL
-    valueFrom:
-      secretKeyRef:
-        name: cloudflare-api-key
-        key: email
 
 sources:
   - service
