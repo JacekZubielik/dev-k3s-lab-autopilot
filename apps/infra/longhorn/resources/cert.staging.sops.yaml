@@ -6,11 +6,11 @@ metadata:
     name: longhorn-staging
 spec:
     issuerRef:
-        kind: ClusterIssuer
+        kind: Issuer
         name: letsencrypt-staging
-    commonName: ENC[AES256_GCM,data:aZzv5W/eygjwTXnUoC/mwB+wMwBuwiW9jj63htFJXD1IPvo=,iv:JeK7BXNnncj3sRYSHiBaGoimE6LSaIo34ozACiSYM1Q=,tag:SAahSVaW36P3xSQ45Lv9uw==,type:str]
+    commonName: ENC[AES256_GCM,data:1pUqhd+Dx9gxCTpYXT0wEWohFsywSHnbDOBn,iv:BeBSEp9Abtc6stk7rB1ikk/4vTURUdVYYqIgI4EdBfU=,tag:6b2WDwso3xK8K9T6nzTdgA==,type:str]
     dnsNames:
-        - ENC[AES256_GCM,data:hE7avNA64UBLGnPcv2vydYi3B9YFMd+TV3HMNUGxzA9nLIM=,iv:lhed+srTm2e012V4zWEPTrSiqtAF5Qw+2S0QOmiT7YE=,tag:ujEC3dHhZ+VU1lwsbwGmTw==,type:str]
+        - ENC[AES256_GCM,data:wZvtZZl2Cao88L4N2l1CugrT3BlJXtwpjH8V,iv:neKHlOP4MKUH3dGB0vc9lGxG0Ckr0yI5K/gkKkv8UC0=,tag:tss6dQX7KmobqnSXo+qUVQ==,type:str]
     secretName: longhorn-cf-staging
     duration: 2160h0m0s
     renewBefore: 720h0m0s
@@ -29,8 +29,8 @@ sops:
             MFh5cUhoYjlNV21HRW9qQUwycnQvaEkKThKzFlmKrbh4nG0X9yQ+sPyV+uXxV7XU
             1WwF5ZUf0qkD2IbhHGYzKIGCMXctwUbqetY3P0N3XdiD7neIUxsgXg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-08-26T09:34:15Z"
-    mac: ENC[AES256_GCM,data:bVYwNGINZvRrE2oY6ArOVAol5iV5/B0tqDEG5t92q+TWdyJKTixm715fwQ/rVZ7gC89UnpbbXzWMXPbFROZ9i0kDXrBj812km/aVhuCvm7xUxkfH3Z0FzbnvkDXn8lEHBYBgx0g16NsXSoQqlimh5dV4FklkZoCGAyPVlR7H6Mo=,iv:EH3ZBOP4XP0wkecKz9JIwgZDBot0HJmNuhf57yElM2o=,tag:YCzxRWF1nEGexAS1cJiKUQ==,type:str]
+    lastmodified: "2024-09-12T20:48:20Z"
+    mac: ENC[AES256_GCM,data:e1wECTTexpHrp3pcwgbGbN57h7q3TgT7tdsegdlGLcgCe+Ye8frgtPxKttr5wOHZNxWwyMR40qthA76j5no5HsGB2TpGMgzUyr4zYbC7fVqGnYG2GX4JZ+MaWATju+FOiQAb++bfgdbRdQiD8SfsAgQiUeFC7Pm7+SUmZ8uw5mk=,iv:Ul5KODtVpAeaBamcbMGRnk7ayj3LlOQrJAy44BN6jYQ=,tag:MnYI6BGBFEpf2lqenKWLnA==,type:str]
     pgp:
         - created_at: "2024-08-25T15:10:40Z"
           enc: |-
