@@ -1,5 +1,5 @@
 apiVersion: cert-manager.io/v1
-kind: Issuer
+kind: ClusterIssuer
 metadata:
     annotations:
         argocd.argoproj.io/sync-wave: "2"
@@ -33,8 +33,8 @@ sops:
             NmJXdmNaZnNwRTdaRDJVYlAvS0ZYZFEKwnKyc/5tAmy35h6zrHP4YXZ8EWpONAAw
             2mGL+trVmvh0cGtqR1u+nw5Lb1mS+Hlrt95PLraRqZYzAJTEu73f+w==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-09-12T20:58:24Z"
-    mac: ENC[AES256_GCM,data:SMTpWYWN0XeTMzgf/OssFvazrkbavSO7uGe+CgdUGKqFW3fVTIb47Y3FlnN4Rc099Qd2MJyOsPQUwyw11BvmKGeAz2UQCQu/kSmjOL/tacHyEBoAFzr4k/8QfLsC7Yd7+dwC+u+S54LTplKP2Z+9HqRK6A0tslXse/9TNkqksR4=,iv:i4gyTcz2eKOh0XD6O5tPmfXAa3RojxXYVuhhJ9BRMfE=,tag:+c5eushGFSlIu3kTiJaLKw==,type:str]
+    lastmodified: "2024-09-12T21:10:25Z"
+    mac: ENC[AES256_GCM,data:w1M9VFXM3q3XM+dUaqP1M5J4oDrp8rz16ShxLCfjTf3eQAF7w7mlEqHDP0+7jXfj+w/PX+r6EjJdIBadPqxqSS4jRiWqVDwLLLrC4SSpEAQgJlEVEwkujijVg6MdeIJqCdP6H9fQFkxp0etWlnuORordJ0nYtpC9d02vlqZ4k2E=,iv:01xl64gVv8STdHmCF4VCPai3Jf9qGnDRv2xzPn4ev/U=,tag:bWEsF5+vDyfi4tGtcD/FqQ==,type:str]
     pgp:
         - created_at: "2024-09-12T20:58:24Z"
           enc: |-

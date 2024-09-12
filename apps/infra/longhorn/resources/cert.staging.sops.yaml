@@ -6,7 +6,7 @@ metadata:
     name: longhorn-staging
 spec:
     issuerRef:
-        kind: Issuer
+        kind: ClusterIssuer
         name: letsencrypt-staging
     commonName: ENC[AES256_GCM,data:1pUqhd+Dx9gxCTpYXT0wEWohFsywSHnbDOBn,iv:BeBSEp9Abtc6stk7rB1ikk/4vTURUdVYYqIgI4EdBfU=,tag:6b2WDwso3xK8K9T6nzTdgA==,type:str]
     dnsNames:
@@ -29,8 +29,8 @@ sops:
             MFh5cUhoYjlNV21HRW9qQUwycnQvaEkKThKzFlmKrbh4nG0X9yQ+sPyV+uXxV7XU
             1WwF5ZUf0qkD2IbhHGYzKIGCMXctwUbqetY3P0N3XdiD7neIUxsgXg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-09-12T20:48:20Z"
-    mac: ENC[AES256_GCM,data:e1wECTTexpHrp3pcwgbGbN57h7q3TgT7tdsegdlGLcgCe+Ye8frgtPxKttr5wOHZNxWwyMR40qthA76j5no5HsGB2TpGMgzUyr4zYbC7fVqGnYG2GX4JZ+MaWATju+FOiQAb++bfgdbRdQiD8SfsAgQiUeFC7Pm7+SUmZ8uw5mk=,iv:Ul5KODtVpAeaBamcbMGRnk7ayj3LlOQrJAy44BN6jYQ=,tag:MnYI6BGBFEpf2lqenKWLnA==,type:str]
+    lastmodified: "2024-09-12T21:13:44Z"
+    mac: ENC[AES256_GCM,data:ny+/GNhb1l1AGNcuqVxnhTSc+pWEVIa9ZT1VtS2TfIoF9n4ooni5rtWnlvLVQ+GzhgiG+O7k4gWVB8ba3Jfb+Uwo5EIQxBDDoM2WDuAg/o/n67ATquv9tsrKr+Xm1zabUs3fFncR2VhKFdAXy/3d1BUzH2yVYA4C7Og+BE0HL3o=,iv:yqUDNZ1SQeiV7hr7CnEhm7iFGqtmyUUMVxdf4/lfmAI=,tag:lysQKHwLWmLPfccb0U5aNw==,type:str]
     pgp:
         - created_at: "2024-08-25T15:10:40Z"
           enc: |-
