@@ -48,7 +48,7 @@ excludeDomains: []
 regexDomainFilter: ""
 regexDomainExclusion: ""
 zoneNameFilters: []
-zoneIdFilters: []
+zoneIdFilters: 33af84a0213e9602bad71eb8aaca41ff
 annotationFilter: ""
 labelFilter: ""
 triggerLoopOnEvent: false
@@ -58,7 +58,7 @@ logFormat: text
 registry: "txt"
 txtPrefix: ""
 txtSuffix: ""
-txtOwnerId: ""
+txtOwnerId: "dc960073c72a699533ceaed082f63d25"
 forceTxtOwnerId: false
 extraArgs: {}
 extraEnvVars: []
