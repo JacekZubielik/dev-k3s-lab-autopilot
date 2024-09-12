@@ -14,7 +14,7 @@ cloudflare:
 sources:
   - service
   - ingress
-  - ingressroute
+  - traefik-proxy
 
 domainFilters: []
 excludeDomains: []
