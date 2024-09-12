@@ -5,6 +5,7 @@ metadata:
         argocd.argoproj.io/sync-wave: "3"
         cert-manager.io/cluster-issuer: letsencrypt-staging
         external-dns.alpha.kubernetes.io/target: ENC[AES256_GCM,data:qSqFYmfpouGIrQT5OLUZyThsrjz60FytA8GeahA=,iv:GpJR5wegNL8irywMtMQ2bzyMP8SLGdRXrTitKuUnviQ=,tag:uFO/bdtHuGkQWeDfkQXuzA==,type:str]
+        external-dns.alpha.kubernetes.io/hostname: ENC[AES256_GCM,data:bVpG1TVQYq4hUUFFRKZpYUFWPp1B37l0QfuWOac=,iv:YS91EPt+1k5/omEn8e4LAOmm7aw6GB7Vlf/JZHtHYBE=,tag:2gmZIFkMb33FnTetw9KktA==,type:str]
         kubernetes.io/ingress.class: traefik-external
     name: grafana-staging
     namespace: monitoring
@@ -45,8 +46,8 @@ sops:
             T05kRFo4WHBjYld1WlNya0VIeGwrMFEKeHc+iSnZHNF12usZIKdB/3M2+2jvjYs9
             M828eB9RVndy2zKS+F8iN+3YGs0579oiVrBzPVbcvwKOvP9UW5/bBA==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-08-21T13:19:13Z"
-    mac: ENC[AES256_GCM,data:pdB0iZWp/kqLnibQEVW4uOjgvKgX4MuqjRV3aUCB+sb4F/h+wN7WBG7T+/mWyRpc6eZJQ9u/uiADOvZdV+NrVRaNhOjJT2gUeBgeFeIWT297ztKEg4Fg5XsfKU36irnMNLWzZLyIW0RGrGERDzVDqHCOpamQGLBgYya+92kaD9s=,iv:QQaXPIuop3wsYeIruvp63aWchye/g/tud9wpIQ7R7cA=,tag:lxRWSS4m06K6txHeuedplQ==,type:str]
+    lastmodified: "2024-09-12T13:21:17Z"
+    mac: ENC[AES256_GCM,data:6YXMJon/omVCM2wbsKMZSdjbBTcIMvvED/XM9Ige9Fnu+tXplyj9GSpeqNDfJF4LcIyUzeOJC+NZobaKrcIneNubez0CdtC8VlbMGlxC5FlVPENzlup9gYom4vJaz9Yp+nuHppDY1+2HyB5Sl32CbKDEDgNmDFgO1O70mwyqWno=,iv:L7h4Kb7h7MaG09ZKRds60UxHsUGnkoBBggaMlWcO7/U=,tag:8cqEw0Tldv2ecRfUvLD3tw==,type:str]
     pgp:
         - created_at: "2024-06-21T23:09:24Z"
           enc: |-
@@ -99,8 +100,8 @@ sops:
             T05kRFo4WHBjYld1WlNya0VIeGwrMFEKeHc+iSnZHNF12usZIKdB/3M2+2jvjYs9
             M828eB9RVndy2zKS+F8iN+3YGs0579oiVrBzPVbcvwKOvP9UW5/bBA==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-08-21T13:19:13Z"
-    mac: ENC[AES256_GCM,data:pdB0iZWp/kqLnibQEVW4uOjgvKgX4MuqjRV3aUCB+sb4F/h+wN7WBG7T+/mWyRpc6eZJQ9u/uiADOvZdV+NrVRaNhOjJT2gUeBgeFeIWT297ztKEg4Fg5XsfKU36irnMNLWzZLyIW0RGrGERDzVDqHCOpamQGLBgYya+92kaD9s=,iv:QQaXPIuop3wsYeIruvp63aWchye/g/tud9wpIQ7R7cA=,tag:lxRWSS4m06K6txHeuedplQ==,type:str]
+    lastmodified: "2024-09-12T13:21:17Z"
+    mac: ENC[AES256_GCM,data:6YXMJon/omVCM2wbsKMZSdjbBTcIMvvED/XM9Ige9Fnu+tXplyj9GSpeqNDfJF4LcIyUzeOJC+NZobaKrcIneNubez0CdtC8VlbMGlxC5FlVPENzlup9gYom4vJaz9Yp+nuHppDY1+2HyB5Sl32CbKDEDgNmDFgO1O70mwyqWno=,iv:L7h4Kb7h7MaG09ZKRds60UxHsUGnkoBBggaMlWcO7/U=,tag:8cqEw0Tldv2ecRfUvLD3tw==,type:str]
     pgp:
         - created_at: "2024-06-21T23:09:24Z"
           enc: |-
@@ -172,8 +173,8 @@ sops:
             T05kRFo4WHBjYld1WlNya0VIeGwrMFEKeHc+iSnZHNF12usZIKdB/3M2+2jvjYs9
             M828eB9RVndy2zKS+F8iN+3YGs0579oiVrBzPVbcvwKOvP9UW5/bBA==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-08-21T13:19:13Z"
-    mac: ENC[AES256_GCM,data:pdB0iZWp/kqLnibQEVW4uOjgvKgX4MuqjRV3aUCB+sb4F/h+wN7WBG7T+/mWyRpc6eZJQ9u/uiADOvZdV+NrVRaNhOjJT2gUeBgeFeIWT297ztKEg4Fg5XsfKU36irnMNLWzZLyIW0RGrGERDzVDqHCOpamQGLBgYya+92kaD9s=,iv:QQaXPIuop3wsYeIruvp63aWchye/g/tud9wpIQ7R7cA=,tag:lxRWSS4m06K6txHeuedplQ==,type:str]
+    lastmodified: "2024-09-12T13:21:17Z"
+    mac: ENC[AES256_GCM,data:6YXMJon/omVCM2wbsKMZSdjbBTcIMvvED/XM9Ige9Fnu+tXplyj9GSpeqNDfJF4LcIyUzeOJC+NZobaKrcIneNubez0CdtC8VlbMGlxC5FlVPENzlup9gYom4vJaz9Yp+nuHppDY1+2HyB5Sl32CbKDEDgNmDFgO1O70mwyqWno=,iv:L7h4Kb7h7MaG09ZKRds60UxHsUGnkoBBggaMlWcO7/U=,tag:8cqEw0Tldv2ecRfUvLD3tw==,type:str]
     pgp:
         - created_at: "2024-06-21T23:09:24Z"
           enc: |-
@@ -226,8 +227,8 @@ sops:
             T05kRFo4WHBjYld1WlNya0VIeGwrMFEKeHc+iSnZHNF12usZIKdB/3M2+2jvjYs9
             M828eB9RVndy2zKS+F8iN+3YGs0579oiVrBzPVbcvwKOvP9UW5/bBA==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-08-21T13:19:13Z"
-    mac: ENC[AES256_GCM,data:pdB0iZWp/kqLnibQEVW4uOjgvKgX4MuqjRV3aUCB+sb4F/h+wN7WBG7T+/mWyRpc6eZJQ9u/uiADOvZdV+NrVRaNhOjJT2gUeBgeFeIWT297ztKEg4Fg5XsfKU36irnMNLWzZLyIW0RGrGERDzVDqHCOpamQGLBgYya+92kaD9s=,iv:QQaXPIuop3wsYeIruvp63aWchye/g/tud9wpIQ7R7cA=,tag:lxRWSS4m06K6txHeuedplQ==,type:str]
+    lastmodified: "2024-09-12T13:21:17Z"
+    mac: ENC[AES256_GCM,data:6YXMJon/omVCM2wbsKMZSdjbBTcIMvvED/XM9Ige9Fnu+tXplyj9GSpeqNDfJF4LcIyUzeOJC+NZobaKrcIneNubez0CdtC8VlbMGlxC5FlVPENzlup9gYom4vJaz9Yp+nuHppDY1+2HyB5Sl32CbKDEDgNmDFgO1O70mwyqWno=,iv:L7h4Kb7h7MaG09ZKRds60UxHsUGnkoBBggaMlWcO7/U=,tag:8cqEw0Tldv2ecRfUvLD3tw==,type:str]
     pgp:
         - created_at: "2024-06-21T23:09:24Z"
           enc: |-
@@ -299,8 +300,8 @@ sops:
             T05kRFo4WHBjYld1WlNya0VIeGwrMFEKeHc+iSnZHNF12usZIKdB/3M2+2jvjYs9
             M828eB9RVndy2zKS+F8iN+3YGs0579oiVrBzPVbcvwKOvP9UW5/bBA==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-08-21T13:19:13Z"
-    mac: ENC[AES256_GCM,data:pdB0iZWp/kqLnibQEVW4uOjgvKgX4MuqjRV3aUCB+sb4F/h+wN7WBG7T+/mWyRpc6eZJQ9u/uiADOvZdV+NrVRaNhOjJT2gUeBgeFeIWT297ztKEg4Fg5XsfKU36irnMNLWzZLyIW0RGrGERDzVDqHCOpamQGLBgYya+92kaD9s=,iv:QQaXPIuop3wsYeIruvp63aWchye/g/tud9wpIQ7R7cA=,tag:lxRWSS4m06K6txHeuedplQ==,type:str]
+    lastmodified: "2024-09-12T13:21:17Z"
+    mac: ENC[AES256_GCM,data:6YXMJon/omVCM2wbsKMZSdjbBTcIMvvED/XM9Ige9Fnu+tXplyj9GSpeqNDfJF4LcIyUzeOJC+NZobaKrcIneNubez0CdtC8VlbMGlxC5FlVPENzlup9gYom4vJaz9Yp+nuHppDY1+2HyB5Sl32CbKDEDgNmDFgO1O70mwyqWno=,iv:L7h4Kb7h7MaG09ZKRds60UxHsUGnkoBBggaMlWcO7/U=,tag:8cqEw0Tldv2ecRfUvLD3tw==,type:str]
     pgp:
         - created_at: "2024-06-21T23:09:24Z"
           enc: |-
@@ -353,8 +354,8 @@ sops:
             T05kRFo4WHBjYld1WlNya0VIeGwrMFEKeHc+iSnZHNF12usZIKdB/3M2+2jvjYs9
             M828eB9RVndy2zKS+F8iN+3YGs0579oiVrBzPVbcvwKOvP9UW5/bBA==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-08-21T13:19:13Z"
-    mac: ENC[AES256_GCM,data:pdB0iZWp/kqLnibQEVW4uOjgvKgX4MuqjRV3aUCB+sb4F/h+wN7WBG7T+/mWyRpc6eZJQ9u/uiADOvZdV+NrVRaNhOjJT2gUeBgeFeIWT297ztKEg4Fg5XsfKU36irnMNLWzZLyIW0RGrGERDzVDqHCOpamQGLBgYya+92kaD9s=,iv:QQaXPIuop3wsYeIruvp63aWchye/g/tud9wpIQ7R7cA=,tag:lxRWSS4m06K6txHeuedplQ==,type:str]
+    lastmodified: "2024-09-12T13:21:17Z"
+    mac: ENC[AES256_GCM,data:6YXMJon/omVCM2wbsKMZSdjbBTcIMvvED/XM9Ige9Fnu+tXplyj9GSpeqNDfJF4LcIyUzeOJC+NZobaKrcIneNubez0CdtC8VlbMGlxC5FlVPENzlup9gYom4vJaz9Yp+nuHppDY1+2HyB5Sl32CbKDEDgNmDFgO1O70mwyqWno=,iv:L7h4Kb7h7MaG09ZKRds60UxHsUGnkoBBggaMlWcO7/U=,tag:8cqEw0Tldv2ecRfUvLD3tw==,type:str]
     pgp:
         - created_at: "2024-06-21T23:09:24Z"
           enc: |-
