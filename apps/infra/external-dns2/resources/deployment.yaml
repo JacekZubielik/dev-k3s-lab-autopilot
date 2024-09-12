@@ -57,6 +57,7 @@ spec:
         - --provider=cloudflare
         - --cloudflare-proxied
         - --cloudflare-dns-records-per-page=5000
+        - --traefik-disable-legacy
         env:
         - name: CF_API_KEY
           valueFrom:
