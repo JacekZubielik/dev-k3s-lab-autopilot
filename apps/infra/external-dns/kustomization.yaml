@@ -1,0 +1,56 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+metadata:
+  annotations:
+    argocd.argoproj.io/compare-options: IgnoreExtraneous
+    argocd.argoproj.io/sync-options: Delete=true,Prune=true
+
+resources:
+- resources/ns.yaml
+
+generators:
+- ksops-generator.yaml
+
+# configMapGenerator:
+# - name: argocd-cm
+#   literals:
+#   # - kustomize.buildOptions="--load-restrictor LoadRestrictionsNone"
+#   - resource.compareoptions.ignoreAggregatedRoles="true"
+# - name: argocd-cmd-params-cm
+#   literals:
+#   - controller.diff.server.side="true"
+#   - controller.diff.include.mutation.webhook="true"
+# - name: external-dns-tz
+#   literals:
+#   - TZ=CET
+
+generatorOptions:
+  disableNameSuffixHash: true
+  labels:
+    component: external-dns
+
+helmCharts:
+- name: external-dns
+  version: 8.3.7
+  repo: https://charts.bitnami.com/bitnami
+  includeCRDs: true
+  namespace: external-dns
+  releaseName: external-dns
+  valuesFile: values.yaml
+
+patches:
+- path: patches/deployment.patch.yaml
+  target:
+    version: v1
+    kind: Deployment
+    name: external-dns
+    namespace: external-dns
+
+- path: patches/serviceaccount.patch.yaml
+  target:
+    version: v1
+    kind: ServiceAccount
+    name: external-dns
+    namespace: external-dns

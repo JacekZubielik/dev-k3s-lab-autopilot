@@ -1,0 +1,157 @@
+---
+dryRun: false
+policy: sync  # 'upsert-only' or 'sync'
+clusterDomain: kubernetes.default.svc  # cluster.local
+provider: cloudflare
+
+containerPorts:
+  http: 7979
+
+## Cloudflare configuration to be set via arguments/env. variables
+cloudflare:
+  accessKeyIDSecretRef:
+    name: "external-dns"
+    key: "apiToken"
+  secretAccessKeySecretRef:
+    name: "external-dns"
+    key: "apiKey"
+  secretAccessKeySecretRef:
+    name: "external-dns"
+    key: "email"
+  secretName: ""
+  ## @param cloudflare.proxied When using the Cloudflare provider, enable the proxy feature (DDOS protection, CDN...) (optional)
+  proxied: true
+  dnsRecordsPerPage: 100
+
+## @param domainFilters Limit possible target zones by domain suffixes (optional)
+domainFilters: []
+## @param excludeDomains Exclude subdomains (optional)
+excludeDomains: []
+## @param regexDomainFilter Limit possible target zones by regex domain suffixes (optional)
+## If regexDomainFilter is specified, domainFilters will be ignored
+regexDomainFilter: ""
+## @param regexDomainExclusion Exclude subdomains by using regex pattern (optional)
+## If regexDomainFilter is specified, excludeDomains will be ignored and external-dns will use regexDomainExclusion even though regexDomainExclusion is empty
+regexDomainExclusion: ""
+## @param zoneNameFilters Filter target zones by zone domain (optional)
+zoneNameFilters: []
+## @param zoneIdFilters Limit possible target zones by zone id (optional)
+zoneIdFilters: []
+## @param annotationFilter Filter sources managed by external-dns via annotation using label selector (optional)
+annotationFilter: ""
+## @param labelFilter Select sources managed by external-dns using label selector (optional)
+labelFilter: ""
+## @param ingressClassFilters Filter sources managed by external-dns via IngressClass (optional)
+ingressClassFilters: []
+## @param managedRecordTypesFilters Filter record types managed by external-dns (optional)
+managedRecordTypesFilters: []
+## @param dryRun When enabled, prints DNS record changes rather than actually performing them (optional)
+
+triggerLoopOnEvent: false
+interval: "1m"
+logLevel: info
+logFormat: text
+registry: "txt"
+txtPrefix: ""
+txtSuffix: ""
+txtOwnerId: ""
+forceTxtOwnerId: false
+txtEncrypt:
+  enabled: false
+  aesKey: ""
+  secretName: ""
+
+extraArgs: {}
+extraEnvVars: []
+extraEnvVarsCM: ""
+extraEnvVarsSecret: ""
+
+lifecycleHooks: {}
+schedulerName: ""
+topologySpreadConstraints: []
+podAffinityPreset: ""
+podAntiAffinityPreset: soft
+nodeAffinityPreset:
+  type: ""
+  key: ""
+  values: []
+affinity: {}
+nodeSelector: {}
+tolerations: []
+podAnnotations: {}
+podLabels: {}
+priorityClassName: ""
+
+crd:
+  create: false
+  apiversion: ""
+  kind: ""
+
+service:
+  enabled: true
+  type: ClusterIP
+  ports:
+    http: 7979
+
+serviceAccount:
+  create: true
+  name: ""
+  annotations: {}
+  automountServiceAccountToken: true
+  labels: {}
+
+rbac:
+  create: true
+  clusterRole: true
+  apiVersion: v1
+  pspEnabled: false
+
+containerSecurityContext:
+  runAsNonRoot: true
+  allowPrivilegeEscalation: false
+  readOnlyRootFilesystem: true
+  capabilities:
+    drop: ["ALL"]
+# If you are deploying to AWS EKS and you want to leverage.
+# You will need to override fsGroup and runAsUser with 65534(nfsnobody) and 0 respectively.
+# Otherwise service account token will not be properly mounted.
+podSecurityContext:
+  enabled: true
+  fsGroup: 65534  # 1001
+  runAsUser: 0  # 1001
+
+resources:
+  requests:
+    cpu: 250m
+    memory: 300Mi
+  limits:
+    cpu: 500m
+    memory: 300Mi
+
+podDisruptionBudget: {}
+
+## Prometheus Exporter / Metrics
+metrics:
+  enabled: true
+  podAnnotations: {}
+  serviceMonitor:
+    enabled: true
+    namespace: ""
+    interval: ""
+    scrapeTimeout: ""
+    selector: {}
+    metricRelabelings: []
+    relabelings: []
+    ## @param metrics.serviceMonitor.honorLabels Specify honorLabels parameter to add the scrape endpoint
+    honorLabels: false
+    ## DEPRECATED metrics.serviceMonitor.additionalLabels will be removed in a future release - Please use metrics.serviceMonitor.labels instead
+    ## @param metrics.serviceMonitor.labels Used to pass Labels that are required by the installed Prometheus Operator
+    ## ref: https://github.com/coreos/prometheus-operator/blob/master/Documentation/api.md#prometheusspec
+    labels: {}
+    jobLabel: ""
+  ## Google Managed Prometheus PodMonitor configuration
+  googlePodMonitor:
+    enabled: false
+    namespace: ""
+    interval: "60s"
+    endpoint: /metrics
