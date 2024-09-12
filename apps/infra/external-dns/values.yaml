@@ -1,14 +1,14 @@
 ---
 dryRun: false
 policy: sync
-clusterDomain: kubernetes.default.svc  # cluster.local
+clusterDomain: cluster.local # kubernetes.default.svc  # cluster.local
 provider: cloudflare
 containerPorts:
   http: 7979
 
 cloudflare:
   secretName: external-dns-cloudflare-token
-  # email: some-machine-account@domain.com
+  email: zumbik@protonmail.com
   proxied: true
 
 sources:
