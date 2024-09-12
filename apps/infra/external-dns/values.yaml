@@ -58,7 +58,7 @@ logFormat: text
 registry: "txt"
 txtPrefix: ""
 txtSuffix: ""
-txtOwnerId: "dc960073c72a699533ceaed082f63d25"
+txtOwnerId: ""
 forceTxtOwnerId: false
 extraArgs: {}
 extraEnvVars: []
