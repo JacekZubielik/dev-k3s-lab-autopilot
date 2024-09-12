@@ -26,7 +26,7 @@ containerPorts:
 cloudflare:
   proxied: true
   secretName: cloudflare-api-key
-  # email: zumbik@protonmail.com
+  email: zumbik@protonmail.com
 dnsRecordsPerPage: 100
 
 ## Compatibility adaptations for Traefik
