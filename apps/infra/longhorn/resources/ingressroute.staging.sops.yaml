@@ -5,8 +5,7 @@ metadata:
         argocd.argoproj.io/sync-wave: "3"
         cert-manager.io/cluster-issuer: letsencrypt-staging
         cert-manager.io/common-name: longhorn.storage.anotherlife.org.pl
-        # external-dns.alpha.kubernetes.io/target: anotherlife.org.pl
-        external-dns.alpha.kubernetes.io/hostname: ENC[AES256_GCM,data:OYlsItIOGi82Yk1X7ArADQmFr87lMTgqF6dHrAwHR9XVQdM=,iv:561gb8bEplxe2+oRFsjzhOkYENrxJJ1j4tvv10eSqhU=,tag:FeFVs5fM7gspRqKBBMK12w==,type:str]
+        external-dns.alpha.kubernetes.io/hostname: ENC[AES256_GCM,data:JchSG3a8Yq7J8bqMKvq73IRPPQGJBPZQzF4=,iv:bzR2qFBDLFk/B+Hy9Wg5jHorsAC2YkmF6om/1CNsv0k=,tag:o7FWW3G9NGUlS9Yw5aWekQ==,type:str]
         kubernetes.io/ingress.class: traefik-external
     name: longhorn-frontend-staging
     namespace: longhorn-system
@@ -47,8 +46,8 @@ sops:
             a0M5R2o1QnBUMDJQOTcvL3JPbm81dkEKyWyD1kzJJJSdec6MMabEuWxcBt7ahl+T
             0vEP1BDNFpIrFu5ZBwoB9poTGrfqKHbFnB0qXgiXwz6EBECisaDjSg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-09-12T16:48:25Z"
-    mac: ENC[AES256_GCM,data:KM7E6V2w1FuFqx56SHigli/K4TaLPFIorfJXh3bWQhsDStXFxGfXp7ij+4QlS+TL4Akhar/1xnfdE3qexJLjhXOqZZSrdBVKCLwtmOv6xMPK6ZsrYFfxeBiDcJGwUwK+8NimgV6JUs2DXniYBBr8i7MgA/BBggA/mD2M6+4r5d4=,iv:IpVoJEUENpu0BdQTeW+CuoXemzw+5aymg7nbY6s2hRM=,tag:XkiPqi1cIzGENVauWAA9bA==,type:str]
+    lastmodified: "2024-09-12T16:53:17Z"
+    mac: ENC[AES256_GCM,data:+NR+WAml+SSECgYej3IePT0X6rJH/kHhfB1flyoSKKHEAssl1U4YJ65v6EJa6FcqSOy6/ND3GvuVU7cWqISGrNrDHE/9OfQa+u2qQOvNJ5AH33qJPL4CDYTozyARXNo4UG5P67pLq6kPxKtm1paABx0FVzQtqiW7NCBJhSQOnjg=,iv:42nMsmqS5n+VVSlO+0+TfXLqe7KT2SpxXiy5wQkJjok=,tag:Abf2zzQnPGJLchgdHuQ4qg==,type:str]
     pgp:
         - created_at: "2024-07-07T10:31:05Z"
           enc: |-
@@ -101,8 +100,8 @@ sops:
             a0M5R2o1QnBUMDJQOTcvL3JPbm81dkEKyWyD1kzJJJSdec6MMabEuWxcBt7ahl+T
             0vEP1BDNFpIrFu5ZBwoB9poTGrfqKHbFnB0qXgiXwz6EBECisaDjSg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-09-12T16:48:25Z"
-    mac: ENC[AES256_GCM,data:KM7E6V2w1FuFqx56SHigli/K4TaLPFIorfJXh3bWQhsDStXFxGfXp7ij+4QlS+TL4Akhar/1xnfdE3qexJLjhXOqZZSrdBVKCLwtmOv6xMPK6ZsrYFfxeBiDcJGwUwK+8NimgV6JUs2DXniYBBr8i7MgA/BBggA/mD2M6+4r5d4=,iv:IpVoJEUENpu0BdQTeW+CuoXemzw+5aymg7nbY6s2hRM=,tag:XkiPqi1cIzGENVauWAA9bA==,type:str]
+    lastmodified: "2024-09-12T16:53:17Z"
+    mac: ENC[AES256_GCM,data:+NR+WAml+SSECgYej3IePT0X6rJH/kHhfB1flyoSKKHEAssl1U4YJ65v6EJa6FcqSOy6/ND3GvuVU7cWqISGrNrDHE/9OfQa+u2qQOvNJ5AH33qJPL4CDYTozyARXNo4UG5P67pLq6kPxKtm1paABx0FVzQtqiW7NCBJhSQOnjg=,iv:42nMsmqS5n+VVSlO+0+TfXLqe7KT2SpxXiy5wQkJjok=,tag:Abf2zzQnPGJLchgdHuQ4qg==,type:str]
     pgp:
         - created_at: "2024-07-07T10:31:05Z"
           enc: |-
