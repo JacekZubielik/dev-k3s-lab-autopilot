@@ -58,7 +58,7 @@ logFormat: text
 registry: "txt"
 txtPrefix: ""
 txtSuffix: ""
-txtOwnerId: "default"
+txtOwnerId: "external-dns"
 forceTxtOwnerId: false
 extraArgs: {}
 extraEnvVars: []
