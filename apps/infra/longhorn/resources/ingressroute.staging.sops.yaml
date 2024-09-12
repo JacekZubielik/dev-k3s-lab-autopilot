@@ -4,8 +4,8 @@ metadata:
     annotations:
         argocd.argoproj.io/sync-wave: "3"
         cert-manager.io/cluster-issuer: letsencrypt-staging
-        cert-manager.io/common-name: longhorn.storage.anotherlife.org.pl
-        external-dns.alpha.kubernetes.io/hostname: ENC[AES256_GCM,data:dbXU7Pfff2IDks1APqZT1CTHmaCaD1BF2JkrTLaxpP6EBDI=,iv:UbS54sRDTtl0WRfwezk6h+602rYi++9tb6JdZgudYxY=,tag:UQCMsABzFymbN92jM42/VQ==,type:str]
+        cert-manager.io/common-name: longhorn.anotherlife.org.pl
+        external-dns.alpha.kubernetes.io/hostname: ENC[AES256_GCM,data:P8gORKSJDobAvDuIzOkNkqQGfu2V8m/Z/CNU,iv:9gsMmxD+uMJ9cVzHQJ1Yy91QceN6lHcAT8ysew7//6w=,tag:3JC1v7PngjOva4ExsjIZrg==,type:str]
         kubernetes.io/ingress.class: traefik-external
     name: longhorn-frontend-staging
     namespace: longhorn-system
@@ -14,7 +14,7 @@ spec:
         - websecure
     routes:
         - kind: Rule
-          match: ENC[AES256_GCM,data:NsMhdUue+v215MT0vnm64ZV1ZW11ReT5JKTOeVCT0WzfkceU09vNd/xXtg==,iv:YFrdFYO1sbBVhtVWF4PyQt5JZGSYy/v/HREit638ByQ=,tag:wPGBPL/g4WAeuXk89oGlUw==,type:str]
+          match: ENC[AES256_GCM,data:iWUakyX9D+4Fa+e/8gXQke+mssom+ertiiawPjNLP5wi4nM=,iv:GA5fJY4dWXmafpnHbxfSzmBA6xvJBKpYlWFFkO1UEYU=,tag:mhzJXX6gJPvc7EGJLEVlCw==,type:str]
           middlewares:
             - name: longhorn-dashboard
               namespace: traefik
@@ -24,9 +24,9 @@ spec:
               namespace: longhorn-system
     tls:
         domains:
-            - main: ENC[AES256_GCM,data:LCnkyhkZkBWBl4mt7xEoal4R0wA+rTfSYvc=,iv:TG0quSVuaSBZk2afwmb8fwlw+dkT4AKc55zH/z6p+tM=,tag:vMT8+95UYJF5SaoYJmRiJg==,type:str]
+            - main: ENC[AES256_GCM,data:wEYrXPpojHYXdXqJGWIbxeVf,iv:Tv2dZE1QHD9IhSkFolwf64DMvcY0M0tQ4iNbNIXEODU=,tag:4JhQz+eqymWw8zIX3xw64Q==,type:str]
               sans:
-                - ENC[AES256_GCM,data:Pj/Nhf6XJ93JcP67o5KjF0F9yewnBqwvM1Q5,iv:5nnvSih6JF57/cO3lyLEVI1LNtUtCkhBRW38CGwg+Uk=,tag:l+RcDRpUO17qyJznoVR+nQ==,type:str]
+                - ENC[AES256_GCM,data:lNqsejL2a7hou2QDGjqhulAK5w==,iv:7OABNKA+CxMiFkzgsdqOH6BPwGZrSBuMYDaFOFm0iJQ=,tag:CgYluOy5ElVvMQPwVDnmSA==,type:str]
         options:
             name: tls-ver13
             namespace: traefik
@@ -46,8 +46,8 @@ sops:
             a0M5R2o1QnBUMDJQOTcvL3JPbm81dkEKyWyD1kzJJJSdec6MMabEuWxcBt7ahl+T
             0vEP1BDNFpIrFu5ZBwoB9poTGrfqKHbFnB0qXgiXwz6EBECisaDjSg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-09-12T17:57:45Z"
-    mac: ENC[AES256_GCM,data:ebYaZLdvifXR1Ae1uVEnYRbgBpXvPafK8VYEhPgfZr8s9zcVYsPFaB6yilX7vBYM0hRDRiEMdJ6fO5FTjJGJSkwuY8T2/qvoL6n9wZQW3mFrDgaBVRbZ8vc+eGx3kwszqbWn7aS+QPLXbWmzZyUC6N/Fb5tzuBhkiwg4zP3Ymlg=,iv:dd5LJA4B9fTsB2PT9zTbu1bc7FcViy/ce/eGH6KloX0=,tag:kkvMW7nvGgvawidCRa5h+A==,type:str]
+    lastmodified: "2024-09-12T18:16:44Z"
+    mac: ENC[AES256_GCM,data:Bc5XVTN3JqeCtUL1OT/IMmAktw9yJrCCt5kyIs2hBvaONv/NcErcrmYhOtsNdRX01TgCdGKS8y9w04qyx4IyaloOf26uskKXpVYJPhJbhhRyGy6eR4qjEjBGQf+qFio4v1IwOSqsRFwvJImaOL5oouiuuZ7ZaaDaNwWKapeeFAI=,iv:f2uMvVNVEdS3NrIbauZYl5MK+MolF51jn8erIXbmYyk=,tag:KlPklpQ0zuUgctUUtD1/Dg==,type:str]
     pgp:
         - created_at: "2024-07-07T10:31:05Z"
           enc: |-
@@ -100,8 +100,8 @@ sops:
             a0M5R2o1QnBUMDJQOTcvL3JPbm81dkEKyWyD1kzJJJSdec6MMabEuWxcBt7ahl+T
             0vEP1BDNFpIrFu5ZBwoB9poTGrfqKHbFnB0qXgiXwz6EBECisaDjSg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-09-12T17:57:45Z"
-    mac: ENC[AES256_GCM,data:ebYaZLdvifXR1Ae1uVEnYRbgBpXvPafK8VYEhPgfZr8s9zcVYsPFaB6yilX7vBYM0hRDRiEMdJ6fO5FTjJGJSkwuY8T2/qvoL6n9wZQW3mFrDgaBVRbZ8vc+eGx3kwszqbWn7aS+QPLXbWmzZyUC6N/Fb5tzuBhkiwg4zP3Ymlg=,iv:dd5LJA4B9fTsB2PT9zTbu1bc7FcViy/ce/eGH6KloX0=,tag:kkvMW7nvGgvawidCRa5h+A==,type:str]
+    lastmodified: "2024-09-12T18:16:44Z"
+    mac: ENC[AES256_GCM,data:Bc5XVTN3JqeCtUL1OT/IMmAktw9yJrCCt5kyIs2hBvaONv/NcErcrmYhOtsNdRX01TgCdGKS8y9w04qyx4IyaloOf26uskKXpVYJPhJbhhRyGy6eR4qjEjBGQf+qFio4v1IwOSqsRFwvJImaOL5oouiuuZ7ZaaDaNwWKapeeFAI=,iv:f2uMvVNVEdS3NrIbauZYl5MK+MolF51jn8erIXbmYyk=,tag:KlPklpQ0zuUgctUUtD1/Dg==,type:str]
     pgp:
         - created_at: "2024-07-07T10:31:05Z"
           enc: |-
