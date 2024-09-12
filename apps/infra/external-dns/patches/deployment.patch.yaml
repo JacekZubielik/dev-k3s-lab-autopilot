@@ -1,7 +1,7 @@
 ---
-# - op: replace
-#   path: /spec/template/spec/containers/0/args/0
-#   value: --policy=sync
+- op: replace
+  path: /spec/template/spec/containers/0/args/0
+  value: --traefik.disableLegacy=true
 
 - op: add
   path: /spec/template/spec/containers/0/args/1

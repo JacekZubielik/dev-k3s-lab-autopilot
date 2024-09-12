@@ -9,6 +9,15 @@ containerPorts:
 cloudflare:
   proxied: true
 
+## Compatibility adaptations for Traefik
+
+traefik:
+  ## @param traefik.disableNew Disable listeners on Resources under traefik.io
+  disableNew: false
+  ## @param traefik.disableLegacy Disable listeners on Resources under traefik.containo.us
+  disableLegacy: true
+
+
 env:
   - name: CF_API_TOKEN
     valueFrom:
