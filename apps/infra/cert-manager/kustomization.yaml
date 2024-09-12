@@ -11,6 +11,7 @@ metadata:
 resources:
 - resources/ns.yaml
 - resources/service.monitor.yaml
+- resources/issuer.cf.staging.yaml
 # - resources/cert.default.svc.yaml
 # - resources/issuer.default.svc.yaml
 # - resources/issuer.k3s.ca-cluster.yaml
