@@ -4,9 +4,9 @@ metadata:
     annotations:
         argocd.argoproj.io/sync-wave: "3"
         cert-manager.io/cluster-issuer: letsencrypt-staging
-        cert-manager.io/common-name: longhorn.anotherlife.org.pl
-        external-dns.alpha.kubernetes.io/hostname: ENC[AES256_GCM,data:slUpSo7MWEq24OZraJQVqDcV/EjKnpRDDNPR,iv:imGfjb0Sdo7Z4M5++s2/EVXG1Bk+4BzCri67TpeqAyg=,tag:gU2BuVJ7SroxgUK74rUefQ==,type:str]
-        external-dns.alpha.kubernetes.io/target: ENC[AES256_GCM,data:EA4BSMFmhzE2T+5BLWIp9EKk,iv:nyq56O+6txfH1f3G/JsbcAPP22Wn5l552iuTICoRDkU=,tag:KEoouwIqw0jimO+Gi/plXw==,type:str]
+        cert-manager.io/common-name: longhorn.storage.anotherlife.org.pl
+        external-dns.alpha.kubernetes.io/hostname: ENC[AES256_GCM,data:GG1ZNbwhshiMeWjEcKBh7uW9mkg1v57nufo12Bsvypg5+fk=,iv:95sM2IRl+kRBmowG6vzzp25AxOCOIN/KgklBk3LlUXs=,tag:39/ePR8N1KN5DsoV2RTqxw==,type:str]
+        external-dns.alpha.kubernetes.io/target: ENC[AES256_GCM,data:Rv9KaaTbD/LOk8ZFNL8qSfC/XExA7zX1wnQ=,iv:/+PFFiWYtcvHH3oPMmgZW0Dcex+Gv0vmcZ4roDOd8Zc=,tag:SqFeWpxHbtQn3CmaQk52mA==,type:str]
         external-dns.alpha.kubernetes.io/ttl: "300"
         kubernetes.io/ingress.class: traefik-external
     name: longhorn-frontend-staging
@@ -16,7 +16,7 @@ spec:
         - websecure
     routes:
         - kind: Rule
-          match: ENC[AES256_GCM,data:iWUakyX9D+4Fa+e/8gXQke+mssom+ertiiawPjNLP5wi4nM=,iv:GA5fJY4dWXmafpnHbxfSzmBA6xvJBKpYlWFFkO1UEYU=,tag:mhzJXX6gJPvc7EGJLEVlCw==,type:str]
+          match: ENC[AES256_GCM,data:7lK/JT1xMrRM4BEHAg107qv0n9PrngXpFdhLz+hHAKl5WArlsz4iLhW3gg==,iv:oII4IihGw9Z9sgpp2BQbzYAaSMaZ66AMG/hcub9PulM=,tag:d4ndZ2zb5bLd54a7SjpqCw==,type:str]
           middlewares:
             - name: longhorn-dashboard
               namespace: traefik
@@ -26,9 +26,9 @@ spec:
               namespace: longhorn-system
     tls:
         domains:
-            - main: ENC[AES256_GCM,data:wEYrXPpojHYXdXqJGWIbxeVf,iv:Tv2dZE1QHD9IhSkFolwf64DMvcY0M0tQ4iNbNIXEODU=,tag:4JhQz+eqymWw8zIX3xw64Q==,type:str]
+            - main: ENC[AES256_GCM,data:7hLe3UZMuuZqfxvIFxmNP77H3ARlUGzZ1Go=,iv:NRRmSIF6QXTbaOBZ7USyuhlTW5LqJl39EjkBiEff0Ak=,tag:IeXI9w1tCcab6mWH7S7SnQ==,type:str]
               sans:
-                - ENC[AES256_GCM,data:lNqsejL2a7hou2QDGjqhulAK5w==,iv:7OABNKA+CxMiFkzgsdqOH6BPwGZrSBuMYDaFOFm0iJQ=,tag:CgYluOy5ElVvMQPwVDnmSA==,type:str]
+                - ENC[AES256_GCM,data:2SSVB8+WKSxgnGiWbxRz2uqN2SIVGe4tWoJn,iv:zgdhFsyA/LhiLpm51GgiGv1fk6TziJA3t5USlvMJkt8=,tag:LinpILgAyYr1Q5PAdFVLLw==,type:str]
         options:
             name: tls-ver13
             namespace: traefik
@@ -48,8 +48,8 @@ sops:
             a0M5R2o1QnBUMDJQOTcvL3JPbm81dkEKyWyD1kzJJJSdec6MMabEuWxcBt7ahl+T
             0vEP1BDNFpIrFu5ZBwoB9poTGrfqKHbFnB0qXgiXwz6EBECisaDjSg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-09-12T22:21:48Z"
-    mac: ENC[AES256_GCM,data:3IoWNc/OQPQw/D38eKrpLUol7zoWYLU+iTzFAWT3vvY3X4aIVZ9xNRsaWo9df0Dyi0yaT2pk05sTUGoqkhMGc2H4UgdGiTEhLobjSv4riTDErCju4Ce3VWEkgxJmzITgDkcYe3TxD/IRqIIstfnlnfXusxQ0/EnaBCrfKHXNMN8=,iv:ezUoElHdQO7bWXrIRcKhf0y3IPTV3c0Z7wCEpXoJKsE=,tag:9GHr8mJFIGa3S7xKE8HRvQ==,type:str]
+    lastmodified: "2024-09-13T14:04:05Z"
+    mac: ENC[AES256_GCM,data:+VRrDG42BvLSitHOHoKe8AdFDr7bLB6vHGMzJc4IglyBbbr4oVtBvjH2b3eaW/2n913Aacs9eHx3wpJRoPI4ZjkWPg9B1eWkGgB+PRa3uFtyGDVRm9l+2hWkFXt2Ez/xD1v0V6ScvuZxWIf1Y1eFCXup7QmWIgBrrbnHE4z/6Ik=,iv:gHBfKXHFYCeSRntwqGzmyKCnqe1RR2KWUhXnx4J//h0=,tag:+WK/i+eW+N3EC3Gr+Lbg9Q==,type:str]
     pgp:
         - created_at: "2024-07-07T10:31:05Z"
           enc: |-
@@ -102,8 +102,8 @@ sops:
             a0M5R2o1QnBUMDJQOTcvL3JPbm81dkEKyWyD1kzJJJSdec6MMabEuWxcBt7ahl+T
             0vEP1BDNFpIrFu5ZBwoB9poTGrfqKHbFnB0qXgiXwz6EBECisaDjSg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-09-12T22:21:48Z"
-    mac: ENC[AES256_GCM,data:3IoWNc/OQPQw/D38eKrpLUol7zoWYLU+iTzFAWT3vvY3X4aIVZ9xNRsaWo9df0Dyi0yaT2pk05sTUGoqkhMGc2H4UgdGiTEhLobjSv4riTDErCju4Ce3VWEkgxJmzITgDkcYe3TxD/IRqIIstfnlnfXusxQ0/EnaBCrfKHXNMN8=,iv:ezUoElHdQO7bWXrIRcKhf0y3IPTV3c0Z7wCEpXoJKsE=,tag:9GHr8mJFIGa3S7xKE8HRvQ==,type:str]
+    lastmodified: "2024-09-13T14:04:05Z"
+    mac: ENC[AES256_GCM,data:+VRrDG42BvLSitHOHoKe8AdFDr7bLB6vHGMzJc4IglyBbbr4oVtBvjH2b3eaW/2n913Aacs9eHx3wpJRoPI4ZjkWPg9B1eWkGgB+PRa3uFtyGDVRm9l+2hWkFXt2Ez/xD1v0V6ScvuZxWIf1Y1eFCXup7QmWIgBrrbnHE4z/6Ik=,iv:gHBfKXHFYCeSRntwqGzmyKCnqe1RR2KWUhXnx4J//h0=,tag:+WK/i+eW+N3EC3Gr+Lbg9Q==,type:str]
     pgp:
         - created_at: "2024-07-07T10:31:05Z"
           enc: |-
