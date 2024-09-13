@@ -100,8 +100,8 @@ metrics:
     ## @param metrics.serviceMonitor.interval Interval at which metrics should be scraped
     ## ref: https://github.com/coreos/prometheus-operator/blob/master/Documentation/api.md#endpoint
     ##
-    interval: 30
-    scrapeTimeout: 60
+    interval: ""
+    scrapeTimeout: ""
     selector: {}
     ## @param metrics.serviceMonitor.metricRelabelings Specify Metric Relabelings to add to the scrape endpoint
     ## ref: https://github.com/coreos/prometheus-operator/blob/master/Documentation/api.md#relabelconfig
