@@ -139,8 +139,8 @@ providers:
     namespaces: [] # "argocd,cert-manager,default,dev,monitoring,prod,traefik,infra,longhorn-system,media,iot,iot-k3s,backup,storage,minio"
   kubernetesIngress:
     enabled: true
-  kubernetesGateway:
-    enabled: true
+  # kubernetesGateway:
+  #   enabled: true
 
   kubernetesIngress:
     enabled: true
