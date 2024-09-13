@@ -1,0 +1,432 @@
+---
+global:
+  nameOverride: ""
+  fullnameOverride: ""
+  additionalLabels:
+    {}
+  revisionHistoryLimit: 3
+  addPrometheusAnnotations: true
+  nodeSelector: {}
+  tolerations: []
+  affinity:
+    podAntiAffinity: soft
+    nodeAffinity:
+      type: hard
+      matchExpressions:
+        []
+
+  deploymentStrategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+
+  env:
+  - name: AUTHENTIK_SECRET_KEY
+    valueFrom:
+      secretKeyRef:
+        name: authentik-private
+        key: AUTHENTIK_SECRET_KEY
+
+  envFrom:
+    []
+    # - configMapRef:
+    #     name: config-map-name
+    # - secretRef:
+    #     name: secret-name
+  volumeMounts:
+    []
+    # - name: custom
+    #   mountPath: /custom
+  volumes:
+    []
+    # - name: custom
+    #   emptyDir: {}
+
+## Authentik configuration
+authentik:
+  log_level: info
+  email:
+    port: 2525
+    use_tls: false
+    use_ssl: false
+    timeout: 30
+  outposts:
+    container_image_base: ghcr.io/goauthentik/%(type)s:%(version)s
+  error_reporting:
+    enabled: false
+    environment: "k8s"
+    send_pii: false
+  postgresql:
+    host: "{{ .Release.Name }}-postgresql"
+
+blueprints:
+  configMaps: []
+  secrets: []
+
+## authentik server
+server:
+  name: server
+  replicas: 1
+  autoscaling:
+    enabled: false
+    minReplicas: 1
+    maxReplicas: 5
+    targetCPUUtilizationPercentage: 50
+    targetMemoryUtilizationPercentage: ~
+    behavior:
+      {}
+      # scaleDown:
+      #   stabilizationWindowSeconds: 300
+      #   policies:
+      #     - type: Pods
+      #       value: 1
+      #       periodSeconds: 180
+      # scaleUp:
+      #   stabilizationWindowSeconds: 300
+      #   policies:
+      #     - type: Pods
+      #       value: 2
+      #       periodSeconds: 60
+    # -- Configures custom HPA metrics for the authentik server
+    # Ref: https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/
+    metrics: []
+
+  ## authentik server Pod Disruption Budget
+  ## Ref: https://kubernetes.io/docs/tasks/run-application/configure-pdb/
+  pdb:
+    enabled: false
+    labels: {}
+    annotations: {}
+    minAvailable: ""
+    maxUnavailable: ""
+
+  env:
+  - name: AUTHENTIK_EMAIL__HOST
+    valueFrom:
+      secretKeyRef:
+        name: authentik-private
+        key: AUTHENTIK_EMAIL__HOST
+  - name: AUTHENTIK_EMAIL__USERNAME
+    valueFrom:
+      secretKeyRef:
+        name: authentik-private
+        key: AUTHENTIK_EMAIL__USERNAME
+  - name: AUTHENTIK_EMAIL__PASSWORD
+    valueFrom:
+      secretKeyRef:
+        name: authentik-private
+        key: AUTHENTIK_EMAIL__PASSWORD
+  - name: AUTHENTIK_EMAIL__FROM
+    valueFrom:
+      secretKeyRef:
+        name: authentik-private
+        key: AUTHENTIK_EMAIL__FROM
+  - name: AUTHENTIK_POSTGRESQL__NAME
+    valueFrom:
+      secretKeyRef:
+        name: authentik-private
+        key: AUTHENTIK_POSTGRESQL__NAME
+  - name: AUTHENTIK_POSTGRESQL__USER
+    valueFrom:
+      secretKeyRef:
+        name: authentik-private
+        key: AUTHENTIK_POSTGRESQL__USER
+  - name: AUTHENTIK_POSTGRESQL__PASSWORD
+    valueFrom:
+      secretKeyRef:
+        name: authentik-private
+        key: AUTHENTIK_POSTGRESQL__PASSWORD
+  - name: AUTHENTIK_POSTGRESQL__PORT
+    valueFrom:
+      secretKeyRef:
+        name: authentik-private
+        key: AUTHENTIK_POSTGRESQL__PORT
+
+  redis:
+    host: "{{ .Release.Name }}-redis-master"
+  envFrom:
+    []
+  # -- Specify postStart and preStop lifecycle hooks for you authentik server container
+  lifecycle: {}
+
+  # -- Additional containers to be added to the authentik server pod
+  ## Note: Supports use of custom Helm templates
+  extraContainers: []
+  # - name: my-sidecar
+  #   image: nginx:latest
+
+  # -- Init containers to add to the authentik server pod
+  ## Note: Supports use of custom Helm templates
+  initContainers: []
+  # - name: download-tools
+  #   image: alpine:3
+  #   command: [sh, -c]
+  #   args:
+  #     - echo init
+
+  volumeMounts:
+    []
+  volumes:
+    []
+
+  deploymentAnnotations: {}
+  podAnnotations: {}
+  podLabels: {}
+  resources:
+    {}
+    # requests:
+    #   cpu: 100m
+    #   memory: 512Mi
+    # limits:
+    #   memory: 512Mi
+
+  containerPorts:
+    http: 9000
+    https: 9443
+    metrics: 9300
+
+  livenessProbe:
+    failureThreshold: 3
+    initialDelaySeconds: 20
+    periodSeconds: 20
+    successThreshold: 1
+    timeoutSeconds: 5
+    httpGet:
+      path: /-/health/live/
+      port: http
+
+  readinessProbe:
+    failureThreshold: 3
+    initialDelaySeconds: 20
+    periodSeconds: 20
+    successThreshold: 1
+    timeoutSeconds: 5
+    httpGet:
+      path: /-/health/ready/
+      port: http
+
+  startupProbe:
+    failureThreshold: 3
+    initialDelaySeconds: 20
+    periodSeconds: 20
+    successThreshold: 1
+    timeoutSeconds: 5
+    httpGet:
+      path: /-/health/live/
+      port: http
+
+  terminationGracePeriodSeconds: 30
+  priorityClassName: ""
+  nodeSelector: {}
+    # kubernetes.io/hostname: dev-k3s-master-0
+  tolerations: []
+  affinity: {}
+
+  # -- Assign custom [TopologySpreadConstraints] rules to the authentik server
+  # @default -- `[]` (defaults to global.topologySpreadConstraints)
+  ## Ref: https://kubernetes.io/docs/concepts/workloads/pods/pod-topology-spread-constraints/
+  ## If labelSelector is left out, it will default to the labelSelector configuration of the deployment
+  topologySpreadConstraints:
+    []
+    # - maxSkew: 1
+    #   topologyKey: topology.kubernetes.io/zone
+    #   whenUnsatisfiable: DoNotSchedule
+
+  # -- Deployment strategy to be added to the authentik server Deployment
+  # @default -- `{}` (defaults to global.deploymentStrategy)
+  deploymentStrategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+
+  ## authentik server service configuration
+  service:
+    labels: {}
+    type: ClusterIP
+    nodePortHttp: 30080
+    nodePortHttps: 30443
+    servicePortHttp: 80
+    servicePortHttps: 443
+    servicePortHttpName: http
+    servicePortHttpsName: https
+    # servicePortHttpAppProtocol: HTTP
+    # servicePortHttpsAppProtocol: HTTPS
+    loadBalancerIP: ""
+    loadBalancerSourceRanges: []
+    externalIPs: []
+    externalTrafficPolicy: ""
+    sessionAffinity: ""
+    sessionAffinityConfig: {}
+
+  ## authentik server metrics service configuration
+  metrics:
+    enabled: true
+    service:
+      type: ClusterIP
+      clusterIP: ""
+      annotations: {}
+      labels: {}
+      servicePort: 9300
+      portName: metrics
+    serviceMonitor:
+      enabled: true
+      interval: 30s
+      scrapeTimeout: 3s
+      relabelings: []
+      metricRelabelings: []
+      selector:
+        {}
+
+      # -- Prometheus ServiceMonitor scheme
+      scheme: ""
+      # -- Prometheus ServiceMonitor tlsConfig
+      tlsConfig: {}
+      # -- Prometheus ServiceMonitor namespace
+      namespace: "monitoring"
+      # -- Prometheus ServiceMonitor labels
+      labels: {}
+      # -- Prometheus ServiceMonitor annotations
+      annotations: {}
+
+  ingress:
+    enabled: false
+
+## authentik worker
+worker:
+  name: worker
+  replicas: 1
+  autoscaling:
+    enabled: false
+    minReplicas: 1
+    maxReplicas: 5
+    targetCPUUtilizationPercentage: 50
+    targetMemoryUtilizationPercentage: ~
+    behavior:
+      {}
+      # scaleDown:
+      #   stabilizationWindowSeconds: 300
+      #   policies:
+      #     - type: Pods
+      #       value: 1
+      #       periodSeconds: 180
+      # scaleUp:
+      #   stabilizationWindowSeconds: 300
+      #   policies:
+      #     - type: Pods
+      #       value: 2
+      #       periodSeconds: 60
+    # -- Configures custom HPA metrics for the authentik worker
+    # Ref: https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/
+    metrics: []
+
+  ## authentik worker Pod Disruption Budget
+  ## Ref: https://kubernetes.io/docs/tasks/run-application/configure-pdb/
+  pdb:
+    enabled: false
+    labels: {}
+    annotations: {}
+    minAvailable: ""
+    maxUnavailable: ""
+
+  env:
+  - name: AUTHENTIK_POSTGRESQL__PASSWORD
+    valueFrom:
+      secretKeyRef:
+        name: authentik-private
+        key: AUTHENTIK_POSTGRESQL__PASSWORD
+  envFrom:
+    []
+
+  # -- Additional volumeMounts to the authentik worker main container
+  volumeMounts:
+    []
+    # - name: custom
+    #   mountPath: /custom
+
+  volumes:
+    []
+    # - name: custom
+    #   emptyDir: {}
+
+  deploymentAnnotations: {}
+  podAnnotations: {}
+  podLabels: {}
+  resources:
+    {}
+    # requests:
+    #   cpu: 100m
+    #   memory: 512Mi
+    # limits:
+    #   memory: 512Mi
+
+  hostNetwork: false
+  dnsConfig: {}
+  dnsPolicy: ""
+
+  # -- terminationGracePeriodSeconds for container lifecycle hook
+  terminationGracePeriodSeconds: 30
+
+  # -- Prority class for the authentik worker pods
+  # @default -- `""` (defaults to global.priorityClassName)
+  priorityClassName: ""
+
+  nodeSelector: {}
+    # kubernetes.io/hostname: dev-k3s-master-0
+  tolerations: []
+  affinity: {}
+
+  # -- Deployment strategy to be added to the authentik worker Deployment
+  # @default -- `{}` (defaults to global.deploymentStrategy)
+  deploymentStrategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+
+serviceAccount:
+  create: true
+  annotations: {}
+  serviceAccountSecret:
+    # As we use the authentik-remote-cluster chart as subchart, and that chart
+    # creates a service account secret by default which we don't need here,
+    # disable its creation
+    enabled: false
+  fullnameOverride: authentik
+
+prometheus:
+  rules:
+    enabled: true
+    namespace: "authentik"
+    selector:
+      prometheus: kube-prometheus-stack
+    labels: {}
+    annotations: {}
+
+postgresql:
+  enabled: true
+  auth:
+    username: "authentik"
+    database: "authentik"
+    password: ""
+    existingSecret: authentik-private
+    secretKeys:
+      userPasswordKey: password
+  primary:
+    extendedConfiguration: |
+      max_connections = 500
+    persistence:
+      enabled: true
+      existingClaim: pvc-authentik-psql
+
+redis:
+  # -- enable the Bitnami Redis chart. Refer to https://github.com/bitnami/charts/blob/main/bitnami/redis/ for possible values.
+  enabled: true
+  architecture: standalone
+  auth:
+    enabled: false
+  master:
+    persistence:
+      enabled: true
+      existingClaim: pvc-authentik-redis
