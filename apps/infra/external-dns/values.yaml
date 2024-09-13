@@ -3,25 +3,8 @@
 ---
 dryRun: false
 policy: sync
-clusterDomain: kubernetes.default.svc  # cluster.local
+clusterDomain: kubernetes.default.svc
 provider: cloudflare
-
-# env:
-# - name: CF_API_TOKEN
-#   valueFrom:
-#     secretKeyRef:
-#       name: cloudflare-api-key
-#       key: apiToken
-# - name: CF_API_KEY
-#   valueFrom:
-#     secretKeyRef:
-#       name: cloudflare-api-key
-#       key: apiKey
-# - name: CF_API_EMAIL
-#   valueFrom:
-#     secretKeyRef:
-#       name: cloudflare-api-key
-#       key: email
 
 containerPorts:
   http: 7979
@@ -29,8 +12,6 @@ containerPorts:
 cloudflare:
   proxied: false
   secretName: cloudflare-api-key
-  # email: zumbik@protonmail.com
-  # apiToken: "GkPRK3XJHYvIby-tdrJZTX9q_BWV92bahwYTpJ2m"
   dnsRecordsPerPage: 100
 
 traefik:
@@ -111,16 +92,16 @@ resources:
 podDisruptionBudget: {}
 
 metrics:
-  enabled: false
+  enabled: true
   podAnnotations: {}
   serviceMonitor:
-    enabled: false
-    namespace: ""
+    enabled: true
+    namespace: "external-dns"
     ## @param metrics.serviceMonitor.interval Interval at which metrics should be scraped
     ## ref: https://github.com/coreos/prometheus-operator/blob/master/Documentation/api.md#endpoint
     ##
-    interval: ""
-    scrapeTimeout: ""
+    interval: "60"
+    scrapeTimeout: "120"
     selector: {}
     ## @param metrics.serviceMonitor.metricRelabelings Specify Metric Relabelings to add to the scrape endpoint
     ## ref: https://github.com/coreos/prometheus-operator/blob/master/Documentation/api.md#relabelconfig
