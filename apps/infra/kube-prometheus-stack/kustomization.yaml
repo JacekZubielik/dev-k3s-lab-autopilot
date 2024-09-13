@@ -1,0 +1,106 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+metadata:
+  annotations:
+    argocd.argoproj.io/compare-options: IgnoreExtraneous
+    argocd.argoproj.io/sync-options: Delete=true,Prune=true
+
+resources:
+# - resources/prometheus.rule.yaml
+- resources/pv.yaml
+- resources/pvc.yaml
+- resources/secret.minio.yaml
+- resources/service.monitor.yaml
+- resources/service.yaml
+- resources/volume.yaml
+- velero/schedule.yaml
+# - resources/backing-image.yaml
+# - resources/ns.yaml
+# - resources/pve-scrape-config.yaml
+# - resources/volume.snapshot.yaml
+
+generators:
+- ksops-generator.yaml
+
+# commonLabels:
+#   grafana_dashboard: "1"
+
+configMapGenerator:
+- name: prometheus-server-conf
+  files:
+  - resources/scrape_configs.yaml
+
+# - name: grafana-cm-sidecar
+#   files:
+#   - resources/cm.sidecar.yaml
+
+generatorOptions:
+  disableNameSuffixHash: true
+  labels:
+    component: kube-prometheus-stack
+
+helmCharts:
+- name: kube-prometheus-stack
+  version: 62.6.0
+  repo: https://prometheus-community.github.io/helm-charts
+  includeCRDs: false
+  namespace: monitoring
+  releaseName: kube-prometheus-stack
+  valuesFile: values.yaml
+  valuesInline:
+    prometheus-node-exporter:
+      hostRootFsMount:
+        enabled: false
+    prometheusOperator:
+      admissionWebhooks:
+        failurePolicy: Ignore
+    # spec:
+    #   ignoreDifferences:
+    #   - kind: PersistentVolume
+    #     jsonPointers:
+    #     - /spec/claimRef/resourceVersion
+    #     - /spec/claimRef/uid
+    #     - /status/lastPhaseTransitionTime
+
+patches:
+- patch: |-
+    - op: add
+      path: "/metadata/annotations/argocd.argoproj.io~1sync-options"
+      value: "Replace=true"
+  target:
+    group: apiextensions.k8s.io
+    kind: CustomResourceDefinition
+    name: alertmanagers.monitoring.coreos.com
+    version: v1
+
+- patch: |-
+    - op: add
+      path: "/metadata/annotations/argocd.argoproj.io~1sync-options"
+      value: "Replace=true"
+  target:
+    group: apiextensions.k8s.io
+    kind: CustomResourceDefinition
+    name: prometheuses.monitoring.coreos.com
+    version: v1
+
+- patch: |-
+    - op: add
+      path: "/metadata/annotations/argocd.argoproj.io~1sync-options"
+      value: "Replace=true"
+  target:
+    group: apiextensions.k8s.io
+    kind: CustomResourceDefinition
+    name: prometheusagents.monitoring.coreos.com
+    version: v1
+
+# - patch: |-
+#     - op: add
+#       path: "/metadata/annotations/argocd.argoproj.io~1sync-options"
+#       value: "Replace=true"
+#   target:
+#     group: apiextensions.k8s.io
+#     kind: CustomResourceDefinition
+#     name: thanosrulers.monitoring.coreos.com
+#     version: v1
