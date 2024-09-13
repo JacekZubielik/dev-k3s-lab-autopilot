@@ -27,7 +27,7 @@ containerPorts:
 
 cloudflare:
   proxied: false
-  # secretName: cloudflare-api-key
+  secretName: cloudflare-api-key
   # email: zumbik@protonmail.com
   # apiToken: "GkPRK3XJHYvIby-tdrJZTX9q_BWV92bahwYTpJ2m"
   dnsRecordsPerPage: 100
