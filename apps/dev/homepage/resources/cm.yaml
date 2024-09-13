@@ -1,0 +1,411 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: homepage
+  namespace: homepage
+data:
+  kubernetes.yaml: |
+    mode: cluster
+  settings.yaml: |
+    title: AnotherHomePage
+    iconStyle: theme
+    headerStyle: boxed
+    language: en
+    quicklaunch:
+      searchDescriptions: true
+      hideInternetSearch: true
+      hideVisitURL: true
+    providers:
+      openweathermap: openweathermapapikey
+      weatherapi: weatherapiapikey
+      # longhorn:
+      #   url: "{{HOMEPAGE_VAR_LONGHORN_URL}}"
+      #   # username: "{{HOMEPAGE_VAR_LONGHORN_USERNAME}}"
+      #   # password: "{{HOMEPAGE_VAR_LONGHORN_PASSWORD}}"
+    theme: dark
+    color: slate
+    useEqualHeights: true
+    layout:
+      Metrics:
+        header: true
+        style: row
+        columns: 4
+      Network:
+        header: true
+        style: row
+        columns: 4
+      Storage:
+        header: true
+        style: row
+        columns: 4
+      Media:
+        header: true
+        style: row
+        columns: 4
+      Home Automation:
+        header: true
+        style: row
+        columns: 4
+      Other:
+        header: true
+        style: row
+        columns: 4
+  custom.css: ""
+  custom.js: ""
+  services.yaml: |
+    - Metrics:
+        - Alertmanager:
+            icon: alertmanager.svg
+            href: "{{HOMEPAGE_VAR_ALERTMANAGER_URL}}"
+            description: Monitoring
+            app: alertmanager
+            namespace: monitoring
+            pod-selector: >-
+              app.kubernetes.io/instance in (
+                  kube-prometheus-stack-alertmanager
+              )
+
+        - Prometheus:
+            icon: prometheus.svg
+            href: "{{HOMEPAGE_VAR_PROMETHEUS_URL}}"
+            description: Monitoring
+            app: prometheus
+            namespace: monitoring
+            pod-selector: >-
+              app.kubernetes.io/instance in (
+                  kube-prometheus-stack-prometheus
+              )
+            widget:
+                type: prometheus
+                url: "{{HOMEPAGE_VAR_PROMETHEUS_URL}}"
+
+        - Grafana:
+            icon: grafana.svg
+            href: "{{HOMEPAGE_VAR_GRAFANA_URL}}"
+            description: Monitoring
+            app: grafana
+            namespace: monitoring
+            pod-selector: >-
+              app.kubernetes.io/instance in (
+                  kube-prometheus-stack
+              )
+            widget:
+              type: grafana
+              username: "{{HOMEPAGE_VAR_GRAFANA_USERNAME}}"
+              password: "{{HOMEPAGE_VAR_GRAFANA_PASSWORD}}"
+
+        - Uptime Kuma:
+            icon: uptime-kuma.svg
+            href: "{{HOMEPAGE_VAR_UPTIME_KUMA_URL}}"
+            description: Monitoring
+            app: uptime-kuma
+            namespace: uptime-kuma
+            pod-selector: >-
+              app.kubernetes.io/instance in (
+                  uptime-kuma
+              )
+            widget:
+                type: uptimekuma
+                url: "{{HOMEPAGE_VAR_UPTIME_KUMA_URL_LOCAL}}"
+                slug: statuspageslug
+
+        - ArgoCD:
+            icon: argocd.svg
+            href: "{{HOMEPAGE_VAR_ARGOCD_URL}}"
+            description: Monitoring
+            app: argocd-server
+            namespace: argocd
+            pod-selector: >-
+              app.kubernetes.io/instance in (
+                  argocd-server
+              )
+
+    - Network:
+        - Mikrotik:
+            icon: mikrotik.svg
+            href: "{{HOMEPAGE_VAR_MIKROTIK_URL}}"
+            description: Router
+            widget:
+              type: mikrotik
+              url: {{HOMEPAGE_VAR_MIKROTIK_URL}}
+              username: "{{HOMEPAGE_VAR_MIKROTIK_USERNAME}}"
+              password: "{{HOMEPAGE_VAR_MIKROTIK_PASSWORD}}"
+
+        - Treafik:
+            icon: traefik.svg
+            href: "{{HOMEPAGE_VAR_TREAFIK_URL}}"
+            description: Reverse Proxy
+            app: traefik
+            namespace: traefik
+            pod-selector: >-
+              app.kubernetes.io/instance in (
+                  traefik
+              )
+            widget:
+              type: traefik
+              url: {{HOMEPAGE_VAR_TREAFIK_URL}}
+
+        - Proxmox:
+            icon: proxmox.svg
+            href: "{{HOMEPAGE_VAR_PROXMOX_URL}}"
+            description: pve
+            widget:
+                type: proxmox
+                url: "{{HOMEPAGE_VAR_PROXMOX_URL}}"
+                username: "{{HOMEPAGE_VAR_PROXMOX_USER}}"
+                password: "{{HOMEPAGE_VAR_PROXMOX_API_KEY}}"
+                node: pve
+
+        - Authentik:
+            icon: https://raw.githubusercontent.com/goauthentik/authentik/main/web/icons/icon.svg
+            href: "{{HOMEPAGE_VAR_AUTHENTIK_URL}}"
+            description: dashboard
+            app: authentik
+            namespace: authentik
+            pod-selector: >-
+              app.kubernetes.io/instance in (
+                  authentik
+              )
+            widget:
+              type: authentik
+              url: "{{HOMEPAGE_VAR_AUTHENTIK_URL}}"
+              key: "{{HOMEPAGE_VAR_AUTHENTIK_API_KEY}}"
+
+    - Storage:
+        - SyncThing:
+            icon: syncthing.svg
+            href: "{{HOMEPAGE_VAR_SYNCTHING_URL}}"
+            description: Syncthing Relay Server
+            app: syncthing
+            namespace: syncthing
+            pod-selector: >-
+              app.kubernetes.io/instance in (
+                  syncthing
+              )
+            # widget:
+            #   type: strelaysrv
+            #   url: "{{HOMEPAGE_VAR_SYNCTHING_URL_SRS}}"
+
+        - MinIO:
+            icon: minio.svg
+            href: "{{HOMEPAGE_VAR_MINIO_URL}}"
+            description: S3 object storage
+            app: minio
+            namespace: minio
+            pod-selector: >-
+              app.kubernetes.io/instance in (
+                  storage-minio,
+                  minio-console,
+                  minio
+              )
+
+        - Longhorn:
+            icon: longhorn.svg
+            href: "{{HOMEPAGE_VAR_LONGHORN_URL}}"
+            description: k8s storage
+            app: longhorn
+            namespace: longhorn-system
+            pod-selector: >-
+              app.kubernetes.io/instance in (
+                  longhorn
+              )
+
+    - Media:
+        - Plex:
+            icon: plex.svg
+            href: "{{HOMEPAGE_VAR_PLEX_URL}}"
+            description: media server
+            widget:
+                type: plex
+                url: "{{HOMEPAGE_VAR_PLEX_URL}}"
+                key: "{{HOMEPAGE_VAR_PLEX_API_TOKEN}}"
+
+        - LMS:
+            icon: logitech.svg
+            href: "{{HOMEPAGE_VAR_LMS_URL}}"
+            description: Logitech Media Server
+            app: lms
+            namespace: lms
+            pod-selector: >-
+              app.kubernetes.io/instance in (
+                  lms
+              )
+
+        - YouTubeDL:
+            icon: youtubedl.svg
+            href: "{{HOMEPAGE_VAR_YOUTUBEDL_URL}}"
+            description: YouTubeDL
+
+    - Home Automation:
+        - Home Assistant:
+            icon: home-assistant.svg
+            href: "{{HOMEPAGE_VAR_HOME_ASSISTANT_URL}}"
+            description: Home Assistant
+            app: home-assistant
+            namespace: home-assistant
+            pod-selector: >-
+              app.kubernetes.io/instance in (
+                  dev-home-assistant
+              )
+            widget:
+              type: homeassistant
+              url: "{{HOMEPAGE_VAR_HOME_ASSISTANT_URL}}"
+              key: "{{HOMEPAGE_VAR_HOME_ASSISTANT_API_KEY}}"
+
+        - zigbee2mqtt:
+            icon: zigbee2mqtt.svg
+            href: "{{HOMEPAGE_VAR_ZIGBEE2MQTT_URL}}"
+            description: zigbee2mqtt
+            app: zigbee2mqtt
+            namespace: zigbee2mqtt
+            pod-selector: >-
+              app.kubernetes.io/instance in (
+                  zigbee2mqtt
+              )
+
+        - espHome:
+            icon: esphome.svg
+            href: "{{HOMEPAGE_VAR_ESPHOME_URL}}"
+            description: esphome
+            app: esphome
+            namespace: esphome
+            pod-selector: >-
+              app.kubernetes.io/instance in (
+                  esphome
+              )
+            widget:
+              type: esphome
+              url: "{{HOMEPAGE_VAR_ESPHOME_URL}}"
+
+        - MqttExplorer:
+            icon: mqtt.svg
+            href: "{{HOMEPAGE_VAR_MQTTEXPLORER_URL}}"
+            description: Mqtt Explorer
+
+    - Other:
+        - HomeLab:
+            icon: jekyll.svg
+            href: "{{HOMEPAGE_VAR_JEKYLL_URL}}"
+            description: source code
+
+        - ITTools:
+            icon: it-tools.svg
+            href: "{{HOMEPAGE_VAR_ITTOOLS_URL}}"
+            description: source code
+
+        - GitLab:
+            icon: gitlab.svg
+            href: https://gitlab.com
+            description: source code
+
+        - GitHub:
+            icon: github.svg
+            href: https://github.com
+            description: source code
+
+  widgets.yaml: |
+    - resources:
+        cpu: true
+        memory: true
+        disk:
+          - /
+          - /mnt/data
+          - /mnt/hdd-0
+          - /mnt/fast-backup
+        expanded: true
+        backend: resources
+    - datetime:
+        text_size: xl
+        locale: pl
+        format:
+          timeStyle: short
+          dateStyle: long
+    - openmeteo:
+        label: "{{HOMEPAGE_VAR_OPENMETEO_LABEL}}"
+        latitude: "{{HOMEPAGE_VAR_OPENMETEO_LATITUDE}}"
+        longitude: "{{HOMEPAGE_VAR_OPENMETEO_LONGITUDE}}"
+        timezone: "{{HOMEPAGE_VAR_OPENMETEO_TIMEZONE}}"
+        units: metric
+        # Time in minutes to cache API responses, to stay within limits
+        cache: 5
+    - search:
+        provider: duckduckgo
+        focus: true
+        target: _blank
+    - kubernetes:
+        cluster:
+            show: true
+            cpu: true
+            memory: true
+            showLabel: true
+            label: cluster
+        nodes:
+            show: true
+            cpu: true
+            memory: true
+            showLabel: true
+    - longhorn:
+        expanded: true
+        total: true
+        labels: true
+        nodes: true
+        include:
+          - dev-k3s-master-0.local
+          - dev-k3s-master-1.local
+  docker.yaml: ""
+  bookmarks.yaml: |
+    - Developer:
+        - Github:
+            - abbr: GH
+              href: https://github.com/JacekZubielik?tab=repositories/
+              icon: github.svg
+        - mxToolbox:
+            - abbr: MX
+              href: https://mxtoolbox.com/
+        - ITTools:
+            - abbr: IT
+              href: https://tools.anotherlife.org.pl/
+        - Security Headers:
+            - abbr: SH
+              href: https://securityheaders.com/
+        - AWS:
+            - abbr: AWS
+              icon: aws.svg
+              href: https://aws.amazon.com/
+        - GIDZipTest:
+            - abbr: gZip
+              href: http://www.gidnetwork.com/tools/gzip-test.php
+        - ElasticeMail:
+            - abbr: EL
+              href: https://app.elasticemail.com/api/login
+        - DNSchecker:
+            - abbr: EL
+              icon: https://dnschecker.org/themes/common/images/general/logo.svg
+              href: https://dnschecker.org/#NS/anotherlife.org.pl
+        - Mend.io:
+            - abbr: MD
+              icon: https://www.mend.io/wp-content/media/2024/03/Mend-io-Logo-Light-2.svg
+              href: https://developer.mend.io/
+        - UnitConverters:
+            - abbr: UC
+              href: https://www.unitconverters.net/data-storage/byte-to-gigabyte.htm
+
+    - Social:
+        - X.com:
+            - abbr: X
+              href: https://x.com/
+
+    - Entertainment:
+        - YouTube:
+            - abbr: YT
+              href: https://youtube.com/
+              icon: youtube.svg
+
+        - rumble:
+            - abbr: RB
+              href: https://rumble.com/
+              icon: rumble.svg
+
+        - odysee:
+            - abbr: OD
+              href: https://odysee.com/

@@ -1,0 +1,46 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+    annotations:
+        argocd.argoproj.io/sync-wave: "3"
+        cert-manager.io/cluster-issuer: letsencrypt-production
+        external-dns.alpha.kubernetes.io/target: dev.anotherlife.pl
+        kubernetes.io/ingress.class: traefik-external
+    name: homepage
+    namespace: homepage
+spec:
+    entryPoints:
+        - websecure
+    routes:
+        - kind: Rule
+          match: Host(`homepage.dev.anotherlife.org.pl`)
+          middlewares:
+            - name: chain-traefik-dashboard
+              namespace: traefik
+          services:
+            - kind: TraefikService
+              name: homepage
+              namespace: homepage
+    tls:
+        domains:
+            - main: dev.anotherlife.pl
+              sans:
+                - .dev.anotherlife.pl
+        options:
+            name: tls-ver13
+            namespace: traefik
+        secretName: homepage-cf-production
+---
+apiVersion: traefik.io/v1alpha1
+kind: TraefikService
+metadata:
+    annotations:
+        argocd.argoproj.io/sync-wave: "2"
+    name: homepage
+    namespace: homepage
+spec:
+    weighted:
+        services:
+            - name: homepage
+              port: 3000
+              weight: 1
