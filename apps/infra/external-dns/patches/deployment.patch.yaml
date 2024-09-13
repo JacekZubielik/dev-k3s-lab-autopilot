@@ -1,8 +1,4 @@
 ---
-- op: replace
-  path: /spec/template/spec/containers/0/args/0
-  value: --traefik.disableLegacy=true
-
 - op: add
   path: /spec/template/spec/containers/0/args/1
   value: --domain-filter=dev.anotherlife.org.pl

@@ -29,10 +29,10 @@ helmCharts:
   releaseName: external-dns
   valuesFile: values.yaml
 
-# patches:
-# - path: patches/deployment.patch.yaml
-#   target:
-#     version: v1
-#     kind: Deployment
-#     name: external-dns
-#     namespace: external-dns
+patches:
+- path: patches/deployment.patch.yaml
+  target:
+    version: v1
+    kind: Deployment
+    name: external-dns
+    namespace: external-dns
