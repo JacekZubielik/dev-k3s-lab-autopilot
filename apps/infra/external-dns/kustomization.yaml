@@ -35,8 +35,8 @@ generatorOptions:
 
 helmCharts:
 - name: external-dns
-  version: 1.15.0 # 8.3.7
-  repo: https://github.com/kubernetes-sigs/external-dns #https://charts.bitnami.com/bitnami
+  version: 1.12.2 #8.3.7
+  repo: https://kubernetes-sigs.github.io/external-dns # https://charts.bitnami.com/bitnami
   includeCRDs: true
   namespace: external-dns
   releaseName: external-dns
