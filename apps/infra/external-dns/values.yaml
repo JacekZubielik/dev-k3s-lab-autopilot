@@ -4,7 +4,11 @@
 dryRun: false
 policy: sync
 clusterDomain: kubernetes.default.svc  # cluster.local
-provider: cloudflare
+# provider: cloudflare
+
+provider:
+  name: cloudflare
+
 env:
 - name: CF_API_TOKEN
   valueFrom:
