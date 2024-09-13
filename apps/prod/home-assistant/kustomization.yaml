@@ -16,8 +16,8 @@ resources:
 - velero/schedule.yaml
 # - resources/servicemonitor.yaml
 
-# generators:
-# - ksops-generator.yaml
+generators:
+- ksops-generator.yaml
 
 configMapGenerator:
 - name: ha-tz
