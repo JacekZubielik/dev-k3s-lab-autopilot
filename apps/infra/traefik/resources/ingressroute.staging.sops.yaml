@@ -1,10 +1,13 @@
-kind: IngressRoute
 apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
 metadata:
     annotations:
         argocd.argoproj.io/sync-wave: "3"
         cert-manager.io/cluster-issuer: letsencrypt-staging
+        cert-manager.io/common-name: traefik.infra.anotherlife.org.pl
+        external-dns.alpha.kubernetes.io/hostname: ENC[AES256_GCM,data:H3CVXC4yTHeo+nZ3YQm4r4/2ONGtYXinyEzEDx0/uzg=,iv:IMIQoMwlHc4wa1/3IWReZVpEzSUOiVnbz85ncOfrTSE=,tag:5/90Xna4RApVR4PtZPYKzQ==,type:str]
         external-dns.alpha.kubernetes.io/target: ENC[AES256_GCM,data:lG+RF0VtVKwIfY7P2lN3lMutNCa+2OwH,iv:0bEmKcpjU76aafCldP+Jo7qOocVwN1GtcuoxgL4ba6w=,tag:noDzLOZzkyPpEgi9YCb+OA==,type:str]
+        external-dns.alpha.kubernetes.io/ttl: "300"
         kubernetes.io/ingress.class: traefik-external
     name: dashboard-staging
     namespace: traefik
@@ -44,8 +47,8 @@ sops:
             R1ZMK3JNdTVZS2w4eDhNYmVxK0NEcHMK5SGWW2f7V92NEm2aODzBumJ8KdO8kPkA
             OR9z4d12YQnMGLmHQ3g69OosdtV45hGRyERcuyRRAgTp3dpSmwTJJQ==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-08-21T19:57:49Z"
-    mac: ENC[AES256_GCM,data:6Su3xoBtdM0kpAZIaqRblBkxkbQNx+omXZgI0/B71K3r9db+/Gj1gPGOBvZCSa+IgeK97qQLPfG8mMvPeRC+YhOab5TqTz+44RXyPponvdxKtWEkoptDtjxZYh6PEhBIU75L6VgghDi8vL2DWSmRygjUhzgck2ubKpsJU8v375o=,iv:xeWR24ZjNC1Ph1iqjWKSlwL1Hx9NI0PZIRgEFBJ35k0=,tag:THMgbTPPXSIwG+A2rPy29Q==,type:str]
+    lastmodified: "2024-09-13T14:05:27Z"
+    mac: ENC[AES256_GCM,data:Nzrb3kbEwzeW0tx6DB9ih4hQu9vLHink02QSlwtb7A5TD0GRgWGQSmucQmgbIITwG57NZvr7MXsCcIUyenTLxcGQ/StM6Vo5rLcs8/X0jVDxE7WbJln/R9CzkDFgaWAEAsiK1HjGAB4hmX3GUVN5CQ15r9zKtFqp/Cau3j1rPWc=,iv:y0qviwDAQr+ZU+iLiqMVnLxqHejCS7HNaANby0DpsOQ=,tag:c+/0bc9SXLAGNlJaSlvyIQ==,type:str]
     pgp:
         - created_at: "2024-06-21T22:54:02Z"
           enc: |-

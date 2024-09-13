@@ -4,7 +4,10 @@ metadata:
     annotations:
         argocd.argoproj.io/sync-wave: "3"
         cert-manager.io/cluster-issuer: letsencrypt-production
+        cert-manager.io/common-name: traefik.infra.anotherlife.org.pl
+        external-dns.alpha.kubernetes.io/hostname: ENC[AES256_GCM,data:KEl79rtsEAv7xIPBMVTzD4DJD1vko+wSAiCvsXCJ59E=,iv:A0cZuASi4JykMGdbp2/927Iv1k/TvkSQYleMXK4npJI=,tag:19Kjaou8mOaoSpgUuY07tA==,type:str]
         external-dns.alpha.kubernetes.io/target: ENC[AES256_GCM,data:Pgk6QLWX567i8Lo3M5fBIzXfSXI4j9lM,iv:xjxrGRE6U+vZia7/Fdk8vPPmXpwUCGp6Pmr0A/QS4kg=,tag:zqtxCUf90LgS0U603quyFA==,type:str]
+        external-dns.alpha.kubernetes.io/ttl: "300"
         kubernetes.io/ingress.class: traefik-external
     name: dashboard
     namespace: traefik
@@ -35,8 +38,8 @@ sops:
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2024-08-21T19:58:21Z"
-    mac: ENC[AES256_GCM,data:qGn/Apaw1r4ABjthhsT9kzWcGFLKv5X2gyRmWmDGalMIgGDW/w0G+eAbqfkeeBkQxRbYP5XGNylCF+jaGLf84rau/5QqVadsnKYMjpTEop2yQeQCRHnj0R6Wi6IP3QOkC6b+3O1I8DDCeP89J5qaM1zdDgGc8uB9GPPEX6+r2lU=,iv:guPJzRNeXtu//+QB2olWKSgko6ulDmHrxFCFIEyGGss=,tag:Tag5f4aJLH2iYZDD46QdSA==,type:str]
+    lastmodified: "2024-09-13T14:15:52Z"
+    mac: ENC[AES256_GCM,data:c14Po/mhOd/RLeu1pfLg6urBDwl/0djTwcK2m314mTUzmM+JpiEdD9mMYGPAwsbb0yR1apI3GH18P0zxNWVrU7itFKbIcd/XM1cm6jgB/7uiddDfnV97Xns/07rfrGGQwgGQvE6LMeH9pB2KyHytHHANNUpgpBMOPrgUgsj9YYE=,iv:nGlXb15CLXN4oSKjr41/41698BQduytAeHp1NygObXE=,tag:WO7Dsv8nCf35hUKc3IDSxw==,type:str]
     pgp:
         - created_at: "2024-06-25T21:16:26Z"
           enc: |-
