@@ -1,27 +1,26 @@
 # Troubleshooting:
-#
 #   kubectl logs -f -n external-dns deploy/external-dns
 ---
 dryRun: false
 policy: sync
 clusterDomain: kubernetes.default.svc  # cluster.local
 provider: cloudflare
-# env:
-# - name: CF_API_TOKEN
-#   valueFrom:
-#     secretKeyRef:
-#       name: cloudflare-api-key
-#       key: apitoken
+env:
+- name: CF_API_TOKEN
+  valueFrom:
+    secretKeyRef:
+      name: cloudflare-api-key
+      key: apiToken
 # - name: CF_API_KEY
 #   valueFrom:
 #     secretKeyRef:
 #       name: cloudflare-api-key
 #       key: apiKey
-# - name: CF_API_EMAIL
-#   valueFrom:
-#     secretKeyRef:
-#       name: cloudflare-api-key
-#       key: email
+- name: CF_API_EMAIL
+  valueFrom:
+    secretKeyRef:
+      name: cloudflare-api-key
+      key: email
 
 containerPorts:
   http: 7979
@@ -29,8 +28,8 @@ containerPorts:
 cloudflare:
   proxied: false
   # secretName: cloudflare-api-key
-  email: zumbik@protonmail.com
-  apiToken: "GkPRK3XJHYvIby-tdrJZTX9q_BWV92bahwYTpJ2m"
+  # email: zumbik@protonmail.com
+  # apiToken: "GkPRK3XJHYvIby-tdrJZTX9q_BWV92bahwYTpJ2m"
   dnsRecordsPerPage: 100
 
 traefik:
