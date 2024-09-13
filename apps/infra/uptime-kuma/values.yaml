@@ -44,16 +44,7 @@ env:
       name: kuma-config
       key: UPTIME_KUMA_PORT
 
-extraEnvSecrets:
-  # This will set ${MQTT_PASSWORD} to the 'password' key from the 'mqtt' secret
-  # MQTT_PASSWORD:
-  #   secret: mqtt
-  #   key: password
-
-## If you'd like to provide your own Kubernetes Secret object instead of passing your values
-## individually, pass in the name of a created + populated Secret.
-## All secrets will be mounted as environment variables, with each key/value mapping to a
-## corresponding environment variable.
+extraEnvSecrets: []
 extraSecretForEnvFrom: []
 # - esphome-secrets
 
@@ -157,8 +148,5 @@ persistence:
   enabled: true
   existingClaim: pvc-kuma
 
-# Mount devices or folders from the host machine. Can be used for USB device mounting.
 hostMounts: []
-  # Example
-  # - name: cdrw
-  #   hostPath: /dev/cdrw
+
