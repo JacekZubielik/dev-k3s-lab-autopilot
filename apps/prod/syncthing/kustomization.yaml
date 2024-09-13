@@ -13,8 +13,8 @@ resources:
 - resources/pvc.yaml
 - resources/service-proxy.yaml
 
-# generators:
-# - ksops-generator.yaml
+generators:
+- ksops-generator.yaml
 
 generatorOptions:
   disableNameSuffixHash: true
