@@ -137,6 +137,10 @@ providers:
     ingressClass: traefik-external
     labelSelector: [] # labelSelector: "app=traefik" # environment=production,method=traefik # -- Array of namespaces to watch. If left empty, Traefik watches all namespaces.
     namespaces: [] # "argocd,cert-manager,default,dev,monitoring,prod,traefik,infra,longhorn-system,media,iot,iot-k3s,backup,storage,minio"
+  kubernetesIngress:
+    enabled: true
+  kubernetesGateway:
+    enabled: true
 
   kubernetesIngress:
     enabled: true
