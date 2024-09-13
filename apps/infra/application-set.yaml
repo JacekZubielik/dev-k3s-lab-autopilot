@@ -79,11 +79,11 @@ spec:
           selfHeal: false
           prune: false
         syncOptions:
-        # - ApplyOutOfSyncOnly=true
+        - ApplyOutOfSyncOnly=true
         - CreateNamespace=true
-        # - PrunePropagationPolicy=foreground
         - RespectIgnoreDifferences=true
         - ServerSideApply=true
+        # - PrunePropagationPolicy=foreground
         # - SkipDryRunOnMissingResource=true
 
   strategy:
