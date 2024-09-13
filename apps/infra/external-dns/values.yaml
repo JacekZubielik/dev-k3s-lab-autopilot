@@ -92,10 +92,10 @@ resources:
 podDisruptionBudget: {}
 
 metrics:
-  enabled: true
+  enabled: false
   podAnnotations: {}
   serviceMonitor:
-    enabled: true
+    enabled: false
     namespace: "external-dns"
     ## @param metrics.serviceMonitor.interval Interval at which metrics should be scraped
     ## ref: https://github.com/coreos/prometheus-operator/blob/master/Documentation/api.md#endpoint
