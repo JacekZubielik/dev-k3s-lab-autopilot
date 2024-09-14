@@ -35,9 +35,12 @@ spec:
               name: mktxp-exporter-tz
               key: TZ
         resources:
+          requests:
+            cpu: 250m
+            memory: 256Mi
           limits:
-            memory: "512Mi"
-            cpu: "500m"
+            cpu: 550m
+            memory: 256Mi
         volumeMounts:
         - name: mktxp-credentials
           mountPath: /mktxp_config

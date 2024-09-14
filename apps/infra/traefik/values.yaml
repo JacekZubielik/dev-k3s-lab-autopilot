@@ -437,7 +437,16 @@ podSecurityPolicy:
 #   name: "traefik-ingress-controller"
 
 serviceAccountAnnotations: {}
-resources: {}
+resources:
+  requests:
+    cpu: 250m
+    memory: 256Mi
+  limits:
+    cpu: 550m
+    memory: 556Mi
+
+
+
 affinity: {}
   # podAntiAffinity:
   #   requiredDuringSchedulingIgnoredDuringExecution:

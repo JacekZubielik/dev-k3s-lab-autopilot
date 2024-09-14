@@ -312,7 +312,13 @@ alertmanager:
     tlsConfig: {}
     paused: false
     nodeSelector: {}
-    resources: {}
+    resources:
+      requests:
+        cpu: 250m
+        memory: 256Mi
+      limits:
+        cpu: 350m
+        memory: 256Mi
     podAntiAffinity: ""
     podAntiAffinityTopologyKey: kubernetes.io/hostname
     affinity: {}
@@ -1310,13 +1316,13 @@ prometheusOperator:
         timeoutSeconds: 1
 
       ## Resource limits & requests
-      resources: {}
-      # limits:
-      #   cpu: 200m
-      #   memory: 200Mi
-      # requests:
-      #   cpu: 100m
-      #   memory: 100Mi
+      resources:
+        limits:
+          cpu: 200m
+          memory: 200Mi
+        requests:
+          cpu: 100m
+          memory: 100Mi
 
       # Required for use in managed kubernetes clusters (such as AWS EKS) with custom CNI (such as calico),
       # because control-plane managed by AWS cannot communicate with pods' IP CIDR and admission webhooks are not working
@@ -1379,9 +1385,15 @@ prometheusOperator:
         tag: v20221220-controller-v1.5.1-58-g787ea74b6
         sha: ""
         pullPolicy: IfNotPresent
-      resources: {}
+      resources:
+        requests:
+          cpu: 250m
+          memory: 256Mi
+        limits:
+          cpu: 550m
+          memory: 256Mi
+
       ## Provide a priority class name to the webhook patching job
-      ##
       priorityClassName: ""
       ttlSecondsAfterFinished: 60
       annotations: {}
@@ -1538,7 +1550,13 @@ prometheusOperator:
     additionalLabels:
       prometheus.io/scrap-with: kube-prometheus-stack
 
-  resources: {}
+  resources:
+    requests:
+      cpu: 250m
+      memory: 256Mi
+    limits:
+      cpu: 550m
+      memory: 256Mi
   env:
     GOGC: "30"
   hostNetwork: false
@@ -1631,13 +1649,13 @@ prometheusOperator:
     enableProbe: false
 
     # resource config for prometheusConfigReloader
-    resources: {}
-      # requests:
-      #   cpu: 200m
-      #   memory: 50Mi
-      # limits:
-      #   cpu: 200m
-      #   memory: 50Mi
+    resources:
+      requests:
+        cpu: 200m
+        memory: 50Mi
+      limits:
+        cpu: 200m
+        memory: 50Mi
 
   ## Thanos side-car image when configured
   ##
@@ -2101,7 +2119,7 @@ prometheus:
     remoteWriteDashboards: false
     resources:
       requests:
-        memory: 0.9Gi
+        memory: 0.4Gi
       limits:
         memory: 1.1Gi
 

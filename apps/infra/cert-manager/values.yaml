@@ -229,14 +229,13 @@ extraEnv: []
 #   value: 'some value'
 
 # Resources to provide to the cert-manager controller pod.
-#
-# For example:
-#  requests:
-#    cpu: 10m
-#    memory: 32Mi
-#
-# For more information, see [Resource Management for Pods and Containers](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/).
-resources: {}
+  resources:
+    requests:
+      cpu: 250m
+      memory: 256Mi
+    limits:
+      cpu: 550m
+      memory: 256Mi
 
 # Pod Security Context.
 # For more information, see [Configure a Security Context for a Pod or Container](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/).
@@ -600,14 +599,13 @@ webhook:
   featureGates: ""
 
   # Resources to provide to the cert-manager webhook pod.
-  #
-  # For example:
-  #  requests:
-  #    cpu: 10m
-  #    memory: 32Mi
-  #
-  # For more information, see [Resource Management for Pods and Containers](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/).
-  resources: {}
+  resources:
+    requests:
+      cpu: 250m
+      memory: 256Mi
+    limits:
+      cpu: 550m
+      memory: 256Mi
 
   # Liveness probe values.
   # For more information, see [Container probes](https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes).
@@ -868,15 +866,13 @@ cainjector:
   featureGates: ""
 
   # Resources to provide to the cert-manager cainjector pod.
-  #
-  # For example:
-  #  requests:
-  #    cpu: 10m
-  #    memory: 32Mi
-  #
-  # For more information, see [Resource Management for Pods and Containers](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/).
-  resources: {}
-
+  resources:
+    requests:
+      cpu: 250m
+      memory: 256Mi
+    limits:
+      cpu: 550m
+      memory: 256Mi
 
   # The nodeSelector on Pods tells Kubernetes to schedule Pods on the nodes with
   # matching labels.
@@ -1022,20 +1018,13 @@ startupapicheck:
   - -v
 
   # Resources to provide to the cert-manager controller pod.
-  #
-  # For example:
-  #  requests:
-  #    cpu: 10m
-  #    memory: 32Mi
-  #
-  # For more information, see [Resource Management for Pods and Containers](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/).
   resources:
     requests:
       cpu: 250m
       memory: 256Mi
     limits:
       cpu: 550m
-      memory: 356Mi
+      memory: 256Mi
 
   # The nodeSelector on Pods tells Kubernetes to schedule Pods on the nodes with
   # matching labels.
