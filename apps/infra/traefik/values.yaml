@@ -176,16 +176,16 @@ entryPoints:
 
 metrics:
   prometheus:
-    # addEntryPointsLabels: true
-    # addInternals: true
-    # addRoutersLabels: true
-    # addServicesLabels: true
-    # # manualRouting: true
-    # entryPoint: metrics
-    # buckets: "0.5,1.0,5"
-    # headerLabels:
-    #   label: headerKey
-    #   useragent: User-Agent
+    addEntryPointsLabels: true
+    addInternals: true
+    addRoutersLabels: true
+    addServicesLabels: true
+    # manualRouting: true
+    entryPoint: metrics
+    buckets: "0.5,1.0,5"
+    headerLabels:
+      label: headerKey
+      useragent: User-Agent
 
     service:
       enabled: false # true
