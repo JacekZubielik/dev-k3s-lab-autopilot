@@ -174,12 +174,12 @@ server:
   podAnnotations: {}
   podLabels: {}
   resources:
-    {}
-    # requests:
-    #   cpu: 100m
-    #   memory: 512Mi
-    # limits:
-    #   memory: 512Mi
+    requests:
+      cpu: 200m
+      memory: 512Mi
+    limits:
+      cpu: 800m
+      memory: 0.8Gi
 
   containerPorts:
     http: 9000
@@ -278,16 +278,10 @@ server:
       metricRelabelings: []
       selector:
         {}
-
-      # -- Prometheus ServiceMonitor scheme
       scheme: ""
-      # -- Prometheus ServiceMonitor tlsConfig
       tlsConfig: {}
-      # -- Prometheus ServiceMonitor namespace
       namespace: "monitoring"
-      # -- Prometheus ServiceMonitor labels
       labels: {}
-      # -- Prometheus ServiceMonitor annotations
       annotations: {}
 
   ingress:
@@ -354,12 +348,12 @@ worker:
   podAnnotations: {}
   podLabels: {}
   resources:
-    {}
-    # requests:
-    #   cpu: 100m
-    #   memory: 512Mi
-    # limits:
-    #   memory: 512Mi
+    requests:
+      cpu: 100m
+      memory: 512Mi
+    limits:
+      cpu: 800m
+      memory: 0.8Gi
 
   hostNetwork: false
   dnsConfig: {}
@@ -419,6 +413,13 @@ postgresql:
     persistence:
       enabled: true
       existingClaim: pvc-authentik-psql
+    resources:
+      requests:
+        memory: 256Mi
+        cpu: 250m
+      limits:
+        memory: 0.3Gi
+        cpu: 350m
 
 redis:
   # -- enable the Bitnami Redis chart. Refer to https://github.com/bitnami/charts/blob/main/bitnami/redis/ for possible values.
@@ -430,3 +431,10 @@ redis:
     persistence:
       enabled: true
       existingClaim: pvc-authentik-redis
+    resources:
+      requests:
+        memory: 256Mi
+        cpu: 250m
+      limits:
+        memory: 0.3Gi
+        cpu: 350m
