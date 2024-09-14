@@ -194,7 +194,7 @@ metrics:
     #   useragent: User-Agent
 
     service:
-      enabled: true
+      enabled: false # true
     disableAPICheck: false
     serviceMonitor:
       enabled: true
