@@ -229,13 +229,13 @@ extraEnv: []
 #   value: 'some value'
 
 # Resources to provide to the cert-manager controller pod.
-  resources:
-    requests:
-      cpu: 250m
-      memory: 256Mi
-    limits:
-      cpu: 550m
-      memory: 256Mi
+resources:
+  requests:
+    cpu: 250m
+    memory: 256Mi
+  limits:
+    cpu: 550m
+    memory: 256Mi
 
 # Pod Security Context.
 # For more information, see [Configure a Security Context for a Pod or Container](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/).
