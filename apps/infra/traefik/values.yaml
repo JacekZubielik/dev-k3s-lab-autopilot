@@ -142,12 +142,6 @@ providers:
   # kubernetesGateway:
   #   enabled: true
 
-
-
-
-
-
-
   kubernetesIngress:
     enabled: true
     allowExternalNameServices: true
@@ -215,7 +209,7 @@ metrics:
       interval: 30s
       honorLabels: true
     prometheusRule:
-      enabled: true
+      enabled: false #true
       rules:
         - alert: TraefikDown
           expr: up{job="traefik"} == 0
@@ -348,9 +342,9 @@ ports:
       default: true
     exposedPort: 443
     protocol: TCP
-    http3:
-      enabled: true
-    advertisedPort: 4443
+    # http3:
+    #   enabled: true
+    # advertisedPort: 4443
     middlewares: []
   metrics:
     port: 9100
