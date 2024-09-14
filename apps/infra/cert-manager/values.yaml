@@ -131,8 +131,8 @@ serviceAccount:
 
   # Optional additional annotations to add to the controller's Service Account.
   # +docs:property
-  annotations:
-    eks.amazonaws.com/role-arn: aws:iam::227651627371:user/certManagerIAMUser
+  # annotations:
+  #   eks.amazonaws.com/role-arn: aws:iam::227651627371:user/certManagerIAMUser
 
   # Optional additional labels to add to the controller's Service Account.
   # +docs:property
@@ -1029,8 +1029,13 @@ startupapicheck:
   #    memory: 32Mi
   #
   # For more information, see [Resource Management for Pods and Containers](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/).
-  resources: {}
-
+  resources:
+    requests:
+      cpu: 250m
+      memory: 256Mi
+    limits:
+      cpu: 550m
+      memory: 356Mi
 
   # The nodeSelector on Pods tells Kubernetes to schedule Pods on the nodes with
   # matching labels.
