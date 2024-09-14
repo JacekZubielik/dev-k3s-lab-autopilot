@@ -182,23 +182,19 @@ entryPoints:
 
 metrics:
   prometheus:
-    addEntryPointsLabels: true
-    addInternals: true
-    addRoutersLabels: true
-    addServicesLabels: true
-    # manualRouting: true
-    entryPoint: metrics
-    buckets: "0.5,1.0,5"
+    # addEntryPointsLabels: true
+    # addInternals: true
+    # addRoutersLabels: true
+    # addServicesLabels: true
+    # # manualRouting: true
+    # entryPoint: metrics
+    # buckets: "0.5,1.0,5"
     # headerLabels:
     #   label: headerKey
     #   useragent: User-Agent
 
     service:
-      # -- Create a dedicated metrics service to use with ServiceMonitor
-      enabled:
-      labels:
-      annotations:
-    # -- When set to true, it won't check if Prometheus Operator CRDs are deployed
+      enabled: true
     disableAPICheck: false
     serviceMonitor:
       enabled: true
