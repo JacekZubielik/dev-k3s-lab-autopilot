@@ -139,8 +139,8 @@ resources: {}
 #     cpu: "1"
 #     memory: "512Mi"
 
-nodeSelector:
-  kubernetes.io/hostname: dev-k3s-master-0
+nodeSelector: {}
+  # kubernetes.io/hostname: dev-k3s-master-0
 affinity: {}
 tolerations: []
 

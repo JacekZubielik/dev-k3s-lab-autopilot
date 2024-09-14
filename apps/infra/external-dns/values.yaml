@@ -99,16 +99,13 @@ metrics:
     namespace: "external-dns"
     ## @param metrics.serviceMonitor.interval Interval at which metrics should be scraped
     ## ref: https://github.com/coreos/prometheus-operator/blob/master/Documentation/api.md#endpoint
-    ##
     interval: ""
     scrapeTimeout: ""
     selector: {}
     ## @param metrics.serviceMonitor.metricRelabelings Specify Metric Relabelings to add to the scrape endpoint
     ## ref: https://github.com/coreos/prometheus-operator/blob/master/Documentation/api.md#relabelconfig
-    ##
     metricRelabelings: []
     ## @param metrics.serviceMonitor.relabelings [array] Prometheus relabeling rules
-    ##
     relabelings: []
     honorLabels: false
     labels: {}
@@ -116,4 +113,3 @@ metrics:
 
   googlePodMonitor:
     enabled: false
-

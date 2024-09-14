@@ -67,11 +67,11 @@ blueprints:
 ## authentik server
 server:
   name: server
-  replicas: 1
+  replicas: 2
   autoscaling:
     enabled: false
     minReplicas: 1
-    maxReplicas: 5
+    maxReplicas: 2
     targetCPUUtilizationPercentage: 50
     targetMemoryUtilizationPercentage: ~
     behavior:
@@ -296,11 +296,11 @@ server:
 ## authentik worker
 worker:
   name: worker
-  replicas: 1
+  # replicas: 1
   autoscaling:
-    enabled: false
+    enabled: true # false
     minReplicas: 1
-    maxReplicas: 5
+    maxReplicas: 3
     targetCPUUtilizationPercentage: 50
     targetMemoryUtilizationPercentage: ~
     behavior:

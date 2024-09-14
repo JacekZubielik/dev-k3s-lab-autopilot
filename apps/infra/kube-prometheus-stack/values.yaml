@@ -864,7 +864,7 @@ kubeControllerManager:
   enabled: false
   endpoints: # ips of servers
   - 192.168.40.110
-  # - 192.168.40.111
+  - 192.168.40.111
   service:
     enabled: true
     port: 10252 # null
@@ -960,7 +960,7 @@ kubeEtcd:
   enabled: false
   endpoints: # ips of servers
   - 192.168.40.110
-  # - 192.168.40.111
+  - 192.168.40.111
   service:
     enabled: true
     port: 2381
@@ -999,7 +999,7 @@ kubeScheduler:
   enabled: false
   endpoints: # ips of servers
   - 192.168.40.110
-  # - 192.168.40.111
+  - 192.168.40.111
   service:
     enabled: true
     port: 10251 # null
@@ -1043,7 +1043,7 @@ kubeProxy:
   enabled: false
   endpoints: # ips of servers
   - 192.168.40.110
-  # - 192.168.40.111
+  - 192.168.40.111
   service:
     enabled: true
     port: 10249
@@ -1129,7 +1129,6 @@ prometheus-node-exporter:
       enabled: true
       additionalLabels:
         prometheus.io/scrap-with: kube-prometheus-stack
-
       jobLabel: jobLabel
       interval: ""
       sampleLimit: 0
@@ -1291,7 +1290,6 @@ prometheusOperator:
 
       ## Decrease log verbosity to errors only
       # logLevel: error
-
 
       ## Liveness probe
       livenessProbe:
@@ -1650,34 +1648,27 @@ prometheusOperator:
   #   sha: ""
 
   ## Set a Label Selector to filter watched prometheus and prometheusAgent
-  ##
   prometheusInstanceSelector: ""
 
   ## Set a Label Selector to filter watched alertmanager
-  ##
   alertmanagerInstanceSelector: ""
 
   ## Set a Label Selector to filter watched thanosRuler
   thanosRulerInstanceSelector: ""
 
   ## Set a Field Selector to filter watched secrets
-  ##
   secretFieldSelector: "type!=kubernetes.io/dockercfg,type!=kubernetes.io/service-account-token,type!=helm.sh/release.v1"
 
   ## If false then the user will opt out of automounting API credentials.
-  ##
   automountServiceAccountToken: true
 
   ## Additional volumes
-  ##
   extraVolumes: []
 
   ## Additional volume mounts
-  ##
   extraVolumeMounts: []
 
 ## Deploy a Prometheus instance
-##
 prometheus:
   enabled: true
   agentMode: false
@@ -1707,11 +1698,9 @@ prometheus:
     externalTrafficPolicy: Cluster
 
     ## Service type
-    ##
     type: ClusterIP
 
     ## Service dual stack
-    ##
     ipDualStack:
       enabled: false
       ipFamilies: ["IPv6", "IPv4"]
@@ -1732,7 +1721,6 @@ prometheus:
     clusterIP: "None"
 
     ## Port to expose on each node, if service type is NodePort
-    ##
     nodePort: 30901
     httpNodePort: 30902
 
@@ -1743,7 +1731,6 @@ prometheus:
     interval: ""
 
     ## Additional labels
-    ##
     additionalLabels: {}
 
     ## scheme: HTTP scheme to use for scraping. Can be used with `tlsConfig` for example if using istio mTLS.
@@ -1781,20 +1768,16 @@ prometheus:
     targetHttpPort: "http"
 
     ## Denotes if this Service desires to route external traffic to node-local or cluster-wide endpoints
-    ##
     externalTrafficPolicy: Cluster
 
     ## Service type
-    ##
     type: LoadBalancer
 
     ## Port to expose on each node
-    ##
     nodePort: 30901
     httpNodePort: 30902
 
   ## Configuration for Prometheus service
-  ##
   service:
     annotations: {}
     labels: {}
@@ -1805,24 +1788,20 @@ prometheus:
       ipFamilyPolicy: "PreferDualStack"
 
     ## Port for Prometheus Service to listen on
-    ##
     port: 9090
 
     ## To be used with a proxy extraContainer port
     targetPort: 9090
 
     ## Port for Prometheus Reloader to listen on
-    ##
     reloaderWebPort: 8080
 
     ## List of IP addresses at which the Prometheus server service is available
     ## Ref: https://kubernetes.io/docs/user-guide/services/#external-ips
-    ##
     externalIPs: []
 
     ## Port to expose on each node
     ## Only used if service.type is 'NodePort'
-    ##
     nodePort: 30090
 
     ## Loadbalancer IP
@@ -1831,15 +1810,12 @@ prometheus:
     loadBalancerSourceRanges: []
 
     ## Denotes if this Service desires to route external traffic to node-local or cluster-wide endpoints
-    ##
     externalTrafficPolicy: Cluster
 
     ## Service type
-    ##
     type: ClusterIP
 
     ## Additional ports to open for Prometheus service
-    ##
     additionalPorts: []
     # additionalPorts:
     # - name: oauth-proxy
@@ -1855,24 +1831,20 @@ prometheus:
 
     ## If you want to make sure that connections from a particular client are passed to the same Pod each time
     ## Accepts 'ClientIP' or 'None'
-    ##
     sessionAffinity: None
 
     ## If you want to modify the ClientIP sessionAffinity timeout
     ## The value must be >0 && <=86400(for 1 day) if ServiceAffinity == "ClientIP"
-    ##
     sessionAffinityConfig:
       clientIP:
         timeoutSeconds: 10800
 
   ## Configuration for creating a separate Service for each statefulset Prometheus replica
-  ##
   servicePerReplica:
     enabled: false
     annotations: {}
 
     ## Port for Prometheus Service per replica to listen on
-    ##
     port: 9090
 
     ## To be used with a proxy extraContainer port
@@ -1880,7 +1852,6 @@ prometheus:
 
     ## Port to expose on each node
     ## Only used if servicePerReplica.type is 'NodePort'
-    ##
     nodePort: 30091
 
     ## Loadbalancer source IP ranges
@@ -1888,15 +1859,12 @@ prometheus:
     loadBalancerSourceRanges: []
 
     ## Denotes if this Service desires to route external traffic to node-local or cluster-wide endpoints
-    ##
     externalTrafficPolicy: Cluster
 
     ## Service type
-    ##
     type: ClusterIP
 
     ## Service dual stack
-    ##
     ipDualStack:
       enabled: false
       ipFamilies: ["IPv6", "IPv4"]
@@ -1904,7 +1872,6 @@ prometheus:
 
   ## Configure pod disruption budgets for Prometheus
   ## ref: https://kubernetes.io/docs/tasks/run-application/configure-pdb/#specifying-a-poddisruptionbudget
-  ##
   podDisruptionBudget:
     enabled: false
     minAvailable: 1
@@ -2003,7 +1970,6 @@ prometheus:
       enabled: false
       ## Final form of the secret for each per replica ingress is
       ## {{ tlsSecretPerReplica.prefix }}-{{ $replicaNumber }}
-      ##
       prefix: "prometheus"
 
   ## Configure additional options for default pod security policy for Prometheus
@@ -2135,9 +2101,9 @@ prometheus:
     remoteWriteDashboards: false
     resources:
       requests:
-        memory: 1Gi
+        memory: 0.9Gi
       limits:
-        memory: 1Gi
+        memory: 1.1Gi
 
     storageSpec:
       volumeClaimTemplate:
