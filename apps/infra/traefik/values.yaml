@@ -183,9 +183,37 @@ metrics:
     # manualRouting: true
     entryPoint: metrics
     buckets: "0.5,1.0,5"
-    headerLabels:
-      label: headerKey
-      useragent: User-Agent
+    # headerLabels:
+    #   label: headerKey
+    #   useragent: User-Agent
+
+    service:
+      # -- Create a dedicated metrics service to use with ServiceMonitor
+      enabled:
+      labels:
+      annotations:
+    # -- When set to true, it won't check if Prometheus Operator CRDs are deployed
+    disableAPICheck:
+    serviceMonitor:
+      # -- Enable optional CR for Prometheus Operator. See EXAMPLES.md for more details.
+      enabled: true
+      metricRelabelings:
+      relabelings:
+      jobLabel:
+      interval:
+      honorLabels:
+      scrapeTimeout:
+      honorTimestamps:
+      enableHttp2:
+      followRedirects:
+      additionalLabels:
+      namespace:
+      namespaceSelector:
+    prometheusRule:
+      # -- Enable optional CR for Prometheus Operator. See EXAMPLES.md for more details.
+      enabled: true
+      additionalLabels:
+      namespace:
 
   #  datadog:
   #    ## Address instructs exporter to send metrics to datadog-agent at this address.
@@ -308,9 +336,9 @@ ports:
       default: true
     exposedPort: 443
     protocol: TCP
-    # http3:
-    #   enabled: false
-    # advertisedPort: 4443
+    http3:
+      enabled: true
+    advertisedPort: 4443
     middlewares: []
   metrics:
     port: 9100
