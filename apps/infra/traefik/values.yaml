@@ -345,7 +345,7 @@ ports:
     # http3:
     #   enabled: true
     # advertisedPort: 4443
-    middlewares: []
+    # middlewares: []
   metrics:
     port: 9100
     expose:
@@ -479,8 +479,6 @@ resources:
     cpu: 550m
     memory: 556Mi
 
-
-
 affinity: {}
   # podAntiAffinity:
   #   requiredDuringSchedulingIgnoredDuringExecution:
@@ -531,51 +529,23 @@ namespaceOverride: traefik
 # This will override the default app.kubernetes.io/instance label for all Objects.
 instanceLabelOverride: traefik
 
-prometheus:
-  enabled: true
-  # servicemonitor:
-  #   enabled: true
-  #   prometheusInstance: infra-kube-prometheus-stack
-  #   targetPort: 9100
-  #   path: /metrics
-  #   interval: 60s
-  #   scrapeTimeout: 30s
-  #   labels:
-  #     release: kube-prometheus-stack
-  #     prometheus.io/scrap-with: prometheus
-  #   annotations: {}
-  #   honorLabels: false
-  #   endpointAdditionalProperties: {}
+# prometheus:
+#   enabled: true
+#   servicemonitor:
+#     enabled: true
+#     prometheusInstance: infra-kube-prometheus-stack
+#     targetPort: 9100
+#     path: /metrics
+#     interval: 60s
+#     scrapeTimeout: 30s
+#     labels:
+#       release: kube-prometheus-stack
+#       prometheus.io/scrap-with: prometheus
+#     annotations: {}
+#     honorLabels: false
+#     endpointAdditionalProperties: {}
 
-  serviceMonitor:
-    enabled: false
-    labels: {}
-    honorLabels: true
-    interval: 60s
-    selector: {}
-    namespace: traefik
-    scrapeTimeout: 10s
-    scheme: http
-    tlsConfig: {}
-    relabelings:
-    - action: replace
-      regex: ^(.*)$
-      replacement: $1
-      separator: ;
-      sourceLabels:
-      - __meta_kubernetes_pod_node_name
-      targetLabel: nodename
-    metricRelabelings:
-    - action: keep
-      regex: 'kube_(daemonset|deployment|pod|namespace|node|statefulset).+'
-      sourceLabels:
-      - __name__
-    bearerTokenFile: {}
-    # (use long lived access tokens)
-    bearerTokenSecret: {}
-      # name:
-      # key:
-      # optional:
+
 
   # Note: Enabling both PodMonitor and ServiceMonitor is mutually exclusive, enabling both will result in a error.
   # podmonitor:
