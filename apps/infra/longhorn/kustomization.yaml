@@ -39,7 +39,56 @@ patches:
   target:
     kind: CustomResourceDefinition
     labelSelector: app.kubernetes.io/instance=longhorn
+
 - path: patches/hook.yaml
   target:
     name: pre-hook
     kind: Job
+
+  - target:
+      kind: Node
+      name: dev-k3s-node-0
+    patch: |-
+      - op: add
+        path: /metadata/annotations/node.longhorn.io~1config-node-tags
+        value: '["fast","storage"]'
+
+  - target:
+      kind: Node
+      name: dev-k3s-node-0
+    patch: |-
+      - op: add
+        path: /metadata/annotations/node.longhorn.io~1create-default-disk
+        value: config
+
+  - target:
+      kind: Node
+      name: dev-k3s-node-0
+    patch: |-
+      - op: add
+        path: /metadata/annotations/node.longhorn.io~1default-disks-config
+        value: '[{"name":"data","path":"/mnt/data","allowScheduling":true,"storageReserved":4294967296,"tags":["data","fast"]}]'
+
+  - target:
+      kind: Node
+      name: dev-k3s-node-1
+    patch: |-
+      - op: add
+        path: /metadata/annotations/node.longhorn.io~1config-node-tags
+        value: '["fast","storage"]'
+
+  - target:
+      kind: Node
+      name: dev-k3s-node-1
+    patch: |-
+      - op: add
+        path: /metadata/annotations/node.longhorn.io~1create-default-disk
+        value: config
+
+  - target:
+      kind: Node
+      name: dev-k3s-node-1
+    patch: |-
+      - op: add
+        path: /metadata/annotations/node.longhorn.io~1default-disks-config
+        value: '[{"name":"data","path":"/mnt/data","allowScheduling":true,"storageReserved":4294967296,"tags":["data","fast"]}]'
