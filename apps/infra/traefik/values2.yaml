@@ -15,26 +15,26 @@ deployment:
   podAnnotations: {}
   podLabels: {}
   additionalContainers: []
-  additionalVolumes: []
-  # additionalVolumes:
-  # - name: plugins
-  # - name: traefik-logs
+  # additionalVolumes: []
+  additionalVolumes:
+  - name: plugins
+  - name: traefik-logs
 
-  initContainers: []
-  # initContainers:
-  #   - name: data-accesslog
-  #     image: busybox:latest
-  #     args:
-  #       - /bin/sh
-  #       - -c
-  #       - tail -n+1 -F /data/access.log
-  #     imagePullPolicy: Always
-  #     resources: {}
-  #     terminationMessagePath: /dev/termination-log
-  #     terminationMessagePolicy: File
-  #     volumeMounts:
-  #     - name: data
-  #       mountPath: /data
+  # initContainers: []
+  initContainers:
+    - name: data-accesslog
+      image: busybox:latest
+      args:
+        - /bin/sh
+        - -c
+        - tail -n+1 -F /data/access.log
+      imagePullPolicy: Always
+      resources: {}
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - name: data
+        mountPath: /data
 
   shareProcessNamespace: true # false
   dnsConfig: {}
@@ -177,34 +177,27 @@ providers:
     # -- File content (YAML format, go template supported) (see https://doc.traefik.io/traefik/providers/file/)
     content: []
 
-# -- Add volumes to the traefik pod. The volume name will be passed to tpl.
-# This can be used to mount a cert pair or a configmap that holds a config.toml file.
-# After the volume has been mounted, add the configs into traefik by using the `additionalArguments` list below, eg:
-# `additionalArguments:
-# - "--providers.file.filename=/config/dynamic.toml"
-# - "--ping"
-# - "--ping.entrypoint=web"`
 
-volumes: []
-# - mountPath: /data
-#   name: traefik-logs
-#   type: configMap
-# - name: '{{ printf "%s-configs" .Release.Name }}'
-#   mountPath: "/config"
-#   type: configMap
+volumes: # []
+- mountPath: /data
+  name: traefik-logs
+  type: configMap
+- name: '{{ printf "%s-configs" .Release.Name }}'
+  mountPath: "/config"
+  type: configMap
 # - name: public-cert
 #   mountPath: "/certs"
 #   type: secret
-  # - name: crowdsec-bouncer-tls
-  #   mountPath: /etc/traefik/crowdsec-certs/
-  #   type: secret
+- name: crowdsec-bouncer-tls
+  mountPath: /etc/traefik/crowdsec-certs/
+  type: secret
 
 # -- Additional volumeMounts to add to the Traefik container
-additionalVolumeMounts: []
-# - name: traefik-logs
-#   mountPath: /var/log/traefik
-# - name: plugins
-#   mountPath: /plugins-storage
+additionalVolumeMounts: # []
+- name: traefik-logs
+  mountPath: /var/log/traefik
+- name: plugins
+  mountPath: /plugins-storage
 
 logs:
   general:
@@ -551,37 +544,37 @@ service:
 
 autoscaling:
   # Create HorizontalPodAutoscaler object.
-  enabled: false
-#   minReplicas: 1
-#   maxReplicas: 10
-#   metrics:
-#   - type: Resource
-#     resource:
-#       name: cpu
-#       target:
-#         type: Utilization
-#         averageUtilization: 60
-#   - type: Resource
-#     resource:
-#       name: memory
-#       target:
-#         type: Utilization
-#         averageUtilization: 60
-#   behavior:
-#     scaleDown:
-#       stabilizationWindowSeconds: 300
-#       policies:
-#       - type: Pods
-#         value: 1
-#         periodSeconds: 60
+  enabled: true
+  minReplicas: 1
+  maxReplicas: 10
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 60
+  - type: Resource
+    resource:
+      name: memory
+      target:
+        type: Utilization
+        averageUtilization: 60
+  behavior:
+    scaleDown:
+      stabilizationWindowSeconds: 300
+      policies:
+      - type: Pods
+        value: 1
+        periodSeconds: 60
 
 persistence:
-  enabled: false
+  enabled: true
   name: data
   #existingClaim: "traefik-logs"
   accessMode: ReadWriteOnce
   size: 128Mi
-  #storageClass: "local-path"
+  storageClass: "local-path"
   #volumeName: traefik-logs
   path: /data
   annotations: {}
@@ -631,11 +624,11 @@ serviceAccountAnnotations: {}
 # -- [Resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for `traefik` container.
 resources:
   requests:
-    cpu: 250m
-    memory: 256Mi
+    cpu: 100m
+    memory: 50Mi
   limits:
-    cpu: 550m
-    memory: 556Mi
+    cpu: 300m
+    memory: 150Mi
 
 # -- This example pod anti-affinity forces the scheduler to put traefik pods
 # -- on nodes where no other traefik pods are scheduled.
