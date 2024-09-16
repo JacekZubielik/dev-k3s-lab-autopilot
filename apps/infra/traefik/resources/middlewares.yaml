@@ -176,3 +176,20 @@ spec:
     - X-authentik-meta-provider
     - X-authentik-meta-app
     - X-authentik-meta-version
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: test-errors
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
+  labels:
+    app.kubernetes.io/name: traefik
+spec:
+  errors:
+    status:
+      - "500-599"
+    query: /{status}.html
+    service:
+      name: whoami
+      port: 80

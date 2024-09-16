@@ -247,27 +247,43 @@ metrics:
   # addInternals: false
 
   prometheus:
+    entryPoint: metrics
     addEntryPointsLabels: true
     addInternals: true
     addRoutersLabels: true
     addServicesLabels: true
-    # manualRouting: true
-    entryPoint: metrics
-    buckets: "0.5,1.0,5"
-    headerLabels:
-      label: headerKey
-      useragent: User-Agent
+    manualRouting: true
+    buckets: "0.5,1.0,2.5"
+    # headerLabels:
+    #   label: headerKey
+    #   useragent: User-Agent
 
-
-  # prometheus:
     service:
       enabled: true
+      labels:
+        app: traefik
+        release: kube-prometheus-stack
+        prometheus.io/scrap-with: kube-prometheus-stack
+
     disableAPICheck: true
     serviceMonitor:
       enabled: true
-      jobLabel: traefik
+      jobLabel: app.kubernetes.io/name
       interval: 30s
       honorLabels: true
+      namespaceSelector:
+        matchNames:
+        - traefik
+      namespace: traefik
+      # selector:
+      #   matchLabels:
+      #     app: traefik
+      # endpoints:
+      # - interval: 30s
+      #   port: "9100"
+      #   path: /metrics
+
+
       metricRelabelings:
         - sourceLabels: [__name__]
           separator: ;
