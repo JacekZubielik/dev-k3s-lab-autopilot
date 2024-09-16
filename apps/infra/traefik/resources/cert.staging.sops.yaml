@@ -31,8 +31,67 @@ sops:
             anp5ZUVKQkNZYmpIWHN1OVRtSm1IVzAKXW1SxH/Dahx1B8XOUGlBSW7bGVxNXaUs
             fDBKIWLZOqhPV6MUImdcQ8fsk/xX4kTIvea8xsDSKOdu2L3Q1pNL4w==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-08-26T09:35:16Z"
-    mac: ENC[AES256_GCM,data:FECTFEjQEbPOaymcootZT9oxBuxYErNCv9nyakpR5QHgzKvFMpJhdrFgREQqIHD0Lolk3su+qWx3hZKKamdvBy21cObY1w4d7EBXKny080vJStXhJyYuwMzDwD6msykImd4EwEKCL99dPMxHqGhiZeKnZBRCNh+UzHWK9m+JAjM=,iv:ZNUgluDP5jrHBvrE4fJ1yh3NkkCxqaus2jQs+Eo57Mw=,tag:CwjXKtvaEKBLmbpiDuh+NQ==,type:str]
+    lastmodified: "2024-09-16T15:36:17Z"
+    mac: ENC[AES256_GCM,data:ZId1mm1gQ20lhdlO3mdt5N5c8lGIcY3qqdy6tJgkscA/feSZFoRDised6EwZe35BeAb/yZk6Im+MOd1RkauSrhhKTsYnm1KmDppcXRMVdy00EaLl9rasW0Hj4L1dN3WdyCbe9BqiMYQZizTqERz8Z53xbKEPEpyrb/MtX0hfP7s=,iv:rvT5uda0TrAmSJF6cOl2PWX+wp9P6CQzwh/NwkHx7ik=,tag:S5h1RMiT4EyUU+hXNbqleQ==,type:str]
+    pgp:
+        - created_at: "2024-06-22T17:13:15Z"
+          enc: |-
+            -----BEGIN PGP MESSAGE-----
+
+            hQIMA0R6oz1GmNjVARAAyJFuekzng15GEj8eMiCLB+QNX6qweAvwkyIEpuBk8uuo
+            Wb12UWcicGQZ3bAmnRqeRCWimhXmtCf5LK0DS/OeUD4GESI5QiVZ5iQeiIFhYNd2
+            gPqY1KftbaoGhRCnxrvm/YcvLt4N0lkxUWB3yHeIJthDmW+zp3PSnx+Qhh04iImt
+            /V3SmCUW12T4OvqcD8uzcLqzeV+9PMDse+1YvvQ4ZA6M2D5Jot3TiIil/IFG61jC
+            /2N1W1gTVjnPyEqv82JbxBADInmIqbg0q0SKQah5Sx7Zx2ltMcd95lzZ7RgwEWiA
+            bctK580g/eBqDPFBcdEeIrwWzez6i4vdnT1wVXU/w17XIzMocibdsAo8/eO09FNk
+            /V4KJRN/vg6dvPYeQ94iWobDA7vzfo/H0eAgFpJoYQ66gDoaRYuwJJUMXfuY6LOU
+            XuWRPfOOoH6QAjJgEEwrLOv5vIyycjm4r8G9b5ONVOam8kG+p7U/CeiAJ3zy+wDu
+            eKSsZFchE3Zj4fCywm0B34TP70iuS/rvcIyXN/CJ++WrXyb2xRWR1sl2uH7A+T+m
+            H6twcmg/FgHj5PBaySvW8svTa+duSQU5GIirw3ZVK4IU55ZkH3DPFk2kRcUjDSrW
+            AOueF9sJCYJlyNr8v/JLIsfipHmXbpWLvicyJNspUGgh6EZKjwfarCaxHs6u2yXS
+            XgFuKJhufBzAc2KgmmqFvd/cZ/to7+cevJKQMU1RscDzvPWQ7iZy2yw03SjVWKPF
+            iGCaD+jOVHbF/0qZovYmwqwdsprIidw2WhgfCr7ru27HOH2/OcjfZJl6roW72es=
+            =T2rc
+            -----END PGP MESSAGE-----
+          fp: 6D3FE55384B558E06A1BA364586EFA784A32C981
+    encrypted_regex: ^(externalName|external-dns.alpha.kubernetes.io/hostname|sans|main|match|external-dns.alpha.kubernetes.io/target|dnsNames|commonName|data|stringData|dnsNames|email|accessKeyID|region|hostedZoneID|role|dnsZones)$
+    version: 3.8.1
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+    annotations:
+        argocd.argoproj.io/sync-wave: "1"
+    name: proxmox-staging
+spec:
+    dnsNames:
+        - ENC[AES256_GCM,data:gfhokAY3DNLPSwW6p7nXvv/nWoaBxH7/RCmmJ+3D6q4=,iv:d/8AwAXJJ8bv2XEEqK8yUuaB8aJtHye54cqoVNJcqYk=,tag:yUzJrnVBKvnkRuHAWAaYcQ==,type:str]
+    issuerRef:
+        kind: ClusterIssuer
+        name: letsencrypt-staging
+    commonName: ENC[AES256_GCM,data:FmEPiNkVIkqwk6yezXPq3V5pgYK467+25yVlMdrYMaY=,iv:K1Pbljipwp7HhNXqRkwYpDFzZHawOlO1AnRL8vLr9F8=,tag:oiwkCpG21jW/l4DsB/r/Cg==,type:str]
+    secretName: proxmox-cf-staging
+    # 90d
+    duration: 2160h0m0s
+    # 30d
+    renewBefore: 720h0m0s
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1deg9tqt7jtddnqme6nvcl72czns80z0n25u8k9pw5830dn4arsks5pua4h
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBLSjhoVkJkbjE2UnRkOUYv
+            QmNidUxvQkE0QlRxMElJbnZZV0NTQmNOSTNnCnBrZTZPNWpidldwS3NpU0V6UzM2
+            MU9kKzF0K0NLL0JLa2tyVEJsYmZYU0UKLS0tIFppTEVtV3g0TVd1M29KUVMraW9G
+            anp5ZUVKQkNZYmpIWHN1OVRtSm1IVzAKXW1SxH/Dahx1B8XOUGlBSW7bGVxNXaUs
+            fDBKIWLZOqhPV6MUImdcQ8fsk/xX4kTIvea8xsDSKOdu2L3Q1pNL4w==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2024-09-16T15:36:17Z"
+    mac: ENC[AES256_GCM,data:ZId1mm1gQ20lhdlO3mdt5N5c8lGIcY3qqdy6tJgkscA/feSZFoRDised6EwZe35BeAb/yZk6Im+MOd1RkauSrhhKTsYnm1KmDppcXRMVdy00EaLl9rasW0Hj4L1dN3WdyCbe9BqiMYQZizTqERz8Z53xbKEPEpyrb/MtX0hfP7s=,iv:rvT5uda0TrAmSJF6cOl2PWX+wp9P6CQzwh/NwkHx7ik=,tag:S5h1RMiT4EyUU+hXNbqleQ==,type:str]
     pgp:
         - created_at: "2024-06-22T17:13:15Z"
           enc: |-
