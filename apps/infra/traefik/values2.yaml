@@ -20,21 +20,21 @@ deployment:
   # - name: plugins
   # - name: traefik-logs
 
-  # initContainers: []
-  initContainers:
-    - name: data-accesslog
-      image: busybox:latest
-      args:
-        - /bin/sh
-        - -c
-        - tail -n+1 -F /data/access.log
-      imagePullPolicy: Always
-      resources: {}
-      terminationMessagePath: /dev/termination-log
-      terminationMessagePolicy: File
-      volumeMounts:
-      - name: data
-        mountPath: /data
+  initContainers: []
+  # initContainers:
+  #   - name: data-accesslog
+  #     image: busybox:latest
+  #     args:
+  #       - /bin/sh
+  #       - -c
+  #       - tail -n+1 -F /data/access.log
+  #     imagePullPolicy: Always
+  #     resources: {}
+  #     terminationMessagePath: /dev/termination-log
+  #     terminationMessagePolicy: File
+  #     volumeMounts:
+  #     - name: data
+  #       mountPath: /data
 
   shareProcessNamespace: true # false
   dnsConfig: {}
@@ -178,10 +178,10 @@ providers:
     content: []
 
 
-volumes: # []
-- mountPath: /data
-  name: traefik-logs
-  type: configMap
+# volumes: # []
+# - mountPath: /data
+#   name: traefik-logs
+#   type: configMap
 # - name: '{{ printf "%s-configs" .Release.Name }}'
 #   mountPath: "/config"
 #   type: configMap
@@ -568,7 +568,7 @@ autoscaling:
         periodSeconds: 60
 
 persistence:
-  enabled: true
+  enabled: false
   name: data
   # existingClaim: "pvc-traefik"
   accessMode: ReadWriteOnce
