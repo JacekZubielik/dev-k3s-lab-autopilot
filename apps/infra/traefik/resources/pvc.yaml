@@ -15,6 +15,6 @@ spec:
   resources:
     requests:
       storage: 1Gi
-  volumeName: traefik #pv-authentik-psql # must reference Persistent Volume
+  volumeName: pv-traefik #pv-authentik-psql # must reference Persistent Volume
   storageClassName: local-path
 

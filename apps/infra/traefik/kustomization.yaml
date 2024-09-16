@@ -18,6 +18,7 @@ resources:
 - resources/service.yaml
 # - resources/tlsstore.yaml
 - resources/pvc.yaml
+- resources/pv.yaml
 
 generators:
 - ksops-generator.yaml
