@@ -21,7 +21,7 @@ spec:
       - name: chain-traefik-dashboard
         namespace: traefik
     services:
-    - name: proxmox
+    - name: proxmox-proxy
       port: 8006
       scheme: https
       passHostHeader: true
