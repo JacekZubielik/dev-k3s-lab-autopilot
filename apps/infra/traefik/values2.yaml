@@ -15,10 +15,10 @@ deployment:
   podAnnotations: {}
   podLabels: {}
   additionalContainers: []
-  # additionalVolumes: []
-  additionalVolumes:
-  - name: plugins
-  - name: traefik-logs
+  additionalVolumes: []
+  # additionalVolumes:
+  # - name: plugins
+  # - name: traefik-logs
 
   # initContainers: []
   initContainers:
