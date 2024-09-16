@@ -244,22 +244,22 @@ logs:
 
 metrics:
   ## -- Enable metrics for internal resources. Default: false
-  # addInternals:
-
-  # prometheus:
-  #   addEntryPointsLabels: true
-  #   addInternals: true
-  #   addRoutersLabels: true
-  #   addServicesLabels: true
-  #   # manualRouting: true
-  #   entryPoint: metrics
-  #   buckets: "0.5,1.0,5"
-  #   headerLabels:
-  #     label: headerKey
-  #     useragent: User-Agent
-
+  addInternals: false
 
   prometheus:
+    addEntryPointsLabels: true
+    addInternals: true
+    addRoutersLabels: true
+    addServicesLabels: true
+    # manualRouting: true
+    entryPoint: metrics
+    buckets: "0.5,1.0,5"
+    headerLabels:
+      label: headerKey
+      useragent: User-Agent
+
+
+  # prometheus:
     service:
       enabled: true
     disableAPICheck: false
