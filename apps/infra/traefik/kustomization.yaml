@@ -14,7 +14,7 @@ resources:
 - resources/tlsoption.yaml
 # - resources/service.monitor.yaml
 # - resources/prometheus-configmap.yaml
-- resources/ingressroute.staging.proxmox.yaml
+# - resources/ingressroute.staging.proxmox.yaml
 - resources/service.yaml
 # - resources/tlsstore.yaml
 
@@ -38,7 +38,7 @@ helmCharts:
   includeCRDs: false
   namespace: traefik
   releaseName: traefik
-  valuesFile: values2.yaml
+  valuesFile: values.yaml
 
 patches:
 - patch: |-
