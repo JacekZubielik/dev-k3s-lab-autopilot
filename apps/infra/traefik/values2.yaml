@@ -244,7 +244,7 @@ logs:
 
 metrics:
   ## -- Enable metrics for internal resources. Default: false
-  addInternals: false
+  # addInternals: false
 
   prometheus:
     addEntryPointsLabels: true
@@ -293,48 +293,6 @@ metrics:
           annotations:
             summary: "Traefik Down"
             description: "{{ $labels.pod }} on {{ $labels.nodename }} is down"
-
-
-
-
-    # serviceMonitor:
-    #   # -- Enable optional CR for Prometheus Operator. See EXAMPLES.md for more details.
-    #   enabled: false
-    #   metricRelabelings:
-    #   - sourceLabels: [__name__]
-    #     separator: ;
-    #     regex: ^fluentd_output_status_buffer_(oldest|newest)_.+
-    #     replacement: $1
-    #     action: drop
-    #   relabelings:
-    #   - sourceLabels: [__meta_kubernetes_pod_node_name]
-    #     separator: ;
-    #     regex: ^(.*)$
-    #     targetLabel: nodename
-    #     replacement: $1
-    #     action: replace
-    #   jobLabel: traefik
-    #   interval: 30s
-    #   honorLabels: true
-    #   scrapeTimeout:
-    #   honorTimestamps:
-    #   enableHttp2:
-    #   followRedirects:
-    #   additionalLabels:
-    #   namespace:
-    #   namespaceSelector:
-    # prometheusRule:
-    #   enabled: false #true
-    #   rules:
-    #     - alert: TraefikDown
-    #       expr: up{job="traefik"} == 0
-    #       for: 5m
-    #       labels:
-    #         context: traefik
-    #         severity: warning
-    #       annotations:
-    #         summary: "Traefik Down"
-    #         description: "{{ $labels.pod }} on {{ $labels.nodename }} is down"
 
   #  datadog:
   #    ## Address instructs exporter to send metrics to datadog-agent at this address.
