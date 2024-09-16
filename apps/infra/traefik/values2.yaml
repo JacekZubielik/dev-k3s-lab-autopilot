@@ -18,7 +18,7 @@ deployment:
   # additionalVolumes: []
   additionalVolumes:
   - name: plugins
-  - name: traefik-logs
+  # - name: traefik-logs
 
   # initContainers: []
   initContainers:
