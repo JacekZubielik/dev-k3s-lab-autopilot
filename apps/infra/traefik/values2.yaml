@@ -178,10 +178,10 @@ providers:
     content: []
 
 
-volumes: # []
-- mountPath: /data
-  name: traefik-logs
-  type: configMap
+# volumes: # []
+# - mountPath: /data
+#   name: traefik-logs
+#   type: configMap
 # - name: '{{ printf "%s-configs" .Release.Name }}'
 #   mountPath: "/config"
 #   type: configMap
