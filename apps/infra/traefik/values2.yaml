@@ -17,8 +17,8 @@ deployment:
   additionalContainers: []
   # additionalVolumes: []
   additionalVolumes:
-  - name: plugins
-  # - name: traefik-logs
+  # - name: plugins
+  - name: traefik-logs
 
   # initContainers: []
   initContainers:
@@ -193,9 +193,9 @@ providers:
 #   type: secret
 
 # -- Additional volumeMounts to add to the Traefik container
-additionalVolumeMounts: []
-# - name: traefik-logs
-#   mountPath: /var/log/traefik
+additionalVolumeMounts: #[]
+- name: traefik-logs
+  mountPath: /var/log/traefik
 # - name: plugins
 #   mountPath: /plugins-storage
 
@@ -574,7 +574,7 @@ persistence:
   accessMode: ReadWriteOnce
   size: 1Gi
   storageClass: "local-path"
-  volumeName: pvc-traefik
+  volumeName: traefik-logs
   # path: /data
   # annotations: {}
   # subPath: ""
