@@ -1,0 +1,13 @@
+---
+service.yamlapiVersion: v1
+kind: Service
+metadata:
+  name: proxmox
+  namespace: traefik
+spec:
+  externalName: 192.168.40.18
+  type: ExternalName
+  ports:
+  - name: websecure
+    port: 8006
+    targetPort: 8006
