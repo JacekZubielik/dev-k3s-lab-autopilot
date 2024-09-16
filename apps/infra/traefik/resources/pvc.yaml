@@ -4,9 +4,6 @@ kind: PersistentVolumeClaim
 metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "-1"
-    # velero.io/csi-volumesnapshot-class: "longhorn-backup-vsc"
-  labels:
-    backup: pvc-traefik
   name: pvc-traefik
   namespace: traefik
 spec:
@@ -15,6 +12,5 @@ spec:
   resources:
     requests:
       storage: 1Gi
-  volumeName: pv-traefik #pv-authentik-psql # must reference Persistent Volume
   storageClassName: local-path
 

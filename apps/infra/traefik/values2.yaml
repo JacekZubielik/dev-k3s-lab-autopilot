@@ -574,7 +574,7 @@ persistence:
   # accessMode: ReadWriteOnce
   # size: 1Gi
   # storageClass: "local-path"
-  # volumeName: traefik-logs
+  volumeName: pvc-traefik
   # path: /data
   # annotations: {}
   # subPath: ""
