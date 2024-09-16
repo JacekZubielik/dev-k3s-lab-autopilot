@@ -117,7 +117,7 @@ spec:
 apiVersion: traefik.io/v1alpha1
 kind: Middleware
 metadata:
-  name: local-whitelist
+  name: whitelist-local
   annotations:
     argocd.argoproj.io/sync-wave: "0"
   labels:
