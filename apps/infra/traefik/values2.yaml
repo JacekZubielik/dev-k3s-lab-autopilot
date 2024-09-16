@@ -570,10 +570,10 @@ autoscaling:
 persistence:
   enabled: true
   # name: data
-  existingClaim: "pvc-traefik"
-  # accessMode: ReadWriteOnce
-  # size: 1Gi
-  # storageClass: "local-path"
+  # existingClaim: "pvc-traefik"
+  accessMode: ReadWriteOnce
+  size: 1Gi
+  storageClass: "local-path"
   volumeName: pvc-traefik
   # path: /data
   # annotations: {}

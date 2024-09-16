@@ -17,7 +17,7 @@ resources:
 - resources/ingressroute.staging.proxmox.yaml
 - resources/service.yaml
 # - resources/tlsstore.yaml
-- resources/pvc.yaml
+# - resources/pvc.yaml
 # - resources/pv.yaml
 
 generators:
