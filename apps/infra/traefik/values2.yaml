@@ -17,7 +17,7 @@ deployment:
   additionalContainers: []
   # additionalVolumes: []
   additionalVolumes:
-  # - name: plugins
+  - name: plugins
   - name: traefik-logs
 
   # initContainers: []
@@ -196,8 +196,8 @@ providers:
 additionalVolumeMounts: #[]
 - name: traefik-logs
   mountPath: /var/log/traefik
-# - name: plugins
-#   mountPath: /plugins-storage
+- name: plugins
+  mountPath: /plugins-storage
 
 logs:
   general:
@@ -569,7 +569,7 @@ autoscaling:
 
 persistence:
   enabled: true
-  # name: data
+  name: data
   # existingClaim: "pvc-traefik"
   accessMode: ReadWriteOnce
   size: 1Gi
