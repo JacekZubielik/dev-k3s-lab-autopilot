@@ -261,7 +261,7 @@ metrics:
 
   # prometheus:
     service:
-      enabled: false
+      enabled: true
     disableAPICheck: true
     serviceMonitor:
       enabled: true
