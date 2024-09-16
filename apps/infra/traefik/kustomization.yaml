@@ -13,7 +13,7 @@ resources:
 - resources/middlewares.yaml
 - resources/tlsoption.yaml
 # - resources/service.monitor.yaml
-- resources/prometheus-configmap.yaml
+# - resources/prometheus-configmap.yaml
 - resources/ingressroute.staging.proxmox.yaml
 - resources/service.yaml
 # - resources/tlsstore.yaml
