@@ -543,7 +543,6 @@ service:
 #     name: tls-ver13
 
 autoscaling:
-  # Create HorizontalPodAutoscaler object.
   enabled: true
   minReplicas: 1
   maxReplicas: 10
@@ -570,26 +569,20 @@ autoscaling:
 
 persistence:
   enabled: true
-  name: data
-  #existingClaim: "traefik-logs"
+  # name: data
+  existingClaim: "pvc-traefik"
   accessMode: ReadWriteOnce
-  size: 128Mi
+  # size: 1Gi
   storageClass: "local-path"
-  #volumeName: traefik-logs
-  path: /data
+  # volumeName: traefik-logs
+  # path: /data
   annotations: {}
-  # -- Only mount a subpath of the Volume into the pod
   # subPath: ""
 
 # -- Certificates resolvers configuration.
 # Ref: https://doc.traefik.io/traefik/https/acme/#certificate-resolvers
 # See EXAMPLES.md for more details.
 certResolvers: {}
-
-# -- If hostNetwork is true, runs traefik in the host network namespace
-# To prevent unschedulabel pods due to port collisions, if hostNetwork=true
-# and replicas>1, a pod anti-affinity is recommended and will be set if the
-# affinity is left as default.
 hostNetwork: false
 
 # -- Whether Role Based Access Control objects like roles and rolebindings should be created
