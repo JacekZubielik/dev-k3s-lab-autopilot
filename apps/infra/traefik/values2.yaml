@@ -454,7 +454,7 @@ additionalArguments:
 - "--api.dashboard=true"
 - "--api.insecure=true"
 - "--ping=true"
-- "--accesslog.filepath=/data/access.log"
+# - "--accesslog.filepath=/data/access.log"
 - "--entrypoints.websecure.http.tls=true"
 - "--serversTransport.insecureSkipVerify=true"
 - "--entryPoints.web.proxyProtocol.insecure"  # < --- for Hass
