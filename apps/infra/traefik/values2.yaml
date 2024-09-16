@@ -178,19 +178,19 @@ providers:
     content: []
 
 
-# volumes: # []
-# - mountPath: /data
-#   name: traefik-logs
-#   type: configMap
+volumes: # []
+- mountPath: /data
+  name: traefik-logs
+  type: configMap
 # - name: '{{ printf "%s-configs" .Release.Name }}'
 #   mountPath: "/config"
 #   type: configMap
 # - name: public-cert
 #   mountPath: "/certs"
 #   type: secret
-# - name: crowdsec-bouncer-tls
-#   mountPath: /etc/traefik/crowdsec-certs/
-#   type: secret
+- name: crowdsec-bouncer-tls
+  mountPath: /etc/traefik/crowdsec-certs/
+  type: secret
 
 # -- Additional volumeMounts to add to the Traefik container
 additionalVolumeMounts: #[]
