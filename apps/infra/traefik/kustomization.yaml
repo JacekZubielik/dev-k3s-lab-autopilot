@@ -39,7 +39,7 @@ helmCharts:
   includeCRDs: false
   namespace: traefik
   releaseName: traefik
-  valuesFile: values.yaml
+  valuesFile: values2.yaml
 
 patches:
 - patch: |-
