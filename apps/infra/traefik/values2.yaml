@@ -55,17 +55,17 @@ ingressClass:
   name: traefik-external
 
 # Traefik experimental features
-experimental:
-  http3:
-    enabled: false
-  plugins:
-    enabled: false
-    fail2ban:
-      moduleName: "github.com/tomMoulard/fail2ban"
-      version: "v0.8.3"
-    crowdsec-bouncer-traefik-plugin:
-      moduleName: "github.com/maxlerebourg/crowdsec-bouncer-traefik-plugin"
-      version: "v1.3.3"
+# experimental:
+#   http3:
+#     enabled: false
+#   plugins:
+#     enabled: false
+#     fail2ban:
+#       moduleName: "github.com/tomMoulard/fail2ban"
+#       version: "v0.8.3"
+#     crowdsec-bouncer-traefik-plugin:
+#       moduleName: "github.com/maxlerebourg/crowdsec-bouncer-traefik-plugin"
+#       version: "v1.3.3"
 
   kubernetesGateway:
     # -- Enable traefik experimental GatewayClass CRD
