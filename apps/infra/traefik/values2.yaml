@@ -261,10 +261,13 @@ metrics:
 
   # prometheus:
     service:
-      enabled: true
+      enabled: false
     disableAPICheck: true
     serviceMonitor:
       enabled: true
+      jobLabel: traefik
+      interval: 30s
+      honorLabels: true
       metricRelabelings:
         - sourceLabels: [__name__]
           separator: ;
@@ -278,9 +281,7 @@ metrics:
           targetLabel: nodename
           replacement: $1
           action: replace
-      jobLabel: traefik
-      interval: 30s
-      honorLabels: true
+
     prometheusRule:
       enabled: true
       rules:
