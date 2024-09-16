@@ -17,8 +17,6 @@ resources:
 - resources/ingressroute.staging.proxmox.yaml
 - resources/service.yaml
 # - resources/tlsstore.yaml
-# - resources/pvc.yaml
-# - resources/pv.yaml
 
 generators:
 - ksops-generator.yaml
@@ -32,7 +30,6 @@ generatorOptions:
   disableNameSuffixHash: true
   labels:
     component: traefik
-
 
 helmCharts:
 - name: traefik
