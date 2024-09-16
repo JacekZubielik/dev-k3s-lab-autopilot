@@ -571,12 +571,12 @@ persistence:
   enabled: true
   # name: data
   existingClaim: "pvc-traefik"
-  accessMode: ReadWriteOnce
+  # accessMode: ReadWriteOnce
   # size: 1Gi
-  storageClass: "local-path"
+  # storageClass: "local-path"
   # volumeName: traefik-logs
   # path: /data
-  annotations: {}
+  # annotations: {}
   # subPath: ""
 
 # -- Certificates resolvers configuration.
