@@ -549,9 +549,6 @@ grafana:
         revision: 1
         datasource: Prometheus
 
-
-
-
     storage:
       minio-dashboard:
         gnetId: 13502
