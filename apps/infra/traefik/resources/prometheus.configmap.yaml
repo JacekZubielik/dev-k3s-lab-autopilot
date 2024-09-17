@@ -11,6 +11,7 @@ data:
       scrape_interval: 5s
       evaluation_interval: 5s
     scrape_configs:
+
       - job_name: 'kubernetes-pods'
         kubernetes_sd_configs:
           - role: pod
@@ -34,3 +35,7 @@ data:
             action: replace
             target_label: __scheme__
             regex: (https?)
+
+      - job_name: 'traefik'
+        static_configs:
+          - targets: ['traefik.traefik.svc:9100']

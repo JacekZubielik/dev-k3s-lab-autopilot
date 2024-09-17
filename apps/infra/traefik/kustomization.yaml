@@ -14,8 +14,8 @@ resources:
 - resources/tlsoption.yaml
 - resources/service.monitor.yaml
 - resources/service.yaml
-
-# - resources/prometheus.configmap.yaml
+- resources/prometheus.rule.yaml
+- resources/prometheus.configmap.yaml
 # - resources/tlsstore.yaml
 
 generators:
