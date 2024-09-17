@@ -1,0 +1,76 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+    annotations:
+        argocd.argoproj.io/sync-wave: "3"
+        cert-manager.io/cluster-issuer: letsencrypt-staging
+        cert-manager.io/common-name: proxmox.infra.anotherlife.org.pl
+        external-dns.alpha.kubernetes.io/hostname: proxmox.infra.anotherlife.org.pl
+        external-dns.alpha.kubernetes.io/target: infra.anotherlife.org.pl
+        external-dns.alpha.kubernetes.io/ttl: "300"
+        kubernetes.io/ingress.class: traefik-external
+    name: proxmox-staging
+    namespace: traefik
+spec:
+    entryPoints:
+        - websecure
+    routes:
+        - kind: Rule
+          match: Host(`proxmox.infra.anotherlife.org.pl`)
+          middlewares:
+            - name: chain-traefik-dashboard
+              namespace: traefik
+          services:
+            - name: proxmox-proxy
+              port: 8006
+              scheme: https
+              passHostHeader: true
+    tls:
+        domains:
+            - main: infra.anotherlife.org.pl
+              sans:
+                - .infra.anotherlife.org.pl
+        options:
+            name: tls-ver13
+            namespace: traefik
+        secretName: proxmox-cf-staging
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1deg9tqt7jtddnqme6nvcl72czns80z0n25u8k9pw5830dn4arsks5pua4h
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBCZ2hHdzdDYXByU29FZXdw
+            UmprRDdrT2s0Mlh3Sys3dmZxSE0yeTRxYkd3CkhWMHRBeURNQzZWMTQ3cVBza1h0
+            Y2NWSnl2MFhqcmZ4d3liMjZnQSsyVlUKLS0tIFoxSUN3Z1VBeUZ0WGZKeDV2MDFp
+            djcvS1A5WEtoSjd3Ulp0aW13Q2xqdzAKsgmRUgV+ixpMCyVbM/FwGBxdkARfsihA
+            aKI20ZEkqWTl5dLqb21teIy6ACfppwTyROXFvcQKr626WYw60A16gg==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2024-09-17T11:25:42Z"
+    mac: ENC[AES256_GCM,data:gkRHafF+eqwW+AAD0HkYvZOx9DlnL9e+rS8ydiwp4J7ljCIP6zpfPlMEOd0DncjyIZCy+INmZDoXNPYjFtYrScIgUwHxdd0QrgMZ+n3yvso8okrd1/vZNN0LFrNDZRJNrDwnEUMah2SZ3bFJ05bQs95rzMmeuLPMKxIPXR7EI6s=,iv:QfJL7N+03Q5IzTzt7oNZpm5hzNcpzScdgRTKq+5oBbk=,tag:LKA45fw29e18LPhv0cxx5w==,type:str]
+    pgp:
+        - created_at: "2024-09-17T11:25:42Z"
+          enc: |-
+            -----BEGIN PGP MESSAGE-----
+
+            hQIMA0R6oz1GmNjVAQ/+MDXfgjUrJDDRmcQLOQS1mnwfFgevwzqif9rqYDvN3TgY
+            mMaMmi+VMR2j9+rJa7oVFm01jSChzV66OfIEROhpkCACIh1dd1xGVa9MnkXwYiQ9
+            7l2hqfS/2LXb57QT0QHKhEeDS721BrCHjfKMwe68FCAh8obFPjUp/liGoObl5Vh3
+            wbxsWR1N4CyMpcSbt9ln9tKddbb8jcepbABrRlaGV0SFQOmGKEugM/WcOkGf9ZBT
+            lqiAS+RpKXSxAvlxg1cSXC9cQfB8rW2u0QIFbxhxNe3dPjt2RnBbKD8EophWp+er
+            fZJtp5k5+p4TNj/MwM0DbbMBt8n8rtdd3eKMAPmk0akMKg8jHe17ejXBRdx4V2zL
+            qyPeP3gmMeLPyB7kY34nsC5pPCWKzxOV5roer7gbR+tM4wXvpI2a9GaezwfLQ5MY
+            xCIZnGizi25AkKGoFohs+jHTbILzQZoC0kOW76e4ZPf88omE5woz40A0jeEo0Gmo
+            8SM+21BtkWTEhv5G/3AUBIAqZIMEqAU7yrIvT7TPojQI1Rqte567XcMkDBwUfsE1
+            8zVm8ZuTxID4swuSr9YRDQXyYoxLShiKWRUW5EidKpZtHnnvbMF0oIHWZmysxHQF
+            F32HqnjWVZcoEub4hoh8FEv3UAk50c6obw6lwKD4OWiRO7ZX9mDfx+G5cL46sC7S
+            XgG3BmUM0VQTQd9wOSmE3zg0MXS+K8pWNzMnHqrzKcKdX+cmq8ZyNLStFSwqpCU1
+            m0DVpDes/wQGf3zOgx+CDd52jT8XPfRzCkB80zB/g2yp+dobLUAhXKfj8t9l0NE=
+            =SPpW
+            -----END PGP MESSAGE-----
+          fp: 6D3FE55384B558E06A1BA364586EFA784A32C981
+    encrypted_regex: ^(data|stringData|dnsNames|email|accessKeyID|region|hostedZoneID|role|dnsZones)$
+    version: 3.8.1
