@@ -27,6 +27,8 @@ global:
       secretKeyRef:
         name: authentik-private
         key: AUTHENTIK_SECRET_KEY
+      # AK_ADMIN_PASS: "PLACEHOLDER_PASSWORD"
+      # AK_ADMIN_TOKEN: "PLACEHOLDER_PASSWORD"
 
   envFrom:
     []
@@ -75,7 +77,6 @@ server:
     targetCPUUtilizationPercentage: 50
     targetMemoryUtilizationPercentage: ~
     behavior:
-      # {}
       scaleDown:
         stabilizationWindowSeconds: 300
         policies:
@@ -267,21 +268,38 @@ server:
       type: ClusterIP
       clusterIP: ""
       annotations: {}
-      labels: {}
+      labels:
+        app: authentik
+        release: kube-prometheus-stack
+        prometheus.io/scrap-with: kube-prometheus-stack
       servicePort: 9300
       portName: metrics
     serviceMonitor:
       enabled: true
       interval: 30s
       scrapeTimeout: 3s
-      relabelings: []
-      metricRelabelings: []
+      relabelings:
+      - sourceLabels: [__meta_kubernetes_pod_node_name]
+        separator: ;
+        regex: ^(.*)$
+        targetLabel: nodename
+        replacement: $1
+        action: replace
+      metricRelabelings:
+      - action: keep
+      regex: 'kube_(daemonset|deployment|pod|namespace|node|statefulset).+'
+      sourceLabels: [__name__]
       selector:
-        {}
+        matchLabels:
+          app: authentik
+          app.kubernetes.io/component=server-metrics
       scheme: ""
       tlsConfig: {}
       namespace: "monitoring"
-      labels: {}
+      labels:
+        app: authentik
+        release: kube-prometheus-stack
+        prometheus.io/scrap-with: kube-prometheus-stack
       annotations: {}
 
   ingress:
@@ -383,9 +401,6 @@ serviceAccount:
   create: true
   annotations: {}
   serviceAccountSecret:
-    # As we use the authentik-remote-cluster chart as subchart, and that chart
-    # creates a service account secret by default which we don't need here,
-    # disable its creation
     enabled: false
   fullnameOverride: authentik
 
@@ -395,7 +410,10 @@ prometheus:
     namespace: "authentik"
     selector:
       prometheus: kube-prometheus-stack
-    labels: {}
+    labels:
+      app: external-dns
+      release: kube-prometheus-stack
+      prometheus.io/scrap-with: kube-prometheus-stack
     annotations: {}
 
 postgresql:

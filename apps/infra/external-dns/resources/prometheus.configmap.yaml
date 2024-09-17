@@ -12,6 +12,6 @@ data:
       evaluation_interval: 5s
     scrape_configs:
 
-      - job_name: otel-external-dns
+      - job_name: external-dns
         static_configs:
           - targets: [external-dns.external-dns.svc:7979]
