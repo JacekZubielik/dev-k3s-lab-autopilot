@@ -545,7 +545,7 @@ service:
 autoscaling:
   enabled: true
   minReplicas: 1
-  maxReplicas: 10
+  maxReplicas: 4
   metrics:
   - type: Resource
     resource:
@@ -620,8 +620,8 @@ resources:
     cpu: 100m
     memory: 50Mi
   limits:
-    cpu: 300m
-    memory: 150Mi
+    cpu: 350m
+    memory: 250Mi
 
 # -- This example pod anti-affinity forces the scheduler to put traefik pods
 # -- on nodes where no other traefik pods are scheduled.
