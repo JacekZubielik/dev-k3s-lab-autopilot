@@ -10,7 +10,7 @@ metadata:
 resources:
 - resources/ns.yaml
 - resources/service.monitor.yaml
-- resources/service.yaml
+# - resources/service.yaml
 - resources/prometheus.rule.yaml
 # - resources/backup.storage.location.yaml
 # - resources/volume.snapshot.location.yaml
