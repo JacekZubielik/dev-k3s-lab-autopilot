@@ -533,6 +533,24 @@ grafana:
         # datasource:
         # - name: DS_PROMETHEUS
           # value: Prometheus
+      traefik3:
+        gnetId: 12250
+        revision: 1
+        datasource: Prometheus
+        # datasource:
+        # - name: DS_PROMETHEUS
+          # value: Prometheus
+      traefik4:
+        gnetId: 2240
+        revision: 3
+        datasource: Prometheus
+      traefik5:
+        gnetId: 18111
+        revision: 1
+        datasource: Prometheus
+
+
+
 
     storage:
       minio-dashboard:
