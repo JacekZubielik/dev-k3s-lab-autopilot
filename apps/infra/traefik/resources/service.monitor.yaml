@@ -10,13 +10,14 @@ metadata:
   namespace: traefik
 spec:
   endpoints:
-  - interval: 30s
-    port: "9100"
+  - port: metrics # "9100"
     path: /metrics
+    interval: 30s
   jobLabel: app.kubernetes.io/name
   namespaceSelector:
     matchNames:
     - traefik
   selector:
     matchLabels:
-      app: traefik
+      app: traefik-metrics
+      # release: kube-prometheus-stack
