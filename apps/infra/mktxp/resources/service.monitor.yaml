@@ -9,10 +9,10 @@ metadata:
   name: mktxp-exporter
   namespace: mktxp
 spec:
+  jobLabel: app.kubernetes.io/name
   endpoints:
   - interval: 30s
     port: metrics
-  jobLabel: app.kubernetes.io/name
   namespaceSelector:
     matchNames:
     - mktxp

@@ -16,28 +16,6 @@ scrape_configs:
   static_configs:
   - targets: ['192.168.40.17:9091']
 
-# - job_name: 'velero'
-#   kubernetes_sd_configs:
-#     - role: pod
-#   relabel_configs:
-#     - source_labels: [__meta_kubernetes_pod_label_app_kubernetes_io_name]
-#       action: keep
-#       regex: velero
-#     - source_labels: [__meta_kubernetes_namespace]
-#       action: replace
-#       target_label: namespace
-#     - source_labels: [__meta_kubernetes_pod_name]
-#       action: replace
-#       target_label: pod
-#     - source_labels: [__meta_kubernetes_pod_container_port_number]
-#       action: replace
-#       target_label: port
-#       replacement: "8085"
-#     - source_labels: [__meta_kubernetes_pod_name]
-#       action: replace
-#       target_label: instance
-#       replacement: ${1}
-
 - job_name: 'argocd-server-metrics'
   static_configs:
   - targets: ['argocd-server-metrics.argocd.svc:8083', 'argocd-repo-server.argocd.svc:8084']
@@ -51,10 +29,6 @@ scrape_configs:
   - action: replace
     source_labels: [ __meta_kubernetes_pod_node_name]
     target_label: nodename
-
-# - job_name: 'traefik'
-#   static_configs:
-#     - targets: ['traefik.traefik.svc:9100']
 
 - job_name: 'mktxp-exporter'
   static_configs:

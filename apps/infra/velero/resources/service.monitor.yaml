@@ -13,7 +13,8 @@ spec:
   endpoints:
   - port: http-monitoring
     path: /metrics
-    targetPort: http-monitoring
+    interval: 30s
+    # targetPort: http-monitoring
   namespaceSelector:
     matchNames:
     - velero
