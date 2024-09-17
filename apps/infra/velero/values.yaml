@@ -23,12 +23,12 @@ resources:
 
 # Resource requests/limits to specify for the upgradeCRDs job pod. Need to be adjusted by user accordingly.
 upgradeJobResources:
-requests:
-    cpu: 50m
-    memory: 128Mi
-  limits:
-    cpu: 100m
-    memory: 256Mi
+  requests:
+      cpu: 50m
+      memory: 128Mi
+    limits:
+      cpu: 100m
+      memory: 256Mi
 
 configuration:
   features: EnableCSI, EnableAPIGroupVersions
