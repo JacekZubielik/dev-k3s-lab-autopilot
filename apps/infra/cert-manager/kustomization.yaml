@@ -14,6 +14,7 @@ resources:
 # - resources/cert.default.svc.yaml
 # - resources/issuer.default.svc.yaml
 # - resources/issuer.k3s.ca-cluster.yaml
+- resources/pod.monitor.yaml
 
 generators:
 - ksops-generator.yaml

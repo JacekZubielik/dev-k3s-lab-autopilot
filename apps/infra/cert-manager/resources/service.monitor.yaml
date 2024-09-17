@@ -9,20 +9,20 @@ metadata:
   name: cert-manager
   namespace: cert-manager
 spec:
+  jobLabel: app.kubernetes.io/name
   endpoints:
   - interval: 30s
     path: /metrics
-    port: "9402"
+    port: tcp-prometheus-servicemonitor
     scheme: http
     scrapeTimeout: 30s
-  jobLabel: app.kubernetes.io/name
   namespaceSelector:
     matchNames:
     - cert-manager
   selector:
     matchLabels:
       app: cert-manager
-      app.kubernetes.io/component: controller
+      # app.kubernetes.io/component: controller
       # app.kubernetes.io/instance: cert-manager
-      app.kubernetes.io/name: cert-manager
+      # app.kubernetes.io/name: cert-manager
 
