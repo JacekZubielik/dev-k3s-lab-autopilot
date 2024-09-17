@@ -20,5 +20,5 @@ spec:
   selector:
     matchLabels:
       app: velero
-      app.kubernetes.io/instance: velero
-      app.kubernetes.io/name: velero
+      # app.kubernetes.io/instance: velero
+      # app.kubernetes.io/name: velero
