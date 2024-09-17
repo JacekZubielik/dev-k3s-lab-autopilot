@@ -13,7 +13,6 @@ spec:
   endpoints:
   - port: http-monitoring
     # port: 8085
-    protocol: TCP
     targetPort: http-monitoring
   namespaceSelector:
     matchNames:
