@@ -13,6 +13,26 @@ initContainers:
   - mountPath: /target
     name: plugins
 
+resources:
+  requests:
+    cpu: 500m
+    memory: 128Mi
+  limits:
+    cpu: 1000m
+    memory: 512Mi
+
+# Resource requests/limits to specify for the upgradeCRDs job pod. Need to be adjusted by user accordingly.
+upgradeJobResources:
+requests:
+    cpu: 50m
+    memory: 128Mi
+  limits:
+    cpu: 100m
+    memory: 256Mi
+
+
+
+
 configuration:
   features: EnableCSI, EnableAPIGroupVersions
 
@@ -44,6 +64,16 @@ configuration:
       region: us-east-1
       profile: "minio" # "default"
 
+  repositoryMaintenanceJob:
+    requests:
+      cpu: 500m
+      memory: 512Mi
+    limits:
+      cpu: 1000m
+      memory: 1024Mi
+    # Number of latest maintenance jobs to keep for each repository
+    latestJobsCount: 3
+
 credentials:
   useSecret: true
   existingSecret: velero-secret
@@ -52,6 +82,25 @@ snapshotsEnabled: true
 backupsEnabled: true
 deployNodeAgent: true
 upgradeCRDs: true
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # Settings for Velero's prometheus metrics. Enabled by default.
 metrics:
@@ -75,3 +124,117 @@ metrics:
     enabled: false
     annotations: {}
     additionalLabels: {}
+    # ref: https://github.com/coreos/prometheus-operator/blob/master/Documentation/api.md#relabelconfig
+    metricRelabelings: []
+    relabelings: []
+    namespace:
+    scheme: ""
+
+  prometheusRule:
+    autodetect: true
+    enabled: true
+    additionalLabels: {}
+    namespace: "velero"
+    spec:
+    - alert: VeleroBackupPartialFailures
+      annotations:
+        message: Velero backup {{ $labels.schedule }} has {{ $value | humanizePercentage }} partialy failed backups.
+      expr: |-
+        velero_backup_partial_failure_total{schedule!=""} / velero_backup_attempt_total{schedule!=""} > 0.25
+      for: 15m
+      labels:
+        severity: warning
+    - alert: VeleroBackupFailures
+      annotations:
+        message: Velero backup {{ $labels.schedule }} has {{ $value | humanizePercentage }} failed backups.
+      expr: |-
+        velero_backup_failure_total{schedule!=""} / velero_backup_attempt_total{schedule!=""} > 0.25
+      for: 15m
+      labels:
+        severity: warning
+
+
+# Whether to deploy the node-agent daemonset.
+deployNodeAgent: true
+
+nodeAgent:
+  podVolumePath: /var/lib/kubelet/pods
+  # Pod priority class name to use for the node-agent daemonset. Optional.
+  priorityClassName: ""
+  # Resource requests/limits to specify for the node-agent daemonset deployment. Optional.
+  # https://velero.io/docs/v1.6/customize-installation/#customize-resource-requests-and-limits
+  resources:
+    requests:
+      cpu: 500m
+      memory: 512Mi
+    limits:
+      cpu: 1000m
+      memory: 1024Mi
+  tolerations: []
+  annotations: {}
+  labels: {}
+  useScratchEmptyDir: true
+  extraVolumes: []
+  extraVolumeMounts: []
+  extraEnvVars: {}
+  extraArgs: []
+  dnsPolicy: ClusterFirst
+  podSecurityContext:
+    runAsUser: 0
+    # fsGroup: 1337
+  containerSecurityContext: {}
+  lifecycle: {}
+  nodeSelector: {}
+  affinity: {}
+  dnsConfig: {}
+
+# Backup schedules to create.
+# Eg:
+# schedules:
+#   mybackup:
+#     disabled: false
+#     labels:
+#       myenv: foo
+#     annotations:
+#       myenv: foo
+#     schedule: "0 0 * * *"
+#     useOwnerReferencesInBackup: false
+#     paused: false
+#     template:
+#       ttl: "240h"
+#       storageLocation: default
+#       includedNamespaces:
+#       - foo
+#       # See: https://velero.io/docs/v1.14/resource-filtering/#excludes
+#       excludedNamespaceScopedResources:
+#       - persistentVolumeClaims
+#       excludedClusterScopedResources:
+#       - persistentVolumes
+schedules: {}
+
+# Velero ConfigMaps.
+# Eg:
+# configMaps:
+    # See: https://velero.io/docs/v1.11/file-system-backup/
+#   fs-restore-action-config:
+#     labels:
+#       velero.io/plugin-config: ""
+#       velero.io/pod-volume-restore: RestoreItemAction
+#     data:
+#       image: velero/velero-restore-helper:v1.10.2
+#       cpuRequest: 200m
+#       memRequest: 128Mi
+#       cpuLimit: 200m
+#       memLimit: 128Mi
+#       secCtx: |
+#         capabilities:
+#           drop:
+#           - ALL
+#           add: []
+#         allowPrivilegeEscalation: false
+#         readOnlyRootFilesystem: true
+#         runAsUser: 1001
+#         runAsGroup: 999
+configMaps: {}
+
+
