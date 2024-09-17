@@ -53,32 +53,25 @@ backupsEnabled: true
 deployNodeAgent: true
 upgradeCRDs: true
 
-# metrics:
-#   enabled: true
-#   scrapeInterval: 30s
-#   scrapeTimeout: 10s
+# Settings for Velero's prometheus metrics. Enabled by default.
+metrics:
+  enabled: true
+  scrapeInterval: 30s
+  scrapeTimeout: 10s
 
-#   service:
-#     annotations: {}
-#     labels: {}
+  # service metdata if metrics are enabled
+  service:
+    annotations: {}
+    labels: {}
 
-#   podAnnotations:
-#     prometheus.io/scrape: "true"
-#     prometheus.io/port: "8085"
-#     prometheus.io/path: "/metrics"
+  # Pod annotations for Prometheus
+  podAnnotations:
+    prometheus.io/scrape: "true"
+    prometheus.io/port: "8085"
+    prometheus.io/path: "/metrics"
 
-#   serviceMonitor:
-#     autodetect: true
-#     enabled: true
-#     annotations: {}
-#     additionalLabels: {}
-
-#   nodeAgentPodMonitor:
-#     autodetect: true
-#     enabled: false
-#     annotations: {}
-#     additionalLabels: {}
-
-#   prometheusRule:
-#     autodetect: true
-#     enabled: true
+  serviceMonitor:
+    autodetect: true
+    enabled: false
+    annotations: {}
+    additionalLabels: {}
