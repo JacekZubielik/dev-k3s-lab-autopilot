@@ -2145,6 +2145,13 @@ prometheus:
     volumeMounts: []
 
     additionalScrapeConfigs: []
+    # additionalScrapeConfigs: |
+      # - job_name: "velero"
+      #   scheme: http
+      #   metrics_path: '/metrics'
+      #   static_configs:
+      #     - targets:
+      #       - "velero-operator.velero.svc.cluster.local"
     # - job_name: kube-etcd
     #   kubernetes_sd_configs:
     #     - role: node
