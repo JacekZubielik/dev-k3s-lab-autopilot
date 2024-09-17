@@ -12,7 +12,7 @@ resources:
 - resources/ns.yaml
 - resources/deployment.yaml
 - resources/service.yaml
-- resources/servicemonitor.yaml
+- resources/service.monitor.yaml
 
 generators:
 - ksops-generator.yaml
