@@ -11,8 +11,8 @@ metadata:
 spec:
   jobLabel: app.kubernetes.io/name
   endpoints:
-  - name: http-monitoring
-    port: 8085
+  - port: http-monitoring
+    # port: 8085
     protocol: TCP
     targetPort: http-monitoring
   namespaceSelector:
