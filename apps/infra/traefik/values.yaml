@@ -236,29 +236,33 @@ logs:
         names: {}
 
 metrics:
-  ## -- Enable metrics for internal resources. Default: false
-  # addInternals: false
-
   prometheus:
-    entryPoint: metrics
     addEntryPointsLabels: true
-    addInternals: true
     addRoutersLabels: true
     addServicesLabels: true
-    manualRouting: true
-    buckets: "0.5,1.0,2.5"
-    # headerLabels:
-    #   label: headerKey
-    #   useragent: User-Agent
+    entryPoint: metrics
+    # manualRouting: true
+    headerLabels:
+      label: headerKey
+      useragent: User-Agent
+    addInternals: true
+    buckets:
+      - 0.1
+      - 0.3
+      - 1.2
+      - 5.0
+
 
     service:
       enabled: true
       labels:
-        app: traefik
+        app: traefik-metrics
         release: kube-prometheus-stack
         prometheus.io/scrap-with: kube-prometheus-stack
 
     disableAPICheck: true
+
+
     serviceMonitor:
       enabled: true
       jobLabel: app.kubernetes.io/name
@@ -267,7 +271,7 @@ metrics:
       namespaceSelector:
         matchNames:
         - traefik
-      namespace: traefik
+      # namespace: traefik
       # selector:
       #   matchLabels:
       #     app: traefik
@@ -352,35 +356,23 @@ metrics:
   #    ## Enable metrics on services. Default=true
   #    # addServicesLabels: false
   otlp:
-    # -- Set to true in order to enable the OpenTelemetry metrics
-    enabled: false
-    # -- Enable metrics on entry points. Default: true
+    enabled: true
     addEntryPointsLabels:
-    # -- Enable metrics on routers. Default: false
     addRoutersLabels:
-    # -- Enable metrics on services. Default: true
     addServicesLabels:
     # -- Explicit boundaries for Histogram data points. Default: [.005, .01, .025, .05, .1, .25, .5, 1, 2.5, 5, 10]
     explicitBoundaries:
     # -- Interval at which metrics are sent to the OpenTelemetry Collector. Default: 10s
     pushInterval:
     http:
-      # -- Set to true in order to send metrics to the OpenTelemetry Collector using HTTP.
-      enabled: false
-      # -- Format: <scheme>://<host>:<port><path>. Default: http://localhost:4318/v1/metrics
-      endpoint:
-      # -- Additional headers sent with metrics by the reporter to the OpenTelemetry Collector.
-      headers:
-      ## Defines the TLS configuration used by the reporter to send metrics to the OpenTelemetry Collector.
-      tls:
-        # -- The path to the certificate authority, it defaults to the system bundle.
-        ca:
-        # -- The path to the public certificate. When using this option, setting the key option is required.
-        cert:
-        # -- The path to the private key. When using this option, setting the cert option is required.
-        key:
-        # -- When set to true, the TLS connection accepts any certificate presented by the server regardless of the hostnames it covers.
-        insecureSkipVerify:
+      enabled: true
+      endpoint: http://prometheus:9090/api/v1/otlp/v1/metrics
+      # headers:
+      # tls:
+      #   ca:
+      #   cert:
+      #   key:
+      #   insecureSkipVerify:
     grpc:
       # -- Set to true in order to send metrics to the OpenTelemetry Collector using gRPC
       enabled: false
