@@ -12,7 +12,7 @@ spec:
   jobLabel: app.kubernetes.io/name
   endpoints:
   - port: http-monitoring
-    # port: 8085
+    path: /metrics
     targetPort: http-monitoring
   namespaceSelector:
     matchNames:

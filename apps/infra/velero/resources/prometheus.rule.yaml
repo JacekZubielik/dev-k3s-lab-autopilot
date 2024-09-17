@@ -1,7 +1,11 @@
 apiVersion: monitoring.coreos.com/v1
 kind: PrometheusRule
 metadata:
+  labels:
+    app: velero
+    release: kube-prometheus-stack
   name: velero
+  namespace: velero
 spec:
   groups:
   - name: velero-failures

@@ -9,9 +9,8 @@ metadata:
   namespace: traefik
 spec:
   groups:
-  - name:
+  - name: traefik-failures
     rules:
-
     - alert: TraefikDown
       expr: up{job="traefik"} == 0
       for: 5m
