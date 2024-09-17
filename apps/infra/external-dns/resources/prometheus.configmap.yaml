@@ -14,4 +14,4 @@ data:
 
       - job_name: otel-external-dns
         static_configs:
-          - targets: [external-dns:7979]
+          - targets: [external-dns.external-dns.svc:7979]
