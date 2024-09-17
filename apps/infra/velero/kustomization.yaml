@@ -13,7 +13,7 @@ resources:
 - resources/prometheus.rule.yaml
 # - resources/backup.storage.location.yaml
 # - resources/volume.snapshot.location.yaml
-# - resources/prometheus.configmap.yaml
+- resources/prometheus.configmap.yaml
 generators:
 - ksops-generator.yaml
 
