@@ -92,24 +92,24 @@ resources:
 podDisruptionBudget: {}
 
 metrics:
-  enabled: false
+  enabled: true
   podAnnotations: {}
   serviceMonitor:
-    enabled: false
+    enabled: true
     namespace: "external-dns"
-    ## @param metrics.serviceMonitor.interval Interval at which metrics should be scraped
-    ## ref: https://github.com/coreos/prometheus-operator/blob/master/Documentation/api.md#endpoint
-    interval: ""
+    interval: "30s"
     scrapeTimeout: ""
-    selector: {}
-    ## @param metrics.serviceMonitor.metricRelabelings Specify Metric Relabelings to add to the scrape endpoint
-    ## ref: https://github.com/coreos/prometheus-operator/blob/master/Documentation/api.md#relabelconfig
+    selector:
+      matchLabels:
+        app: external-dns
     metricRelabelings: []
-    ## @param metrics.serviceMonitor.relabelings [array] Prometheus relabeling rules
     relabelings: []
-    honorLabels: false
-    labels: {}
-    jobLabel: ""
+    honorLabels: true
+    labels:
+      app: external-dns
+      release: kube-prometheus-stack
+      prometheus.io/scrap-with: kube-prometheus-stack
+    jobLabel: app.kubernetes.io/name
 
   googlePodMonitor:
     enabled: false
