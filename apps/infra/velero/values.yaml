@@ -2,8 +2,8 @@ replicas: 1
 updateStrategy:
   type: RollingUpdate
 
-# annotations:
-#   prometheus.io/scrape: "true"
+annotations:
+  prometheus.io/scrape: "true"
 
 initContainers:
 - name: velero-plugin-for-aws
@@ -164,7 +164,7 @@ nodeAgent:
 #       - persistentVolumeClaims
 #       excludedClusterScopedResources:
 #       - persistentVolumes
-schedules: {}
+# schedules: {}
 
 # Velero ConfigMaps.
 # Eg:
@@ -189,6 +189,6 @@ schedules: {}
 #         readOnlyRootFilesystem: true
 #         runAsUser: 1001
 #         runAsGroup: 999
-configMaps: {}
+# configMaps: {}
 
 
