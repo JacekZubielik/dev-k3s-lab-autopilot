@@ -246,11 +246,7 @@ metrics:
       label: headerKey
       useragent: User-Agent
     addInternals: true
-    buckets:
-      - 0.1
-      - 0.3
-      - 1.2
-      - 5.0
+    buckets: "0.5,1.0,5"
 
 
     service:
