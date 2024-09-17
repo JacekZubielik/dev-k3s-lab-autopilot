@@ -268,10 +268,10 @@ server:
       type: ClusterIP
       clusterIP: ""
       annotations: {}
-      labels: {}
-        # app: authentik
-        # release: kube-prometheus-stack
-        # prometheus.io/scrap-with: kube-prometheus-stack
+      labels:
+        app: authentik
+        release: kube-prometheus-stack
+        prometheus.io/scrap-with: kube-prometheus-stack
       servicePort: 9300
       portName: metrics
     serviceMonitor:
