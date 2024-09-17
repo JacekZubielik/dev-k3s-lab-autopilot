@@ -525,6 +525,10 @@ grafana:
         datasource:
         - name: DS_PROMETHEUS
           value: Prometheus
+      external-dns:
+        gnetId: 15038
+        revision: 3
+        datasource: Prometheus
       traefik:
         gnetId: 17347
         revision: 8
