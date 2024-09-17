@@ -293,7 +293,7 @@ server:
         matchLabels:
           app: authentik
           app.kubernetes.io/component=server-metrics
-      # scheme: ""
+      scheme: ""
       tlsConfig: {}
       namespace: "monitoring"
       labels:
