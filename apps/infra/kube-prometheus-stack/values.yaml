@@ -519,6 +519,12 @@ grafana:
         datasource:
         - name: DS_PROMETHEUS
           value: Prometheus
+      cert-manager:
+        gnetId: 20842
+        revision: 2
+        datasource:
+        - name: DS_PROMETHEUS
+          value: Prometheus
       traefik:
         gnetId: 17347
         revision: 8
