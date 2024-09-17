@@ -9,11 +9,25 @@ metadata:
   name: traefik
   namespace: traefik
 spec:
+  jobLabel: app.kubernetes.io/name
   endpoints:
-  - port: metrics # "9100"
+  - port: metrics
     path: /metrics
     interval: 30s
-  jobLabel: app.kubernetes.io/name
+    honorLabels: true
+    metricRelabelings:
+      - sourceLabels: [__name__]
+        separator: ;
+        regex: ^fluentd_output_status_buffer_(oldest|newest)_.+
+        replacement: $1
+        action: drop
+    relabelings:
+      - sourceLabels: [__meta_kubernetes_pod_node_name]
+        separator: ;
+        regex: ^(.*)$
+        targetLabel: nodename
+        replacement: $1
+        action: replace
   namespaceSelector:
     matchNames:
     - traefik
