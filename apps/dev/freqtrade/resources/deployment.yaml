@@ -1,0 +1,151 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: freqtrade
+  name: freqtrade
+  namespace: freqtrade
+
+spec:
+  replicas: 2
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: freqtrade
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+
+  template:
+    metadata:
+      labels:
+        app: freqtrade
+
+    spec:
+
+      initContainers:
+      - name: sqlite-ownership
+        image: busybox:latest
+        securityContext:
+          allowPrivilegeEscalation: false
+          runAsUser: 0
+        command:
+        - bash
+        args: ["-c","chown -R ftuser:ftuser /sqlite; chown -R ftuser:ftuser /freqtrade" ]
+        volumeMounts:
+        - mountPath: /sqlite
+          name: sqlite
+
+      containers:
+      - name: freqtrade
+        image: gorabbit/freqtrade:latest
+        imagePullPolicy: IfNotPresent
+        lifecycle:
+          preStop:
+            exec:
+              command: ["/bin/sh","-c","sleep 60"]
+        envFrom:
+          - configMapRef:
+              name: freqtrade-tz
+        command: >
+          trade
+          # --db-url postgresql+psycopg2://freqtrade2:mySecr3t+P455W0rd@freqtrade2db:5432/postgres
+          # --logfile /freqtrade/user_data/logs/freqtrade2.log
+          --config /freqtrade/user_data/freqtrade-config.yaml
+          --strategy FreqaiExampleHybridStrategy
+
+        args:
+        {}
+
+        volumeMounts:
+
+        - name: config
+          mountPath: /freqtrade/config/freqtrade-config.yaml
+          subPath: freqtrade-config.yaml
+
+        - name: backtest_results
+          mountPath: /freqtrade/user_data/backtest_results
+
+        - name: data
+          mountPath: /freqtrade/user_data/data
+
+        - name: hyperopts
+          mountPath: /freqtrade/user_data/hyperopts
+
+        - name: hyperopt_results
+          mountPath: /freqtrade/user_data/hyperopt_results
+
+        - name: plot
+          mountPath: /freqtrade/user_data/plot
+
+        - name: strategies
+          mountPath: /freqtrade/user_data/strategies
+
+        ports:
+        - name: api
+          containerPort: 8084
+
+      # imagePullSecrets:
+      # - name: deploy-key-gcr
+
+      volumes:
+
+        - name: config
+          mountPath: /freqtrade/config
+
+        - name: backtest_results
+          configMap:
+            name: backtest.configmap
+            items:
+              - key: backtest.configmap.yaml
+                path: backtest.configmap.yaml
+
+        - name: data
+          mountPath: /freqtrade/user_data/data
+
+        - name: hyperopts
+          mountPath: /freqtrade/user_data/hyperopts
+
+        - name: hyperopt_results
+          mountPath: /freqtrade/user_data/hyperopt_results
+
+        - name: plot
+          mountPath: /freqtrade/user_data/plot
+
+        - name: strategies
+          mountPath: /freqtrade/user_data/strategies
+
+##################
+
+
+      # - name: user-data
+      #   persistentVolumeClaim:
+      #     claimName: freqtrade-user-data
+
+      # - name: extra-strategies
+      #   persistentVolumeClaim:
+      #     claimName: freqtrade-extra-strategies
+
+      # - name: configcreds
+      #   configMap:
+      #     name: freqtrade-config-creds
+
+      # - name: nfi-hold-trades
+      #   configMap:
+      #     name: freqtrade-nfi-hold-trades
+
+      # - name: config
+      #   configMap:
+      #     name: freqtrade-config
+
+      # - name: strategies
+      #   configMap:
+      #     name: freqtrade-strategies
+
+      # - name: sqlite
+      #   persistentVolumeClaim:
+      #     claimName: freqtrade-sqlite
+
