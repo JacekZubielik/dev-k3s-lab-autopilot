@@ -48,8 +48,8 @@ spec:
             exec:
               command: ["/bin/sh","-c","sleep 60"]
         envFrom:
-          - configMapRef:
-              name: freqtrade-tz
+        - configMapRef:
+            name: freqtrade-tz
         command: >
           trade
           # --db-url postgresql+psycopg2://freqtrade2:mySecr3t+P455W0rd@freqtrade2db:5432/postgres
@@ -57,8 +57,8 @@ spec:
           --config /freqtrade/user_data/freqtrade-config.yaml
           --strategy FreqaiExampleHybridStrategy
 
-        args:
-        {}
+        # args:
+        # {}
 
         volumeMounts:
 
@@ -93,30 +93,30 @@ spec:
 
       volumes:
 
-        - name: config
-          mountPath: /freqtrade/config
+      - name: config
+        mountPath: /freqtrade/config
 
-        - name: backtest_results
-          configMap:
-            name: backtest.configmap
-            items:
-              - key: backtest.configmap.yaml
-                path: backtest.configmap.yaml
+      - name: backtest_results
+        configMap:
+          name: backtest.configmap
+          items:
+            - key: backtest.configmap.yaml
+              path: backtest.configmap.yaml
 
-        - name: data
-          mountPath: /freqtrade/user_data/data
+      - name: data
+        mountPath: /freqtrade/user_data/data
 
-        - name: hyperopts
-          mountPath: /freqtrade/user_data/hyperopts
+      - name: hyperopts
+        mountPath: /freqtrade/user_data/hyperopts
 
-        - name: hyperopt_results
-          mountPath: /freqtrade/user_data/hyperopt_results
+      - name: hyperopt_results
+        mountPath: /freqtrade/user_data/hyperopt_results
 
-        - name: plot
-          mountPath: /freqtrade/user_data/plot
+      - name: plot
+        mountPath: /freqtrade/user_data/plot
 
-        - name: strategies
-          mountPath: /freqtrade/user_data/strategies
+      - name: strategies
+        mountPath: /freqtrade/user_data/strategies
 
 ##################
 

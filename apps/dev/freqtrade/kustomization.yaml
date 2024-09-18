@@ -21,16 +21,16 @@ configMapGenerator:
   - TZ=CET
 - name: freqtrade-config
   files:
-    - resources/freqtrade-config.yaml
+  - resources/freqtrade.configmap.yaml
 
 generatorOptions:
   disableNameSuffixHash: true
   labels:
     component: freqtrade
 
-patches:
-- target:
-    kind: CustomResourceDefinition
-  patch: |-
-    - op: remove
-      path: /metadata/labels/app.kubernetes.io~1instance
+# patches:
+# - target:
+#     kind: CustomResourceDefinition
+#   patch: |-
+#     - op: remove
+#       path: /metadata/labels/app.kubernetes.io~1instance
