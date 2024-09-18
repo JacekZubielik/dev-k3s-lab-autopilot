@@ -97,7 +97,7 @@ spec:
 
       - name: sqlite
         persistentVolumeClaim:
-          claimName: freqtrade-sqlite
+          claimName: pvc-freqtrade-sqlite
 
       # - name: backtest_results
       #   configMap:
