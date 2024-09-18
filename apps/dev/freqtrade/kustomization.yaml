@@ -11,6 +11,7 @@ resources:
 - resources/ns.yaml
 - resources/service.yaml
 - resources/deployment.yaml
+- resources/pvc.yaml
 
 generators:
 - ksops-generator.yaml

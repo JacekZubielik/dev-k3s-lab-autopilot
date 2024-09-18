@@ -95,6 +95,10 @@ spec:
         configMap:
           name: freqtrade-config
 
+      - name: sqlite
+        persistentVolumeClaim:
+          claimName: freqtrade-sqlite
+
       # - name: backtest_results
       #   configMap:
       #     name: backtest.configmap
