@@ -10,6 +10,6 @@ labels: ""
 srcPath: apps/dev/freqtrade
 srcRepoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot.git
 srcTargetRevision: "freqtrade"
-syncPriority: stage3
+syncPriority: stage_3
 syncWave: 0
 userGivenName: freqtrade

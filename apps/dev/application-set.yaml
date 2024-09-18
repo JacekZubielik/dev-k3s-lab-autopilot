@@ -94,18 +94,18 @@ spec:
         - key: syncPriority
           operator: In
           values:
-          - stage1
+          - stage_1
         # maxUpdate: 100%
       - matchExpressions:
         - key: syncPriority
           operator: In
           values:
-          - stage2
+          - stage_2
         # maxUpdate: 100%
       - matchExpressions:
         - key: syncPriority
           operator: In
           values:
-          - stage3
+          - stage_3
         # maxUpdate: 0%
 
