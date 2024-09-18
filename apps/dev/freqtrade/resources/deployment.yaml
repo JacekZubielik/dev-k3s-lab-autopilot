@@ -58,8 +58,8 @@ spec:
         # --db-url postgresql+psycopg2://freqtrade2:mySecr3t+P455W0rd@freqtrade2db:5432/postgres
         # --logfile /freqtrade/user_data/logs/freqtrade2.log
 
-        args:
-        {}
+        # args:
+        # {}
 
         volumeMounts:
 
