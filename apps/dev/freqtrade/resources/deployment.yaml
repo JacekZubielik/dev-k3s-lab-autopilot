@@ -26,24 +26,24 @@ spec:
 
     spec:
 
-      initContainers:
-      - name: sqlite-ownership
-        image: busybox:1.35
-        imagePullPolicy: IfNotPresent
-        securityContext:
-          allowPrivilegeEscalation: false
-          runAsUser: 0
-          runAsGroup: 0
-          readOnlyRootFilesystem: true
-        command:
-        - chown
-        - -R
-        - ftuser:ftuser
-        - /sqlite
-        - /freqtrade
-        volumeMounts:
-        - mountPath: /sqlite
-          name: sqlite
+      # initContainers:
+      # - name: sqlite-ownership
+      #   image: busybox:1.35
+      #   imagePullPolicy: IfNotPresent
+      #   securityContext:
+      #     allowPrivilegeEscalation: false
+      #     runAsUser: 0
+      #     runAsGroup: 0
+      #     readOnlyRootFilesystem: true
+      #   command:
+      #   - chown
+      #   - -R
+      #   - ftuser:ftuser
+      #   - /sqlite
+      #   - /freqtrade
+      #   volumeMounts:
+      #   - mountPath: /sqlite
+      #     name: sqlite
 
 
       # initContainers:
