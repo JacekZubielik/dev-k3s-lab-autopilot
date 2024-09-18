@@ -62,7 +62,7 @@ spec:
 
       containers:
       - name: freqtrade
-        image: gorabbit/freqtrade:latest
+        image: gorabbit/freqtrade-kube:2024.5.0-dev
         imagePullPolicy: IfNotPresent
         lifecycle:
           preStop:
