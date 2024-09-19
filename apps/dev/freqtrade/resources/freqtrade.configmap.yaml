@@ -49,7 +49,7 @@ data:
         enableRateLimit: false
         urls:
           api:
-            public: http://192.168.40.185:8090/api/v3
+            public: http://binance-proxy:8090/api/v3
       ccxt_async_config:
         enableRateLimit: false
       pair_whitelist:
