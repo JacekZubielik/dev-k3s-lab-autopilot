@@ -7,7 +7,7 @@ metadata:
   name: proxmox-proxy
   namespace: traefik
 spec:
-  externalName: 192.168.40.18
+  externalName: 192.168.40.3
   type: ExternalName
   ports:
   - name: websecure
