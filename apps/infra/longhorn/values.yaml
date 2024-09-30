@@ -63,7 +63,7 @@ csi:
   snapshotterReplicaCount: ~
 
 defaultSettings:
-  backupTarget: s3://k3s-longhorn-backup@us-east-1/
+  backupTarget: s3://k3s-longhorn@us-east-1/
   backupTargetCredentialSecret: s3-backup
   allowRecurringJobWhileVolumeDetached: false
   createDefaultDiskLabeledNodes: true
