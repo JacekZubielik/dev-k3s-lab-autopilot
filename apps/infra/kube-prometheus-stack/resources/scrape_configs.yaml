@@ -105,12 +105,19 @@ scrape_configs:
       replacement: 'cert-manager'
       target_label: instance
 
-- job_name: minio-job
-  bearer_token: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJwcm9tZXRoZXVzIiwic3ViIjoicHJvbWV0aGV1cy11c2VyIiwiZXhwIjo0ODc5NjA0MDE0fQ.EAGbxZnYRDkuajp37aElTGxtac1sIX3LS-yD9o7_ogiEtA6A2VPLViXofaEscDWO8C-emd8FFn6lTBtoBBcXZg
+# - job_name: minio-job
+#   bearer_token: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJwcm9tZXRoZXVzIiwic3ViIjoicHJvbWV0aGV1cy11c2VyIiwiZXhwIjo0ODc5NjA0MDE0fQ.EAGbxZnYRDkuajp37aElTGxtac1sIX3LS-yD9o7_ogiEtA6A2VPLViXofaEscDWO8C-emd8FFn6lTBtoBBcXZg
+#   metrics_path: /minio/v2/metrics/cluster
+#   scheme: http
+#   static_configs:
+#   - targets: ['192.168.40.17:9091']
+
+- job_name: minio-job-01
+  bearer_token: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJwcm9tZXRoZXVzIiwic3ViIjoicHJvbWV0aGV1cyIsImV4cCI6NDg4MTI5NjUzMH0.SoX2ft1aN60TU4fp_Z-PkUNAX8iwjr4OSOm3AQbq0uUddzQ8jvrLwRdP2E7iplhZ4lIZtDoHLGapUQ83rd_H-A
   metrics_path: /minio/v2/metrics/cluster
   scheme: http
   static_configs:
-  - targets: ['192.168.40.17:9091']
+  - targets: ['192.168.40.3:9001']
 
 - job_name: 'argocd-server-metrics'
   static_configs:
@@ -133,7 +140,7 @@ scrape_configs:
 - job_name: 'pve'
   static_configs:
     - targets:
-      - 192.168.40.18:9221
+      - 192.168.40.3:9221
   metrics_path: /pve
   params:
     module: [default]
@@ -145,7 +152,7 @@ scrape_configs:
     - source_labels: [__param_target]
       target_label: instance
     - target_label: __address__
-      replacement: 192.168.40.18:9221
+      replacement: 192.168.40.3:9221
 
 - job_name: 'kubernetes-apiservers'
   kubernetes_sd_configs:
