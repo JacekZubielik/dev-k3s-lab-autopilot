@@ -895,7 +895,7 @@ kubeControllerManager:
   enabled: false
   endpoints: # ips of servers
   - 192.168.40.110
-  - 192.168.40.111
+  - 192.168.40.113
   service:
     enabled: true
     port: 10252 # null
@@ -991,7 +991,7 @@ kubeEtcd:
   enabled: false
   endpoints: # ips of servers
   - 192.168.40.110
-  - 192.168.40.111
+  - 192.168.40.113
   service:
     enabled: true
     port: 2381
@@ -1030,7 +1030,7 @@ kubeScheduler:
   enabled: false
   endpoints: # ips of servers
   - 192.168.40.110
-  - 192.168.40.111
+  - 192.168.40.113
   service:
     enabled: true
     port: 10251 # null
@@ -1074,7 +1074,7 @@ kubeProxy:
   enabled: false
   endpoints: # ips of servers
   - 192.168.40.110
-  - 192.168.40.111
+  - 192.168.40.113
   service:
     enabled: true
     port: 10249
@@ -1829,36 +1829,15 @@ prometheus:
       enabled: false
       ipFamilies: ["IPv6", "IPv4"]
       ipFamilyPolicy: "PreferDualStack"
-
-    ## Port for Prometheus Service to listen on
     port: 9090
-
-    ## To be used with a proxy extraContainer port
     targetPort: 9090
-
-    ## Port for Prometheus Reloader to listen on
     reloaderWebPort: 8080
-
-    ## List of IP addresses at which the Prometheus server service is available
-    ## Ref: https://kubernetes.io/docs/user-guide/services/#external-ips
     externalIPs: []
-
-    ## Port to expose on each node
-    ## Only used if service.type is 'NodePort'
     nodePort: 30090
-
-    ## Loadbalancer IP
-    ## Only use if service.type is "LoadBalancer"
-    loadBalancerIP: ""
+    loadBalancerIP: "192.168.40.194"
     loadBalancerSourceRanges: []
-
-    ## Denotes if this Service desires to route external traffic to node-local or cluster-wide endpoints
     externalTrafficPolicy: Cluster
-
-    ## Service type
-    type: ClusterIP
-
-    ## Additional ports to open for Prometheus service
+    type: LoadBalancer #ClusterIP
     additionalPorts: []
     # additionalPorts:
     # - name: oauth-proxy

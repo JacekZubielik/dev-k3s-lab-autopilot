@@ -24,7 +24,7 @@ metadata:
   namespace: kube-system
 subsets:
 - addresses:
-  - ip: 192.168.40.17
+  - ip: 192.168.40.3
   ports:
   - name: http-metrics
     port: 9000

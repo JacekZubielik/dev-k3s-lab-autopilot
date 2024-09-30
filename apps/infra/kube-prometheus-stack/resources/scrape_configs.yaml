@@ -112,7 +112,7 @@ scrape_configs:
 #   static_configs:
 #   - targets: ['192.168.40.17:9091']
 
-- job_name: minio-job-01
+- job_name: 'minio-job-01'
   bearer_token: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJwcm9tZXRoZXVzIiwic3ViIjoicHJvbWV0aGV1cyIsImV4cCI6NDg4MTI5NjUzMH0.SoX2ft1aN60TU4fp_Z-PkUNAX8iwjr4OSOm3AQbq0uUddzQ8jvrLwRdP2E7iplhZ4lIZtDoHLGapUQ83rd_H-A
   metrics_path: /minio/v2/metrics/cluster
   scheme: http
