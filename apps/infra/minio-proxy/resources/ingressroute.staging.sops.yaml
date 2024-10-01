@@ -4,9 +4,9 @@ metadata:
     annotations:
         argocd.argoproj.io/sync-wave: "3"
         cert-manager.io/cluster-issuer: letsencrypt-staging
-        cert-manager.io/common-name: s3.storage.anotherlife.org.pl
-        external-dns.alpha.kubernetes.io/hostname: console.s3.storage.anotherlife.org.pl
-        external-dns.alpha.kubernetes.io/target: s3.storage.anotherlife.org.pl
+        cert-manager.io/common-name: ENC[AES256_GCM,data:moaw1VCAtkomd0rq4Ql4tf3UINxQ5zcep3SZTAU=,iv:ZMHpk6p2usekh9ArqKHlXL/EY7eCbwBzsi4alZPMH+Q=,tag:Kif4ve/WuplHUkWKbd2bVw==,type:str]
+        external-dns.alpha.kubernetes.io/hostname: ENC[AES256_GCM,data:n65gRY+uZJtFsQzNBj88Ayzc+wZ51R8E7w/chLGbbnPqabRypQ==,iv:z0yNYZKXO4qSZunTfSjM6w1Ga3D0kmUyROgS1RiFohY=,tag:gfTyHdQdSchxwoZfVXvMvg==,type:str]
+        external-dns.alpha.kubernetes.io/target: ENC[AES256_GCM,data:gJK/Ozne5oSd7PrTyIhrxU5FsRsU0JbUw1/Sp7s=,iv:m71vD4xyaAsLfc8fFtnuKBs2BMO4wd6z7yiV0mX5/0E=,tag:2OGYpxlLj6s/hIh9Zh5Jcg==,type:str]
         external-dns.alpha.kubernetes.io/ttl: "300"
         kubernetes.io/ingress.class: traefik-external
     name: minio-console-staging
@@ -16,7 +16,7 @@ spec:
         - websecure
     routes:
         - kind: Rule
-          match: Host(`console.s3.storage.anotherlife.org.pl`) && (PathPrefix(`/`))
+          match: ENC[AES256_GCM,data:SUInFEEnokzebJcD207Hz5m3f8wKEd3vmQm0W/Yl42zPIdGLyzc+8vbllVqTJaZbsHc/vCiLFB/NV44DUgh/fnx1,iv:on0wlJWRt+wqSF6sCqf6j/XghxGx2h/+1DdGROpHP9E=,tag:fdYVNIeIMxL9eBXT5Pmlpg==,type:str]
           middlewares:
             - name: chain-traefik-dashboard
               namespace: traefik
@@ -27,9 +27,9 @@ spec:
               passHostHeader: true
     tls:
         domains:
-            - main: s3.storage.anotherlife.org.pl
+            - main: ENC[AES256_GCM,data:jWt/pxbqpVoRXEpDRAfgyYVMeUqQfZjUrMK+XhA=,iv:sK3yJqx6iaUMSTXP6fCwLeSP9rSrOLVvyr4rBtl2ECU=,tag:XtbnPHrvDLdl8ba8WB3OWg==,type:str]
               sans:
-                - .s3.storage.anotherlife.org.pl
+                - ENC[AES256_GCM,data:O9CuC+VsBoWPQX6XYAAJc3kGG6Fiv7rYCMmUC8JA,iv:ZEVZPg8aCmHFA8ZTwRBmRar8z6l+wirA/QpHZqQdrTM=,tag:NVQkEIcuUxocvuBKOGMKGA==,type:str]
         options:
             name: tls-ver13
             namespace: traefik
@@ -151,29 +151,38 @@ sops:
     gcp_kms: []
     azure_kv: []
     hc_vault: []
-    age: []
-    lastmodified: "2024-10-01T22:03:47Z"
-    mac: ENC[AES256_GCM,data:HVoLQWeck/IzAfqw2xA6yIiufCsHb8THj0jbwyPESLT9VWkU1f5ay80lAUX/t3Cjm4xJqzbOse63fx5noIUs5obyQfKoaZyjtjAPutCRIJGi/vZIKQxL7kvCga7l2FOzUu17yC43SHGs7InXxAekrOG6LUVIFLNFiGnRkZUv7VA=,iv:aNFbYNU18LmkKfx2soU76S90evM92gDIQS8MO53FBOs=,tag:ClpNmKGXjJMyL3LzkrTBjA==,type:str]
+    age:
+        - recipient: age1deg9tqt7jtddnqme6nvcl72czns80z0n25u8k9pw5830dn4arsks5pua4h
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBvUGh3QjZGU1U4OVVoMGNE
+            ekFqV0lJSjdNYnpnM0c3RDFocnNIdU5iMEdBCmRPbnlqeUZLSEpNM3RETFY3bFdq
+            dHJQVmZmNmNYM0h5aDUyZmdkYmQ5OEkKLS0tICt4dGNxVjQycGF4N3ozWVhYWHdI
+            a3B5SHBpbXlZNmlaRENLdkFZUFlVclEKKOjSR8z9czQkBZqQyFdfb7mQL+BmGimE
+            wLhS/k5VdTnyxwOMprjU9Vrq5TPbBpqqp6mmNoj2ecoVj0+G1Vw0DA==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2024-10-01T22:13:06Z"
+    mac: ENC[AES256_GCM,data:ZOPHrcQF1iwcaRn5M6SJmbqwOspTjyC6jvjLJOGpUlKnuHi+eMUwO93aZEUBJc0xwClGDrCqajxSysbC0Hsfmv6ezcyBY4TJWtF17L8KXjIbs51MXVLDS9MDlo8K6UT4oJm0+dZVthKwV49c/2WBTWSC+sjReL5AjliGWdZuENU=,iv:0sy0m6Z0f1QNY94wFJFGN0cJM1icYP3Sg0l8Z3BU+44=,tag:ywmjzAM49YzYbk9KLU/GPg==,type:str]
     pgp:
-        - created_at: "2024-10-01T22:01:42Z"
+        - created_at: "2024-10-01T22:13:06Z"
           enc: |-
             -----BEGIN PGP MESSAGE-----
 
-            hQIMA0R6oz1GmNjVAQ/+OcPntcAmkb/RiG9FztzDo7yEcSlGKyusa2yuIYyyhL06
-            uLJ6QqgZ3ZWHnZrWSM793UPuneCG2JcSz9CHFPi/tejNvvDQsxA71jHKUBwEwfCr
-            IHamaehUZJ0rt7H5QLuYXf+wFPoZ9uL4b1279XGzCNToRpnO3QzIBAKlFiJ/5NyO
-            Y6Q8Pu3rbyFfdPRlh/HkFsl2VwlwNK53E9x6bdW+9jD+x/rxInipHC54rAF1UVnJ
-            phXGr65FFtTeYJha6fzdQrkGxQG6jrZYK6o6aF7cYl9GVHFKC9Nk6R8QgCsjFjFs
-            Agj11KChu2lrROIoFLtdzB9coTBerDY/sfsP5vgqHYxvFvDhi2s/C9mXlAlHRyMA
-            z+s5KnAukjUJ7wC3vVk3KYNWz2rL+HKel9e0OzfijP//bJ6iBne3Gsk7nSJrEi2F
-            g35/q7j8pDqS4FDl39/MGjJkuqA8tmcbJPYtjRpIBFRBB053crz2ZRTGMlsN64Ka
-            JqDjY6K+glYDCtzJN2IvaiSvVhkPwGcpc1hlzqL2HBPs5nascuDiS5AsHOOlN1GN
-            gZlMQptzKB12x0PFZVigjy3UXo86WRVw6j0JiWs6GIxtex4ZKBcsjmlQe5b2wTUx
-            kTKxTEYWtPQIYG2elEjw+ytOgdT8ZtJIFTb2L1xxPp6qTU3LFMHhpWwnrBnwBbnS
-            XgFBi6JzI+hiCZg4cKdt/WQA/7PFkc+GHAnX/EJnsjGiZ2ZB6okvbEA0/EZnPVYO
-            fro+l4m5cG4yA/yqgD8p0FippwHNW73zIL+XzhfsBeGPTju94XJ51fouty7nZ0g=
-            =j2f0
+            hQIMA0R6oz1GmNjVAQ//ZSHhjpr6HSMC5dGPq4WCswfklGibEzDL2cf7/wb1fzJr
+            DdOiKuVo/rfyJ+dOEtrKONMwLWgMA+PN26o0Yea0GgmCg/XGBTsMtcqHpBFGOGJ1
+            LWBu04NaVn2QEJ/aOVExmvLPB6voEpDtfbi4XhAXtZ7w8vdAFs6ME2K/5s0a/MOR
+            wdkk5OpTZqTwzZkBUfvD2MYMB845eA2DuIUb5S77spftLw74KqavmSQdHEJcZZES
+            81PF4PbnupxQH8Gb9FeoceitoKJWO7GmobIZD/AorG2HkXgSZRa3Jn000nJJbrge
+            8MmZbMCa/Vj0HR+9thFiSIglLVgruZOcjBNNI16lpZzjMKMJrVFAjHEviQkT4umA
+            dS7uiN3vEU2ADxuQUn4qHDyso87/mTd4QJ+aj4KK85FL44+djpKjpkrqtmASsEhH
+            F7+ejaDAdkZezvFIy5ARQT8whVYfVsXOSMnelUSNGpu7IPR2ToKqblyzlLsb7k/S
+            em8mDeXwkxCsZ1wJGKVFl8MddBdFIgE8aPgm9KV/42pbbzqv4FoNWO3dOY0BBIN7
+            q8BJ5Fz78rFnPezN+iVuTMD4cNwGv1kb/+HzyCQ3pps7zcxNLPk6yMj92o8ffZ1L
+            Npxbvw3lsHnY1Wf/jByrKF+Vtx8NMumQDarxGGJdzRz6Q9YwHOxFZmwcmSAgLjXS
+            XgFXIeDkEKvU6mB1PdYC/+sI7v5GlW7gmLwcN+9DXiCuCQNQKhb0e4MrcFCAxgJY
+            1PcF+RzQs0GwyGsCxMo+qIp4Gi626fsoLNEEUESH9wXXH6Awl4fthNuphBWgVfs=
+            =s2gZ
             -----END PGP MESSAGE-----
           fp: 6D3FE55384B558E06A1BA364586EFA784A32C981
-    encrypted_regex: ^(data|stringData|dnsNames|email|accessKeyID|region|hostedZoneID|role|dnsZones)$
+    encrypted_regex: ^(data|stringData|dnsNames|email|accessKeyID|region|hostedZoneID|role|dnsZones|cert-manager.io/common-name|external-dns.alpha.kubernetes.io/hostname|external-dns.alpha.kubernetes.io/target|match|main|sans)$
     version: 3.9.0
