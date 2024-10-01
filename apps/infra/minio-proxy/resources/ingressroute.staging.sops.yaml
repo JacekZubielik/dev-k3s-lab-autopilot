@@ -1,39 +1,3 @@
-# apiVersion: traefik.io/v1alpha1
-# kind: IngressRoute
-# metadata:
-#     annotations:
-#         argocd.argoproj.io/sync-wave: "3"
-#         cert-manager.io/cluster-issuer: letsencrypt-staging
-#         cert-manager.io/common-name: s3.storage.anotherlife.org.pl
-#         external-dns.alpha.kubernetes.io/hostname: console.s3.storage.anotherlife.org.pl
-#         external-dns.alpha.kubernetes.io/target: s3.storage.anotherlife.org.pl
-#         external-dns.alpha.kubernetes.io/ttl: "300"
-#         kubernetes.io/ingress.class: traefik-external
-#     name: minio-console-staging
-#     namespace: traefik
-# spec:
-#     entryPoints:
-#         - websecure
-#     routes:
-#         - kind: Rule
-#           match: Host(`console.s3.storage.anotherlife.org.pl`) && (PathPrefix(`/`))
-#           middlewares:
-#             - name: chain-traefik-dashboard
-#               namespace: traefik
-#           services:
-#             - name: minio-console
-#               port: 9001
-#               scheme: https
-#               passHostHeader: true
-#     tls:
-#         domains:
-#             - main: s3.storage.anotherlife.org.pl
-#               sans:
-#                 - .s3.storage.anotherlife.org.pl
-#         options:
-#             name: tls-ver13
-#             namespace: traefik
-#         secretName: minio-console-cf-staging
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
@@ -41,42 +5,78 @@ metadata:
         argocd.argoproj.io/sync-wave: "3"
         cert-manager.io/cluster-issuer: letsencrypt-staging
         cert-manager.io/common-name: s3.storage.anotherlife.org.pl
-        external-dns.alpha.kubernetes.io/hostname: s3.storage.anotherlife.org.pl
-        external-dns.alpha.kubernetes.io/target: storage.anotherlife.org.pl
+        external-dns.alpha.kubernetes.io/hostname: console.s3.storage.anotherlife.org.pl
+        external-dns.alpha.kubernetes.io/target: s3.storage.anotherlife.org.pl
         external-dns.alpha.kubernetes.io/ttl: "300"
         kubernetes.io/ingress.class: traefik-external
-    name: s3-staging
+    name: minio-console-staging
     namespace: traefik
 spec:
     entryPoints:
         - websecure
     routes:
         - kind: Rule
-          match: Host(`s3.storage.anotherlife.org.pl`)
-          services:
-            - name: minio-proxy
-              port: 9000
-              scheme: https
-              #   passHostHeader: true
-        - kind: Rule
           match: Host(`console.s3.storage.anotherlife.org.pl`) && (PathPrefix(`/`))
           middlewares:
             - name: chain-traefik-dashboard
               namespace: traefik
           services:
-            - name: minio-proxy
+            - name: minio-console
               port: 9001
               scheme: https
               passHostHeader: true
     tls:
         domains:
-            - main: storage.anotherlife.org.pl
+            - main: s3.storage.anotherlife.org.pl
               sans:
-                - .storage.anotherlife.org.pl
+                - .s3.storage.anotherlife.org.pl
         options:
             name: tls-ver13
             namespace: traefik
         secretName: minio-console-cf-staging
+# apiVersion: traefik.io/v1alpha1
+# kind: IngressRoute
+# metadata:
+#     annotations:
+#         argocd.argoproj.io/sync-wave: "3"
+#         cert-manager.io/cluster-issuer: letsencrypt-staging
+#         cert-manager.io/common-name: s3.storage.anotherlife.org.pl
+#         external-dns.alpha.kubernetes.io/hostname: s3.storage.anotherlife.org.pl
+#         external-dns.alpha.kubernetes.io/target: storage.anotherlife.org.pl
+#         external-dns.alpha.kubernetes.io/ttl: "300"
+#         kubernetes.io/ingress.class: traefik-external
+#     name: s3-staging
+#     namespace: traefik
+# spec:
+#     entryPoints:
+#         - websecure
+#     routes:
+#         - kind: Rule
+#           match: Host(`s3.storage.anotherlife.org.pl`)
+#           services:
+#             - name: minio-proxy
+#               port: 9000
+#               scheme: https
+#               #   passHostHeader: true
+#         - kind: Rule
+#           match: Host(`console.s3.storage.anotherlife.org.pl`) && (PathPrefix(`/`))
+#           middlewares:
+#             - name: chain-traefik-dashboard
+#               namespace: traefik
+#           services:
+#             - name: minio-proxy
+#               port: 9001
+#               scheme: https
+#               passHostHeader: true
+#     tls:
+#         domains:
+#             - main: storage.anotherlife.org.pl
+#               sans:
+#                 - .storage.anotherlife.org.pl
+#         options:
+#             name: tls-ver13
+#             namespace: traefik
+#         secretName: minio-console-cf-staging
 # apiVersion: traefik.io/v1alpha1
 # kind: IngressRoute
 # metadata:
@@ -152,8 +152,8 @@ sops:
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2024-10-01T22:01:42Z"
-    mac: ENC[AES256_GCM,data:AJ18Phn2gBtDOhjW+cwSSATgS2Uf/e03haXB93PWSe7jd5AayEP8Z5QpqTpC4VZ29kr1TqUFQcHGN8Lg3Bc8ZERkYfU1027JRdcjyHE/LzMEeocb+/Ng8Hn07AMqN60uyZQALQOheYDuhg1YmnBecNnD73yXViK9FkZEI8sikqk=,iv:x5aoq1IBo+QYVKPlhk6LUKZAibuzjmD/hR3DARoi+og=,tag:2G2qYA3Z9Nx/bXWdmlmaGw==,type:str]
+    lastmodified: "2024-10-01T22:03:47Z"
+    mac: ENC[AES256_GCM,data:HVoLQWeck/IzAfqw2xA6yIiufCsHb8THj0jbwyPESLT9VWkU1f5ay80lAUX/t3Cjm4xJqzbOse63fx5noIUs5obyQfKoaZyjtjAPutCRIJGi/vZIKQxL7kvCga7l2FOzUu17yC43SHGs7InXxAekrOG6LUVIFLNFiGnRkZUv7VA=,iv:aNFbYNU18LmkKfx2soU76S90evM92gDIQS8MO53FBOs=,tag:ClpNmKGXjJMyL3LzkrTBjA==,type:str]
     pgp:
         - created_at: "2024-10-01T22:01:42Z"
           enc: |-
