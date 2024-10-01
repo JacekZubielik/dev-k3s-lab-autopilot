@@ -1,3 +1,39 @@
+# apiVersion: traefik.io/v1alpha1
+# kind: IngressRoute
+# metadata:
+#     annotations:
+#         argocd.argoproj.io/sync-wave: "3"
+#         cert-manager.io/cluster-issuer: letsencrypt-staging
+#         cert-manager.io/common-name: s3.storage.anotherlife.org.pl
+#         external-dns.alpha.kubernetes.io/hostname: console.s3.storage.anotherlife.org.pl
+#         external-dns.alpha.kubernetes.io/target: s3.storage.anotherlife.org.pl
+#         external-dns.alpha.kubernetes.io/ttl: "300"
+#         kubernetes.io/ingress.class: traefik-external
+#     name: minio-console-staging
+#     namespace: traefik
+# spec:
+#     entryPoints:
+#         - websecure
+#     routes:
+#         - kind: Rule
+#           match: Host(`console.s3.storage.anotherlife.org.pl`) && (PathPrefix(`/`))
+#           middlewares:
+#             - name: chain-traefik-dashboard
+#               namespace: traefik
+#           services:
+#             - name: minio-console
+#               port: 9001
+#               scheme: https
+#               passHostHeader: true
+#     tls:
+#         domains:
+#             - main: s3.storage.anotherlife.org.pl
+#               sans:
+#                 - .s3.storage.anotherlife.org.pl
+#         options:
+#             name: tls-ver13
+#             namespace: traefik
+#         secretName: minio-console-cf-staging
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
@@ -21,7 +57,7 @@ spec:
             - name: minio-proxy
               port: 9000
               scheme: https
-          #   passHostHeader: true
+              #   passHostHeader: true
         - kind: Rule
           match: Host(`console.s3.storage.anotherlife.org.pl`) && (PathPrefix(`/`))
           middlewares:
@@ -40,7 +76,50 @@ spec:
         options:
             name: tls-ver13
             namespace: traefik
-        secretName: s3-cf-staging
+        secretName: minio-console-cf-staging
+# apiVersion: traefik.io/v1alpha1
+# kind: IngressRoute
+# metadata:
+#     annotations:
+#         argocd.argoproj.io/sync-wave: "3"
+#         cert-manager.io/cluster-issuer: letsencrypt-staging
+#         cert-manager.io/common-name: s3.storage.anotherlife.org.pl
+#         external-dns.alpha.kubernetes.io/hostname: s3.storage.anotherlife.org.pl
+#         external-dns.alpha.kubernetes.io/target: storage.anotherlife.org.pl
+#         external-dns.alpha.kubernetes.io/ttl: "300"
+#         kubernetes.io/ingress.class: traefik-external
+#     name: s3-staging
+#     namespace: traefik
+# spec:
+#     entryPoints:
+#         - websecure
+#     routes:
+#         - kind: Rule
+#           match: Host(`s3.storage.anotherlife.org.pl`)
+#           services:
+#             - name: minio-proxy
+#               port: 9000
+#               scheme: https
+#               #   passHostHeader: true
+#         - kind: Rule
+#           match: Host(`console.s3.storage.anotherlife.org.pl`) && (PathPrefix(`/`))
+#           middlewares:
+#             - name: chain-traefik-dashboard
+#               namespace: traefik
+#           services:
+#             - name: minio-proxy
+#               port: 9001
+#               scheme: https
+#               passHostHeader: true
+#     tls:
+#         domains:
+#             - main: storage.anotherlife.org.pl
+#               sans:
+#                 - .storage.anotherlife.org.pl
+#         options:
+#             name: tls-ver13
+#             namespace: traefik
+#         secretName: s3-cf-staging
 # ---
 # apiVersion: traefik.io/v1alpha1
 # kind: TraefikService
@@ -72,37 +151,28 @@ sops:
     gcp_kms: []
     azure_kv: []
     hc_vault: []
-    age:
-        - recipient: age1deg9tqt7jtddnqme6nvcl72czns80z0n25u8k9pw5830dn4arsks5pua4h
-          enc: |
-            -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBCZ2hHdzdDYXByU29FZXdw
-            UmprRDdrT2s0Mlh3Sys3dmZxSE0yeTRxYkd3CkhWMHRBeURNQzZWMTQ3cVBza1h0
-            Y2NWSnl2MFhqcmZ4d3liMjZnQSsyVlUKLS0tIFoxSUN3Z1VBeUZ0WGZKeDV2MDFp
-            djcvS1A5WEtoSjd3Ulp0aW13Q2xqdzAKsgmRUgV+ixpMCyVbM/FwGBxdkARfsihA
-            aKI20ZEkqWTl5dLqb21teIy6ACfppwTyROXFvcQKr626WYw60A16gg==
-            -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-10-01T21:46:26Z"
-    mac: ENC[AES256_GCM,data:tgr0j86MmSyKbAqOP0YIxOihJfc0vXl4sZv3h934z06joS8N0PT6pnIqFANQMB48NnWEnsApMxHcB4fbroan7WtaKJoHDcUoPqoSIuS0J/JVyJ8mKfyRCzrD/AqGqMYva2ReQurCtdgaJv9noACk3UyvyB44EDFgM/k5uLB6Ne0=,iv:ypavHI4Igdi2ye1ZAW3bu2AD2Rn4KXJv8RUNH5E6yNE=,tag:SF5SHRsqZu+z5PqCf6KT2A==,type:str]
+    age: []
+    lastmodified: "2024-10-01T22:01:42Z"
+    mac: ENC[AES256_GCM,data:AJ18Phn2gBtDOhjW+cwSSATgS2Uf/e03haXB93PWSe7jd5AayEP8Z5QpqTpC4VZ29kr1TqUFQcHGN8Lg3Bc8ZERkYfU1027JRdcjyHE/LzMEeocb+/Ng8Hn07AMqN60uyZQALQOheYDuhg1YmnBecNnD73yXViK9FkZEI8sikqk=,iv:x5aoq1IBo+QYVKPlhk6LUKZAibuzjmD/hR3DARoi+og=,tag:2G2qYA3Z9Nx/bXWdmlmaGw==,type:str]
     pgp:
-        - created_at: "2024-09-17T11:25:42Z"
+        - created_at: "2024-10-01T22:01:42Z"
           enc: |-
             -----BEGIN PGP MESSAGE-----
 
-            hQIMA0R6oz1GmNjVAQ/+MDXfgjUrJDDRmcQLOQS1mnwfFgevwzqif9rqYDvN3TgY
-            mMaMmi+VMR2j9+rJa7oVFm01jSChzV66OfIEROhpkCACIh1dd1xGVa9MnkXwYiQ9
-            7l2hqfS/2LXb57QT0QHKhEeDS721BrCHjfKMwe68FCAh8obFPjUp/liGoObl5Vh3
-            wbxsWR1N4CyMpcSbt9ln9tKddbb8jcepbABrRlaGV0SFQOmGKEugM/WcOkGf9ZBT
-            lqiAS+RpKXSxAvlxg1cSXC9cQfB8rW2u0QIFbxhxNe3dPjt2RnBbKD8EophWp+er
-            fZJtp5k5+p4TNj/MwM0DbbMBt8n8rtdd3eKMAPmk0akMKg8jHe17ejXBRdx4V2zL
-            qyPeP3gmMeLPyB7kY34nsC5pPCWKzxOV5roer7gbR+tM4wXvpI2a9GaezwfLQ5MY
-            xCIZnGizi25AkKGoFohs+jHTbILzQZoC0kOW76e4ZPf88omE5woz40A0jeEo0Gmo
-            8SM+21BtkWTEhv5G/3AUBIAqZIMEqAU7yrIvT7TPojQI1Rqte567XcMkDBwUfsE1
-            8zVm8ZuTxID4swuSr9YRDQXyYoxLShiKWRUW5EidKpZtHnnvbMF0oIHWZmysxHQF
-            F32HqnjWVZcoEub4hoh8FEv3UAk50c6obw6lwKD4OWiRO7ZX9mDfx+G5cL46sC7S
-            XgG3BmUM0VQTQd9wOSmE3zg0MXS+K8pWNzMnHqrzKcKdX+cmq8ZyNLStFSwqpCU1
-            m0DVpDes/wQGf3zOgx+CDd52jT8XPfRzCkB80zB/g2yp+dobLUAhXKfj8t9l0NE=
-            =SPpW
+            hQIMA0R6oz1GmNjVAQ/+OcPntcAmkb/RiG9FztzDo7yEcSlGKyusa2yuIYyyhL06
+            uLJ6QqgZ3ZWHnZrWSM793UPuneCG2JcSz9CHFPi/tejNvvDQsxA71jHKUBwEwfCr
+            IHamaehUZJ0rt7H5QLuYXf+wFPoZ9uL4b1279XGzCNToRpnO3QzIBAKlFiJ/5NyO
+            Y6Q8Pu3rbyFfdPRlh/HkFsl2VwlwNK53E9x6bdW+9jD+x/rxInipHC54rAF1UVnJ
+            phXGr65FFtTeYJha6fzdQrkGxQG6jrZYK6o6aF7cYl9GVHFKC9Nk6R8QgCsjFjFs
+            Agj11KChu2lrROIoFLtdzB9coTBerDY/sfsP5vgqHYxvFvDhi2s/C9mXlAlHRyMA
+            z+s5KnAukjUJ7wC3vVk3KYNWz2rL+HKel9e0OzfijP//bJ6iBne3Gsk7nSJrEi2F
+            g35/q7j8pDqS4FDl39/MGjJkuqA8tmcbJPYtjRpIBFRBB053crz2ZRTGMlsN64Ka
+            JqDjY6K+glYDCtzJN2IvaiSvVhkPwGcpc1hlzqL2HBPs5nascuDiS5AsHOOlN1GN
+            gZlMQptzKB12x0PFZVigjy3UXo86WRVw6j0JiWs6GIxtex4ZKBcsjmlQe5b2wTUx
+            kTKxTEYWtPQIYG2elEjw+ytOgdT8ZtJIFTb2L1xxPp6qTU3LFMHhpWwnrBnwBbnS
+            XgFBi6JzI+hiCZg4cKdt/WQA/7PFkc+GHAnX/EJnsjGiZ2ZB6okvbEA0/EZnPVYO
+            fro+l4m5cG4yA/yqgD8p0FippwHNW73zIL+XzhfsBeGPTju94XJ51fouty7nZ0g=
+            =j2f0
             -----END PGP MESSAGE-----
           fp: 6D3FE55384B558E06A1BA364586EFA784A32C981
     encrypted_regex: ^(data|stringData|dnsNames|email|accessKeyID|region|hostedZoneID|role|dnsZones)$
