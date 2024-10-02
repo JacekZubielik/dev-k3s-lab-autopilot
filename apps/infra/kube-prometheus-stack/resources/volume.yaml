@@ -9,8 +9,8 @@ metadata:
     argocd.argoproj.io/sync-wave: "-3"
   labels:
     longhornvolume: pvc-kube-alertmanager
-    recurring-job-group.longhorn.io/group3: enabled
-    recurring-job.longhorn.io/24-hour-backups: enabled
+    # recurring-job-group.longhorn.io/group3: enabled
+    # recurring-job.longhorn.io/24-hour-backups: enabled
   name: pvc-kube-alertmanager
   namespace: longhorn-system
 spec:
@@ -71,7 +71,7 @@ metadata:
   labels:
     longhornvolume: pvc-kube-prometheus
     recurring-job-group.longhorn.io/group3: enabled
-    recurring-job.longhorn.io/24-hour-backups: enabled
+    # recurring-job.longhorn.io/24-hour-backups: enabled
   name: pvc-kube-prometheus
   namespace: longhorn-system
 spec:
