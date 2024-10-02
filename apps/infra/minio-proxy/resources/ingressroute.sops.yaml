@@ -21,10 +21,10 @@ spec:
             - name: chain-traefik-dashboard
               namespace: traefik
           services:
-            - name: minio-console
+            - name: minio-proxy
               port: 9001
               scheme: http
-              passHostHeader: true
+              # passHostHeader: true
     tls:
         domains:
             - main: s3.anotherlife.org.pl
@@ -84,8 +84,8 @@ sops:
             VVgzcFlWcWFmeTA0VUJlR1dqOGVWdk0KBctAq7QMAuDTJaD1tpfGkDPmtg/H4W0f
             nbvKAxPPcxPp/6KkMkRui2t34YZq9/+9iJr85J2+YnPoBSEiVb4swA==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-10-02T22:59:24Z"
-    mac: ENC[AES256_GCM,data:GsXMuVslMRmbvJFt3mDhpLA7MGHEww2S7FJghNhs+OxSPOLtsBmg1nTNizQ9URw3rbWbtQRByz8Zo9n8LuxMxPvxHW4wu7WaOWzYZiQDMc6eCi8aCj+inV1gfiCMrlfkhRI2UctIXbzpmvlqvpPypjXUfwf7b16fkDEJYTuUB60=,iv:vagD3LohHPjoDfECmspGa5N8kBR5RQKwrkUJT6LMFqE=,tag:dFXX81f14PSmgi4If4Ajfw==,type:str]
+    lastmodified: "2024-10-02T23:29:24Z"
+    mac: ENC[AES256_GCM,data:U9yLlGu7LeDB8L0qEwdNgL9y8NLL/7ln0C6RdQt0/AepYLUbipLvBIyvUKMsZM6yu8+XIxYjL18OGB1D3lTIP+J7eVKILEEQwGZ7wesPSwlctqNxlzct6WsQ9u48Sd/PIVWl5Mx81n1A/CIS/ZLTQCw8Oo9QDch3e5ZhR/EDvBc=,iv:ctuI1R0A7/Kyahzm3B2gpDP4AV5zq++gwRIiXRLqyb0=,tag:oeh9nS0N3/L5MbGB9PAxkQ==,type:str]
     pgp:
         - created_at: "2024-09-17T11:25:48Z"
           enc: |-
