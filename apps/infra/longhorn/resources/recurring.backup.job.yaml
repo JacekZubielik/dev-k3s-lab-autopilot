@@ -6,7 +6,7 @@ metadata:
   namespace: longhorn-system
 spec:
   cron: "0/5 * * * *"
-  task: "backup-force-create" # "backup"
+  task: "backup"
   groups:
   - group0
   retain: 3
@@ -77,3 +77,20 @@ spec:
   concurrency: 2
   labels:
     job: 48-hour-backups
+
+
+---
+apiVersion: longhorn.io/v1beta1
+kind: RecurringJob
+metadata:
+  name: weekly-backups
+  namespace: longhorn-system
+spec:
+  cron: "0 0 * * 0"
+  task: "backup-force-create"
+  groups:
+  - group4
+  retain: 3
+  concurrency: 2
+  labels:
+    job: weekly-backups
