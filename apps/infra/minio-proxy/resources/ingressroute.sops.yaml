@@ -4,7 +4,7 @@ metadata:
     annotations:
         argocd.argoproj.io/sync-wave: "3"
         cert-manager.io/cluster-issuer: letsencrypt-production
-        cert-manager.io/common-name: s3.anotherlife.org.pl
+        cert-manager.io/common-name: console.s3.anotherlife.org.pl
         external-dns.alpha.kubernetes.io/hostname: console.s3.anotherlife.org.pl
         external-dns.alpha.kubernetes.io/target: s3.anotherlife.org.pl
         external-dns.alpha.kubernetes.io/ttl: "300"
@@ -84,8 +84,8 @@ sops:
             VVgzcFlWcWFmeTA0VUJlR1dqOGVWdk0KBctAq7QMAuDTJaD1tpfGkDPmtg/H4W0f
             nbvKAxPPcxPp/6KkMkRui2t34YZq9/+9iJr85J2+YnPoBSEiVb4swA==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-10-02T23:29:24Z"
-    mac: ENC[AES256_GCM,data:U9yLlGu7LeDB8L0qEwdNgL9y8NLL/7ln0C6RdQt0/AepYLUbipLvBIyvUKMsZM6yu8+XIxYjL18OGB1D3lTIP+J7eVKILEEQwGZ7wesPSwlctqNxlzct6WsQ9u48Sd/PIVWl5Mx81n1A/CIS/ZLTQCw8Oo9QDch3e5ZhR/EDvBc=,iv:ctuI1R0A7/Kyahzm3B2gpDP4AV5zq++gwRIiXRLqyb0=,tag:oeh9nS0N3/L5MbGB9PAxkQ==,type:str]
+    lastmodified: "2024-10-02T23:42:02Z"
+    mac: ENC[AES256_GCM,data:EMmg7d02HrpzK4rRbGKbEyL2wiY0Nwxs2laxdRhO3SokoIGorYgZGV2dNuhyuIgO/XN/bie8LF3Eyok/H5F8pGaKKiKnWzYz9FqWsm5jUPQWUCtYu3zsusTqjGwJ+kJKlMJgHr1OhOBEWHw2H9tIqmFsoQz4fr2A5wGkoibHZ7M=,iv:5hEQWcdhKItVEPIUFBUxVrSR9+9C8is9utjl6pmfiPA=,tag:MpZP4WP82nKLpBZcM62mXQ==,type:str]
     pgp:
         - created_at: "2024-09-17T11:25:48Z"
           enc: |-
