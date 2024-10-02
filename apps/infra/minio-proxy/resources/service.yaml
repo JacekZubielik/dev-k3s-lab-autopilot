@@ -17,27 +17,24 @@ spec:
     app.kubernetes.io/instance: minio-proxy
     task: minio-console # minio-proxy
 
-# ---
-# apiVersion: v1
-# kind: Service
-# metadata:
-#   labels:
-#     app.kubernetes.io/name: minio-proxy
-#   name: minio-proxy
-#   namespace: traefik
-# spec:
-#   externalName: 192.168.40.3
-#   type: ExternalName
-#   ports:
-#   - name: minio
-#     port: 9000
-#     targetPort: 9000
-#   - name: minio-console
-#     port: 9001
-#     targetPort: 9001
-#   selector:
-#     app.kubernetes.io/instance: minio-proxy
-#     task: minio-proxy
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app.kubernetes.io/name: minio-proxy
+  name: minio-api
+  namespace: traefik
+spec:
+  externalName: 192.168.40.3
+  type: ExternalName
+  ports:
+  - name: minio-api
+    port: 9002
+    targetPort: 9002
+  selector:
+    app.kubernetes.io/instance: minio-proxy
+    task: minio-api
 
 # ---
 # apiVersion: v1
