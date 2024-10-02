@@ -29,8 +29,8 @@ spec:
     middlewares:
     - name: traefik-dashboard-auth
     - name: headers
-    - name: whitelist
-    - name: whitelist-local
+    # - name: whitelist
+    # - name: whitelist-local
 
 ---
 apiVersion: traefik.io/v1alpha1
@@ -46,5 +46,5 @@ spec:
     middlewares:
     - name: traefik-dashboard-auth
     - name: svc-longhorn-headers
-    - name: whitelist
-    - name: whitelist-local
+    # - name: whitelist
+    # - name: whitelist-local
