@@ -23,7 +23,7 @@ spec:
           services:
             - name: minio-console
               port: 9001
-              scheme: https
+              scheme: http
               passHostHeader: true
     tls:
         domains:
@@ -161,8 +161,8 @@ sops:
             dUNEY1RSS0VhQy85bktNSVNreGhpbzQKyG/CSkMTKeZ3XZe4FHSquXjmV47Ajy/Q
             IxjL0/rEudl2I/SqqDKKkQ26VMATaEQhwAtTrk0ytwWyYBo3ipORqg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-10-02T22:15:28Z"
-    mac: ENC[AES256_GCM,data:Gk2AIars5gKMjoPXY+AQ2QfQJyINocMzzibvtxc1KBV2e7Z0m38tEx3JIrXh7PoBRlibLVRAazr2SzXwVS8D8k5KToqhj4fjveZssSHMNzF1AP/sVEFJJL3JfuDY9DLjTd9uZ4b2v7qMl8WUdCX0w6BAOdTEBZeQYP4MqdYWe9k=,iv:Vx99tjiVzDs/ssD+2RkbyezV6T39kmFg4lx6QT2qes4=,tag:7jkcl1Yi5AGASpwK0zRc/g==,type:str]
+    lastmodified: "2024-10-02T22:25:38Z"
+    mac: ENC[AES256_GCM,data:LwJIbJldq19PjhGci43kbaw8iaRTBeLkEiQSPquivqet7fVETfXpqHLEPlGtsSREm94l2qNVaDEU1LoSQr2+rHjX15yK1jSFFcHP0dST62gSrc/O0RwTik+ES5ut5BWaS8bbll8KDEiwbIbc/C5sX4Hco/ULuxZ630wSqFJMKPk=,iv:abcCZ8g/8kRXow7U3eOCfMGcNQTaICS2KYurwTusoGU=,tag:0wPJu8ADWGrO36jjtIuQ/A==,type:str]
     pgp:
         - created_at: "2024-10-02T22:15:28Z"
           enc: |-
