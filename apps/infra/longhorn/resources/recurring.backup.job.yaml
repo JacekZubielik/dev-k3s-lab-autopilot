@@ -2,17 +2,50 @@
 apiVersion: longhorn.io/v1beta1
 kind: RecurringJob
 metadata:
+  name: 5-minutes-backups
+  namespace: longhorn-system
+spec:
+  cron: "0/5 * * * *"
+  task: "backup-force-create" # "backup"
+  groups:
+  - group0
+  retain: 3
+  concurrency: 2
+  labels:
+    job: 5-minutes-backups
+
+---
+apiVersion: longhorn.io/v1beta1
+kind: RecurringJob
+metadata:
+  name: 1-hour-backups
+  namespace: longhorn-system
+spec:
+  cron: "0 * * * *"
+  task: "backup-force-create"
+  groups:
+  - group1
+  retain: 3
+  concurrency: 2
+  labels:
+    job: 1-hour-backups
+
+---
+apiVersion: longhorn.io/v1beta1
+kind: RecurringJob
+metadata:
   name: 12-hour-backups
   namespace: longhorn-system
 spec:
   cron: "0 */12 * * *"
   task: "backup"
   groups:
-  - group3
+  - group2
   retain: 3
   concurrency: 2
   labels:
     job: 12-hour-backups
+
 ---
 apiVersion: longhorn.io/v1beta1
 kind: RecurringJob
@@ -38,41 +71,9 @@ metadata:
 spec:
   cron: "0 */48 * * *"
   task: "backup"
-  # groups:
-  # - group1
+  groups:
+  - group4
   retain: 3
   concurrency: 2
   labels:
     job: 48-hour-backups
-
----
-apiVersion: longhorn.io/v1beta1
-kind: RecurringJob
-metadata:
-  name: 5-minutes-backups
-  namespace: longhorn-system
-spec:
-  cron: "0/5 * * * *"
-  task: "backup-force-create" # "backup"
-  # groups:
-  # - group2
-  retain: 3
-  concurrency: 2
-  labels:
-    job: 5-minutes-backups
-
----
-apiVersion: longhorn.io/v1beta1
-kind: RecurringJob
-metadata:
-  name: 1-hour-backups
-  namespace: longhorn-system
-spec:
-  cron: "0 * * * *"
-  task: "backup-force-create"
-  # groups:
-  # - group3
-  retain: 3
-  concurrency: 2
-  labels:
-    job: 1-hour-backups
