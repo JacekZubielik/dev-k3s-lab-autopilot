@@ -4,9 +4,9 @@ metadata:
     annotations:
         argocd.argoproj.io/sync-wave: "3"
         cert-manager.io/cluster-issuer: letsencrypt-staging
-        cert-manager.io/common-name: s3.anotherlife.org.pl
-        external-dns.alpha.kubernetes.io/hostname: console.s3.anotherlife.org.pl
-        external-dns.alpha.kubernetes.io/target: s3.anotherlife.org.pl
+        cert-manager.io/common-name: ENC[AES256_GCM,data:T0Qv5o85TKvCinb2ZdLT89fzK3uU,iv:W5J3kck/7sesZeGYJxWwptWRzX7Y7kEWFdDsEW2oRfg=,tag:89+9YPNqxIPpShQRu+9r1Q==,type:str]
+        external-dns.alpha.kubernetes.io/hostname: ENC[AES256_GCM,data:sr+NZMWOc0k3xEFlxvsAhLhtT/UOVKY4ruia1pM=,iv:83uzr0Icnog0mVePtEavbSqoaC0sB3ArvM0+XoQ9IMQ=,tag:N7rJPYNkv9ovWvx6aYF7Fg==,type:str]
+        external-dns.alpha.kubernetes.io/target: ENC[AES256_GCM,data:PiLafFYEPOqQXd9+JgLm/7vCwf8y,iv:qYwt3OgaFK8GfzEAcAaHD0/Rl+0vPK7iaSo0kHD7iAw=,tag:+pKwKhy6QnX8SrlQpdodYQ==,type:str]
         external-dns.alpha.kubernetes.io/ttl: "300"
         kubernetes.io/ingress.class: traefik-external
     name: minio-console-staging
@@ -16,7 +16,7 @@ spec:
         - websecure
     routes:
         - kind: Rule
-          match: Host(`console.s3.anotherlife.org.pl`) && (PathPrefix(`/`))
+          match: ENC[AES256_GCM,data:KVQCbk4n3d2Gg8gHMXrlRL2q19nuHgj87RnIecaUeKCRjOssadEoiPzmhmjs/OGjQfZFl3LvnNqwDQ==,iv:U2NvJE78Mff3CgD8rlYuXa1mKSsTchH27WuH0SCiKVs=,tag:kpbGIAa76S8MsW4HMzBmuw==,type:str]
           middlewares:
             - name: chain-traefik-dashboard
               namespace: traefik
@@ -27,14 +27,13 @@ spec:
               passHostHeader: true
     tls:
         domains:
-            - main: s3.anotherlife.org.pl
+            - main: ENC[AES256_GCM,data:sgWqIkw61gOgVflfbNb2Ags8HiqN,iv:mDU+quML/o3QPPmL95yLovKZC/b+ETPvTyCAYxZldDU=,tag:KmwSGL/jhkpiGi+F2RKS6w==,type:str]
               sans:
-                - .s3.anotherlife.org.pl
+                - ENC[AES256_GCM,data:QuoLf7XpocfGdmK4miwQ5SRy5QiiUw==,iv:7EXr+TIhITTpmiCb7hVnz2bSDYcloP8yO4QlDSHCsOM=,tag:LjJj+rNOl+Dw+LBHPTjbCw==,type:str]
         options:
             name: tls-ver13
             namespace: traefik
         secretName: minio-console-s3-cf-staging
-
 # apiVersion: traefik.io/v1alpha1
 # kind: IngressRoute
 # metadata:
@@ -147,3 +146,43 @@ spec:
 #             - name: minio-console
 #               port: 9001
 #               weight: 1
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1deg9tqt7jtddnqme6nvcl72czns80z0n25u8k9pw5830dn4arsks5pua4h
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBqUUp3SWxreStnRHRqRk1E
+            bUFRNUVrZVh6RmhFaERUL2x3VHZTY3RyZkUwCks0YmVuRUM1cjlMU3piNHhlZk5r
+            akZUS1JrQWVOTTVNYnBSOGVCTmlRT3MKLS0tIG43S1p6dDVHbDViYWpIdDBjbWpL
+            dUNEY1RSS0VhQy85bktNSVNreGhpbzQKyG/CSkMTKeZ3XZe4FHSquXjmV47Ajy/Q
+            IxjL0/rEudl2I/SqqDKKkQ26VMATaEQhwAtTrk0ytwWyYBo3ipORqg==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2024-10-02T22:15:28Z"
+    mac: ENC[AES256_GCM,data:Gk2AIars5gKMjoPXY+AQ2QfQJyINocMzzibvtxc1KBV2e7Z0m38tEx3JIrXh7PoBRlibLVRAazr2SzXwVS8D8k5KToqhj4fjveZssSHMNzF1AP/sVEFJJL3JfuDY9DLjTd9uZ4b2v7qMl8WUdCX0w6BAOdTEBZeQYP4MqdYWe9k=,iv:Vx99tjiVzDs/ssD+2RkbyezV6T39kmFg4lx6QT2qes4=,tag:7jkcl1Yi5AGASpwK0zRc/g==,type:str]
+    pgp:
+        - created_at: "2024-10-02T22:15:28Z"
+          enc: |-
+            -----BEGIN PGP MESSAGE-----
+
+            hQIMA0R6oz1GmNjVAQ//SzZPJ7QgHxcx9LzERC7XWcsqdpH0zC1xgHuL4KXyB76a
+            3FcWllDZtNiUaZgJe9Iy5of8CG8ZeK/m03gbzA6MOzf0NipSzJjxGjTrkJVT0nz5
+            XA2Yk5635SQ6asLUjWRPRSmKj4nrTqlMatWfPt/DCi8gpJHqGsOSr+HrJpvjPkkF
+            AHkyaLjac39YpDjqZsUugHJof0UjIV+VVvHwxeX+WPBLlC6qRX89ZaC0tN/ZxcC9
+            zzbhru00mJAPSgJf0yNtptkTds3HAHdoA/s8vjwktUUgr1IR8oI/f0+aLROZYbAE
+            mjpx/vc15ZS0lHXltpKbjwAEC5+K526a156JUKOBivUtE/L3M9hpIWQi3YmH9pEI
+            vHnLs0e7QOe7QXMi4EGUvON3y9rDOPkxawAqXD7JhSMd8wshe2v3kzV6M5Tt1KW9
+            y/6zKziWrwrXJVQf9ZeoKQxv1Kq0adLEjyFp9PAzpqGToqrCNGh5VZ8vPoQ/On44
+            B0MR41NT/MmroIoryVgUMEdqwI6lZILyebOc3BBK4sllLM7IfvuYGzSkZ0f7YAhv
+            kxm4g6Byef1FacQozZ8Y3QIGks3sqL7zKNMRSQT/y+9ENuiyJkwlBm/mLfFyv5vm
+            XdqjiHgx/gTRjSeyvkIHPK17KcOSmEVOL+LFXYNAc6fIlEdK0U2Gx9HicR411IfS
+            XgFdQNK9K3asotssXORFHlzbvsvLWXnemR/RT4mmtHvcCREt/md885KCEc5v5VhT
+            lBHSLmeigL2K1MvLd+S0dIuzm8Nh8YtaAd2LZ+TDTbZ7Jc41QfWBxM3tJR59/1c=
+            =DLVo
+            -----END PGP MESSAGE-----
+          fp: 6D3FE55384B558E06A1BA364586EFA784A32C981
+    encrypted_regex: ^(data|stringData|dnsNames|email|accessKeyID|region|hostedZoneID|role|dnsZones|cert-manager.io/common-name|commonName|external-dns.alpha.kubernetes.io/hostname|external-dns.alpha.kubernetes.io/target|match|main|sans)$
+    version: 3.9.0
