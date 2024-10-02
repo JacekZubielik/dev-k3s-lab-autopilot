@@ -25,7 +25,7 @@ generatorOptions:
 
 helmCharts:
 - name: authentik
-  version: 2024.8.2
+  version: 2024.8.3
   repo: https://charts.goauthentik.io
   includeCRDs: true
   namespace: authentik

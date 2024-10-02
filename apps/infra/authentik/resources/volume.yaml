@@ -9,10 +9,10 @@ metadata:
     argocd.argoproj.io/sync-wave: "-3"
   labels:
     longhornvolume: pvc-authentik-psql
-    recurring-job-group.longhorn.io/group1: enabled
-    recurring-job-group.longhorn.io/group3: enabled
-    recurring-job.longhorn.io/12-hour-backups: enabled
-    recurring-job.longhorn.io/24-hour-backups: enabled
+    recurring-job-group.longhorn.io/group4: enabled
+    # recurring-job-group.longhorn.io/group3: enabled
+    # recurring-job.longhorn.io/12-hour-backups: enabled
+    # recurring-job.longhorn.io/24-hour-backups: enabled
   name: pvc-authentik-psql
   namespace: longhorn-system
 spec:
@@ -30,7 +30,7 @@ spec:
   - storage
   numberOfReplicas: 1
   size: '8589934592'
-  snapshotMaxCount: 10
+  snapshotMaxCount: 48
 
 ---
 apiVersion: longhorn.io/v1beta2
@@ -43,10 +43,10 @@ metadata:
     argocd.argoproj.io/sync-wave: "-3"
   labels:
     longhornvolume: pvc-authentik-redis
-    recurring-job-group.longhorn.io/group1: enabled
-    recurring-job-group.longhorn.io/group3: enabled
-    recurring-job.longhorn.io/12-hour-backups: enabled
-    recurring-job.longhorn.io/24-hour-backups: enabled
+    recurring-job-group.longhorn.io/group4: enabled
+    # recurring-job-group.longhorn.io/group3: enabled
+    # recurring-job.longhorn.io/12-hour-backups: enabled
+    # recurring-job.longhorn.io/24-hour-backups: enabled
   name: pvc-authentik-redis
   namespace: longhorn-system
 spec:
@@ -64,4 +64,4 @@ spec:
   - storage
   numberOfReplicas: 1
   size: '8589934592'
-  snapshotMaxCount: 10
+  snapshotMaxCount: 48
