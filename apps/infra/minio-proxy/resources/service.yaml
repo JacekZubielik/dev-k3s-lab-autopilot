@@ -15,7 +15,7 @@ spec:
     targetPort: 9001
   selector:
     app.kubernetes.io/instance: minio-proxy
-    task: minio-proxy
+    task: minio-console # minio-proxy
 
 # ---
 # apiVersion: v1

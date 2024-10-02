@@ -6,12 +6,12 @@ metadata:
     name: minio-staging
 spec:
     dnsNames:
-        - ENC[AES256_GCM,data:RZlSAWwm3ruAnCPp5Ldv0kTN3ELC64nRUyVIdf0=,iv:9fRSAha3fo7oHX+OS44Jp5kcYAZN2RJ8Z1xzWhP9MAs=,tag:WqPPAsdvYaSOv2AHO7wzsQ==,type:str]
+        - ENC[AES256_GCM,data:TEUepfWIzoKgY3Q+a1aHIx45zJS5,iv:qn1s/UwmLeEU1mV2OWlaC93+F2D25jJRvQJeNWhkghY=,tag:lDTXtTb9WJCjpymimcDNUA==,type:str]
     issuerRef:
         kind: ClusterIssuer
         name: letsencrypt-staging
-    commonName: ENC[AES256_GCM,data:g1/IQyhlyRwXhtvaDu1llfA0NgRab8H4hPmKN4k=,iv:gwMu6f70evBXiyYqY+D+AAUaKrGPYiGR4wmHF8DhSaU=,tag:XZ9SjgR0d9+z87Hs5bE3gw==,type:str]
-    secretName: minio-console-cf-staging
+    commonName: ENC[AES256_GCM,data:VIQwg8pkTcKkftHlwPAy5mvHYZlo,iv:L+ghn/zWGtL9HsTnSWGcqjVKS5ABLcV49q5MvfQkE30=,tag:DEaYkwFalOf0yL97LrFqJQ==,type:str]
+    secretName: minio-s3-cf-staging
     # 90d
     duration: 2160h0m0s
     # 30d
@@ -31,8 +31,8 @@ sops:
             UjJVWnBmc1lWdkRTay9tTmRBNDFJZlkKznqq76YidWw2eM3NJxHvyyL5OvYVw89P
             y/rv/5YCnwc0Pnw6e2+EiGlc+Z9zQ4Yt4wOBC9NW+ESsXIa47W+Glg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-10-01T22:14:57Z"
-    mac: ENC[AES256_GCM,data:okxgv2UJxSOroMhaxfdtbL2s80R4aqw0jHCNc97A2m+piAL8/QUscK6yPON+3gNbFlsJr7RW1cc9GKz0TiC4KqM1Bc1elNvfl5vPnqkUzP5HcjO10flFPezvPFMRgDMI69D9CJjFgHMC67EuRpzff3DuG6cSXogH5g8ZhjGH1x4=,iv:ri4wJaFkikWw3tjnyBPQNe0EMBR1u8O606CcuOsBa3s=,tag:sO02XcRtQFs8vjikdIm65w==,type:str]
+    lastmodified: "2024-10-01T22:20:56Z"
+    mac: ENC[AES256_GCM,data:cx3i0uzXihtQggw3AvycbYfD04SO9KexyAGn3L1T/WKekwv7FB/KqNmVZ2c40Ql8DB1rdGSL6JDmiyEOXn7pm1pW7oaXqTpwvilyfzh/SqErhdsmhG+c0vHFqOj+RujR6LdJIX3BPx9GzWcxtnBZ54WGRzVZggeMbHXfvwazKGQ=,iv:Uuzc69VHzF+Dlpx/3nKNhglsO04CnYIwKTsH0IjKZYA=,tag:zBFyYuiKMBZQBt4UsCM29w==,type:str]
     pgp:
         - created_at: "2024-10-01T22:14:57Z"
           enc: |-
