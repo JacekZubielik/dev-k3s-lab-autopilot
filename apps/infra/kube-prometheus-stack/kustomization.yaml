@@ -8,7 +8,6 @@ metadata:
     argocd.argoproj.io/sync-options: Delete=true,Prune=true
 
 resources:
-# - resources/prometheus.rule.yaml
 - resources/pv.yaml
 - resources/pvc.yaml
 - resources/secret.minio.yaml
@@ -18,6 +17,7 @@ resources:
 - velero/schedule.yaml
 # - resources/backing-image.yaml
 # - resources/ns.yaml
+# - resources/prometheus.rule.yaml
 # - resources/pve-scrape-config.yaml
 # - resources/volume.snapshot.yaml
 
@@ -43,7 +43,7 @@ generatorOptions:
 
 helmCharts:
 - name: kube-prometheus-stack
-  version: 62.6.0
+  version: 64.0.0
   repo: https://prometheus-community.github.io/helm-charts
   includeCRDs: false
   namespace: monitoring
