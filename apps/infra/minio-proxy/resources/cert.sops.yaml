@@ -6,11 +6,11 @@ metadata:
     name: minio-production
 spec:
     dnsNames:
-        - ENC[AES256_GCM,data:xZ7D5jxzkYYuIHOFnf48dSYi8QUc,iv:FCypOHugoNv4+wXr64ftnY+rAqBJKDBl4zKogtFDXV4=,tag:sVetIK0eqhRJCHNvuZ+a2A==,type:str]
+        - ENC[AES256_GCM,data:4G6R6drKprU5jL7VMChHzTVsulCIwnIBHeMZXHk=,iv:HKmU+kYesiKXDgUYd27QHJp0OtlD41Ldv8KbCt+3Ukk=,tag:CDBYw9FT1T90iR7gNmySSg==,type:str]
     issuerRef:
         kind: ClusterIssuer
         name: letsencrypt-production
-    commonName: s3.anotherlife.org.pl
+    commonName: console.s3.anotherlife.org.pl
     secretName: minio-console-s3-cf-production
     # 90d
     duration: 2160h0m0s
@@ -31,8 +31,8 @@ sops:
             WWlwQ1NxbFl1SlhSbFBaS3locFJlcFEKj1ju7DPnrQWdr0O55BMnXdE5sNlSotsp
             8OOLVYMtiQEXMBKP1v5KOsnVcnKCn4rbJG4CtSErF8fW/VvmphKasQ==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-10-02T22:45:18Z"
-    mac: ENC[AES256_GCM,data:lYDrnSTsQDvhxpCiwpYBuhpFNH34a+0nRewKJbOD4OSgs8iwwF4MPIgFQ8afqiWs813qRqc+BAZ4XrjOLEen2IQfRguUMLbso30yQ/oQjrqlnkECTRRwY4m4QsAwZJ5YnUzEbuW5ZdAYsXwPVDtJpnCJxhb8cLT25G6PZ1vr2YQ=,iv:3FtZ77P90etGvX+O1phWZqFIfOUb52yz3uwsvTQEmaw=,tag:JZV0Se/z7nM/nPV7boTrjg==,type:str]
+    lastmodified: "2024-10-02T23:45:37Z"
+    mac: ENC[AES256_GCM,data:HyTexra6xMwv5OuD1VkrKUofvp5gJ3SfwXmij8uawW3uTHhdsYq/xovWB1wKPNqLnKerYb3xCz9aO31fY/CA+bx0SNMnxeFBtokavIYJJ0g3C3niEtolZhxjR0CeogyXa8a3waONboggRYckn2thlxrVOm/HLVIVoceoCUjF+W0=,iv:7a1CR60j5wIVE7kJA9Ee3qndTh6/JAJi+Ql3EWB4PWY=,tag:HFojC8hk1YBMUcftKXnvwQ==,type:str]
     pgp:
         - created_at: "2024-09-17T11:25:36Z"
           enc: |-
