@@ -34,6 +34,41 @@ spec:
             name: tls-ver13
             namespace: traefik
         secretName: minio-console-s3-cf-production
+# ---
+# apiVersion: traefik.io/v1alpha1
+# kind: IngressRoute
+# metadata:
+#     annotations:
+#         argocd.argoproj.io/sync-wave: "3"
+#         cert-manager.io/cluster-issuer: letsencrypt-production
+#         cert-manager.io/common-name: api.s3.anotherlife.org.pl
+#         external-dns.alpha.kubernetes.io/hostname: api.s3.anotherlife.org.pl
+#         external-dns.alpha.kubernetes.io/target: s3.anotherlife.org.pl
+#         external-dns.alpha.kubernetes.io/ttl: "300"
+#         kubernetes.io/ingress.class: traefik-external
+#     name: s3-production
+#     namespace: traefik
+# spec:
+#     entryPoints:
+#         - websecure
+#     routes:
+#         - kind: Rule
+#           match: Host(`api.s3.anotherlife.org.pl`)
+#           services:
+#             - name: minio-api
+#               port: 9002
+#               scheme: http
+#               #   passHostHeader: true
+#     tls:
+#         domains:
+#             - main: api.s3.anotherlife.org.pl
+#               sans:
+#                 - .api.s3.anotherlife.org.pl
+#         options:
+#             name: tls-ver13
+#             namespace: traefik
+#         # minio-api-cf-production
+#         secretName: minio-console-s3-cf-production
 sops:
     kms: []
     gcp_kms: []
@@ -49,83 +84,8 @@ sops:
             VVgzcFlWcWFmeTA0VUJlR1dqOGVWdk0KBctAq7QMAuDTJaD1tpfGkDPmtg/H4W0f
             nbvKAxPPcxPp/6KkMkRui2t34YZq9/+9iJr85J2+YnPoBSEiVb4swA==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-10-02T22:44:29Z"
-    mac: ENC[AES256_GCM,data:aPVY51+A7jWxwtXhn+pPxxkoz7l2XsBpgCVUl5FNRmDfqnFil5Zmu9fTihsQBPncAe+k0Ji7/UNDVYu3eDAfWej+OiS8W5DvN9qAblhcMr3ozbOzBkb4hJRDV7fdwWND/7ulrpkpF6xbQQ6YiAjw5G/F/2vNtLKZ/tNUEIQYtX0=,iv:6gIRrHIDF6gLL9/uYuS0gspzxMLbgimV5pxfes0ZnYI=,tag:W9b/SL240lsphlKRqVUveA==,type:str]
-    pgp:
-        - created_at: "2024-09-17T11:25:48Z"
-          enc: |-
-            -----BEGIN PGP MESSAGE-----
-
-            hQIMA0R6oz1GmNjVAQ//djGjeib4dgOr3TCWyXax5OximwIRTk8SalChssx9wdXU
-            9EQXVct0CKx8wjq54S1RS6zK4XPfAGj4q9FcS1cb+SS34pcrgBuJwidpsPbb1wTk
-            VVPrMuOOvYsuYRRs53IINFUiMyS31CZiJXuG8aMReaRqYRuem++YH7k6rfeh+Hap
-            SK6Gnz+jizbhPxkQ9lvvvsMhqSbhwi5bPws5KaKZozUkq73CLRSkxR7d5uXox35Q
-            dPlp4KM1bmFn6jaH6K8ZOXHd/X6aOW/+MT/k2XE/53zmw4ALFHPhZUoe+tlZGlTP
-            2z73wh2Ti4fgNAx2EOGpOJ1tnLMntZluh7l4ARQPw7a1KPbyC0ZrbnmBJoQqvQ0L
-            Zh2cXAybqrV2vH3sWM0kAJd/4ZfGuobfpGz9oAA2pZBhCKjerrUHyeGKiUmqMFbD
-            Eva9tt5swG9j0wvocT+b9zieEsdGvubw7vkOixf+EI8MyU8UZ0w57BjxI3VfcmRX
-            tZ9TK041wbcSj67/XFLjpbJ7cE4bbbc+zwYrkJ0yaBXf/iDlpUMDF7VIhmL8M32l
-            bOKaFgamXPVSXeQjjEvAnlMh9NqheVKmaZvr3zzPlfKKyOPttD/5dnjv22AdlRhO
-            eRr9oeIoVrFHJ+imlu4pKJZrfjW3rCV+hl9hugBU1mkyf8ymPH7tpqMNC/s3fcXS
-            XgGKcFngpr0DUqSrZBv89F2HY18u8vy2GlHitBMPHkpPTaZLfsx528GWpUhk9kfB
-            xrnIAc+v2CdOFDltVn5nF5D0j9MlB4BWTZunbl7uGTzTVGgx0B/i2wUB3yWkPiM=
-            =zwI+
-            -----END PGP MESSAGE-----
-          fp: 6D3FE55384B558E06A1BA364586EFA784A32C981
-    encrypted_regex: ^(data|stringData|dnsNames|email|accessKeyID|region|hostedZoneID|role|dnsZones)$
-    version: 3.9.0
----
-apiVersion: traefik.io/v1alpha1
-kind: IngressRoute
-metadata:
-    annotations:
-        argocd.argoproj.io/sync-wave: "3"
-        cert-manager.io/cluster-issuer: letsencrypt-production
-        cert-manager.io/common-name: api.s3.anotherlife.org.pl
-        external-dns.alpha.kubernetes.io/hostname: api.s3.anotherlife.org.pl
-        external-dns.alpha.kubernetes.io/target: s3.anotherlife.org.pl
-        external-dns.alpha.kubernetes.io/ttl: "300"
-        kubernetes.io/ingress.class: traefik-external
-    name: s3-production
-    namespace: traefik
-spec:
-    entryPoints:
-        - websecure
-    routes:
-        - kind: Rule
-          match: Host(`api.s3.anotherlife.org.pl`)
-          services:
-            - name: minio-api
-              port: 9002
-              scheme: http
-              #   passHostHeader: true
-    tls:
-        domains:
-            - main: api.s3.anotherlife.org.pl
-              sans:
-                - .api.s3.anotherlife.org.pl
-        options:
-            name: tls-ver13
-            namespace: traefik
-        # minio-api-cf-production
-        secretName: minio-console-s3-cf-production
-sops:
-    kms: []
-    gcp_kms: []
-    azure_kv: []
-    hc_vault: []
-    age:
-        - recipient: age1deg9tqt7jtddnqme6nvcl72czns80z0n25u8k9pw5830dn4arsks5pua4h
-          enc: |
-            -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBHV29jOUh3Y2ZwbGhabDc2
-            dGlWTGxMSkZoc2RFR094a1g5OE11U1RnVFVNCnVFU1BLM2FGREV2dTkxOUxZczkx
-            Qyt1WjlxaE5wV2hhclJTdW1Eck85NWsKLS0tIFdjM1ZZMWxMbTlOaDlIb0l6a0RP
-            VVgzcFlWcWFmeTA0VUJlR1dqOGVWdk0KBctAq7QMAuDTJaD1tpfGkDPmtg/H4W0f
-            nbvKAxPPcxPp/6KkMkRui2t34YZq9/+9iJr85J2+YnPoBSEiVb4swA==
-            -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-10-02T22:44:29Z"
-    mac: ENC[AES256_GCM,data:aPVY51+A7jWxwtXhn+pPxxkoz7l2XsBpgCVUl5FNRmDfqnFil5Zmu9fTihsQBPncAe+k0Ji7/UNDVYu3eDAfWej+OiS8W5DvN9qAblhcMr3ozbOzBkb4hJRDV7fdwWND/7ulrpkpF6xbQQ6YiAjw5G/F/2vNtLKZ/tNUEIQYtX0=,iv:6gIRrHIDF6gLL9/uYuS0gspzxMLbgimV5pxfes0ZnYI=,tag:W9b/SL240lsphlKRqVUveA==,type:str]
+    lastmodified: "2024-10-02T22:59:24Z"
+    mac: ENC[AES256_GCM,data:GsXMuVslMRmbvJFt3mDhpLA7MGHEww2S7FJghNhs+OxSPOLtsBmg1nTNizQ9URw3rbWbtQRByz8Zo9n8LuxMxPvxHW4wu7WaOWzYZiQDMc6eCi8aCj+inV1gfiCMrlfkhRI2UctIXbzpmvlqvpPypjXUfwf7b16fkDEJYTuUB60=,iv:vagD3LohHPjoDfECmspGa5N8kBR5RQKwrkUJT6LMFqE=,tag:dFXX81f14PSmgi4If4Ajfw==,type:str]
     pgp:
         - created_at: "2024-09-17T11:25:48Z"
           enc: |-
