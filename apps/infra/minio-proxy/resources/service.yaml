@@ -14,7 +14,7 @@ spec:
     port: 9001
     targetPort: 9001
   selector:
-    app.kubernetes.io/instance: minio-proxy
+    app.kubernetes.io/instance: minio-console # minio-proxy
     task: minio-console # minio-proxy
 
 ---
@@ -33,7 +33,7 @@ spec:
     port: 9002
     targetPort: 9002
   selector:
-    app.kubernetes.io/instance: minio-proxy
+    app.kubernetes.io/instance: minio-api # minio-proxy
     task: minio-api
 
 # ---
