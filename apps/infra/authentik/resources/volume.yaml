@@ -12,7 +12,7 @@ metadata:
     recurring-job-group.longhorn.io/group4: enabled
     recurring-job.longhorn.io/1-hour-snapshots: enabled
     recurring-job.longhorn.io/48-hour-backups: enabled
-    recurring-job.longhorn.io/weeekly-backups: enabled
+    recurring-job.longhorn.io/weekly-backups: enabled
   name: pvc-authentik-psql
   namespace: longhorn-system
 spec:
