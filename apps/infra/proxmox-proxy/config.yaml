@@ -11,5 +11,5 @@ srcPath: apps/infra/proxmox-proxy
 srcRepoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot.git
 srcTargetRevision: ""
 syncPriority: stage_6
-syncWave: 1
+syncWave: 0
 userGivenName: proxmox-proxy

@@ -39,7 +39,9 @@ metadata:
   labels:
     longhornvolume: pvc-kube-grafana
     recurring-job-group.longhorn.io/group4: enabled
-    # recurring-job.longhorn.io/24-hour-backups: enabled
+    recurring-job.longhorn.io/1-hour-snapshots: enabled
+    recurring-job.longhorn.io/48-hour-backups: enabled
+    recurring-job.longhorn.io/weeekly-backups: enabled
   name: pvc-kube-grafana
   namespace: longhorn-system
 spec:
@@ -71,7 +73,9 @@ metadata:
   labels:
     longhornvolume: pvc-kube-prometheus
     recurring-job-group.longhorn.io/group4: enabled
-    # recurring-job.longhorn.io/24-hour-backups: enabled
+    recurring-job.longhorn.io/1-hour-snapshots: enabled
+    recurring-job.longhorn.io/48-hour-backups: enabled
+    recurring-job.longhorn.io/weeekly-backups: enabled
   name: pvc-kube-prometheus
   namespace: longhorn-system
 spec:

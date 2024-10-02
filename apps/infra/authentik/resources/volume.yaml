@@ -10,9 +10,9 @@ metadata:
   labels:
     longhornvolume: pvc-authentik-psql
     recurring-job-group.longhorn.io/group4: enabled
-    # recurring-job-group.longhorn.io/group3: enabled
-    # recurring-job.longhorn.io/12-hour-backups: enabled
-    # recurring-job.longhorn.io/24-hour-backups: enabled
+    recurring-job.longhorn.io/1-hour-snapshots: enabled
+    recurring-job.longhorn.io/48-hour-backups: enabled
+    recurring-job.longhorn.io/weeekly-backups: enabled
   name: pvc-authentik-psql
   namespace: longhorn-system
 spec:
@@ -44,9 +44,9 @@ metadata:
   labels:
     longhornvolume: pvc-authentik-redis
     recurring-job-group.longhorn.io/group4: enabled
-    # recurring-job-group.longhorn.io/group3: enabled
-    # recurring-job.longhorn.io/12-hour-backups: enabled
-    # recurring-job.longhorn.io/24-hour-backups: enabled
+    recurring-job.longhorn.io/1-hour-snapshots: enabled
+    recurring-job.longhorn.io/48-hour-backups: enabled
+    recurring-job.longhorn.io/weeekly-backups: enabled
   name: pvc-authentik-redis
   namespace: longhorn-system
 spec:
