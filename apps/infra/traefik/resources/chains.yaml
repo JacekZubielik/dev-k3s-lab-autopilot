@@ -12,7 +12,7 @@ spec:
     middlewares:
     - name: basicauth
     - name: headers
-    - name: whitelist
+    # - name: whitelist
     - name: whitelist-local
 
 ---
