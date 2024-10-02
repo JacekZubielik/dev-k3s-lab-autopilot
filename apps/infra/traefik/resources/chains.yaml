@@ -13,7 +13,7 @@ spec:
     - name: basicauth
     - name: headers
     # - name: whitelist
-    - name: whitelist-local
+    # - name: whitelist-local
 
 ---
 apiVersion: traefik.io/v1alpha1
