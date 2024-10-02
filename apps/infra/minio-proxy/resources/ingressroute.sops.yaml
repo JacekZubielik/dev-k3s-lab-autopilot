@@ -24,7 +24,7 @@ spec:
             - name: minio-proxy
               port: 9001
               scheme: http
-              # passHostHeader: true
+              passHostHeader: true
     tls:
         domains:
             - main: s3.anotherlife.org.pl
@@ -84,8 +84,8 @@ sops:
             VVgzcFlWcWFmeTA0VUJlR1dqOGVWdk0KBctAq7QMAuDTJaD1tpfGkDPmtg/H4W0f
             nbvKAxPPcxPp/6KkMkRui2t34YZq9/+9iJr85J2+YnPoBSEiVb4swA==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-10-02T23:42:02Z"
-    mac: ENC[AES256_GCM,data:EMmg7d02HrpzK4rRbGKbEyL2wiY0Nwxs2laxdRhO3SokoIGorYgZGV2dNuhyuIgO/XN/bie8LF3Eyok/H5F8pGaKKiKnWzYz9FqWsm5jUPQWUCtYu3zsusTqjGwJ+kJKlMJgHr1OhOBEWHw2H9tIqmFsoQz4fr2A5wGkoibHZ7M=,iv:5hEQWcdhKItVEPIUFBUxVrSR9+9C8is9utjl6pmfiPA=,tag:MpZP4WP82nKLpBZcM62mXQ==,type:str]
+    lastmodified: "2024-10-02T23:52:55Z"
+    mac: ENC[AES256_GCM,data:dkYqaggRMAa7wbrOJXF8IAOBDHqyM4CpjgcgRCK1L8wMjtHw8KgrrTcz0/4VVZ5cueoZFThLWRvdFB1If1RjeZzrVSmNBzy/qdeVmHRXbwauXr3L8S7LS9PcFEycIAHifEpy37Dcv2eqfuB324VOHvbs1ztYGUogafZDVh+6+ss=,iv:dAASw83gaxSsv1QzFFkcRB7p2QvQB3xkTHt1/dLq+gM=,tag:ay/PDlX4ggYINqtLUQuwGA==,type:str]
     pgp:
         - created_at: "2024-09-17T11:25:48Z"
           enc: |-
