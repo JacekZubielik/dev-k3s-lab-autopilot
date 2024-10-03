@@ -16,6 +16,24 @@ spec:
     duration: 2160h0m0s
     # 30d
     renewBefore: 720h0m0s
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+    annotations:
+        argocd.argoproj.io/sync-wave: "1"
+    name: minio-api-production
+spec:
+    dnsNames:
+        - ENC[AES256_GCM,data:aW5ppd49qzdy5+HYM1yQuZcxIIrhJJVL6A==,iv:vem1f0COGAOkyFzcWeD5p6Z4R2OnssRajL7NF4SxTAY=,tag:MWECELbp38Ut9Heok2j4uw==,type:str]
+    issuerRef:
+        kind: ClusterIssuer
+        name: letsencrypt-production
+    commonName: api.s3.anotherlife.org.pl
+    secretName: minio-api-s3-cf-production
+    # 90d
+    duration: 2160h0m0s
+    # 30d
+    renewBefore: 720h0m0s
 sops:
     kms: []
     gcp_kms: []
@@ -31,8 +49,8 @@ sops:
             WWlwQ1NxbFl1SlhSbFBaS3locFJlcFEKj1ju7DPnrQWdr0O55BMnXdE5sNlSotsp
             8OOLVYMtiQEXMBKP1v5KOsnVcnKCn4rbJG4CtSErF8fW/VvmphKasQ==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-10-02T23:45:37Z"
-    mac: ENC[AES256_GCM,data:HyTexra6xMwv5OuD1VkrKUofvp5gJ3SfwXmij8uawW3uTHhdsYq/xovWB1wKPNqLnKerYb3xCz9aO31fY/CA+bx0SNMnxeFBtokavIYJJ0g3C3niEtolZhxjR0CeogyXa8a3waONboggRYckn2thlxrVOm/HLVIVoceoCUjF+W0=,iv:7a1CR60j5wIVE7kJA9Ee3qndTh6/JAJi+Ql3EWB4PWY=,tag:HFojC8hk1YBMUcftKXnvwQ==,type:str]
+    lastmodified: "2024-10-03T00:03:47Z"
+    mac: ENC[AES256_GCM,data:CfPARL3kUFo3ly+EeZoyWDEhQhdqVxwiBjjN6mUSf0jXO15YcX4RysrTC6vYPYH89XoY7LmYLgY9j0RX8hKzK94tbnG1R/2qEpMWXdzLwQfHZgf4h57lUgm3ZUKqx5Rqnj6QanOSyMZEkwqHkatz5cDmQ8RIMQD6qapltrF/iR8=,iv:VBXWPEGFrtVFSGshfSe/4xsLokWWxSnGGEH651D+k58=,tag:oo1zzPjoEe67M+zbIzUVBA==,type:str]
     pgp:
         - created_at: "2024-09-17T11:25:36Z"
           enc: |-
