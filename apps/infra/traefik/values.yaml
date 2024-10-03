@@ -57,7 +57,7 @@ ingressClass:
   name: traefik-external
 
 # Traefik experimental features
-# experimental:
+experimental:
 #   http3:
 #     enabled: false
 #   plugins:
@@ -175,7 +175,7 @@ providers:
     enabled: false
     watch: true
     # -- File content (YAML format, go template supported) (see https://doc.traefik.io/traefik/providers/file/)
-    content: []
+    content: ""
 
 
 # volumes: # []
