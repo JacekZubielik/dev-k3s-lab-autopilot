@@ -17,9 +17,9 @@ spec:
     routes:
         - kind: Rule
           match: ENC[AES256_GCM,data:zB3Fv0+Kx/LbwISf/AoXYWU4JMNxWAO5QFVWmRk5RmK9uDZoo6NtUC/t+bNV6/ig/FZxV2aIUZ6tmQ==,iv:4e7Tub+Au9LNOuiDx8wn5/KLbw2KVc5GRj07Qb1J17Q=,tag:SPns8Dg2ZzV768dyfDNfaA==,type:str]
-          middlewares:
-            - name: chain-traefik-dashboard
-              namespace: traefik
+          #   middlewares:
+          #     - name: chain-traefik-dashboard
+          #       namespace: traefik
           services:
             - name: minio-proxy
               port: 9001
@@ -49,8 +49,8 @@ sops:
             OUlWRTZDaWI1NkNzZXBPWW01UEpKNXMKiUncS5yDx0cPHNypN0IQmm/Q2cjfYK1/
             P5glZxveHU516i3WI4zbmQIzioYiun+pEWOdzWRDEuluehFe8mi+OQ==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-10-03T19:54:05Z"
-    mac: ENC[AES256_GCM,data:0bE7t5+Uh3JZgrydTyPN/LQYQOb7OD8i0oWLDLshwBKPyW4I9AmLRobsQnjCSj3IzHgdtd7oX0dqbOolUbTypgNnpHhd8TqkKc67McbvxmU6mKtIqx/NcjAmsP95uitIx+PKNLJIKpBkeARYCIA3a8H+FryxYtTjnYrBOfVhc2U=,iv:5ldnWyhKLlXyPfP1wdJM+zHD26dgRiEphzGP93QJwl0=,tag:fUW7rjYUlglH4RiTTV2KdA==,type:str]
+    lastmodified: "2024-10-03T19:58:32Z"
+    mac: ENC[AES256_GCM,data:rCsXAWRlQLANw1BwjvEcywNhw53nS2AFBqpnlSJSdGLFGK+FZJjGVxoM8pB+tkbWAQ2LCZEJI6GXYVwcRygkWha2CVPjA6TFdBzaGRQNtN40M6Z8VlL7YZnmv6Adnba6FAsyXlFSN3Ilf31SvyGakUBP2fOrYubz9szBl91idBY=,iv:JCp/hVRPy9hi2DSuuxCxeUgPEL3fvzTI15kyDQ4pQFc=,tag:ZYpmcjoKMzVPdPk158FQiA==,type:str]
     pgp:
         - created_at: "2024-10-03T13:49:35Z"
           enc: |-
@@ -123,8 +123,8 @@ sops:
             OUlWRTZDaWI1NkNzZXBPWW01UEpKNXMKiUncS5yDx0cPHNypN0IQmm/Q2cjfYK1/
             P5glZxveHU516i3WI4zbmQIzioYiun+pEWOdzWRDEuluehFe8mi+OQ==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-10-03T19:54:05Z"
-    mac: ENC[AES256_GCM,data:0bE7t5+Uh3JZgrydTyPN/LQYQOb7OD8i0oWLDLshwBKPyW4I9AmLRobsQnjCSj3IzHgdtd7oX0dqbOolUbTypgNnpHhd8TqkKc67McbvxmU6mKtIqx/NcjAmsP95uitIx+PKNLJIKpBkeARYCIA3a8H+FryxYtTjnYrBOfVhc2U=,iv:5ldnWyhKLlXyPfP1wdJM+zHD26dgRiEphzGP93QJwl0=,tag:fUW7rjYUlglH4RiTTV2KdA==,type:str]
+    lastmodified: "2024-10-03T19:58:32Z"
+    mac: ENC[AES256_GCM,data:rCsXAWRlQLANw1BwjvEcywNhw53nS2AFBqpnlSJSdGLFGK+FZJjGVxoM8pB+tkbWAQ2LCZEJI6GXYVwcRygkWha2CVPjA6TFdBzaGRQNtN40M6Z8VlL7YZnmv6Adnba6FAsyXlFSN3Ilf31SvyGakUBP2fOrYubz9szBl91idBY=,iv:JCp/hVRPy9hi2DSuuxCxeUgPEL3fvzTI15kyDQ4pQFc=,tag:ZYpmcjoKMzVPdPk158FQiA==,type:str]
     pgp:
         - created_at: "2024-10-03T13:49:35Z"
           enc: |-
