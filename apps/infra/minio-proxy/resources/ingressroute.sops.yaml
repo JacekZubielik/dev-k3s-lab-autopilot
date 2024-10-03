@@ -25,6 +25,13 @@ spec:
               port: 9001
               scheme: http
               passHostHeader: true
+        - kind: Rule
+          match: Host(`api.s3.anotherlife.org.pl`)
+          services:
+            - name: minio-api
+              port: 9002
+              scheme: http
+              #   passHostHeader: true
     tls:
         domains:
             - main: s3.anotherlife.org.pl
@@ -84,8 +91,8 @@ sops:
             VVgzcFlWcWFmeTA0VUJlR1dqOGVWdk0KBctAq7QMAuDTJaD1tpfGkDPmtg/H4W0f
             nbvKAxPPcxPp/6KkMkRui2t34YZq9/+9iJr85J2+YnPoBSEiVb4swA==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-10-02T23:52:55Z"
-    mac: ENC[AES256_GCM,data:dkYqaggRMAa7wbrOJXF8IAOBDHqyM4CpjgcgRCK1L8wMjtHw8KgrrTcz0/4VVZ5cueoZFThLWRvdFB1If1RjeZzrVSmNBzy/qdeVmHRXbwauXr3L8S7LS9PcFEycIAHifEpy37Dcv2eqfuB324VOHvbs1ztYGUogafZDVh+6+ss=,iv:dAASw83gaxSsv1QzFFkcRB7p2QvQB3xkTHt1/dLq+gM=,tag:ay/PDlX4ggYINqtLUQuwGA==,type:str]
+    lastmodified: "2024-10-03T00:00:19Z"
+    mac: ENC[AES256_GCM,data:oDJBKH/HaaP0gz1WmAAxJw+Y1TTfv+TTAkOaaF/9vWWOswNhEFl93W+gIGWaw+6La8n51Qhj8NNGADl8iOqkeUn6BTorMBiSmFSXnci/cwlzummqxdIQX47umPMI/dUm/QclyT5RaHVzUwIxyccSxfZ9WNlLv2zNSDJSFTaGwtk=,iv:V1dazM0vVZTxf3VR8C5FV3/gN8hH8QIpIwmi6tsTAZM=,tag:GB4H15fRrCbxvouyQxsQKg==,type:str]
     pgp:
         - created_at: "2024-09-17T11:25:48Z"
           enc: |-
