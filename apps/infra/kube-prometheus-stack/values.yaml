@@ -517,9 +517,6 @@ grafana:
       authentik:
         gnetId: 14837
         datasource: Prometheus
-      external-dns-overview:
-        gnetId: 15038
-        datasource: Prometheus
       traefik3:
         gnetId: 12250
         revision: 1
