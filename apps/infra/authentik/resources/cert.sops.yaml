@@ -5,14 +5,16 @@ metadata:
         argocd.argoproj.io/sync-wave: "1"
     name: authentik-production
 spec:
+    dnsNames:
+        - ENC[AES256_GCM,data:I4nnA0q8GpxpuUKfZUn+CkA0F+K5p8AF3wqwWA==,iv:3Mu3dn74T9KR/NeAcqaJXEdi0So2s3SZ38UtwTo5sXw=,tag:tg6+sxe3jIaXB0pIbzA4dA==,type:str]
     issuerRef:
         kind: ClusterIssuer
         name: letsencrypt-production
     commonName: ENC[AES256_GCM,data:B+YtubgClci5hhxTuliUww8xGcCJmIoRuVFudw==,iv:VhSkErG6hqVZdf6jHZvI7W8u3Xe/8k/QYtthLvHP06E=,tag:rA128gcUDYJc8xPtVjmw5w==,type:str]
-    dnsNames:
-        - ENC[AES256_GCM,data:I4nnA0q8GpxpuUKfZUn+CkA0F+K5p8AF3wqwWA==,iv:3Mu3dn74T9KR/NeAcqaJXEdi0So2s3SZ38UtwTo5sXw=,tag:tg6+sxe3jIaXB0pIbzA4dA==,type:str]
     secretName: authentik-cf-production
+    # 90d
     duration: 2160h0m0s
+    # 30d
     renewBefore: 720h0m0s
 sops:
     kms: []
@@ -29,8 +31,8 @@ sops:
             TzJJdUNzelJJbXB4dHE0LzVhNnFyWTAKgIwsqevEKL7pT7A+UH0Pt5yijCnZ0AbT
             y1c0t1u8nuLdDZL14h+Xba3IH2wlcCFO3Rm6KNN9jfY1lLB10YBvbg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-10-03T00:23:11Z"
-    mac: ENC[AES256_GCM,data:btIvurT8m4w7W8oYWSwJKmqIXEq52ywgvCX0TJwC+KH7ckjJHUO2Dhd9AdAnBKf8yryGM3esK5YIaujnw+uyPbSHy01PZxaKc6rqtXzi2nToO6+BapiWOYh18yTdqpGAIP1LVIcDmTI449q6ml+XGTDTmNEsG0CKfO0pk97jNqc=,iv:DEyIp4PLSaV1+RYb5qSN+NZindPFdeHut6DbqbYtsL4=,tag:peQ+Um5KYOPCAGvgWN8aXw==,type:str]
+    lastmodified: "2024-10-03T13:28:45Z"
+    mac: ENC[AES256_GCM,data:rjX1KitRdGmBELveWpmFYSmG92+oimvLjjEyytLz1o0n2IedNHx5s573Edv/QHkl19eNSAspa2eqcc63u5djHArmgI+TzFZcaqSTToyhwIJcdX7rrns5qLFtwWJePXFPTJMb40tScifQO9WkUoWDI7JUrrLRPr7od2FhM+tvgT8=,iv:2TRsziSjIhqmBe3n72OqjOAvLwLwqDnerxAOJJAft/U=,tag:GJQdBPTdf4mjz3q7QLWa1g==,type:str]
     pgp:
         - created_at: "2024-06-19T18:50:33Z"
           enc: |-

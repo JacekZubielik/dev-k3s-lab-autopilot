@@ -3,14 +3,14 @@ kind: Certificate
 metadata:
     annotations:
         argocd.argoproj.io/sync-wave: "1"
-    name: s3-minio-staging
+    name: console-minio-staging
 spec:
     dnsNames:
         - ENC[AES256_GCM,data:wgZKviD/ZRjYhApYpeBbmfFNbXfF1RG3iuL4nSM=,iv:mX6DLeg+R13f3Ly+JloO7vJ6GyTAUIF6LiOoUfaT6Ts=,tag:FWayMA7AR97M7AA5IQDpRQ==,type:str]
     issuerRef:
         kind: ClusterIssuer
         name: letsencrypt-staging
-    commonName: ENC[AES256_GCM,data:rLY6uHfBUTRBDgesRRMrAWnJQHI8,iv:NGIaVmPpzLDwsGiXNQv01sQgtiAy8U/+KqaqRBSvDd0=,tag:g63ZIMkdhosyNmZz9L819g==,type:str]
+    commonName: ENC[AES256_GCM,data:W3Wxma1CRzx2E4hf2F2Cdovzr09MVNFmPU5hSMo=,iv:Kbk09c3jDHmRWqd4b46bSjczhQ/qVG7E6dOOcsTy3bI=,tag:Cz4bYZAcNWiUaompWAaZ7A==,type:str]
     secretName: console-s3-cf-staging
     # 90d
     duration: 2160h0m0s
@@ -31,8 +31,8 @@ sops:
             a2trMk9BdmxyUG5WQk1MeGY5QnpjdTAKAzy2TFJJpGtoObcQohmSl0+/O3o6Zux8
             ieSzcvezaZb8p02lXrYmndeEN1Wqm9rw+zMo5PQT83xZK61M+ssELQ==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-10-03T13:20:23Z"
-    mac: ENC[AES256_GCM,data:HxEj+1w7bb/+Q98sN3kbgxhkaXsIHhUacbuBdkugBI4eOqsTFHCauE+Z9VzT6ziwLlgit5kMk43Zjb4QB2Vn0LjcH3HVr37pCD9ZhBhuamReQ7Rqgqc8lvaC7PInZ2HnZjuZ3rNOCzig48yDXORKxY/5kWfII1XI19qOMZw/E6g=,iv:G2ykhs2ZlL+g6r+FZyHz33Ge+NDtbXOAMMYy7WTRxyc=,tag:ojToR7i0oTd/hTNe9ZP3gw==,type:str]
+    lastmodified: "2024-10-03T13:29:01Z"
+    mac: ENC[AES256_GCM,data:3Ow+gYegeCP5M2wbqs7MfZC/nNvfzJLAml314rdIHYe6sU54Pk/MMPEXpDq005GRHVKaHv+bKrbc4yWt4DygEHxBaRXWbE+5K/kOSQ06emOxKiinVaj21UMke+54gVkgY7ysf6KBIMQ1XXb5SiAIHswICuFwt3OV4/NV/UY6Q/Y=,iv:k02rhlew4oZfzUExGozI9lZ4S7ylJu4eSEJ2HAgkzJ4=,tag:+JjL/TRQ2QZl1vrKxIrPYw==,type:str]
     pgp:
         - created_at: "2024-10-03T13:20:23Z"
           enc: |-
@@ -69,7 +69,7 @@ spec:
     issuerRef:
         kind: ClusterIssuer
         name: letsencrypt-staging
-    commonName: ENC[AES256_GCM,data:e5dG4teGCo2AJkUspUwdfowvtJcy,iv:GSSGGnFOh3eRfZmxypSHd4P/9Gc9c8Osn4eCq6S1Z2g=,tag:cXo38ScvZlBTsiYrNO+43Q==,type:str]
+    commonName: ENC[AES256_GCM,data:66MZJw4jbEEby5hIZDU66iBoweaEfCrZdA==,iv:7J528ATxFGE4PTQlYu8N5FJCuf82Cq0Dy4WT/ehfsm0=,tag:6u1c97U2NjaBEA9duUlZrQ==,type:str]
     secretName: api-s3-cf-staging
     # 90d
     duration: 2160h0m0s
@@ -90,8 +90,8 @@ sops:
             a2trMk9BdmxyUG5WQk1MeGY5QnpjdTAKAzy2TFJJpGtoObcQohmSl0+/O3o6Zux8
             ieSzcvezaZb8p02lXrYmndeEN1Wqm9rw+zMo5PQT83xZK61M+ssELQ==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-10-03T13:20:23Z"
-    mac: ENC[AES256_GCM,data:HxEj+1w7bb/+Q98sN3kbgxhkaXsIHhUacbuBdkugBI4eOqsTFHCauE+Z9VzT6ziwLlgit5kMk43Zjb4QB2Vn0LjcH3HVr37pCD9ZhBhuamReQ7Rqgqc8lvaC7PInZ2HnZjuZ3rNOCzig48yDXORKxY/5kWfII1XI19qOMZw/E6g=,iv:G2ykhs2ZlL+g6r+FZyHz33Ge+NDtbXOAMMYy7WTRxyc=,tag:ojToR7i0oTd/hTNe9ZP3gw==,type:str]
+    lastmodified: "2024-10-03T13:29:01Z"
+    mac: ENC[AES256_GCM,data:3Ow+gYegeCP5M2wbqs7MfZC/nNvfzJLAml314rdIHYe6sU54Pk/MMPEXpDq005GRHVKaHv+bKrbc4yWt4DygEHxBaRXWbE+5K/kOSQ06emOxKiinVaj21UMke+54gVkgY7ysf6KBIMQ1XXb5SiAIHswICuFwt3OV4/NV/UY6Q/Y=,iv:k02rhlew4oZfzUExGozI9lZ4S7ylJu4eSEJ2HAgkzJ4=,tag:+JjL/TRQ2QZl1vrKxIrPYw==,type:str]
     pgp:
         - created_at: "2024-10-03T13:20:23Z"
           enc: |-
