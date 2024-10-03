@@ -2,75 +2,60 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
     annotations:
+        argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
         argocd.argoproj.io/sync-wave: "1"
-    name: minio-production
+    name: s3
+    namespace: argocd
 spec:
-    dnsNames:
-        - ENC[AES256_GCM,data:4G6R6drKprU5jL7VMChHzTVsulCIwnIBHeMZXHk=,iv:HKmU+kYesiKXDgUYd27QHJp0OtlD41Ldv8KbCt+3Ukk=,tag:CDBYw9FT1T90iR7gNmySSg==,type:str]
     issuerRef:
         kind: ClusterIssuer
         name: letsencrypt-production
-    commonName: console.s3.anotherlife.org.pl
-    secretName: minio-console-s3-cf-production
-    # 90d
-    duration: 2160h0m0s
-    # 30d
-    renewBefore: 720h0m0s
-apiVersion: cert-manager.io/v1
-kind: Certificate
-metadata:
-    annotations:
-        argocd.argoproj.io/sync-wave: "1"
-    name: minio-api-production
-spec:
+    commonName: s3.storage.anotherlife.org.pl
     dnsNames:
-        - ENC[AES256_GCM,data:aW5ppd49qzdy5+HYM1yQuZcxIIrhJJVL6A==,iv:vem1f0COGAOkyFzcWeD5p6Z4R2OnssRajL7NF4SxTAY=,tag:MWECELbp38Ut9Heok2j4uw==,type:str]
-    issuerRef:
-        kind: ClusterIssuer
-        name: letsencrypt-production
-    commonName: api.s3.anotherlife.org.pl
-    secretName: minio-api-s3-cf-production
-    # 90d
+        - s3.storage.anotherlife.org.pl
+        - '*.s3.storage.anotherlife.org.pl'
+    secretName: s3-cf-production
     duration: 2160h0m0s
-    # 30d
     renewBefore: 720h0m0s
-sops:
-    kms: []
-    gcp_kms: []
-    azure_kv: []
-    hc_vault: []
-    age:
-        - recipient: age1deg9tqt7jtddnqme6nvcl72czns80z0n25u8k9pw5830dn4arsks5pua4h
-          enc: |
-            -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBVazdFUGRUZUVpV25uU0hF
-            dGoyM3ZMcmdYUkkxMkdOVnZuU1VjUzRHRlQwCk04RnBYUnE0dE9JV2grT1lFbzdt
-            RUFNNnlicjVoSXRWRFpnVStBQnpwZ3cKLS0tIFBIMEp2WHc5THdocFpBQXpUWldj
-            WWlwQ1NxbFl1SlhSbFBaS3locFJlcFEKj1ju7DPnrQWdr0O55BMnXdE5sNlSotsp
-            8OOLVYMtiQEXMBKP1v5KOsnVcnKCn4rbJG4CtSErF8fW/VvmphKasQ==
-            -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-10-03T00:03:47Z"
-    mac: ENC[AES256_GCM,data:CfPARL3kUFo3ly+EeZoyWDEhQhdqVxwiBjjN6mUSf0jXO15YcX4RysrTC6vYPYH89XoY7LmYLgY9j0RX8hKzK94tbnG1R/2qEpMWXdzLwQfHZgf4h57lUgm3ZUKqx5Rqnj6QanOSyMZEkwqHkatz5cDmQ8RIMQD6qapltrF/iR8=,iv:VBXWPEGFrtVFSGshfSe/4xsLokWWxSnGGEH651D+k58=,tag:oo1zzPjoEe67M+zbIzUVBA==,type:str]
-    pgp:
-        - created_at: "2024-09-17T11:25:36Z"
-          enc: |-
-            -----BEGIN PGP MESSAGE-----
 
-            hQIMA0R6oz1GmNjVAQ//VUakDrDFk0ptu7ygf5W+36TXpwXblP9ybLN0s6ENksMJ
-            1vnt7/VfnOesVyImYylbNZVniA00/GW18TDo2v1I4gUJnsw/pSB9y5D/amPF7RfS
-            5FXEWTO6kdWmiVvyZnJZE7HpnStWqBfV1irv/7f6p5H1SDozuM9gx7atCM4K9Zdc
-            eU3OM803SgDLWfGCqo4qK9QMSzGny4iexnrA8AA0CSpGIMJzbOzK76mv/v5ngAq9
-            ooZ4hKHTPr20+YvSkGFAgcrFIkSax1Sdv55k9JZudAggY5T3rktCk4jnVQmz/nwA
-            86Yn1ovcoDraIpfQrIrkTcu0rMrE6XQehTbkRYvJRI/duvExZB9uer9xuC8g6klD
-            0rieTMWf8UvCCm6JrAjbyMe3b3L5oUxlL9GWrvZxkFXAnH6J0T5aUU3qKJRN0rGf
-            p/UQ9IpNF1XPxeyjuQR3M3W0tg1Oz29iPumuIE04/pwpGMaIhj2QAU6FT8aX762e
-            WLYhktsiuX6fCYP6givvPBJW7ifnaoX34idXBFF73h7VEWxbmFW8hjIJT2CUv7QL
-            fApCvPanu9gXB9tAgB5Xky35owmtXsfmkGEyF6hCWuguhpy9C4swomwak9a1eLZ4
-            cKDiKCE0w9oR+8HMtdSOy6mcNaDJAMLQGWt/EPJ9lddQLyZCn130vTukJjm5jf3S
-            XgHglW7BzxS50OKwF0qmtyzqHhLZHVKHm+05WT210m8YmMyqF1nSQMSMhH3PJqaM
-            jZXPyOZKuEOW8QmUSZB9jDA2nulNExl8yDNIq2vhMQkLh9wiVl379J4M26UYL5Y=
-            =FpsW
-            -----END PGP MESSAGE-----
-          fp: 6D3FE55384B558E06A1BA364586EFA784A32C981
-    encrypted_regex: ^(data|stringData|dnsNames|email|accessKeyID|region|hostedZoneID|role|dnsZones)$
-    version: 3.9.0
+# ---
+# apiVersion: cert-manager.io/v1
+# kind: Certificate
+# metadata:
+#     annotations:
+#         argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+#         argocd.argoproj.io/sync-wave: "1"
+#     name: minio-production
+# spec:
+#     dnsNames:
+#         - ENC[AES256_GCM,data:4G6R6drKprU5jL7VMChHzTVsulCIwnIBHeMZXHk=,iv:HKmU+kYesiKXDgUYd27QHJp0OtlD41Ldv8KbCt+3Ukk=,tag:CDBYw9FT1T90iR7gNmySSg==,type:str]
+#     issuerRef:
+#         kind: ClusterIssuer
+#         name: letsencrypt-production
+#     commonName: console.s3.anotherlife.org.pl
+#     secretName: minio-console-s3-cf-production
+#     # 90d
+#     duration: 2160h0m0s
+#     # 30d
+#     renewBefore: 720h0m0s
+
+# ---
+# apiVersion: cert-manager.io/v1
+# kind: Certificate
+# metadata:
+#     annotations:
+#         argocd.argoproj.io/sync-wave: "1"
+#     name: minio-api-production
+# spec:
+#     dnsNames:
+#         - ENC[AES256_GCM,data:aW5ppd49qzdy5+HYM1yQuZcxIIrhJJVL6A==,iv:vem1f0COGAOkyFzcWeD5p6Z4R2OnssRajL7NF4SxTAY=,tag:MWECELbp38Ut9Heok2j4uw==,type:str]
+#     issuerRef:
+#         kind: ClusterIssuer
+#         name: letsencrypt-production
+#     commonName: api.s3.anotherlife.org.pl
+#     secretName: minio-api-s3-cf-production
+#     # 90d
+#     duration: 2160h0m0s
+#     # 30d
+#     renewBefore: 720h0m0s
+
