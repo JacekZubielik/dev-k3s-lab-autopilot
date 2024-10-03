@@ -6,7 +6,7 @@ metadata:
         cert-manager.io/cluster-issuer: letsencrypt-production
         cert-manager.io/common-name: ENC[AES256_GCM,data:OVP1GvELWPhZ8RnQWlJOWKp1zI9yXVGbgneVbcLlqnq1gQrTMg==,iv:avb/oMrSiPEVvB7PZNOrJL8dpKFJ/mNds89N7FCUhR0=,tag:UR9nAVzTSda8MntNeASP+A==,type:str]
         external-dns.alpha.kubernetes.io/hostname: ENC[AES256_GCM,data:r1FhI+pWqIpN53xPRQPBmTnfkCPOoUEKMGfCP6pHd2ENp6ZOOQ==,iv:1XRdH8LhcDy2P/f/S6b0f6Fy4pg/JeWrJz9LwWw1eCs=,tag:6FzBpPdynMuLMSlxyYTf9g==,type:str]
-        external-dns.alpha.kubernetes.io/target: ENC[AES256_GCM,data:6fGM6jV70s4VG79L+6p1LAG+hHuu1nKqLuUM2Wk=,iv:nfXh3JIzbEVcIBSg20GXz6fL1NNN2k7dIb02CNkjuW4=,tag:y6ruPZrQatlpZCOc71529g==,type:str]
+        external-dns.alpha.kubernetes.io/target: ENC[AES256_GCM,data:EqPj6vJkGfVkPJx2TKskkj0++LxHcPew797xrOA=,iv:HFzJBWwmQ3v4gxzs5hHEo8qjylIYUj9sM6SKXka26B4=,tag:S7rCLuqwptVxqWPi/LJuKA==,type:str]
         external-dns.alpha.kubernetes.io/ttl: "300"
         kubernetes.io/ingress.class: traefik-external
     name: grafana-production
@@ -26,9 +26,9 @@ spec:
               namespace: monitoring
     tls:
         domains:
-            - main: ENC[AES256_GCM,data:YUiajAgUpVfxgz0CSzqhQvAJXbGhetKktbhbRF8=,iv:OH1MpFia97xkiUyEmY9XO7fVNysUaSxKlO12cFU5Wvk=,tag:u1qmceW+T2g02kL6LsNI0w==,type:str]
+            - main: ENC[AES256_GCM,data:BZ6A7bcNVaWlFTXl7pTJdUZ0chhbf7OImMjymgc=,iv:WJmVWjENyMB1dF81gH0rklcmstZ/bO0jyJTY5AxpIYU=,tag:ISJvXAmlWNoeQuEc1KnBSA==,type:str]
               sans:
-                - ENC[AES256_GCM,data:Gt1MievQtI4aZp4jHDMrIymEDT1aLsRgGFi6kAH6,iv:ouHPay3Ahk603wQegX2ytJa5nknuahJfIegt8a/NsNU=,tag:woTfdT24Qqeolrdf0hqrpw==,type:str]
+                - ENC[AES256_GCM,data:m/vK6O9rFwA2WSywUadLXx2Ka6RGPq8EtyaVz9re,iv:x7keEPknj6Q+1nodyv4jwwxgb1c9iE1eukRvLoxN8ek=,tag:Mdza6z23LMOYZDUjui2gGg==,type:str]
         options:
             name: tls-ver13
             namespace: traefik
@@ -48,8 +48,8 @@ sops:
             SVFPTGgwZlZ1Wko2Qk5pUXZJZW1Db3MKFRfehTgu5toUTDiUS1rbG8mCQ6Nb/ouC
             hHjiRsf7hh5nNPxpoTYsnijQmYfnKFC87J8cfMYaD7MFyUUI/LDPAQ==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-10-03T23:39:55Z"
-    mac: ENC[AES256_GCM,data:JT+sqTAabVk8iJA8NUy5QSYp2kGAQtrTfFanATtqeVWK+brLarHeqdOdhBYRhT3X8FQ8QW5hfU9vRpNg2wbdGbkq3B6KiVNDFGqZ4x3LqRcbgo4XuihzMK8Oe9gRjgU2AVOlKDbop2xwUxWrYCb+z8NhR+J+KbAPZ9dFsC1uhmM=,iv:jsQOewUbEfEuyhXxa+8YzuceRwNmccvNZczfqrQgXeU=,tag:87sOVifDI08kr8LE4+MMQg==,type:str]
+    lastmodified: "2024-10-03T23:46:09Z"
+    mac: ENC[AES256_GCM,data:WQ+hux4zedoOYikEjNd5vtxROdOgSw1iBisV4isiKMWJyRN98aupNITJGSQEmuJ3AdG+cZRX95f/k9reMns8nTbS+aZKLwFaMGzJnPk8wl1HyL4FnPLcu1Son2ziUjcRH7bd2szZQ34b3YVBLKeOHvB5G82zgMzJSKZ8+FpkQPQ=,iv:X4i1v6P/8NEWw4lMwROpA1NsPm7CKqVCr7nU5hV7Ajw=,tag:9nSAzGtPiLhkXl4E5NO/Dw==,type:str]
     pgp:
         - created_at: "2024-10-03T23:39:55Z"
           enc: |-
@@ -102,8 +102,8 @@ sops:
             SVFPTGgwZlZ1Wko2Qk5pUXZJZW1Db3MKFRfehTgu5toUTDiUS1rbG8mCQ6Nb/ouC
             hHjiRsf7hh5nNPxpoTYsnijQmYfnKFC87J8cfMYaD7MFyUUI/LDPAQ==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-10-03T23:39:55Z"
-    mac: ENC[AES256_GCM,data:JT+sqTAabVk8iJA8NUy5QSYp2kGAQtrTfFanATtqeVWK+brLarHeqdOdhBYRhT3X8FQ8QW5hfU9vRpNg2wbdGbkq3B6KiVNDFGqZ4x3LqRcbgo4XuihzMK8Oe9gRjgU2AVOlKDbop2xwUxWrYCb+z8NhR+J+KbAPZ9dFsC1uhmM=,iv:jsQOewUbEfEuyhXxa+8YzuceRwNmccvNZczfqrQgXeU=,tag:87sOVifDI08kr8LE4+MMQg==,type:str]
+    lastmodified: "2024-10-03T23:46:09Z"
+    mac: ENC[AES256_GCM,data:WQ+hux4zedoOYikEjNd5vtxROdOgSw1iBisV4isiKMWJyRN98aupNITJGSQEmuJ3AdG+cZRX95f/k9reMns8nTbS+aZKLwFaMGzJnPk8wl1HyL4FnPLcu1Son2ziUjcRH7bd2szZQ34b3YVBLKeOHvB5G82zgMzJSKZ8+FpkQPQ=,iv:X4i1v6P/8NEWw4lMwROpA1NsPm7CKqVCr7nU5hV7Ajw=,tag:9nSAzGtPiLhkXl4E5NO/Dw==,type:str]
     pgp:
         - created_at: "2024-10-03T23:39:55Z"
           enc: |-
@@ -136,7 +136,7 @@ metadata:
         cert-manager.io/cluster-issuer: letsencrypt-production
         cert-manager.io/common-name: ENC[AES256_GCM,data:G4zIgqfNJ6hYWL62UMqHapez6EDo9y6n7h4mc6shrnAeuY+bOp5NBw==,iv:R1YUo380TZXQmv3DjBVHAvtfCmFtF8dTUHriEISroh0=,tag:qL4OTqAFbHWYNa3NDK36qQ==,type:str]
         external-dns.alpha.kubernetes.io/hostname: ENC[AES256_GCM,data:Mkeek7n+OnLKTj+QpybIt9l721vxALy4xTdsQtit0SzX8nIuqj4/eA==,iv:AeS7Nd69b81ZlZJWjTD7wUVeiH9/5Mb0HIXrcHYUCys=,tag:k54R0W+ESV8ApfjK/bh8eg==,type:str]
-        external-dns.alpha.kubernetes.io/target: ENC[AES256_GCM,data:OSvMpNQgT+jqygQkD1BqHHfGK7xzw2DByWoS9Ns=,iv:AY3oeO0HxS2vVSqm0kI3PIPkeaJJVK7E4tsK8Tu/XDo=,tag:/3rCCkFVfZQhqcjoEZQt8A==,type:str]
+        external-dns.alpha.kubernetes.io/target: ENC[AES256_GCM,data:EqPj6vJkGfVkPJx2TKskkj0++LxHcPew797xrOA=,iv:HFzJBWwmQ3v4gxzs5hHEo8qjylIYUj9sM6SKXka26B4=,tag:S7rCLuqwptVxqWPi/LJuKA==,type:str]
         external-dns.alpha.kubernetes.io/ttl: "300"
         kubernetes.io/ingress.class: traefik-external
     name: prometheus-production
@@ -164,9 +164,9 @@ spec:
               port: 9000
     tls:
         domains:
-            - main: ENC[AES256_GCM,data:bt4vCzFEy7Nq+FqtA7ZdpfQCmASQikMcgw73J4o=,iv:UvDNwMHelADt+P0Sg7fRLQUd/9Z/GOHgz3k0jdoHgRs=,tag:o9hXRpfQSdW+4+m3RsPDOA==,type:str]
+            - main: ENC[AES256_GCM,data:BZ6A7bcNVaWlFTXl7pTJdUZ0chhbf7OImMjymgc=,iv:WJmVWjENyMB1dF81gH0rklcmstZ/bO0jyJTY5AxpIYU=,tag:ISJvXAmlWNoeQuEc1KnBSA==,type:str]
               sans:
-                - ENC[AES256_GCM,data:mKZN+s4G9G01eK36JZAEj1b1QDulLnPV9Fd/tYC1,iv:sp2ZlwBn5xzgZSshZAl0W7MCXAOjivbOgrmLPg97/5k=,tag:elOK5SywZBJB9Meoo4XPyA==,type:str]
+                - ENC[AES256_GCM,data:m/vK6O9rFwA2WSywUadLXx2Ka6RGPq8EtyaVz9re,iv:x7keEPknj6Q+1nodyv4jwwxgb1c9iE1eukRvLoxN8ek=,tag:Mdza6z23LMOYZDUjui2gGg==,type:str]
         options:
             name: tls-ver13
             namespace: traefik
@@ -186,8 +186,8 @@ sops:
             SVFPTGgwZlZ1Wko2Qk5pUXZJZW1Db3MKFRfehTgu5toUTDiUS1rbG8mCQ6Nb/ouC
             hHjiRsf7hh5nNPxpoTYsnijQmYfnKFC87J8cfMYaD7MFyUUI/LDPAQ==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-10-03T23:39:55Z"
-    mac: ENC[AES256_GCM,data:JT+sqTAabVk8iJA8NUy5QSYp2kGAQtrTfFanATtqeVWK+brLarHeqdOdhBYRhT3X8FQ8QW5hfU9vRpNg2wbdGbkq3B6KiVNDFGqZ4x3LqRcbgo4XuihzMK8Oe9gRjgU2AVOlKDbop2xwUxWrYCb+z8NhR+J+KbAPZ9dFsC1uhmM=,iv:jsQOewUbEfEuyhXxa+8YzuceRwNmccvNZczfqrQgXeU=,tag:87sOVifDI08kr8LE4+MMQg==,type:str]
+    lastmodified: "2024-10-03T23:46:09Z"
+    mac: ENC[AES256_GCM,data:WQ+hux4zedoOYikEjNd5vtxROdOgSw1iBisV4isiKMWJyRN98aupNITJGSQEmuJ3AdG+cZRX95f/k9reMns8nTbS+aZKLwFaMGzJnPk8wl1HyL4FnPLcu1Son2ziUjcRH7bd2szZQ34b3YVBLKeOHvB5G82zgMzJSKZ8+FpkQPQ=,iv:X4i1v6P/8NEWw4lMwROpA1NsPm7CKqVCr7nU5hV7Ajw=,tag:9nSAzGtPiLhkXl4E5NO/Dw==,type:str]
     pgp:
         - created_at: "2024-10-03T23:39:55Z"
           enc: |-
@@ -240,8 +240,8 @@ sops:
             SVFPTGgwZlZ1Wko2Qk5pUXZJZW1Db3MKFRfehTgu5toUTDiUS1rbG8mCQ6Nb/ouC
             hHjiRsf7hh5nNPxpoTYsnijQmYfnKFC87J8cfMYaD7MFyUUI/LDPAQ==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-10-03T23:39:55Z"
-    mac: ENC[AES256_GCM,data:JT+sqTAabVk8iJA8NUy5QSYp2kGAQtrTfFanATtqeVWK+brLarHeqdOdhBYRhT3X8FQ8QW5hfU9vRpNg2wbdGbkq3B6KiVNDFGqZ4x3LqRcbgo4XuihzMK8Oe9gRjgU2AVOlKDbop2xwUxWrYCb+z8NhR+J+KbAPZ9dFsC1uhmM=,iv:jsQOewUbEfEuyhXxa+8YzuceRwNmccvNZczfqrQgXeU=,tag:87sOVifDI08kr8LE4+MMQg==,type:str]
+    lastmodified: "2024-10-03T23:46:09Z"
+    mac: ENC[AES256_GCM,data:WQ+hux4zedoOYikEjNd5vtxROdOgSw1iBisV4isiKMWJyRN98aupNITJGSQEmuJ3AdG+cZRX95f/k9reMns8nTbS+aZKLwFaMGzJnPk8wl1HyL4FnPLcu1Son2ziUjcRH7bd2szZQ34b3YVBLKeOHvB5G82zgMzJSKZ8+FpkQPQ=,iv:X4i1v6P/8NEWw4lMwROpA1NsPm7CKqVCr7nU5hV7Ajw=,tag:9nSAzGtPiLhkXl4E5NO/Dw==,type:str]
     pgp:
         - created_at: "2024-10-03T23:39:55Z"
           enc: |-
@@ -287,7 +287,7 @@ spec:
           match: ENC[AES256_GCM,data:9HzlTd0yExe5baT+b+uTi1R7ICvIDylVIH7zSL7CDW02fIX+C7u5mEovq3dssaFeAVqXShtqyaAKOkwZSUoEecCa+juYjaH7srmfAbYDZnWbY/T4ib1Camfn3l796bBR/G2Tfb/WxmZFSEO7yh384p4oFnAuA8tSbZKmuZvMb9DY71Q/4CYIn475cNgkpHODbjIUhn3u,iv:G8peHtK8uuoyvv8qgYtr4WvwjdlwsDchBmZDAyrr/SQ=,tag:kkT6UiooPeFMyoGTA5DgJA==,type:str]
           priority: 10
           middlewares:
-            - name: chain-traefik-dashboard
+            - name: chain-authentik
               namespace: traefik
           services:
             - kind: TraefikService
@@ -324,8 +324,8 @@ sops:
             SVFPTGgwZlZ1Wko2Qk5pUXZJZW1Db3MKFRfehTgu5toUTDiUS1rbG8mCQ6Nb/ouC
             hHjiRsf7hh5nNPxpoTYsnijQmYfnKFC87J8cfMYaD7MFyUUI/LDPAQ==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-10-03T23:39:55Z"
-    mac: ENC[AES256_GCM,data:JT+sqTAabVk8iJA8NUy5QSYp2kGAQtrTfFanATtqeVWK+brLarHeqdOdhBYRhT3X8FQ8QW5hfU9vRpNg2wbdGbkq3B6KiVNDFGqZ4x3LqRcbgo4XuihzMK8Oe9gRjgU2AVOlKDbop2xwUxWrYCb+z8NhR+J+KbAPZ9dFsC1uhmM=,iv:jsQOewUbEfEuyhXxa+8YzuceRwNmccvNZczfqrQgXeU=,tag:87sOVifDI08kr8LE4+MMQg==,type:str]
+    lastmodified: "2024-10-03T23:46:09Z"
+    mac: ENC[AES256_GCM,data:WQ+hux4zedoOYikEjNd5vtxROdOgSw1iBisV4isiKMWJyRN98aupNITJGSQEmuJ3AdG+cZRX95f/k9reMns8nTbS+aZKLwFaMGzJnPk8wl1HyL4FnPLcu1Son2ziUjcRH7bd2szZQ34b3YVBLKeOHvB5G82zgMzJSKZ8+FpkQPQ=,iv:X4i1v6P/8NEWw4lMwROpA1NsPm7CKqVCr7nU5hV7Ajw=,tag:9nSAzGtPiLhkXl4E5NO/Dw==,type:str]
     pgp:
         - created_at: "2024-10-03T23:39:55Z"
           enc: |-
@@ -378,8 +378,8 @@ sops:
             SVFPTGgwZlZ1Wko2Qk5pUXZJZW1Db3MKFRfehTgu5toUTDiUS1rbG8mCQ6Nb/ouC
             hHjiRsf7hh5nNPxpoTYsnijQmYfnKFC87J8cfMYaD7MFyUUI/LDPAQ==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-10-03T23:39:55Z"
-    mac: ENC[AES256_GCM,data:JT+sqTAabVk8iJA8NUy5QSYp2kGAQtrTfFanATtqeVWK+brLarHeqdOdhBYRhT3X8FQ8QW5hfU9vRpNg2wbdGbkq3B6KiVNDFGqZ4x3LqRcbgo4XuihzMK8Oe9gRjgU2AVOlKDbop2xwUxWrYCb+z8NhR+J+KbAPZ9dFsC1uhmM=,iv:jsQOewUbEfEuyhXxa+8YzuceRwNmccvNZczfqrQgXeU=,tag:87sOVifDI08kr8LE4+MMQg==,type:str]
+    lastmodified: "2024-10-03T23:46:09Z"
+    mac: ENC[AES256_GCM,data:WQ+hux4zedoOYikEjNd5vtxROdOgSw1iBisV4isiKMWJyRN98aupNITJGSQEmuJ3AdG+cZRX95f/k9reMns8nTbS+aZKLwFaMGzJnPk8wl1HyL4FnPLcu1Son2ziUjcRH7bd2szZQ34b3YVBLKeOHvB5G82zgMzJSKZ8+FpkQPQ=,iv:X4i1v6P/8NEWw4lMwROpA1NsPm7CKqVCr7nU5hV7Ajw=,tag:9nSAzGtPiLhkXl4E5NO/Dw==,type:str]
     pgp:
         - created_at: "2024-10-03T23:39:55Z"
           enc: |-
