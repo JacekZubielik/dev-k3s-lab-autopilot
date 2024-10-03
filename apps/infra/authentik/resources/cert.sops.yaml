@@ -3,7 +3,7 @@ kind: Certificate
 metadata:
     annotations:
         argocd.argoproj.io/sync-wave: "1"
-    name: authentik
+    name: authentik-production
 spec:
     issuerRef:
         kind: ClusterIssuer
@@ -29,8 +29,8 @@ sops:
             TzJJdUNzelJJbXB4dHE0LzVhNnFyWTAKgIwsqevEKL7pT7A+UH0Pt5yijCnZ0AbT
             y1c0t1u8nuLdDZL14h+Xba3IH2wlcCFO3Rm6KNN9jfY1lLB10YBvbg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-08-26T09:32:54Z"
-    mac: ENC[AES256_GCM,data:iQxZmDPT+B7YhvriGkkoYvpkOeMwddLV6hdKsdefMzzjAKRvPbsEraV9d/0U8pVlyy45X9nEnft/aTvc5T+XyTgUvXeqNuqaIId/k47DUPibPOr63hJTPbkbX+mauBZkFK/gN9e8M3xcyC7S6/BwAVd7Q4crOI2PJ+uxarr13/A=,iv:qdbGVH41268XJnSnRuiV5VOY7jFM2D/odlOaa6yy78w=,tag:76OuTPHwx4QUHvvl5ALqYg==,type:str]
+    lastmodified: "2024-10-03T00:23:11Z"
+    mac: ENC[AES256_GCM,data:btIvurT8m4w7W8oYWSwJKmqIXEq52ywgvCX0TJwC+KH7ckjJHUO2Dhd9AdAnBKf8yryGM3esK5YIaujnw+uyPbSHy01PZxaKc6rqtXzi2nToO6+BapiWOYh18yTdqpGAIP1LVIcDmTI449q6ml+XGTDTmNEsG0CKfO0pk97jNqc=,iv:DEyIp4PLSaV1+RYb5qSN+NZindPFdeHut6DbqbYtsL4=,tag:peQ+Um5KYOPCAGvgWN8aXw==,type:str]
     pgp:
         - created_at: "2024-06-19T18:50:33Z"
           enc: |-
@@ -53,4 +53,4 @@ sops:
             -----END PGP MESSAGE-----
           fp: 6D3FE55384B558E06A1BA364586EFA784A32C981
     encrypted_regex: ^(externalName|external-dns.alpha.kubernetes.io/hostname|sans|main|match|external-dns.alpha.kubernetes.io/target|dnsNames|commonName|data|stringData|dnsNames|email|accessKeyID|region|hostedZoneID|role|dnsZones)$
-    version: 3.8.1
+    version: 3.9.0

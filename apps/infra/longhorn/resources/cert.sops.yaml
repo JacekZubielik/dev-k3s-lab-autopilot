@@ -3,7 +3,7 @@ kind: Certificate
 metadata:
     annotations:
         argocd.argoproj.io/sync-wave: "1"
-    name: longhorn
+    name: longhorn-production
 spec:
     issuerRef:
         kind: ClusterIssuer
@@ -29,8 +29,8 @@ sops:
             REd6S1pVdElKZmJNbzFTcWlkNDdKaFkKrXv3cbnjl2RuPXB1NmqDbYzfl2jmE0Ju
             eN6QPdmvuUaS6ZXZQe1JO5piJ5Cn7A7dflNLYjM3y+ERshpMSpLo8w==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-10-02T20:05:08Z"
-    mac: ENC[AES256_GCM,data:uALiYYq+j/PZWKVsxd/CBKa1zwSbf49srJJa0IpChD8s4lJ+OxxSMaurmTx77Fv3bV4IhmkKYag2mujekyMulnsIOi81ZNDh6XXGnRH5jO5Ztn5s4EAelmiYn712C6cxFzHNfCg/2SmCu6elI6glqK+FPLDiHAtmVIRCEm7ifqc=,iv:T/UwL47WZllah36qVQjtOmV9Ef5aUys0DD1JmH0L5hQ=,tag:ffltPKlqmBfeLbpwNygw+Q==,type:str]
+    lastmodified: "2024-10-03T00:23:24Z"
+    mac: ENC[AES256_GCM,data:JJHJH/eosY8gqaMACjQht4rQbK7oDAP9EsN8LvfvOwvSny7O/k4L/tYOJtkbu5Qg3rNkF0eFFrlyT4FtP0Z5aI8MTmy5cKFPvNI1vTeimYo8cHwxqGw0m64oTY5f9iCYJ7XWcx38kASg6E9/TZ+Rb3Vu7APvLLMh0b+TJP4Scxo=,iv:yGAFr35tFdpiIB0pvk6PjuQMcQgjWS3QubG1oklSVuE=,tag:O/6/PkkoezNoaU21ZjRLOA==,type:str]
     pgp:
         - created_at: "2024-10-02T20:05:08Z"
           enc: |-
