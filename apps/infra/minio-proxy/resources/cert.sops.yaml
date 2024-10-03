@@ -10,14 +10,13 @@ spec:
     issuerRef:
         kind: ClusterIssuer
         name: letsencrypt-production
-    commonName: s3.storage.anotherlife.org.pl
+    commonName: ENC[AES256_GCM,data:DFkfZkiXt4FwsErTfMkTiU+EsZqMmDHo5/CI/QA=,iv:G210W0PxwPeCdTZ/yGC2fx6tWG+6U5Oe1Zx/XXrKFLs=,tag:/kOolGyvDiDqyg/EWTy6uw==,type:str]
     dnsNames:
-        - s3.storage.anotherlife.org.pl
-        - '*.s3.storage.anotherlife.org.pl'
+        - ENC[AES256_GCM,data:Z7OJRzgov/z80BGkjkmOcgCJaDA+ETzJ85nDDGc=,iv:SydyZMF8xMbOPbTlkSEu9jUWplKcd5//u0ozvln8RwU=,tag:Faw+izW4YIqTZn5VMTQMgQ==,type:str]
+        - ENC[AES256_GCM,data:jC8oCYG8u5XMMTJFsvhomB24FaJlBDLb0LHxiOwzKQ==,iv:LfmaT7tru9WjARD8pxQq2iJA5atqmrl2K+TAkH4mpd0=,tag:3DGnlg0phIt1qUJrQVPOgw==,type:str]
     secretName: s3-cf-production
     duration: 2160h0m0s
     renewBefore: 720h0m0s
-
 # ---
 # apiVersion: cert-manager.io/v1
 # kind: Certificate
@@ -38,7 +37,6 @@ spec:
 #     duration: 2160h0m0s
 #     # 30d
 #     renewBefore: 720h0m0s
-
 # ---
 # apiVersion: cert-manager.io/v1
 # kind: Certificate
@@ -58,4 +56,43 @@ spec:
 #     duration: 2160h0m0s
 #     # 30d
 #     renewBefore: 720h0m0s
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1deg9tqt7jtddnqme6nvcl72czns80z0n25u8k9pw5830dn4arsks5pua4h
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBCQjRWai9uN04xa1pmRGk1
+            QTZNSi9OS09ObzFueDVLZVhwTko3T2wveDFFCmEwOFJHN0NvQjV1Qk40V1ViWU1D
+            U0IzNGZuejNqZXBMakJoTy9TbCs5VXcKLS0tIFhrNHRrOUl0MFA0VWlNSStiL3Rz
+            NTVJUFRzUXFiWUorSVQzaExYWGVaUDAK3ESsR7A7C5Yv+NZK2qvr8l9TwVwjb2pt
+            zWHENRgUo1YBuMpGD00FTmP1lBCRqsek5Mc11dneLBJmFTXMzoUyWg==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2024-10-03T00:18:56Z"
+    mac: ENC[AES256_GCM,data:b0BrKtpnr+iZ3S1r3mExjzh30uzzC+TnBfOV42nKxKQBdPL4KCUSpL8ZhZeNxujXd9IHhIJgL2oxEDU53bddL8hwYOjtWfxOmQU5PphnrKuSdiFN3QyHj4PZyIL3knkxz8cwcjUOCD4kZS804cOmv1JiQKHkGaORFdN/JPs5FnY=,iv:7DYdgQkkOyHl31BjK0IP1vAX9Zftp+VLKwqdI4yOIPU=,tag:ahsXwet7bzOZ6T52x58uqA==,type:str]
+    pgp:
+        - created_at: "2024-10-03T00:18:56Z"
+          enc: |-
+            -----BEGIN PGP MESSAGE-----
 
+            hQIMA0R6oz1GmNjVAQ//b0rDoOTQWu9pVe17zsDCLe/1MLq6oRRMVcf2mN7Gxg8U
+            yGZxLSIZeLVglX/BhCJAhwAYw0sv3pGf0Jtd1yMwoNrUFo5GKvKG5aejR5jeqHKg
+            zVFrI+I/2YIhSbufPxtWaSQEgF6TwbzruJ5s6UvDpYMMdtNS+ut0dY0Tmfvi5ZgP
+            u5nBLWEtVfpFgLhXkCzlQedswSurS0iAt+cpb0SFvljCyboHAFy/c8NxT6jt8Juf
+            tHbdOPo+b/jWLctLcEgOqJacZ0fVx8NcJkwHooO2YUDhU321DnE15bnFkAV0x9Ha
+            fKUCmF1att2YuPtkocERvzoMu8/eq37G+UOnAEnPNnJilRzc95YAptm91P3CClBU
+            rk+1EV93DDVkjHOhmE2h1FgK4kcpUVIoHkOkVnCvNfTcLFHWPx76bv4/7eAQzo/w
+            QJ0ZuguKbH+AlqEA3Id7elFzlYFczZeVWour7jzCg8phBsEijO7xRYYnkIXwEKdC
+            L35juskQzHttyySY3Y9qbsOvchb3Jf7c0Ad1xHScpUXHHxQV1RIAt/C9AJtXEzt3
+            OkzeyglMpMuHQeoDddGUL7+VdmWg8ZOyCe2xvvAI8sBVLXigxtlOfImfLZex/i9R
+            Tt4jPbK56JAYcdphsL3cgxJokA3J37NbgtZKD31KYSxY1ctDCmtiLx5aw/f1I/7S
+            XgHlB0GpQShnWKOE8DMqCH1aic+3yb03em/fLil1Iu805Ha1zUNhWQScWpbk0fwI
+            bcndhvbcUhEALTKh4IfSKZC6U8Y8A/s3NQicmeccKXsYQF0shNpCXtL0GWn4LhE=
+            =W7PN
+            -----END PGP MESSAGE-----
+          fp: 6D3FE55384B558E06A1BA364586EFA784A32C981
+    encrypted_regex: ^(data|stringData|dnsNames|email|accessKeyID|region|hostedZoneID|role|dnsZones|cert-manager.io/common-name|commonName|external-dns.alpha.kubernetes.io/hostname|external-dns.alpha.kubernetes.io/target|match|main|sans)$
+    version: 3.9.0
