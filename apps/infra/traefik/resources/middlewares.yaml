@@ -154,6 +154,24 @@ spec:
 apiVersion: traefik.io/v1alpha1
 kind: Middleware
 metadata:
+  name: test-errors
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
+  labels:
+    app.kubernetes.io/name: traefik
+spec:
+  errors:
+    status:
+      - "500-599"
+    query: /{status}.html
+    service:
+      name: whoami
+      port: 80
+
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
   name: authentik
   annotations:
     argocd.argoproj.io/sync-wave: "0"
@@ -176,20 +194,45 @@ spec:
     - X-authentik-meta-provider
     - X-authentik-meta-app
     - X-authentik-meta-version
+
 ---
 apiVersion: traefik.io/v1alpha1
 kind: Middleware
 metadata:
-  name: test-errors
+  name: authentik-securityheaders
   annotations:
     argocd.argoproj.io/sync-wave: "0"
   labels:
     app.kubernetes.io/name: traefik
 spec:
-  errors:
-    status:
-      - "500-599"
-    query: /{status}.html
-    service:
-      name: whoami
-      port: 80
+  securityHeaders:
+    headers:
+      customResponseHeaders:
+        X-Robots-Tag: "none,noarchive,nosnippet,notranslate,noimageindex"
+        server: ""
+      sslProxyHeaders:
+        X-Forwarded-Proto: https
+      referrerPolicy: "same-origin"
+      hostsProxyHeaders:
+        - "X-Forwarded-Host"
+      customRequestHeaders:
+        X-Forwarded-Proto: "https"
+      contentTypeNosniff: true
+      browserXssFilter: true
+      forceSTSHeader: true
+      stsIncludeSubdomains: true
+      stsSeconds: 63072000
+      stsPreload: true
+
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: gzip
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
+  labels:
+    app.kubernetes.io/name: traefik
+spec:
+  gzip:
+    compress: {}
