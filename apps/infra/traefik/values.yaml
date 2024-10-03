@@ -215,7 +215,7 @@ providers:
     experimentalChannel: false
     # -- Array of namespaces t watch. If left empty, Traefik watches all namespaces.
     namespaces: []
-    # labelselector:
+    labelselector: ""
 
   file:
     enabled: false
@@ -224,7 +224,7 @@ providers:
     content: ""
 
 
-# volumes: # []
+volumes: []
 # - mountPath: /data
 #   name: traefik-logs
 #   type: configMap
@@ -293,6 +293,25 @@ metrics:
       enabled: false
     serviceMonitor:
       enabled: false
+      metricRelabelings: []
+      relabelings: []
+      jobLabel: ""
+      interval: ""
+      honorLabels: false
+      scrapeTimeout: ""
+      honorTimestamps: false
+      enableHttp2: false
+      followRedirects: false
+      additionalLabels: {}
+      namespace: ""
+      namespaceSelector: {}
+    prometheusRule:
+      # -- Enable optional CR for Prometheus Operator. See EXAMPLES.md for more details.
+      enabled: false
+      additionalLabels: {}
+      namespace: ""
+
+
 
   #  datadog:
   #    ## Address instructs exporter to send metrics to datadog-agent at this address.
@@ -523,7 +542,7 @@ service:
 autoscaling:
   enabled: true
   minReplicas: 1
-  maxReplicas: 4
+  maxReplicas: 2
   metrics:
   - type: Resource
     resource:
