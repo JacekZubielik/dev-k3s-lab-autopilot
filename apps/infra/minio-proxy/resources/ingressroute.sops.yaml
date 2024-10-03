@@ -6,7 +6,7 @@ metadata:
         cert-manager.io/cluster-issuer: letsencrypt-production
         cert-manager.io/common-name: ENC[AES256_GCM,data:X4rZMoox54qhY6EnZSfRsgTHAB+BaRSzh3/o0eE=,iv:4eAbAQ4Fjnx9cwAjQ4KAc6+D3/Y650mypzkIU19wNDk=,tag:+I+X+v76kxg+Bwi8tmjo7A==,type:str]
         external-dns.alpha.kubernetes.io/hostname: ENC[AES256_GCM,data:6q8Sj6qXUHItWifpWBAY1khGQrnUpv55nbXljaU=,iv:K8GsaKaMzEiOeQj/wcWjGQbs6H8ecaHz+39T1crWdok=,tag:RNHZR6y7Bcq74x8da07AJA==,type:str]
-        external-dns.alpha.kubernetes.io/target: ENC[AES256_GCM,data:p9QsaDc/iMuiiTsVjy/uwBErfuTS,iv:C/PxVtPaPzCMxW+MIax3vbTi/NjB8JVCIKQSIFQ5iOI=,tag:tZoMrASpTxcBBys8Pg2cvw==,type:str]
+        external-dns.alpha.kubernetes.io/target: ENC[AES256_GCM,data:edKsB3lUXV9LOh7h0DddbD+srOAG,iv:8tVA58b1G0M/kagVvgon54+PB5jmfBDkzP+3ErlboEM=,tag:bZzvAfLjsi9eyRKThuoXSg==,type:str]
         external-dns.alpha.kubernetes.io/ttl: "300"
         kubernetes.io/ingress.class: traefik-external
     name: minio-console-production
@@ -24,12 +24,12 @@ spec:
             - name: minio-proxy
               port: 9001
               scheme: http
-              passHostHeader: true
+              #   passHostHeader: true
     tls:
         domains:
-            - main: ENC[AES256_GCM,data:jZ4U9kwkhP5KHlcyvycYIDe6pLyQ,iv:ZsG9vPGa8w1vSUIDNBqm75u+r1cfmEAXUvXtOKoRqcU=,tag:x62A2YnPjDNUTMXmdex8yQ==,type:str]
+            - main: ENC[AES256_GCM,data:W5icbLLZldyXufBZX8Ka6KU3pFIG,iv:jThGYYn0fGSdFuNsH2iRjbYSN4N9CBDo0DPQm/7Mpuc=,tag:qEcCwefoZNUBEqK5OjUP7g==,type:str]
               sans:
-                - ENC[AES256_GCM,data:pK7oCSVicStSKHY17E1OhwSGSRF3BA==,iv:o7uEXQ7DeoMXFcQLRZ6BCehM1Df3dPMKuPstPTKANb8=,tag:wmGXdbgTiWYzkX4l8U18Lg==,type:str]
+                - ENC[AES256_GCM,data:P/1i09dpAF0jWkkA0qjlrlHj1E9Kuw==,iv:yqcHhP4eqnkrhdQupBWEy2SVQubOJLQE5Znv7454D9M=,tag:e9McanB+ctqKB/jCgxoBiA==,type:str]
         options:
             name: tls-ver13
             namespace: traefik
@@ -49,8 +49,8 @@ sops:
             OUlWRTZDaWI1NkNzZXBPWW01UEpKNXMKiUncS5yDx0cPHNypN0IQmm/Q2cjfYK1/
             P5glZxveHU516i3WI4zbmQIzioYiun+pEWOdzWRDEuluehFe8mi+OQ==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-10-03T13:49:35Z"
-    mac: ENC[AES256_GCM,data:EmiofbgdfxMJkClKYhEKzO680t4vs/K2qzuReQIC82a8cY06Ati7y2d1B6DU1BOM5/Jb3TnMgUmD5gP/ibGQAxCFHXcf9bL9x6BvAe2v9i2zvqY4I8/ck5DsoYx6cHUiMfg95egKObOdxd3zvhzCm4ApsDsy/guNddwN7Xxp3J4=,iv:08Fpry581PdC6J9XhwFnjpr8w9ppEJfyq84X4YjoWwQ=,tag:F0BeX/AbgkkQsDfZ8Wbh4g==,type:str]
+    lastmodified: "2024-10-03T19:54:05Z"
+    mac: ENC[AES256_GCM,data:0bE7t5+Uh3JZgrydTyPN/LQYQOb7OD8i0oWLDLshwBKPyW4I9AmLRobsQnjCSj3IzHgdtd7oX0dqbOolUbTypgNnpHhd8TqkKc67McbvxmU6mKtIqx/NcjAmsP95uitIx+PKNLJIKpBkeARYCIA3a8H+FryxYtTjnYrBOfVhc2U=,iv:5ldnWyhKLlXyPfP1wdJM+zHD26dgRiEphzGP93QJwl0=,tag:fUW7rjYUlglH4RiTTV2KdA==,type:str]
     pgp:
         - created_at: "2024-10-03T13:49:35Z"
           enc: |-
@@ -123,8 +123,8 @@ sops:
             OUlWRTZDaWI1NkNzZXBPWW01UEpKNXMKiUncS5yDx0cPHNypN0IQmm/Q2cjfYK1/
             P5glZxveHU516i3WI4zbmQIzioYiun+pEWOdzWRDEuluehFe8mi+OQ==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-10-03T13:49:35Z"
-    mac: ENC[AES256_GCM,data:EmiofbgdfxMJkClKYhEKzO680t4vs/K2qzuReQIC82a8cY06Ati7y2d1B6DU1BOM5/Jb3TnMgUmD5gP/ibGQAxCFHXcf9bL9x6BvAe2v9i2zvqY4I8/ck5DsoYx6cHUiMfg95egKObOdxd3zvhzCm4ApsDsy/guNddwN7Xxp3J4=,iv:08Fpry581PdC6J9XhwFnjpr8w9ppEJfyq84X4YjoWwQ=,tag:F0BeX/AbgkkQsDfZ8Wbh4g==,type:str]
+    lastmodified: "2024-10-03T19:54:05Z"
+    mac: ENC[AES256_GCM,data:0bE7t5+Uh3JZgrydTyPN/LQYQOb7OD8i0oWLDLshwBKPyW4I9AmLRobsQnjCSj3IzHgdtd7oX0dqbOolUbTypgNnpHhd8TqkKc67McbvxmU6mKtIqx/NcjAmsP95uitIx+PKNLJIKpBkeARYCIA3a8H+FryxYtTjnYrBOfVhc2U=,iv:5ldnWyhKLlXyPfP1wdJM+zHD26dgRiEphzGP93QJwl0=,tag:fUW7rjYUlglH4RiTTV2KdA==,type:str]
     pgp:
         - created_at: "2024-10-03T13:49:35Z"
           enc: |-
