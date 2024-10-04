@@ -7,7 +7,6 @@ metadata:
   name: argocd-metrics
   namespace: argocd
 spec:
-  ttlSecondsAfterFinished: 100
   selector:
     matchLabels:
       app.kubernetes.io/name: argocd-metrics
@@ -26,7 +25,6 @@ metadata:
   name: argocd-server-metrics
   namespace: argocd
 spec:
-  ttlSecondsAfterFinished: 100
   selector:
     matchLabels:
       app.kubernetes.io/name: argocd-server-metrics
@@ -45,7 +43,6 @@ metadata:
   name: argocd-repo-server-metrics
   namespace: argocd
 spec:
-  ttlSecondsAfterFinished: 100
   selector:
     matchLabels:
       app.kubernetes.io/name: argocd-repo-server
@@ -64,7 +61,6 @@ metadata:
   name: argocd-applicationset-controller-metrics
   namespace: argocd
 spec:
-  ttlSecondsAfterFinished: 100
   selector:
     matchLabels:
       app.kubernetes.io/name: argocd-applicationset-controller
