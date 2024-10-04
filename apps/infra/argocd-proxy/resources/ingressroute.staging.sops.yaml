@@ -48,8 +48,8 @@ sops:
             b2dUdmcxUlR1NjdZbnFGV0VrVHpJUzgKTU0Lm2wzXCrcj2SH6YSkqUW85V9c3Yd1
             Qc8H1iSUvhW3V8Lid1BXXLwVHIeSGBtU07iXtxBMtZlHkxkFJ/72DA==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-10-04T16:11:07Z"
-    mac: ENC[AES256_GCM,data:swbXZE9XevdBuLZsOX0P92MkWiGGcKBbMTSudpqGbpvm2mY7trYJNPA711A4K01KIP7gO7R9ZouWQ0Rgwcpzn6gB54RYhE4t1yUehzsdB+2bykOZRFsuA0V4JYK7DQWiMuZ6zfvdqSNRflS1sbQeva9O2nosliVBBHSXH2IybcA=,iv:YUyJzRN8syh06zoV1k0mvYN4QUqu/f2MJWasLLhYHqI=,tag:bCmP52+1O+KrQkpjGDDO2A==,type:str]
+    lastmodified: "2024-10-04T16:14:01Z"
+    mac: ENC[AES256_GCM,data:RxHKwyVpI9QyXxWer8+pyXWuALQv1xxnIqTdJr25aabHg/4QldxvsSBMpTscRuMCDzmdd+l1fD9yzgzPHHgRQZpfNQhQm0+sIu8/efypUAA/M0RTHx9RwWTSNXgs6DYwRe9nRZ/DdmJ/Bb9K5TPqleDsQUH88H3Ky1wxJZYUmx0=,iv:4Mo7WOox/NCryWTRJyS2GpWwEqhf4GJf5ZdxRUwSHEE=,tag:Yw4RVBaA6aUOirsqyprtPQ==,type:str]
     pgp:
         - created_at: "2024-10-04T15:55:17Z"
           enc: |-
@@ -85,7 +85,7 @@ spec:
     weighted:
         services:
             - name: argocd-server
-              port: 8080
+              port: 80
               weight: 1
 sops:
     kms: []
@@ -102,8 +102,8 @@ sops:
             b2dUdmcxUlR1NjdZbnFGV0VrVHpJUzgKTU0Lm2wzXCrcj2SH6YSkqUW85V9c3Yd1
             Qc8H1iSUvhW3V8Lid1BXXLwVHIeSGBtU07iXtxBMtZlHkxkFJ/72DA==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-10-04T16:11:07Z"
-    mac: ENC[AES256_GCM,data:swbXZE9XevdBuLZsOX0P92MkWiGGcKBbMTSudpqGbpvm2mY7trYJNPA711A4K01KIP7gO7R9ZouWQ0Rgwcpzn6gB54RYhE4t1yUehzsdB+2bykOZRFsuA0V4JYK7DQWiMuZ6zfvdqSNRflS1sbQeva9O2nosliVBBHSXH2IybcA=,iv:YUyJzRN8syh06zoV1k0mvYN4QUqu/f2MJWasLLhYHqI=,tag:bCmP52+1O+KrQkpjGDDO2A==,type:str]
+    lastmodified: "2024-10-04T16:14:01Z"
+    mac: ENC[AES256_GCM,data:RxHKwyVpI9QyXxWer8+pyXWuALQv1xxnIqTdJr25aabHg/4QldxvsSBMpTscRuMCDzmdd+l1fD9yzgzPHHgRQZpfNQhQm0+sIu8/efypUAA/M0RTHx9RwWTSNXgs6DYwRe9nRZ/DdmJ/Bb9K5TPqleDsQUH88H3Ky1wxJZYUmx0=,iv:4Mo7WOox/NCryWTRJyS2GpWwEqhf4GJf5ZdxRUwSHEE=,tag:Yw4RVBaA6aUOirsqyprtPQ==,type:str]
     pgp:
         - created_at: "2024-10-04T15:55:17Z"
           enc: |-
