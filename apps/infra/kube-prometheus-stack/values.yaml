@@ -554,6 +554,8 @@ grafana:
           value: Prometheus
 
   grafana.ini:
+      server:
+        root_url: "https://grafana.monitoring.anotherlife.org.pl"
       auth:
           signout_redirect_url: "https://key.infra.anotherlife.org.pl/application/o/grafana/end-session/"
           oauth_auto_login: true
