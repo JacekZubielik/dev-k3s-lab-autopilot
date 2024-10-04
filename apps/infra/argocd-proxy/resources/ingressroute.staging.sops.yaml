@@ -4,9 +4,9 @@ metadata:
     annotations:
         argocd.argoproj.io/sync-wave: "3"
         cert-manager.io/cluster-issuer: letsencrypt-staging
-        cert-manager.io/common-name: argocd.infra.anotherlife.org.pl
-        external-dns.alpha.kubernetes.io/hostname: argocd.infra.anotherlife.org.pl
-        external-dns.alpha.kubernetes.io/target: infra.anotherlife.org.pl
+        cert-manager.io/common-name: ENC[AES256_GCM,data:NhVBRZhBaK0l16j7xeCg/8iVEU0lrC+58+d2XlJ0uQ==,iv:kbCVs+hOrsU5ZsYFFD95q04gMIElJRWgogD9U6tX9aU=,tag:R6WwCK1+kApJzLYuiXkTJA==,type:str]
+        external-dns.alpha.kubernetes.io/hostname: ENC[AES256_GCM,data:I/LClS1zF+JBlu+82qDrfdVcdM51cWZPkqA/RGJMQA==,iv:LX/f+C9FY8WHdquJVQvcMEjbgAVGy/YAkYHoHX1ig4w=,tag:tqWTPZoCAdEXGWNeg6GIKQ==,type:str]
+        external-dns.alpha.kubernetes.io/target: ENC[AES256_GCM,data:iMh4YW/XhANsTji+ZbXBTO/lDh8HGHVX,iv:kCU3hcH+xNzPTP7QKlN8K47uBetYZIxAEAYjVBXwypw=,tag:kC/HDqeVX6kCP10ekuja7Q==,type:str]
         external-dns.alpha.kubernetes.io/ttl: "300"
         kubernetes.io/ingress.class: traefik-external
     name: argocd-staging
@@ -16,7 +16,7 @@ spec:
         - websecure
     routes:
         - kind: Rule
-          match: Host(`argocd.infra.anotherlife.org.pl`)
+          match: ENC[AES256_GCM,data:Bj+qfHmSLRqeGB5YtT+Tf/xiR9qG5yjzy08Uuqp/NyOLwlpnuVM+,iv:cbs2tjMGcIKDcjW4QL3U3wowoB11e2WpKxPuwxo7Qgo=,tag:mn4IC5Mxr/5rJgRwmbjB8A==,type:str]
           middlewares:
             - name: chain-traefik-dashboard
               namespace: traefik
@@ -26,13 +26,53 @@ spec:
               port: 80
     tls:
         domains:
-            - main: infra.anotherlife.org.pl
+            - main: ENC[AES256_GCM,data:3xmyBMM5aTP0hoy8uKH/mPpfjn9Cp37s,iv:jmL3JuEjkNIiCvxmTbPkHV7NOOE18/HwRA3V/VLqR8c=,tag:dqUhwCzi7x8YRswccq8jnA==,type:str]
               sans:
-                - .infra.anotherlife.org.pl
+                - ENC[AES256_GCM,data:4HI/e2PwsYMUl0shgXORY28uu6vCmj7F+g==,iv:8OFTPzfZu6I4TdgIkRlsygWXXxYHDFjWJbX9Rp/+qZY=,tag:IymOYw9TvCZbM3ohZ2/bjA==,type:str]
         options:
             name: tls-ver13
             namespace: traefik
         secretName: argocd-cf-staging
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1deg9tqt7jtddnqme6nvcl72czns80z0n25u8k9pw5830dn4arsks5pua4h
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBDajVoOUkzWDZEclAycks2
+            MGRRRGFNUEdLRmpjZzFZVHpIWS9jREJHdWdFCnh6MitCNlJjazFlbHZCeDdqa0lP
+            Ri85WUVxUVhEQjlraTJabm5Mc3UwT3MKLS0tIE5uOW9VdENnMFJKVkFSR2Rkemw2
+            b2dUdmcxUlR1NjdZbnFGV0VrVHpJUzgKTU0Lm2wzXCrcj2SH6YSkqUW85V9c3Yd1
+            Qc8H1iSUvhW3V8Lid1BXXLwVHIeSGBtU07iXtxBMtZlHkxkFJ/72DA==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2024-10-04T15:55:17Z"
+    mac: ENC[AES256_GCM,data:1V/9zAxXXyMKGXT1/zjXFWa8vy3LlN1nBIjotJ2UzfMul82teFn34EIggVE+BqKydPyC2csYZJESxQDb9I2Cnindwa2Z/DknkUgfWQ20XUICK7r6AhKmkvv4s6y0gtBc1ZyZC+gpR5boKzv3yWL8VOLNcvEapxmcr5rGmS6+vEA=,iv:WRt4IYt9Z3O5nzYPN8KLA2GXPaD4vO7DTewDxd3ftgw=,tag:sNCb06qUc5LzlN1XgRA7zw==,type:str]
+    pgp:
+        - created_at: "2024-10-04T15:55:17Z"
+          enc: |-
+            -----BEGIN PGP MESSAGE-----
+
+            hQIMA0R6oz1GmNjVAQ/+Pgeu5PWjJVMOc18bqXCrkcReqCZ0dySBIDYMz0asrVck
+            2N1oA9aXt3B6CezsQVWcx4ZJXjiNqcHBfEZrmzrEhK0x9WP2IiyhZ+R65aRsBffr
+            W8O1aoSPAn/0lZQQW6nUfmOdNYoFh+FuS97Ho9DpItPc55MD0PPhtUDngFietly7
+            mLZeNuSTuTbN3D0CcJWeHzGyCJz+TRPuupUYMosfMGfCEeKFBErAt1RkPnBc+Qma
+            zK5MGRB/fYPwNtcnuMnypI8mzZhT2VZDKRVdSA8qSY5YqrCsYxdGL7hMCZfLaJKJ
+            e0zFbE9BUQb5cLd13cQRLuKkRj0MCJuogyHIs9HqbbfZP4tRDj96PAV8y0GFRSE/
+            hWLCUaJV3/gv4kt3T/9BYmGgqX3LI8eI7JdRoXm6WfMrI59BIt9omkzH1DHjeIXE
+            vUhZrnKP3L2UrOmTrTvs2Ox489R3H33OxHbhiC4cztq4FKdnEntzTKrHDeNOcqfj
+            LEtZrOEtQ4/r57QiLXXUZKqfEL5VPW9DiatCL6J4Gx2sP2fveTOxeVafKfp1GjHQ
+            v+e9zWPMVhuD427VSTdaEoj8thtKb0LhSSsoUI/kv8CapxLKdBl443ZtlBte6O7M
+            1nc+NbA/1MCNz0uueNud7bzRo0e6SE1qeesotzCYyvN6itxMjaocGfK05gShi7nS
+            XgGDITP6DbTK64AvAX9qO6TCA+usrIQNyr14gWVGTIOT/YXFaKcXODNCkRxQorcd
+            VWdscA45qdAYVGf97ZHsE6q6JYYaauTzR35jkgwCnlBBpWaJ4TXhoJUyoneUFVs=
+            =q9we
+            -----END PGP MESSAGE-----
+          fp: 6D3FE55384B558E06A1BA364586EFA784A32C981
+    encrypted_regex: ^(externalName|external-dns.alpha.kubernetes.io/hostname|cert-manager.io/common-name|sans|main|match|external-dns.alpha.kubernetes.io/target|dnsNames|commonName|data|stringData|dnsNames|email|accessKeyID|region|hostedZoneID|role|dnsZones)$
+    version: 3.9.0
 ---
 apiVersion: traefik.io/v1alpha1
 kind: TraefikService
@@ -50,3 +90,43 @@ spec:
             - name: argocd-server
               port: 80
               weight: 1
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1deg9tqt7jtddnqme6nvcl72czns80z0n25u8k9pw5830dn4arsks5pua4h
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBDajVoOUkzWDZEclAycks2
+            MGRRRGFNUEdLRmpjZzFZVHpIWS9jREJHdWdFCnh6MitCNlJjazFlbHZCeDdqa0lP
+            Ri85WUVxUVhEQjlraTJabm5Mc3UwT3MKLS0tIE5uOW9VdENnMFJKVkFSR2Rkemw2
+            b2dUdmcxUlR1NjdZbnFGV0VrVHpJUzgKTU0Lm2wzXCrcj2SH6YSkqUW85V9c3Yd1
+            Qc8H1iSUvhW3V8Lid1BXXLwVHIeSGBtU07iXtxBMtZlHkxkFJ/72DA==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2024-10-04T15:55:17Z"
+    mac: ENC[AES256_GCM,data:1V/9zAxXXyMKGXT1/zjXFWa8vy3LlN1nBIjotJ2UzfMul82teFn34EIggVE+BqKydPyC2csYZJESxQDb9I2Cnindwa2Z/DknkUgfWQ20XUICK7r6AhKmkvv4s6y0gtBc1ZyZC+gpR5boKzv3yWL8VOLNcvEapxmcr5rGmS6+vEA=,iv:WRt4IYt9Z3O5nzYPN8KLA2GXPaD4vO7DTewDxd3ftgw=,tag:sNCb06qUc5LzlN1XgRA7zw==,type:str]
+    pgp:
+        - created_at: "2024-10-04T15:55:17Z"
+          enc: |-
+            -----BEGIN PGP MESSAGE-----
+
+            hQIMA0R6oz1GmNjVAQ/+Pgeu5PWjJVMOc18bqXCrkcReqCZ0dySBIDYMz0asrVck
+            2N1oA9aXt3B6CezsQVWcx4ZJXjiNqcHBfEZrmzrEhK0x9WP2IiyhZ+R65aRsBffr
+            W8O1aoSPAn/0lZQQW6nUfmOdNYoFh+FuS97Ho9DpItPc55MD0PPhtUDngFietly7
+            mLZeNuSTuTbN3D0CcJWeHzGyCJz+TRPuupUYMosfMGfCEeKFBErAt1RkPnBc+Qma
+            zK5MGRB/fYPwNtcnuMnypI8mzZhT2VZDKRVdSA8qSY5YqrCsYxdGL7hMCZfLaJKJ
+            e0zFbE9BUQb5cLd13cQRLuKkRj0MCJuogyHIs9HqbbfZP4tRDj96PAV8y0GFRSE/
+            hWLCUaJV3/gv4kt3T/9BYmGgqX3LI8eI7JdRoXm6WfMrI59BIt9omkzH1DHjeIXE
+            vUhZrnKP3L2UrOmTrTvs2Ox489R3H33OxHbhiC4cztq4FKdnEntzTKrHDeNOcqfj
+            LEtZrOEtQ4/r57QiLXXUZKqfEL5VPW9DiatCL6J4Gx2sP2fveTOxeVafKfp1GjHQ
+            v+e9zWPMVhuD427VSTdaEoj8thtKb0LhSSsoUI/kv8CapxLKdBl443ZtlBte6O7M
+            1nc+NbA/1MCNz0uueNud7bzRo0e6SE1qeesotzCYyvN6itxMjaocGfK05gShi7nS
+            XgGDITP6DbTK64AvAX9qO6TCA+usrIQNyr14gWVGTIOT/YXFaKcXODNCkRxQorcd
+            VWdscA45qdAYVGf97ZHsE6q6JYYaauTzR35jkgwCnlBBpWaJ4TXhoJUyoneUFVs=
+            =q9we
+            -----END PGP MESSAGE-----
+          fp: 6D3FE55384B558E06A1BA364586EFA784A32C981
+    encrypted_regex: ^(externalName|external-dns.alpha.kubernetes.io/hostname|cert-manager.io/common-name|sans|main|match|external-dns.alpha.kubernetes.io/target|dnsNames|commonName|data|stringData|dnsNames|email|accessKeyID|region|hostedZoneID|role|dnsZones)$
+    version: 3.9.0
