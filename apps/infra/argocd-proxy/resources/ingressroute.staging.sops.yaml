@@ -23,7 +23,7 @@ spec:
           services:
             - kind: TraefikService
               name: argocd-server
-              port: 80
+              port: 8080
     tls:
         domains:
             - main: ENC[AES256_GCM,data:3xmyBMM5aTP0hoy8uKH/mPpfjn9Cp37s,iv:jmL3JuEjkNIiCvxmTbPkHV7NOOE18/HwRA3V/VLqR8c=,tag:dqUhwCzi7x8YRswccq8jnA==,type:str]
@@ -48,8 +48,8 @@ sops:
             b2dUdmcxUlR1NjdZbnFGV0VrVHpJUzgKTU0Lm2wzXCrcj2SH6YSkqUW85V9c3Yd1
             Qc8H1iSUvhW3V8Lid1BXXLwVHIeSGBtU07iXtxBMtZlHkxkFJ/72DA==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-10-04T15:55:17Z"
-    mac: ENC[AES256_GCM,data:1V/9zAxXXyMKGXT1/zjXFWa8vy3LlN1nBIjotJ2UzfMul82teFn34EIggVE+BqKydPyC2csYZJESxQDb9I2Cnindwa2Z/DknkUgfWQ20XUICK7r6AhKmkvv4s6y0gtBc1ZyZC+gpR5boKzv3yWL8VOLNcvEapxmcr5rGmS6+vEA=,iv:WRt4IYt9Z3O5nzYPN8KLA2GXPaD4vO7DTewDxd3ftgw=,tag:sNCb06qUc5LzlN1XgRA7zw==,type:str]
+    lastmodified: "2024-10-04T16:05:56Z"
+    mac: ENC[AES256_GCM,data:xi8oq5mgxoPpUHPFYZiHkhH0002C7z2fc9llkSNtaxbl85lHpQ1iz1L+HvzJwm5gwq30w3lGlF72J2KRxKMrk7QZseFROYxv/oJvfEcqDiGtN3e6fVKLanNl848iNDKhPT7R1y9npxV+nu2fZKQkXdp6e6YlBP3ijSc6VMJOWOw=,iv:WocA+F03t99mi+ujRkAZeEhP6nSlKNkpLJwzr0KVbfk=,tag:RK53gjRELA2oLWddvuznkA==,type:str]
     pgp:
         - created_at: "2024-10-04T15:55:17Z"
           enc: |-
@@ -88,7 +88,7 @@ spec:
     weighted:
         services:
             - name: argocd-server
-              port: 80
+              port: 8080
               weight: 1
 sops:
     kms: []
@@ -105,8 +105,8 @@ sops:
             b2dUdmcxUlR1NjdZbnFGV0VrVHpJUzgKTU0Lm2wzXCrcj2SH6YSkqUW85V9c3Yd1
             Qc8H1iSUvhW3V8Lid1BXXLwVHIeSGBtU07iXtxBMtZlHkxkFJ/72DA==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-10-04T15:55:17Z"
-    mac: ENC[AES256_GCM,data:1V/9zAxXXyMKGXT1/zjXFWa8vy3LlN1nBIjotJ2UzfMul82teFn34EIggVE+BqKydPyC2csYZJESxQDb9I2Cnindwa2Z/DknkUgfWQ20XUICK7r6AhKmkvv4s6y0gtBc1ZyZC+gpR5boKzv3yWL8VOLNcvEapxmcr5rGmS6+vEA=,iv:WRt4IYt9Z3O5nzYPN8KLA2GXPaD4vO7DTewDxd3ftgw=,tag:sNCb06qUc5LzlN1XgRA7zw==,type:str]
+    lastmodified: "2024-10-04T16:05:56Z"
+    mac: ENC[AES256_GCM,data:xi8oq5mgxoPpUHPFYZiHkhH0002C7z2fc9llkSNtaxbl85lHpQ1iz1L+HvzJwm5gwq30w3lGlF72J2KRxKMrk7QZseFROYxv/oJvfEcqDiGtN3e6fVKLanNl848iNDKhPT7R1y9npxV+nu2fZKQkXdp6e6YlBP3ijSc6VMJOWOw=,iv:WocA+F03t99mi+ujRkAZeEhP6nSlKNkpLJwzr0KVbfk=,tag:RK53gjRELA2oLWddvuznkA==,type:str]
     pgp:
         - created_at: "2024-10-04T15:55:17Z"
           enc: |-
