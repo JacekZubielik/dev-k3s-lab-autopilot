@@ -43,14 +43,14 @@ configMapGenerator:
         command: [ "sh", "-c" ]
         args: [ "kustomize build --enable-helm" ]
 
-  - |
-    resource.exclusions=- apiGroups:
-        - "snapshot.storage.k8s.io"
-        kinds:
-        - "VolumeSnapshot"
-        - "VolumeSnapshotContent"
-        clusters:
-        - "*"
+  # - |
+  #   resource.exclusions=- apiGroups:
+  #       - "snapshot.storage.k8s.io"
+  #       kinds:
+  #       - "VolumeSnapshot"
+  #       - "VolumeSnapshotContent"
+  #       clusters:
+  #       - "*"
 
   - |
     resourceExclusions=- apiGroups:
@@ -79,7 +79,7 @@ configMapGenerator:
 - behavior: merge
   name: argocd-cmd-params-cm
   literals:
-  - "server.insecure=true"
+  # - "server.insecure=true"
   # - controller.diff.server.side="true"
   # - controller.diff.include.mutation.webhook="true"
   - applicationsetcontroller.enable.progressive.syncs="true"
