@@ -17,9 +17,9 @@ spec:
     routes:
         - kind: Rule
           match: ENC[AES256_GCM,data:HqpGKgWUdmshBhhgLDgOL8mOBRPnnymZnboSaCgpP6tM/BH85hd9oX9YdDpx,iv:WtPPO398eIegDaRTbSnx0fvVCzrHzkZD1GR/YcBvRrU=,tag:02HDKiNdwtngpp21k0AjCA==,type:str]
-          middlewares:
-            - name: chain-traefik-dashboard
-              namespace: traefik
+          # middlewares:
+          #   - name: chain-traefik-dashboard
+          #     namespace: traefik
           services:
             - kind: TraefikService
               name: kube-prometheus-stack-grafana
@@ -48,8 +48,8 @@ sops:
             SVFPTGgwZlZ1Wko2Qk5pUXZJZW1Db3MKFRfehTgu5toUTDiUS1rbG8mCQ6Nb/ouC
             hHjiRsf7hh5nNPxpoTYsnijQmYfnKFC87J8cfMYaD7MFyUUI/LDPAQ==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-10-03T23:46:09Z"
-    mac: ENC[AES256_GCM,data:WQ+hux4zedoOYikEjNd5vtxROdOgSw1iBisV4isiKMWJyRN98aupNITJGSQEmuJ3AdG+cZRX95f/k9reMns8nTbS+aZKLwFaMGzJnPk8wl1HyL4FnPLcu1Son2ziUjcRH7bd2szZQ34b3YVBLKeOHvB5G82zgMzJSKZ8+FpkQPQ=,iv:X4i1v6P/8NEWw4lMwROpA1NsPm7CKqVCr7nU5hV7Ajw=,tag:9nSAzGtPiLhkXl4E5NO/Dw==,type:str]
+    lastmodified: "2024-10-04T14:32:03Z"
+    mac: ENC[AES256_GCM,data:9DDmB4b7JilvD5YqTH0E3CfLf0A0kXy+U2ohp0VBYrvhScYDIA/0dxF5/q10Iv4oKIlUTZJTemLXiE1K/ul8JL+nZv0TiOyG0RNlkSZyJWM6/UzgheKWVRhOLm1c68+q+vv86D5gYHYkfx4Yf18Sz5X8KMhTrY6I+iFPjveXbKA=,iv:bA3gXoL9I2/yjpPxUZcZMsikRG4VGfoNakm3d/bqIWs=,tag:jxZESBsT6I9s26BsM59XwQ==,type:str]
     pgp:
         - created_at: "2024-10-03T23:39:55Z"
           enc: |-
@@ -102,8 +102,8 @@ sops:
             SVFPTGgwZlZ1Wko2Qk5pUXZJZW1Db3MKFRfehTgu5toUTDiUS1rbG8mCQ6Nb/ouC
             hHjiRsf7hh5nNPxpoTYsnijQmYfnKFC87J8cfMYaD7MFyUUI/LDPAQ==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-10-03T23:46:09Z"
-    mac: ENC[AES256_GCM,data:WQ+hux4zedoOYikEjNd5vtxROdOgSw1iBisV4isiKMWJyRN98aupNITJGSQEmuJ3AdG+cZRX95f/k9reMns8nTbS+aZKLwFaMGzJnPk8wl1HyL4FnPLcu1Son2ziUjcRH7bd2szZQ34b3YVBLKeOHvB5G82zgMzJSKZ8+FpkQPQ=,iv:X4i1v6P/8NEWw4lMwROpA1NsPm7CKqVCr7nU5hV7Ajw=,tag:9nSAzGtPiLhkXl4E5NO/Dw==,type:str]
+    lastmodified: "2024-10-04T14:32:03Z"
+    mac: ENC[AES256_GCM,data:9DDmB4b7JilvD5YqTH0E3CfLf0A0kXy+U2ohp0VBYrvhScYDIA/0dxF5/q10Iv4oKIlUTZJTemLXiE1K/ul8JL+nZv0TiOyG0RNlkSZyJWM6/UzgheKWVRhOLm1c68+q+vv86D5gYHYkfx4Yf18Sz5X8KMhTrY6I+iFPjveXbKA=,iv:bA3gXoL9I2/yjpPxUZcZMsikRG4VGfoNakm3d/bqIWs=,tag:jxZESBsT6I9s26BsM59XwQ==,type:str]
     pgp:
         - created_at: "2024-10-03T23:39:55Z"
           enc: |-
@@ -186,8 +186,8 @@ sops:
             SVFPTGgwZlZ1Wko2Qk5pUXZJZW1Db3MKFRfehTgu5toUTDiUS1rbG8mCQ6Nb/ouC
             hHjiRsf7hh5nNPxpoTYsnijQmYfnKFC87J8cfMYaD7MFyUUI/LDPAQ==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-10-03T23:46:09Z"
-    mac: ENC[AES256_GCM,data:WQ+hux4zedoOYikEjNd5vtxROdOgSw1iBisV4isiKMWJyRN98aupNITJGSQEmuJ3AdG+cZRX95f/k9reMns8nTbS+aZKLwFaMGzJnPk8wl1HyL4FnPLcu1Son2ziUjcRH7bd2szZQ34b3YVBLKeOHvB5G82zgMzJSKZ8+FpkQPQ=,iv:X4i1v6P/8NEWw4lMwROpA1NsPm7CKqVCr7nU5hV7Ajw=,tag:9nSAzGtPiLhkXl4E5NO/Dw==,type:str]
+    lastmodified: "2024-10-04T14:32:03Z"
+    mac: ENC[AES256_GCM,data:9DDmB4b7JilvD5YqTH0E3CfLf0A0kXy+U2ohp0VBYrvhScYDIA/0dxF5/q10Iv4oKIlUTZJTemLXiE1K/ul8JL+nZv0TiOyG0RNlkSZyJWM6/UzgheKWVRhOLm1c68+q+vv86D5gYHYkfx4Yf18Sz5X8KMhTrY6I+iFPjveXbKA=,iv:bA3gXoL9I2/yjpPxUZcZMsikRG4VGfoNakm3d/bqIWs=,tag:jxZESBsT6I9s26BsM59XwQ==,type:str]
     pgp:
         - created_at: "2024-10-03T23:39:55Z"
           enc: |-
@@ -240,8 +240,8 @@ sops:
             SVFPTGgwZlZ1Wko2Qk5pUXZJZW1Db3MKFRfehTgu5toUTDiUS1rbG8mCQ6Nb/ouC
             hHjiRsf7hh5nNPxpoTYsnijQmYfnKFC87J8cfMYaD7MFyUUI/LDPAQ==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-10-03T23:46:09Z"
-    mac: ENC[AES256_GCM,data:WQ+hux4zedoOYikEjNd5vtxROdOgSw1iBisV4isiKMWJyRN98aupNITJGSQEmuJ3AdG+cZRX95f/k9reMns8nTbS+aZKLwFaMGzJnPk8wl1HyL4FnPLcu1Son2ziUjcRH7bd2szZQ34b3YVBLKeOHvB5G82zgMzJSKZ8+FpkQPQ=,iv:X4i1v6P/8NEWw4lMwROpA1NsPm7CKqVCr7nU5hV7Ajw=,tag:9nSAzGtPiLhkXl4E5NO/Dw==,type:str]
+    lastmodified: "2024-10-04T14:32:03Z"
+    mac: ENC[AES256_GCM,data:9DDmB4b7JilvD5YqTH0E3CfLf0A0kXy+U2ohp0VBYrvhScYDIA/0dxF5/q10Iv4oKIlUTZJTemLXiE1K/ul8JL+nZv0TiOyG0RNlkSZyJWM6/UzgheKWVRhOLm1c68+q+vv86D5gYHYkfx4Yf18Sz5X8KMhTrY6I+iFPjveXbKA=,iv:bA3gXoL9I2/yjpPxUZcZMsikRG4VGfoNakm3d/bqIWs=,tag:jxZESBsT6I9s26BsM59XwQ==,type:str]
     pgp:
         - created_at: "2024-10-03T23:39:55Z"
           enc: |-
@@ -324,8 +324,8 @@ sops:
             SVFPTGgwZlZ1Wko2Qk5pUXZJZW1Db3MKFRfehTgu5toUTDiUS1rbG8mCQ6Nb/ouC
             hHjiRsf7hh5nNPxpoTYsnijQmYfnKFC87J8cfMYaD7MFyUUI/LDPAQ==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-10-03T23:46:09Z"
-    mac: ENC[AES256_GCM,data:WQ+hux4zedoOYikEjNd5vtxROdOgSw1iBisV4isiKMWJyRN98aupNITJGSQEmuJ3AdG+cZRX95f/k9reMns8nTbS+aZKLwFaMGzJnPk8wl1HyL4FnPLcu1Son2ziUjcRH7bd2szZQ34b3YVBLKeOHvB5G82zgMzJSKZ8+FpkQPQ=,iv:X4i1v6P/8NEWw4lMwROpA1NsPm7CKqVCr7nU5hV7Ajw=,tag:9nSAzGtPiLhkXl4E5NO/Dw==,type:str]
+    lastmodified: "2024-10-04T14:32:03Z"
+    mac: ENC[AES256_GCM,data:9DDmB4b7JilvD5YqTH0E3CfLf0A0kXy+U2ohp0VBYrvhScYDIA/0dxF5/q10Iv4oKIlUTZJTemLXiE1K/ul8JL+nZv0TiOyG0RNlkSZyJWM6/UzgheKWVRhOLm1c68+q+vv86D5gYHYkfx4Yf18Sz5X8KMhTrY6I+iFPjveXbKA=,iv:bA3gXoL9I2/yjpPxUZcZMsikRG4VGfoNakm3d/bqIWs=,tag:jxZESBsT6I9s26BsM59XwQ==,type:str]
     pgp:
         - created_at: "2024-10-03T23:39:55Z"
           enc: |-
@@ -378,8 +378,8 @@ sops:
             SVFPTGgwZlZ1Wko2Qk5pUXZJZW1Db3MKFRfehTgu5toUTDiUS1rbG8mCQ6Nb/ouC
             hHjiRsf7hh5nNPxpoTYsnijQmYfnKFC87J8cfMYaD7MFyUUI/LDPAQ==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-10-03T23:46:09Z"
-    mac: ENC[AES256_GCM,data:WQ+hux4zedoOYikEjNd5vtxROdOgSw1iBisV4isiKMWJyRN98aupNITJGSQEmuJ3AdG+cZRX95f/k9reMns8nTbS+aZKLwFaMGzJnPk8wl1HyL4FnPLcu1Son2ziUjcRH7bd2szZQ34b3YVBLKeOHvB5G82zgMzJSKZ8+FpkQPQ=,iv:X4i1v6P/8NEWw4lMwROpA1NsPm7CKqVCr7nU5hV7Ajw=,tag:9nSAzGtPiLhkXl4E5NO/Dw==,type:str]
+    lastmodified: "2024-10-04T14:32:03Z"
+    mac: ENC[AES256_GCM,data:9DDmB4b7JilvD5YqTH0E3CfLf0A0kXy+U2ohp0VBYrvhScYDIA/0dxF5/q10Iv4oKIlUTZJTemLXiE1K/ul8JL+nZv0TiOyG0RNlkSZyJWM6/UzgheKWVRhOLm1c68+q+vv86D5gYHYkfx4Yf18Sz5X8KMhTrY6I+iFPjveXbKA=,iv:bA3gXoL9I2/yjpPxUZcZMsikRG4VGfoNakm3d/bqIWs=,tag:jxZESBsT6I9s26BsM59XwQ==,type:str]
     pgp:
         - created_at: "2024-10-03T23:39:55Z"
           enc: |-
