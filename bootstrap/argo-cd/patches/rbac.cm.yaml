@@ -1,0 +1,15 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-rbac-cm
+data:
+  policy.default: role:noLogs
+  policy.csv: |
+    g, ArgoCDAdmins, role:admin
+    g, ArgoCDViewers, role:readonly
+    p, role:admin, logs, get, */*, deny
+    p, role:noLogs, applications, get, */*, deny
+    p, role:noLogs, clusters, get, */*, deny
+    p, role:noLogs, logs, *, */*, deny
+  # scopes: '[email, group]'

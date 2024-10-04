@@ -1,14 +1,8 @@
+---
 apiVersion: viaduct.ai/v1
 kind: ksops
 metadata:
-  annotations:
-    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
-    # argocd.argoproj.io/sync-wave: "2"
   name: ksops-generator
 type: Opaque
 files:
-- resources/cert.staging.sops.yaml
-- resources/external-dns.sops.yaml
-- resources/ingressroute.staging.sops.yaml
-# - resources/cert.sops.yaml
-# - resources/ingressroute.sops.yaml
+- secrets/secret.sops.yaml

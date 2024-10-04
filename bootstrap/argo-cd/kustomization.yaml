@@ -5,15 +5,14 @@ namespace: argocd
 resources:
 - github.com/argoproj-labs/argocd-autopilot/manifests/base?ref=v0.4.17
 - resources/service.yaml
-# - resources/last-phase-transition.yaml
 # - resources/servicemonitor.yaml
 
-# generators:
-# - ksops-generator.yaml
+generators:
+- ksops-generator.yaml
 
-# generatorOptions:
-#   annotations:
-#     argocd.argoproj.io/compare-options: IgnoreExtraneous
+generatorOptions:
+  annotations:
+    argocd.argoproj.io/compare-options: IgnoreExtraneous
 
 configMapGenerator:
 - behavior: merge
@@ -23,6 +22,8 @@ configMapGenerator:
   - kustomize.buildOptions.v4.4.0="--output /tmp"
   - statusbadge.enabled="true"
   - resource.compareoptions.ignoreAggregatedRoles="true"
+  - url="https://argocd.infra.anotherlife.org.pl"
+
   - |
     repository.credentials=- passwordSecret:
         key: git_token
@@ -31,6 +32,7 @@ configMapGenerator:
       usernameSecret:
         key: git_username
         name: autopilot-secret
+
   - |
     configManagementPlugins=- name: kustomize-build-with-helm
       init:
@@ -58,6 +60,21 @@ configMapGenerator:
         clusters:
         - "*"
 
+  - |
+    dex.config=- connectors:
+        - config:
+            issuer: https://key.infra.anotherlife.org.pl/application/o/argocd/
+            clientID: $argocd-private:dex.authentik.clientID
+            clientSecret: $argocd-private:dex.authentik.clientSecret
+            insecureEnableGroups: true
+            scopes:
+              - openid
+              - profile
+              - email
+          name: authentik
+          type: oidc
+          id: authentik
+
 - behavior: merge
   name: argocd-cmd-params-cm
   literals:
@@ -69,6 +86,6 @@ configMapGenerator:
 
 patches:
 - path: patches/ksops.yaml
-- path: patches/rbac-cm.yaml
+- path: patches/rbac.cm.yaml
 # - path: patches/resources.yaml
 # - path: patches/argocd-cm.yaml
