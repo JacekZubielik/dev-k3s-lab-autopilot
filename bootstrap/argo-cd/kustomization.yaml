@@ -22,8 +22,8 @@ configMapGenerator:
   - kustomize.buildOptions.v4.4.0="--output /tmp"
   - statusbadge.enabled="true"
   - resource.compareoptions.ignoreAggregatedRoles="true"
-  # - "timeout.reconciliation=15s"
-  # - url="https://argocd.infra.anotherlife.org.pl"
+  - "timeout.reconciliation=15s"
+  - url="https://argocd.infra.anotherlife.org.pl"
 
   - |
     repository.credentials=- passwordSecret:
@@ -61,25 +61,25 @@ configMapGenerator:
         clusters:
         - "*"
 
-  # - |
-  #   dex.config=- connectors:
-  #       - config:
-  #           issuer: https://key.infra.anotherlife.org.pl/application/o/argocd/
-  #           clientID: $argocd-authentik:dex.authentik.clientID
-  #           clientSecret: $argocd-authentik:dex.authentik.clientSecret
-  #           insecureEnableGroups: true
-  #           scopes:
-  #             - openid
-  #             - profile
-  #             - email
-  #         name: authentik
-  #         type: oidc
-  #         id: authentik
+  - |
+    dex.config=- connectors:
+        - config:
+            issuer: https://key.infra.anotherlife.org.pl/application/o/argocd/
+            clientID: $argocd-authentik:dex.authentik.clientID
+            clientSecret: $argocd-authentik:dex.authentik.clientSecret
+            insecureEnableGroups: true
+            scopes:
+              - openid
+              - profile
+              - email
+          name: authentik
+          type: oidc
+          id: authentik
 
 - behavior: merge
   name: argocd-cmd-params-cm
   literals:
-  # - "server.insecure=true"
+  - "server.insecure=true"
   # - controller.diff.server.side="true"
   # - controller.diff.include.mutation.webhook="true"
   - applicationsetcontroller.enable.progressive.syncs="true"
@@ -87,7 +87,7 @@ configMapGenerator:
 
 patches:
 - path: patches/ksops.yaml
-# - path: patches/rbac.cm.yaml
+- path: patches/rbac.cm.yaml
 # - target:
 #     group: rbac.authorization.k8s.io
 #     version: v1
