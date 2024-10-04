@@ -3,15 +3,15 @@ kind: Certificate
 metadata:
     annotations:
         argocd.argoproj.io/sync-wave: "1"
-    name: portainer-production
+    name: argocd-production
 spec:
     dnsNames:
-        - portainer.infra.anotherlife.org.pl
+        - argocd.infra.anotherlife.org.pl
     issuerRef:
         kind: ClusterIssuer
         name: letsencrypt-production
-    commonName: portainer.infra.anotherlife.org.pl
-    secretName: portainer-cf-production
+    commonName: argocd.infra.anotherlife.org.pl
+    secretName: argocd-cf-production
     # 90d
     duration: 2160h0m0s
     # 30d

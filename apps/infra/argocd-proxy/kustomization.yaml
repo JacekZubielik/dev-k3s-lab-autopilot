@@ -7,9 +7,6 @@ metadata:
     argocd.argoproj.io/compare-options: IgnoreExtraneous
     argocd.argoproj.io/sync-options: Delete=true,Prune=true
 
-# resources:
-# - resources/service.yaml
-
 generators:
 - ksops-generator.yaml
 
