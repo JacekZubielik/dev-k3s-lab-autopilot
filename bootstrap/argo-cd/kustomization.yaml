@@ -7,8 +7,8 @@ resources:
 - resources/service.yaml
 # - resources/servicemonitor.yaml
 
-generators:
-- ksops-generator.yaml
+# generators:
+# - ksops-generator.yaml
 
 generatorOptions:
   annotations:
