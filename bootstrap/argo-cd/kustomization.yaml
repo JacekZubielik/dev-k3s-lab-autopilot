@@ -22,6 +22,7 @@ configMapGenerator:
   - kustomize.buildOptions.v4.4.0="--output /tmp"
   - statusbadge.enabled="true"
   - resource.compareoptions.ignoreAggregatedRoles="true"
+  - "timeout.reconciliation=15s"
   - url="https://argocd.infra.anotherlife.org.pl"
 
   - |
@@ -64,8 +65,8 @@ configMapGenerator:
     dex.config=- connectors:
         - config:
             issuer: https://key.infra.anotherlife.org.pl/application/o/argocd/
-            clientID: $argocd-private:dex.authentik.clientID
-            clientSecret: $argocd-private:dex.authentik.clientSecret
+            clientID: $argocd-secret:dex.authentik.clientID
+            clientSecret: $argocd-secret:dex.authentik.clientSecret
             insecureEnableGroups: true
             scopes:
               - openid
@@ -78,7 +79,7 @@ configMapGenerator:
 - behavior: merge
   name: argocd-cmd-params-cm
   literals:
-  - server.insecure="true"
+  - "server.insecure=true"
   # - controller.diff.server.side="true"
   # - controller.diff.include.mutation.webhook="true"
   - applicationsetcontroller.enable.progressive.syncs="true"
@@ -87,5 +88,11 @@ configMapGenerator:
 patches:
 - path: patches/ksops.yaml
 - path: patches/rbac.cm.yaml
-# - path: patches/resources.yaml
-# - path: patches/argocd-cm.yaml
+- target:
+    group: rbac.authorization.k8s.io
+    version: v1
+    kind: ClusterRoleBinding
+  patch: |-
+    - op: replace
+      path: /subjects/0/namespace
+      value: default

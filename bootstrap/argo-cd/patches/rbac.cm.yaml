@@ -4,12 +4,12 @@ kind: ConfigMap
 metadata:
   name: argocd-rbac-cm
 data:
-  policy.default: role:noLogs
   policy.csv: |
     g, ArgoCDAdmins, role:admin
+    p, role:admin, *, *, */*, allow
     g, ArgoCDViewers, role:readonly
-    p, role:admin, logs, get, */*, deny
-    p, role:noLogs, applications, get, */*, deny
-    p, role:noLogs, clusters, get, */*, deny
-    p, role:noLogs, logs, *, */*, deny
-  # scopes: '[email, group]'
+    p, role:readonly, applications, get, */*, allow
+    p, role:readonly, clusters, get, */*, allow
+    p, role:readonly, logs, *, */*, allow
+  scopes: '[email, group]'
+  policy.default: role:noLogs
