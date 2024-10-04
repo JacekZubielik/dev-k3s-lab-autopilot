@@ -87,7 +87,7 @@ configMapGenerator:
 
 patches:
 - path: patches/ksops.yaml
-- path: patches/rbac.cm.yaml
+# - path: patches/rbac.cm.yaml
 # - target:
 #     group: rbac.authorization.k8s.io
 #     version: v1
