@@ -79,7 +79,7 @@ configMapGenerator:
 - behavior: merge
   name: argocd-cmd-params-cm
   literals:
-  # - "server.insecure=true"
+  - "server.insecure=true"
   # - controller.diff.server.side="true"
   # - controller.diff.include.mutation.webhook="true"
   - applicationsetcontroller.enable.progressive.syncs="true"

@@ -85,12 +85,12 @@ spec:
   - data
   - fast
   # restoreVolumeRecurringJob: enabled
-  fromBackup: s3://k3s-longhorn@us-east-1/?backup=backup-b785babfe816446f&volume=pvc-kube-prometheus
+  fromBackup: s3://k3s-longhorn@us-east-1/?backup=backup-1dbe76e164074cd8&volume=pvc-kube-prometheus
   frontend: blockdev
   # migratable: false
   nodeSelector:
   - fast
   - storage
   numberOfReplicas: 1
-  size: '21474836480'
+  size: '41943040'
   snapshotMaxCount: 10

@@ -10,6 +10,6 @@ data:
     g, ArgoCDViewers, role:readonly
     p, role:readonly, applications, get, */*, allow
     p, role:readonly, clusters, get, */*, allow
-    p, role:readonly, logs, *, */*, allow
+    p, role:readonly, logs, *, */*, deny
   scopes: '[email, group]'
   policy.default: role:readonly
