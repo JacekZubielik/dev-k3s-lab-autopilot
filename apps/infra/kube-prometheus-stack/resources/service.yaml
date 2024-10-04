@@ -28,7 +28,6 @@ subsets:
   ports:
   - name: http-metrics
     port: 9002
-  protocol: TCP
 
 ---
 # Headless service for K3S metrics. No selector
