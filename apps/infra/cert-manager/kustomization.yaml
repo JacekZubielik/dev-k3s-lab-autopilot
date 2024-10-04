@@ -26,7 +26,7 @@ generatorOptions:
 
 helmCharts:
 - name: cert-manager
-  version: 1.16.0
+  version: 1.15.0
   repo: https://charts.jetstack.io
   includeCRDs: false
   namespace: cert-manager
