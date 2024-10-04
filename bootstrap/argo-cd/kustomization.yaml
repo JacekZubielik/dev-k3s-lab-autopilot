@@ -61,20 +61,20 @@ configMapGenerator:
         clusters:
         - "*"
 
-  - |
-    dex.config=- connectors:
-        - config:
-            issuer: https://key.infra.anotherlife.org.pl/application/o/argocd/
-            clientID: $argocd-authentik:dex.authentik.clientID
-            clientSecret: $argocd-authentik:dex.authentik.clientSecret
-            insecureEnableGroups: true
-            scopes:
-              - openid
-              - profile
-              - email
-          name: authentik
-          type: oidc
-          id: authentik
+  # - |
+  #   dex.config=- connectors:
+  #       - config:
+  #           issuer: https://key.infra.anotherlife.org.pl/application/o/argocd/
+  #           clientID: $argocd-authentik:dex.authentik.clientID
+  #           clientSecret: $argocd-authentik:dex.authentik.clientSecret
+  #           insecureEnableGroups: true
+  #           scopes:
+  #             - openid
+  #             - profile
+  #             - email
+  #         name: authentik
+  #         type: oidc
+  #         id: authentik
 
 - behavior: merge
   name: argocd-cmd-params-cm
