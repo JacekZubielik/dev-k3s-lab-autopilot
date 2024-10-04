@@ -22,7 +22,7 @@ configMapGenerator:
   - kustomize.buildOptions.v4.4.0="--output /tmp"
   - statusbadge.enabled="true"
   - resource.compareoptions.ignoreAggregatedRoles="true"
-  - "timeout.reconciliation=15s"
+  # - "timeout.reconciliation=15s"
   - url="https://argocd.infra.anotherlife.org.pl"
 
   - |
