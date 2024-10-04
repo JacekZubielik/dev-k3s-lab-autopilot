@@ -58,7 +58,7 @@ metadata:
 subsets:
 - addresses:
   - ip: 192.168.40.110
-  # - ip: 192.168.40.111
+  - ip: 192.168.40.113
   # - ip: 192.168.40.112
   ports:
   - name: https-metrics
