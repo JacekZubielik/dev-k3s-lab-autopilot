@@ -10,7 +10,7 @@ spec:
         email: ENC[AES256_GCM,data:+hBmmx6PNZ43owfvM1zcFORFlg2j,iv:o4BAl+u7RAhJ8PSrkMwkwCaXKGP0R9P16OOdGbURVnI=,tag:3MoeIsi9LO5/vB4JPmFcgQ==,type:str]
         server: https://acme-v02.api.letsencrypt.org/directory
         privateKeySecretRef:
-            name: cloudflare-access-key
+            name: cloudflare-access-key-production
         solvers:
             - dns01:
                 cloudflare:
@@ -33,8 +33,8 @@ sops:
             cWdCV0VJaC83Z0xieVlUMkdyNER4VncKzeZ4yp4ZOqKKZzVW/rbNTO/O2Nb1GOnk
             jQNSktejvFJLxUx5XwgM40eu2lCsHaTJGHTL5ye7DgJpI3pRcg/LXg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-09-12T12:15:33Z"
-    mac: ENC[AES256_GCM,data:9TjptLs1gr1d0XPtz7ysc1VvN7DtdNgXAMKviTRhtSTUZoOimKADzIQ30yCWB+GT5Qpsj0qGso4274gzBQGABwOYy/EtB20zVSOfnMLHkdIImkOYfKOHswb8diVBR/WJUGj2Hr2Obiv5+vLTAtvj2o7PvPED+e2mj5TTuFoWxtE=,iv:I/BvzqL+FSAKAidteXCW2rgEyNJgrQflpiNoa60H3W0=,tag:cVlKZSOGtLkxeKOCMCsOdA==,type:str]
+    lastmodified: "2024-10-04T22:14:31Z"
+    mac: ENC[AES256_GCM,data:IyzY1Z8f1oN3DkHkSNLHEG3CHrEWDcvHA7Vj0wrFOWNmgR2dAk1j4XrIxWibCAPODMeCDU3iBahjAmh90ELHSqB27abgneNRActIndt0AvCQeFBUz8hp/OXSXq34XW98cObilOeOh9jwpnUHV9kWWrcxDqyltIZKl5trCnomLt4=,iv:2jvCRsGfL9tKFg1c6AcSjjYJJqp7lrEh5zC0rMk1Ya8=,tag:kMjLTShT08rUP0eM9tIDvw==,type:str]
     pgp:
         - created_at: "2024-09-12T12:15:33Z"
           enc: |-
@@ -57,4 +57,4 @@ sops:
             -----END PGP MESSAGE-----
           fp: 6D3FE55384B558E06A1BA364586EFA784A32C981
     encrypted_regex: ^(data|stringData|dnsNames|email|organizations|accessKeyID|region|hostedZoneID|role|dnsZones|apiTokenSecretRef)$
-    version: 3.8.1
+    version: 3.9.0
