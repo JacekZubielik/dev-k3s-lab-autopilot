@@ -1,0 +1,74 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    prometheus.io/scrap-with: kube-prometheus-stack
+    release: kube-prometheus-stack
+  name: argocd-metrics
+  namespace: argocd
+spec:
+  ttlSecondsAfterFinished: 100
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: argocd-metrics
+  namespaceSelector:
+    any: true
+  endpoints:
+  - port: metrics
+
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    prometheus.io/scrap-with: kube-prometheus-stack
+    release: kube-prometheus-stack
+  name: argocd-server-metrics
+  namespace: argocd
+spec:
+  ttlSecondsAfterFinished: 100
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: argocd-server-metrics
+  namespaceSelector:
+    any: true
+  endpoints:
+  - port: metrics
+
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    prometheus.io/scrap-with: kube-prometheus-stack
+    release: kube-prometheus-stack
+  name: argocd-repo-server-metrics
+  namespace: argocd
+spec:
+  ttlSecondsAfterFinished: 100
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: argocd-repo-server
+  namespaceSelector:
+    any: true
+  endpoints:
+  - port: metrics
+
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    prometheus.io/scrap-with: kube-prometheus-stack
+    release: kube-prometheus-stack
+  name: argocd-applicationset-controller-metrics
+  namespace: argocd
+spec:
+  ttlSecondsAfterFinished: 100
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: argocd-applicationset-controller
+  namespaceSelector:
+    any: true
+  endpoints:
+  - port: metrics
