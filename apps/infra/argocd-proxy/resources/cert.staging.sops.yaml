@@ -1,0 +1,18 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+    annotations:
+        argocd.argoproj.io/sync-wave: "1"
+    name: argocd-staging
+spec:
+    dnsNames:
+        - argocd.infra.anotherlife.org.pl
+    issuerRef:
+        kind: ClusterIssuer
+        name: letsencrypt-staging
+    commonName: argocd.infra.anotherlife.org.pl
+    secretName: argocd-cf-staging
+    # 90d
+    duration: 2160h0m0s
+    # 30d
+    renewBefore: 720h0m0s
