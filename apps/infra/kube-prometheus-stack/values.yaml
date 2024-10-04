@@ -555,7 +555,7 @@ grafana:
 
   grafana.ini:
       auth:
-          signout_redirect_url: "https://key.infra.anotherlife.org.pl/application/o/<Slug of the application from above>/end-session/"
+          signout_redirect_url: "https://key.infra.anotherlife.org.pl/application/o/grafana/end-session/"
           oauth_auto_login: true
       auth.generic_oauth:
           name: authentik
