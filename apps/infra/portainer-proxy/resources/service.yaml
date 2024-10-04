@@ -1,0 +1,18 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app.kubernetes.io/name: portainer-proxy
+  name: portainer-proxy
+  namespace: traefik
+spec:
+  externalName: 192.168.40.3
+  type: ExternalName
+  ports:
+  - name: websecure
+    port: 9443
+    targetPort: 9443
+  selector:
+    app.kubernetes.io/instance: portainer-proxy
+    task: portainer-proxy

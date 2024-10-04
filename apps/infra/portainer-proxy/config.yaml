@@ -1,0 +1,15 @@
+annotations: ''
+appName: portainer-proxy
+appRole: infra
+destNamespace: traefik
+destProject: "infra"
+destServer: https://kubernetes.default.svc
+exclude: ""
+include: ""
+labels: ""
+srcPath: apps/infra/portainer-proxy
+srcRepoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot.git
+srcTargetRevision: ""
+syncPriority: stage_6
+syncWave: 0
+userGivenName: portainer-proxy
