@@ -19,9 +19,9 @@ spec:
           # || HostRegexp(`{subdomain:[a-z0-9]+}.anotherlife.org.pl`) && PathPrefix(`/outpost.goauthentik.io/`)
           match: ENC[AES256_GCM,data:uY+43r5sf1QPZfbMXRgi21uulEuqEKYXJaDIiipM2w32suG9z+FOnRpd,iv:ORp0S6c8Inf5hF6ojVzeuw0ildnLZryfOY4I1O1zYB4=,tag:oM+iEqzSBa5ue0Vg2usifQ==,type:str]
           priority: 10
-          middlewares:
-            - name: chain-authentik
-              namespace: traefik
+          # middlewares:
+          #   - name: chain-authentik
+          #     namespace: traefik
           services:
             - name: portainer-proxy
               port: 9443
@@ -58,8 +58,8 @@ sops:
             TU9nSHVTcTRaaEhqTndZdlpheVdXdEUKmBiNBeMcm7AYz/zfYBuvJuwgOyTBY5d9
             aadwp3W7aReQdNSFQ+yZdBn+cQPE6RDPFNuWU/8hggCRdr/QyZdLUA==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-10-04T01:24:41Z"
-    mac: ENC[AES256_GCM,data:QHytix+myZraFSJou5O4BjVHuAIKaAAsF3ABsmB0tNvuIx8aP4v8lSShrn4SmWPpLKVyr2A7Ecdor3f1aN8hhltH9wb9q2lAy7SFW8+/XMmJfkMl4ygtMXV/8DxI2To9lyiZrKRSD5Kv4gCQSs/Pgk2XVaFW9aU/h1xqkhhXi0Q=,iv:xrHGlVS/JjlV0Zz3A6loWER3E0i0Bgw/vqNvB1hlnPI=,tag:HGN8DuGYbuOY0EuePk2VSw==,type:str]
+    lastmodified: "2024-10-04T01:26:41Z"
+    mac: ENC[AES256_GCM,data:/DgGQlNxDepXAvDOw6oUydAYGTtuwDZJv2UrGUaK5f00tTsY6inlU4FnI7SSIMYxg2pJQS2c2TxPJdXd0Hltf9d6xiOlMBGP4iEDOFsXe13tCSqTat19QyVtadgm/G2LM5/WXpJfeSSg6sIRjfOaIEJztnc7ndjsElJlQ1jBo2g=,iv:1WpFUL8J7520FSaD8nKkpN4F/eJFfCDxmJ1zPG8rue0=,tag:Lg0EEbkRmrlWIghpLh6Y5w==,type:str]
     pgp:
         - created_at: "2024-10-04T01:04:18Z"
           enc: |-
