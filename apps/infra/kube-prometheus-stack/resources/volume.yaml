@@ -92,5 +92,5 @@ spec:
   - fast
   - storage
   numberOfReplicas: 1
-  size: '41943040'
+  size: '42949672960'
   snapshotMaxCount: 10
