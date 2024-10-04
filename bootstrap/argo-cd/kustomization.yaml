@@ -88,11 +88,11 @@ configMapGenerator:
 patches:
 - path: patches/ksops.yaml
 - path: patches/rbac.cm.yaml
-- target:
-    group: rbac.authorization.k8s.io
-    version: v1
-    kind: ClusterRoleBinding
-  patch: |-
-    - op: replace
-      path: /subjects/0/namespace
-      value: default
+# - target:
+#     group: rbac.authorization.k8s.io
+#     version: v1
+#     kind: ClusterRoleBinding
+#   patch: |-
+#     - op: replace
+#       path: /subjects/0/namespace
+#       value: default
