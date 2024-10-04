@@ -43,14 +43,14 @@ configMapGenerator:
         command: [ "sh", "-c" ]
         args: [ "kustomize build --enable-helm" ]
 
-  # - |
-  #   resource.exclusions=- apiGroups:
-  #       - "snapshot.storage.k8s.io"
-  #       kinds:
-  #       - "VolumeSnapshot"
-  #       - "VolumeSnapshotContent"
-  #       clusters:
-  #       - "*"
+  - |
+    resource.exclusions=- apiGroups:
+        - "snapshot.storage.k8s.io"
+        kinds:
+        - "VolumeSnapshot"
+        - "VolumeSnapshotContent"
+        clusters:
+        - "*"
 
   - |
     resourceExclusions=- apiGroups:
@@ -65,8 +65,8 @@ configMapGenerator:
     dex.config=- connectors:
         - config:
             issuer: https://key.infra.anotherlife.org.pl/application/o/argocd/
-            clientID: $argocd-secret:dex.authentik.clientID
-            clientSecret: $argocd-secret:dex.authentik.clientSecret
+            clientID: $argocd-authentik:dex.authentik.clientID
+            clientSecret: $argocd-authentik:dex.authentik.clientSecret
             insecureEnableGroups: true
             scopes:
               - openid
