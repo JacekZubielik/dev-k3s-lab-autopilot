@@ -10,7 +10,6 @@ metadata:
 resources:
 - resources/pv.yaml
 - resources/pvc.yaml
-- resources/secret.minio.yaml
 - resources/service.monitor.yaml
 - resources/service.yaml
 - resources/volume.yaml
@@ -18,7 +17,6 @@ resources:
 # - resources/backing-image.yaml
 # - resources/ns.yaml
 # - resources/prometheus.rule.yaml
-# - resources/pve-scrape-config.yaml
 # - resources/volume.snapshot.yaml
 
 generators:
