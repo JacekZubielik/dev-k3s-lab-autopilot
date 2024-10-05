@@ -1,44 +1,44 @@
 ---
 scrape_configs:
 
-- job_name: "cert-manager"
-  static_configs:
-    - targets: ['cert-manager.cert-manager.svc:9402']
-  relabel_configs:
-    - action: replace
-      replacement: 'cert-manager'
-      target_label: instance
+# - job_name: "cert-manager"
+#   static_configs:
+#     - targets: ['cert-manager.cert-manager.svc:9402']
+#   relabel_configs:
+#     - action: replace
+#       replacement: 'cert-manager'
+#       target_label: instance
 
-- job_name: 'argocd-server-metrics'
-  static_configs:
-  - targets: ['argocd-server-metrics.argocd.svc:8083', 'argocd-repo-server.argocd.svc:8084']
+# - job_name: 'argocd-server-metrics'
+#   static_configs:
+#   - targets: ['argocd-server-metrics.argocd.svc:8083', 'argocd-repo-server.argocd.svc:8084']
 
-- job_name: 'argocd-metrics'
-  static_configs:
-  - targets: ['argocd-metrics.argocd.svc:8082']
+# - job_name: 'argocd-metrics'
+#   static_configs:
+#   - targets: ['argocd-metrics.argocd.svc:8082']
 
 - job_name: 'mktxp-exporter'
   static_configs:
   - targets: ['mktxp.mktxp.svc:49090']
 
-- job_name: 'pve'
-  static_configs:
-    - targets:
-      - "192.168.40.3:9221"
-  metrics_path: /pve
-  params:
-    module: [default]
-    cluster: ['1']
-    node: ['1']
+# - job_name: 'pve'
+#   static_configs:
+#     - targets:
+#       - "192.168.40.3:9221"
+#   metrics_path: /pve
+#   params:
+#     module: [default]
+#     cluster: ['1']
+#     node: ['1']
 
-- job_name: 'pve-node-exporter'
-  relabel_configs:
-  - action: replace
-    source_labels: [ __meta_kubernetes_pod_node_name]
-  static_configs:
-    - targets:
-      - "192.168.40.3:9100"
-  metrics_path: /metrics
+# - job_name: 'pve-node-exporter'
+#   relabel_configs:
+#   - action: replace
+#     source_labels: [ __meta_kubernetes_pod_node_name]
+#   static_configs:
+#     - targets:
+#       - "192.168.40.3:9100"
+#   metrics_path: /metrics
 
 - job_name: 'kubernetes-service-endpoints'
   kubernetes_sd_configs:

@@ -8,14 +8,14 @@ metadata:
     argocd.argoproj.io/sync-options: Delete=true,Prune=true
 
 resources:
-- resources/ns.yaml
 - resources/chains.yaml
 - resources/middlewares.yaml
-- resources/tlsoption.yaml
+- resources/ns.yaml
+- resources/prometheus.cm.yaml
+- resources/prometheus.rule.yaml
 - resources/service.monitor.yaml
 - resources/service.yaml
-- resources/prometheus.rule.yaml
-- resources/prometheus.configmap.yaml
+- resources/tlsoption.yaml
 # - resources/tlsstore.yaml
 
 generators:

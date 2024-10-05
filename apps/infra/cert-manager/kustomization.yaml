@@ -11,6 +11,7 @@ metadata:
 resources:
 - resources/ns.yaml
 - resources/pod.monitor.yaml
+- resources/prometheus.cm.yaml
 - resources/service.monitor.yaml
 # - resources/cert.default.svc.yaml
 # - resources/issuer.default.svc.yaml

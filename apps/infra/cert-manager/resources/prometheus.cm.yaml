@@ -1,0 +1,20 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cert-manager-prometheus-config
+  labels:
+    name: cert-manager-prometheus-config
+data:
+  prometheus.yml: |-
+    global:
+      scrape_interval: 30s
+      evaluation_interval: 5s
+    scrape_configs:
+      - job_name: "cert-manager"
+        static_configs:
+          - targets: ['cert-manager.cert-manager.svc:9402']
+        relabel_configs:
+          - action: replace
+            replacement: 'cert-manager'
+            target_label: instance

@@ -3,25 +3,25 @@ apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
   labels:
-    # app: cert-manager
+    # app: minio-proxy
     prometheus.io/scrap-with: kube-prometheus-stack
     release: kube-prometheus-stack
-  name: cert-manager
-  namespace: cert-manager
+  name: minio-proxy
+  namespace: minio
 spec:
   jobLabel: app.kubernetes.io/name
   selector:
     matchLabels:
-      app: cert-manager
+      app: minio-proxy
       # app.kubernetes.io/component: controller
       # app.kubernetes.io/instance: cert-manager
       # app.kubernetes.io/name: cert-manager
   namespaceSelector:
     matchNames:
-    - cert-manager
+    - minio
   endpoints:
   - interval: 30s
-    path: /metrics
-    port: tcp-prometheus-servicemonitor
+    path: /minio/v2/metrics/cluster
+    port: minio-api
     scheme: http
     scrapeTimeout: 30s

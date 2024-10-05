@@ -8,8 +8,10 @@ metadata:
     argocd.argoproj.io/sync-options: Delete=true,Prune=true
 
 resources:
-- resources/service.yaml
+- resources/ns.yaml
 - resources/prometheus.cm.yaml
+- resources/service.monitor.yaml
+- resources/service.yaml
 
 generators:
 - ksops-generator.yaml

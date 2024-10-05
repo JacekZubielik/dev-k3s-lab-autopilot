@@ -2,9 +2,9 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: prometheus-config
+  name: minio-prometheus-config
   labels:
-    name: prometheus-config
+    name: minio-prometheus-config
 data:
   prometheus.yml: |-
     global:

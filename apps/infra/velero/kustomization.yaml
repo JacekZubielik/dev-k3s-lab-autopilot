@@ -9,11 +9,11 @@ metadata:
 
 resources:
 - resources/ns.yaml
-- resources/service.monitor.yaml
+- resources/prometheus.cm.yaml
 - resources/prometheus.rule.yaml
+- resources/service.monitor.yaml
 # - resources/backup.storage.location.yaml
 # - resources/volume.snapshot.location.yaml
-- resources/prometheus.configmap.yaml
 generators:
 - ksops-generator.yaml
 
