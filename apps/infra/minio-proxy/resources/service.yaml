@@ -4,6 +4,7 @@ kind: Service
 metadata:
   labels:
     app: minio-proxy
+    app.kubernetes.io/name: minio-proxy
   name: minio-proxy
   namespace: minio
 spec:
@@ -14,6 +15,7 @@ spec:
     port: 9001
     targetPort: 9001
   selector:
+    app.kubernetes.io/name: minio-proxy
     app: minio-proxy
     task: minio-proxy
 ---
