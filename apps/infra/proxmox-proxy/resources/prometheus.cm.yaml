@@ -14,15 +14,28 @@ data:
 
       - job_name: 'pve-node-exporter'
         static_configs:
-          - targets: ['192.168.40.3:9100']
+          - targets: ['proxmox-proxy.proxmox-proxy.svc:9100']
         metrics_path: /metrics
 
       - job_name: 'pve'
         static_configs:
-          - targets: ['192.168.40.3:9221']
+          - targets: ['proxmox-proxy.proxmox-proxy.svc:9221']
         metrics_path: /pve
         params:
           module: [default]
+
+
+  # - job_name: 'pve-node-exporter'
+  #   static_configs:
+  #     - targets: ['192.168.40.3:9100']
+  #   metrics_path: /metrics
+
+  # - job_name: 'pve'
+  #   static_configs:
+  #     - targets: ['192.168.40.3:9221']
+  #   metrics_path: /pve
+  #   params:
+  #     module: [default]
 
   # - job_name: 'pve'
   #   static_configs:

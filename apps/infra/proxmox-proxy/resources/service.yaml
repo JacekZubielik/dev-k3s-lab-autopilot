@@ -19,7 +19,6 @@ spec:
   - name: pve
     port: 9221
     targetPort: 9221
-
   selector:
     app.kubernetes.io/instance: proxmox-proxy
     task: proxmox-proxy
