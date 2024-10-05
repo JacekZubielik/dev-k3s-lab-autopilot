@@ -88,12 +88,12 @@ scrape_configs:
     regex: .*metrics
     source_labels: [__meta_kubernetes_service_port_name]
 
-- job_name: 'minio-job'
-  bearer_token: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJwcm9tZXRoZXVzIiwic3ViIjoicmFiYml0IiwiZXhwIjo0ODgxNjgyNTc1fQ.AMPM23R2fB7ha4NJ11Ph-h6rHWQ6YT3eRcb2yzZ6HMfxZYRgSUXTG2p0dXwkmR0qUzQ2e0lNg4_LX-g8w-OdOg # $minio:bearer_token
-  metrics_path: /minio/v2/metrics/cluster
-  scheme: http
-  static_configs:
-  - targets: ['192.168.40.3:9002']
+# - job_name: 'minio-job'
+#   bearer_token: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJwcm9tZXRoZXVzIiwic3ViIjoicmFiYml0IiwiZXhwIjo0ODgxNjgyNTc1fQ.AMPM23R2fB7ha4NJ11Ph-h6rHWQ6YT3eRcb2yzZ6HMfxZYRgSUXTG2p0dXwkmR0qUzQ2e0lNg4_LX-g8w-OdOg # $minio:bearer_token
+#   metrics_path: /minio/v2/metrics/cluster
+#   scheme: http
+#   static_configs:
+#   - targets: ['192.168.40.3:9002']
 
 
 

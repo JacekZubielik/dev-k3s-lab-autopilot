@@ -9,11 +9,11 @@ metadata:
 
 resources:
 - resources/ns.yaml
+- resources/prometheus.cm.yaml
 - resources/pv.yaml
 - resources/pvc.yaml
 - resources/volume.yaml
 - velero/schedule.yaml
-- resources/prometheus.configmap.yaml
 
 generators:
 - ksops-generator.yaml

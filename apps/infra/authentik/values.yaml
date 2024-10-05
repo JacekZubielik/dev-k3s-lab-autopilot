@@ -332,7 +332,7 @@ server:
       #     app.kubernetes.io/component=server-metrics
       scheme: ""
       tlsConfig: {}
-      namespace: "monitoring"
+      namespace: "authentik"
       labels:
         app: authentik
         release: kube-prometheus-stack
