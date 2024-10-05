@@ -13,6 +13,7 @@ spec:
   selector:
     matchLabels:
       app: kube-prometheus-stack-prometheus
+
 ---
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
@@ -36,17 +37,9 @@ spec:
   namespaceSelector:
     matchNames:
     - default
-  # selector:
-  #   matchLabels:
-  #     # operated-prometheus: "true"
-  #     external-ip: "192.168.40.3"
   selector:
     matchLabels:
       app: minio-api
-    endpoints:
-    - port: minio-api
-
-
 
 ---
 apiVersion: monitoring.coreos.com/v1
