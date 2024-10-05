@@ -2,6 +2,6 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: traefik
+  name: minio-proxy
   annotations:
     argocd.argoproj.io/sync-wave: "-4"
