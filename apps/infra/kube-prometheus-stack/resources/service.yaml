@@ -14,7 +14,7 @@ spec:
     port: 9002
     protocol: TCP
     targetPort: 9002
-  type: LoadBalancer # ClusterIP
+  type:  ClusterIP # LoadBalancer
 ---
 # Endpoint for the headless service without selector
 apiVersion: v1
