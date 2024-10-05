@@ -327,7 +327,7 @@ server:
       regex: 'kube_(daemonset|deployment|pod|namespace|node|statefulset).+'
       sourceLabels: [__name__]
       selector:
-        matchLabels:
+        # matchLabels:
           # app: authentik
           app.kubernetes.io/component=server-metrics
       scheme: ""
