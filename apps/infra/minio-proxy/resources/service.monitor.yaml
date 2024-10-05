@@ -9,7 +9,7 @@ metadata:
   name: minio-proxy
   namespace: minio-proxy
 spec:
-  jobLabel: minio-job #app.kubernetes.io/name
+  jobLabel: app.kubernetes.io/name
   selector:
     matchLabels:
       app: minio-proxy
