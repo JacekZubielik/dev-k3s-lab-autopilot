@@ -512,18 +512,26 @@ grafana:
       external-dns:
         gnetId: 15038
         revision: 3
-        datasource: Prometheus
+        datasource:
+        - name: DS_PROMETHEUS
+          value: Prometheus
       authentik:
         gnetId: 14837
-        datasource: Prometheus
+        datasource:
+        - name: DS_PROMETHEUS
+          value: Prometheus
       traefik3:
         gnetId: 12250
         revision: 1
-        datasource: Prometheus
+        datasource:
+        - name: DS_PROMETHEUS
+          value: Prometheus
       traefik5:
         gnetId: 18111
         revision: 1
-        datasource: Prometheus
+        datasource:
+        - name: DS_PROMETHEUS
+          value: Prometheus
 
     storage:
       minio-dashboard:
