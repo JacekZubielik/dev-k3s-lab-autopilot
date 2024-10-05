@@ -329,7 +329,8 @@ server:
       selector:
         # matchLabels:
           # app: authentik
-        app.kubernetes.io/component=server-metrics
+        prometheus: kube-prometheus
+        # app.kubernetes.io/component=server-metrics
       scheme: ""
       tlsConfig: {}
       namespace: "authentik"
