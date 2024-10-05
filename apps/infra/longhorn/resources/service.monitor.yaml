@@ -19,4 +19,4 @@ spec:
   endpoints:
   - port: manager
     interval: 15s
-    scrapeTimeout: 30s
+    scrapeTimeout: 15s

@@ -16,35 +16,35 @@ spec:
     protocol: TCP
   selector:
     app: longhorn-ui
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: alertmanager-longhorn
-  namespace: longhorn-system
-spec:
-  type: NodePort
-  ports:
-  - name: web
-    nodePort: 30903
-    port: 9093
-    targetPort: web
-    protocol: TCP
-  selector:
-    alertmanager: longhorn
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: prometheus-longhorn
-  namespace: longhorn-system
-spec:
-  type: NodePort
-  ports:
-  - name: web
-    nodePort: 32452 # 30904
-    port: 9090
-    targetPort: web
-    protocol: TCP
-  selector:
-    prometheus: longhorn
+# ---
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: alertmanager-longhorn
+#   namespace: longhorn-system
+# spec:
+#   type: NodePort
+#   ports:
+#   - name: web
+#     nodePort: 30903
+#     port: 9093
+#     targetPort: web
+#     protocol: TCP
+#   selector:
+#     alertmanager: longhorn
+# ---
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: prometheus-longhorn
+#   namespace: longhorn-system
+# spec:
+#   type: NodePort
+#   ports:
+#   - name: web
+#     nodePort: 32452 # 30904
+#     port: 9090
+#     targetPort: web
+#     protocol: TCP
+#   selector:
+#     prometheus: longhorn
