@@ -2060,7 +2060,7 @@ prometheus:
 
     serviceMonitorNamespaceSelector: {}
     podMonitorSelectorNilUsesHelmValues: false
-    podMonitorSelector: {}
+    # podMonitorSelector: {}
 
     podMonitorNamespaceSelector: false
     podMonitorSelector:
@@ -2134,7 +2134,7 @@ prometheus:
           storageClassName: longhorn-retain
           resources:
             requests:
-              storage: 20Gi
+              storage: 40Gi
           volumeName: pv-kube-prometheus # must reference Persistent Volume
 
     volumes: []

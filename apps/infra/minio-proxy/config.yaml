@@ -1,7 +1,7 @@
 annotations: ''
 appName: minio-proxy
 appRole: infra
-destNamespace: minio
+destNamespace: minio-proxy
 destProject: "infra"
 destServer: https://kubernetes.default.svc
 exclude: ""

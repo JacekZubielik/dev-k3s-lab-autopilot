@@ -7,7 +7,7 @@ metadata:
     prometheus.io/scrap-with: kube-prometheus-stack
     release: kube-prometheus-stack
   name: minio-proxy
-  namespace: minio
+  namespace: minio-proxy
 spec:
   jobLabel: minio-job #app.kubernetes.io/name
   selector:
@@ -15,7 +15,7 @@ spec:
       app: minio-proxy
   namespaceSelector:
     matchNames:
-    - minio
+    - minio-proxy
   endpoints:
   - interval: 15s
     path: /minio/v2/metrics/cluster
