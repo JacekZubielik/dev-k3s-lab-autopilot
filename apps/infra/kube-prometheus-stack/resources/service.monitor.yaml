@@ -19,14 +19,13 @@ kind: ServiceMonitor
 metadata:
   labels:
     serviceMonitorSelector: prometheus
-    app: minio
     release: kube-prometheus-stack
   name: minio-prometheus-servicemonitor
   namespace: monitoring
 spec:
   jobLabel: app.kubernetes.io/name
   endpoints:
-    - port: http-metrics
+    - port: minio-api
       path: /minio/v2/metrics/cluster
       scheme: http
       tlsConfig:
@@ -36,11 +35,17 @@ spec:
         key: token
   namespaceSelector:
     matchNames:
-    - kube-system
+    - default
+  # selector:
+  #   matchLabels:
+  #     operated-prometheus: "true"
+  #     external-ip: 192.168.40.3"
   selector:
-    matchLabels:
-      app.kubernetes.io/name: minio
-      external-ip: 192.168.40.3"
+    app.kubernetes.io/instance: minio-api
+    task: minio-api
+
+
+
 ---
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
