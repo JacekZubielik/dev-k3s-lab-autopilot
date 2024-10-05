@@ -6,7 +6,7 @@ metadata:
   labels:
     name: proxmox-proxy-prometheus-config
 data:
-  prometheus.yml: |-
+  prometheus.yml: |
     global:
       scrape_interval: 15s
       evaluation_interval: 5s
@@ -14,14 +14,12 @@ data:
 
       - job_name: 'pve-node-exporter'
         static_configs:
-          - targets:
-            - "192.168.40.3:9100"
+          - targets: ['192.168.40.3:9100']
         metrics_path: /metrics
 
       - job_name: 'pve'
         static_configs:
-          - targets:
-            - "192.168.40.3:9221"
+          - targets: ['192.168.40.3:9221']
         metrics_path: /pve
         params:
           module: [default]
