@@ -19,7 +19,7 @@ apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
   labels:
-    serviceMonitorSelector: prometheus
+    prometheus.io/scrap-with: kube-prometheus-stack
     release: kube-prometheus-stack
   name: minio-prometheus-servicemonitor
   namespace: monitoring
