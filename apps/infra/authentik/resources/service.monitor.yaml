@@ -13,24 +13,26 @@ spec:
   selector:
     matchLabels:
       app.kubernetes.io/name: authentik
+      app.kubernetes.io/instance: kube-prometheus-stack
+      prometheus: kube-prometheus-stack
+      component: kube-proxy
   namespaceSelector:
       any: true
   endpoints:
   - interval: 30s
-    path: /metrics
-    port: metrics
-    scheme: http
     scrapeTimeout: 3s
+    path: /metrics
+    # port: metrics
+    scheme: http
+
     metricRelabelings:
-    - action: keep
+    - sourceLabels: [__name__]
+      action: keep
       regex: 'kube_(daemonset|deployment|pod|namespace|node|statefulset).+'
-      sourceLabels: [__name__]
     relabelings:
     - sourceLabels: [__meta_kubernetes_pod_node_name]
-      separator: ;
+      action: replace
       regex: ^(.*)$
+      separator: ;
       targetLabel: nodename
       replacement: $1
-      action: replace
-    selector:
-      prometheus: kube-prometheus-stack # kube-prometheus
