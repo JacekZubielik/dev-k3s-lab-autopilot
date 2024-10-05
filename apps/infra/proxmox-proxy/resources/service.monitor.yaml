@@ -3,16 +3,14 @@ apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
   labels:
-    app: proxmox-proxy
     prometheus.io/scrap-with: kube-prometheus-stack
     release: kube-prometheus-stack
   name: proxmox-proxy
   namespace: proxmox-proxy
 spec:
-  jobLabel: app.kubernetes.io/name
   selector:
     matchLabels:
-      app: proxmox-proxy
+      app.kubernetes.io/name: proxmox-proxy
   namespaceSelector:
     matchNames:
     - proxmox-proxy

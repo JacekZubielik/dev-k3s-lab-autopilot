@@ -27,6 +27,8 @@ spec:
 apiVersion: v1
 kind: Endpoints
 metadata:
+  labels:
+    app.kubernetes.io/name: proxmox-proxy
   name: proxmox-proxy
   namespace: proxmox-proxy
 subsets:
