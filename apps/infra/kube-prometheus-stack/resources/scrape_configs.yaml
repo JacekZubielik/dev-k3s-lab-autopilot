@@ -128,7 +128,7 @@ scrape_configs:
   static_configs:
   - targets: ['argocd-metrics.argocd.svc:8082']
 
-- job_name: node-exporter
+- job_name: 'node-exporter'
   relabel_configs:
   - action: replace
     source_labels: [ __meta_kubernetes_pod_node_name]
