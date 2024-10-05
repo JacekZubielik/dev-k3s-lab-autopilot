@@ -23,8 +23,8 @@ spec:
     scrapeTimeout: 3s
     metricRelabelings:
     - action: keep
-    regex: 'kube_(daemonset|deployment|pod|namespace|node|statefulset).+'
-    sourceLabels: [__name__]
+      regex: 'kube_(daemonset|deployment|pod|namespace|node|statefulset).+'
+      sourceLabels: [__name__]
     relabelings:
     - sourceLabels: [__meta_kubernetes_pod_node_name]
       separator: ;
