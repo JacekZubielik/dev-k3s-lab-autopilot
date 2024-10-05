@@ -34,12 +34,17 @@ data:
         - target_label: __address__
           replacement: 192.168.40.3:9221 # ['proxmox-proxy.proxmox-proxy.svc.cluster.local:9221'] # 192.168.40.3:9221
 
+
+
 # - job_name: 'pve'
 #   static_configs:
 #     - targets: ['proxmox-proxy.proxmox-proxy.svc.cluster.local:9221']
 #   metrics_path: /pve
 #   params:
 #     module: [default]
+
+
+
 
 
 
