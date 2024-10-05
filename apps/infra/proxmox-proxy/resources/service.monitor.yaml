@@ -8,6 +8,7 @@ metadata:
   name: proxmox-proxy
   namespace: proxmox-proxy
 spec:
+  jobLabel: app.kubernetes.io/name
   selector:
     matchLabels:
       app.kubernetes.io/name: proxmox-proxy

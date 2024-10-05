@@ -12,6 +12,7 @@ metadata:
 resources:
 - resources/ns.yaml
 - resources/prometheus.cm.yaml
+- resources/service.monitor.yaml
 
 generators:
 - ksops-generator.yaml

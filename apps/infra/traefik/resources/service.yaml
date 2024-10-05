@@ -7,8 +7,8 @@ metadata:
     app: traefik-metrics
   namespace: traefik
 spec:
-  selector:
-    app.kubernetes.io/name: traefik
   ports:
   - name: metrics
     port: 9100
+  selector:
+    app.kubernetes.io/name: traefik

@@ -19,8 +19,6 @@ spec:
     targetPort: 9002
   selector:
     app.kubernetes.io/name: minio-proxy
-    app: minio-proxy
-    task: minio-proxy
 ---
 apiVersion: v1
 kind: Endpoints
@@ -35,4 +33,3 @@ subsets:
     port: 9001
   - name: minio-api
     port: 9002
-

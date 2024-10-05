@@ -7,10 +7,10 @@ metadata:
   name: mktxp-exporter
 spec:
   type: ClusterIP
-  selector:
-    app: mktxp-exporter
   ports:
-  - protocol: TCP
-    name: metrics
+  - name: metrics
     port: 49090
     targetPort: 49090
+    protocol: TCP
+  selector:
+    app: mktxp-exporter

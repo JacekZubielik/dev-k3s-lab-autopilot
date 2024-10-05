@@ -59,9 +59,7 @@ service:
 serviceAccount:
   create: true
   name: ""
-  annotations: {}
   automountServiceAccountToken: true
-  labels: {}
 
 rbac:
   create: true
@@ -88,38 +86,3 @@ resources:
   limits:
     cpu: 500m
     memory: 300Mi
-
-podDisruptionBudget: {}
-
-metrics:
-  enabled: true
-  podAnnotations: {}
-  serviceMonitor:
-    enabled: true
-    namespace: "external-dns"
-    interval: "30s"
-    scrapeTimeout: "3s"
-    selector:
-      prometheus: kube-prometheus-stack
-      matchLabels:
-        app: external-dns
-    metricRelabelings:
-    - action: keep
-      regex: 'kube_(daemonset|deployment|pod|namespace|node|statefulset).+'
-      sourceLabels: [__name__]
-    relabelings:
-    - sourceLabels: [__meta_kubernetes_pod_node_name]
-      separator: ;
-      regex: ^(.*)$
-      targetLabel: nodename
-      replacement: $1
-      action: replace
-    honorLabels: true
-    labels:
-      app: external-dns
-      release: kube-prometheus-stack
-      prometheus.io/scrap-with: kube-prometheus-stack
-    jobLabel: app.kubernetes.io/name
-
-  googlePodMonitor:
-    enabled: false

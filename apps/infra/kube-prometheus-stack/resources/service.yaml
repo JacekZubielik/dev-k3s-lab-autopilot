@@ -1,6 +1,5 @@
 
 ---
-# Headless service for K3S metrics. No selector
 apiVersion: v1
 kind: Service
 metadata:
@@ -18,7 +17,6 @@ spec:
   type: ClusterIP
 
 ---
-# Endpoint for the headless service without selector
 apiVersion: v1
 kind: Endpoints
 metadata:

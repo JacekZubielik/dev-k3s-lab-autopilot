@@ -12,7 +12,7 @@ spec:
   jobLabel: app.kubernetes.io/name
   selector:
     matchLabels:
-      app: minio-proxy
+      app.kubernetes.io/name: minio-proxy
   namespaceSelector:
     matchNames:
     - minio-proxy

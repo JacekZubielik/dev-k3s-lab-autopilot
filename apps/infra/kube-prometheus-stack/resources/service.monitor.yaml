@@ -2,7 +2,7 @@
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
-  name: prometheus-self
+  name: kube-prometheus-self
   labels:
     app: kube-prometheus-stack-prometheus
     prometheus.io/scrap-with: kube-prometheus-stack

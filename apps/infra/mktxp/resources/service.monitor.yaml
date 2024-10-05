@@ -4,18 +4,20 @@ kind: ServiceMonitor
 metadata:
   labels:
     app: mktxp-exporter
-    release: kube-prometheus-stack
     prometheus.io/scrap-with: kube-prometheus-stack
+    release: kube-prometheus-stack
   name: mktxp-exporter
   namespace: mktxp
 spec:
   jobLabel: app.kubernetes.io/name
-  endpoints:
-  - interval: 30s
-    port: metrics
-  namespaceSelector:
-    matchNames:
-    - mktxp
   selector:
     matchLabels:
       app: mktxp-exporter
+  namespaceSelector:
+    matchNames:
+    - mktxp
+  endpoints:
+  - interval: 15s
+    port: metrics
+
+

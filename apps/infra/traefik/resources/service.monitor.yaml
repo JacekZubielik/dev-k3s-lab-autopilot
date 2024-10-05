@@ -4,12 +4,18 @@ kind: ServiceMonitor
 metadata:
   labels:
     app: traefik
-    release: kube-prometheus-stack
     prometheus.io/scrap-with: kube-prometheus-stack
+    release: kube-prometheus-stack
   name: traefik
   namespace: traefik
 spec:
   jobLabel: app.kubernetes.io/name
+  selector:
+    matchLabels:
+      app: traefik-metrics
+  namespaceSelector:
+    matchNames:
+    - traefik
   endpoints:
   - port: metrics
     path: /metrics
@@ -28,10 +34,5 @@ spec:
       targetLabel: nodename
       replacement: $1
       action: replace
-  namespaceSelector:
-    matchNames:
-    - traefik
-  selector:
-    matchLabels:
-      app: traefik-metrics
-      # release: kube-prometheus-stack
+
+

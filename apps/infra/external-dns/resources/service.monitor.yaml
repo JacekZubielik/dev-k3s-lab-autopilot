@@ -1,0 +1,38 @@
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    app: external-dns
+    prometheus.io/scrap-with: kube-prometheus-stack
+    release: kube-prometheus-stack
+  name: external-dns
+  namespace: external-dns
+spec:
+  jobLabel: app.kubernetes.io/name
+  selector:
+    matchLabels:
+      app: external-dns
+  namespaceSelector:
+    matchNames:
+    - external-dns
+  endpoints:
+    - port: http
+      path: /metrics
+      interval: 30s
+      scrapeTimeout: 10s
+      metricRelabelings:
+      - action: keep
+        regex: 'kube_(daemonset|deployment|pod|namespace|node|statefulset).+'
+        sourceLabels: [__name__]
+      relabelings:
+      - sourceLabels: [__meta_kubernetes_pod_node_name]
+        separator: ;
+        regex: ^(.*)$
+        targetLabel: nodename
+        replacement: $1
+        action: replace
+    - port: http-webhook
+      path: /metrics
+      interval: 30s
+      scrapeTimeout: 10s
