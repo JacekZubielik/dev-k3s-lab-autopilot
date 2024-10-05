@@ -3,7 +3,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   labels:
-    app.kubernetes.io/name: proxmox-proxy
+    app: proxmox-proxy
     name: proxmox-proxy-prometheus-config
   name: proxmox-proxy-prometheus-config
 data:

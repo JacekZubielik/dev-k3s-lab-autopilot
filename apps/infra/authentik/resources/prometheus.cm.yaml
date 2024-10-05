@@ -14,4 +14,4 @@ data:
     scrape_configs:
     - job_name: authentik
       static_configs:
-      - targets: [authentik-server-metrics.authentik.svc:9300]
+      - targets: [authentik-server-metrics.authentik.svc.cluster.local:9300]
