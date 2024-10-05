@@ -289,8 +289,8 @@ server:
     servicePortHttps: 443
     servicePortHttpName: http
     servicePortHttpsName: https
-    # servicePortHttpAppProtocol: HTTP
-    # servicePortHttpsAppProtocol: HTTPS
+    servicePortHttpAppProtocol: HTTP
+    servicePortHttpsAppProtocol: HTTPS
     loadBalancerIP: ""
     loadBalancerSourceRanges: []
     externalIPs: []
@@ -311,34 +311,33 @@ server:
         prometheus.io/scrap-with: kube-prometheus-stack
       servicePort: 9300
       portName: metrics
-    serviceMonitor:
-      enabled: true
-      interval: 30s
-      scrapeTimeout: 3s
-      relabelings:
-      - sourceLabels: [__meta_kubernetes_pod_node_name]
-        separator: ;
-        regex: ^(.*)$
-        targetLabel: nodename
-        replacement: $1
-        action: replace
-      metricRelabelings:
-      - action: keep
-      regex: 'kube_(daemonset|deployment|pod|namespace|node|statefulset).+'
-      sourceLabels: [__name__]
-      selector:
-        # matchLabels:
-          # app: authentik
-        prometheus: kube-prometheus
+
+    # serviceMonitor:
+    #   enabled: true
+    #   interval: 30s
+    #   scrapeTimeout: 3s
+      # relabelings:
+      # - sourceLabels: [__meta_kubernetes_pod_node_name]
+      #   separator: ;
+      #   regex: ^(.*)$
+      #   targetLabel: nodename
+      #   replacement: $1
+      #   action: replace
+      # metricRelabelings:
+      # - action: keep
+      # regex: 'kube_(daemonset|deployment|pod|namespace|node|statefulset).+'
+      # sourceLabels: [__name__]
+
+      # selector:
+      #   # matchLabels:
+      #     # app: authentik
+      #   prometheus: kube-prometheus
         # app.kubernetes.io/component=server-metrics
-      scheme: ""
-      tlsConfig: {}
-      namespace: "authentik"
-      labels:
-        app: authentik
-        release: kube-prometheus-stack
-        prometheus.io/scrap-with: kube-prometheus-stack
-      annotations: {}
+
+      # labels:
+      #   app: authentik
+      #   release: kube-prometheus-stack
+      #   prometheus.io/scrap-with: kube-prometheus-stack
 
   ingress:
     enabled: false

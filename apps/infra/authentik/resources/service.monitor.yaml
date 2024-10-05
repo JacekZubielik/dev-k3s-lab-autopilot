@@ -1,0 +1,36 @@
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    app: authentik
+    prometheus.io/scrap-with: kube-prometheus-stack
+    release: kube-prometheus-stack
+  name: authentik
+  namespace: authentik
+spec:
+  jobLabel: app.kubernetes.io/name
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: authentik
+  namespaceSelector:
+      any: true
+  endpoints:
+  - interval: 30s
+    path: /metrics
+    port: metrics
+    scheme: http
+    scrapeTimeout: 3s
+    metricRelabelings:
+    - action: keep
+    regex: 'kube_(daemonset|deployment|pod|namespace|node|statefulset).+'
+    sourceLabels: [__name__]
+    relabelings:
+    - sourceLabels: [__meta_kubernetes_pod_node_name]
+      separator: ;
+      regex: ^(.*)$
+      targetLabel: nodename
+      replacement: $1
+      action: replace
+    selector:
+      prometheus: kube-prometheus-stack # kube-prometheus

@@ -12,6 +12,7 @@ resources:
 - resources/prometheus.cm.yaml
 - resources/pv.yaml
 - resources/pvc.yaml
+- resources/service.monitor.yaml
 - resources/volume.yaml
 - velero/schedule.yaml
 
