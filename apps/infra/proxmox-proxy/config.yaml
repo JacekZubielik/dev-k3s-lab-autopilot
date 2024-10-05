@@ -1,7 +1,7 @@
 annotations: ''
 appName: proxmox-proxy
 appRole: infra
-destNamespace: traefik
+destNamespace: proxmox-proxy
 destProject: "infra"
 destServer: https://kubernetes.default.svc
 exclude: ""

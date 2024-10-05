@@ -10,7 +10,8 @@ metadata:
         external-dns.alpha.kubernetes.io/ttl: "300"
         kubernetes.io/ingress.class: traefik-external
     name: proxmox-production
-    namespace: traefik
+    # traefik
+    namespace: proxmox-proxy
 spec:
     entryPoints:
         - websecure
@@ -57,8 +58,8 @@ sops:
             bVlFZmtQR01MZ1hJNGZxZjZHelEzT0kKQTUmMvgv3dr2phtVLz05KHDVlFR+kNqY
             qSYWf2jK9yrABqLNOvaZexmurMiwPNNyecp/erDF6oMjMn7ekEtmPQ==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-10-04T00:12:34Z"
-    mac: ENC[AES256_GCM,data:99Er/gTJxWypgND6/s7B6MaZWKV/1kvxBnFKYRcYFwm4CXTrsQdOghyNRjdqd0zHlFajvBU4fZ7AJkuSb3uvWo6G12HFQK0RxDaCctWwA0vVv43+GItC0RyOV2OurkTQIwcHB26pEopuOMO+W1WgyR3HplBv+IdWyqe+xRDGHoQ=,iv:Cmq1pGZLjL16uaYoP5BwGuFs2bToEX3JK6KlOH1Bm3Q=,tag:4rObOyvL4MhrmBLlIEMThQ==,type:str]
+    lastmodified: "2024-10-05T15:40:31Z"
+    mac: ENC[AES256_GCM,data:ZV/sTBIXfQ6XyNDAjBJbTxCFXgbag1+TTIHxEbOgJJfVIr2Fn55IRg/uIGpdUFlwgOje8VWpVgfj6n0SPzHy7gA6y9fn/2GSVb7XMLvMGgTPTNXsUwb4q4XbOpME9eb5cPQy+CxXQ1s582Mie+dJJ4NBxU12vgc07OJCNNh9fCE=,iv:vkLU1UEn/AhFkP6ewwQPPwjzMfJ+Ylbq/gz+0MUb1yM=,tag:ZY5z0jPSvAaXSRCe1kNpww==,type:str]
     pgp:
         - created_at: "2024-10-04T00:12:34Z"
           enc: |-

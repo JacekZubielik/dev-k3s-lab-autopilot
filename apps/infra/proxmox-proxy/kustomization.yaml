@@ -8,6 +8,7 @@ metadata:
     argocd.argoproj.io/sync-options: Delete=true,Prune=true
 
 resources:
+- resources/ns.yaml
 - resources/service.yaml
 - resources/prometheus.cm.yaml
 
