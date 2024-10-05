@@ -41,8 +41,10 @@ spec:
   #     # operated-prometheus: "true"
   #     external-ip: "192.168.40.3"
   selector:
-    app: minio-api
-  #   task: minio-api
+    matchLabels:
+      app: minio-api
+    endpoints:
+    - port: minio-api
 
 
 
