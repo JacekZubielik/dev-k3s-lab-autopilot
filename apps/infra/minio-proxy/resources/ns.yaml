@@ -4,4 +4,4 @@ kind: Namespace
 metadata:
   name: minio-proxy
   annotations:
-    argocd.argoproj.io/sync-wave: "-4"
+    argocd.argoproj.io/sync-wave: "-1"
