@@ -328,8 +328,8 @@ server:
       sourceLabels: [__name__]
       selector:
         matchLabels:
-          app: authentik
-          # app.kubernetes.io/component=server-metrics
+          # app: authentik
+          app.kubernetes.io/component=server-metrics
       scheme: ""
       tlsConfig: {}
       namespace: "authentik"
