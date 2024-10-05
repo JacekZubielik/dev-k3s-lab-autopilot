@@ -1,54 +1,35 @@
 ---
 scrape_configs:
-- honor_labels: true
-  job_name: kubernetes-service-endpoints
-  kubernetes_sd_configs:
-  - role: endpoints
+
+- job_name: "cert-manager"
+  static_configs:
+    - targets: ['cert-manager.cert-manager.svc:9402']
   relabel_configs:
-  - action: keep
-    regex: true
-    source_labels:
-    - __meta_kubernetes_service_annotation_prometheus_io_scrape
-  - action: drop
-    regex: true
-    source_labels:
-    - __meta_kubernetes_service_annotation_prometheus_io_scrape_slow
-  - action: replace
-    regex: (https?)
-    source_labels:
-    - __meta_kubernetes_service_annotation_prometheus_io_scheme
-    target_label: __scheme__
-  - action: replace
-    regex: (.+)
-    source_labels:
-    - __meta_kubernetes_service_annotation_prometheus_io_path
-    target_label: __metrics_path__
-  - action: replace
-    regex: (.+?)(?::\d+)?;(\d+)
-    replacement: $1:$2
-    source_labels:
-    - __address__
-    - __meta_kubernetes_service_annotation_prometheus_io_port
-    target_label: __address__
-  - action: labelmap
-    regex: __meta_kubernetes_service_annotation_prometheus_io_param_(.+)
-    replacement: __param_$1
-  - action: labelmap
-    regex: __meta_kubernetes_service_label_(.+)
-  - action: replace
-    source_labels:
-    - __meta_kubernetes_namespace
-    target_label: namespace
-  - action: replace
-    source_labels:
-    - __meta_kubernetes_service_name
-    target_label: service
-  - action: replace
-    source_labels:
-    - __meta_kubernetes_pod_node_name
-    target_label: node
+    - action: replace
+      replacement: 'cert-manager'
+      target_label: instance
 
+- job_name: 'argocd-server-metrics'
+  static_configs:
+  - targets: ['argocd-server-metrics.argocd.svc:8083', 'argocd-repo-server.argocd.svc:8084']
 
+- job_name: 'argocd-metrics'
+  static_configs:
+  - targets: ['argocd-metrics.argocd.svc:8082']
+
+- job_name: 'mktxp-exporter'
+  static_configs:
+  - targets: ['mktxp.mktxp.svc:49090']
+
+- job_name: 'pve'
+  static_configs:
+    - targets:
+      - 192.168.40.3:9221
+  metrics_path: /pve
+  params:
+    module: [default]
+    cluster: ['1']
+    node: ['1']
 
 
 
@@ -56,7 +37,6 @@ scrape_configs:
   kubernetes_sd_configs:
   - role: endpoints
   relabel_configs:
-
   # annotation 'prometheus.io/scrape' must be set to 'true'
   - source_labels: [__meta_kubernetes_service_annotation_prometheus_io_scrape]
     action: keep
@@ -101,18 +81,6 @@ scrape_configs:
     regex: .*metrics
     source_labels: [__meta_kubernetes_service_port_name]
 
-
-
-
-
-- job_name: "cert-manager"
-  static_configs:
-    - targets: ['cert-manager.cert-manager.svc:9402']
-  relabel_configs:
-    - action: replace
-      replacement: 'cert-manager'
-      target_label: instance
-
 - job_name: 'minio-job'
   bearer_token: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJwcm9tZXRoZXVzIiwic3ViIjoicmFiYml0IiwiZXhwIjo0ODgxNjgyNTc1fQ.AMPM23R2fB7ha4NJ11Ph-h6rHWQ6YT3eRcb2yzZ6HMfxZYRgSUXTG2p0dXwkmR0qUzQ2e0lNg4_LX-g8w-OdOg # $minio:bearer_token
   metrics_path: /minio/v2/metrics/cluster
@@ -120,39 +88,11 @@ scrape_configs:
   static_configs:
   - targets: ['192.168.40.3:9002']
 
-- job_name: 'argocd-server-metrics'
-  static_configs:
-  - targets: ['argocd-server-metrics.argocd.svc:8083', 'argocd-repo-server.argocd.svc:8084']
-
-- job_name: 'argocd-metrics'
-  static_configs:
-  - targets: ['argocd-metrics.argocd.svc:8082']
-
 - job_name: 'node-exporter'
   relabel_configs:
   - action: replace
     source_labels: [ __meta_kubernetes_pod_node_name]
     target_label: nodename
-
-- job_name: 'mktxp-exporter'
-  static_configs:
-  - targets: ['mktxp.mktxp.svc:49090']
-
-- job_name: 'pve'
-  static_configs:
-    - targets: ['192.168.40.3:9221']
-  metrics_path: /pve
-  params:
-    module: [default]
-    cluster: ['1']
-    node: ['1']
-  relabel_configs:
-    - source_labels: [__address__]
-      target_label: __param_target
-    - source_labels: [__param_target]
-      target_label: instance
-    - target_label: __address__
-      replacement: 192.168.40.3:9221
 
 - job_name: 'kubernetes-apiservers'
   kubernetes_sd_configs:
