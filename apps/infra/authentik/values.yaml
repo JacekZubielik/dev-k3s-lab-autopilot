@@ -27,6 +27,43 @@ global:
       secretKeyRef:
         name: authentik-private
         key: AUTHENTIK_SECRET_KEY
+
+  - name: AUTHENTIK_STORAGE__MEDIA__S3__ACCESS_KEY
+    valueFrom:
+      secretKeyRef:
+        name: authentik-private
+        key: AUTHENTIK_STORAGE__MEDIA__S3__ACCESS_KEY
+
+  - name: AUTHENTIK_STORAGE__MEDIA__S3__SECRET_KEY
+    valueFrom:
+      secretKeyRef:
+        name: authentik-private
+        key: AUTHENTIK_STORAGE__MEDIA__S3__SECRET_KEY
+
+  - name: AUTHENTIK_STORAGE__MEDIA__S3__BUCKET_NAME
+    valueFrom:
+      secretKeyRef:
+        name: authentik-private
+        key: AUTHENTIK_STORAGE__MEDIA__S3__BUCKET_NAME
+
+  - name: AUTHENTIK_STORAGE__MEDIA__S3__REGION
+    valueFrom:
+      secretKeyRef:
+        name: authentik-private
+        key: AUTHENTIK_STORAGE__MEDIA__S3__REGION
+
+  - name: AUTHENTIK_STORAGE__MEDIA__BACKEND
+    valueFrom:
+      secretKeyRef:
+        name: authentik-private
+        key: AUTHENTIK_STORAGE__MEDIA__BACKEND
+
+  - name: AUTHENTIK_STORAGE__MEDIA__S3__ENDPOINT
+    valueFrom:
+      secretKeyRef:
+        name: authentik-private
+        key: AUTHENTIK_STORAGE__MEDIA__S3__ENDPOINT
+
   - name: AUTHENTIK_STORAGE__MEDIA__S3__ACCESS_KEY
     valueFrom:
       secretKeyRef:
@@ -384,43 +421,6 @@ worker:
       secretKeyRef:
         name: authentik-private
         key: AUTHENTIK_POSTGRESQL__PASSWORD
-
-  - name: AUTHENTIK_STORAGE__MEDIA__S3__ACCESS_KEY
-    valueFrom:
-      secretKeyRef:
-        name: authentik-private
-        key: AUTHENTIK_STORAGE__MEDIA__S3__ACCESS_KEY
-
-  - name: AUTHENTIK_STORAGE__MEDIA__S3__SECRET_KEY
-    valueFrom:
-      secretKeyRef:
-        name: authentik-private
-        key: AUTHENTIK_STORAGE__MEDIA__S3__SECRET_KEY
-
-  - name: AUTHENTIK_STORAGE__MEDIA__S3__BUCKET_NAME
-    valueFrom:
-      secretKeyRef:
-        name: authentik-private
-        key: AUTHENTIK_STORAGE__MEDIA__S3__BUCKET_NAME
-
-  - name: AUTHENTIK_STORAGE__MEDIA__S3__REGION
-    valueFrom:
-      secretKeyRef:
-        name: authentik-private
-        key: AUTHENTIK_STORAGE__MEDIA__S3__REGION
-
-  - name: AUTHENTIK_STORAGE__MEDIA__BACKEND
-    valueFrom:
-      secretKeyRef:
-        name: authentik-private
-        key: AUTHENTIK_STORAGE__MEDIA__BACKEND
-
-  - name: AUTHENTIK_STORAGE__MEDIA__S3__ENDPOINT
-    valueFrom:
-      secretKeyRef:
-        name: authentik-private
-        key: AUTHENTIK_STORAGE__MEDIA__S3__ENDPOINT
-
 
   envFrom:
     []
