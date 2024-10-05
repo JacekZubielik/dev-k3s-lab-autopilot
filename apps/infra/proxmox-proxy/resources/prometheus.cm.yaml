@@ -16,13 +16,13 @@ data:
 
     - job_name: 'pve-node-exporter'
       static_configs:
-        - targets: ['proxmox-proxy.proxmox-proxy.svc.cluster.local:9100']
+        - targets: ['192.168.40.3:9100'] # ['proxmox-proxy.proxmox-proxy.svc.cluster.local:9100']
       metrics_path: /metrics
 
     - job_name: 'pve'
       static_configs:
         - targets:
-          - ['proxmox-proxy.proxmox-proxy.svc.cluster.local:9221'] # 192.168.0.199  # Proxmox VE node 1
+          - ['192.168.40.3:9221'] # ['proxmox-proxy.proxmox-proxy.svc.cluster.local:9221']
       metrics_path: /pve
       params:
         module: [default]
@@ -32,7 +32,7 @@ data:
         - source_labels: [__param_target]
           target_label: instance
         - target_label: __address__
-          replacement: ['proxmox-proxy.proxmox-proxy.svc.cluster.local:9221'] # 192.168.0.194:9221 # PVE address
+          replacement: 192.168.40.3:9221 # ['proxmox-proxy.proxmox-proxy.svc.cluster.local:9221'] # 192.168.40.3:9221
 
 # - job_name: 'pve'
 #   static_configs:
