@@ -2,16 +2,15 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: prometheus-config
+  name: external-dns-prometheus-config
   labels:
-    name: prometheus-config
+    name: external-dns-prometheus-config
 data:
   prometheus.yml: |-
     global:
       scrape_interval: 5s
       evaluation_interval: 5s
     scrape_configs:
-
-      - job_name: external-dns
+      - job_name: 'external-dns'
         static_configs:
           - targets: [external-dns.external-dns.svc:7979]

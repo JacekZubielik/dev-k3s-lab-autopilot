@@ -101,8 +101,8 @@ metrics:
     scrapeTimeout: "3s"
     selector:
       prometheus: kube-prometheus-stack
-      # matchLabels:
-      #   app: external-dns
+      matchLabels:
+        app: external-dns
     metricRelabelings:
     - action: keep
       regex: 'kube_(daemonset|deployment|pod|namespace|node|statefulset).+'

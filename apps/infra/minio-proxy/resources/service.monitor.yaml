@@ -3,25 +3,27 @@ apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
   labels:
-    # app: minio-proxy
+    app: minio-proxy
     prometheus.io/scrap-with: kube-prometheus-stack
     release: kube-prometheus-stack
   name: minio-proxy
   namespace: minio
 spec:
-  jobLabel: app.kubernetes.io/name
+  jobLabel: minio-job #app.kubernetes.io/name
   selector:
     matchLabels:
       app: minio-proxy
-      # app.kubernetes.io/component: controller
-      # app.kubernetes.io/instance: cert-manager
-      # app.kubernetes.io/name: cert-manager
   namespaceSelector:
     matchNames:
     - minio
   endpoints:
-  - interval: 30s
+  - interval: 15s
     path: /minio/v2/metrics/cluster
     port: minio-api
     scheme: http
     scrapeTimeout: 30s
+    tlsConfig:
+      insecureSkipVerify: true
+    bearerTokenSecret:
+      name: minio-monitor-token
+      key: token

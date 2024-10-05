@@ -19,33 +19,6 @@ apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
   labels:
-    prometheus.io/scrap-with: kube-prometheus-stack
-    release: kube-prometheus-stack
-  name: minio-prometheus-servicemonitor
-  namespace: monitoring
-spec:
-  jobLabel: app.kubernetes.io/name
-  endpoints:
-    - port: minio-api
-      path: /minio/v2/metrics/cluster
-      scheme: http
-      tlsConfig:
-        insecureSkipVerify: true
-      bearerTokenSecret:
-        name: minio-monitor-token
-        key: token
-  namespaceSelector:
-    matchNames:
-    - default
-  selector:
-    matchLabels:
-      app: minio-api
-
----
-apiVersion: monitoring.coreos.com/v1
-kind: ServiceMonitor
-metadata:
-  labels:
     release: kube-prometheus-stack
   name: k3s-monitoring
   namespace: monitoring
