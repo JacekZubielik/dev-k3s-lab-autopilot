@@ -6,7 +6,7 @@ metadata:
         cert-manager.io/cluster-issuer: letsencrypt-production
         cert-manager.io/common-name: ENC[AES256_GCM,data:8vIkGRYaOESK3CLez/X4aH4IMce+Y0TTn10e2yY=,iv:Dp7V9+VpFkkSB45BuLzyTtPGeLam6TIFjOmqiPN/K2o=,tag:ffHayZeCoSvXIDkW6UdLag==,type:str]
         external-dns.alpha.kubernetes.io/hostname: ENC[AES256_GCM,data:AObC1hT1yKk2+dS9ktqrIcnsthJkU09iWe7+rm8=,iv:RERegg5jSrG8WkpiufxKGBQdY3W6LYYwLOi21QBq04E=,tag:ZFTBWFAD/oBF34oHjIiufQ==,type:str]
-        external-dns.alpha.kubernetes.io/target: ENC[AES256_GCM,data:MVJhl+LqVMYEkH/3MV3RDoOeLNcT,iv:oZ1CWAsPYpaPxvTiCRVHND1y1Wxf1liPknA4jF4kNO4=,tag:22OiKbfd/qJJj+K4moB0Bw==,type:str]
+        external-dns.alpha.kubernetes.io/target: ENC[AES256_GCM,data:NU6vppw8io1JbUzpNCAu3weeVO6x,iv:9HCJwPyzpKDSeMHThZQjNQ6nkCOXice3+f83zHrXy0w=,tag:TSxQLRh5HfNmNZ2eLeD82Q==,type:str]
         external-dns.alpha.kubernetes.io/ttl: "300"
         kubernetes.io/ingress.class: traefik-external
     name: minio-console-production
@@ -27,9 +27,9 @@ spec:
               passHostHeader: true
     tls:
         domains:
-            - main: ENC[AES256_GCM,data:CQlXQUZbwJ5EnjJxvrkOEIjRYazr,iv:6d+UtgDAMQy2+RBSX0LqNhQ9Z1SZx9nEGbnWJl9b28w=,tag:hA9g5IH0SKqgU3D3EVdCEg==,type:str]
+            - main: ENC[AES256_GCM,data:n76f0SRnzhJupiPliZ2jUsYDdD6u,iv:+V5UvXZvvlYuQ9A3uEbJAktiApuNH1G7FAWAbK2MBiw=,tag:V8aMP7lfAibeRX3DMx3p+Q==,type:str]
               sans:
-                - ENC[AES256_GCM,data:zzUKcmbOo0mDFFGKtc+ZlUxBE85NbQ==,iv:aRrVqOdXn2gnYnZRE5hfKAYfCNU8qsDSHEw4itqjJI4=,tag:PQAjIRIZNJxqpVGPbwzEhg==,type:str]
+                - ENC[AES256_GCM,data:JNhMcWQUQtzTDq2GV/6KgHx/fNn2Ig==,iv:62z4LA3sQl3q5VcyZ42W6kBiz3xWsV9zSV+FgJnl/vA=,tag:SUpBcAMWhFA7dCh8Fb/YHg==,type:str]
         options:
             name: tls-ver13
             namespace: traefik
@@ -49,8 +49,8 @@ sops:
             ZTNNWGhNbGJ2L1ZYWTFiaDN6am5PMmsK7auCGE80mtd3Iq/4gggluQg49FlAWsAD
             uyVt4CE0/kr3idXN79UnCOWXk2fC5iJJmBsqA5cFOm53vmDuQKt2fA==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-10-05T15:52:07Z"
-    mac: ENC[AES256_GCM,data:b+rKf27SWyDIS83Hgz4EH2UHpZJrcBEdMUYv3ku/8dGhLEoCEVFcUHyi4GiYQZmE8eoo9jCJcjsSAEXMm+eg9OYzOTvV6Gix9pBSBlhjCI8a67yNTYZ/IG0l8rbAX1uGUr+47gnVbFM3UgoufNDNu8MLj9vr+ASNIRufSJZ7P3I=,iv:d6Tht1oXxmNXeupP76RFvrh2WkxV0/0k5VrlaKHAObk=,tag:z/Bhp7SkeVFUEWF6uGHlFQ==,type:str]
+    lastmodified: "2024-10-05T15:58:26Z"
+    mac: ENC[AES256_GCM,data:Mg5xH92JPed8Dl8SsaJjZERizDXR8w7LgNWmTm9S1iqPnj0ky5VhY1bKzfZFYcyJRu5y6WNSKpUtu2Z9D/MUdv5+Tecw2krrh+0DLc/DCMDO7MFbZ7J4sQ4Na+iBuSHlyeH7/AC4RYpTfY0oBm5eAcZIpEDJaAn4EiHTBaQ2hvc=,iv:j+9Y9Ep4psLjfhRvY27g6BW09V8f08RCb8pAaKB5NYc=,tag:70dXgPilhPtFI0jCUYxYDg==,type:str]
     pgp:
         - created_at: "2024-10-05T15:52:07Z"
           enc: |-
@@ -87,7 +87,7 @@ metadata:
         external-dns.alpha.kubernetes.io/ttl: "300"
         kubernetes.io/ingress.class: traefik-external
     name: minio-api-production
-    namespace: traefik
+    namespace: minio-proxy
 spec:
     entryPoints:
         - websecure
@@ -123,8 +123,8 @@ sops:
             ZTNNWGhNbGJ2L1ZYWTFiaDN6am5PMmsK7auCGE80mtd3Iq/4gggluQg49FlAWsAD
             uyVt4CE0/kr3idXN79UnCOWXk2fC5iJJmBsqA5cFOm53vmDuQKt2fA==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-10-05T15:52:07Z"
-    mac: ENC[AES256_GCM,data:b+rKf27SWyDIS83Hgz4EH2UHpZJrcBEdMUYv3ku/8dGhLEoCEVFcUHyi4GiYQZmE8eoo9jCJcjsSAEXMm+eg9OYzOTvV6Gix9pBSBlhjCI8a67yNTYZ/IG0l8rbAX1uGUr+47gnVbFM3UgoufNDNu8MLj9vr+ASNIRufSJZ7P3I=,iv:d6Tht1oXxmNXeupP76RFvrh2WkxV0/0k5VrlaKHAObk=,tag:z/Bhp7SkeVFUEWF6uGHlFQ==,type:str]
+    lastmodified: "2024-10-05T15:58:26Z"
+    mac: ENC[AES256_GCM,data:Mg5xH92JPed8Dl8SsaJjZERizDXR8w7LgNWmTm9S1iqPnj0ky5VhY1bKzfZFYcyJRu5y6WNSKpUtu2Z9D/MUdv5+Tecw2krrh+0DLc/DCMDO7MFbZ7J4sQ4Na+iBuSHlyeH7/AC4RYpTfY0oBm5eAcZIpEDJaAn4EiHTBaQ2hvc=,iv:j+9Y9Ep4psLjfhRvY27g6BW09V8f08RCb8pAaKB5NYc=,tag:70dXgPilhPtFI0jCUYxYDg==,type:str]
     pgp:
         - created_at: "2024-10-05T15:52:07Z"
           enc: |-
