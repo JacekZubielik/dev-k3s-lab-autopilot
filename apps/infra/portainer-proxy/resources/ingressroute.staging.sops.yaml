@@ -10,7 +10,7 @@ metadata:
         external-dns.alpha.kubernetes.io/ttl: "300"
         kubernetes.io/ingress.class: traefik-external
     name: portainer-staging
-    namespace: traefik
+    namespace: portainer-proxy
 spec:
     entryPoints:
         - websecure
@@ -49,8 +49,8 @@ sops:
             MnFqUXFVcjJWdENlcFlDQTZOQVV4WGMKoEFdgQqNanIZIwBY3105aIEr77RPHO09
             QThZZWYmFAMzergFmlJpyA8qgydfMYv495gQssDZ0ieXZvVdrgJSaA==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-10-04T01:04:22Z"
-    mac: ENC[AES256_GCM,data:pYMSix4o0AfZvHfYT2dNW5NxbI4GL+EegcIjDVfVSF0RmRRSiUwkL/fNEmzbqOOrYoFUrCX9f65RFB52Iu9foNTTfzundzDbEXd+Dp1jUsAD/SKcY7/9yDQTwhAUxpZtDZEzdNOHV7B4ML8ZUP1lGT/qJwORTIT5n9nJGs4F0uQ=,iv:V5qCs3UR/IkQSV1Wtr/la1ELlt0pL6vxhjWQH3Ywgvo=,tag:2bj7Yf1SXEPeZ6akT8MXZw==,type:str]
+    lastmodified: "2024-10-05T16:05:54Z"
+    mac: ENC[AES256_GCM,data:39zEeFEQaS7dM/u/IAlZaxWBbAWwUs3JLOzJVnV47pnBXqm4Yg5aXc5SX9v3lly+EJFWl8vdpw21nQH9JslC2HJb2TVJtdUeuhFNmJzOkXVPUCNkb4fOCRkOM0pLO8wDHivNybzLNyZW7tB3bT6mPCzj7kM51P9e1aqppbllv6A=,iv:6Jfop8U1fVU+lN1nL2xAlYZqPhNSUfyHCL4jt9SMkTU=,tag:CwifdtNmIoxy24EG4r1yTQ==,type:str]
     pgp:
         - created_at: "2024-10-04T01:04:22Z"
           enc: |-
