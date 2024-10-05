@@ -49,7 +49,6 @@ defaultRules:
 
   appNamespacesTarget: ".*"
   keepFiringFor: ""
-  labels: {}
   annotations: {}
   additionalRuleLabels: {}
   additionalRuleAnnotations: {}
@@ -881,7 +880,6 @@ kubelet:
     - action: replace
       sourceLabels: [__metrics_path__]
       targetLabel: metrics_path
-    additionalLabels: {}
 
 kubeControllerManager:
   enabled: false
