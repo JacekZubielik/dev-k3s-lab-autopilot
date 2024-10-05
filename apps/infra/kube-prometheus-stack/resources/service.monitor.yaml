@@ -41,7 +41,7 @@ spec:
   #     # operated-prometheus: "true"
   #     external-ip: "192.168.40.3"
   selector:
-    app.kubernetes.io/name: minio-api
+    app: minio-api
   #   task: minio-api
 
 
