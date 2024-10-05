@@ -39,7 +39,7 @@ spec:
   selector:
     matchLabels:
       app.kubernetes.io/name: minio
-      external-ip: 192.168.40.3:9002"
+      external-ip: 192.168.40.3"
 ---
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor

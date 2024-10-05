@@ -8,13 +8,13 @@ metadata:
     app.kubernetes.io/name: minio
   namespace: kube-system
 spec:
-  clusterIP: None
+  # clusterIP: None
   ports:
   - name: http-metrics
     port: 9002
     protocol: TCP
     targetPort: 9002
-  type: ClusterIP
+  type: LoadBalancer # ClusterIP
 ---
 # Endpoint for the headless service without selector
 apiVersion: v1
