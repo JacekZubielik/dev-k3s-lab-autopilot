@@ -24,7 +24,7 @@ configMapGenerator:
   - TZ=CET
 - name: freqtrade-config
   files:
-  - resources/freqtrade.configmap.yaml
+  - resources/freqtrade-config.cm.yaml
 
 generatorOptions:
   disableNameSuffixHash: true

@@ -10,8 +10,9 @@ metadata:
 spec:
   type: ClusterIP
   ports:
-  - protocol: TCP
+  - name: api
+    protocol: TCP
     port: 8090
-    targetPort: api
+    targetPort: 8090
   selector:
     app: freqtrade
