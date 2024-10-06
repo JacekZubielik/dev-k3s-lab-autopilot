@@ -251,7 +251,7 @@ alertmanager:
     type: ClusterIP
 
   serviceMonitor:
-    interval: ""
+    interval: "15s"
     selfMonitor: true
     additionalLabels:
       prometheus.io/scrap-with: kube-prometheus-stack
@@ -458,10 +458,10 @@ grafana:
       prometheus-pve-exporter:
         gnetId: 10347
         revision: 5
-        datasource: Prometheus
-        # datasource:
-        # - name: DS_PROMETHEUS
-        #   value: Prometheus
+        # datasource: Prometheus
+        datasource:
+        - name: DS_PROMETHEUS
+          value: Prometheus
       blackbox-exporter-overview:
         gnetId: 5345
         datasource: Prometheus
