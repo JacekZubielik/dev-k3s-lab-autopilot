@@ -8,8 +8,8 @@ metadata:
     longhornvolume: pvc-syncthing
   name: pv-syncthing
 spec:
-  capacity:
-    storage: 60Gi
+  # capacity:
+  #   storage: 60Gi
   volumeMode: Filesystem
   accessModes:
   - ReadWriteOnce
