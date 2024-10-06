@@ -115,7 +115,7 @@ affinity: {}
 
 persistence:
   enabled: true
-  existingClaim: 'syncthing-pv-claim'
+  existingClaim: 'pvc-syncthing'
 
 autoscaling:
   enabled: false
