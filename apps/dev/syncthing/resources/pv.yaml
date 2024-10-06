@@ -11,7 +11,7 @@ spec:
   volumeMode: Filesystem
   accessModes:
   - ReadWriteOnce
-  persistentVolumeReclaimPolicy: Retain
+  # persistentVolumeReclaimPolicy: Retain
   storageClassName: nfs-storage
   mountOptions:
     - hard
