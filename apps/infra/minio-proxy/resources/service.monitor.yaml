@@ -21,7 +21,7 @@ spec:
     path: /minio/v2/metrics/cluster
     port: minio-api
     scheme: http
-    scrapeTimeout: 30s
+    scrapeTimeout: 5s
     tlsConfig:
       insecureSkipVerify: true
     bearerTokenSecret:

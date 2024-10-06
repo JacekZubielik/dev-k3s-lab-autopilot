@@ -6,6 +6,8 @@ metadata:
     app.kubernetes.io/name: minio-proxy
     name: minio-prometheus-config
   name: minio-prometheus-config
+  namespace: minio-proxy
+
 data:
   prometheus.yml: |-
     global:
