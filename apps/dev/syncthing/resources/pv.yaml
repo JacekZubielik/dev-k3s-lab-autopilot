@@ -20,7 +20,6 @@ spec:
     server: 192.168.40.3
     path: "/wd-mirror/sync"
     readOnly: false
-
   # nodeAffinity:
   #   required:
   #     nodeSelectorTerms:

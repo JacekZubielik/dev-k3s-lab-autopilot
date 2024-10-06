@@ -4,8 +4,6 @@ kind: PersistentVolumeClaim
 metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "-2"
-  labels:
-    longhornvolume: pvc-syncthing
   name: pvc-syncthing
 spec:
   # capacity:
@@ -13,6 +11,6 @@ spec:
   volumeMode: Filesystem
   accessModes:
   - ReadWriteOnce
-  persistentVolumeReclaimPolicy: Retain
+  # persistentVolumeReclaimPolicy: Retain
   storageClassName: nfs-storage
   volumeName: pv-syncthing
