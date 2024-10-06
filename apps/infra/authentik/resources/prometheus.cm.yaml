@@ -6,6 +6,7 @@ metadata:
     app.kubernetes.io/name: authentik
     name: authentik-prometheus-config
   name: authentik-prometheus-config
+  namespace: authentik
 data:
   prometheus.yml: |-
     global:
@@ -14,4 +15,4 @@ data:
     scrape_configs:
     - job_name: authentik
       static_configs:
-      - targets: [authentik-server-metrics.authentik.svc.cluster.local:9300]
+      - targets: ['authentik-server-metrics.authentik.svc.cluster.local:9300']
