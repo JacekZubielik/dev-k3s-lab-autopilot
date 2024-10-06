@@ -12,4 +12,4 @@ metadata:
   name: nfs-storage
 provisioner: kubernetes.io/no-provisioner
 volumeBindingMode: Immediate
-reclaimPolicy: "Retain"
+reclaimPolicy: Retain

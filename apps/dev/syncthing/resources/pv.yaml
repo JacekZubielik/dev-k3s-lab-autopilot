@@ -4,8 +4,6 @@ kind: PersistentVolume
 metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "-2"
-  labels:
-    longhornvolume: pvc-syncthing
   name: pv-syncthing
 spec:
   capacity:

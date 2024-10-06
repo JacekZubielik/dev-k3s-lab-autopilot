@@ -6,7 +6,7 @@ metadata:
     argocd.argoproj.io/sync-wave: "-2"
   labels:
     longhornvolume: pvc-syncthing
-  name: pv-syncthing
+  name: pvc-syncthing
 spec:
   # capacity:
   #   storage: 60Gi
@@ -15,4 +15,4 @@ spec:
   - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
   storageClassName: nfs-storage
-  volumeName: syncthing-pv-volume
+  volumeName: pv-syncthing
