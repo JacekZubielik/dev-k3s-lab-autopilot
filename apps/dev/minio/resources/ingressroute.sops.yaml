@@ -1,0 +1,158 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+    annotations:
+        argocd.argoproj.io/sync-wave: "3"
+        cert-manager.io/cluster-issuer: letsencrypt-production
+        external-dns.alpha.kubernetes.io/target: ENC[AES256_GCM,data:umJv5KWMudXwSQ5UH21VSBFBRcW/ndrqFfg=,iv:zYcsP7fjFzIGUzHv/+noh2hRgcPuHThsQ0qt09rHr9k=,tag:hAKdgtSosllROAIrWHD+fQ==,type:str]
+        ingress.kubernetes.io/ssl-passthrough: "true"
+        kubernetes.io/ingress.class: traefik-external
+    name: s3
+    namespace: minio
+spec:
+    entryPoints:
+        - websecure
+    routes:
+        - kind: Rule
+          match: ENC[AES256_GCM,data:vnR4dwRQN5evtYCFGPxMShqUdfyi0uEGfm96oXIRw2cfubYqdQ==,iv:Q5i+BiRgbYhhRtTFoYiV8SyJcj2OKLQzFEbhvLxZGzY=,tag:MdlpoyhyOXrjITuhbDq1UA==,type:str]
+          services:
+            - kind: TraefikService
+              name: s3
+              namespace: minio
+        - kind: Rule
+          match: ENC[AES256_GCM,data:k0NWCkG/XgUN/fYAfG3ZYvxumgLmuNN4YEQ7pWYqUMS7fnSVf0rIAPM1gc/d4NEo0JMQ2EnQ6YIqw3zym/5hzwUh,iv:2jLv4UoKYtkWai0Zc0XWSPO5JQt74QzZQvv1VP7cGwI=,tag:+/GorF2ZxN5QwbC8ea9doQ==,type:str]
+          middlewares:
+            - name: rate-limit
+              namespace: traefik
+          services:
+            - kind: TraefikService
+              name: minio-console
+              namespace: minio
+    tls:
+        domains:
+            - main: ENC[AES256_GCM,data:W3CNE6l+aIud7SOHg8K8SeTKfoQKCDrMU8w=,iv:8YjTWLUpF3CTuouk2RmorTtK5866QUPgQPgl/LifBg4=,tag:+2Ups+kN7//HP/HBRGD/6Q==,type:str]
+              sans:
+                - ENC[AES256_GCM,data:tRzyvH5GjqxMg/DkblRES4JiGBlkcNg5xEEi,iv:Zg0RQ4zMiYEOvxHp2kCxS5+9IVGejp/8ad9muTSNce4=,tag:I9lb7qaVMZcRC6+E5kCWQQ==,type:str]
+        options:
+            name: tls-ver13
+            namespace: traefik
+        secretName: s3-cf-production
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age: []
+    lastmodified: "2024-08-21T19:51:06Z"
+    mac: ENC[AES256_GCM,data:7vtHJ/P0kWKZ+qUnS/0Gxu9cvYwQJ7yL+XJu5LyIYvQfS6u3PMzbJjrKc8ZbWTcvubGbMUK2CEadztiXp9GiB6uiruUh4it3K9mEenbZl0ujJhFW4MJUOOYkYGErfQi90yiFHmLKIb5X5mPHUAlhb2ibsAzUN9Efs9hrlid61nE=,iv:FsnnvUFA0DVJCAdAojmUlKHwq19H/A87clnacnguXik=,tag:deJbGA1GFGrqDT3zeMJhQQ==,type:str]
+    pgp:
+        - created_at: "2024-08-21T19:51:06Z"
+          enc: |-
+            -----BEGIN PGP MESSAGE-----
+
+            hQIMA0R6oz1GmNjVAQ/+O2Rw5a78An16Ljftu+vk53hXoQiQKraeqibroz8Bk6S0
+            YADhf0JGVENIR/5UHUmsbpOmXxIbnv5Xd1DR1lFUZpfzo6kDA+gsBYckHC52jAiz
+            bZxuC0SuYZxcFQur5Uuuz5XkeQO9yocmNJCSIYoFWXOZVbjPqVeL51K1dWk4zRKW
+            o+7lQPGqPE1bSrXOiypfPEDjxGQ/lNzTObRDBxqi9dkvfQXCDaDDoLsiJ1GLLnKl
+            +3MDn6jz3PoX7ZL0hWW4jXm4IPaJAHRfjpJtpoyyEUtFOY8BH955IAyzWzGTCZID
+            acf4Rhp7zzIfjsbeRH0lQpxLRihWvSjCeNj0F391Z3maeagX6l2nzAZEdprWCUF+
+            P668c0393pzvTAX6JRAmwgQ3Dj6FIQIqWLnx47/MKBeYAoR8QnmMeKxoMWiYpS0S
+            nkJXfxNIK9Ww/FTxZzNJgTIeqHvhaad9bNZfc/Sh4wQn00kl5amQ/YOFzZEUfWH1
+            WpzgJlfp83WnXxMhSAKbA+3G1pTYar/llzf5hP10RZbQzK2XRHhZUfFnEm5wF2JI
+            BjfffINDO7jiQ19wdQ7RdzV8eNRuZBlN7jV9ZKCCHgtSDLfz12m4RTStyVCPBgHC
+            vGsXm0naLw9+QKtst5cRUF7Au8EqVUY0jwnbJbbwh9kWqBaQkD6aQnHugfym8XDS
+            XAERz2uqdrzSW80etGyPvVxzA8flE6XanqYNEWvvUM0ikFROmnfKeSbI6GEiuqfq
+            6PrrER/gLvsi1bfIJcXLpOLUmywj0brqUESOHx84EFO8AKkdeCItqlmcc/b7
+            =PCgT
+            -----END PGP MESSAGE-----
+          fp: 6D3FE55384B558E06A1BA364586EFA784A32C981
+    encrypted_regex: ^(externalName|external-dns.alpha.kubernetes.io/hostname|sans|main|match|external-dns.alpha.kubernetes.io/target|dnsNames|commonName|data|stringData|dnsNames|email|accessKeyID|region|hostedZoneID|role|dnsZones)$
+    version: 3.8.1
+---
+apiVersion: traefik.io/v1alpha1
+kind: TraefikService
+metadata:
+    annotations:
+        argocd.argoproj.io/sync-wave: "2"
+    name: s3
+spec:
+    weighted:
+        services:
+            - name: minio
+              port: 9000
+              weight: 1
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age: []
+    lastmodified: "2024-08-21T19:51:06Z"
+    mac: ENC[AES256_GCM,data:7vtHJ/P0kWKZ+qUnS/0Gxu9cvYwQJ7yL+XJu5LyIYvQfS6u3PMzbJjrKc8ZbWTcvubGbMUK2CEadztiXp9GiB6uiruUh4it3K9mEenbZl0ujJhFW4MJUOOYkYGErfQi90yiFHmLKIb5X5mPHUAlhb2ibsAzUN9Efs9hrlid61nE=,iv:FsnnvUFA0DVJCAdAojmUlKHwq19H/A87clnacnguXik=,tag:deJbGA1GFGrqDT3zeMJhQQ==,type:str]
+    pgp:
+        - created_at: "2024-08-21T19:51:06Z"
+          enc: |-
+            -----BEGIN PGP MESSAGE-----
+
+            hQIMA0R6oz1GmNjVAQ/+O2Rw5a78An16Ljftu+vk53hXoQiQKraeqibroz8Bk6S0
+            YADhf0JGVENIR/5UHUmsbpOmXxIbnv5Xd1DR1lFUZpfzo6kDA+gsBYckHC52jAiz
+            bZxuC0SuYZxcFQur5Uuuz5XkeQO9yocmNJCSIYoFWXOZVbjPqVeL51K1dWk4zRKW
+            o+7lQPGqPE1bSrXOiypfPEDjxGQ/lNzTObRDBxqi9dkvfQXCDaDDoLsiJ1GLLnKl
+            +3MDn6jz3PoX7ZL0hWW4jXm4IPaJAHRfjpJtpoyyEUtFOY8BH955IAyzWzGTCZID
+            acf4Rhp7zzIfjsbeRH0lQpxLRihWvSjCeNj0F391Z3maeagX6l2nzAZEdprWCUF+
+            P668c0393pzvTAX6JRAmwgQ3Dj6FIQIqWLnx47/MKBeYAoR8QnmMeKxoMWiYpS0S
+            nkJXfxNIK9Ww/FTxZzNJgTIeqHvhaad9bNZfc/Sh4wQn00kl5amQ/YOFzZEUfWH1
+            WpzgJlfp83WnXxMhSAKbA+3G1pTYar/llzf5hP10RZbQzK2XRHhZUfFnEm5wF2JI
+            BjfffINDO7jiQ19wdQ7RdzV8eNRuZBlN7jV9ZKCCHgtSDLfz12m4RTStyVCPBgHC
+            vGsXm0naLw9+QKtst5cRUF7Au8EqVUY0jwnbJbbwh9kWqBaQkD6aQnHugfym8XDS
+            XAERz2uqdrzSW80etGyPvVxzA8flE6XanqYNEWvvUM0ikFROmnfKeSbI6GEiuqfq
+            6PrrER/gLvsi1bfIJcXLpOLUmywj0brqUESOHx84EFO8AKkdeCItqlmcc/b7
+            =PCgT
+            -----END PGP MESSAGE-----
+          fp: 6D3FE55384B558E06A1BA364586EFA784A32C981
+    encrypted_regex: ^(externalName|external-dns.alpha.kubernetes.io/hostname|sans|main|match|external-dns.alpha.kubernetes.io/target|dnsNames|commonName|data|stringData|dnsNames|email|accessKeyID|region|hostedZoneID|role|dnsZones)$
+    version: 3.8.1
+---
+apiVersion: traefik.io/v1alpha1
+kind: TraefikService
+metadata:
+    annotations:
+        argocd.argoproj.io/sync-wave: "2"
+    name: minio-console
+spec:
+    weighted:
+        services:
+            - name: minio-console
+              port: 9001
+              weight: 1
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age: []
+    lastmodified: "2024-08-21T19:51:06Z"
+    mac: ENC[AES256_GCM,data:7vtHJ/P0kWKZ+qUnS/0Gxu9cvYwQJ7yL+XJu5LyIYvQfS6u3PMzbJjrKc8ZbWTcvubGbMUK2CEadztiXp9GiB6uiruUh4it3K9mEenbZl0ujJhFW4MJUOOYkYGErfQi90yiFHmLKIb5X5mPHUAlhb2ibsAzUN9Efs9hrlid61nE=,iv:FsnnvUFA0DVJCAdAojmUlKHwq19H/A87clnacnguXik=,tag:deJbGA1GFGrqDT3zeMJhQQ==,type:str]
+    pgp:
+        - created_at: "2024-08-21T19:51:06Z"
+          enc: |-
+            -----BEGIN PGP MESSAGE-----
+
+            hQIMA0R6oz1GmNjVAQ/+O2Rw5a78An16Ljftu+vk53hXoQiQKraeqibroz8Bk6S0
+            YADhf0JGVENIR/5UHUmsbpOmXxIbnv5Xd1DR1lFUZpfzo6kDA+gsBYckHC52jAiz
+            bZxuC0SuYZxcFQur5Uuuz5XkeQO9yocmNJCSIYoFWXOZVbjPqVeL51K1dWk4zRKW
+            o+7lQPGqPE1bSrXOiypfPEDjxGQ/lNzTObRDBxqi9dkvfQXCDaDDoLsiJ1GLLnKl
+            +3MDn6jz3PoX7ZL0hWW4jXm4IPaJAHRfjpJtpoyyEUtFOY8BH955IAyzWzGTCZID
+            acf4Rhp7zzIfjsbeRH0lQpxLRihWvSjCeNj0F391Z3maeagX6l2nzAZEdprWCUF+
+            P668c0393pzvTAX6JRAmwgQ3Dj6FIQIqWLnx47/MKBeYAoR8QnmMeKxoMWiYpS0S
+            nkJXfxNIK9Ww/FTxZzNJgTIeqHvhaad9bNZfc/Sh4wQn00kl5amQ/YOFzZEUfWH1
+            WpzgJlfp83WnXxMhSAKbA+3G1pTYar/llzf5hP10RZbQzK2XRHhZUfFnEm5wF2JI
+            BjfffINDO7jiQ19wdQ7RdzV8eNRuZBlN7jV9ZKCCHgtSDLfz12m4RTStyVCPBgHC
+            vGsXm0naLw9+QKtst5cRUF7Au8EqVUY0jwnbJbbwh9kWqBaQkD6aQnHugfym8XDS
+            XAERz2uqdrzSW80etGyPvVxzA8flE6XanqYNEWvvUM0ikFROmnfKeSbI6GEiuqfq
+            6PrrER/gLvsi1bfIJcXLpOLUmywj0brqUESOHx84EFO8AKkdeCItqlmcc/b7
+            =PCgT
+            -----END PGP MESSAGE-----
+          fp: 6D3FE55384B558E06A1BA364586EFA784A32C981
+    encrypted_regex: ^(externalName|external-dns.alpha.kubernetes.io/hostname|sans|main|match|external-dns.alpha.kubernetes.io/target|dnsNames|commonName|data|stringData|dnsNames|email|accessKeyID|region|hostedZoneID|role|dnsZones)$
+    version: 3.8.1
