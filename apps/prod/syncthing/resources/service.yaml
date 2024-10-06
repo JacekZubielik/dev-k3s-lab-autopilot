@@ -1,0 +1,30 @@
+---
+kind: Service
+apiVersion: v1
+metadata:
+  labels:
+    app.kubernetes.io/name: syncthing
+  name: syncthing-discovery-proxy
+  namespace: syncthing
+spec:
+  externalName: 192.168.40.193
+  type: ExternalName
+  ports:
+  - name: discovery
+    protocol: TCP
+    port: 21027
+    targetPort: 21027
+  selector:
+    app.kubernetes.io/name: syncthing
+---
+apiVersion: v1
+kind: Endpoints
+metadata:
+  name: discovery
+  namespace: syncthing
+subsets:
+- addresses:
+  - ip: 192.168.40.193
+  ports:
+  - name: discovery
+    port: 21027

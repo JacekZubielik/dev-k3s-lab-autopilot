@@ -1,0 +1,24 @@
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    app: syncthing
+    prometheus.io/scrap-with: kube-prometheus-stack
+    release: kube-prometheus-stack
+  name: syncthing
+  namespace: syncthing
+spec:
+  jobLabel: app.kubernetes.io/name
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: syncthing
+  namespaceSelector:
+      any: true
+  endpoints:
+  - interval: 15s
+    path: /metrics
+    port: http
+    scheme: http
+    scrapeTimeout: 5s
+
