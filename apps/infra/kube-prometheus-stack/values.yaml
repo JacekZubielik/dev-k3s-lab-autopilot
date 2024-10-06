@@ -533,10 +533,10 @@ grafana:
       minio-dashboard:
         gnetId: 13502
         revision: 26
-        # datasource: Prometheus
-        datasources:
-        - name: DS_PROMETHEUS
-          value: Prometheus
+        datasource: prometheus
+        # datasources:
+        # - name: DS_PROMETHEUS
+        #   value: Prometheus
       minio-bucket:
         gnetId: 19237
         # datasource: Prometheus
@@ -698,6 +698,7 @@ grafana:
       defaultDatasourceEnabled: true
       isDefaultDatasource: true
       name: Prometheus
+      type: prometheus
       uid: prometheus
       annotations: {}
       httpMethod: POST
@@ -729,37 +730,37 @@ grafana:
     type: loki
     url: http://loki-gateway.monitoring
   # More config at https://grafana.com/docs/grafana/latest/datasources/tempo/configure-tempo-data-source/
-  # - name: Tempo
-  #   uid: tempo
-  #   type: tempo
-  #   access: proxy
-  #   url: http://tempo.monitoring.svc:3100
-  #   jsonData:
-  #     tracesToMetrics:
-  #       datasourceUid: 'prom'
-  #       spanStartTimeShift: '1h'
-  #       spanEndTimeShift: '-1h'
-  #       tags: [{ key: 'service.name', value: 'service' }]
-  #       queries:
-  #       - name: 'latency'
-  #         query: 'sum(rate(traces_spanmetrics_latency_bucket{$$__tags}[5m]))'
-  #     serviceMap:
-  #       datasourceUid: 'prometheus'
-  #     nodeGraph:
-  #       enabled: true
-  #     search:
-  #       hide: false
-  #     traceQuery:
-  #       timeShiftEnabled: true
-  #       spanStartTimeShift: '1h'
-  #       spanEndTimeShift: '-1h'
-  # - name: prometheus-longhorn
-  #   uid: longhorn
-  #   type: prometheus
-  #   access: proxy
-  #   editable: true
-  #   url: http://prometheus-longhorn.longhorn-system.svc:9090
-  #   version: 1
+  - name: Tempo
+    uid: tempo
+    type: tempo
+    access: proxy
+    url: http://tempo.monitoring.svc:3100
+    jsonData:
+      tracesToMetrics:
+        datasourceUid: 'prom'
+        spanStartTimeShift: '1h'
+        spanEndTimeShift: '-1h'
+        tags: [{ key: 'service.name', value: 'service' }]
+        queries:
+        - name: 'latency'
+          query: 'sum(rate(traces_spanmetrics_latency_bucket{$$__tags}[5m]))'
+      serviceMap:
+        datasourceUid: 'prometheus'
+      nodeGraph:
+        enabled: true
+      search:
+        hide: false
+      traceQuery:
+        timeShiftEnabled: true
+        spanStartTimeShift: '1h'
+        spanEndTimeShift: '-1h'
+  - name: prometheus-longhorn
+    uid: longhorn
+    type: prometheus
+    access: proxy
+    editable: true
+    url: http://prometheus-longhorn.longhorn-system.svc:9090
+    version: 1
 
   service:
     portName: http-web
