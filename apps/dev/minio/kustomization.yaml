@@ -10,7 +10,6 @@ metadata:
 resources:
 - resources/ns.yaml
 - resources/pv.yaml
-# - resources/pvc.yaml
 
 generators:
 - ksops-generator.yaml

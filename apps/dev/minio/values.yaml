@@ -12,18 +12,13 @@ minioConsolePort: "9001"
 
 deploymentUpdate:
   type: RollingUpdate
-  # maxUnavailable: 0
-  # maxSurge: 100%
+  maxUnavailable: 0
+  maxSurge: 100%
 
 ## Update strategy for StatefulSets
 statefulSetUpdate:
   updateStrategy: RollingUpdate
 
-## Set default rootUser, rootPassword
-## rootUser and rootPassword is generated when not set
-## Distributed MinIO ref: https://min.io/docs/minio/linux/operations/install-deploy-manage/deploy-minio-multi-node-multi-drive.html
-# rootUser: ""
-# rootPassword: ""
 existingSecret: "minio-secret"
 
 ## Directory on the MinIO pof
@@ -31,7 +26,7 @@ certsPath: "/etc/minio/certs/"
 configPathmc: "/etc/minio/mc/"
 
 ## Path where PV would be mounted on the MinIO Pod
-mountPath: "/export"
+mountPath: "/s3minio"
 ## Override the root directory which the minio server should serve from.
 ## If left empty, it defaults to the value of {{ .Values.mountPath }}
 ## If defined, it must be a sub-directory of the path specified in {{ .Values.mountPath }}
@@ -72,7 +67,7 @@ persistence:
   #   whenDeleted: Retain
 
 service:
-  type: LoadBalancer # LoadBalancer/ClusterIP
+  type: LoadBalancer
   clusterIP: ~
   port: 9000
   nodePort: 32000
@@ -81,7 +76,7 @@ service:
   annotations: {}
 
 consoleService:
-  type: LoadBalancer # LoadBalancer
+  type: LoadBalancer
   clusterIP: ~
   port: 9001
   nodePort: 32001
@@ -91,15 +86,15 @@ consoleService:
 
 # nodeSelector:
 #   kubernetes.io/hostname: dev-k3s-master-0
-# affinity:
-#   nodeAffinity:
-#     requiredDuringSchedulingIgnoredDuringExecution:
-#       nodeSelectorTerms:
-#       - matchExpressions:
-#         - key: kubernetes.io/arch
-#           operator: In
-#           values:
-#           - amd64
+affinity:
+  nodeAffinity:
+    requiredDuringSchedulingIgnoredDuringExecution:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/arch
+          operator: In
+          values:
+          - amd64
 
 ## Add stateful containers to have security context, if enabled MinIO will run as this
 ## user and group NOTE: securityContext is only enabled if persistence.enabled=true
@@ -122,10 +117,10 @@ resources:
   limits:
     memory: 1.2Gi
 
-# Minio Buckets
+# Minio Buckets bucket [true|false] NOTE: versioning is enabled by default if you use locking
 buckets:
 - name: k3s-authentik
-  objectlocking: false  # bucket [true|false] NOTE: versioning is enabled by default if you use locking
+  objectlocking: false
   policy: private
   purge: false
   versioning: false
@@ -137,12 +132,18 @@ buckets:
   versioning: false
 
 - name: k3s-longhorn
-  objectlocking: true # false
+  objectlocking: false
   policy: private
   purge: false
-  # versioning: false
+  versioning: false
 
 - name: k3s-tempo
+  objectlocking: false
+  policy: private
+  purge: false
+  versioning: false
+
+- name: k3s-velero
   objectlocking: false
   policy: private
   purge: false
@@ -153,10 +154,6 @@ users:
   existingSecret: minio-secret
   existingSecretKey: authentikPassword
   policy: authentik
-- accessKey: backend
-  existingSecret: minio-secret
-  existingSecretKey: backendPassword
-  policy: backend
 - accessKey: loki
   existingSecret: minio-secret
   existingSecretKey: lokiPassword
@@ -169,6 +166,10 @@ users:
   existingSecret: minio-secret
   existingSecretKey: tempoPassword
   policy: tempo
+- accessKey: velero
+  existingSecret: minio-secret
+  existingSecretKey: veleroPassword
+  policy: velero
 
 policies:
 - name: authentik
@@ -177,39 +178,15 @@ policies:
     - 'arn:aws:s3:::k3s-authentik-backup'
     - 'arn:aws:s3:::k3s-authentik-backup/*'
     actions:
-    - "s3:DeleteObject"
-    - "s3:GetObject"
-    - "s3:ListBucket"
-    - "s3:PutObject"
-
-- name: backend
-  statements:
-  - resources:
-    - 'arn:aws:s3:::k3s-audio'
-    - 'arn:aws:s3:::k3s-audio/*'
-    - 'arn:aws:s3:::k3s-authentik-backup'
-    - 'arn:aws:s3:::k3s-authentik-backup/*'
-    - 'arn:aws:s3:::k3s-backend'
-    - 'arn:aws:s3:::k3s-backend/*'
-    - 'arn:aws:s3:::k3s-loki'
-    - 'arn:aws:s3:::k3s-loki/*'
-    - 'arn:aws:s3:::k3s-longhorn-backup'
-    - 'arn:aws:s3:::k3s-longhorn-backup/*'
-    - 'arn:aws:s3:::k3s-syncthing'
-    - 'arn:aws:s3:::k3s-syncthing/*'
-    - 'arn:aws:s3:::k3s-tempo'
-    - 'arn:aws:s3:::k3s-tempo/*'
-    - 'arn:aws:s3:::k3s-video'
-    - 'arn:aws:s3:::k3s-video/*'
-    actions:
     - "s3:AbortMultipartUpload"
-    - "s3:GetObject"
     - "s3:DeleteObject"
-    - "s3:PutObject"
-    - "s3:ListMultipartUploadParts"
     - "s3:GetBucketLocation"
+    - "s3:GetObject"
     - "s3:ListBucket"
     - "s3:ListBucketMultipartUploads"
+    - "s3:ListMultipartUploadParts"
+    - "s3:PutObject"
+    effect: "Allow"
 
 - name: loki
   statements:
@@ -217,10 +194,15 @@ policies:
     - 'arn:aws:s3:::k3s-loki'
     - 'arn:aws:s3:::k3s-loki/*'
     actions:
+    - "s3:AbortMultipartUpload"
     - "s3:DeleteObject"
+    - "s3:GetBucketLocation"
     - "s3:GetObject"
     - "s3:ListBucket"
+    - "s3:ListBucketMultipartUploads"
+    - "s3:ListMultipartUploadParts"
     - "s3:PutObject"
+    effect: "Allow"
 
 - name: longhorn
   statements:
@@ -229,13 +211,13 @@ policies:
     - 'arn:aws:s3:::k3s-longhorn-backup/*'
     actions:
     - "s3:AbortMultipartUpload"
-    - "s3:GetObject"
     - "s3:DeleteObject"
-    - "s3:PutObject"
-    - "s3:ListMultipartUploadParts"
     - "s3:GetBucketLocation"
+    - "s3:GetObject"
     - "s3:ListBucket"
     - "s3:ListBucketMultipartUploads"
+    - "s3:ListMultipartUploadParts"
+    - "s3:PutObject"
     effect: "Allow"
 
 - name: tempo
@@ -244,12 +226,31 @@ policies:
     - 'arn:aws:s3:::k3s-tempo'
     - 'arn:aws:s3:::k3s-tempo/*'
     actions:
+    - "s3:AbortMultipartUpload"
     - "s3:DeleteObject"
+    - "s3:GetBucketLocation"
     - "s3:GetObject"
     - "s3:ListBucket"
+    - "s3:ListBucketMultipartUploads"
+    - "s3:ListMultipartUploadParts"
     - "s3:PutObject"
-    - "s3:GetObjectTagging"
-    - "s3:PutObjectTagging"
+    effect: "Allow"
+
+- name: velero
+  statements:
+  - resources:
+    - 'arn:aws:s3:::k3s-velero'
+    - 'arn:aws:s3:::k3s-velero/*'
+    actions:
+    - "s3:AbortMultipartUpload"
+    - "s3:DeleteObject"
+    - "s3:GetBucketLocation"
+    - "s3:GetObject"
+    - "s3:ListBucket"
+    - "s3:ListBucketMultipartUploads"
+    - "s3:ListMultipartUploadParts"
+    - "s3:PutObject"
+    effect: "Allow"
 
 ## readonlyexamplepolicy policy grants access to buckets with name starting with example.
 ## In addition, grants objects read permissions on buckets starting with example.
@@ -300,22 +301,17 @@ serviceAccount:
 metrics:
   serviceMonitor:
     enabled: true
-    # scrape each node/pod individually for additional metrics
     includeNode: true
     public: true
     additionalLabels: {}
     annotations: {}
-    # for node metrics
     relabelConfigs: {}
-    # for cluster metrics
     relabelConfigsCluster: # {}
       metricRelabelings:
       - regex: (server|pod)
         action: labeldrop
     namespace: ~
-    # Scrape interval, for example `interval: 30s`
     interval: 30s
-    # Scrape timeout, for example `scrapeTimeout: 10s`
     scrapeTimeout: 10s
 
 ## ETCD settings: https://github.com/minio/minio/blob/master/docs/sts/etcd.md
