@@ -10,7 +10,7 @@ spec:
     issuerRef:
         kind: ClusterIssuer
         name: letsencrypt-staging
-    commonName: ENC[AES256_GCM,data:ubxpAu4DdVZPB0MJHt7UG7wkTbFuSw+OrO3tJmE=,iv:5WnWdXsiA9v/6ypwv6SLXlaOiU42HanuUh6jwR5aBiw=,tag:nWluDYVyB7zsJLjsPtjvMw==,type:str]
+    commonName: ENC[AES256_GCM,data:pKLdNrZZPI5uDGrI7SI3OOYVFzGpJy2+4PJWz2I=,iv:91Ky6KRWZpZDgJwxjoLG9bVn/EQdpYYUqql1uGtUgD8=,tag:OiWTmq4YEVrpR2Y/5b6OBA==,type:str]
     secretName: s3-cf-staging
     duration: 2160h0m0s
     renewBefore: 720h0m0s
@@ -29,8 +29,8 @@ sops:
             NXA3Yi9EY0tKV3hnbk1HK0NNWERNRWcKH17wC9ANw44Y1LfcZDMaXCIksanyQQ4W
             BaVhNLTvESdKAJDLI1r+tYBunOXAKcxRzvvWcn0UEhXSm0JhwMgTcA==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-10-07T13:33:49Z"
-    mac: ENC[AES256_GCM,data:8dBa6xS2eyC6oAxU3d81+EMHQOf/eoIz46/JX4K82MIMTcfX3I1zHzxAbXrjy/Ib6R+IFJY4S2zN651FjacVgyKL0Iw9cbQuvDxvk+cuiHfz1Wa7sxustOc5BwnEunF+fDT9/IKOpCu0JBic0gEDyiTsjB7KaNs5Dk5wZyhTlGU=,iv:n1UmaWbRMyDUtmJGDVfZq63tR5AGfqTocWJ56IYB4a4=,tag:sE3Fr6R963aYJv93DwQAIQ==,type:str]
+    lastmodified: "2024-10-07T13:39:10Z"
+    mac: ENC[AES256_GCM,data:IQ136EZemv/OhfjS5As8bGE5UHbf5sSS+XATVWwvahdHe8b935JQTcq4APvCE8Cui6GLNP2U7TDkvoEBNvI+9wgKvyTZrGVCoHcARJ5aL0qZs1CNsjfOZyyCBnbLTeTY3RmfnRYP5uYEGZChnMtWpdHPabWnT+94Jyx6AXKzgWg=,iv:bWCDXJIUnNjOpTe1iPBeQ1gtuGQp5tmTBeqTe5SK9j8=,tag:/oeQfFvqQPJY4jCVqVLZig==,type:str]
     pgp:
         - created_at: "2024-10-07T13:33:49Z"
           enc: |-
@@ -67,7 +67,7 @@ spec:
     issuerRef:
         kind: ClusterIssuer
         name: letsencrypt-staging
-    commonName: ENC[AES256_GCM,data:pKLdNrZZPI5uDGrI7SI3OOYVFzGpJy2+4PJWz2I=,iv:91Ky6KRWZpZDgJwxjoLG9bVn/EQdpYYUqql1uGtUgD8=,tag:OiWTmq4YEVrpR2Y/5b6OBA==,type:str]
+    commonName: ENC[AES256_GCM,data:QXXgWU87ZmqBozARYbsRy0lxYo/wd/3hyf3g6IzZeLA=,iv:pjBAlA63IU0QgmKKfU/WU6+zT036zqpd3uZ/ORSub/g=,tag:uHNxwY2zHN5O5R7XG7bX+w==,type:str]
     secretName: minio-cf-staging
     duration: 2160h0m0s
     renewBefore: 720h0m0s
@@ -86,8 +86,8 @@ sops:
             NXA3Yi9EY0tKV3hnbk1HK0NNWERNRWcKH17wC9ANw44Y1LfcZDMaXCIksanyQQ4W
             BaVhNLTvESdKAJDLI1r+tYBunOXAKcxRzvvWcn0UEhXSm0JhwMgTcA==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-10-07T13:33:49Z"
-    mac: ENC[AES256_GCM,data:8dBa6xS2eyC6oAxU3d81+EMHQOf/eoIz46/JX4K82MIMTcfX3I1zHzxAbXrjy/Ib6R+IFJY4S2zN651FjacVgyKL0Iw9cbQuvDxvk+cuiHfz1Wa7sxustOc5BwnEunF+fDT9/IKOpCu0JBic0gEDyiTsjB7KaNs5Dk5wZyhTlGU=,iv:n1UmaWbRMyDUtmJGDVfZq63tR5AGfqTocWJ56IYB4a4=,tag:sE3Fr6R963aYJv93DwQAIQ==,type:str]
+    lastmodified: "2024-10-07T13:39:10Z"
+    mac: ENC[AES256_GCM,data:IQ136EZemv/OhfjS5As8bGE5UHbf5sSS+XATVWwvahdHe8b935JQTcq4APvCE8Cui6GLNP2U7TDkvoEBNvI+9wgKvyTZrGVCoHcARJ5aL0qZs1CNsjfOZyyCBnbLTeTY3RmfnRYP5uYEGZChnMtWpdHPabWnT+94Jyx6AXKzgWg=,iv:bWCDXJIUnNjOpTe1iPBeQ1gtuGQp5tmTBeqTe5SK9j8=,tag:/oeQfFvqQPJY4jCVqVLZig==,type:str]
     pgp:
         - created_at: "2024-10-07T13:33:49Z"
           enc: |-
