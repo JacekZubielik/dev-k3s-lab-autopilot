@@ -320,6 +320,33 @@ policies:
               "192.168.40.0/24"
             ]
 
+- name: k3s-data
+  statements:
+    - effect: Allow
+      resources:
+        - 'arn:aws:s3:::k3s-data*/*'
+      actions:
+        - "s3:AbortMultipartUpload"
+        - "s3:GetObject"
+        - "s3:DeleteObject"
+        - "s3:PutObject"
+        - "s3:ListMultipartUploadParts"
+    - resources:
+        - 'arn:aws:s3:::k3s-data*'
+      actions:
+        - "s3:CreateBucket"
+        - "s3:DeleteBucket"
+        - "s3:GetBucketLocation"
+        - "s3:ListBucket"
+        - "s3:ListBucketMultipartUploads"
+      conditions:
+        - StringEquals: '"aws:username": "data"'
+        - IpAddress: |
+            "aws:SourceIp": [
+              "10.0.0.0/8",
+              "192.168.40.0/24"
+            ]
+
 - name: k3s-loki
   statements:
     - effect: Allow
@@ -422,6 +449,33 @@ policies:
         - "s3:ListBucketMultipartUploads"
       conditions:
         - StringEquals: '"aws:username": "rabbit"'
+        - IpAddress: |
+            "aws:SourceIp": [
+              "10.0.0.0/8",
+              "192.168.40.0/24"
+            ]
+
+- name: k3s-media
+  statements:
+    - effect: Allow
+      resources:
+        - 'arn:aws:s3:::k3s-media*/*'
+      actions:
+        - "s3:AbortMultipartUpload"
+        - "s3:GetObject"
+        - "s3:DeleteObject"
+        - "s3:PutObject"
+        - "s3:ListMultipartUploadParts"
+    - resources:
+        - 'arn:aws:s3:::k3s-media*'
+      actions:
+        - "s3:CreateBucket"
+        - "s3:DeleteBucket"
+        - "s3:GetBucketLocation"
+        - "s3:ListBucket"
+        - "s3:ListBucketMultipartUploads"
+      conditions:
+        - StringEquals: '"aws:username": "media"'
         - IpAddress: |
             "aws:SourceIp": [
               "10.0.0.0/8",
