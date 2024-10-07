@@ -41,4 +41,3 @@ data:
         scheme: http
         static_configs:
         - targets: ['minio.minio:9000']
-
