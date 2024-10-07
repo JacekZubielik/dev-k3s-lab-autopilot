@@ -5,11 +5,13 @@ metadata:
   annotations:
     kube-vip.io/loadBalancerIPs: 192.168.40.187
   labels:
+    app: minio
     app.kubernetes.io/name: minio
   name: minio-ftp
   namespace: minio
 spec:
   type: LoadBalancer
+  loadBalancerIP: "192.168.40.187"
   ports:
   - name: minio-ftp
     port: 8021
