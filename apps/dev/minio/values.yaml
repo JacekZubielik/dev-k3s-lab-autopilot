@@ -72,7 +72,6 @@ trustedCertsSecret: ""
 
 persistence:
   enabled: enable
-  # existingClaim: pvc-minio-0
   storageClass: nfs-storage
   accessModes: ReadWriteOnce
   volumeName: pv-minio
@@ -187,6 +186,11 @@ users:
   existingSecret: minio-secret
   existingSecretKey: longhornPassword
   policy: longhorn
+
+- accessKey: prometheus
+  existingSecret: minio-secret
+  existingSecretKey: prometheusPassword
+  policy: prometheus
 
 - accessKey: rabbit
   existingSecret: minio-secret
