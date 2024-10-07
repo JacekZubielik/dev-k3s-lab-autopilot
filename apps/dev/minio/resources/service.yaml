@@ -5,7 +5,7 @@ metadata:
   annotations:
     kube-vip.io/loadBalancerIPs: 192.168.40.187
   labels:
-    app.kubernetes.io/name: minio-ftp
+    app.kubernetes.io/name: minio
   name: minio-ftp
   namespace: minio
 spec:
