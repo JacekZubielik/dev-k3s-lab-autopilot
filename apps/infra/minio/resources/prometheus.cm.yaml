@@ -7,7 +7,6 @@ metadata:
     name: minio-prometheus-config
   name: minio-prometheus-config
   namespace: minio
-
 data:
   prometheus.yml: |-
     global:
@@ -15,28 +14,25 @@ data:
       evaluation_interval: 5s
     scrape_configs:
       - job_name: minio-job
-        bearer_token: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJwcm9tZXRoZXVzIiwic3ViIjoicHJvbWV0aGV1cyIsImV4cCI6NDg4MTkxNTE3Nn0.QCvts4LJQ2ZTFx2TBBqPBybe67hBLrXA9l2J1nntBxmBfwLYoQKNVnWCn48zxRG7q9F2pZNNtvPuakO30gpGtg
+        bearer_token: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJwcm9tZXRoZXVzIiwic3ViIjoiclhBWDNKSUZuMm05Wnh0bWlha2siLCJleHAiOjQ4ODE5Mzk4MzN9.1k7rqHD3008zSFZLUvuCFIElRclzy4Dgjb6bgeK4PWxWk-ARzH_NhKWQ8dQLhfyZMr1HNptN5yCtDTFIrcsgXQ
         metrics_path: /minio/v2/metrics/cluster
         scheme: http
         static_configs:
         - targets: ['minio.minio:9000']
-
       - job_name: minio-job-node
-        bearer_token: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJwcm9tZXRoZXVzIiwic3ViIjoicHJvbWV0aGV1cyIsImV4cCI6NDg4MTkxNTIxNn0.i2wPHRZFD6ES31Z8h9SGNW5fbVH1505IhFpk2EdKEpRZnrvCVY-5tRz83XJxoPbz0w1TImcNC_MgpYZ4marrAA
+        bearer_token: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJwcm9tZXRoZXVzIiwic3ViIjoiclhBWDNKSUZuMm05Wnh0bWlha2siLCJleHAiOjQ4ODE5Mzk5MzF9.dsiwv1TeGILCrLgzZlv3HHC8VWBCBm53JiY1vXpunn69icPWsz-DKHptKEKE538vMO9Wjh_5rpacy6-uPFKZTQ
         metrics_path: /minio/v2/metrics/node
         scheme: http
         static_configs:
         - targets: ['minio.minio:9000']
-
       - job_name: minio-job-bucket
-        bearer_token: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJwcm9tZXRoZXVzIiwic3ViIjoicHJvbWV0aGV1cyIsImV4cCI6NDg4MTkxNTIyOX0.zGK0u2NnueRs_ECXm9KBA5RqcQ7ShamTYWT0-Jux_sblPo50SMf8fd63SjW1NHsOec97HyTarExIQHG-Hvygtg
+        bearer_token: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJwcm9tZXRoZXVzIiwic3ViIjoiclhBWDNKSUZuMm05Wnh0bWlha2siLCJleHAiOjQ4ODE5Mzk5Njd9.w51NDfDnFSGS89JwyjVaedEIPMHmbtMqRPF0AOLuRv1zyfcDJaNOmBVfq3Ut60ziulY381lqU-2uJb5wm9W8LA
         metrics_path: /minio/v2/metrics/bucket
         scheme: http
         static_configs:
         - targets: ['minio.minio:9000']
-
       - job_name: minio-job-resource
-        bearer_token: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJwcm9tZXRoZXVzIiwic3ViIjoicHJvbWV0aGV1cyIsImV4cCI6NDg4MTkxNTI1N30.jwstbAqsrH_sWS_o8lSO5vnlmXG253QkY5j-d-2Fjpi23dqPTBy667aYaMuwu-Ylw-CG60Gd3UWeRUvIMmmygA
+        bearer_token: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJwcm9tZXRoZXVzIiwic3ViIjoiclhBWDNKSUZuMm05Wnh0bWlha2siLCJleHAiOjQ4ODE5Mzk5OTF9.RueJYLxO8vgEMyP3c8jV96bt6pljrgS_BUyD5IrG_PVRR0lqMEqn6jGQUP1l4FBg0NoPf48nmWcmezLDKSiT6g
         metrics_path: /minio/v2/metrics/resource
         scheme: http
         static_configs:

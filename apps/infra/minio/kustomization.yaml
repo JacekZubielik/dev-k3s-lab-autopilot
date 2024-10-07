@@ -10,6 +10,7 @@ metadata:
 resources:
 - resources/ns.yaml
 - resources/prometheus.cm.yaml
+- resources/prometheus.rule.yaml
 - resources/pv.yaml
 - resources/service.yaml
 
