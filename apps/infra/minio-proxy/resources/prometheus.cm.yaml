@@ -4,8 +4,8 @@ kind: ConfigMap
 metadata:
   labels:
     app.kubernetes.io/name: minio-proxy
-    name: minio-prometheus-config
-  name: minio-prometheus-config
+    name: minio-proxy-prometheus-config
+  name: minio-proxy-prometheus-config
   namespace: minio-proxy
 
 data:
