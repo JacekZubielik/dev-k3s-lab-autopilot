@@ -15,9 +15,29 @@ spec:
     port: 8021
     targetPort: 8021
     protocol: TCP
-  - name: ftp-passive-port
-    port: "30000-40000"
-    targetPort: "30000-40000"
+  - name: ftp-passive-port0
+    port: 30000
+    targetPort: 30000
+    protocol: TCP
+  - name: ftp-passive-port1
+    port: 30001
+    targetPort: 30001
+    protocol: TCP
+  - name: ftp-passive-port2
+    port: 30002
+    targetPort: 30002
+    protocol: TCP
+  - name: ftp-passive-port3
+    port: 30003
+    targetPort: 30003
+    protocol: TCP
+  - name: ftp-passive-port4
+    port: 30004
+    targetPort: 30004
+    protocol: TCP
+  - name: ftp-passive-port5
+    port: 30005
+    targetPort: 30005
     protocol: TCP
   selector:
     app.kubernetes.io/name: minio
@@ -33,5 +53,15 @@ subsets:
   ports:
   - name: ftp
     port: 8021
-  - name: ftp-passive-port
-    port: "30000-40000"
+  - name: ftp-passive-port0
+    port: 30000
+  - name: ftp-passive-port1
+    port: 30001
+  - name: ftp-passive-port2
+    port: 30002
+  - name: ftp-passive-port3
+    port: 30003
+  - name: ftp-passive-port4
+    port: 30004
+  - name: ftp-passive-port5
+    port: 30005

@@ -40,11 +40,11 @@ configPathmc: "/etc/minio/mc/"
 extraArgs:
 # example for enabling FTP:
 - --ftp=\"address=:8021\"
-- --ftp=\"passive-port-range=30000-40000\"
+- --ftp=\"passive-port-range=30000-30005\"
 
 environment:
   ## Please refer for comprehensive list https://min.io/docs/minio/linux/reference/minio-server/minio-server.html
-  - MINIO_PROMETHEUS_URL=http://192.168.40.194:9090
+  MINIO_PROMETHEUS_URL=http://192.168.40.194:9090
   - MINIO_PROMETHEUS_JOB_ID=minio-job
   - MINIO_PROMETHEUS_AUTH_TYPE=public
   - MINIO_SITE_NAME=wd-rack-1
