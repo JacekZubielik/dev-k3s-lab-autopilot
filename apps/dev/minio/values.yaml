@@ -25,6 +25,12 @@ existingSecret: "minio-secret"
 certsPath: "/etc/minio/certs/"
 configPathmc: "/etc/minio/mc/"
 
+## Additional arguments to pass to minio binary
+extraArgs:
+# example for enabling FTP:
+- --ftp=\"address=:8021\"
+- --ftp=\"passive-port-range=10000-10010\"
+
 ## Path where PV would be mounted on the MinIO Pod
 mountPath: "/s3minio"
 ## Override the root directory which the minio server should serve from.
@@ -84,7 +90,7 @@ consoleService:
   externalIPs: []
   annotations: {}
 
-# nodeSelector:
+nodeSelector: {}
 #   kubernetes.io/hostname: dev-k3s-master-0
 affinity:
   nodeAffinity:
@@ -187,6 +193,13 @@ policies:
     - "s3:ListMultipartUploadParts"
     - "s3:PutObject"
     effect: "Allow"
+    conditions:
+      - StringEquals: '"aws:username": "authentik"'
+      - IpAddress: |
+          "aws:SourceIp": [
+            "10.0.0.0/8",
+            "192.168.40.0/24"
+          ]
 
 - name: loki
   statements:
@@ -203,6 +216,9 @@ policies:
     - "s3:ListMultipartUploadParts"
     - "s3:PutObject"
     effect: "Allow"
+
+
+
 
 - name: longhorn
   statements:
