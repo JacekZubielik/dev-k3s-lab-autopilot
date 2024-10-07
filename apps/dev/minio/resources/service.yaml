@@ -1,0 +1,37 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    metallb.universe.tf/loadBalancerIPs: 192.168.40.192
+  labels:
+    app.kubernetes.io/name: minio-ftp
+  name: minio-ftp
+  namespace: minio
+spec:
+  type: LoadBalancer
+  ports:
+  - name: minio-ftp
+    port: 8021
+    targetPort: 8021
+    protocol: TCP
+  - name: ftp-passive-port
+    port: "30000-40000"
+    targetPort: "30000-40000"
+    protocol: TCP
+  selector:
+    app.kubernetes.io/name: minio
+---
+apiVersion: v1
+kind: Endpoints
+metadata:
+  name: minio-ftp
+  namespace: minio
+subsets:
+- addresses:
+  - ip: 192.168.40.192
+  ports:
+  - name: ftp
+    port: 8021
+  - name: ftp-passive-port
+    port: "30000-40000"

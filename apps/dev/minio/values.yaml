@@ -40,7 +40,20 @@ configPathmc: "/etc/minio/mc/"
 extraArgs:
 # example for enabling FTP:
 - --ftp=\"address=:8021\"
-- --ftp=\"passive-port-range=10000-10010\"
+- --ftp=\"passive-port-range=30000-40000\"
+
+environment:
+  ## Please refer for comprehensive list https://min.io/docs/minio/linux/reference/minio-server/minio-server.html
+  MINIO_PROMETHEUS_URL=http://192.168.40.194:9090
+  MINIO_PROMETHEUS_JOB_ID=minio-job
+  MINIO_PROMETHEUS_AUTH_TYPE=public
+  MINIO_SITE_NAME=wd-rack-1
+  MINIO_BROWSER=on
+  MINIO_API_ROOT_ACCESS=on
+  MINIO_BROWSER_LOGIN_ANIMATION=off
+  MINIO_API_SYNC_EVENTS=on
+  MINIO_REGION_NAME=us-east-1
+  # MINIO_NOTIFY_MQTT_ENABLE="on"
 
 ## Path where PV would be mounted on the MinIO Pod
 mountPath: "/s3minio"
@@ -208,157 +221,337 @@ users:
   policy: velero
 
 policies:
+# - name: k3s-authentik
+#   statements:
+#   - resources:
+#     - 'arn:aws:s3:::k3s-authentik-backup'
+#     - 'arn:aws:s3:::k3s-authentik-backup/*'
+#     actions:
+#     - "s3:AbortMultipartUpload"
+#     - "s3:DeleteObject"
+#     - "s3:GetBucketLocation"
+#     - "s3:GetObject"
+#     - "s3:ListBucket"
+#     - "s3:ListBucketMultipartUploads"
+#     - "s3:ListMultipartUploadParts"
+#     - "s3:PutObject"
+#     effect: "Allow"
+#     conditions:
+#       - StringEquals: '"aws:username": "authentik"'
+#       - IpAddress: |
+#           "aws:SourceIp": [
+#             "10.0.0.0/8",
+#             "192.168.40.0/24"
+#           ]
+
 - name: k3s-authentik
   statements:
-  - resources:
-    - 'arn:aws:s3:::k3s-authentik-backup'
-    - 'arn:aws:s3:::k3s-authentik-backup/*'
-    actions:
-    - "s3:AbortMultipartUpload"
-    - "s3:DeleteObject"
-    - "s3:GetBucketLocation"
-    - "s3:GetObject"
-    - "s3:ListBucket"
-    - "s3:ListBucketMultipartUploads"
-    - "s3:ListMultipartUploadParts"
-    - "s3:PutObject"
-    effect: "Allow"
-    conditions:
-      - StringEquals: '"aws:username": "authentik"'
-      - IpAddress: |
-          "aws:SourceIp": [
-            "10.0.0.0/8",
-            "192.168.40.0/24"
-          ]
+    - effect: Allow  # this is the default
+      resources:
+        - 'arn:aws:s3:::k3s-authentik*/*'
+      actions:
+        - "s3:AbortMultipartUpload"
+        - "s3:GetObject"
+        - "s3:DeleteObject"
+        - "s3:PutObject"
+        - "s3:ListMultipartUploadParts"
+    - resources:
+        - 'arn:aws:s3:::k3s-authentik*'
+      actions:
+        - "s3:CreateBucket"
+        - "s3:DeleteBucket"
+        - "s3:GetBucketLocation"
+        - "s3:ListBucket"
+        - "s3:ListBucketMultipartUploads"
+      conditions:
+        - StringEquals: '"aws:username": "authentik"'
+        - IpAddress: |
+            "aws:SourceIp": [
+              "10.0.0.0/8",
+              "192.168.40.0/24"
+            ]
+
+
+
+# - name: k3s-loki
+#   statements:
+#   - resources:
+#     - 'arn:aws:s3:::k3s-loki'
+#     - 'arn:aws:s3:::k3s-loki/*'
+#     actions:
+#     - "s3:AbortMultipartUpload"
+#     - "s3:DeleteObject"
+#     - "s3:GetBucketLocation"
+#     - "s3:GetObject"
+#     - "s3:ListBucket"
+#     - "s3:ListBucketMultipartUploads"
+#     - "s3:ListMultipartUploadParts"
+#     - "s3:PutObject"
+#     effect: "Allow"
+#     conditions:
+#       - StringEquals: '"aws:username": "loki"'
+#       - IpAddress: |
+#           "aws:SourceIp": [
+#             "10.0.0.0/8",
+#             "192.168.40.0/24"
+#           ]
 
 - name: k3s-loki
   statements:
-  - resources:
-    - 'arn:aws:s3:::k3s-loki'
-    - 'arn:aws:s3:::k3s-loki/*'
-    actions:
-    - "s3:AbortMultipartUpload"
-    - "s3:DeleteObject"
-    - "s3:GetBucketLocation"
-    - "s3:GetObject"
-    - "s3:ListBucket"
-    - "s3:ListBucketMultipartUploads"
-    - "s3:ListMultipartUploadParts"
-    - "s3:PutObject"
-    effect: "Allow"
-    conditions:
-      - StringEquals: '"aws:username": "loki"'
-      - IpAddress: |
-          "aws:SourceIp": [
-            "10.0.0.0/8",
-            "192.168.40.0/24"
-          ]
+    - effect: Allow  # this is the default
+      resources:
+        - 'arn:aws:s3:::k3s-loki*/*'
+      actions:
+        - "s3:AbortMultipartUpload"
+        - "s3:GetObject"
+        - "s3:DeleteObject"
+        - "s3:PutObject"
+        - "s3:ListMultipartUploadParts"
+    - resources:
+        - 'arn:aws:s3:::k3s-loki*'
+      actions:
+        - "s3:CreateBucket"
+        - "s3:DeleteBucket"
+        - "s3:GetBucketLocation"
+        - "s3:ListBucket"
+        - "s3:ListBucketMultipartUploads"
+      conditions:
+        - StringEquals: '"aws:username": "loki"'
+        - IpAddress: |
+            "aws:SourceIp": [
+              "10.0.0.0/8",
+              "192.168.40.0/24"
+            ]
+
+
+
+# - name: k3s-longhorn
+#   statements:
+#   - resources:
+#     - 'arn:aws:s3:::k3s-longhorn-backup'
+#     - 'arn:aws:s3:::k3s-longhorn-backup/*'
+#     actions:
+#     - "s3:AbortMultipartUpload"
+#     - "s3:DeleteObject"
+#     - "s3:GetBucketLocation"
+#     - "s3:GetObject"
+#     - "s3:ListBucket"
+#     - "s3:ListBucketMultipartUploads"
+#     - "s3:ListMultipartUploadParts"
+#     - "s3:PutObject"
+#     effect: "Allow"
+#     conditions:
+#       - StringEquals: '"aws:username": "longhorn"'
+#       - IpAddress: |
+#           "aws:SourceIp": [
+#             "10.0.0.0/8",
+#             "192.168.40.0/24"
+#           ]
 
 - name: k3s-longhorn
   statements:
-  - resources:
-    - 'arn:aws:s3:::k3s-longhorn-backup'
-    - 'arn:aws:s3:::k3s-longhorn-backup/*'
-    actions:
-    - "s3:AbortMultipartUpload"
-    - "s3:DeleteObject"
-    - "s3:GetBucketLocation"
-    - "s3:GetObject"
-    - "s3:ListBucket"
-    - "s3:ListBucketMultipartUploads"
-    - "s3:ListMultipartUploadParts"
-    - "s3:PutObject"
-    effect: "Allow"
-    conditions:
-      - StringEquals: '"aws:username": "longhorn"'
-      - IpAddress: |
-          "aws:SourceIp": [
-            "10.0.0.0/8",
-            "192.168.40.0/24"
-          ]
+    - effect: Allow  # this is the default
+      resources:
+        - 'arn:aws:s3:::k3s-longhorn*/*'
+      actions:
+        - "s3:AbortMultipartUpload"
+        - "s3:GetObject"
+        - "s3:DeleteObject"
+        - "s3:PutObject"
+        - "s3:ListMultipartUploadParts"
+    - resources:
+        - 'arn:aws:s3:::k3s-longhorn*'
+      actions:
+        - "s3:CreateBucket"
+        - "s3:DeleteBucket"
+        - "s3:GetBucketLocation"
+        - "s3:ListBucket"
+        - "s3:ListBucketMultipartUploads"
+      conditions:
+        - StringEquals: '"aws:username": "longhorn"'
+        - IpAddress: |
+            "aws:SourceIp": [
+              "10.0.0.0/8",
+              "192.168.40.0/24"
+            ]
+
+
+# - name: k3s-rabbit
+#   statements:
+#   - resources:
+#     - 'arn:aws:s3:::*'
+#     actions:
+#     - "s3:AbortMultipartUpload"
+#     - "s3:DeleteObject"
+#     - "s3:GetBucketLocation"
+#     - "s3:GetObject"
+#     - "s3:ListBucket"
+#     - "s3:ListBucketMultipartUploads"
+#     - "s3:ListMultipartUploadParts"
+#     - "s3:PutObject"
+#     effect: "Allow"
+#     conditions:
+#       - StringEquals: '"aws:username": "rabbit"'
+#       - IpAddress: |
+#           "aws:SourceIp": [
+#             "10.0.0.0/8",
+#             "192.168.40.0/24"
+#           ]
 
 - name: k3s-rabbit
   statements:
-  - resources:
-    - 'arn:aws:s3:::*'
-    actions:
-    - "s3:AbortMultipartUpload"
-    - "s3:DeleteObject"
-    - "s3:GetBucketLocation"
-    - "s3:GetObject"
-    - "s3:ListBucket"
-    - "s3:ListBucketMultipartUploads"
-    - "s3:ListMultipartUploadParts"
-    - "s3:PutObject"
-    effect: "Allow"
-    conditions:
-      - StringEquals: '"aws:username": "rabbit"'
-      - IpAddress: |
-          "aws:SourceIp": [
-            "10.0.0.0/8",
-            "192.168.40.0/24"
-          ]
+    - effect: Allow  # this is the default
+      resources:
+        - 'arn:aws:s3:::*/*'
+      actions:
+        - "s3:AbortMultipartUpload"
+        - "s3:GetObject"
+        - "s3:DeleteObject"
+        - "s3:PutObject"
+        - "s3:ListMultipartUploadParts"
+    - resources:
+        - 'arn:aws:s3:::*'
+      actions:
+        - "s3:CreateBucket"
+        - "s3:DeleteBucket"
+        - "s3:GetBucketLocation"
+        - "s3:ListBucket"
+        - "s3:ListBucketMultipartUploads"
+      conditions:
+        - StringEquals: '"aws:username": "rabbit"'
+        - IpAddress: |
+            "aws:SourceIp": [
+              "10.0.0.0/8",
+              "192.168.40.0/24"
+            ]
+
+# - name: k3s-tempo
+#   statements:
+#   - resources:
+#     - 'arn:aws:s3:::k3s-tempo'
+#     - 'arn:aws:s3:::k3s-tempo/*'
+#     actions:
+#     - "s3:AbortMultipartUpload"
+#     - "s3:DeleteObject"
+#     - "s3:GetBucketLocation"
+#     - "s3:GetObject"
+#     - "s3:ListBucket"
+#     - "s3:ListBucketMultipartUploads"
+#     - "s3:ListMultipartUploadParts"
+#     - "s3:PutObject"
+#     effect: "Allow"
+#     conditions:
+#       - StringEquals: '"aws:username": "tempo"'
+#       - IpAddress: |
+#           "aws:SourceIp": [
+#             "10.0.0.0/8",
+#             "192.168.40.0/24"
+#           ]
 
 - name: k3s-tempo
   statements:
-  - resources:
-    - 'arn:aws:s3:::k3s-tempo'
-    - 'arn:aws:s3:::k3s-tempo/*'
-    actions:
-    - "s3:AbortMultipartUpload"
-    - "s3:DeleteObject"
-    - "s3:GetBucketLocation"
-    - "s3:GetObject"
-    - "s3:ListBucket"
-    - "s3:ListBucketMultipartUploads"
-    - "s3:ListMultipartUploadParts"
-    - "s3:PutObject"
-    effect: "Allow"
-    conditions:
-      - StringEquals: '"aws:username": "tempo"'
-      - IpAddress: |
-          "aws:SourceIp": [
-            "10.0.0.0/8",
-            "192.168.40.0/24"
-          ]
+    - effect: Allow  # this is the default
+      resources:
+        - 'arn:aws:s3:::k3s-tempo*/*'
+      actions:
+        - "s3:AbortMultipartUpload"
+        - "s3:GetObject"
+        - "s3:DeleteObject"
+        - "s3:PutObject"
+        - "s3:ListMultipartUploadParts"
+    - resources:
+        - 'arn:aws:s3:::k3s-tempo*'
+      actions:
+        - "s3:CreateBucket"
+        - "s3:DeleteBucket"
+        - "s3:GetBucketLocation"
+        - "s3:ListBucket"
+        - "s3:ListBucketMultipartUploads"
+      conditions:
+        - StringEquals: '"aws:username": "tempo"'
+        - IpAddress: |
+            "aws:SourceIp": [
+              "10.0.0.0/8",
+              "192.168.40.0/24"
+            ]
+
+
+# - name: k3s-velero
+#   statements:
+#   - resources:
+#     - 'arn:aws:s3:::k3s-velero'
+#     - 'arn:aws:s3:::k3s-velero/*'
+#     actions:
+#     - "s3:AbortMultipartUpload"
+#     - "s3:DeleteObject"
+#     - "s3:GetBucketLocation"
+#     - "s3:GetObject"
+#     - "s3:ListBucket"
+#     - "s3:ListBucketMultipartUploads"
+#     - "s3:ListMultipartUploadParts"
+#     - "s3:PutObject"
+#     effect: "Allow"
+#     conditions:
+#       - StringEquals: '"aws:username": "velero"'
+#       - IpAddress: |
+#           "aws:SourceIp": [
+#             "10.0.0.0/8",
+#             "192.168.40.0/24"
+#           ]
 
 - name: k3s-velero
   statements:
-  - resources:
-    - 'arn:aws:s3:::k3s-velero'
-    - 'arn:aws:s3:::k3s-velero/*'
-    actions:
-    - "s3:AbortMultipartUpload"
-    - "s3:DeleteObject"
-    - "s3:GetBucketLocation"
-    - "s3:GetObject"
-    - "s3:ListBucket"
-    - "s3:ListBucketMultipartUploads"
-    - "s3:ListMultipartUploadParts"
-    - "s3:PutObject"
-    effect: "Allow"
-    conditions:
-      - StringEquals: '"aws:username": "velero"'
-      - IpAddress: |
-          "aws:SourceIp": [
-            "10.0.0.0/8",
-            "192.168.40.0/24"
-          ]
+    - effect: Allow  # this is the default
+      resources:
+        - 'arn:aws:s3:::k3s-velero*/*'
+      actions:
+        - "s3:AbortMultipartUpload"
+        - "s3:GetObject"
+        - "s3:DeleteObject"
+        - "s3:PutObject"
+        - "s3:ListMultipartUploadParts"
+    - resources:
+        - 'arn:aws:s3:::k3s-velero*'
+      actions:
+        - "s3:CreateBucket"
+        - "s3:DeleteBucket"
+        - "s3:GetBucketLocation"
+        - "s3:ListBucket"
+        - "s3:ListBucketMultipartUploads"
+      conditions:
+        - StringEquals: '"aws:username": "velero"'
+        - IpAddress: |
+            "aws:SourceIp": [
+              "10.0.0.0/8",
+              "192.168.40.0/24"
+            ]
 
-## readonlyexamplepolicy policy grants access to buckets with name starting with example.
-## In addition, grants objects read permissions on buckets starting with example.
-# - name: readonlyexamplepolicy
-#   statements:
-#     - resources:
-#         - 'arn:aws:s3:::example*/*'
-#       actions:
-#         - "s3:GetObject"
-#     - resources:
-#         - 'arn:aws:s3:::example*'
-#       actions:
-#         - "s3:GetBucketLocation"
-#         - "s3:ListBucket"
-#         - "s3:ListBucketMultipartUploads"
+
+svcaccts: []
+  ## accessKey, secretKey and parent user to be assigned to the service accounts
+  ## Add new service accounts as explained here https://min.io/docs/minio/kubernetes/upstream/administration/identity-access-management/minio-user-management.html#service-accounts
+  # - accessKey: console-svcacct
+  #   secretKey: console123
+  #   user: console
+  ## Or you can refer to specific secret
+  # - accessKey: externalSecret
+  #   existingSecret: my-secret
+  #   existingSecretKey: password
+  #   user: console
+  ## You also can pass custom policy
+  # - accessKey: console-svcacct
+  #   secretKey: console123
+  #   user: console
+  #   policy:
+  #     statements:
+  #       - resources:
+  #           - 'arn:aws:s3:::example*/*'
+  #         actions:
+  #           - "s3:AbortMultipartUpload"
+  #           - "s3:GetObject"
+  #           - "s3:DeleteObject"
+  #           - "s3:PutObject"
+  #           - "s3:ListMultipartUploadParts"
 
 ## Additional Annotations for the Kubernetes Job makePolicyJob
 makePolicyJob:
@@ -382,6 +575,23 @@ makeServiceAccountJob:
       memory: 128Mi
   # Command to run after the main command on exit
   exitCommand: ""
+
+oidc:
+  enabled: false
+  configUrl: "https://identity-provider-url/.well-known/openid-configuration"
+  clientId: "minio"
+  clientSecret: ""
+  # Provide existing client secret from the Kubernetes Secret resource, existing secret will have priority over `clientId` and/or `clientSecret``
+  existingClientSecretName: ""
+  existingClientIdKey: ""
+  existingClientSecretKey: ""
+  claimName: "policy"
+  scopes: "openid,profile,email"
+  redirectUri: "https://console-endpoint-url/oauth_callback"
+  # Can leave empty
+  claimPrefix: ""
+  comment: ""
+  displayName: ""
 
 ## Specify the service account to use for the MinIO pods. If 'create' is set to 'false'
 ## and 'name' is left unspecified, the account 'default' will be used.
