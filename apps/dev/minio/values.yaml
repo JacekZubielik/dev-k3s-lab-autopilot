@@ -142,6 +142,12 @@ buckets:
   purge: false
   versioning: false
 
+- name: k3s-data
+  objectlocking: false
+  policy: private
+  purge: false
+  versioning: false
+
 - name: k3s-loki
   objectlocking: false
   policy: private
@@ -171,25 +177,34 @@ users:
   existingSecret: minio-secret
   existingSecretKey: authentikPassword
   policy: authentik
+
 - accessKey: loki
   existingSecret: minio-secret
   existingSecretKey: lokiPassword
   policy: loki
+
 - accessKey: longhorn
   existingSecret: minio-secret
   existingSecretKey: longhornPassword
   policy: longhorn
+
+- accessKey: rabbit
+  existingSecret: minio-secret
+  existingSecretKey: rabbitPassword
+  policy: rabbit
+
 - accessKey: tempo
   existingSecret: minio-secret
   existingSecretKey: tempoPassword
   policy: tempo
+
 - accessKey: velero
   existingSecret: minio-secret
   existingSecretKey: veleroPassword
   policy: velero
 
 policies:
-- name: authentik
+- name: k3s-authentik
   statements:
   - resources:
     - 'arn:aws:s3:::k3s-authentik-backup'
@@ -212,7 +227,7 @@ policies:
             "192.168.40.0/24"
           ]
 
-- name: loki
+- name: k3s-loki
   statements:
   - resources:
     - 'arn:aws:s3:::k3s-loki'
@@ -227,11 +242,15 @@ policies:
     - "s3:ListMultipartUploadParts"
     - "s3:PutObject"
     effect: "Allow"
+    conditions:
+      - StringEquals: '"aws:username": "loki"'
+      - IpAddress: |
+          "aws:SourceIp": [
+            "10.0.0.0/8",
+            "192.168.40.0/24"
+          ]
 
-
-
-
-- name: longhorn
+- name: k3s-longhorn
   statements:
   - resources:
     - 'arn:aws:s3:::k3s-longhorn-backup'
@@ -246,8 +265,37 @@ policies:
     - "s3:ListMultipartUploadParts"
     - "s3:PutObject"
     effect: "Allow"
+    conditions:
+      - StringEquals: '"aws:username": "longhorn"'
+      - IpAddress: |
+          "aws:SourceIp": [
+            "10.0.0.0/8",
+            "192.168.40.0/24"
+          ]
 
-- name: tempo
+- name: k3s-rabbit
+  statements:
+  - resources:
+    - 'arn:aws:s3:::*'
+    actions:
+    - "s3:AbortMultipartUpload"
+    - "s3:DeleteObject"
+    - "s3:GetBucketLocation"
+    - "s3:GetObject"
+    - "s3:ListBucket"
+    - "s3:ListBucketMultipartUploads"
+    - "s3:ListMultipartUploadParts"
+    - "s3:PutObject"
+    effect: "Allow"
+    conditions:
+      - StringEquals: '"aws:username": "rabbit"'
+      - IpAddress: |
+          "aws:SourceIp": [
+            "10.0.0.0/8",
+            "192.168.40.0/24"
+          ]
+
+- name: k3s-tempo
   statements:
   - resources:
     - 'arn:aws:s3:::k3s-tempo'
@@ -262,8 +310,15 @@ policies:
     - "s3:ListMultipartUploadParts"
     - "s3:PutObject"
     effect: "Allow"
+    conditions:
+      - StringEquals: '"aws:username": "tempo"'
+      - IpAddress: |
+          "aws:SourceIp": [
+            "10.0.0.0/8",
+            "192.168.40.0/24"
+          ]
 
-- name: velero
+- name: k3s-velero
   statements:
   - resources:
     - 'arn:aws:s3:::k3s-velero'
@@ -278,6 +333,13 @@ policies:
     - "s3:ListMultipartUploadParts"
     - "s3:PutObject"
     effect: "Allow"
+    conditions:
+      - StringEquals: '"aws:username": "velero"'
+      - IpAddress: |
+          "aws:SourceIp": [
+            "10.0.0.0/8",
+            "192.168.40.0/24"
+          ]
 
 ## readonlyexamplepolicy policy grants access to buckets with name starting with example.
 ## In addition, grants objects read permissions on buckets starting with example.
