@@ -186,37 +186,37 @@ users:
 - accessKey: authentik
   existingSecret: minio-secret
   existingSecretKey: authentikPassword
-  policy: authentik
+  policy: k3s-authentik
 
 - accessKey: loki
   existingSecret: minio-secret
   existingSecretKey: lokiPassword
-  policy: loki
+  policy: k3s-loki
 
 - accessKey: longhorn
   existingSecret: minio-secret
   existingSecretKey: longhornPassword
-  policy: longhorn
+  policy: k3s-longhorn
 
 - accessKey: prometheus
   existingSecret: minio-secret
   existingSecretKey: prometheusPassword
-  policy: prometheus
+  policy: k3s-prometheus
 
 - accessKey: rabbit
   existingSecret: minio-secret
   existingSecretKey: rabbitPassword
-  policy: rabbit
+  policy: k3s-rabbit
 
 - accessKey: tempo
   existingSecret: minio-secret
   existingSecretKey: tempoPassword
-  policy: tempo
+  policy: k3s-tempo
 
 - accessKey: velero
   existingSecret: minio-secret
   existingSecretKey: veleroPassword
-  policy: velero
+  policy: k3s-velero
 
 policies:
 # - name: k3s-authentik
@@ -395,6 +395,34 @@ policies:
 #             "10.0.0.0/8",
 #             "192.168.40.0/24"
 #           ]
+
+
+- name: k3s-prometheus
+  statements:
+    - effect: Allow  # this is the default
+      resources:
+        - 'arn:aws:s3:::*/*'
+      actions:
+        - "s3:AbortMultipartUpload"
+        - "s3:GetObject"
+        - "s3:DeleteObject"
+        - "s3:PutObject"
+        - "s3:ListMultipartUploadParts"
+    - resources:
+        - 'arn:aws:s3:::*'
+      actions:
+        - "s3:CreateBucket"
+        - "s3:DeleteBucket"
+        - "s3:GetBucketLocation"
+        - "s3:ListBucket"
+        - "s3:ListBucketMultipartUploads"
+      conditions:
+        - StringEquals: '"aws:username": "prometheus"'
+        - IpAddress: |
+            "aws:SourceIp": [
+              "10.0.0.0/8",
+              "192.168.40.0/24"
+            ]
 
 - name: k3s-rabbit
   statements:
