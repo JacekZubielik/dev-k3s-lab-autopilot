@@ -136,7 +136,7 @@ podAnnotations:
   prometheus.io/scrape: "true"
   prometheus.io/path: "/minio/v2/metrics/cluster"
   prometheus.io/port: "9090"
-  prometheus.io/scrap-with: kube-prometheus-stack
+  prometheus.io/scrap-with: kube-prometheus-stack-prometheus
 
 resources:
   requests:
