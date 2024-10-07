@@ -50,7 +50,7 @@ environment:
   MINIO_BROWSER: "on"
   MINIO_NOTIFY_MQTT_ENABLE: "on"
   MINIO_PROMETHEUS_JOB_ID: minio-job
-  MINIO_PROMETHEUS_URL: http://192.168.40.194:9090
+  MINIO_PROMETHEUS_URL: http://minio.minio:9000
   MINIO_REGION_NAME: us-east-1
   MINIO_SITE_NAME: wd-rack-1
 
