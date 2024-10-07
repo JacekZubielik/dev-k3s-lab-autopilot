@@ -3,10 +3,10 @@ apiVersion: monitoring.coreos.com/v1
 kind: PrometheusRule
 metadata:
   labels:
-    prometheus: longhorn
-    role: alert-rules
+    prometheus: minio
+    role: minio-rules
   name: longhorn-rules
-  namespace: longhorn-system
+  namespace: minio
 spec:
   groups:
   - name: minio-alerts

@@ -53,10 +53,6 @@ environment:
   MINIO_REGION_NAME: "us-east-1"
   MINIO_SITE_NAME: "wd-rack-1"
 
-
-
-
-
 ## Path where PV would be mounted on the MinIO Pod
 mountPath: "/s3minio"
 ## Override the root directory which the minio server should serve from.
