@@ -1,0 +1,31 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+metadata:
+  annotations:
+    argocd.argoproj.io/compare-options: IgnoreExtraneous
+    argocd.argoproj.io/sync-options: Delete=true,Prune=true
+
+resources:
+- resources/ns.yaml
+- resources/prometheus.cm.yaml
+- resources/pv.yaml
+- resources/service.yaml
+
+generators:
+- ksops-generator.yaml
+
+generatorOptions:
+  disableNameSuffixHash: true
+  labels:
+    component: minio
+
+helmCharts:
+- name: minio
+  version: 5.2.0
+  repo: https://charts.min.io/
+  includeCRDs: true
+  namespace: minio
+  releaseName: minio
+  valuesFile: values.yaml
