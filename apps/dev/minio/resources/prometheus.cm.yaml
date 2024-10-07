@@ -1,0 +1,44 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  labels:
+    app.kubernetes.io/name: minio
+    name: minio-prometheus-config
+  name: minio-prometheus-config
+  namespace: minio
+
+data:
+  prometheus.yml: |-
+    global:
+      scrape_interval: 15s
+      evaluation_interval: 5s
+    scrape_configs:
+      - job_name: minio-job
+        bearer_token: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJwcm9tZXRoZXVzIiwic3ViIjoicHJvbWV0aGV1cyIsImV4cCI6NDg4MTkxNTE3Nn0.QCvts4LJQ2ZTFx2TBBqPBybe67hBLrXA9l2J1nntBxmBfwLYoQKNVnWCn48zxRG7q9F2pZNNtvPuakO30gpGtg
+        metrics_path: /minio/v2/metrics/cluster
+        scheme: http
+        static_configs:
+        - targets: ['minio.minio:9000']
+
+      - job_name: minio-job-node
+        bearer_token: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJwcm9tZXRoZXVzIiwic3ViIjoicHJvbWV0aGV1cyIsImV4cCI6NDg4MTkxNTIxNn0.i2wPHRZFD6ES31Z8h9SGNW5fbVH1505IhFpk2EdKEpRZnrvCVY-5tRz83XJxoPbz0w1TImcNC_MgpYZ4marrAA
+        metrics_path: /minio/v2/metrics/node
+        scheme: http
+        static_configs:
+        - targets: ['minio.minio:9000']
+
+      - job_name: minio-job-bucket
+        bearer_token: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJwcm9tZXRoZXVzIiwic3ViIjoicHJvbWV0aGV1cyIsImV4cCI6NDg4MTkxNTIyOX0.zGK0u2NnueRs_ECXm9KBA5RqcQ7ShamTYWT0-Jux_sblPo50SMf8fd63SjW1NHsOec97HyTarExIQHG-Hvygtg
+        metrics_path: /minio/v2/metrics/bucket
+        scheme: http
+        static_configs:
+        - targets: ['minio.minio:9000']
+
+      - job_name: minio-job-resource
+        bearer_token: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJwcm9tZXRoZXVzIiwic3ViIjoicHJvbWV0aGV1cyIsImV4cCI6NDg4MTkxNTI1N30.jwstbAqsrH_sWS_o8lSO5vnlmXG253QkY5j-d-2Fjpi23dqPTBy667aYaMuwu-Ylw-CG60Gd3UWeRUvIMmmygA
+        metrics_path: /minio/v2/metrics/resource
+        scheme: http
+        static_configs:
+        - targets: ['minio.minio:9000']
+
