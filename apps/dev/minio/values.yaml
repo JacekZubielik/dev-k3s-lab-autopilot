@@ -61,7 +61,7 @@ trustedCertsSecret: ""
 persistence:
   enabled: enable
   # existingClaim: pvc-minio-0
-  storageClass: host-path
+  storageClass: nfs-storage
   accessModes: ReadWriteOnce
   volumeName: pv-minio
   volumeMode: Filesystem
