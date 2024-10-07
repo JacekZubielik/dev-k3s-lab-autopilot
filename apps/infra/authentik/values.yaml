@@ -307,8 +307,8 @@ server:
       annotations: {}
       labels:
         app: authentik
-        release: kube-prometheus-stack
-        prometheus.io/scrap-with: kube-prometheus-stack
+        release: kube-prometheus-stack-prometheus
+        prometheus.io/scrap-with: kube-prometheus-stack-prometheus
       servicePort: 9300
       portName: metrics
 
@@ -420,11 +420,11 @@ prometheus:
     enabled: true
     namespace: "authentik"
     selector:
-      prometheus: kube-prometheus-stack
+      prometheus: kube-prometheus-stack-prometheus
     labels:
       app: external-dns
-      release: kube-prometheus-stack
-      prometheus.io/scrap-with: kube-prometheus-stack
+      release: kube-prometheus-stack-prometheus
+      prometheus.io/scrap-with: kube-prometheus-stack-prometheus
     annotations: {}
 
 postgresql:

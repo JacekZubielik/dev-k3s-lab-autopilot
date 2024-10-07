@@ -77,14 +77,14 @@ spec:
       syncPolicy:
         automated:
           selfHeal: false
-          prune: false
+          prune: true
         syncOptions:
         - ApplyOutOfSyncOnly=true
         - CreateNamespace=true
+        - PrunePropagationPolicy=foreground
         - RespectIgnoreDifferences=true
         - ServerSideApply=true
-        # - PrunePropagationPolicy=foreground
-        # - SkipDryRunOnMissingResource=true
+        - SkipDryRunOnMissingResource=true
 
   strategy:
     type: RollingSync

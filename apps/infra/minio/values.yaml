@@ -218,29 +218,29 @@ users:
   existingSecretKey: veleroPassword
   policy: k3s-velero
 
-## Additional Annotations for the Kubernetes Job makeUserJob
-makeUserJob:
-  securityContext:
-    enabled: false
-    runAsUser: 1000
-    runAsGroup: 1000
-  resources:
-    requests:
-      memory: 128Mi
-  # Command to run after the main command on exit
-  exitCommand: ""
+# ## Additional Annotations for the Kubernetes Job makeUserJob
+# makeUserJob:
+#   securityContext:
+#     enabled: false
+#     runAsUser: 1000
+#     runAsGroup: 1000
+#   resources:
+#     requests:
+#       memory: 128Mi
+#   # Command to run after the main command on exit
+#   exitCommand: ""
 
 svcaccts:
-  ## accessKey, secretKey and parent user to be assigned to the service accounts
-  ## Add new service accounts as explained here https://min.io/docs/minio/kubernetes/upstream/administration/identity-access-management/minio-user-management.html#service-accounts
-  # - accessKey: console-svcacct
-  #   secretKey: console123
-  #   user: console
+#   ## accessKey, secretKey and parent user to be assigned to the service accounts
+#   ## Add new service accounts as explained here https://min.io/docs/minio/kubernetes/upstream/administration/identity-access-management/minio-user-management.html#service-accounts
+#   # - accessKey: console-svcacct
+#   #   secretKey: console123
+#   #   user: console
 
-  ## Or you can refer to specific secret
+#   ## Or you can refer to specific secret
 - accessKey: ZRg6hcQlT1BFeGVw3i9U
   existingSecret: minio-secret
-  existingSecretKey: authentikPassword
+  existingSecretKey: authentikSecretKey
   user: authentik
 
 
