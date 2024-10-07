@@ -36,9 +36,7 @@ existingSecret: "minio-secret"
 certsPath: "/etc/minio/certs/"
 configPathmc: "/etc/minio/mc/"
 
-## Additional arguments to pass to minio binary
 extraArgs:
-# example for enabling FTP:
 - --ftp=\"address=:8021\"
 - --ftp=\"passive-port-range=30000-30005\"
 
