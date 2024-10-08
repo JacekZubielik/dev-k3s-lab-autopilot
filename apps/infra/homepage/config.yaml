@@ -1,0 +1,15 @@
+annotations: ''
+appName: homepage
+appRole: infra
+destNamespace: homepage
+destProject: infra
+destServer: https://kubernetes.default.svc
+exclude: ""
+include: ""
+labels: ""
+srcPath: apps/infra/homepage
+srcRepoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot.git
+srcTargetRevision: ""
+syncPriority: stage_6
+syncWave: 0
+userGivenName: homepage
