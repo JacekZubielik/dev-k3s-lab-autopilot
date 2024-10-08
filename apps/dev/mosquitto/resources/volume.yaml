@@ -5,29 +5,29 @@ metadata:
   finalizers:
   - longhorn.io
   annotations:
-    argocd.argoproj.io/sync-wave: "-1"
+    argocd.argoproj.io/compare-options: IgnoreExtraneous
+    argocd.argoproj.io/sync-wave: "-3"
   labels:
     longhornvolume: pvc-mosquitto
-    # recurring-job-group.longhorn.io/default: enabled
-    recurring-job-group.longhorn.io/group1: enabled
-    recurring-job.longhorn.io/24-hour-snapshots: enabled
+    # recurring-job-group.longhorn.io/group4: enabled
+    # recurring-job.longhorn.io/1-hour-snapshots: enabled
     # recurring-job.longhorn.io/48-hour-backups: enabled
+    # recurring-job.longhorn.io/weekly-backups: enabled
   name: pvc-mosquitto
   namespace: longhorn-system
 spec:
-  dataLocality: "best-effort"
+  # backingImage: pvc-mosquitto
+  dataLocality: best-effort
   diskSelector:
   - data
-  # - fast
-  engineImage: longhornio/longhorn-engine:v1.6.2
-  # fromBackup: "s3://k3s-longhorn-backup@us-east-1/?backup=system-backup-6e0044ee5d464ba9&volume=pvc-mosquitto"
+  - fast
+  # restoreVolumeRecurringJob: enabled
+  # fromBackup: s3://k3s-longhorn@us-east-1/?backup=backup-a78aa9204a2a4cab&volume=pvc-authentik-psql
   frontend: blockdev
   # migratable: true
   nodeSelector:
   - fast
-  # - storage
-  numberOfReplicas: 2
-  restoreVolumeRecurringJob: enabled
-  # revisionCounterDisabled: false
+  - storage
+  numberOfReplicas: 1
   size: '1073741824'
   snapshotMaxCount: 10
