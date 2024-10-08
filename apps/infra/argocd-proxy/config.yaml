@@ -1,7 +1,7 @@
 annotations: ''
 appName: argocd-proxy
 appRole: infra
-destNamespace: traefik
+destNamespace: argocd
 destProject: "infra"
 destServer: https://kubernetes.default.svc
 exclude: ""
