@@ -4,9 +4,9 @@ metadata:
     annotations:
         argocd.argoproj.io/sync-wave: "3"
         cert-manager.io/cluster-issuer: letsencrypt-production
-        cert-manager.io/common-name: ENC[AES256_GCM,data:kKqY03TaDvnameqyst8inY+QxqNtsUFveANLqCTS9IkHxg==,iv:qDnAOUGfSg7DsQb9cpC9m5ItXjtrHBckRTSMgSRV/K0=,tag:1vKW3N7sW7rhphXimBEhSA==,type:str]
-        external-dns.alpha.kubernetes.io/hostname: ENC[AES256_GCM,data:eYzl2+h4dQ64Smef1q5AjMqcieTKVv52d6+nuEI/kvefEQ==,iv:Q/8nfziCjZIjBl6Dh60kCdqwgpQWVWX46Pc4gL8srOg=,tag:G8f+atSpxsqDvlizoNEUMQ==,type:str]
-        external-dns.alpha.kubernetes.io/target: ENC[AES256_GCM,data:GumeF0QV01mZA9LhDVFEO5IyQbE0MzAM,iv:XM+s6rtxICVRW1clXj+LHp2GgptxfJsIaubUXJzY4ik=,tag:f58oZHLUkblSv974J03+qQ==,type:str]
+        cert-manager.io/common-name: ENC[AES256_GCM,data:HGCcCHcrDLvpQl4otEAkSK/bRgLcqsPo9DX67AqkoI2B,iv:38qwe43XI5S//LG29Zo/gZDtJfLztaYhYJyBF3uQbLg=,tag:D9lXJuSevUg/McG/XQTQUw==,type:str]
+        external-dns.alpha.kubernetes.io/hostname: ENC[AES256_GCM,data:4K4vtndaQ5FsCGBnrsEFfyPqhEi6Doqf3CMZ/3XtCnfh,iv:CnmnWFJDSZT0+WyeVYhlY6QNCa5ThER2NW00JVINYps=,tag:SJZg9ivz6dM5IE1HSWK2XA==,type:str]
+        external-dns.alpha.kubernetes.io/target: ENC[AES256_GCM,data:NMCZJO9ZpVYLM949o2oXWbg3vMJDHbE=,iv:aCHw6TstCXj8YHe3jgMmANuQ/UMfE6T0t/LjV+Bv+bI=,tag:7jUPmHnBcNiRw3zV+jy3LQ==,type:str]
         external-dns.alpha.kubernetes.io/ttl: "300"
         kubernetes.io/ingress.class: traefik-external
     name: portainer-production
@@ -17,7 +17,7 @@ spec:
     routes:
         - kind: Rule
           # || HostRegexp(`{subdomain:[a-z0-9]+}.anotherlife.org.pl`) && PathPrefix(`/outpost.goauthentik.io/`)
-          match: ENC[AES256_GCM,data:uY+43r5sf1QPZfbMXRgi21uulEuqEKYXJaDIiipM2w32suG9z+FOnRpd,iv:ORp0S6c8Inf5hF6ojVzeuw0ildnLZryfOY4I1O1zYB4=,tag:oM+iEqzSBa5ue0Vg2usifQ==,type:str]
+          match: ENC[AES256_GCM,data:FDNBeRTaVqr66Fof5mWyCTTy52fyXSU7Lk5yOzc6ZxlTb4LRM1Dheo8=,iv:ygoxC0A6COS5U08BIkl7rogt2iO6IJ4u1vn5gXNUKHM=,tag:Lyk5mHHZR8CAS7d7MhMkKw==,type:str]
           priority: 10
           # middlewares:
           #   - name: chain-authentik
@@ -28,7 +28,7 @@ spec:
               scheme: https
               # passHostHeader: true
     # - kind: Rule
-    #   match: Host(`portainer.infra.anotherlife.org.pl`) && PathPrefix(`/outpost.goauthentik.io/`)
+    #   match: Host(`portainer.pvc1.anotherlife.org.pl`) && PathPrefix(`/outpost.goauthentik.io/`)
     #   priority: 15
     #   services:
     #     - kind: Service
@@ -36,9 +36,9 @@ spec:
     #       port: 9000
     tls:
         domains:
-            - main: ENC[AES256_GCM,data:O2rpcQ8ZvRr3Q7uaflr7U+AJE626lmS8,iv:vC4X05glm/qQ34cr2FHMAYD3hJiScGfkqDA2IEJg2Us=,tag:x5uLIrUuvekt5iAui0C2Xw==,type:str]
+            - main: ENC[AES256_GCM,data:2obmz52E1y7OUvP/XZdTPjAOINtdxMo=,iv:K72IO7T5GhN3T+UtLSWGYc/QUEI9MHMJvi9BEyT6XQg=,tag:0TSCIXvyD9VZY6PX/NLGGw==,type:str]
               sans:
-                - ENC[AES256_GCM,data:BzFEOy/gpDnqd/D03A7dcli50fb0RzzmXg==,iv:QZd8GBX46cGBPuC46+MKdg+xbrxprJi0NkYNImSQiJo=,tag:SLOlDjjl1kXkM6ybOQ6HaQ==,type:str]
+                - ENC[AES256_GCM,data:SPThUuJ/iAjtYn2lRu2GYwahJRbODvn5,iv:7huMuQEZQe60NpZwMdr6TqRr6R6pVuduTfDBZo2pcCk=,tag:14EFlIAhnc6Ps7Oi8GPYbg==,type:str]
         options:
             name: tls-ver13
             namespace: traefik
@@ -58,8 +58,8 @@ sops:
             TU9nSHVTcTRaaEhqTndZdlpheVdXdEUKmBiNBeMcm7AYz/zfYBuvJuwgOyTBY5d9
             aadwp3W7aReQdNSFQ+yZdBn+cQPE6RDPFNuWU/8hggCRdr/QyZdLUA==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-10-05T16:06:00Z"
-    mac: ENC[AES256_GCM,data:ZPUUGcukluvUBwDAM87fpxy3tDOiJp7Kit5xiFOCA1YJhbk5y2/U6+8Puu4BFj0p7iMrimSMZT7A8gxPjYJdwDIbPZ85PfReTLSoQk+i43BzjOneMoIIOkMtumLu0ATcQOiJqweqQ9vDKfWz9JkfL7PHo8/gXwqRec2Pnj8J61o=,iv:T4mxyrqW0liWMNHDXBsPyZaCXpstj2o8kFZhtn4lPys=,tag:ptNdBIwR2hGH9XoH3UUgOw==,type:str]
+    lastmodified: "2024-10-08T22:51:13Z"
+    mac: ENC[AES256_GCM,data:bJ75J9kddDCTbnC9TvyjGgDNuSRfP3UtmQI9Xw1+K39+5KvswU9mcrLGYdcoAtsNVH9P83aSjtbXHcokS8dnyQ8FZPHIDFilnijEd0nAKUbHUQ1JTiFt72pnPo0WIPrvv07mibgWgKFjnsm4kp8yXIUhLMGWCu0ajTesBn2vKTs=,iv:hppFds6jgprGRpKQXVqU7pJV+TCtqRa2Nr/d6UUI6oY=,tag:jq7fIVmNVmSDylKscFozfA==,type:str]
     pgp:
         - created_at: "2024-10-04T01:04:18Z"
           enc: |-

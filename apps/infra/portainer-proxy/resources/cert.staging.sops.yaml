@@ -6,11 +6,11 @@ metadata:
     name: portainer-staging
 spec:
     dnsNames:
-        - ENC[AES256_GCM,data:y3bt6UTpt0ofNoG/A2QkvwA5l8ss2HClyE3g1hktKq8C0g==,iv:fL1DiOCdo7KvN6iZC416+OMr0ZzbyFNnqdA8w84BJd8=,tag:yt5zZexHDTLUeYfrI4vJPA==,type:str]
+        - ENC[AES256_GCM,data:C7xc1qad+uKDMALCntqLG+ABAacV/B/SRw1sGAGM/hyK,iv:Y4ITuqS0nfKhYdJpSjEYq5z8qjBR91RxMoTT4XqvTfM=,tag:YQzP6+Mumu/Vl0TreZRYWQ==,type:str]
     issuerRef:
         kind: ClusterIssuer
         name: letsencrypt-staging
-    commonName: ENC[AES256_GCM,data:azyPTRejUEeeRXsPuW7A5CIumSIQSUXBNtOSKzcMy3r1Bg==,iv:CtxsHdi17SljVzJ87xLpKw01YQI7WJ2VDBiIKYhA+Yc=,tag:A6UAousxJzxB9ZObX1uaUw==,type:str]
+    commonName: ENC[AES256_GCM,data:IrwwEIFjv9V37hJ5ikG3oeZOIKWb81IYmPfMjhvWNpfc,iv:YzSStKBiCPoN4ew8SaZ3XKVw8osVhXZBxei+kIFNwCY=,tag:ySIHu/jJruqClAlbY8+f/A==,type:str]
     secretName: portainer-cf-staging
     # 90d
     duration: 2160h0m0s
@@ -31,8 +31,8 @@ sops:
             NnN2YWNUY0Q5NExsTEIxWSs0cW1Xbk0KXyFArTLqcC9uS0w/j2RCPa11Wv17wicd
             h4VMZFDjYjcjSxZOcpXT1AY3N8xEOqJWw29W9zjg30jIsGlW9HL/yQ==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-10-04T01:04:13Z"
-    mac: ENC[AES256_GCM,data:wMTVT9g4UANNvePZ2PZv4MzhH0dQyT4hMASYsCQcvv3kjaCUp0OPaMU20dxEScRUYfzTIjC//mdgZlqqqEDcwOrDabGstk+pOJ58juFH1FYIbZqyTk/EZ5IZo7rA/UaMb5BpkZ3WQqgjYF6W4sblaLbVD1Uv6T7xXXSGScMIBQ4=,iv:HxpS1jH8eYJGYUPxV2VYnQ0FGwMyTlL+CcB78vPTvU4=,tag:YHa34OOpdsqTc+tfV+FM+Q==,type:str]
+    lastmodified: "2024-10-08T22:50:47Z"
+    mac: ENC[AES256_GCM,data:hlbf+nUkNOVsGsyfbzz3fEV8SxyV1F+XOSitMrHEp+Hz/7lYt/3TDRgnNYhDYBX9jxrRYmowd9VNCBpCRAMKIDu9HGIXWLQ1X/WqihBe4zQLkp8a0ehpivs/YZdsLF6NcV771Vn4K+GK7w4nFpVYHdqSkvWzS6H3+24NwE9eYsw=,iv:PBNEazPnGMCJA8+8Gf6uEGa2shVaG7XcZHq64dvQyF0=,tag:yN4JIEVydJO6Pnh7TtXaoA==,type:str]
     pgp:
         - created_at: "2024-10-04T01:04:13Z"
           enc: |-

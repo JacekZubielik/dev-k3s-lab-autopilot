@@ -303,14 +303,13 @@ data:
             href: https://github.com
             description: source code
 
-        - Portainer:
+        - Portainer PVC:
             icon: portainer.svg
             href: "{{HOMEPAGE_VAR_PORTAINER_URL}}"
             description: Monitoring
-            app: portainer
             widget:
               type: portainer
-              url: https://portainer.infra.anotherlife.org.pl
+              url: https://portainer.pvc1.anotherlife.org.pl
               env: 2
               key: ptr_+bAF/i45ofjaUeLAcUzWPcq8doQj0rWxZjOEv3UOVwo=
 
@@ -320,7 +319,6 @@ data:
         memory: true
         disk:
           - /
-          - /mnt/data
         expanded: true
         backend: resources
     - datetime:

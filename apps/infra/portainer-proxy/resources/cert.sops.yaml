@@ -6,11 +6,11 @@ metadata:
     name: portainer-production
 spec:
     dnsNames:
-        - ENC[AES256_GCM,data:md/LfBTFti8BlZSsrggQOZ9iraml5i97p5my8DNBUeFzqA==,iv:kVDFMTTUiP+QrURqRGyHSbjDIOggQVOPxelnem+Zkzw=,tag:2KgXN84+OQyrbE79CS04Iw==,type:str]
+        - ENC[AES256_GCM,data:pROPC15JNA1K8LJhwHA9Xxr+xRGJZGIsBmm33euJhWnr,iv:FLhPLas/7I3Xs3ux5i2cM/4cBaNFNAsIkos39n1EujI=,tag:ahcQmBR6pMbhYZULuN/u5Q==,type:str]
     issuerRef:
         kind: ClusterIssuer
         name: letsencrypt-production
-    commonName: ENC[AES256_GCM,data:FvK5A5c5Mnz6QJJOrOdASklNhYJFeaI8JdxAzjvgQsfJTg==,iv:gX61mQVhLFTMD9b8BAk0KFbb5m9bQZlc+amkQOO5e/0=,tag:Zd2so5b4L0whbkLTbBPDbA==,type:str]
+    commonName: ENC[AES256_GCM,data:XBx7pcQmhAcKmqxHcgt1MvrvcNim67/Hcb8BkcTSkkRU,iv:R3ovokxo7FrAPg0wOM3jvhMlI7ahwoS6nA8Vr0iaXEI=,tag:8eZvT2KHwSA8OtUc+7865g==,type:str]
     secretName: portainer-cf-production
     # 90d
     duration: 2160h0m0s
@@ -31,8 +31,8 @@ sops:
             REtuK1ZqWEVvYk95cDRWQlQzcVJ1UmMKEgdeSXp9iY4uchNzoOxl38zGgwS2+VRE
             ikwmud9GK7mQF9mi06AcYKLyoG7wUkcczlWOEpezmQsyGbFpNrxvFw==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-10-04T01:04:07Z"
-    mac: ENC[AES256_GCM,data:bGd71vihr5ykUHxobizyd2DetkreuJzkwoPB/H9WUfGW7heI0M7aZ3affXTP7+PZpF5RMESL3SOYfVF8DK1nbS8LXTqjq3TVBAE7kYoYL5hmbUnKMiOQzLXpo6oF4dITWbat09+otJGIWdqX3ELuqxtqc+vdjPAEa1Uo5G+n8c0=,iv:Spu0lhF3tcQOmFBQvGSqZ+EVXAxu4ZLijsrVqq+pfCU=,tag:0T4+k7tjfxYnJtprsGe8lw==,type:str]
+    lastmodified: "2024-10-08T22:50:27Z"
+    mac: ENC[AES256_GCM,data:A/Nfdn7cFW7VjWvSBZqzlZlGbxXZbJ51WWaIOUyBc5RBGoMTJZFQ9JPhEEedUURVoqUMvfZKEdjPk/y53H3yutDKsnn3ex03jHLw0046V2KdkaD+38UwR4ejFE3vubKbKMtefqFPiQ701eepzzyIAdco9Nu7Fbp4KlR3DOSoEDc=,iv:i5XP/ibZq73kKxxS7ZWAqmjyqsf7OXjoScnU12ATL5o=,tag:3fMeISyW4ctK30X2ickblQ==,type:str]
     pgp:
         - created_at: "2024-10-04T01:04:07Z"
           enc: |-
