@@ -1,0 +1,27 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: dev
+metadata:
+  annotations:
+    argocd.argoproj.io/compare-options: IgnoreExtraneous
+    argocd.argoproj.io/sync-options: Delete=true,Prune=true
+
+resources:
+- resources/cluster.role.yaml
+- resources/cm.yaml
+- resources/deployment.yaml
+- resources/service.yaml
+- resources/service.account.yaml
+
+generators:
+- ksops-generator.yaml
+
+generatorOptions:
+  disableNameSuffixHash: true
+  labels:
+    component: homepage
+
+patches:
+- path: patches/homepage.secret.deployment.yaml
+  target:
+    kind: Deployment
