@@ -307,7 +307,7 @@ data:
 
         - Portainer:
             icon: portainer.svg
-            href: "{{HOMEPAGE_VAR_GRAFANA_URL}}"
+            href: "{{HOMEPAGE_VAR_PORTAINER_URL}}"
             description: Monitoring
             app: portainer
             widget:
