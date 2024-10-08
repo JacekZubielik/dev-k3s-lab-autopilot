@@ -3,8 +3,6 @@ kind: ConfigMap
 metadata:
   name: homepage
   namespace: homepage
-  # labels:
-  #   app.kubernetes.io/name: homepage
 data:
   kubernetes.yaml: |
     mode: cluster
@@ -323,8 +321,6 @@ data:
         disk:
           - /
           - /mnt/data
-          - /mnt/hdd-0
-          - /mnt/fast-backup
         expanded: true
         backend: resources
     - datetime:
@@ -357,13 +353,13 @@ data:
             cpu: true
             memory: true
             showLabel: true
-    - longhorn:
-        expanded: true
-        total: true
-        labels: true
-        nodes: true
-        include:
-          - dev-k3s-node-0.local
+  # - longhorn:
+  #     expanded: true
+  #     total: true
+  #     labels: true
+  #     nodes: true
+  #     include:
+  #       - dev-k3s-node-0.local
   docker.yaml: ""
   bookmarks.yaml: |
     - Developer:
