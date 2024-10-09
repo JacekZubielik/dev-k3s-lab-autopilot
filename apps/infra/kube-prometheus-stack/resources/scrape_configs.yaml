@@ -4,6 +4,24 @@ scrape_configs:
   static_configs:
     - targets: ['192.168.40.5:9100']
 
+- job_name: 'master-0'
+  scrape_interval: 5s
+  static_configs:
+    - targets: ['192.168.40.110:9101']
+  metric_relabel_configs:
+    - source_labels: [__name__]
+      action: keep
+      regex: 'node_cpu.*'
+
+- job_name: 'node-0'
+  scrape_interval: 5s
+  static_configs:
+    - targets: ['192.168.40.113:9101']
+  metric_relabel_configs:
+    - source_labels: [__name__]
+      action: keep
+      regex: 'node_cpu.*'
+
 - job_name: 'kubernetes-service-endpoints'
   kubernetes_sd_configs:
   - role: endpoints

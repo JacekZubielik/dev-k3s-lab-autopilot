@@ -1152,8 +1152,7 @@ prometheus-node-exporter:
     port: 9101
     servicePort: ""
     targetPort: 9101
-    portName: metrics
-    # portName: http-metrics
+    portName: metrics # http-metrics
     nodePort: null
     ipDualStack:
       enabled: false
@@ -1173,22 +1172,22 @@ prometheus-node-exporter:
       labelValueLengthLimit: 0
       scrapeTimeout: ""
       proxyUrl: ""
-      metricRelabelings: []
-      # - sourceLabels: [__name__]
-      #   separator: ;
-      #   regex: ^node_mountstats_nfs_(event|operations|transport)_.+
-      #   replacement: $1
-      #   action: drop
+      metricRelabelings: # []
+      - sourceLabels: [__name__]
+        separator: ;
+        regex: ^node_mountstats_nfs_(event|operations|transport)_.+
+        replacement: $1
+        action: drop
 
       ## RelabelConfigs to apply to samples before scraping
       ## ref: https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api.md#relabelconfig
-      relabelings: []
-      # - sourceLabels: [__meta_kubernetes_pod_node_name]
-      #   separator: ;
-      #   regex: ^(.*)$
-      #   targetLabel: nodename
-      #   replacement: $1
-      #   action: replace
+      relabelings: # []
+      - sourceLabels: [__meta_kubernetes_pod_node_name]
+        separator: ;
+        regex: ^(.*)$
+        targetLabel: nodename
+        replacement: $1
+        action: replace
   rbac:
     pspEnabled: false
 
