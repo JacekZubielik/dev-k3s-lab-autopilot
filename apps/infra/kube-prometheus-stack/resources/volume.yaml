@@ -51,7 +51,7 @@ spec:
   - data
   - fast
   # restoreVolumeRecurringJob: enabled
-  fromBackup: s3://k3s-longhorn@us-east-1/?backup=backup-20d7b9cdb3cf4fa0&volume=pvc-kube-grafana
+  fromBackup: s3://k3s-longhorn@us-east-1/?backup=backup-bfd74079d08a40f8&volume=pvc-kube-grafana
   frontend: blockdev
   # migratable: false
   nodeSelector:
@@ -85,7 +85,7 @@ spec:
   - data
   - fast
   # restoreVolumeRecurringJob: enabled
-  fromBackup: s3://k3s-longhorn@us-east-1/?backup=backup-1dbe76e164074cd8&volume=pvc-kube-prometheus
+  fromBackup: s3://k3s-longhorn@us-east-1/?backup=backup-8ed01cc9a5ce477c&volume=pvc-kube-prometheus
   frontend: blockdev
   # migratable: false
   nodeSelector:

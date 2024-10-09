@@ -95,13 +95,13 @@ spec:
           operator: In
           values:
           - stage_crds
-        # maxUpdate: 100%
+        maxUpdate: 100%
       - matchExpressions:
         - key: syncPriority
           operator: In
           values:
           - stage_1
-        # maxUpdate: 100%
+        maxUpdate: 100%
       - matchExpressions:
         - key: syncPriority
           operator: In
@@ -132,9 +132,9 @@ spec:
           values:
           - stage_6
         maxUpdate: 100%
-      # - matchExpressions:
-      #   - key: syncPriority
-      #     operator: In
-      #     values:
-      #     - bump_prod
-      #   # maxUpdate: 100%
+      - matchExpressions:
+        - key: syncPriority
+          operator: In
+          values:
+          - bump_prod
+        maxUpdate: 100%

@@ -95,22 +95,22 @@ spec:
           operator: In
           values:
           - stage_1
-        # maxUpdate: 0
+        maxUpdate: 100%
       - matchExpressions:
         - key: syncPriority
           operator: In
           values:
           - stage_2
-        # maxUpdate: 100%
+        maxUpdate: 100%
       - matchExpressions:
         - key: syncPriority
           operator: In
           values:
           - stage_3
-        # maxUpdate: 100%
+        maxUpdate: 100%
       - matchExpressions:
         - key: syncPriority
           operator: In
           values:
           - bump-dev
-        # maxUpdate: 100%
+        maxUpdate: 100%
