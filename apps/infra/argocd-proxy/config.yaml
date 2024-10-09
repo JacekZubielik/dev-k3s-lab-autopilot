@@ -10,6 +10,6 @@ labels: ""
 srcPath: apps/infra/argocd-proxy
 srcRepoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot.git
 srcTargetRevision: ""
-syncPriority: stage_6
+syncPriority: stage_5
 syncWave: 0
 userGivenName: argocd-proxy
