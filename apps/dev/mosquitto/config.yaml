@@ -10,6 +10,6 @@ labels: ""
 srcPath: apps/dev/mosquitto
 srcRepoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot.git
 srcTargetRevision: ""
-syncPriority: stage_6
+syncPriority: stage_1
 syncWave: 0
 userGivenName: mosquitto
