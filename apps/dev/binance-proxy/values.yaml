@@ -10,11 +10,12 @@ serviceAccount:
 service:
   annotations:
     prometheus.io/scrape: "true"
-    prometheus.io/port: 9100
+    prometheus.io/port: 8090
   labels: {}
   type: LoadBalancer
   externalIPs: []
   loadBalancerIP: "192.168.40.185"
+  externalTrafficPolicy: Cluster
   ports:
   - port: 8090
     targetPort: 8090
