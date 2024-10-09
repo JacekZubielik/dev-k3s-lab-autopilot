@@ -5,7 +5,7 @@ metadata:
         argocd.argoproj.io/sync-wave: "3"
         cert-manager.io/cluster-issuer: letsencrypt-production
         cert-manager.io/common-name: ENC[AES256_GCM,data:a9cjErzt/V4rZQUEHJPSUMzuXlKfbbUfVwXnLG+W0KoVgALT,iv:Pp+Tdqng0miVe/dFqrm27JKbzTPxhA/h/pzG+SZNulY=,tag:6cyDHarP596QnOf5vqEB/w==,type:str]
-        external-dns.alpha.kubernetes.io/hostname: ENC[AES256_GCM,data:VnPZZdA7kLfSUiun8ol8D/+FWFcdsxR/MPqAS2mxOX/q8Q==,iv:URme9i6pbW5TwVRbyXORjGiQgeqQOzHZvuHARB2tenE=,tag:HSY0iXJfW+8MQWz+BQ5Bbg==,type:str]
+        external-dns.alpha.kubernetes.io/hostname: ENC[AES256_GCM,data:gu9ToiNmZxar9EKSyOMG+RBLYL88TD5mkHapDpKqSB2ecZJh,iv:Ripexs1ueqn9aUXPWxfsdBCZKbRWg48LLtkAkl3Y25s=,tag:xXMRrzUng8MXQj+rzCu88Q==,type:str]
         external-dns.alpha.kubernetes.io/target: ENC[AES256_GCM,data:Kd/FO9PoUeqerPo+6TLs5IWayQ01dNaj+BA=,iv:2/Js7MOMu24YJJ+3g5gPPrvmacKtW0NbN0gSYSgxSMU=,tag:dmq4n6DhQwTW+Z7L76NEyg==,type:str]
         external-dns.alpha.kubernetes.io/ttl: "300"
         kubernetes.io/ingress.class: traefik-external
@@ -48,8 +48,8 @@ sops:
             V2p2Ri9qQTN1elNSenFLMnZIa1BrazAKyHPBaeqNakpMsbkDnicdAcQ3YxR1FLHi
             DOU2oKdvfeZCdFb29IqsJxjb6QoZHkcUoO3CW1X1A4CXKoYkILn7rg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-10-06T20:56:03Z"
-    mac: ENC[AES256_GCM,data:5FfDJk7FTCCwMSxSRixOb7BzsTdjJ3sBtwNDjdRm6WfCvEqY6qLkkNh5+zj4UAqJc983hgDOpTExzd7z/uS12LyrpcwBmYRNUHtnOMVNBNYPzVNU8Hi3eJHJ1fQRwmzLSZVIfHq5JX0djIKwuqRtgY/g7FJG5scWKekZndt4m20=,iv:Mo826fZ/eRuymKSHJ4Gv+RPocxY2LrXMixG61nJo/y8=,tag:jTLhI8rlNxkPGEBEr9X4Wg==,type:str]
+    lastmodified: "2024-10-09T17:30:40Z"
+    mac: ENC[AES256_GCM,data:Kr43eZtdKzgtpb8zCtNEb/fGGoXGNLSZKPk2/VYhxwTWF0uWI6fV7h4nwbXuKlYLrlytg66DijxLT3Aze3HDyCvXotzIz1MdRU+vLzLbR+Gj6wfwXpOq5qsFpNc4O9iB90PZ5iRWwq9R6OLeF0m+LDPhYB/LCmqpAfdK44vp9r4=,iv:L40ASDeoXMHxW8ONtkNfGSQ9+itxogVGz4Apw2dMkyQ=,tag:Eyl26Chwc7PpZf8ImPJ9fw==,type:str]
     pgp:
         - created_at: "2024-10-06T20:56:03Z"
           enc: |-
@@ -102,8 +102,8 @@ sops:
             V2p2Ri9qQTN1elNSenFLMnZIa1BrazAKyHPBaeqNakpMsbkDnicdAcQ3YxR1FLHi
             DOU2oKdvfeZCdFb29IqsJxjb6QoZHkcUoO3CW1X1A4CXKoYkILn7rg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-10-06T20:56:03Z"
-    mac: ENC[AES256_GCM,data:5FfDJk7FTCCwMSxSRixOb7BzsTdjJ3sBtwNDjdRm6WfCvEqY6qLkkNh5+zj4UAqJc983hgDOpTExzd7z/uS12LyrpcwBmYRNUHtnOMVNBNYPzVNU8Hi3eJHJ1fQRwmzLSZVIfHq5JX0djIKwuqRtgY/g7FJG5scWKekZndt4m20=,iv:Mo826fZ/eRuymKSHJ4Gv+RPocxY2LrXMixG61nJo/y8=,tag:jTLhI8rlNxkPGEBEr9X4Wg==,type:str]
+    lastmodified: "2024-10-09T17:30:40Z"
+    mac: ENC[AES256_GCM,data:Kr43eZtdKzgtpb8zCtNEb/fGGoXGNLSZKPk2/VYhxwTWF0uWI6fV7h4nwbXuKlYLrlytg66DijxLT3Aze3HDyCvXotzIz1MdRU+vLzLbR+Gj6wfwXpOq5qsFpNc4O9iB90PZ5iRWwq9R6OLeF0m+LDPhYB/LCmqpAfdK44vp9r4=,iv:L40ASDeoXMHxW8ONtkNfGSQ9+itxogVGz4Apw2dMkyQ=,tag:Eyl26Chwc7PpZf8ImPJ9fw==,type:str]
     pgp:
         - created_at: "2024-10-06T20:56:03Z"
           enc: |-
