@@ -231,14 +231,14 @@ alertmanager:
     nodePort: 30903
     additionalPorts: []
     externalIPs: []
-    loadBalancerIP: ""
+    loadBalancerIP: "192.168.40.195"
     loadBalancerSourceRanges: []
     externalTrafficPolicy: Cluster
+    type: LoadBalancer
     sessionAffinity: None
     sessionAffinityConfig:
       clientIP:
         timeoutSeconds: 10800
-    type: ClusterIP
 
   servicePerReplica:
     enabled: false
@@ -957,19 +957,12 @@ kubeDns:
     # selector:
     #   k8s-app: kube-dns
   serviceMonitor:
-    ## Scrape interval. If not set, the Prometheus default scrape interval is used.
     interval: ""
-    ## SampleLimit defines per-scrape limit on number of scraped samples that will be accepted.
     sampleLimit: 0
-    ## TargetLimit defines a limit on the number of scraped targets that will be accepted.
     targetLimit: 0
-    ## Per-scrape limit on number of labels that will be accepted for a sample. Only valid in Prometheus versions 2.27.0 and newer.
     labelLimit: 0
-    ## Per-scrape limit on length of labels name that will be accepted for a sample. Only valid in Prometheus versions 2.27.0 and newer.
     labelNameLengthLimit: 0
-    ## Per-scrape limit on length of labels value that will be accepted for a sample. Only valid in Prometheus versions 2.27.0 and newer.
     labelValueLengthLimit: 0
-    ## proxyUrl: URL of a proxy that should be used for scraping.
     proxyUrl: ""
 
     jobLabel: jobLabel
