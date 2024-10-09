@@ -32,8 +32,7 @@ spec:
           priority: 15
           services:
             - kind: Service
-              name: ak-outpost-example-outpost
-              port: 9000
+              name: longhorn-frontend
     tls:
         domains:
             - main: ENC[AES256_GCM,data:fIfG0Fa4gp6PttEZYYU7cFFLbLtXwowfN+k=,iv:+jYCEPJinwdHjtaH9PnzAybC+yy1u6W0nzFcgSvbKBQ=,tag:IZx4HkfNyQBiLjEGM+b2/A==,type:str]
@@ -58,8 +57,8 @@ sops:
             R3EvVFk4YjJlRFhzemVRdkNnY1ZWUUkK/GdeF5aOXjn7uHaIg+zdTAyFkSj7jmPg
             Fc5eNbn3Ztd29OMytL9mUDFLgD665hxM/13hNoceTswD6gstoruOlw==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-10-03T23:41:37Z"
-    mac: ENC[AES256_GCM,data:hXsfAUkKRdVHvjW/vulmFFOiBU99MGlB1y1HirlP52vID3VIyDShKkfVCK7cpHmcmdgxbBBQ1WguNSKr7i1BkYyKhwhAhuMgL/LEyHR013ICXSCugNA9tsNGIo+Y16FRXrZ6RJy68uwc4O/9ynlHtxw6kA6HA/KnIXUtAb6zjYw=,iv:duVQLEaUYq7MNHv02pgsZDwIRp1W+Ynh9ggvMSyavOM=,tag:bZ26Gep+KV32kBv00ycNmA==,type:str]
+    lastmodified: "2024-10-09T17:13:09Z"
+    mac: ENC[AES256_GCM,data:7hFQFk7bClp2tUBG1r3Mqah56JqKx0p6R+RIPHSslQxTb/PbLidZO/P1DZYR9ycHZdLnXCt1ilS9A1z6qrik+Hddqnqaka3hiZSjgYrDlonXn67vTdgsy3Q8cm4f567R1hlttVDyMJZaqhXnRxwOZiNPTteiZLJlg7tav2xUMUQ=,iv:RmWPXUHuMHaGnZLIpCLjwXGm+cdkVfL2LFpoI1E7P/8=,tag:MKYOd8gEZ+EzUZCUIHZX/w==,type:str]
     pgp:
         - created_at: "2024-10-03T23:41:37Z"
           enc: |-
@@ -112,8 +111,8 @@ sops:
             R3EvVFk4YjJlRFhzemVRdkNnY1ZWUUkK/GdeF5aOXjn7uHaIg+zdTAyFkSj7jmPg
             Fc5eNbn3Ztd29OMytL9mUDFLgD665hxM/13hNoceTswD6gstoruOlw==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-10-03T23:41:37Z"
-    mac: ENC[AES256_GCM,data:hXsfAUkKRdVHvjW/vulmFFOiBU99MGlB1y1HirlP52vID3VIyDShKkfVCK7cpHmcmdgxbBBQ1WguNSKr7i1BkYyKhwhAhuMgL/LEyHR013ICXSCugNA9tsNGIo+Y16FRXrZ6RJy68uwc4O/9ynlHtxw6kA6HA/KnIXUtAb6zjYw=,iv:duVQLEaUYq7MNHv02pgsZDwIRp1W+Ynh9ggvMSyavOM=,tag:bZ26Gep+KV32kBv00ycNmA==,type:str]
+    lastmodified: "2024-10-09T17:13:09Z"
+    mac: ENC[AES256_GCM,data:7hFQFk7bClp2tUBG1r3Mqah56JqKx0p6R+RIPHSslQxTb/PbLidZO/P1DZYR9ycHZdLnXCt1ilS9A1z6qrik+Hddqnqaka3hiZSjgYrDlonXn67vTdgsy3Q8cm4f567R1hlttVDyMJZaqhXnRxwOZiNPTteiZLJlg7tav2xUMUQ=,iv:RmWPXUHuMHaGnZLIpCLjwXGm+cdkVfL2LFpoI1E7P/8=,tag:MKYOd8gEZ+EzUZCUIHZX/w==,type:str]
     pgp:
         - created_at: "2024-10-03T23:41:37Z"
           enc: |-
