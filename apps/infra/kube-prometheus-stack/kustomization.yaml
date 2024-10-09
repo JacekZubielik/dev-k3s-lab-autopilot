@@ -8,13 +8,13 @@ metadata:
     argocd.argoproj.io/sync-options: Delete=true,Prune=true
 
 resources:
+- resources/cluster.role.yaml
 - resources/pv.yaml
 - resources/pvc.yaml
 - resources/service.monitor.yaml
 - resources/service.yaml
 - resources/volume.yaml
 - velero/schedule.yaml
-# - resources/backing-image.yaml
 # - resources/ns.yaml
 # - resources/prometheus.rule.yaml
 # - resources/volume.snapshot.yaml
