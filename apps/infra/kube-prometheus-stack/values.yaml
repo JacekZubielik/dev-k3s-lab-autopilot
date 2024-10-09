@@ -1149,9 +1149,9 @@ prometheus-node-exporter:
       prometheus.io/scrape: "true"
     type: ClusterIP
     clusterIP: ""
-    port: 9100
+    port: 9101
     servicePort: ""
-    targetPort: 9100
+    targetPort: 9101
     portName: metrics
     # portName: http-metrics
     nodePort: null
