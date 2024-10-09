@@ -4,9 +4,9 @@ metadata:
     annotations:
         argocd.argoproj.io/sync-wave: "3"
         cert-manager.io/cluster-issuer: letsencrypt-staging
-        cert-manager.io/common-name: longhorn.storage.anotherlife.org.pl
-        external-dns.alpha.kubernetes.io/hostname: longhorn.storage.anotherlife.org.pl
-        external-dns.alpha.kubernetes.io/target: storage.anotherlife.org.pl
+        cert-manager.io/common-name: ENC[AES256_GCM,data:qT3A9SMz4PD4jA6mF4l56sgGfPiLDBnaAJ7T6jw4OogoNig=,iv:G6k0bdgxBUUDk+ZqD7NIBFcMwAFle3dsFk49yzdIcCM=,tag:7XCSSLy3JnYvG9IeuOOK3Q==,type:str]
+        external-dns.alpha.kubernetes.io/hostname: ENC[AES256_GCM,data:pL5u/UNpyNPCpbn4mijhbZFsmriQhbVPkdyJYx0ZMQG5nnY=,iv:cn8DKei21j2uMcpYTA+RyxVaChUoW+/YeGFK4SaWktI=,tag:VksymEcEv3pz/hkOdNvctw==,type:str]
+        external-dns.alpha.kubernetes.io/target: ENC[AES256_GCM,data:EBlcRJUpafzoE6k3L3RiIL07Hqt7xYWgIV0=,iv:YRVHYLkrceIewWBVCy5kXHROJ8rVsbywrJXD17239iY=,tag:pIkyGsGF+6tUnG/W5gJAlQ==,type:str]
         external-dns.alpha.kubernetes.io/ttl: "300"
         kubernetes.io/ingress.class: traefik-external
     name: longhorn-frontend-staging
@@ -16,7 +16,7 @@ spec:
         - websecure
     routes:
         - kind: Rule
-          match: Host(`longhorn.storage.anotherlife.org.pl`) || HostRegexp(`{subdomain:[a-z0-9]+}.anotherlife.org.pl`) && PathPrefix(`/outpost.goauthentik.io/`)
+          match: ENC[AES256_GCM,data:Qo7qjKnzwq+fVFkkDaM9Tie6tIkLWK5ctjbNbav+6A8QzacI5NXYW7iES96HSLWjXZCWt9UCMQCOSc0YlZCxBXZBYEcCEmgAVbyCyvUrmItKWADYxAfY4+mnpbZ7BTMnGS2hrLLdMiNhI1IsRbKAsgPalG6khxLBnL3wuXNw6y7TaBlOOsqHyFPVv2Xq9yQ=,iv:XGYs85abuRyrOTJYRFDWDi+dCXX+EDmKDl03lEFIFKg=,tag:+l5UqLwhFSus0mRPoX+Ojg==,type:str]
           priority: 10
           middlewares:
             - name: chain-authentik
@@ -28,20 +28,60 @@ spec:
               name: longhorn-frontend
               namespace: longhorn-system
         - kind: Rule
-          match: Host(`longhorn.storage.anotherlife.org.pl`) && PathPrefix(`/outpost.goauthentik.io/`)
+          match: ENC[AES256_GCM,data:A4YQkiDMxjp7krIm9DS5gkLo2v+JOhojqhP1Sgl6gi/pFxX0GzGTzy1ejvAWxE+N1ldbSDHONZe/SYMEJ4LYVvc6ZEojfT+ZOZLC8gLzL4UZvG/SCg==,iv:3Hw2LQaXxltdrus+YZbqJt8kLGy3OYx7wEI5zPEVPHM=,tag:Ch5uxWa+Lm32QogBNMZnLA==,type:str]
           priority: 15
           services:
             - kind: Service
               name: longhorn-frontend
     tls:
         domains:
-            - main: storage.anotherlife.org.pl
+            - main: ENC[AES256_GCM,data:1MhNGfsqzSfPrDIBTF0OgYuJUrTDXJeBZnU=,iv:XO1E46qOimplx+9aEIaum18tyFXCxECvHaKBUtg3dHU=,tag:TJck7xPToU9P8Obd78xcoQ==,type:str]
               sans:
-                - .storage.anotherlife.org.pl
+                - ENC[AES256_GCM,data:Kx7nc2lcyxkA2zTzpwY5UTAJYBXYaSwCuPnJ,iv:aYrSuQTsmKFnmvofpARbgTvijyk+Yazz+2L5VEZTD5c=,tag:01g32hu6zbwOlrXgmWjIHw==,type:str]
         options:
             name: tls-ver13
             namespace: traefik
         secretName: longhorn-cf-staging
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1deg9tqt7jtddnqme6nvcl72czns80z0n25u8k9pw5830dn4arsks5pua4h
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBBSG1pVlpaNW1pOFJhMzBm
+            Mm01bmVTeDFpRjREdTVYalVJamxibnAwQ0NrCmtwTTFGd0M3UkR4bzY2aXhvTUJJ
+            dXJ6N1UxcTF2Y1V5RnFwSEFjS0Y2UTgKLS0tIFlGak9JSWQwK2FKaS9Yalhma1c2
+            WjRyaGRLajFlT21kdk1NdjFNM1VlRVUK4U2uiwDevsN9/FnZeOXxiNM9UyJQR5Pf
+            VeGWFXNHdLsjLJJw4hOpf0jYIcAzgAZoav5jC+YVBAI1fwQnBnvWmg==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2024-10-09T17:25:19Z"
+    mac: ENC[AES256_GCM,data:NQy5QVyzRPVN2/xNuR0//00W7uxCrGTwhzJBKqADgCbRt34ykTWNkz57c7H4PiyObfqnKuACLbLSvprzeaZjRUf8uEo+Sg2dJQkpMV4f10Y5zLAg+wY1Hi4oLwFehPbfRCG/ntIWFoyVMGT9fvZxIdLsf37As4Q72X+hkdQe030=,iv:91O2pAP8vwrkOcDlm8rTyDWtXVqX59K3Pkfjr9yVhuM=,tag:JRzXKrFi67HquDHcHUoMtg==,type:str]
+    pgp:
+        - created_at: "2024-10-09T17:25:19Z"
+          enc: |-
+            -----BEGIN PGP MESSAGE-----
+
+            hQIMA0R6oz1GmNjVARAAw8EzIoYTK8aWJUcABhutMC/u3aTB2vJ/NTwbYEkRVKnl
+            CmQk6StF8hT4q3kmLfQjBsdZirURa7sR664VzPjlDODc1gkgB/6o6GFnLmaiYQ1M
+            Y7kphFhgVpbFiD3FP4asape339wKy1OSO3l6hb1fK477GPdK5bbET2lT3SsljkbE
+            0qFRl91xa+IDo3Ngp38l1T/ZDJ5eFOt24lcwI+YXy1h4Ls6tbEhwGNZwyQCYhsJu
+            jQbipnRQtJNIWMDl/OHK2LYcZpEfsgJ1YzV3ilMaPIYovJKSuUErlYekz4F+Rw3r
+            coSc3mL+0mskYyY3kHlsw/yFjHzKtY8Xe12FNJsBUkKj1H3uQ0hdcBCBcz0v3QYO
+            lHmhzIIxsANUvMxXWW7XJ+JwpwQmEritdbpZ6t3Zzx0tr4LucnZh0Cyu2f7z+uL1
+            h9plnKATm8L5Q5248zknXhSzOCb125lBAgOSiPwQrqzoKy0aV1mH45vQ8sBNsYtP
+            oUz1ZS4g9qSAUH9rgFkvysIOYzt3BwAYM6F/JZZ6c38/yLEfZEh+5HZ3W846e3Dg
+            0tUzr32Mk98wIPXNGx6vPjc5IiRL1mMv32Bs36oFbr7lOc4327pBW4uCAta5hVrY
+            wSTFY6ItSklaIR2akKgvHXv0FB+VP05tXUVomYV7HGm0dlBTU2pASFSsgVqTN8HS
+            XAHTy4Icy3zqzmUOcm7ZI2FQzwy1JE2SHznoLEoNC6PPDmT/AKTOe61MpjChCuHW
+            u9i/VRPgT4lEVkaH+H0xC2ZUfelQS4v7VOQwlOA3lESXr5+9dQg3IYWnZjIS
+            =UDM2
+            -----END PGP MESSAGE-----
+          fp: 6D3FE55384B558E06A1BA364586EFA784A32C981
+    encrypted_regex: ^(externalName|external-dns.alpha.kubernetes.io/hostname|cert-manager.io/common-name|sans|main|match|external-dns.alpha.kubernetes.io/target|dnsNames|commonName|data|stringData|dnsNames|email|accessKeyID|region|hostedZoneID|role|dnsZones)$
+    version: 3.9.0
 ---
 apiVersion: traefik.io/v1alpha1
 kind: TraefikService
@@ -56,3 +96,43 @@ spec:
             - name: longhorn-frontend
               port: 80
               weight: 1
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1deg9tqt7jtddnqme6nvcl72czns80z0n25u8k9pw5830dn4arsks5pua4h
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBBSG1pVlpaNW1pOFJhMzBm
+            Mm01bmVTeDFpRjREdTVYalVJamxibnAwQ0NrCmtwTTFGd0M3UkR4bzY2aXhvTUJJ
+            dXJ6N1UxcTF2Y1V5RnFwSEFjS0Y2UTgKLS0tIFlGak9JSWQwK2FKaS9Yalhma1c2
+            WjRyaGRLajFlT21kdk1NdjFNM1VlRVUK4U2uiwDevsN9/FnZeOXxiNM9UyJQR5Pf
+            VeGWFXNHdLsjLJJw4hOpf0jYIcAzgAZoav5jC+YVBAI1fwQnBnvWmg==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2024-10-09T17:25:19Z"
+    mac: ENC[AES256_GCM,data:NQy5QVyzRPVN2/xNuR0//00W7uxCrGTwhzJBKqADgCbRt34ykTWNkz57c7H4PiyObfqnKuACLbLSvprzeaZjRUf8uEo+Sg2dJQkpMV4f10Y5zLAg+wY1Hi4oLwFehPbfRCG/ntIWFoyVMGT9fvZxIdLsf37As4Q72X+hkdQe030=,iv:91O2pAP8vwrkOcDlm8rTyDWtXVqX59K3Pkfjr9yVhuM=,tag:JRzXKrFi67HquDHcHUoMtg==,type:str]
+    pgp:
+        - created_at: "2024-10-09T17:25:19Z"
+          enc: |-
+            -----BEGIN PGP MESSAGE-----
+
+            hQIMA0R6oz1GmNjVARAAw8EzIoYTK8aWJUcABhutMC/u3aTB2vJ/NTwbYEkRVKnl
+            CmQk6StF8hT4q3kmLfQjBsdZirURa7sR664VzPjlDODc1gkgB/6o6GFnLmaiYQ1M
+            Y7kphFhgVpbFiD3FP4asape339wKy1OSO3l6hb1fK477GPdK5bbET2lT3SsljkbE
+            0qFRl91xa+IDo3Ngp38l1T/ZDJ5eFOt24lcwI+YXy1h4Ls6tbEhwGNZwyQCYhsJu
+            jQbipnRQtJNIWMDl/OHK2LYcZpEfsgJ1YzV3ilMaPIYovJKSuUErlYekz4F+Rw3r
+            coSc3mL+0mskYyY3kHlsw/yFjHzKtY8Xe12FNJsBUkKj1H3uQ0hdcBCBcz0v3QYO
+            lHmhzIIxsANUvMxXWW7XJ+JwpwQmEritdbpZ6t3Zzx0tr4LucnZh0Cyu2f7z+uL1
+            h9plnKATm8L5Q5248zknXhSzOCb125lBAgOSiPwQrqzoKy0aV1mH45vQ8sBNsYtP
+            oUz1ZS4g9qSAUH9rgFkvysIOYzt3BwAYM6F/JZZ6c38/yLEfZEh+5HZ3W846e3Dg
+            0tUzr32Mk98wIPXNGx6vPjc5IiRL1mMv32Bs36oFbr7lOc4327pBW4uCAta5hVrY
+            wSTFY6ItSklaIR2akKgvHXv0FB+VP05tXUVomYV7HGm0dlBTU2pASFSsgVqTN8HS
+            XAHTy4Icy3zqzmUOcm7ZI2FQzwy1JE2SHznoLEoNC6PPDmT/AKTOe61MpjChCuHW
+            u9i/VRPgT4lEVkaH+H0xC2ZUfelQS4v7VOQwlOA3lESXr5+9dQg3IYWnZjIS
+            =UDM2
+            -----END PGP MESSAGE-----
+          fp: 6D3FE55384B558E06A1BA364586EFA784A32C981
+    encrypted_regex: ^(externalName|external-dns.alpha.kubernetes.io/hostname|cert-manager.io/common-name|sans|main|match|external-dns.alpha.kubernetes.io/target|dnsNames|commonName|data|stringData|dnsNames|email|accessKeyID|region|hostedZoneID|role|dnsZones)$
+    version: 3.9.0
