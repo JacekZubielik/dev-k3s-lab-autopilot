@@ -262,7 +262,7 @@ alertmanager:
     labelValueLengthLimit: 0
     proxyUrl: ""
     scheme: ""
-    enableHttp2: true
+    enableHttp2: false
     tlsConfig: {}
     bearerTokenFile:
     metricRelabelings: []
@@ -1156,7 +1156,7 @@ prometheus-node-exporter:
       additionalLabels:
         prometheus.io/scrap-with: kube-prometheus-stack
       jobLabel: jobLabel
-      interval: ""
+      interval: "15s"
       sampleLimit: 0
       targetLimit: 0
       labelLimit: 0
