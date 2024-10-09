@@ -13,7 +13,7 @@ spec:
   generators:
   - git:
       repoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot.git
-      requeueAfterSeconds: 10
+      requeueAfterSeconds: 4
       revision: ""
       files:
       - path: apps/dev/**/config.yaml

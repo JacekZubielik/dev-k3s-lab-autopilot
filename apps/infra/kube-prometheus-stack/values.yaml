@@ -32,10 +32,10 @@ defaultRules:
     kubeProxy: false
     kubePrometheusGeneral: true
     kubePrometheusNodeRecording: true
-    kubernetesApps: false
-    kubernetesResources: false
-    kubernetesStorage: false
-    kubernetesSystem: false
+    kubernetesApps: true
+    kubernetesResources: true
+    kubernetesStorage: true
+    kubernetesSystem: true
     kubeSchedulerAlerting: true
     kubeSchedulerRecording: false
     kubeStateMetrics: true
@@ -788,10 +788,10 @@ kubernetesServiceMonitors:
   enabled: true
 
 kubeApiServer:
-  enabled: false
+  enabled: true # false
   tlsConfig:
     serverName: kubernetes
-    insecureSkipVerify: false
+    insecureSkipVerify: true # false
   serviceMonitor:
     interval: ""
     sampleLimit: 0
@@ -887,7 +887,7 @@ kubelet:
       targetLabel: metrics_path
 
 kubeControllerManager:
-  enabled: false
+  enabled: true # false
   endpoints: # ips of servers
   - 192.168.40.110
   - 192.168.40.113
@@ -942,7 +942,7 @@ coreDns:
 
 ## Component scraping kubeDns. Use either this or coreDns
 kubeDns:
-  enabled: false
+  enabled: true # false
   service:
     dnsmasq:
       port: 10054
@@ -983,7 +983,7 @@ kubeDns:
 
 ## Component scraping etcd
 kubeEtcd:
-  enabled: false
+  enabled: true # false
   endpoints: # ips of servers
   - 192.168.40.110
   - 192.168.40.113
@@ -1022,7 +1022,7 @@ kubeEtcd:
 
 ## Component scraping kube scheduler
 kubeScheduler:
-  enabled: false
+  enabled: true # false
   endpoints: # ips of servers
   - 192.168.40.110
   - 192.168.40.113
@@ -1066,7 +1066,7 @@ kubeScheduler:
 
 ## Component scraping kube proxy
 kubeProxy:
-  enabled: false
+  enabled: true # false
   endpoints: # ips of servers
   - 192.168.40.110
   - 192.168.40.113
@@ -1119,7 +1119,7 @@ kube-state-metrics:
       relabelings: []
 
   selfMonitor:
-    enabled: false
+    enabled: true # false
 
 ## Deploy node exporter as a daemonset to all nodes
 nodeExporter:
@@ -1189,7 +1189,6 @@ prometheusOperator:
   fullnameOverride: ""
   revisionHistoryLimit: 5
   strategy: {}
-
   tls:
     enabled: true
     tlsMinVersion: VersionTLS13
