@@ -9,7 +9,7 @@ metadata:
         external-dns.alpha.kubernetes.io/target: ENC[AES256_GCM,data:8rZMy0MKbZ8eAAEOhP8zhcOE0uQkr/tEd0Q=,iv:pXUBAR6H138/7RnBbTFa9Go5tn02iNULp6QHRqR1qH8=,tag:x10pvyAbIEvY5AwfYBNIVA==,type:str]
         external-dns.alpha.kubernetes.io/ttl: "300"
         kubernetes.io/ingress.class: traefik-external
-    name: longhorn-frontend
+    name: longhorn-frontend-production
     namespace: longhorn-system
 spec:
     entryPoints:
@@ -57,8 +57,8 @@ sops:
             R3EvVFk4YjJlRFhzemVRdkNnY1ZWUUkK/GdeF5aOXjn7uHaIg+zdTAyFkSj7jmPg
             Fc5eNbn3Ztd29OMytL9mUDFLgD665hxM/13hNoceTswD6gstoruOlw==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-10-09T17:13:09Z"
-    mac: ENC[AES256_GCM,data:7hFQFk7bClp2tUBG1r3Mqah56JqKx0p6R+RIPHSslQxTb/PbLidZO/P1DZYR9ycHZdLnXCt1ilS9A1z6qrik+Hddqnqaka3hiZSjgYrDlonXn67vTdgsy3Q8cm4f567R1hlttVDyMJZaqhXnRxwOZiNPTteiZLJlg7tav2xUMUQ=,iv:RmWPXUHuMHaGnZLIpCLjwXGm+cdkVfL2LFpoI1E7P/8=,tag:MKYOd8gEZ+EzUZCUIHZX/w==,type:str]
+    lastmodified: "2024-10-09T17:23:17Z"
+    mac: ENC[AES256_GCM,data:38l928PZkvEnAV9zBRAV/APOhVTLQjzaWc645xxL2Xt1RoA/ijHMfcOfbNkdpxD5X4KAoo43D9Rq0aI7dq4udOSNN1DcubRxaITGyRm9DCaeboRpdC7lm+gri1humRqKden8iRMAQnonz3b5AtT2oZBROp6knMITSk28AmCU7Ys=,iv:zULQF46ylVcNaBYsIvKp7zIwk+Q2VdaVGe70Uiwu1Rk=,tag:wKPFaO0t0yOECOhVqnjlng==,type:str]
     pgp:
         - created_at: "2024-10-03T23:41:37Z"
           enc: |-
@@ -111,8 +111,8 @@ sops:
             R3EvVFk4YjJlRFhzemVRdkNnY1ZWUUkK/GdeF5aOXjn7uHaIg+zdTAyFkSj7jmPg
             Fc5eNbn3Ztd29OMytL9mUDFLgD665hxM/13hNoceTswD6gstoruOlw==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-10-09T17:13:09Z"
-    mac: ENC[AES256_GCM,data:7hFQFk7bClp2tUBG1r3Mqah56JqKx0p6R+RIPHSslQxTb/PbLidZO/P1DZYR9ycHZdLnXCt1ilS9A1z6qrik+Hddqnqaka3hiZSjgYrDlonXn67vTdgsy3Q8cm4f567R1hlttVDyMJZaqhXnRxwOZiNPTteiZLJlg7tav2xUMUQ=,iv:RmWPXUHuMHaGnZLIpCLjwXGm+cdkVfL2LFpoI1E7P/8=,tag:MKYOd8gEZ+EzUZCUIHZX/w==,type:str]
+    lastmodified: "2024-10-09T17:23:17Z"
+    mac: ENC[AES256_GCM,data:38l928PZkvEnAV9zBRAV/APOhVTLQjzaWc645xxL2Xt1RoA/ijHMfcOfbNkdpxD5X4KAoo43D9Rq0aI7dq4udOSNN1DcubRxaITGyRm9DCaeboRpdC7lm+gri1humRqKden8iRMAQnonz3b5AtT2oZBROp6knMITSk28AmCU7Ys=,iv:zULQF46ylVcNaBYsIvKp7zIwk+Q2VdaVGe70Uiwu1Rk=,tag:wKPFaO0t0yOECOhVqnjlng==,type:str]
     pgp:
         - created_at: "2024-10-03T23:41:37Z"
           enc: |-
