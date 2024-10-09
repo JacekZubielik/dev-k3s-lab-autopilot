@@ -1767,23 +1767,11 @@ prometheus:
   thanosServiceMonitor:
     enabled: false
     interval: ""
-
-    ## Additional labels
     additionalLabels: {}
-
-    ## scheme: HTTP scheme to use for scraping. Can be used with `tlsConfig` for example if using istio mTLS.
     scheme: ""
-
-    ## tlsConfig: TLS configuration to use when scraping the endpoint. For example if using istio mTLS.
-    ## Of type: https://github.com/coreos/prometheus-operator/blob/main/Documentation/api.md#tlsconfig
     tlsConfig: {}
-
     bearerTokenFile:
-
-    ## Metric relabel configs to apply to samples before ingestion.
     metricRelabelings: []
-
-    ## relabel configs to apply to samples before ingestion.
     relabelings: []
 
   # Service for external access to sidecar
@@ -1860,27 +1848,20 @@ prometheus:
   servicePerReplica:
     enabled: false
     annotations: {}
-
     ## Port for Prometheus Service per replica to listen on
     port: 9090
-
     ## To be used with a proxy extraContainer port
     targetPort: 9090
-
     ## Port to expose on each node
     ## Only used if servicePerReplica.type is 'NodePort'
     nodePort: 30091
-
     ## Loadbalancer source IP ranges
     ## Only used if servicePerReplica.type is "LoadBalancer"
     loadBalancerSourceRanges: []
-
     ## Denotes if this Service desires to route external traffic to node-local or cluster-wide endpoints
     externalTrafficPolicy: Cluster
-
     ## Service type
     type: ClusterIP
-
     ## Service dual stack
     ipDualStack:
       enabled: false
@@ -2083,7 +2064,7 @@ prometheus:
 
     scrapeConfigNamespaceSelector: {}
 
-    retention: 10d
+    retention: 30d
     retentionSize: ""
     tsdb:
       outOfOrderTimeWindow: 0s
@@ -2145,12 +2126,7 @@ prometheus:
 
     additionalScrapeConfigs: []
     # additionalScrapeConfigs: |
-      # - job_name: "velero"
-      #   scheme: http
-      #   metrics_path: '/metrics'
-      #   static_configs:
-      #     - targets:
-      #       - "velero-operator.velero.svc.cluster.local"
+
     # - job_name: kube-etcd
     #   kubernetes_sd_configs:
     #     - role: node

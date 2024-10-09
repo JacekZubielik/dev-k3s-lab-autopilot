@@ -16,7 +16,7 @@ data:
         metrics_path: '/metrics'
         static_configs:
           - targets:
-            - "velero-operator.velero.svc.cluster.local"
+            - "velero.velero.svc.cluster.local"
 
       - job_name: 'velero'
         kubernetes_sd_configs:
