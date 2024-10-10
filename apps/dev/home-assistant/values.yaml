@@ -138,7 +138,7 @@ tolerations: []
 
 persistence:
   enabled: true
-  existingClaim: pvc-ha-data
+  existingClaim: pvc-home-assistant
 
 # Mount devices or folders from the host machine. Can be used for USB device mounting.
 hostMounts: []

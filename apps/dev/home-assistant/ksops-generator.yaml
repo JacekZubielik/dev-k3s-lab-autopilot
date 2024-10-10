@@ -6,6 +6,6 @@ type: Opaque
 files:
 - resources/cert.staging.sops.yaml
 - resources/ingressroute.staging.sops.yaml
-- secrets/secret.sops.yaml
+# - secrets/secret.sops.yaml
 # - resources/cert.sops.yaml
 # - resources/ingressroute.sops.yaml
