@@ -1,0 +1,25 @@
+---
+apiVersion: v1
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "-2"
+  labels:
+    longhornvolume: pvc-home-assistant
+  name: pv-home-assistant
+spec:
+  capacity:
+    storage: 10Gi
+  volumeMode: Filesystem
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: longhorn-retain
+  csi:
+    driver: driver.longhorn.io
+    fsType: ext4
+    volumeAttributes:
+      staleReplicaTimeout: "2880"
+    volumeHandle: pvc-home-assistant # must match volume name from Longhorn

@@ -1,0 +1,33 @@
+---
+apiVersion: longhorn.io/v1beta2
+kind: Volume
+metadata:
+  finalizers:
+    - longhorn.io
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
+  labels:
+    longhornvolume: pvc-ha-data
+    # recurring-job-group.longhorn.io/default: enabled
+    recurring-job-group.longhorn.io/group1: enabled
+    recurring-job.longhorn.io/24-hour-snapshots: enabled
+    recurring-job.longhorn.io/48-hour-backups: enabled
+  name: pvc-ha-data
+  namespace: longhorn-system
+spec:
+  dataLocality: "best-effort"
+  diskSelector:
+    - data
+    # - fast
+  engineImage: longhornio/longhorn-engine:v1.6.2
+  fromBackup: "s3://k3s-longhorn-backup@us-east-1/?backup=backup-3f53ceaede164801&volume=pvc-ha-data"
+  frontend: blockdev
+  # migratable: false
+  nodeSelector:
+    - fast
+    # - storage
+  # numberOfReplicas: 1
+  restoreVolumeRecurringJob: enabled
+  # revisionCounterDisabled: false
+  size: '10737418240'
+  snapshotMaxCount: 10

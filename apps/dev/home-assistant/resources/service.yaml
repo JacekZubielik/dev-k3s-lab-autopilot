@@ -1,0 +1,18 @@
+kind: Service
+apiVersion: v1
+metadata:
+  labels:
+    app: home-assistant
+    app.kubernetes.io/name: home-assistant
+  name: home-assistant-proxy
+spec:
+  externalName: 192.168.40.191
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8123
+    targetPort: 8123
+  type: ExternalName
+  selector:
+    app.kubernetes.io/instance: traefik
+    app.kubernetes.io/name: traefik
