@@ -4,9 +4,9 @@ metadata:
     annotations:
         argocd.argoproj.io/sync-wave: "3"
         cert-manager.io/cluster-issuer: letsencrypt-production
-        cert-manager.io/common-name: ENC[AES256_GCM,data:YAi0Q1WWPp5QTZFMVJJWgiVPMuFjSyEJviG6Mo+ueLc=,iv:TBWq1wnueGemKnwNnQLGPZ954rdVoQhVGdTnvZOIWRQ=,tag:ONV1ZSJZCsMXe4JtwVeEVw==,type:str]
-        external-dns.alpha.kubernetes.io/hostname: ENC[AES256_GCM,data:9SCgzHI1Vzs9j3WRXr0NvfV+9mfeCKWzToCdfG8aANE=,iv:hYObVqKoeVXQnqa1jB4qFVGORPzcFzTmefjuZ7MeOLk=,tag:tA1YAPkIas2GVHX5UD91OA==,type:str]
-        external-dns.alpha.kubernetes.io/target: ENC[AES256_GCM,data:GdAmoxPPlsbd8pHNshPvgLknMJ6Kon0c,iv:rX7GlLpXH2UOswNIB2KNypu+4b311Lp2toFcONO1YNM=,tag:sfvhrna70blRO3YXSzf9zw==,type:str]
+        cert-manager.io/common-name: ENC[AES256_GCM,data:nEXDJ5JASdgYB7+k9h7wmVyfAKLoWYJSsVY/mUwTEfY=,iv:8mdOpHjqcRKfWWg0MGGKXwByHR6r+QmvI9ariayxJ+E=,tag:FkvGZ5r8cvXHQLcPVxo+Dg==,type:str]
+        external-dns.alpha.kubernetes.io/hostname: ENC[AES256_GCM,data:IDOV+mhkJZKwkbjEare8/3DNnENncjAnlxl8cLN9nVA=,iv:JhGcq1rgHgNwDEXLYWlpwsN0C9Jbgx0kzha0qHbmSS4=,tag:IBJ29xZB9QBau7X3Odr1Xg==,type:str]
+        external-dns.alpha.kubernetes.io/target: ENC[AES256_GCM,data:4jxm+hRhrfmdBcW1y5xUri/fwpLagL7v,iv:fTsNuYmzbqYh3NIAMDe2WJ9OruBPDm5evLrloBEmYjc=,tag:P7FAGvOsyUSFeBp401hCWA==,type:str]
         external-dns.alpha.kubernetes.io/ttl: "300"
         kubernetes.io/ingress.class: traefik-external
     name: proxmox-production
@@ -17,7 +17,7 @@ spec:
         - websecure
     routes:
         - kind: Rule
-          match: ENC[AES256_GCM,data:L4CxHpzIsNuQZh3abejQgg5nERwtAYGijDwyQXAn+tVooSi9ozfm4IGWb3XP5pu1qU2eeowBxX8ht+PMuk0Ec40NVCsB5tNw5P2EHxNRBCDPa5rBqbqUa+jmPhFjwXzLz5XZwWpRYoVC9R3xhlaeE+BW0+WzrIJ87tk2M+lrDyf4RZus3gBPG0fKUHo=,iv:0I7im4CYxJGH3EKrGVk+TYPDPZxAaIAkRRhGYyPOgsU=,tag:z6vpeMbYnOKKnIoDQ+v4vw==,type:str]
+          match: ENC[AES256_GCM,data:rHhj1AGFxgUVw9UZ6EtoJbfCZ0dEFc81+NY1PDeX7+JSP42eBWT0vgJ8rhjCPIrq6tZJIiplMKY9szgZ7DmvDq/3zOM7TlGtPevQi84wmAjToQUGJpSfbvUMouZfQGebH0UQtmsav3yNbWv+CCjNbPKtjKaxQC057BKsHk+gxcclLFY+TEFcGdMxMLc=,iv:GCOgAsVxint0LDOLlENy15VkTcB3qkHs3FSgMZFPFx4=,tag:ao7s9C6OvYt1kJs1fFS3zw==,type:str]
           priority: 10
           middlewares:
             - name: chain-authentik
@@ -28,7 +28,7 @@ spec:
               scheme: https
               passHostHeader: true
         - kind: Rule
-          match: ENC[AES256_GCM,data:K8EiwXwy2ZEMiwXlx1iUvZ2iTHaPs7pim3Ih9N5co106CsOvZZVo9vCToRJRIYum70tMgdyNOEZaoNiMbXtxtng3vnRxsfXT4mhYkOsa3SSS+g==,iv:FTvwFsk2LOPo8A1pSW7l3szutgTHqpwrs0i0rg+EAqk=,tag:DgidWypJFi3pzuphpM7Scg==,type:str]
+          match: ENC[AES256_GCM,data:I6M7kq65Ntg4sl6HfIc9bntnSWaw7jsalDv58QuwArphG/3OTb5+T2QlcLYvAEDCxLwuunT5Mq//0bu180o+IAioARYlKbYQvlZyEhLqn7ul4Q==,iv:eHckqLm/k5I2o8K2j2tTVmGEJU4eKK+JBqf//e6eQ00=,tag:7rzJJidl8C/E6wcgMws5xw==,type:str]
           priority: 15
           services:
             - kind: Service
@@ -36,9 +36,9 @@ spec:
               port: 9000
     tls:
         domains:
-            - main: ENC[AES256_GCM,data:VpeFaIUOJrQ5J76J7DrXoeJ8C8A9zgUv,iv:nCgBNe0zAoIS3/b1BkHBGPwVuVcLRxX3fcmN4/hmGv4=,tag:0VVDUNFWKBnAz5UxC3wUaw==,type:str]
+            - main: ENC[AES256_GCM,data:KJKdEsjdXk09/pu6yBotRJAJbnSynLtH,iv:Podi8kp6SwC9lhjm24RnnAsQD+tPr8zjfhMlNWLwDlI=,tag:cgBWnjZxL8CQ1Gp2rA+0Kg==,type:str]
               sans:
-                - ENC[AES256_GCM,data:bdvT3kvSpEE+hHtEthsE14LD0xI3zAbEqg==,iv:jtPo5Cza+4hcaqmf/y8wPfM0ZIYSIYf1+l4qtmM8RTw=,tag:ntCJmkGfocbLemTvLa7bXA==,type:str]
+                - ENC[AES256_GCM,data:yd9sM6XFVSF48dOKsFTrjH8onSVl0HAi7A==,iv:cSJyaSUi6bYNEvD5POzX8vJb+JvtUf+PaQ1Pav+V1go=,tag:YUJWMN7bszNLF3vVeZSSrA==,type:str]
         options:
             name: tls-ver13
             namespace: traefik
@@ -52,33 +52,33 @@ sops:
         - recipient: age1deg9tqt7jtddnqme6nvcl72czns80z0n25u8k9pw5830dn4arsks5pua4h
           enc: |
             -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBnN2h3M3huSnNvemRVTGdC
-            bG8reGdTOWdrU3VyMGQyb0Uxdlh0ZC9WNDNBCkg5RDZYMkphbnc4TEJFTHB5c05x
-            aFdUdHFIb0VpUFN1ZlBRTSs3RzBUbjgKLS0tIEdRVEpqaERWM3JnTDZIY3FFOTBp
-            bVlFZmtQR01MZ1hJNGZxZjZHelEzT0kKQTUmMvgv3dr2phtVLz05KHDVlFR+kNqY
-            qSYWf2jK9yrABqLNOvaZexmurMiwPNNyecp/erDF6oMjMn7ekEtmPQ==
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSB2M0pZNlhwaTJIVjlwZ2F0
+            Z1dUS2Vna2hEdXdlWkhPQmVmMHR1QnUyODJRCk1JM3VCcENZejB3bWl5UCtJWU40
+            U2djay9zVFgrWmdiczcrd0NXL29BZlUKLS0tIFpvVklPWDIwUDRTaDIvbHlnekZI
+            UmJOWkVxQ3NJdVU4RFBoRUZyNDBCdk0KUwtIj+liZEDjaqvdSLBESoZPKUhPqleC
+            5oERDsST2+y8fgHpRv0pwvY6Ng005P11BPuHtnXZxdLwGSxVU88dSw==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-10-05T15:40:31Z"
-    mac: ENC[AES256_GCM,data:ZV/sTBIXfQ6XyNDAjBJbTxCFXgbag1+TTIHxEbOgJJfVIr2Fn55IRg/uIGpdUFlwgOje8VWpVgfj6n0SPzHy7gA6y9fn/2GSVb7XMLvMGgTPTNXsUwb4q4XbOpME9eb5cPQy+CxXQ1s582Mie+dJJ4NBxU12vgc07OJCNNh9fCE=,iv:vkLU1UEn/AhFkP6ewwQPPwjzMfJ+Ylbq/gz+0MUb1yM=,tag:ZY5z0jPSvAaXSRCe1kNpww==,type:str]
+    lastmodified: "2024-10-11T22:21:58Z"
+    mac: ENC[AES256_GCM,data:WeA3tOTTDywLd+a8QX+JrWmJo+YdU0M/MQbMu2bydFlX3B9U/PWwgY5UNNQtadO1XF6wep9lJivi8kStqfHXDJt6i1Mko8usidZp6PInto7Dzct9V4xXiqk0/dcI+J25IgLvcZm8DcMIJOYJPYbXC9X0FxBPxWFCZ0SpF+LAlnc=,iv:RkoWW210lf8aL0Jjrrjkbtu/X4SGYYwgjHFgWOCtJV0=,tag:bpSyT3nU/0n1y017OtGwUw==,type:str]
     pgp:
-        - created_at: "2024-10-04T00:12:34Z"
+        - created_at: "2024-10-11T22:21:58Z"
           enc: |-
             -----BEGIN PGP MESSAGE-----
 
-            hQIMA0R6oz1GmNjVAQ/+P95PoGBu4OIKt8suzz7Zw68AcOTaCmYsV5J68wcc6EKu
-            2q5cKeXwgzDAPacf3od9b+dHLEJ0ukaa0NZno1NBBVJAu0I7CLZ5ky4HlMq6rMvX
-            9DAjFgut1dYmPRfVjaCjguwKKoFygVeR83b5Fsr66R/F0hcZlUlynjkQjofSu6OF
-            pW5uPibsGzEfY+NeqJS9xb36sGcr+5SYmIpJOJGnsk3hoHHjJyp5uBLqkdTWik9n
-            bu+vHsMA9KhDC0f0+UxstKctEvVkY8U79+sVxQ+xYsx1pu+uKdKLey1jn/XZ7Mqp
-            IoD4MFj/sW3abhNeuyFQAvdNSPKdMICqpzNw+B4m4jURE+Iu+ym6qDdo6EJha4Cd
-            fvJw7CsNrKpSk9IAdZCETrvFef4R+NWW9sjgvGEEvJ84+z8yy2yUBGze49/us80b
-            wsS9RGYYO3eOPWSNPWPmuRkDgbO9Rmbmu5qveIFER3A6tdV4g373NAZKCfvGrEz0
-            obL7Qc3MMAdu7pp1dwU1muZ2C4qo+WHN6Qe3taml6L/8SntgWAeA9VHq7sTZXNxV
-            35/r4sPycDPeVCHS8x7JI2Q3Kwsmw5lTAIYhm/uRmPgVFoQpCOZEGVlSiPedAogF
-            N0K4kVgBLwvSsz6SCQZF0eMQ1bvvlHjSv6kRIQYN+9ulZvJT+o2wzHtDbkNCniXS
-            XgF4i80fqK3hgD3mzFA3SfGgc3vchedjCbGtGtItAGRawQDobZiYYm3FF2WnnbWF
-            9DF5/RdbuKXNBc3By03thtdItEE5KYmoTjGxX2SautH+vgOm0QN6IVRXEY6XOVg=
-            =+H7c
+            hQIMA0R6oz1GmNjVAQ//V6QTgzNUWb4yNEgSv1wHrj7tgcyeLXTVevClLyNb4Gzx
+            UXcT2/rwiqp1IrJuK7k45wUSFcTI1wSnw6V/HOX5Ixem3iEjkSfiR9mVSTH3KEqU
+            GQMzL5vABc9PkSo27q807spSzCOFx06yTprKu4x6wZxCSH7okcEDkgjcdKMfXa8I
+            pnVG6MuyqpKBbFWeYuVFO0hToxy7kbunO/x67BCBXiOnbusnJeitFdbRRSMg0+uw
+            Lu3ciiIMIPrlC1Mzc2ZKH/0JuloNUMudirAEC1aJ9HWS2Q3Pfm4MIatdlS8xF4Jl
+            2tDEcK9ZZHk/rAnglXDnAbTEOyrTXgnKYDqaYpfBuSh5pYQjnA/lNyRb8ggznL/j
+            iLp+9DHb81PHKTMKIDXmn+4o0sWuJuWHWZScypcza7yLlOiA4QAVt5CIVkYsr1tn
+            S9bi9XYNnB3ZhkQaABhbSHDrif4ofVp6JAijdINX2NXiRBcVuOnPfC8oza1dovmE
+            w+X0FZQeeyWh3VlK0JHdy/ZJkfFUDhcknGhnKWqSfKWbqNk7NwTKj228GrXguJQw
+            fArhgc98ZtCwcrOf38xTiUsyTMWM3NeEa77e+un3k6sas4Q68r91D64FVUzUEoEA
+            RBHSZ3QGxFOH0IubGwvbB/CKnoNxCAZCTm20m00YS/F2gf7+tUpG7SvVZjj9p33S
+            XgFuHArsEcFyZlt8O6XTHC4dVwBf8+pAYkRxUSNOPyZSxDWX0CZ+TFCQgvu43ePi
+            6bYuq4RPtfnoRUSKeQRIyOGBI0jSeXu4iwmWMkTNcFCsTKAfqosNLbNPoAOtajo=
+            =Q3F5
             -----END PGP MESSAGE-----
           fp: 6D3FE55384B558E06A1BA364586EFA784A32C981
     encrypted_regex: ^(externalName|external-dns.alpha.kubernetes.io/hostname|cert-manager.io/common-name|sans|main|match|external-dns.alpha.kubernetes.io/target|dnsNames|commonName|data|stringData|dnsNames|email|accessKeyID|region|hostedZoneID|role|dnsZones)$

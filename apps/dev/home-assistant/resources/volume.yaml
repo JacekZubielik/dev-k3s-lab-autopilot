@@ -22,7 +22,7 @@ spec:
   - data
   - fast
   # restoreVolumeRecurringJob: enabled
-  # fromBackup: "s3://k3s-longhorn-backup@us-east-1/?backup=backup-3f53ceaede164801&volume=pvc-ha-data"
+  fromBackup: s3://k3s-longhorn@us-east-1/?backup=backup-698ca99d591d48e9&volume=pvc-home-assistant
   frontend: blockdev
   # migratable: false
   nodeSelector:
