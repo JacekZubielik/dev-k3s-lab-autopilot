@@ -58,7 +58,7 @@ spec:
           limits:
             cpu: 10000m
             memory: 12Gi
-            gpu.intel.com/i915: "1" # requesting 1 GPU
+            #gpu.intel.com/i915: "1" # requesting 1 GPU
             # nvidia.com/gpu: "1"
 
         volumeMounts:
