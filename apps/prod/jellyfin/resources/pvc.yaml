@@ -1,0 +1,78 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
+  labels:
+    backup: pvc-jellyfin-media
+  name: pvc-jellyfin-media
+  namespace: jellyfin
+spec:
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests:
+      storage: 400Gi
+  volumeName: pv-jellyfin-media # must reference Persistent Volume
+  storageClassName: nfs-storage
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
+    velero.io/csi-volumesnapshot-class: "longhorn-backup-vsc"
+  labels:
+    backup: pvc-jellyfin-config
+  name: pvc-jellyfin-config
+  namespace: jellyfin
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 4Gi
+  volumeName: pv-jellyfin-config  # must reference Persistent Volume
+  storageClassName: longhorn-retain
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
+    velero.io/csi-volumesnapshot-class: "longhorn-backup-vsc"
+  labels:
+    backup: pvc-jellyfin-transcoding
+  name: pvc-jellyfin-transcoding
+  namespace: jellyfin
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 64Gi
+  volumeName: pv-jellyfin-transcoding # must reference Persistent Volume
+  storageClassName: longhorn-retain
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
+    velero.io/csi-volumesnapshot-class: "longhorn-backup-vsc"
+  labels:
+    backup: pvc-jellyfin-cache
+  name: pvc-jellyfin-cache
+  namespace: jellyfin
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 24Gi
+  volumeName: pv-jellyfin-cache  # must reference Persistent Volume
+  storageClassName: longhorn

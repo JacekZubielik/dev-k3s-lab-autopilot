@@ -1,0 +1,81 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: jellyfin
+    app.kubernetes.io/instance: jellyfin
+    app.kubernetes.io/name: jellyfin
+  name: jellyfin
+  namespace: jellyfin
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jellyfin
+  template:
+    metadata:
+      labels:
+        app: jellyfin
+        app.kubernetes.io/name: jellyfin
+    spec:
+      containers:
+      - name: jellyfin
+        image: ghcr.io/linuxserver/jellyfin:10.9.11
+        imagePullPolicy: IfNotPresent
+        envFrom:
+        - configMapRef:
+              name: jellyfin-env
+        ports:
+        - name: dns-tcp
+          containerPort: 53
+          protocol: TCP
+        - name: http
+          containerPort: 8096
+          protocol: TCP
+        - name: dlna-udp
+          containerPort: 1900
+          protocol: UDP
+        - name: discovery-udp
+          containerPort: 7359
+          protocol: UDP
+        livenessProbe:
+          httpGet:
+            path: /
+            port: http
+        readinessProbe:
+          httpGet:
+            path: /
+            port: http
+        resources:
+          requests:
+            cpu: 200m
+            memory: 0.4Gi
+          limits:
+            cpu: 4000m
+            memory: 6Gi
+            # gpu.intel.com/i915: "1" # requesting 1 GPU
+            # nvidia.com/gpu: "1"
+
+        volumeMounts:
+        - name: config
+          mountPath: /config
+        - name: media
+          mountPath: /media
+        - name: cache
+          mountPath: /cache
+        - name: transcoding
+          mountPath: /transcoding
+
+      volumes:
+      - name: config
+        persistentVolumeClaim:
+          claimName: pvc-jellyfin-config
+      - name: media
+        persistentVolumeClaim:
+          claimName: pvc-jellyfin-media
+      - name: cache
+        persistentVolumeClaim:
+          claimName: pvc-jellyfin-cache
+      - name: transcoding
+        persistentVolumeClaim:
+          claimName: pvc-jellyfin-transcoding
