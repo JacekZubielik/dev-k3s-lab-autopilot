@@ -18,7 +18,9 @@ spec:
         - kind: Rule
           match: ENC[AES256_GCM,data:duN7kcXVFCOLQ8Te1w7pdAP3FdKnS5lbJTVmg5kgKKoIbTM5QaMAIDI=,iv:II/uKxfTQ9GvGslE8bIbYcPCNH3LPs/TRoAvvhLvME0=,tag:SVkV1+9o7ZiJyGIBYnF0MA==,type:str]
           middlewares:
-            - name: chain-traefik-dashboard
+            - name: basicauth
+              namespace: traefik
+            - name: gzip
               namespace: traefik
           services:
             - kind: TraefikService
@@ -48,8 +50,8 @@ sops:
             RWhkZnNPY3B6WFBqQWtONzhvRUg5TXcKK5zIJHiReCgo00+mszQr4S9i6aAklZ1V
             eAv8FK6Srepu1C3GIhs4PiN9f07XAuoUwEU1k0lcIx6XXU4BqAQbTw==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-10-17T11:31:19Z"
-    mac: ENC[AES256_GCM,data:yFqwe97OErNt3Nyx1UEJ20a/YqdpCqDyibD3DS78kqKISxglelGhrBeLPJnWabL/WxDEqsWrN6E/RTWIwug4Go4Skn60D72/6uDxC6b2Ghaq63B4XIlcdq8hVh9pCCgS1BJM79p5BCm0vdqxRHXdbZFmw61aMqXJ3yK2C1rVRMI=,iv:U3IFhgIn9FlHRhijMRU6CregX9GC7VZr20JaviwStts=,tag:nvgLCBiuqDtcQVxh4zm6SA==,type:str]
+    lastmodified: "2024-10-17T11:56:12Z"
+    mac: ENC[AES256_GCM,data:C7THRwHAU2xTfwxywsSxOdY8fyAMD991Yr7Yh6lY7tTggNZl2AGSbBkar2STbETMYJSmzjphZt8DbUUVyMxc//PWf2JmZPe677HOyEJYegZ8Mv3z9g7kIZPWUM9lN5hca7KTrObzs0dJaba8TpUOEY9Mbjmd+Upq6Wo0C813SZg=,iv:Ruz4dhCcYdwMTW6ybd95bHcuRb5U6J/b6pzzA3rXdTg=,tag:fpqiBSoBCFuLqm1afKtqsg==,type:str]
     pgp:
         - created_at: "2024-10-17T10:24:16Z"
           enc: |-
@@ -102,8 +104,8 @@ sops:
             RWhkZnNPY3B6WFBqQWtONzhvRUg5TXcKK5zIJHiReCgo00+mszQr4S9i6aAklZ1V
             eAv8FK6Srepu1C3GIhs4PiN9f07XAuoUwEU1k0lcIx6XXU4BqAQbTw==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-10-17T11:31:19Z"
-    mac: ENC[AES256_GCM,data:yFqwe97OErNt3Nyx1UEJ20a/YqdpCqDyibD3DS78kqKISxglelGhrBeLPJnWabL/WxDEqsWrN6E/RTWIwug4Go4Skn60D72/6uDxC6b2Ghaq63B4XIlcdq8hVh9pCCgS1BJM79p5BCm0vdqxRHXdbZFmw61aMqXJ3yK2C1rVRMI=,iv:U3IFhgIn9FlHRhijMRU6CregX9GC7VZr20JaviwStts=,tag:nvgLCBiuqDtcQVxh4zm6SA==,type:str]
+    lastmodified: "2024-10-17T11:56:12Z"
+    mac: ENC[AES256_GCM,data:C7THRwHAU2xTfwxywsSxOdY8fyAMD991Yr7Yh6lY7tTggNZl2AGSbBkar2STbETMYJSmzjphZt8DbUUVyMxc//PWf2JmZPe677HOyEJYegZ8Mv3z9g7kIZPWUM9lN5hca7KTrObzs0dJaba8TpUOEY9Mbjmd+Upq6Wo0C813SZg=,iv:Ruz4dhCcYdwMTW6ybd95bHcuRb5U6J/b6pzzA3rXdTg=,tag:fpqiBSoBCFuLqm1afKtqsg==,type:str]
     pgp:
         - created_at: "2024-10-17T10:24:16Z"
           enc: |-
