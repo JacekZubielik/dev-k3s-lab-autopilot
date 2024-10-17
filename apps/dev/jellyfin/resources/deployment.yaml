@@ -18,12 +18,11 @@ spec:
         app: jellyfin
         app.kubernetes.io/name: jellyfin
     spec:
-      # nodeSelector:
-      #   worker: "true"
       containers:
       - name: jellyfin
-        image: lscr.io/linuxserver/jellyfin:latest
-        imagePullPolicy: Always
+        image: ghcr.io/linuxserver/jellyfin:10.9.11
+        # image: lscr.io/linuxserver/jellyfin:latest
+        imagePullPolicy: IfNotPresent
         envFrom:
         - configMapRef:
               name: jellyfin-env
@@ -34,9 +33,9 @@ spec:
         - name: http
           containerPort: 8096
           protocol: TCP
-        - name: web-udp
-          containerPort: 8096
-          protocol: UDP
+        # - name: web-udp
+        #   containerPort: 8096
+        #   protocol: UDP
         - name: dlna-udp
           containerPort: 1900
           protocol: UDP
@@ -53,12 +52,12 @@ spec:
             port: http
         resources:
           requests:
-            cpu: 2000m
-            memory: 2Gi
+            cpu: 200m
+            memory: 0.4Gi
           limits:
-            cpu: 10000m
-            memory: 12Gi
-            #gpu.intel.com/i915: "1" # requesting 1 GPU
+            cpu: 4000m
+            memory: 6Gi
+            # gpu.intel.com/i915: "1" # requesting 1 GPU
             # nvidia.com/gpu: "1"
 
         volumeMounts:
