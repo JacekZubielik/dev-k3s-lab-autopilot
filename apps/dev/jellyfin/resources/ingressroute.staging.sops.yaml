@@ -48,8 +48,8 @@ sops:
             RWhkZnNPY3B6WFBqQWtONzhvRUg5TXcKK5zIJHiReCgo00+mszQr4S9i6aAklZ1V
             eAv8FK6Srepu1C3GIhs4PiN9f07XAuoUwEU1k0lcIx6XXU4BqAQbTw==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-10-17T10:24:16Z"
-    mac: ENC[AES256_GCM,data:Y03MiFt/fXe/8Nv/bcQRaL2pFe2Rg7ngNRnMLvrihRR2slXjXJn+L5W0VLdKjJXjb8qELi9tGStAkMyy1kSjr9X56JISwPxe4kuTbWYgno/UUbsQfIf5xEOQC+0EKnOWvJNLTIRXeEv9dj7S+XGeGZziF0FYgskT+pcV3rueyC4=,iv:X2VYo4eJUVkfrjfvsMubDZ46pLvOTRhA1cwJqTHqKGo=,tag:gSThFKnT0MQbNlXtT38Lqg==,type:str]
+    lastmodified: "2024-10-17T11:03:09Z"
+    mac: ENC[AES256_GCM,data:i2QfNaWAiyCBy0OECW4/0sJ3KH+9A6QU5TN7Pgk2eNJX6N80H6U6gSghEXNo5tv/NlOHB8T79oMFOqgNSgJvRqBTAv/2NwYUGIPal+NnvhAaJmWoIEz/WrrGgJJ/XocJ6S13DFzv9q7qArtvYkluusrva1qLxiQwT7Ol5L8Zr9o=,iv:ncG4iMmSibfqUZpb1n1vt3OXNPLuqiCAym/nLh2mZso=,tag:lKWKw2GwCpT4FCPqVMj7EQ==,type:str]
     pgp:
         - created_at: "2024-10-17T10:24:16Z"
           enc: |-
@@ -85,7 +85,7 @@ spec:
     weighted:
         services:
             - name: jellyfin-svc
-              port: 443
+              port: 8096
               weight: 1
 sops:
     kms: []
@@ -102,8 +102,8 @@ sops:
             RWhkZnNPY3B6WFBqQWtONzhvRUg5TXcKK5zIJHiReCgo00+mszQr4S9i6aAklZ1V
             eAv8FK6Srepu1C3GIhs4PiN9f07XAuoUwEU1k0lcIx6XXU4BqAQbTw==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-10-17T10:24:16Z"
-    mac: ENC[AES256_GCM,data:Y03MiFt/fXe/8Nv/bcQRaL2pFe2Rg7ngNRnMLvrihRR2slXjXJn+L5W0VLdKjJXjb8qELi9tGStAkMyy1kSjr9X56JISwPxe4kuTbWYgno/UUbsQfIf5xEOQC+0EKnOWvJNLTIRXeEv9dj7S+XGeGZziF0FYgskT+pcV3rueyC4=,iv:X2VYo4eJUVkfrjfvsMubDZ46pLvOTRhA1cwJqTHqKGo=,tag:gSThFKnT0MQbNlXtT38Lqg==,type:str]
+    lastmodified: "2024-10-17T11:03:09Z"
+    mac: ENC[AES256_GCM,data:i2QfNaWAiyCBy0OECW4/0sJ3KH+9A6QU5TN7Pgk2eNJX6N80H6U6gSghEXNo5tv/NlOHB8T79oMFOqgNSgJvRqBTAv/2NwYUGIPal+NnvhAaJmWoIEz/WrrGgJJ/XocJ6S13DFzv9q7qArtvYkluusrva1qLxiQwT7Ol5L8Zr9o=,iv:ncG4iMmSibfqUZpb1n1vt3OXNPLuqiCAym/nLh2mZso=,tag:lKWKw2GwCpT4FCPqVMj7EQ==,type:str]
     pgp:
         - created_at: "2024-10-17T10:24:16Z"
           enc: |-
