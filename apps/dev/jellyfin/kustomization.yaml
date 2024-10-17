@@ -29,4 +29,3 @@ generatorOptions:
   disableNameSuffixHash: true
   labels:
     component: jellyfin
-
