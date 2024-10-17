@@ -18,8 +18,8 @@ spec:
         - kind: Rule
           match: ENC[AES256_GCM,data:duN7kcXVFCOLQ8Te1w7pdAP3FdKnS5lbJTVmg5kgKKoIbTM5QaMAIDI=,iv:II/uKxfTQ9GvGslE8bIbYcPCNH3LPs/TRoAvvhLvME0=,tag:SVkV1+9o7ZiJyGIBYnF0MA==,type:str]
           middlewares:
-            # - name: basicauth
-            #   namespace: traefik
+            - name: basicauth
+              namespace: traefik
             - name: gzip
               namespace: traefik
           services:
@@ -50,8 +50,8 @@ sops:
             RWhkZnNPY3B6WFBqQWtONzhvRUg5TXcKK5zIJHiReCgo00+mszQr4S9i6aAklZ1V
             eAv8FK6Srepu1C3GIhs4PiN9f07XAuoUwEU1k0lcIx6XXU4BqAQbTw==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-10-17T12:02:10Z"
-    mac: ENC[AES256_GCM,data:zpnkBK19YKwUZw64+LVJ3neSHNeZuwddj5MFMM7xS57Z5pE2Q0yL4INb83ByllsE5RrwQgBx/MjN46gmIzU+vYeVlITQ0q9570pH6SflpcC7KyjjBas0zaS+6YleDQ/kOfZJuxyWqB8o+19nU2NRmOjGI2yFTEgoHJoMQAVaCVI=,iv:sYutZ/BC18TN6mOkux2od40n7jF4jLsErjE7yKAuKiA=,tag:gnHH9lN7vKhQr6fvcs7zJg==,type:str]
+    lastmodified: "2024-10-17T12:09:23Z"
+    mac: ENC[AES256_GCM,data:Gz2t0xmAWZIaCZRYcEaH+mBCJsBQ8IJdpOgJAHBjl1V1i8eRHjUKKz2atljtUJCXqFGjs1/9dPkZSHzYq3VLAwKLnK8VQvZQdKajDu9qyh7WRgNnl+9tjAr114rhcQF4t6elokyfd5ZAzl+iCkd5oqU0oWFNelirfGm9vlajpMo=,iv:AkGrgTFgzaSog52AMeInVRDbjnM8LPFQ9rIjPjvM7Zo=,tag:lWtpFCJqDDgBfUKaLSmrNQ==,type:str]
     pgp:
         - created_at: "2024-10-17T10:24:16Z"
           enc: |-
@@ -104,8 +104,8 @@ sops:
             RWhkZnNPY3B6WFBqQWtONzhvRUg5TXcKK5zIJHiReCgo00+mszQr4S9i6aAklZ1V
             eAv8FK6Srepu1C3GIhs4PiN9f07XAuoUwEU1k0lcIx6XXU4BqAQbTw==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-10-17T12:02:10Z"
-    mac: ENC[AES256_GCM,data:zpnkBK19YKwUZw64+LVJ3neSHNeZuwddj5MFMM7xS57Z5pE2Q0yL4INb83ByllsE5RrwQgBx/MjN46gmIzU+vYeVlITQ0q9570pH6SflpcC7KyjjBas0zaS+6YleDQ/kOfZJuxyWqB8o+19nU2NRmOjGI2yFTEgoHJoMQAVaCVI=,iv:sYutZ/BC18TN6mOkux2od40n7jF4jLsErjE7yKAuKiA=,tag:gnHH9lN7vKhQr6fvcs7zJg==,type:str]
+    lastmodified: "2024-10-17T12:09:23Z"
+    mac: ENC[AES256_GCM,data:Gz2t0xmAWZIaCZRYcEaH+mBCJsBQ8IJdpOgJAHBjl1V1i8eRHjUKKz2atljtUJCXqFGjs1/9dPkZSHzYq3VLAwKLnK8VQvZQdKajDu9qyh7WRgNnl+9tjAr114rhcQF4t6elokyfd5ZAzl+iCkd5oqU0oWFNelirfGm9vlajpMo=,iv:AkGrgTFgzaSog52AMeInVRDbjnM8LPFQ9rIjPjvM7Zo=,tag:lWtpFCJqDDgBfUKaLSmrNQ==,type:str]
     pgp:
         - created_at: "2024-10-17T10:24:16Z"
           enc: |-
