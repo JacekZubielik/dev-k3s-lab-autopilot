@@ -37,7 +37,7 @@ spec:
 apiVersion: v1
 kind: Endpoints
 metadata:
-  name: jellyfin
+  name: jellyfin-svc
   namespace: jellyfin
 subsets:
 - addresses:
@@ -56,4 +56,3 @@ subsets:
   - name: discovery-udp
     port: 7359
     protocol: UDP
-
