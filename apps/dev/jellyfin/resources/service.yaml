@@ -27,7 +27,6 @@ spec:
     port: 1900
     targetPort: 1900
     protocol: UDP
-    externalTrafficPolicy: Local
   - name: discovery-udp
     port: 7359
     targetPort: 7359
