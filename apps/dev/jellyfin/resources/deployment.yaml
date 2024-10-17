@@ -21,7 +21,6 @@ spec:
       containers:
       - name: jellyfin
         image: ghcr.io/linuxserver/jellyfin:10.9.11
-        # image: lscr.io/linuxserver/jellyfin:latest
         imagePullPolicy: IfNotPresent
         envFrom:
         - configMapRef:
@@ -33,9 +32,6 @@ spec:
         - name: http
           containerPort: 8096
           protocol: TCP
-        # - name: web-udp
-        #   containerPort: 8096
-        #   protocol: UDP
         - name: dlna-udp
           containerPort: 1900
           protocol: UDP

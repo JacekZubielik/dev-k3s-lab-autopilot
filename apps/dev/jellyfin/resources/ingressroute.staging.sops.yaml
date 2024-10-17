@@ -20,8 +20,8 @@ spec:
           middlewares:
             - name: authentik-securityheaders
               namespace: traefik
-            - name: basicauth
-              namespace: traefik
+            # - name: basicauth
+            #   namespace: traefik
             - name: gzip
               namespace: traefik
           services:
@@ -52,8 +52,8 @@ sops:
             RWhkZnNPY3B6WFBqQWtONzhvRUg5TXcKK5zIJHiReCgo00+mszQr4S9i6aAklZ1V
             eAv8FK6Srepu1C3GIhs4PiN9f07XAuoUwEU1k0lcIx6XXU4BqAQbTw==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-10-17T12:43:28Z"
-    mac: ENC[AES256_GCM,data:0TDlUB5yp+GVXuJyznTiP8ecay3xogKaV31372k+UQew6gk8b9FZ0xRsDxFCI+jWXOs7tqTLopaCC4A2zwp1JIZFezz+AG9DVBl04iYY3vp0B+074nacEICCItQU1bncu9DHVoINWFjMTMD2RnQTw2Vz1wt5q3mbV2DCiQ2j1yM=,iv:MzaAOFe8Uhlq8HqYgIxpMiftKQgsW9vi3XY/iAteIX0=,tag:wcp29Ravy3xVg+UhQus8Gw==,type:str]
+    lastmodified: "2024-10-17T13:21:05Z"
+    mac: ENC[AES256_GCM,data:H+lHxSCW1UXTXMe9qUyQ2YJ1csDx1g/AKJVF2WwwRoQ2Hey7NvDrEBG/Yo3rD9YsMol4GsUMxd+cncx4SSuoCIporygPneesFb6ulG+KnJRsUElSllRf/GVTiDoE7+nKc7hirgX3chpSA3hr/XhDtV/KlSt49wgs8/ufNEr3ufM=,iv:MxtbkmHWhtPP+hmCtQLSR2smacKVzvEGoiJQxQAZTeE=,tag:AYbETZyc7Ucii2Owp2h5ZQ==,type:str]
     pgp:
         - created_at: "2024-10-17T10:24:16Z"
           enc: |-
@@ -106,8 +106,8 @@ sops:
             RWhkZnNPY3B6WFBqQWtONzhvRUg5TXcKK5zIJHiReCgo00+mszQr4S9i6aAklZ1V
             eAv8FK6Srepu1C3GIhs4PiN9f07XAuoUwEU1k0lcIx6XXU4BqAQbTw==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-10-17T12:43:28Z"
-    mac: ENC[AES256_GCM,data:0TDlUB5yp+GVXuJyznTiP8ecay3xogKaV31372k+UQew6gk8b9FZ0xRsDxFCI+jWXOs7tqTLopaCC4A2zwp1JIZFezz+AG9DVBl04iYY3vp0B+074nacEICCItQU1bncu9DHVoINWFjMTMD2RnQTw2Vz1wt5q3mbV2DCiQ2j1yM=,iv:MzaAOFe8Uhlq8HqYgIxpMiftKQgsW9vi3XY/iAteIX0=,tag:wcp29Ravy3xVg+UhQus8Gw==,type:str]
+    lastmodified: "2024-10-17T13:21:05Z"
+    mac: ENC[AES256_GCM,data:H+lHxSCW1UXTXMe9qUyQ2YJ1csDx1g/AKJVF2WwwRoQ2Hey7NvDrEBG/Yo3rD9YsMol4GsUMxd+cncx4SSuoCIporygPneesFb6ulG+KnJRsUElSllRf/GVTiDoE7+nKc7hirgX3chpSA3hr/XhDtV/KlSt49wgs8/ufNEr3ufM=,iv:MxtbkmHWhtPP+hmCtQLSR2smacKVzvEGoiJQxQAZTeE=,tag:AYbETZyc7Ucii2Owp2h5ZQ==,type:str]
     pgp:
         - created_at: "2024-10-17T10:24:16Z"
           enc: |-
