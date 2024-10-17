@@ -18,10 +18,10 @@ spec:
     port: 8096
     protocol: TCP
     targetPort: 8096
-  - name: web-udp
-    port: 8096
-    protocol: UDP
-    targetPort: 8096
+  # - name: web-udp
+  #   port: 8096
+  #   protocol: UDP
+  #   targetPort: 8096
   - name: dlna-udp
     port: 1900
     protocol: UDP
@@ -46,9 +46,9 @@ subsets:
     port: 53
   - name: http
     port: 8096
-  - name: web-udp
-    port: 8096
-    protocol: UDP
+  # - name: web-udp
+  #   port: 8096
+  #   protocol: UDP
   - name: dlna-udp
     port: 1900
     protocol: UDP
