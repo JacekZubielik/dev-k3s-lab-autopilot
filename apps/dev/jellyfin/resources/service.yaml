@@ -9,7 +9,6 @@ metadata:
 spec:
   type: LoadBalancer
   loadBalancerIP: 192.168.40.186
-  # sessionAffinity: ClientIP
   ports:
   - name: dns-tcp
     port: 53
