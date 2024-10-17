@@ -18,8 +18,8 @@ spec:
         app: jellyfin
         app.kubernetes.io/name: jellyfin
     spec:
-      nodeSelector:
-        worker: "true"
+      # nodeSelector:
+      #   worker: "true"
       containers:
       - name: jellyfin
         image: lscr.io/linuxserver/jellyfin:latest
