@@ -1,0 +1,49 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+    annotations:
+        argocd.argoproj.io/sync-wave: "3"
+        cert-manager.io/cluster-issuer: letsencrypt-staging
+        cert-manager.io/common-name: jellyfin.media.anotherlife.org.pl
+        external-dns.alpha.kubernetes.io/hostname: jellyfin.media.anotherlife.org.pl
+        external-dns.alpha.kubernetes.io/target: media.anotherlife.org.pl
+        external-dns.alpha.kubernetes.io/ttl: "300"
+        kubernetes.io/ingress.class: traefik-external
+    name: jellyfin-staging
+    namespace: jellyfin
+spec:
+    entryPoints:
+        - websecure
+    routes:
+        - kind: Rule
+          match: Host(`jellyfin.media.anotherlife.org.pl`)
+          middlewares:
+            - name: rate-limit
+              namespace: traefik
+          services:
+            - kind: TraefikService
+              name: jellyfin-svc
+              namespace: jellyfin
+    tls:
+        domains:
+            - main: media.anotherlife.org.pl
+              sans:
+                - .media.anotherlife.org.pl
+        options:
+            name: tls-ver13
+            namespace: traefik
+        secretName: jellyfin-cf-staging
+---
+apiVersion: traefik.io/v1alpha1
+kind: TraefikService
+metadata:
+    annotations:
+        argocd.argoproj.io/sync-wave: "2"
+    name: jellyfin-svc
+    namespace: jellyfin
+spec:
+    weighted:
+        services:
+            - name: jellyfin-svc
+              port: 443
+              weight: 1

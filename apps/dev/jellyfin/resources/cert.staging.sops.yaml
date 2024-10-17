@@ -1,0 +1,16 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+    annotations:
+        argocd.argoproj.io/sync-wave: "1"
+    name: jellyfin-staging
+spec:
+    issuerRef:
+        kind: ClusterIssuer
+        name: letsencrypt-staging
+    commonName: jellyfin.media.anotherlife.org.pl
+    dnsNames:
+        - jellyfin.media.anotherlife.org.pl
+    secretName: jellyfin-cf-staging
+    duration: 2160h0m0s
+    renewBefore: 720h0m0s

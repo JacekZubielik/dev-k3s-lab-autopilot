@@ -1,0 +1,15 @@
+annotations: ''
+appName: jellyfin
+appRole: media
+destNamespace: jellyfin
+destProject: "media"
+destServer: https://kubernetes.default.svc
+exclude: ""
+include: ""
+labels: ""
+srcPath: apps/dev/jellyfin
+srcRepoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot.git
+srcTargetRevision: ""
+syncPriority: stage_4
+syncWave: 1
+userGivenName: jellyfin
