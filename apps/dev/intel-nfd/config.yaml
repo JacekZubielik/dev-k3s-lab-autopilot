@@ -11,5 +11,5 @@ srcPath: apps/dev/intel-nfd
 srcRepoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot.git
 srcTargetRevision: ""
 syncPriority: stage_1
-syncWave: 1
+syncWave: 0
 userGivenName: intel-nfd

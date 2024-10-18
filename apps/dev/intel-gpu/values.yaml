@@ -1,6 +1,6 @@
 ---
 nodeSelector:
-  kubernetes.io/hostname: dev-k3s-node-0
+  kubernetes.io/hostname: prod-k3s-node-0
 
 manager:
   image:
