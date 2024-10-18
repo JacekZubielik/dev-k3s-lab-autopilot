@@ -83,7 +83,7 @@ trustedCertsSecret: ""
 persistence:
   enabled: enable
   storageClass: nfs-storage
-  accessModes: ReadWriteMany
+  accessModes: ReadWriteOnce
   volumeName: pv-minio
   volumeMode: Filesystem
   size: 160Gi
