@@ -10,5 +10,5 @@ spec:
   resourceManager: false
   enableMonitoring: true
   preferredAllocationPolicy: none
-  nodeSelector:
-    intel.feature.node.kubernetes.io/gpu: "true"
+  # nodeSelector:
+  #   intel.feature.node.kubernetes.io/gpu: "true"
