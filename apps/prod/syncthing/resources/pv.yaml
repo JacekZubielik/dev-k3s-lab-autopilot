@@ -10,10 +10,10 @@ spec:
     storage: 160Gi
   volumeMode: Filesystem
   accessModes:
-  - ReadWriteMany
+  - ReadWriteOnce
   storageClassName: nfs-storage
   mountOptions:
-  - nfsvers=4.1
+  - nfsvers=4.2
   - tcp
   - intr
   - hard
