@@ -22,6 +22,14 @@ helmCharts:
   valuesFile: values.yaml
   valuesInline:
     spec:
+      template:
+        spec:
+          ignoreDifferences:
+            - group: deviceplugin.intel.com
+              kind: GpuDevicePlugin
+              name: intel-gpu-device-plugin
+              jsonPointers:
+                  - /spec/resourceManager
 
 # patches:
 # - |-
