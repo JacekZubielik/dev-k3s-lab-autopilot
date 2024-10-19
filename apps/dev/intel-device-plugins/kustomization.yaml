@@ -4,22 +4,22 @@ kind: Kustomization
 
 metadata:
   annotations:
-    argocd.argoproj.io/compare-options: IgnoreExtraneous
+    # argocd.argoproj.io/compare-options: IgnoreExtraneous
     argocd.argoproj.io/sync-options: Delete=true,Prune=true
 
 resources:
 - resources/ns.yaml
-- resources/gpu-device-plugin.yaml
-# - resources/node-feature-rules.yaml
+# - resources/gpu-device-plugin.yaml
+- resources/node-feature-rules.yaml
 
 helmCharts:
-# - name: intel-device-plugins-gpu
-#   version: 0.31.1
-#   repo: https://intel.github.io/helm-charts
-#   includeCRDs: true
-#   namespace: intel-device-plugins
-#   releaseName: intel-device-plugins-gpu
-#   valuesFile: values.yaml
+- name: intel-device-plugins-gpu
+  version: 0.31.1
+  repo: https://intel.github.io/helm-charts
+  includeCRDs: true
+  namespace: intel-device-plugins
+  releaseName: intel-device-plugins-gpu
+  valuesFile: values.yaml
 
 - name: intel-device-plugins-operator
   repo: https://intel.github.io/helm-charts
