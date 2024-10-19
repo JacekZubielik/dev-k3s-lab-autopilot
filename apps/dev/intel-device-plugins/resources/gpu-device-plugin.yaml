@@ -8,7 +8,7 @@ spec:
   logLevel:  2
   sharedDevNum: 1
   resourceManager: false
-  # enableMonitoring: true
+  enableMonitoring: true
   preferredAllocationPolicy: balanced
   nodeSelector:
     intel.feature.node.kubernetes.io/gpu: "true"
