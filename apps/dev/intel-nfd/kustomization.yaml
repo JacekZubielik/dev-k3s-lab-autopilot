@@ -10,6 +10,10 @@ metadata:
 resources:
 # Node Feature Discovery
 - https://github.com/kubernetes-sigs/node-feature-discovery/deployment/overlays/default?ref=v0.16.5
+# nfd-topology-updater
+- https://github.com/kubernetes-sigs/node-feature-discovery/deployment/overlays/topologyupdater?ref=v0.16.5
+# Metrics
+- https://github.com/kubernetes-sigs/node-feature-discovery/deployment/overlays/prometheus?ref=v0.16.5
 # NFD rules for Intel HW
 - https://github.com/intel/intel-device-plugins-for-kubernetes/deployments/nfd/overlays/node-feature-rules?ref=v0.31.1
 # - resources/ns.yaml

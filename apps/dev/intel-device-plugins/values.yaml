@@ -3,5 +3,4 @@ logLevel:  2
 sharedDevNum: 5
 nodeFeatureRule: false
 nodeSelector:
-  # intel.feature.node.kubernetes.io/gpu: 'true'
-  kubernetes.io/hostname: prod-k3s-node-0
+  intel.feature.node.kubernetes.io/gpu: 'true'
