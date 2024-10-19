@@ -25,7 +25,7 @@ helmCharts:
       ignoreDifferences:
         - group: deviceplugin.intel.com
           kind: GpuDevicePlugin
-          name: intel-gpu-device-plugin
+          name: intel-device-plugins-gpu
           jsonPointers:
               - /spec/resourceManager
 
