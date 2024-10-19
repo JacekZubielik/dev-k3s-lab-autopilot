@@ -27,6 +27,22 @@ helmCharts:
   namespace: intel-device-plugins
   releaseName: intel-device-plugins-operator
   includeCRDs: true
+  valuesInline:
+    spec:
+      ignoreDifferences:
+        - group: apps
+          kind: Deployment
+          jqPathExpressions:
+          - .spec.template.spec.containers[].resources
+        - group: admissionregistration.k8s.io
+          kind: MutatingWebhookConfiguration
+          jqPathExpressions:
+          - .webhooks[].clientConfig.caBundle
+        - group: admissionregistration.k8s.io
+          kind: ValidatingWebhookConfiguration
+          jqPathExpressions:
+          - .webhooks[].clientConfig.caBundle
+
 
 # patches:
 # - |-
