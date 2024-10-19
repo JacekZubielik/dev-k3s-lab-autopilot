@@ -1,0 +1,14 @@
+---
+apiVersion: viaduct.ai/v1
+kind: ksops
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
+  name: ksops-generator
+type: Opaque
+files:
+- resources/cm.cert.sops.yaml
+- resources/cert.staging.sops.yaml
+- resources/ingressroute.staging.sops.yaml
+# - resources/cert.sops.yaml
+# - resources/ingressroute.sops.yaml
