@@ -9,8 +9,6 @@ metadata:
 
 resources:
 - resources/ns.yaml
-- operator
-- gpu
 # - resources/gpu-device-plugin.yaml
 # - resources/node-feature-rules.yaml
 
