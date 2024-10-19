@@ -6,7 +6,7 @@ metadata:
 spec:
   image: "intel/intel-gpu-plugin:0.31.1"
   logLevel:  2
-  sharedDevNum: 1
+  sharedDevNum: 3
   resourceManager: false
   enableMonitoring: true
   preferredAllocationPolicy: none
