@@ -9,7 +9,7 @@ spec:
   sharedDevNum: 3
   # resourceManager: false
   # enableMonitoring: true
-  nodeFeatureRule: false
+  # nodeFeatureRule: false
   preferredAllocationPolicy: none
   nodeSelector:
     intel.feature.node.kubernetes.io/gpu: "true"
