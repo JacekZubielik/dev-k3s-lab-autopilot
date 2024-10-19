@@ -1,6 +1,8 @@
-name: igpu # intel-device-plugins-gpu
+name: intel-device-plugins-gpu
 logLevel:  2
-sharedDevNum: 5
-nodeFeatureRule: false
+sharedDevNum: 1
+resourceManager: false
+enableMonitoring: true
+preferredAllocationPolicy: none
 nodeSelector:
-  intel.feature.node.kubernetes.io/gpu: 'true'
+  intel.feature.node.kubernetes.io/gpu: "true"

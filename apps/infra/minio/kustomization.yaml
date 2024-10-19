@@ -30,3 +30,20 @@ helmCharts:
   namespace: minio
   releaseName: minio
   valuesFile: values.yaml
+
+
+# patches:
+# - 
+
+# patchesStrategicMerge:
+# - |-
+#   apiVersion: apps/v1
+#   kind: Deployment
+#   metadata:
+#     name: sonarr-deployment
+#   spec:
+#     template:
+#       spec:
+#         containers:
+#         - name: sonarr
+#           image: linuxserver/sonarr:3.0.10

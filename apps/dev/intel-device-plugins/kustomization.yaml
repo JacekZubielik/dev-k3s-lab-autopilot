@@ -20,6 +20,7 @@ helmCharts:
   namespace: intel-device-plugins
   releaseName: intel-device-plugins-gpu
   valuesFile: values.yaml
+
 - name: intel-device-plugins-operator
   repo: https://intel.github.io/helm-charts
   version: 0.31.1
