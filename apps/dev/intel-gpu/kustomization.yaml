@@ -9,7 +9,7 @@ metadata:
 
 resources:
 - resources/ns.yaml
-- resources/gpu-device-plugin.yaml
+# - resources/gpu-device-plugin.yaml
 # - resources/node-feature-rules.yaml
 
 helmCharts:
