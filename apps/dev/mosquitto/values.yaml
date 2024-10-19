@@ -86,9 +86,7 @@ resources: {}
 #     cpu: "1"
 #     memory: "512Mi"
 nodeSelector:
-  kubernetes.io/hostname: {}
-affinity: {}
-tolerations: []
+  kubernetes.io/hostname: prod-k3s-node-0
 persistence:
   enabled: false
   storageClass: local-path
