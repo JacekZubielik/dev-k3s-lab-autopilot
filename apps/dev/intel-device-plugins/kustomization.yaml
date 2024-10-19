@@ -27,19 +27,19 @@ helmCharts:
   releaseName: intel-device-plugins-operator
   includeCRDs: true
 
-# patches:
-# - |-
-#   apiVersion: argoproj.io/v1alpha1
-#   kind: ApplicationSet
-#   metadata:
-#     name: intel-device-plugins-gpu
-#     namespace: intel-device-plugins-gpu
-#   spec:
-#     template:
-#       spec:
-#         ignoreDifferences:
-#           - group: deviceplugin.intel.com
-#             kind: GpuDevicePlugin
-#             name: intel-gpu-device-plugin
-#             jsonPointers:
-#                 - /spec/resourceManager
+patches:
+- |-
+  apiVersion: argoproj.io/v1alpha1
+  kind: ApplicationSet
+  metadata:
+    name: intel-device-plugins-gpu
+    namespace: intel-device-plugins
+  spec:
+    template:
+      spec:
+        ignoreDifferences:
+          - group: deviceplugin.intel.com
+            kind: GpuDevicePlugin
+            name: intel-gpu-device-plugin
+            jsonPointers:
+                - /spec/resourceManager
