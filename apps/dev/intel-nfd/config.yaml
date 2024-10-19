@@ -1,7 +1,7 @@
 annotations: ''
 appName: intel-nfd
 appRole: infra
-destNamespace: intel-nfd
+destNamespace: node-feature-discovery
 destProject: "dev"
 destServer: https://kubernetes.default.svc
 exclude: ""
