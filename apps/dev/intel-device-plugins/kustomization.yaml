@@ -20,6 +20,14 @@ helmCharts:
   namespace: intel-device-plugins
   releaseName: intel-device-plugins-gpu
   valuesFile: values.yaml
+  valuesInline:
+    spec:
+      ignoreDifferences:
+        - group: deviceplugin.intel.com
+          kind: GpuDevicePlugin
+          name: intel-gpu-device-plugin
+          jsonPointers:
+              - /spec/resourceManager
 
 - name: intel-device-plugins-operator
   repo: https://intel.github.io/helm-charts
@@ -42,21 +50,3 @@ helmCharts:
           kind: ValidatingWebhookConfiguration
           jqPathExpressions:
           - .webhooks[].clientConfig.caBundle
-
-
-# patches:
-# - |-
-#   apiVersion: argoproj.io/v1alpha1
-#   kind: ApplicationSet
-#   metadata:
-#     name: intel-device-plugins-gpu
-#     namespace: intel-device-plugins
-#   spec:
-#     template:
-#       spec:
-#         ignoreDifferences:
-#           - group: deviceplugin.intel.com
-#             kind: GpuDevicePlugin
-#             name: intel-gpu-device-plugin
-#             jsonPointers:
-#                 - /spec/resourceManager
