@@ -8,10 +8,11 @@ metadata:
     argocd.argoproj.io/sync-options: Delete=true,Prune=true
 
 resources:
-  # Node Feature Discovery
-  - https://github.com/kubernetes-sigs/node-feature-discovery/deployment/overlays/default?ref=v0.16.5
-  # NFD rules for Intel HW
-  - https://github.com/intel/intel-device-plugins-for-kubernetes/deployments/nfd/overlays/node-feature-rules?ref=v0.31.1
+# Node Feature Discovery
+- https://github.com/kubernetes-sigs/node-feature-discovery/deployment/overlays/default?ref=v0.16.5
+# NFD rules for Intel HW
+- https://github.com/intel/intel-device-plugins-for-kubernetes/deployments/nfd/overlays/node-feature-rules?ref=v0.31.1
+- resources/ns.yaml
 
 configMapGenerator:
 - name: nfd-worker-conf
