@@ -7,7 +7,7 @@ metadata:
     app.kubernetes.io/name: mosquitto
 data:
   mosquitto.conf: |-
-    allow_anonymous false
+    allow_anonymous true
     autosave_interval 1800
     persistence true
     persistence_location /mosquitto/data/
