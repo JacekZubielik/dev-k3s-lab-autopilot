@@ -4,11 +4,11 @@ kind: GpuDevicePlugin
 metadata:
   name: intel-device-plugins-gpu
 spec:
-  image: "intel/intel-gpu-plugin:0.31.1"
+  image: intel/intel-gpu-plugin:0.31.1
   logLevel:  2
   sharedDevNum: 1
   resourceManager: false
-  enableMonitoring: true
-  preferredAllocationPolicy: balanced
+  # enableMonitoring: true
+  preferredAllocationPolicy: none
   nodeSelector:
     intel.feature.node.kubernetes.io/gpu: "true"
