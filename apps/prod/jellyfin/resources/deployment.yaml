@@ -54,7 +54,7 @@ spec:
           limits:
             cpu: 4000m
             memory: 2Gi
-            gpu.intel.com/i915: 1000m
+            # gpu.intel.com/i915: 1000m
             # nvidia.com/gpu: "1"
 
         volumeMounts:
