@@ -1,0 +1,36 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+metadata:
+  annotations:
+    argocd.argoproj.io/compare-options: IgnoreExtraneous
+    argocd.argoproj.io/sync-options: Delete=true,Prune=true
+
+resources:
+- resources/cm.yaml
+# - resources/pv.yaml
+# - resources/pvc.yaml
+# - resources/volume.yaml
+
+generators:
+- ksops-generator.yaml
+
+configMapGenerator:
+- name: mosquitto-tz
+  literals:
+  - TZ=CET
+
+generatorOptions:
+  disableNameSuffixHash: true
+  labels:
+    component: mosquitto
+
+helmCharts:
+- name: mosquitto
+  version: 0.0.16
+  repo: https://jacekzubielik.github.io/jz-helm-charts
+  includeCRDs: false
+  namespace: mosquitto
+  releaseName: mosquitto
+  valuesFile: values.yaml
