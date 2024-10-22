@@ -10,9 +10,9 @@ spec:
   #   kind: VolumeSnapshot
   #   apiGroup: snapshot.storage.k8s.io
   accessModes:
-  - ReadWriteMany # ReadWriteOnce
+  - ReadWriteOnce # ReadWriteOnce
   resources:
     requests:
       storage: 1Gi
-  volumeName: pv-mosquitto # must reference Persistent Volume
-  storageClassName: longhorn-retain
+  # volumeName: pv-mosquitto # must reference Persistent Volume
+  storageClassName: longhorn-retain-data
