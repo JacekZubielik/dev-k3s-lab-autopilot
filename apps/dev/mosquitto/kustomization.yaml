@@ -10,7 +10,7 @@ metadata:
 resources:
 - resources/cm.yaml
 # - resources/pv.yaml
-# - resources/pvc.yaml
+- resources/pvc.yaml
 # - resources/volume.yaml
 
 generators:
