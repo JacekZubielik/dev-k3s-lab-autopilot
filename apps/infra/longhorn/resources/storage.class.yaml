@@ -27,3 +27,33 @@ parameters:
   # recurringJobs: "12-hour-snapshots,48-hour-backups"
   # recurringJobSelector: '[{"name":"group1", "isGroup":true},
   #                         {"name":"default", "isGroup":false}]'
+---
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  annotations:
+    app.kubernetes.io/instance: longhorn
+    argocd.argoproj.io/sync-wave: "-1"
+    storageclass.kubernetes.io/is-default-class: "false"
+  name: longhorn-retain-data
+provisioner: driver.longhorn.io
+allowVolumeExpansion: true
+reclaimPolicy: "Retain"
+volumeBindingMode: Immediate
+parameters:
+  numberOfReplicas: "1"
+  # disableRevisionCounter: "false"
+  staleReplicaTimeout: "1440" # 24 hours in minutes
+  # fromBackup: ""
+  # migratable: "true"
+  encrypted: false
+  fsType: "ext4"
+  mkfsParams: "-I 256 -b 4096 -O ^metadata_csum,^64bit"
+  # unmapMarkSnapChainRemoved: "ignored"
+  nfsOptions: "soft,timeo=150,retrans=3"
+  dataLocality: "best-effort"
+  diskSelector: "data"
+  nodeSelector:  "storage"
+  recurringJobs: "1-hour-snapshots,12-hour-backups"
+  recurringJobSelector: '[{"name":"group4", "isGroup":true},
+                          {"name":"default", "isGroup":false}]'

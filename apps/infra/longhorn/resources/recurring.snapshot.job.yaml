@@ -39,8 +39,8 @@ metadata:
 spec:
   cron: "0 */12 * * *"
   task: "snapshot"
-  # groups:
-  # - group1
+  groups:
+  - group4
   retain: 3
   concurrency: 2
   labels:
