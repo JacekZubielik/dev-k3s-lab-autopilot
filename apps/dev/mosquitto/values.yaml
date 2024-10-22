@@ -91,10 +91,11 @@ persistence:
   metadata:
     name: mosquitto-data
     namespace: mosquitto
-  enabled: false
+  enabled: true
   storageClass: longhorn-retain-data
   accessMode: ReadWriteOnce
   size: 1Gi
   annotations: {}
+  volumeName: mosquitto-data
 
 
