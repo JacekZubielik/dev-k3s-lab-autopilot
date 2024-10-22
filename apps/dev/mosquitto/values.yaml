@@ -88,8 +88,13 @@ resources: {}
 nodeSelector:
   kubernetes.io/hostname: prod-k3s-node-0
 persistence:
+  metadata:
+    name: mosquitto-data
+    namespace: mosquitto
   enabled: true
   storageClass: longhorn-retain-data
   accessMode: ReadWriteOnce
   size: 1Gi
   annotations: {}
+
+
