@@ -52,6 +52,14 @@ livenessProbe:
     failureThreshold: "60"
     initialDelaySeconds: "10"
 
+readinessProbe:
+  scheme:
+    periodSeconds: "5"
+    timeoutSeconds: "2"
+    successThreshold: "1"
+    failureThreshold: "60"
+    initialDelaySeconds: "10"
+
 monitoring:
   enabled: false
   serviceMonitor:
@@ -100,9 +108,6 @@ persistence:
   metadata:
     name: mosquitto-data
   enabled: true
-  # storageClass: longhorn-retain-data
-  # accessMode: ReadWriteOnce
-  # size: 1Gi
   annotations: {}
   existingClaim: mosquitto-data
   # volumeName: mosquitto-data
