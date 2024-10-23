@@ -52,6 +52,5 @@ parameters:
   dataLocality: "best-effort"
   diskSelector: "data"
   nodeSelector:  "storage"
-  recurringJobs: "1-hour-snapshots,12-hour-backups"
-  recurringJobSelector: '[{"name":"group4", "isGroup":true},
-                          {"name":"default", "isGroup":false}]'
+  recurringJobs: "12-hour-backups"
+  recurringJobSelector: '[{"name":"group4", "isGroup":true}]'
