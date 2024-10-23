@@ -29,7 +29,7 @@ metadata:
   namespace: lms
 spec:
   accessModes:
-  - ReadWriteMany
+  - ReadWriteOnce
   storageClassName: nfs-storage
   resources:
     requests:
