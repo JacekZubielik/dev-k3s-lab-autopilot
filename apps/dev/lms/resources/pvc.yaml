@@ -33,7 +33,7 @@ spec:
   storageClassName: nfs-storage
   resources:
     requests:
-      storage: 180Gi
+      storage: 160Gi
   volumeMode: Filesystem
   volumeName: pv-musicstorage
 
