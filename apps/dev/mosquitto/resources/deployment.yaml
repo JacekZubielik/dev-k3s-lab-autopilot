@@ -43,7 +43,7 @@ spec:
           timeoutSeconds: 5
         ports:
         - containerPort: 1883
-          name: mqttPort
+          name: mqttport
           protocol: TCP
         # - containerPort: 8883
         #   name: mqttsPort
