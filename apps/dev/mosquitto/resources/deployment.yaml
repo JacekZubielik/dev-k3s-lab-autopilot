@@ -98,8 +98,8 @@ spec:
         #   name: shared
         # - mountPath: /tmp
         #   name: tmp
-        - mountPath: /var/logs
-          name: varlogs
+        # - mountPath: /var/logs
+        #   name: varlogs
         # - mountPath: /var/run
         #   name: varrun
       dnsConfig:
