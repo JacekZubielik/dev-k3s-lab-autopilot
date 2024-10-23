@@ -1,0 +1,15 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
+  name: mosquitto-data
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  # volumeName: mosquitto-data #pv-mosquitto # must reference Persistent Volume
+  storageClassName: longhorn-retain-data
