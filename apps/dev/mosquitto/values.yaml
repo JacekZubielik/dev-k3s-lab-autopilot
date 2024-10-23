@@ -90,11 +90,10 @@ nodeSelector:
 persistence:
   metadata:
     name: mosquitto-data
-    namespace: mosquitto
-  enabled: false
-  storageClass: longhorn-retain-data
-  accessMode: ReadWriteOnce
-  size: 1Gi
+  enabled: true
+  # storageClass: longhorn-retain-data
+  # accessMode: ReadWriteOnce
+  # size: 1Gi
   annotations: {}
-  # existingClaim: mosquitto-data
-  volumeName: mosquitto-data
+  existingClaim: mosquitto-data
+  # volumeName: mosquitto-data
