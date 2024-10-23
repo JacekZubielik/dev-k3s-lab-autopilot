@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: mosquitto
+  name: mosquitto-config
   labels:
     app.kubernetes.io/name: mosquitto
 data:
