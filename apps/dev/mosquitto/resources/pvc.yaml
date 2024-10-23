@@ -2,13 +2,10 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
   name: mosquitto-data
-  # namespace: mosquitto
 spec:
-  # dataSource:
-  #   name: pv-mosquitto
-  #   kind: VolumeSnapshot
-  #   apiGroup: snapshot.storage.k8s.io
   accessModes:
   - ReadWriteOnce
   resources:
