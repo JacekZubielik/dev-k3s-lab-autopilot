@@ -14,11 +14,11 @@ spec:
     targetPort: mqttPort
     protocol: TCP
     nodePort: 30088
-  - name: mqttsPort
-    port: 8883
-    targetPort: mqttsPort
-    protocol: TCP
-    nodePort: 30089
+  # - name: mqttsPort
+  #   port: 8883
+  #   targetPort: mqttsPort
+  #   protocol: TCP
+  #   nodePort: 30089
 
   selector:
     app.kubernetes.io/name: mosquitto

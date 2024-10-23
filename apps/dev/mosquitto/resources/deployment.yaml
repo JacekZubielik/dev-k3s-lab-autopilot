@@ -45,9 +45,9 @@ spec:
         - containerPort: 1883
           name: mqttPort
           protocol: TCP
-        - containerPort: 8883
-          name: mqttsPort
-          protocol: TCP
+        # - containerPort: 8883
+        #   name: mqttsPort
+        #   protocol: TCP
         readinessProbe:
           failureThreshold: 5
           initialDelaySeconds: 10
