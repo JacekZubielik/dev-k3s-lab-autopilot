@@ -53,4 +53,5 @@ parameters:
   diskSelector: "data"
   nodeSelector:  "storage"
   recurringJobs: "12-hour-backups"
-  recurringJobSelector: '[{"name":"group4", "isGroup":true}]'
+  recurringJobSelector: '[{"name":"group4", "isGroup":true},
+                          {"name":"default", "isGroup":false}]'
