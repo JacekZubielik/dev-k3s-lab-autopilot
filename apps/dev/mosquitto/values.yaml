@@ -96,5 +96,5 @@ persistence:
   accessMode: ReadWriteOnce
   size: 1Gi
   annotations: {}
-  existingClaim: mosquitto-data
-  # volumeName: mosquitto-data
+  # existingClaim: mosquitto-data
+  volumeName: mosquitto-data
