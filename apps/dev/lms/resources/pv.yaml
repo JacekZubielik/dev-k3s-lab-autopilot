@@ -1,0 +1,85 @@
+# ---
+# apiVersion: v1
+# kind: PersistentVolume
+# metadata:
+#   annotations:
+#     argocd.argoproj.io/sync-wave: "-2"
+#   labels:
+#     longhornvolume: pvc-lms-config
+#   name: pv-lms-config
+# spec:
+#   capacity:
+#     storage: 10Gi
+#   volumeMode: Filesystem
+#   accessModes:
+#   - ReadWriteOnce
+#   persistentVolumeReclaimPolicy: Retain
+#   storageClassName: longhorn-retain
+#   csi:
+#     driver: driver.longhorn.io
+#     fsType: ext4
+#     volumeAttributes:
+#       staleReplicaTimeout: "2880"
+#     volumeHandle: pvc-lms-config
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "-2"
+  name: pv-musicstorage
+spec:
+  capacity:
+    storage: 160Gi
+  volumeMode: Filesystem
+  accessModes:
+  - ReadWriteOnce
+  storageClassName: nfs-storage
+  mountOptions:
+  - nfsvers=4.2
+  - tcp
+  - intr
+  - hard
+  - noatime
+  - nodiratime
+  nfs:
+    server: 192.168.40.3
+    path: "/wd-mirror/media/Music"
+    readOnly: false
+  # nodeAffinity:
+  #   required:
+  #     nodeSelectorTerms:
+  #     - matchExpressions:
+  #       - key: kubernetes.io/hostname
+  #         operator: In
+  #         values:
+  #         - dev-k3s-master-0
+
+# ---
+# apiVersion: v1
+# kind: PersistentVolume
+# metadata:
+#   annotations:
+#     # argocd.argoproj.io/hook: Sync
+#     argocd.argoproj.io/sync-wave: "-1"
+#   name: pv-musicstorage
+# spec:
+#   accessModes:
+#     - ReadWriteMany
+#   capacity:
+#     storage: 180Gi
+#   persistentVolumeReclaimPolicy: Retain
+#   volumeMode: Filesystem
+#   storageClassName: host-path
+#   hostPath:
+#     path: "/mnt/hdd-0/media/audio"
+#     type: DirectoryOrCreate
+  # nodeAffinity:
+  #   required:
+  #     nodeSelectorTerms:
+  #     - matchExpressions:
+  #       - key: kubernetes.io/hostname
+  #         operator: In
+  #         values:
+  #         - dev-k3s-master-0
