@@ -85,16 +85,16 @@ persistence:
 
 
 livenessProbe:
-  enabled: false
-  scheme: HTTP
+  enabled: true
+  # scheme: HTTP
   periodSeconds: 60
   timeoutSeconds: 10
   successThreshold: 1
   failureThreshold: 6
   initialDelaySeconds: 30
 readinessProbe:
-  enabled: false
-  scheme: HTTP
+  enabled: true
+  # scheme: HTTP
   periodSeconds: 60
   timeoutSeconds: 10
   successThreshold: 1
