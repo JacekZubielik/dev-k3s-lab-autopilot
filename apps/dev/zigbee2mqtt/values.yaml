@@ -128,7 +128,7 @@ affinity: {}
 tolerations: []
 
 persistence:
-  enabled: true
+  enabled: false
   existingClaim: pvc-zigbee2mqtt-data
 
 config:
