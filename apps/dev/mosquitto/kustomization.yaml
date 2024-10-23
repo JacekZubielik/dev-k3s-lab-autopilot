@@ -28,7 +28,7 @@ generatorOptions:
 
 helmCharts:
 - name: mosquitto
-  version: 0.0.17
+  version: 0.0.18
   repo: https://jacekzubielik.github.io/jz-helm-charts
   includeCRDs: false
   namespace: mosquitto
