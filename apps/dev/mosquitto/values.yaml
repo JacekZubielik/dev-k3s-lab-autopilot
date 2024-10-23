@@ -95,7 +95,7 @@ resources: {}
 #     cpu: "1"
 #     memory: "512Mi"
 nodeSelector:
-  kubernetes.io/hostname: [] # prod-k3s-node-0
+  kubernetes.io/hostname: prod-k3s-node-0
 persistence:
   metadata:
     name: mosquitto-data
