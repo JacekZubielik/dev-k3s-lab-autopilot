@@ -43,7 +43,7 @@ kind: PersistentVolumeClaim
 metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "-1"
-    velero.io/csi-volumesnapshot-class: "longhorn-backup-vsc"
+    # velero.io/csi-volumesnapshot-class: "longhorn-backup-vsc"
   labels:
     backup: pvc-jellyfin-transcoding
   name: pvc-jellyfin-transcoding
@@ -63,7 +63,7 @@ kind: PersistentVolumeClaim
 metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "-1"
-    velero.io/csi-volumesnapshot-class: "longhorn-backup-vsc"
+    # velero.io/csi-volumesnapshot-class: "longhorn-backup-vsc"
   labels:
     backup: pvc-jellyfin-cache
   name: pvc-jellyfin-cache

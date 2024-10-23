@@ -10,10 +10,10 @@ spec:
   type: LoadBalancer
   loadBalancerIP: 192.168.40.186
   ports:
-  - name: dns-tcp
-    port: 53
-    protocol: TCP
-    targetPort: 53
+  # - name: dns-tcp
+  #   port: 53
+  #   protocol: TCP
+  #   targetPort: 53
   - name: http
     port: 8096
     protocol: TCP
@@ -42,8 +42,8 @@ subsets:
 - addresses:
   - ip: 192.168.40.186
   ports:
-  - name: dns-tcp
-    port: 53
+  # - name: dns-tcp
+  #   port: 53
   - name: http
     port: 8096
   # - name: web-udp

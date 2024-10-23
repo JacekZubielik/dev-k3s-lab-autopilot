@@ -48,7 +48,6 @@ parameters:
   # migratable: "true"
   fsType: "ext4"
   mkfsParams: "-I 256 -b 4096 -O ^metadata_csum,^64bit"
-  # unmapMarkSnapChainRemoved: "ignored"
   nfsOptions: "soft,timeo=150,retrans=3"
   dataLocality: "best-effort"
   diskSelector: "data"
