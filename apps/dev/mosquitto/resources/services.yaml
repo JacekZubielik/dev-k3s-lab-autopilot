@@ -9,16 +9,16 @@ spec:
   loadBalancerIP: "192.168.40.189"
   externalTrafficPolicy: Local
   ports:
-  - port: 1883
-    targetPort: mosquitto
+  - name: mqttPort
+    port: 1883
+    targetPort: mqttPort
     protocol: TCP
-    name: mosquitto
     nodePort: 30088
-  - port: 8883
-    targetPort: mosquitto
+  - name: mqttsPort
+    port: 8883
+    targetPort: mqttsPort
     protocol: TCP
-    name: mqttsPort
-    nodePort: 30088
+    nodePort: 30089
 
   selector:
     app.kubernetes.io/name: mosquitto
