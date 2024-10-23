@@ -1,0 +1,15 @@
+annotations: ''
+appName: lms
+appRole: media
+destNamespace: lms
+destProject: "media"
+destServer: https://kubernetes.default.svc
+exclude: ""
+include: ""
+labels: ""
+srcPath: apps/dev/lms
+srcRepoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot.git
+srcTargetRevision: ""
+syncPriority: stage_2
+syncWave: 0
+userGivenName: lms
