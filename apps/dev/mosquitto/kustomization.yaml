@@ -11,7 +11,6 @@ resources:
 - resources/cm.yaml
 - resources/deployment.yaml
 - resources/pvc.yaml
-# - resources/volume.yaml
 
 generators:
 - ksops-generator.yaml
@@ -25,12 +24,3 @@ generatorOptions:
   disableNameSuffixHash: true
   labels:
     component: mosquitto
-
-# helmCharts:
-# - name: mosquitto
-#   version: 0.0.16
-#   repo: https://jacekzubielik.github.io/jz-helm-charts
-#   includeCRDs: false
-#   namespace: mosquitto
-#   releaseName: mosquitto
-#   valuesFile: values.yaml

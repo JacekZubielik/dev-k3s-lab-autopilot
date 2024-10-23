@@ -32,6 +32,7 @@ spec:
           value: "0022"
         image: eclipse-mosquitto:2.0.20
         imagePullPolicy: IfNotPresent
+        name: mosquitto
         livenessProbe:
           failureThreshold: 5
           initialDelaySeconds: 10
@@ -40,10 +41,12 @@ spec:
           tcpSocket:
             port: 1883
           timeoutSeconds: 5
-        name: mosquitto
         ports:
         - containerPort: 1883
-          name: mosquitto
+          name: mqttPort
+          protocol: TCP
+        - containerPort: 8883
+          name: mqttsPort
           protocol: TCP
         readinessProbe:
           failureThreshold: 5
