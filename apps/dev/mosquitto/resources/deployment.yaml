@@ -23,16 +23,15 @@ spec:
     spec:
       automountServiceAccountToken: false
       containers:
-      - env:
+      - name: mosquitto
         # - name: TZ
         #   value: CET
-        - name: UMASK
-          value: "0022"
-        - name: UMASK_SET
-          value: "0022"
+        # - name: UMASK
+        #   value: "0022"
+        # - name: UMASK_SET
+        #   value: "0022"
         image: eclipse-mosquitto:2.0.20
         imagePullPolicy: IfNotPresent
-        name: mosquitto
         livenessProbe:
           failureThreshold: 5
           initialDelaySeconds: 10
