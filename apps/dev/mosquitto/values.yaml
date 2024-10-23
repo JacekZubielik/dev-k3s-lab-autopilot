@@ -43,8 +43,17 @@ service:
   mqttPort: 1883
   mqttsPort: 8883
   metricsPort: 9100
+
+livenessProbe:
+  scheme:
+    periodSeconds: 5
+    timeoutSeconds: 2
+    successThreshold: 1
+    failureThreshold: 60
+    initialDelaySeconds: 10
+
 monitoring:
-  enabled: true
+  enabled: false
   serviceMonitor:
     enabled: true
     annotations:
@@ -86,7 +95,7 @@ resources: {}
 #     cpu: "1"
 #     memory: "512Mi"
 nodeSelector:
-  kubernetes.io/hostname: prod-k3s-node-0
+  kubernetes.io/hostname: [] # prod-k3s-node-0
 persistence:
   metadata:
     name: mosquitto-data
