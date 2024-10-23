@@ -95,3 +95,21 @@ persistence:
   annotations: {}
   existingClaim: mosquitto-data
   # volumeName: mosquitto-data
+
+
+livenessProbe:
+  enabled: true
+  scheme: HTTP
+  periodSeconds: 60
+  timeoutSeconds: 10
+  successThreshold: 1
+  failureThreshold: 6
+  initialDelaySeconds: 30
+readinessProbe:
+  enabled: true
+  scheme: HTTP
+  periodSeconds: 60
+  timeoutSeconds: 10
+  successThreshold: 1
+  failureThreshold: 6
+  initialDelaySeconds: 30
