@@ -9,19 +9,6 @@ imagePullSecrets: []
 podAnnotations: {}
 podLabels: {}
 
-podSecurityContext:
-  runAsUser: 1883
-  runAsGroup: 1883
-  runAsNonRoot: true
-  readOnlyRootFilesystem: false
-  capabilities:
-    drop:
-    - ALL
-
-securityContext:
-  runAsUser: 999
-  runAsGroup: 999
-  fsGroup: 999
 
 serviceAccount:
   create: true
@@ -98,7 +85,7 @@ persistence:
 
 
 livenessProbe:
-  enabled: true
+  enabled: false
   scheme: HTTP
   periodSeconds: 60
   timeoutSeconds: 10
@@ -106,7 +93,7 @@ livenessProbe:
   failureThreshold: 6
   initialDelaySeconds: 30
 readinessProbe:
-  enabled: true
+  enabled: false
   scheme: HTTP
   periodSeconds: 60
   timeoutSeconds: 10
