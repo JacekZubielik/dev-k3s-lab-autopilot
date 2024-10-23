@@ -44,22 +44,6 @@ service:
   mqttsPort: 8883
   metricsPort: 9100
 
-livenessProbe:
-  scheme:
-    periodSeconds: "5"
-    timeoutSeconds: "2"
-    successThreshold: "1"
-    failureThreshold: "60"
-    initialDelaySeconds: "10"
-
-readinessProbe:
-  scheme:
-    periodSeconds: "5"
-    timeoutSeconds: "2"
-    successThreshold: "1"
-    failureThreshold: "60"
-    initialDelaySeconds: "10"
-
 monitoring:
   enabled: false
   serviceMonitor:
