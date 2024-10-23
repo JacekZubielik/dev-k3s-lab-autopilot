@@ -13,7 +13,6 @@ spec:
   selector:
     matchLabels:
       app.kubernetes.io/name: mosquitto
-      pod.name: main
   strategy:
     type: Recreate
   template:
