@@ -17,7 +17,7 @@ spec:
     type: Recreate
   template:
     metadata:
-      creationTimestamp: null
+      # creationTimestamp: null
       labels:
         app.kubernetes.io/name: mosquitto
     spec:
@@ -32,6 +32,16 @@ spec:
         #   value: "0022"
         image: eclipse-mosquitto:2.0.20
         imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 1883
+          name: mqttport
+          protocol: TCP
+        - containerPort: 8883
+          name: mqttsport
+          protocol: TCP
+
+
+
         livenessProbe:
           failureThreshold: 5
           initialDelaySeconds: 10
@@ -40,13 +50,7 @@ spec:
           tcpSocket:
             port: 1883
           timeoutSeconds: 5
-        ports:
-        - containerPort: 1883
-          name: mqttport
-          protocol: TCP
-        # - containerPort: 8883
-        #   name: mqttsPort
-        #   protocol: TCP
+
         readinessProbe:
           failureThreshold: 5
           initialDelaySeconds: 10
@@ -118,11 +122,11 @@ spec:
       shareProcessNamespace: false
       terminationGracePeriodSeconds: 60
       volumes:
-      - emptyDir:
-          medium: Memory
-        name: devshm
+      # - emptyDir:
+      #     medium: Memory
+      #   name: devshm
       - configMap:
-          defaultMode: 420
+          # defaultMode: 420
           name: mosquitto-config
           optional: false
         name: mosquitto-config
@@ -130,8 +134,8 @@ spec:
         name: shared
       - emptyDir: {}
         name: tmp
-      - emptyDir: {}
-        name: varlogs
-      - emptyDir:
-          medium: Memory
-        name: varrun
+      # - emptyDir: {}
+      #   name: varlogs
+      # - emptyDir:
+      #     medium: Memory
+      #   name: varrun
