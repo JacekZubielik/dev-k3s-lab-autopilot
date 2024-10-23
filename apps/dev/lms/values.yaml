@@ -139,8 +139,8 @@ resources:
     cpu: 2000m
     memory: 1.2Gi
 
-nodeSelector:
-  kubernetes.io/hostname: prod-k3s-node-0
+nodeSelector: []
+  # kubernetes.io/hostname: prod-k3s-node-0
 affinity: {}
 tolerations: []
 

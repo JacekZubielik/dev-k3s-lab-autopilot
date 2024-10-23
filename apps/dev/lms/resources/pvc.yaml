@@ -5,7 +5,7 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "-1"
   name: pvc-lms-config
-  namespace: media
+  namespace: lms
 spec:
   # dataSource:
   #   name: pvc-lms-config
@@ -26,7 +26,7 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "-1"
   name: pvc-musicstorage
-  namespace: media
+  namespace: lms
 spec:
   accessModes:
   - ReadWriteMany
