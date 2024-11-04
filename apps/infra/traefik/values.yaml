@@ -264,7 +264,7 @@ logs:
     # -- Set [filtering](https://docs.traefik.io/observability/access-logs/#filtering)
     filters:
       statuscodes: "400-405,500"
-      minDuration: "10ms"
+      # minDuration: "10ms"
     # -- Enables accessLogs for internal resources. Default: false.
     addInternals:
     fields:
