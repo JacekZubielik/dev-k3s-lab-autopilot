@@ -10,7 +10,6 @@ spec:
     issuerRef:
         kind: ClusterIssuer
         name: letsencrypt-staging
-        group: cert-manager.io
     commonName: traefik.infra.anotherlife.org.pl
     secretName: traefik-cf-staging
     # 90d
@@ -32,8 +31,8 @@ sops:
             cFg5V1NsNUsrVTNNWkxERGM3SnRHVzQKThevz4IGNb43Lua0AGurib9eEfVVWLW1
             9hWKW6+cKPMVrdydO79PFmbkiNux2Q1RA7YIiAfTQzcg+l+Pve1jiA==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-10-09T20:59:44Z"
-    mac: ENC[AES256_GCM,data:mqnsQsAn79gzX9kENZ5i7I1TrjPoW9jZnJXOq7c8whew7FEsiwcgdxODupQ1mOTfRvqruMH4iA1Qmp3vgkywM1j69DiFkKvXaEHp1LRmdXVIvaMRBCX/oLG7AZIF+9G13bO60YgwJnaB96DdOKVDljzHo5/luLlH8fFatksd9aw=,iv:GxQs2+SalVPoADpl6gSJEaud6vjAl2s1jCXUYwamrc0=,tag:Iz3N+tMhne1pExR2jw1uRg==,type:str]
+    lastmodified: "2024-11-04T13:55:43Z"
+    mac: ENC[AES256_GCM,data:sjeQSdaCxVdudx9TGXJhpn8V6x+4eSkYxmYA9yJsXQbHoEesiJ6ksz7HIQ8i6OhXymwGDN4VT/5GY9+NnsXO0d+tK3Yi2ROnftuLYjRB2p1Apfqz2ZQSOFalIUakwWXXfbGanxT9IDC2U7+pFc0hErXiV4mpDD6i0G7U+xh905A=,iv:IosMHdHvxFne4WXv8OPowPA6ZoulXLhCMyAULPv+E+w=,tag:ATYLA282sAUeoMBkYb8b1w==,type:str]
     pgp:
         - created_at: "2024-10-02T16:55:01Z"
           enc: |-
