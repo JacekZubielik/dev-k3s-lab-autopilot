@@ -459,15 +459,15 @@ additionalArguments:
 
 # -- Environment variables to be passed to Traefik's binary
 # @default -- See _values.yaml_
-env:
-- name: POD_NAME
-  valueFrom:
-    fieldRef:
-      fieldPath: metadata.name
-- name: POD_NAMESPACE
-  valueFrom:
-    fieldRef:
-      fieldPath: metadata.namespace
+# env:
+# - name: POD_NAME
+#   valueFrom:
+#     fieldRef:
+#       fieldPath: metadata.name
+# - name: POD_NAMESPACE
+#   valueFrom:
+#     fieldRef:
+#       fieldPath: metadata.namespace
 
 # -- Environment variables to be passed to Traefik's binary from configMaps or secrets
 envFrom: []
