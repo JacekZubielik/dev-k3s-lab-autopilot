@@ -33,7 +33,7 @@ generatorOptions:
 
 helmCharts:
 - name: traefik
-  version: 32.1.0
+  version: 33.0.0
   repo: https://helm.traefik.io/traefik
   includeCRDs: false
   namespace: traefik
