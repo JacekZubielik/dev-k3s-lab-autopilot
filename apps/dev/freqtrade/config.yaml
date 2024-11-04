@@ -1,0 +1,15 @@
+annotations: ''
+appName: freqtrade
+appRole: trade
+destNamespace: freqtrade
+destProject: "trade"
+destServer: https://kubernetes.default.svc
+exclude: ""
+include: ""
+labels: ""
+srcPath: apps/dev/freqtrade
+srcRepoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot.git
+srcTargetRevision: ""
+syncPriority: stage_3
+syncWave: 0
+userGivenName: freqtrade

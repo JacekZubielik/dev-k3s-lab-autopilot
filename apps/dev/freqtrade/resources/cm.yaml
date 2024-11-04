@@ -1,0 +1,101 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  labels:
+    app: freqtrade-config
+  name: freqtrade-config
+
+data:
+  freqtrade-config.yaml: |
+    bot_name: freqtrade-01
+    initial_state: running
+    force_entry_enable: false
+    internals:
+      process_throttle_secs: 5
+    max_open_trades: 2
+    stake_currency: USDC
+    stake_amount: unlimited
+    tradable_balance_ratio: 0.99
+    fiat_display_currency: USD
+    dry_run: true
+    dry_run_wallet: 1000
+    cancel_open_orders_on_exit: false
+    timeframe: 15m
+    trading_mode: spot
+    margin_mode: ""
+    unfilledtimeout:
+      entry: 10
+      exit: 10
+      exit_timeout_count: 0
+      unit: minutes
+    entry_pricing:
+      price_side: same
+      use_order_book: true
+      order_book_top: 1
+      price_last_balance: 0
+      check_depth_of_market:
+        enabled: false
+        bids_to_ask_delta: 1
+    exit_pricing:
+      price_side: same
+      use_order_book: true
+      order_book_top: 1
+    exchange:
+      name: binance
+      key: "{{EXCHANGE_BINANCE_KEY}}"
+      secret: "{{EXCHANGE_BINANCE_SECRET}}"
+      ccxt_config:
+        enableRateLimit: false
+        urls:
+          api:
+            public: http://binance-proxy:8090/api/v3
+      ccxt_async_config:
+        enableRateLimit: false
+      pair_whitelist:
+        - ADA/USDC
+        - BTC/USDC
+        - BCH/USDC
+        - ETH/USDC
+        - SHIB/USDC
+        - PEPE/USDC
+        - SOL/USDC
+        - WLD/USDC
+        - XRP/USDC
+      pair_blacklist:
+        - BNB/.*
+    pairlists:
+      - method: StaticPairList
+
+    telegram:
+      enabled: false
+      token: "{{TELEGRAM_TOKEN}}"
+      chat_id: "{{TELEGRAM_CHAT_ID}}"
+      keyboard:
+        - - /forcelong
+          - /balance
+          - /profit
+          - /reload_config
+          - /stopentry
+        - - /status table
+          - /performance
+          - /mix_tags
+          - /start
+          - /stop
+        - - /show_config
+          - /whitelist
+          - /logs
+          - /trades
+          - /forceexit
+    api_server:
+      enabled: false
+      listen_ip_address: 0.0.0.0
+      listen_port: 8080
+      verbosity: error
+      enable_openapi: false
+      jwt_secret_key: "{{API_SERVER_JWT_SECRET_KEY}}"
+      ws_token: "{{API_SERVER_WS_TOKEN}}"
+      CORS_origins:
+        - http://192.168.40.113:8080
+      username: "{{API_SERVER_USERNAME}}"
+      password: "{{API_SERVER_PASSWORD}}"

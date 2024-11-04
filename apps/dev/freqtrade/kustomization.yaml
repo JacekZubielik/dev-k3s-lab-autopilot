@@ -1,0 +1,47 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+metadata:
+  annotations:
+    argocd.argoproj.io/compare-options: IgnoreExtraneous
+    argocd.argoproj.io/sync-options: Delete=true,Prune=true
+
+resources:
+- resources/deployment.yaml
+- resources/ns.yaml
+- resources/pv.yaml
+- resources/pvc.yaml
+- resources/service.yaml
+- resources/volume.yaml
+
+generators:
+- ksops-generator.yaml
+
+configMapGenerator:
+- name: freqtrade-tz
+  literals:
+  - TZ=CET
+- name: config
+  files:
+  - resources/cm.yaml
+# - name: grafana-dashboard-internet
+#   files:
+#     - internet.json
+- name: strategies
+  files:
+  - strategies/*
+
+generatorOptions:
+  disableNameSuffixHash: true
+  labels:
+    component: freqtrade
+  annotations:
+    k8s-sidecar-target-directory: /freqtrade/user_data
+
+# patches:
+# - target:
+#     kind: CustomResourceDefinition
+#   patch: |-
+#     - op: remove
+#       path: /metadata/labels/app.kubernetes.io~1instance
