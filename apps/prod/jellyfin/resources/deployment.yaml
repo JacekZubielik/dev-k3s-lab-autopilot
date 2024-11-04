@@ -20,11 +20,11 @@ spec:
     spec:
       containers:
       - name: jellyfin
-        image: ghcr.io/linuxserver/jellyfin:10.10.1
+        image: ghcr.io/linuxserver/jellyfin:10.9.11
         imagePullPolicy: IfNotPresent
         envFrom:
         - configMapRef:
-              name: jellyfin-env
+            name: jellyfin-env
         ports:
         - name: http
           containerPort: 8096
