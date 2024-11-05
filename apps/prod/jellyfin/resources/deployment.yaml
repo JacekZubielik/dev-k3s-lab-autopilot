@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: jellyfin
-        image: ghcr.io/linuxserver/jellyfin:10.9.11
+        image: ghcr.io/linuxserver/jellyfin:10.10.1
         imagePullPolicy: IfNotPresent
         envFrom:
         - configMapRef:
