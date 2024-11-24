@@ -105,8 +105,8 @@ agent:
   persistentVolume:
     config:
       enabled: false
-  nodeSelector:
-    worker: "true"
+  # nodeSelector:
+  #   worker: "true"
   image:
     pullPolicy: Always
 lapi:
@@ -157,6 +157,6 @@ lapi:
     value: "k3s_cluster"
   - name: ENROLL_TAGS
     value: "homelab"
-  nodeSelector:
-    worker: "true"
+  # nodeSelector:
+  #   worker: "true"
 
