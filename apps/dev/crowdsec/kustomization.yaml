@@ -16,8 +16,8 @@ resources:
 # - resources/volume.yaml
 # - velero/schedule.yaml
 
-# generators:
-# - ksops-generator.yaml
+generators:
+- ksops-generator.yaml
 
 generatorOptions:
   disableNameSuffixHash: true

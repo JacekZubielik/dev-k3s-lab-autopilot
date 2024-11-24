@@ -68,8 +68,8 @@ tls:
   bouncer:
     reflector:
       namespaces: ["traefik"]
-      nodeSelector:
-        worker: "true"
+      # nodeSelector:
+      #   worker: "true"
     crowdsec_bouncer_api_key:
     crowdsec_agent_host: "crowdsec-service.default.svc.cluster.local:8080"
     crowdsec_bouncer_gin_mode: "release"
@@ -122,17 +122,17 @@ lapi:
   persistentVolume:
     # -- Persistent volume for data folder. Stores e.g. registered bouncer api keys
     data:
-      enabled: false
+      enabled: true
       accessModes:
         - ReadWriteOnce
-      storageClassName: "longhorn-retain-data"
+      storageClassName: "longhorn-retain"
       size: 1Gi
     # -- Persistent volume for config folder. Stores e.g. online api credentials
     config:
       enabled: true
       accessModes:
         - ReadWriteOnce
-      storageClassName: "longhorn-retain-data"
+      storageClassName: "longhorn-retain"
       size: 100Mi
   resources:
     limits:
@@ -143,16 +143,16 @@ lapi:
   env:
   - name: DISABLE_ONLINE_API # For an internal test, disable the Online API by setting 'DISABLE_ONLINE_API' to "true"
     value: "true" # "false"
-  - name: ENROLL_KEY
-    valueFrom:
-      secretKeyRef:
-        name: crowdsec # "YOUR-CLOUD-API-KEY"
-        key: ENROLL_KEY
-  - name: BOUNCER_KEY_traefik
-    valueFrom:
-      secretKeyRef:
-        name: crowdsec
-        key: TRAEFIK
+  # - name: ENROLL_KEY
+  #   valueFrom:
+  #     secretKeyRef:
+  #       name: crowdsec # "YOUR-CLOUD-API-KEY"
+  #       key: ENROLL_KEY
+  # - name: BOUNCER_KEY_traefik
+  #   valueFrom:
+  #     secretKeyRef:
+  #       name: crowdsec
+  #       key: BOUNCER_KEY_TRAEFIK
   - name: ENROLL_INSTANCE_NAME # "homelab"
     value: "k3s_cluster"
   - name: ENROLL_TAGS

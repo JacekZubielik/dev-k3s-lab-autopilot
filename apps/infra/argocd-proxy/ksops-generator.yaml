@@ -8,5 +8,5 @@ files:
 - resources/cert.sops.yaml
 - resources/ingressroute.sops.yaml
 - secrets/secret.sops.yaml
-- resources/cert.staging.sops.yaml
+# - resources/cert.staging.sops.yaml
 # - resources/ingressroute.staging.sops.yaml
