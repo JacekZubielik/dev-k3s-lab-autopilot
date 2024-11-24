@@ -125,14 +125,14 @@ lapi:
       enabled: true
       accessModes:
         - ReadWriteOnce
-      storageClassName: "longhorn-retain"
+      storageClassName: "longhorn-retain-data"
       size: 1Gi
     # -- Persistent volume for config folder. Stores e.g. online api credentials
     config:
       enabled: true
       accessModes:
         - ReadWriteOnce
-      storageClassName: "longhorn-retain"
+      storageClassName: "longhorn-retain-data"
       size: 100Mi
   resources:
     limits:
@@ -153,8 +153,8 @@ lapi:
   #     secretKeyRef:
   #       name: crowdsec
   #       key: BOUNCER_KEY_TRAEFIK
-  - name: ENROLL_INSTANCE_NAME # "homelab"
-    value: "k3s_cluster"
+  - name: ENROLL_INSTANCE_NAME
+    value: "homelab"
   - name: ENROLL_TAGS
     value: "homelab"
   # nodeSelector:
