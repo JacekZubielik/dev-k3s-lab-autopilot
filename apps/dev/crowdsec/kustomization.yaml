@@ -1,0 +1,42 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+metadata:
+  annotations:
+    argocd.argoproj.io/compare-options: IgnoreExtraneous
+    argocd.argoproj.io/sync-options: Delete=true,Prune=true
+
+resources:
+- resources/ns.yaml
+# - resources/prometheus.cm.yaml
+# - resources/pv.yaml
+# - resources/pvc.yaml
+# - resources/service.monitor.yaml
+# - resources/volume.yaml
+# - velero/schedule.yaml
+
+generators:
+- ksops-generator.yaml
+
+generatorOptions:
+  disableNameSuffixHash: true
+  labels:
+    component: crowdsec
+
+helmCharts:
+- name: crowdsec
+  version: 0.11.1
+  repo: https://crowdsecurity.github.io/helm-charts
+  includeCRDs: true
+  namespace: crowdsec
+  releaseName: crowdsec
+  valuesFile: values.yaml
+  # valuesInline:
+  #   spec:
+  #     ignoreDifferences:
+  #       - kind: PersistentVolume
+  #         jsonPointers:
+  #         - /spec/claimRef/resourceVersion
+  #         - /spec/claimRef/uid
+  #         - /status/lastPhaseTransitionTime
