@@ -16,7 +16,7 @@ lapi:
   env:
     # To enroll the Security Engine to the console
     - name: ENROLL_KEY
-      value: "<enroll-key>"
+      value: "cm3x3hi740006gqlkd07flxol"
     - name: ENROLL_INSTANCE_NAME
       value: "my-k8s-cluster"
     - name: ENROLL_TAGS
