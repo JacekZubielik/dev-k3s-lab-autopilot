@@ -460,7 +460,6 @@ additionalArguments:
 - "--entrypoints.websecure.http.middlewares=traefik-bouncer@kubernetescrd"
 
 
-
 # -- Environment variables to be passed to Traefik's binary
 # @default -- See _values.yaml_
 # env:
