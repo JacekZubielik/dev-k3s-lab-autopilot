@@ -16,10 +16,10 @@ lapi:
   env:
     # To enroll the Security Engine to the console
     - name: ENROLL_KEY
-      value: "mysecretkey12345"
+      value: ""
     - name: ENROLL_INSTANCE_NAME
       value: "my-k8s-cluster"
     - name: ENROLL_TAGS
       value: "k8s linux test"
-    - name: BOUNCER_KEY_traefik
-      value: "mysecretkey12345"
+    # - name: BOUNCER_KEY_traefik
+    #   value: "mysecretkey12345"
