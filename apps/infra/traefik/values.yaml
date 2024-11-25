@@ -60,14 +60,14 @@ ingressClass:
 experimental:
 #   http3:
 #     enabled: false
-#   plugins:
-#     enabled: false
+  plugins:
+    enabled: true
 #     fail2ban:
 #       moduleName: "github.com/tomMoulard/fail2ban"
 #       version: "v0.8.3"
-#     crowdsec-bouncer-traefik-plugin:
-#       moduleName: "github.com/maxlerebourg/crowdsec-bouncer-traefik-plugin"
-#       version: "v1.3.3"
+    crowdsec-bouncer-traefik-plugin:
+      moduleName: "github.com/maxlerebourg/crowdsec-bouncer-traefik-plugin"
+      version: "v1.3.3"
 
   kubernetesGateway:
     # -- Enable traefik experimental GatewayClass CRD
@@ -223,8 +223,10 @@ providers:
     # -- File content (YAML format, go template supported) (see https://doc.traefik.io/traefik/providers/file/)
     content: ""
 
-
-volumes: []
+volumes:
+- name: crowdsec-bouncer-tls
+  mountPath: /etc/traefik/crowdsec-certs/
+  type: secret
 # - mountPath: /data
 #   name: traefik-logs
 #   type: configMap
@@ -233,9 +235,6 @@ volumes: []
 #   type: configMap
 # - name: public-cert
 #   mountPath: "/certs"
-#   type: secret
-# - name: crowdsec-bouncer-tls
-#   mountPath: /etc/traefik/crowdsec-certs/
 #   type: secret
 
 # -- Additional volumeMounts to add to the Traefik container
@@ -457,6 +456,11 @@ additionalArguments:
 - "--entryPoints.web.proxyProtocol.insecure"  # < --- for Hass
 - "--entryPoints.web.forwardedHeaders.insecure"   # < --- for Hass
 
+- "--entrypoints.web.http.middlewares=traefik-bouncer@kubernetescrd"
+- "--entrypoints.websecure.http.middlewares=traefik-bouncer@kubernetescrd"
+
+
+
 # -- Environment variables to be passed to Traefik's binary
 # @default -- See _values.yaml_
 # env:
@@ -633,7 +637,10 @@ affinity: {}
 #        topologyKey: kubernetes.io/hostname
 
 nodeSelector: {}
-tolerations: []
+tolerations:
+  - key: node-role.kubernetes.io/control-plane
+    operator: Equal
+    effect: NoSchedule
 topologySpreadConstraints: []
 # This example topologySpreadConstraints forces the scheduler to put traefik pods
 # on nodes where no other traefik pods are scheduled.

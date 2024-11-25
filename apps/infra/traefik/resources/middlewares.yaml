@@ -240,7 +240,7 @@ spec:
 apiVersion: traefik.io/v1alpha1
 kind: Middleware
 metadata:
-  name: bouncer
+  name: traefik-bouncer
 spec:
   plugin:
     bouncer:
