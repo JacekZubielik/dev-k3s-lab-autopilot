@@ -410,7 +410,7 @@ agent:
   # env: []
   env:
   - name: COLLECTIONS
-    value: "crowdsecurity/traefik"
+    value: "crowdsecurity/traefik crowdsecurity/linux"
     # by default we configure the docker-logs parser to be able to parse docker logs in k8s
     # by default we disable local API on the agent pod
     # - name: SCENARIOS
@@ -441,12 +441,12 @@ agent:
     #   value: "false"
   # - name: DISABLE_PARSERS # When testing, allow bans on private networks
   #   value: "crowdsecurity/whitelists"
-  - name: COLLECTIONS
-    value: "crowdsecurity/linux crowdsecurity/traefik"
-
 
   # -- nodeSelector for agent
   nodeSelector: {}
+  # nodeSelector:
+  #   worker: "true"
+
   # -- tolerations for agent
   tolerations:
   - key: node-role.kubernetes.io/control-plane
