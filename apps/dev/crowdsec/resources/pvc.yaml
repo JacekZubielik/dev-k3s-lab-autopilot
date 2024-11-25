@@ -15,7 +15,7 @@ spec:
   resources:
     requests:
       storage: 1Gi
-  # volumeName: pv-authentik-psql # must reference Persistent Volume
+  volumeName: crowdsec-db-pvc # must reference Persistent Volume
   storageClassName: longhorn-retain-data
 
 ---
@@ -35,5 +35,5 @@ spec:
   resources:
     requests:
       storage: 100Mi
-  # volumeName: pv-authentik-redis  # must reference Persistent Volume
+  volumeName: crowdsec-config-pvc  # must reference Persistent Volume
   storageClassName: longhorn-retain-data
