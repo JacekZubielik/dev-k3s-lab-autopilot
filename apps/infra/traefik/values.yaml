@@ -200,14 +200,13 @@ providers:
     # -- File content (YAML format, go template supported) (see https://doc.traefik.io/traefik/providers/file/)
     content: ""
 
-# volumes: []
 volumes:
 - name: crowdsec-bouncer-tls
   mountPath: /etc/traefik/crowdsec-certs/
   type: secret
-# - mountPath: /data
-#   name: traefik-logs
-#   type: configMap
+- name: traefik-logs
+  mountPath: /data
+  type: configMap
 # - name: '{{ printf "%s-configs" .Release.Name }}'
 #   mountPath: "/config"
 #   type: configMap

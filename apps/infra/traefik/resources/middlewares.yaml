@@ -249,10 +249,11 @@ spec:
       crowdsecMode: stream
       crowdsecLapiScheme: https
       crowdsecLapiHost: crowdsec-service.crowdsec:8080
-      crowdsecLapiTLSCertificateAuthorityFile: /etc/traefik/crowdsec-certs/ca.crt
-      crowdsecLapiTLSCertificateBouncerFile: /etc/traefik/crowdsec-certs/tls.crt
-      crowdsecLapiTLSCertificateBouncerKeyFile: /etc/traefik/crowdsec-certs/tls.key
-      crowdsecLapiKey: HX0yHi2nOWsMpSYwZjZhpwU
+      # crowdsecLapiTLSCertificateAuthorityFile: /etc/traefik/crowdsec-certs/ca.crt
+      # crowdsecLapiTLSCertificateBouncerFile: /etc/traefik/crowdsec-certs/tls.crt
+      # crowdsecLapiTLSCertificateBouncerKeyFile: /etc/traefik/crowdsec-certs/tls.key
+      crowdsecLapiKey: /run/secrets/lapi/api_key
+      CrowdsecLapiTLSInsecureVerify: true
 ---
 apiVersion: traefik.io/v1alpha1
 kind: Middleware
