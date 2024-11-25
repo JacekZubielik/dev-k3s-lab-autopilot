@@ -70,10 +70,11 @@ tls:
       namespaces: ["traefik"]
       # nodeSelector:
       #   worker: "true"
-    crowdsec_bouncer_api_key:
-    crowdsec_agent_host: "crowdsec-service.default.svc.cluster.local:8080"
-    crowdsec_bouncer_gin_mode: "release"
-
+    # crowdsec_bouncer_api_key:
+    # crowdsec_agent_host: "crowdsec-service.default.svc.cluster.local:8080"
+    # crowdsec_bouncer_gin_mode: "release"
+    certManager:
+      enabled: true
 # image:
 #   pullPolicy: Always
 agent:
@@ -81,22 +82,24 @@ agent:
     - namespace: traefik
       podName: traefik-*
       program: traefik
-    - namespace: monitoring
-      podName: grafana-*
-      program: grafana
-    - namespace: authentik
-      podName: authentik-*
-      program: authentik
-  tolerations:
-  - key: node-role.kubernetes.io/control-plane
-    operator: Equal
-    effect: NoSchedule
+    # - namespace: monitoring
+    #   podName: grafana-*
+    #   program: grafana
+    # - namespace: authentik
+    #   podName: authentik-*
+    #   program: authentik
+  # tolerations:
+  # - key: node-role.kubernetes.io/control-plane
+  #   operator: Equal
+  #   effect: NoSchedule
   # Specify each pod whose logs you want to process
   env:
-  - name: PARSERS
-    value: "crowdsecurity/cri-logs crowdsecurity/whitelists"
+  - name: DISABLE_ONLINE_API
+    value: "true"
+  # - name: PARSERS
+  #   value: "crowdsecurity/cri-logs crowdsecurity/whitelists"
   - name: COLLECTIONS
-    value: "crowdsecurity/linux crowdsecurity/traefik crowdsecurity/home-assistant LePresidente/grafana LePresidente/authentik"
+    value: "crowdsecurity/linux crowdsecurity/traefik"
   - name: TZ
     value: "CET"
     # When testing, allow bans on private networks
@@ -124,16 +127,17 @@ lapi:
     data:
       enabled: true
       accessModes:
-        - ReadWriteOnce
+      - ReadWriteOnce
       storageClassName: "longhorn-retain-data"
       size: 1Gi
     # -- Persistent volume for config folder. Stores e.g. online api credentials
     config:
       enabled: true
       accessModes:
-        - ReadWriteOnce
+      - ReadWriteOnce
       storageClassName: "longhorn-retain-data"
       size: 100Mi
+      existingClaim: "crowdsec-agent-config"
   resources:
     limits:
       memory: 200Mi
