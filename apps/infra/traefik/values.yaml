@@ -61,10 +61,6 @@ experimental:
   # http3:
   #   enabled: false
   plugins:
-    # enabled: true
-    # fail2ban:
-    #   moduleName: "github.com/tomMoulard/fail2ban"
-    #   version: "v0.8.3"
     bouncer:
       moduleName: "github.com/maxlerebourg/crowdsec-bouncer-traefik-plugin"
       version: "v1.3.5"

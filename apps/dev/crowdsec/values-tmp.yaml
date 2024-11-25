@@ -1,5 +1,3 @@
-
-
 container_runtime: containerd
 tls:
   enabled: true
@@ -43,4 +41,5 @@ lapi:
     # For an internal test, disable the Online API
     - name: DISABLE_ONLINE_API
       value: "true"
-
+    - name: BOUNCER_KEY_traefik
+      value: "mysecretkey12345"
