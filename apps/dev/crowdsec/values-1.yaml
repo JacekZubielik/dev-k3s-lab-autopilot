@@ -307,9 +307,9 @@ lapi:
     externalTrafficPolicy: Cluster
 
   # -- nodeSelector for lapi
-  # nodeSelector: {}
-  nodeSelector:
-    worker: "true"
+  nodeSelector: {}
+  # nodeSelector:
+  #   worker: "true"
   # -- tolerations for lapi
   tolerations:
   - key: node-role.kubernetes.io/control-plane
@@ -450,9 +450,9 @@ agent:
   #   value: "crowdsecurity/whitelists"
 
   # -- nodeSelector for agent
-  # nodeSelector: {}
-  nodeSelector:
-    worker: "true"
+  nodeSelector: {}
+  # nodeSelector:
+  #   worker: "true"
 
   # -- tolerations for agent
   tolerations:
