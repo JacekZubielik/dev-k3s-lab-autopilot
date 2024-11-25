@@ -277,19 +277,20 @@ lapi:
     # -- Persistent volume for data folder. Stores e.g. registered bouncer api keys
     data:
       enabled: true
-      accessModes:
-        - ReadWriteOnce
-      storageClassName: "longhorn-retain-data"
-      existingClaim: ""
-      size: 1Gi
+      # accessModes:
+      #   - ReadWriteOnce
+      # storageClassName: "longhorn-retain-data"
+      existingClaim: "crowdsec-db-pvc"
+      # size: 1Gi
+
     # -- Persistent volume for config folder. Stores e.g. online api credentials
     config:
       enabled: true
-      accessModes:
-        - ReadWriteOnce
-      storageClassName: "longhorn-retain-data"
-      existingClaim: ""
-      size: 100Mi
+      # accessModes:
+      #   - ReadWriteOnce
+      # storageClassName: "longhorn-retain-data"
+      existingClaim: "crowdsec-config-pvc"
+      # size: 100Mi
 
   service:
     type: ClusterIP
