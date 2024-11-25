@@ -150,16 +150,16 @@ tls:
     # -- renewBefore for Certificate resources
     renewBefore: 720h # 30d
   bouncer:
-    secret: "{{ .Release.Name }}-bouncer-tls"
+    secret: "crowdsec-bouncer-tls"
     reflector:
       namespaces: ["traefik"]
   agent:
     tlsClientAuth: true
-    secret: "{{ .Release.Name }}-agent-tls"
+    secret: "crowdsec-agent-tls"
     reflector:
       namespaces: []
   lapi:
-    secret: "{{ .Release.Name }}-lapi-tls"
+    secret: "crowdsec-lapi-tls"
 
 # If you want to specify secrets that will be used for all your crowdsec-agents
 # secrets can be provided as env variables
