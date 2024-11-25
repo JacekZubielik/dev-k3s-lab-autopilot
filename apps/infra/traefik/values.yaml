@@ -544,14 +544,14 @@ autoscaling:
         periodSeconds: 60
 
 persistence:
-  enabled: false
+  enabled: true
   name: data
   # existingClaim: "pvc-traefik"
   accessMode: ReadWriteOnce
   size: 1Gi
-  storageClass: "local-path"
+  storageClass: "longhorn-retain-data"
   volumeName: traefik-logs
-  # path: /data
+  path: /data
   # annotations: {}
   # subPath: ""
 
