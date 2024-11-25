@@ -31,7 +31,7 @@ helmCharts:
   includeCRDs: true
   namespace: crowdsec
   releaseName: crowdsec
-  valuesFile: values-tmp.yaml
+  valuesFile: values-2.yaml
   # valuesInline:
   #   spec:
   #     ignoreDifferences:
