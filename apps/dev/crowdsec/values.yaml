@@ -106,18 +106,12 @@ agent:
     #- name: DISABLE_PARSERS
     #  value: "crowdsecurity/whitelists"
   persistentVolume:
-    # config:
-    #   enabled: false
-
-    crowdsec-agent-tls:
+    config:
       enabled: true
       accessModes:
       - ReadWriteOnce
       storageClassName: "longhorn-retain-data"
       size: 100Mi
-
-
-
   # nodeSelector:
   #   worker: "true"
   image:
