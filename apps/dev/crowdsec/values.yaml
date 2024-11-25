@@ -88,26 +88,24 @@ agent:
     # - namespace: authentik
     #   podName: authentik-*
     #   program: authentik
-  # tolerations:
-  # - key: node-role.kubernetes.io/control-plane
-  #   operator: Equal
-  #   effect: NoSchedule
+  tolerations:
+  - key: node-role.kubernetes.io/control-plane
+    operator: Equal
+    effect: NoSchedule
   # Specify each pod whose logs you want to process
   env:
-  # - name: DISABLE_ONLINE_API
-  #   value: "true"
-  # - name: PARSERS
-  #   value: "crowdsecurity/cri-logs crowdsecurity/whitelists"
+  - name: PARSERS
+    value: "crowdsecurity/cri-logs"
   - name: COLLECTIONS
     value: "crowdsecurity/linux crowdsecurity/traefik"
   - name: TZ
     value: "CET"
     # When testing, allow bans on private networks
-    #- name: DISABLE_PARSERS
-    #  value: "crowdsecurity/whitelists"
+  - name: DISABLE_PARSERS
+    value: "crowdsecurity/whitelists"
   persistentVolume:
     config:
-      enabled: true
+      enabled: false
       accessModes:
       - ReadWriteOnce
       storageClassName: "longhorn-retain-data"
@@ -122,26 +120,26 @@ lapi:
     ingress:
       host: dashboard.local
       enabled: true
-  # persistentVolume:
-  #   config:
-  #     enabled: false
-
   persistentVolume:
-    # -- Persistent volume for data folder. Stores e.g. registered bouncer api keys
-    data:
-      enabled: true
-      accessModes:
-      - ReadWriteOnce
-      storageClassName: "longhorn-retain-data"
-      size: 1Gi
-    # -- Persistent volume for config folder. Stores e.g. online api credentials
     config:
-      enabled: true
-      accessModes:
-      - ReadWriteOnce
-      storageClassName: "longhorn-retain-data"
-      size: 100Mi
-      # existingClaim: "crowdsec-agent-config"
+      enabled: false
+
+  # persistentVolume:
+  #   # -- Persistent volume for data folder. Stores e.g. registered bouncer api keys
+  #   data:
+  #     enabled: true
+  #     accessModes:
+  #     - ReadWriteOnce
+  #     storageClassName: "longhorn-retain-data"
+  #     size: 1Gi
+  #   # -- Persistent volume for config folder. Stores e.g. online api credentials
+  #   config:
+  #     enabled: true
+  #     accessModes:
+  #     - ReadWriteOnce
+  #     storageClassName: "longhorn-retain-data"
+  #     size: 100Mi
+  #     # existingClaim: "crowdsec-agent-config"
   resources:
     limits:
       memory: 200Mi
@@ -161,10 +159,10 @@ lapi:
   #     secretKeyRef:
   #       name: crowdsec
   #       key: BOUNCER_KEY_TRAEFIK
-  - name: ENROLL_INSTANCE_NAME
-    value: "homelab"
-  - name: ENROLL_TAGS
-    value: "homelab"
+  # - name: ENROLL_INSTANCE_NAME
+  #   value: "homelab"
+  # - name: ENROLL_TAGS
+  #   value: "homelab"
   # nodeSelector:
   #   worker: "true"
 
