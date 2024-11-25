@@ -65,9 +65,9 @@ experimental:
 #     fail2ban:
 #       moduleName: "github.com/tomMoulard/fail2ban"
 #       version: "v0.8.3"
-    crowdsec-bouncer-traefik-plugin:
-      moduleName: "github.com/maxlerebourg/crowdsec-bouncer-traefik-plugin"
-      version: "v1.3.3"
+    # crowdsec-bouncer-traefik-plugin:
+    #   moduleName: "github.com/maxlerebourg/crowdsec-bouncer-traefik-plugin"
+    #   version: "v1.3.3"
 
   kubernetesGateway:
     # -- Enable traefik experimental GatewayClass CRD
@@ -437,8 +437,8 @@ additionalArguments:
 - "--entryPoints.web.proxyProtocol.insecure"  # < --- for Hass
 - "--entryPoints.web.forwardedHeaders.insecure"   # < --- for Hass
 
-- "--entrypoints.web.http.middlewares=traefik-bouncer@kubernetescrd"
-- "--entrypoints.websecure.http.middlewares=traefik-bouncer@kubernetescrd"
+# - "--entrypoints.web.http.middlewares=traefik-bouncer@kubernetescrd"
+# - "--entrypoints.websecure.http.middlewares=traefik-bouncer@kubernetescrd"
 
 
 # -- Environment variables to be passed to Traefik's binary
@@ -617,10 +617,10 @@ affinity: {}
 #        topologyKey: kubernetes.io/hostname
 
 nodeSelector: {}
-tolerations:
-  - key: node-role.kubernetes.io/control-plane
-    operator: Equal
-    effect: NoSchedule
+tolerations: []
+  # - key: node-role.kubernetes.io/control-plane
+  #   operator: Equal
+  #   effect: NoSchedule
 topologySpreadConstraints: []
 # This example topologySpreadConstraints forces the scheduler to put traefik pods
 # on nodes where no other traefik pods are scheduled.
