@@ -94,8 +94,8 @@ agent:
   #   effect: NoSchedule
   # Specify each pod whose logs you want to process
   env:
-  - name: DISABLE_ONLINE_API
-    value: "true"
+  # - name: DISABLE_ONLINE_API
+  #   value: "true"
   # - name: PARSERS
   #   value: "crowdsecurity/cri-logs crowdsecurity/whitelists"
   - name: COLLECTIONS
