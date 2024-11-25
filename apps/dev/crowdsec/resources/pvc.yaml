@@ -15,7 +15,7 @@ spec:
   resources:
     requests:
       storage: 1Gi
-  volumeName: crowdsec-db-pvc # must reference Persistent Volume
+  volumeName: pvc-9f68f7e0-6f8c-41e5-a43a-6c8a46e182b0 # must reference Persistent Volume
   storageClassName: longhorn-retain-data
 
 ---
@@ -35,5 +35,5 @@ spec:
   resources:
     requests:
       storage: 100Mi
-  volumeName: crowdsec-config-pvc  # must reference Persistent Volume
+  volumeName: pvc-9f68f7e0-6f8c-41e5-a43a-6c8a46e182b0  # must reference Persistent Volume
   storageClassName: longhorn-retain-data
