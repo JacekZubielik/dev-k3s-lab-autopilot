@@ -245,18 +245,12 @@ spec:
   plugin:
     bouncer:
       enabled: true
-      crowdsecMode: stream
+      crowdsecMode: none
       crowdsecLapiScheme: https
       crowdsecLapiHost: crowdsec-service.crowdsec:8080
-      crowdsecLapiKey: mysecretkey12345
-
-
-      # crowdsecMode: none
-      # crowdsecLapiScheme: https
-      # crowdsecLapiHost: crowdsec-service.crowdsec:8080
-      # crowdsecLapiTLSCertificateAuthorityFile: /etc/traefik/crowdsec-certs/ca.crt
-      # crowdsecLapiTLSCertificateBouncerFile: /etc/traefik/crowdsec-certs/tls.crt
-      # crowdsecLapiTLSCertificateBouncerKeyFile: /etc/traefik/crowdsec-certs/tls.key
+      crowdsecLapiTLSCertificateAuthorityFile: /etc/traefik/crowdsec-certs/ca.crt
+      crowdsecLapiTLSCertificateBouncerFile: /etc/traefik/crowdsec-certs/tls.crt
+      crowdsecLapiTLSCertificateBouncerKeyFile: /etc/traefik/crowdsec-certs/tls.key
 ---
 apiVersion: traefik.io/v1alpha1
 kind: Middleware
