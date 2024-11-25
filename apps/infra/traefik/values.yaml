@@ -437,8 +437,8 @@ additionalArguments:
 - "--entryPoints.web.proxyProtocol.insecure"  # < --- for Hass
 - "--entryPoints.web.forwardedHeaders.insecure"   # < --- for Hass
 
-# - "--entrypoints.web.http.middlewares=traefik-bouncer@kubernetescrd"
-# - "--entrypoints.websecure.http.middlewares=traefik-bouncer@kubernetescrd"
+- "--entrypoints.web.http.middlewares=traefik-bouncer@kubernetescrd"
+- "--entrypoints.websecure.http.middlewares=traefik-bouncer@kubernetescrd"
 
 
 # -- Environment variables to be passed to Traefik's binary
