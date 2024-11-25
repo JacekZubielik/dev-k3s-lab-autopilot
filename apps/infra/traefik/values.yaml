@@ -65,7 +65,7 @@ experimental:
     # fail2ban:
     #   moduleName: "github.com/tomMoulard/fail2ban"
     #   version: "v0.8.3"
-    crowdsec-bouncer-traefik-plugin:
+    bouncer:
       moduleName: "github.com/maxlerebourg/crowdsec-bouncer-traefik-plugin"
       version: "v1.3.5"
 
