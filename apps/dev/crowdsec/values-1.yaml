@@ -181,6 +181,11 @@ lapi:
       secretKeyRef:
         name: crowdsec
         key: ENROLL_KEY
+  - name: BOUNCER_KEY_traefik
+    valueFrom:
+      secretKeyRef:
+        name: crowdsec
+        key: BOUNCER_KEY_TRAEFIK
   - name: ENROLL_INSTANCE_NAME
     value: "prod-k3s-cluster"
   - name: ENROLL_TAGS
@@ -238,7 +243,7 @@ lapi:
 
   dashboard:
     # -- Enable Metabase Dashboard (by default disabled)
-    enabled: false
+    enabled: true
     # -- environment variables from metabase/metabase docker image
     # -- see https://www.metabase.com/docs/latest/configuring-metabase/environment-variables
     env: []
@@ -277,20 +282,20 @@ lapi:
     # -- Persistent volume for data folder. Stores e.g. registered bouncer api keys
     data:
       enabled: true
-      # accessModes:
-      #   - ReadWriteOnce
-      # storageClassName: "longhorn-retain-data"
+      accessModes:
+        - ReadWriteOnce
+      storageClassName: "longhorn-retain-data"
       existingClaim: "crowdsec-db-pvc"
-      # size: 1Gi
+      size: 1Gi
 
     # -- Persistent volume for config folder. Stores e.g. online api credentials
     config:
       enabled: true
-      # accessModes:
-      #   - ReadWriteOnce
-      # storageClassName: "longhorn-retain-data"
+      accessModes:
+        - ReadWriteOnce
+      storageClassName: "longhorn-retain-data"
       existingClaim: "crowdsec-config-pvc"
-      # size: 100Mi
+      size: 100Mi
 
   service:
     type: ClusterIP
@@ -302,7 +307,9 @@ lapi:
     externalTrafficPolicy: Cluster
 
   # -- nodeSelector for lapi
-  nodeSelector: {}
+  # nodeSelector: {}
+  nodeSelector:
+    worker: "true"
   # -- tolerations for lapi
   tolerations:
   - key: node-role.kubernetes.io/control-plane
@@ -417,35 +424,35 @@ agent:
     #   value: "scenario/name otherScenario/name"
   - name: PARSERS
     value: "crowdsecurity/cri-logs"
-    # - name: POSTOVERFLOWS
-    #   value: "postoverflow/name otherPostoverflow/name"
-    # - name: CONFIG_FILE
-    #   value: "/etc/crowdsec/config.yaml"
-    # - name: DSN
-    #   value: "file:///var/log/toto.log"
-    # - name: TYPE
-    #   value: "Labels.type_for_time-machine_mode"
-    # - name: TEST_MODE
-    #   value: "false"
+  # - name: POSTOVERFLOWS
+  #   value: "postoverflow/name otherPostoverflow/name"
+  # - name: CONFIG_FILE
+  #   value: "/etc/crowdsec/config.yaml"
+  # - name: DSN
+  #   value: "file:///var/log/toto.log"
+  # - name: TYPE
+  #   value: "Labels.type_for_time-machine_mode"
+  # - name: TEST_MODE
+  #   value: "false"
   - name: TZ
     value: "CET"
-    # - name: DISABLE_AGENT
-    #   value: "false"
-    # - name: DISABLE_ONLINE_API
-    #   value: "false"
-    # - name: LEVEL_TRACE
-    #   value: "false"
-    # - name: LEVEL_DEBUG
-    #   value: "false"
-    # - name: LEVEL_INFO
-    #   value: "false"
+  # - name: DISABLE_AGENT
+  #   value: "false"
+  # - name: DISABLE_ONLINE_API
+  #   value: "false"
+  # - name: LEVEL_TRACE
+  #   value: "false"
+  # - name: LEVEL_DEBUG
+  #   value: "false"
+  # - name: LEVEL_INFO
+  #   value: "false"
   # - name: DISABLE_PARSERS # When testing, allow bans on private networks
   #   value: "crowdsecurity/whitelists"
 
   # -- nodeSelector for agent
-  nodeSelector: {}
-  # nodeSelector:
-  #   worker: "true"
+  # nodeSelector: {}
+  nodeSelector:
+    worker: "true"
 
   # -- tolerations for agent
   tolerations:
