@@ -51,6 +51,6 @@ parameters:
   nfsOptions: "soft,timeo=150,retrans=3"
   dataLocality: "best-effort"
   diskSelector: "data"
-  nodeSelector:  "storage"
+  # nodeSelector:  "storage"
   recurringJobs: "12-hour-backups"
   recurringJobSelector: '[{"name":"group4", "isGroup":true}]'
