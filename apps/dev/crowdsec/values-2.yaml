@@ -24,5 +24,3 @@ lapi:
       value: "prod-k3s-cluster"
     - name: ENROLL_TAGS
       value: "k3s linux test"
-    # - name: BOUNCER_KEY_traefik
-    #   value: "mysecretkey12345"
