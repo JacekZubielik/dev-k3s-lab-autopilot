@@ -16,10 +16,13 @@ lapi:
   env:
     # To enroll the Security Engine to the console
     - name: ENROLL_KEY
-      value: "cm3x3hi740006gqlkd07flxol"
+      valueFrom:
+        secretKeyRef:
+          name: crowdsec
+          key: ENROLL_KEY
     - name: ENROLL_INSTANCE_NAME
-      value: "my-k8s-cluster"
+      value: "prod-k3s-cluster"
     - name: ENROLL_TAGS
-      value: "k8s linux test"
+      value: "k3s linux test"
     # - name: BOUNCER_KEY_traefik
     #   value: "mysecretkey12345"
