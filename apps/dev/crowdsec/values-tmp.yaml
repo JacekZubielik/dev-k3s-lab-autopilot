@@ -1,0 +1,46 @@
+
+
+container_runtime: containerd
+tls:
+  enabled: true
+  bouncer:
+    reflector:
+      namespaces: ["traefik"]
+agent:
+  tolerations:
+    - key: node-role.kubernetes.io/control-plane
+      operator: Equal
+      effect: NoSchedule
+  # Specify each pod whose logs you want to process
+  acquisition:
+    # The namespace where the pod is located
+    - namespace: traefik
+      # The pod name
+      podName: traefik-*
+      # as in crowdsec configuration, we need to specify the program name to find a matching parser
+      program: traefik
+  env:
+    - name: PARSERS
+      value: "crowdsecurity/cri-logs"
+    - name: COLLECTIONS
+      value: "crowdsecurity/traefik"
+    # When testing, allow bans on private networks
+    - name: DISABLE_PARSERS
+      value: "crowdsecurity/whitelists"
+  persistentVolume:
+    config:
+      enabled: false
+lapi:
+  dashboard:
+    enabled: false
+    ingress:
+      host: dashboard.local
+      enabled: true
+  persistentVolume:
+    config:
+      enabled: false
+  env:
+    # For an internal test, disable the Online API
+    - name: DISABLE_ONLINE_API
+      value: "true"
+
