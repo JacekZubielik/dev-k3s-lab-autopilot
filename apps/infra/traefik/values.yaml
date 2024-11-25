@@ -235,7 +235,6 @@ logs:
     # filePath: "/var/log/traefik/traefik.log
     # noColor: true
   access:
-    # -- To enable access logs
     enabled: true
     # -- Set [access log format](https://doc.traefik.io/traefik/observability/access-logs/#format)
     format:
@@ -618,10 +617,11 @@ affinity: {}
 #        topologyKey: kubernetes.io/hostname
 
 nodeSelector: {}
-tolerations: []
-  # - key: node-role.kubernetes.io/control-plane
-  #   operator: Equal
-  #   effect: NoSchedule
+# tolerations: []
+tolerations:
+  - key: node-role.kubernetes.io/control-plane
+    operator: Equal
+    effect: NoSchedule
 topologySpreadConstraints: []
 # This example topologySpreadConstraints forces the scheduler to put traefik pods
 # on nodes where no other traefik pods are scheduled.
