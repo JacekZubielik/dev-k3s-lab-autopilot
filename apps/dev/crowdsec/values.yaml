@@ -137,7 +137,7 @@ lapi:
       - ReadWriteOnce
       storageClassName: "longhorn-retain-data"
       size: 100Mi
-      existingClaim: "crowdsec-agent-config"
+      # existingClaim: "crowdsec-agent-config"
   resources:
     limits:
       memory: 200Mi
