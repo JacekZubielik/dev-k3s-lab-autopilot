@@ -150,14 +150,14 @@ tls:
     # -- renewBefore for Certificate resources
     renewBefore: 720h # 30d
   bouncer:
-    secret: "crowdsec-bouncer-tls"
+    secret: "crowdsec-bouncer-tls" # "crowdsec-bouncer-tls"
     reflector:
       namespaces: ["traefik"]
   agent:
     tlsClientAuth: true
     secret: "crowdsec-agent-tls"
     reflector:
-      namespaces: []
+      namespaces: ["traefik"]
   lapi:
     secret: "crowdsec-lapi-tls"
 
