@@ -205,7 +205,7 @@ volumes:
   mountPath: /etc/traefik/crowdsec-certs/
   type: secret
 # - name: traefik-logs
-#   mountPath: /data
+#   mountPath: /var/log/traefik
 #   type: configMap
 # - name: '{{ printf "%s-configs" .Release.Name }}'
 #   mountPath: "/config"
@@ -215,10 +215,10 @@ volumes:
 #   type: secret
 
 # -- Additional volumeMounts to add to the Traefik container
-# additionalVolumeMounts: []
-additionalVolumeMounts:
-- name: traefik-logs
-  mountPath: /var/log/traefik
+additionalVolumeMounts: []
+# additionalVolumeMounts:
+# - name: traefik-logs
+#   mountPath: /var/log/traefik
 # - name: plugins
 #   mountPath: /plugins-storage
 
