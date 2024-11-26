@@ -258,7 +258,7 @@ spec:
 apiVersion: traefik.io/v1alpha1
 kind: Middleware
 metadata:
-  name: crowdsec
+  name: traefik-bouncer
 spec:
   forwardAuth:
     address: http://crowdsec-traefik-bouncer-service.default/api/v1/forwardAuth
