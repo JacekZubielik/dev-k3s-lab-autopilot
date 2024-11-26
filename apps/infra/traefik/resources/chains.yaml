@@ -1,0 +1,66 @@
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: chain-basic-auth
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
+  labels:
+    app.kubernetes.io/name: traefik
+spec:
+  chain:
+    middlewares:
+    - name: basicauth
+    - name: headers
+    # - name: whitelist
+    # - name: whitelist-local
+
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: chain-traefik-dashboard
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
+  labels:
+    app.kubernetes.io/name: traefik
+spec:
+  chain:
+    middlewares:
+    - name: traefik-dashboard-auth
+    - name: headers
+    # - name: whitelist
+    # - name: whitelist-local
+
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: chain-longhorn-dashboard
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
+  labels:
+    app.kubernetes.io/name: traefik
+spec:
+  chain:
+    middlewares:
+    - name: traefik-dashboard-auth
+    - name: svc-longhorn-headers
+    # - name: whitelist
+    # - name: whitelist-local
+
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: chain-authentik
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
+  labels:
+    app.kubernetes.io/name: traefik
+spec:
+  chain:
+    middlewares:
+    - name: authentik
+    - name: authentik-securityheaders
+    - name: gzip
