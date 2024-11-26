@@ -1,0 +1,264 @@
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: basicauth
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
+  labels:
+    app.kubernetes.io/name: traefik
+spec:
+  basicAuth:
+    secret: basicauth
+    # removeHeader: true
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: svc-longhorn-headers
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
+  labels:
+    app.kubernetes.io/name: traefik
+spec:
+  headers:
+    customRequestHeaders:
+      X-Forwarded-Proto: "https"
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: traefik-dashboard-auth
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
+  labels:
+    app.kubernetes.io/name: traefik
+spec:
+  basicAuth:
+    secret: traefik-dashboard-auth
+    # removeHeader: true
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: headers
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
+  labels:
+    app.kubernetes.io/name: traefik
+spec:
+  headers:
+    browserXssFilter: true
+    contentTypeNosniff: true
+    forceSTSHeader: true
+    stsIncludeSubdomains: true
+    stsPreload: true
+    stsSeconds: 15552000
+    customFrameOptionsValue: SAMEORIGIN
+    customRequestHeaders:
+      X-Forwarded-Proto: https
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: rate-limit
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
+  labels:
+    app.kubernetes.io/name: traefik
+spec:
+  rateLimit:
+    average: 100
+    burst: 50
+
+# ---
+# apiVersion: traefik.io/v1alpha1
+# kind: Middleware
+# metadata:
+#   name: redirect-to-https
+#   annotations:
+#     argocd.argoproj.io/sync-wave: "0"
+#   labels:
+#     app.kubernetes.io/name: traefik
+# spec:
+#   redirectScheme:
+#     scheme: https
+#     permanent: true
+
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: whitelist
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
+  labels:
+    app.kubernetes.io/name: traefik
+spec:
+  ipWhiteList:
+    sourceRange:
+    - 103.21.244.0/22
+    - 103.22.200.0/22
+    - 103.31.4.0/22
+    - 104.16.0.0/13
+    - 104.24.0.0/14
+    - 108.162.192.0/18
+    - 109.241.0.0/16
+    - 131.0.72.0/22
+    - 141.101.64.0/18
+    - 162.158.0.0/15
+    - 172.64.0.0/13
+    - 173.245.48.0/20
+    - 188.114.96.0/20
+    - 190.93.240.0/20
+    - 197.234.240.0/22
+    - 198.41.128.0/17
+
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: whitelist-local
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
+  labels:
+    app.kubernetes.io/name: traefik
+spec:
+  ipWhiteList:
+    sourceRange:
+    - 127.0.0.1/32
+    - 10.0.0.0/8
+    - 192.168.0.0/16
+    - 192.168.40.0/24
+    - 172.16.0.0/12
+
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: security
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
+  labels:
+    app.kubernetes.io/name: traefik
+spec:
+  headers:
+    frameDeny: true # the page can not be loaded in an iframe, Set frameDeny to true to add the X-Frame-Options header with the value of DENY.
+    sslRedirect: true # The sslRedirect only allow HTTPS requests when set to true.
+    browserXssFilter: true # Limit XSS, Set browserXssFilter to true to add the X-XSS-Protection header with the value 1; mode=block.
+    contentTypeNosniff: true # Do not detect Mime type by browser, Set contentTypeNosniff to true to add the X-Content-Type-Options header with the value nosniff.
+    # HSTS HTTP Strict Transport Security
+    stsIncludeSubdomains: true # If the stsIncludeSubdomains is set to true, the includeSubDomains directive is appended to the Strict-Transport-Security header. all subdomains have to HSTS complained
+    stsPreload: true # https://hstspreload.org/
+    stsSeconds: 31536000 #  To be able to use HSTS Preloading, this parameter must be at least 31536000 second
+
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: test-errors
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
+  labels:
+    app.kubernetes.io/name: traefik
+spec:
+  errors:
+    status:
+      - "500-599"
+    query: /{status}.html
+    service:
+      name: whoami
+      port: 80
+
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: authentik
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
+  labels:
+    app.kubernetes.io/name: traefik
+spec:
+  forwardAuth:
+    address: http://authentik-server.authentik.svc.cluster.local/outpost.goauthentik.io/auth/traefik
+    # address: http://authentik-server:9000/outpost.goauthentik.io/auth/traefik
+    trustForwardHeader: true
+    authResponseHeaders:
+    - X-authentik-username
+    - X-authentik-groups
+    - X-authentik-email
+    - X-authentik-name
+    - X-authentik-uid
+    - X-authentik-jwt
+    - X-authentik-meta-jwks
+    - X-authentik-meta-outpost
+    - X-authentik-meta-provider
+    - X-authentik-meta-app
+    - X-authentik-meta-version
+
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: authentik-securityheaders
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
+  labels:
+    app.kubernetes.io/name: traefik
+spec:
+  headers:
+    customResponseHeaders:
+      X-Robots-Tag: "none,noarchive,nosnippet,notranslate,noimageindex"
+      server: ""
+    sslProxyHeaders:
+      X-Forwarded-Proto: https
+    referrerPolicy: "same-origin"
+    hostsProxyHeaders:
+      - "X-Forwarded-Host"
+    customRequestHeaders:
+      X-Forwarded-Proto: "https"
+    contentTypeNosniff: true
+    browserXssFilter: true
+    forceSTSHeader: true
+    stsIncludeSubdomains: true
+    stsSeconds: 63072000
+    stsPreload: true
+
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: gzip
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
+  labels:
+    app.kubernetes.io/name: traefik
+spec:
+  compress: {}
+
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: bouncer
+  # namespace: traefik
+spec:
+  plugin:
+    bouncer:
+      enabled: true
+      crowdsecMode: stream
+      crowdsecLapiScheme: https
+      crowdsecLapiHost: crowdsec-service.crowdsec:8080
+      # crowdsecLapiTLSCertificateAuthorityFile: /etc/traefik/crowdsec-certs/ca.crt
+      # crowdsecLapiTLSCertificateBouncerFile: /etc/traefik/crowdsec-certs/tls.crt
+      # crowdsecLapiTLSCertificateBouncerKeyFile: /etc/traefik/crowdsec-certs/tls.key
+      crowdsecLapiKey: /run/secrets/lapi/api_key
+      CrowdsecLapiTLSInsecureVerify: true
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: crowdsec
+spec:
+  forwardAuth:
+    address: http://crowdsec-traefik-bouncer-service.default/api/v1/forwardAuth
