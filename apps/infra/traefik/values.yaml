@@ -219,8 +219,8 @@ volumes:
 additionalVolumeMounts:
 - name: traefik-logs
   mountPath: /var/log/traefik
-- name: plugins
-  mountPath: /plugins-storage
+# - name: plugins
+#   mountPath: /plugins-storage
 
 logs:
   general:
