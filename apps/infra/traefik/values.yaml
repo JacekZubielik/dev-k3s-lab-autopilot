@@ -204,9 +204,9 @@ volumes:
 - name: crowdsec-bouncer-tls
   mountPath: /etc/traefik/crowdsec-certs/
   type: secret
-- name: traefik-logs
-  mountPath: /data
-  type: configMap
+# - name: traefik-logs
+#   mountPath: /data
+#   type: configMap
 # - name: '{{ printf "%s-configs" .Release.Name }}'
 #   mountPath: "/config"
 #   type: configMap
@@ -547,14 +547,10 @@ autoscaling:
 persistence:
   enabled: true
   name: data
-  # existingClaim: "pvc-traefik"
   accessMode: ReadWriteOnce
   size: 1Gi
   storageClass: "longhorn-retain-data"
-  # volumeName: traefik-logs
-  # ##### #########path: /data
-  # annotations: {}
-  # subPath: ""
+
 
 # -- Certificates resolvers configuration.
 # Ref: https://doc.traefik.io/traefik/https/acme/#certificate-resolvers
