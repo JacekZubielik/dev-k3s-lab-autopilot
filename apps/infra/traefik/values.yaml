@@ -551,7 +551,7 @@ persistence:
   accessMode: ReadWriteOnce
   size: 1Gi
   storageClass: "longhorn-retain-data"
-  volumeName: traefik-logs
+  # volumeName: traefik-logs
   # ##### #########path: /data
   # annotations: {}
   # subPath: ""
