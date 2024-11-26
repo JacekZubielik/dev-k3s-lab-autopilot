@@ -4,12 +4,12 @@ mode: standalone ## other supported values are "standalone" "distributed"
 
 image:
   repository: quay.io/minio/minio
-  tag: RELEASE.2024-10-02T17-50-41Z
+  tag: RELEASE.2024-11-07T00-52-20Z # RELEASE.2024-10-02T17-50-41Z
   pullPolicy: IfNotPresent
 
 mcImage:
   repository: quay.io/minio/mc
-  tag: RELEASE.2024-10-02T08-27-28Z
+  tag: RELEASE.2024-11-17T19-35-25Z # RELEASE.2024-10-02T08-27-28Z
   pullPolicy: IfNotPresent
 
 
