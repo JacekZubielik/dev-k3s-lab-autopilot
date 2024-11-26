@@ -165,9 +165,9 @@ tls:
 # secrets can be provided as env variables
 secrets:
   # -- agent username (default is generated randomly)
-  username: ""
+  username: "admin"
   # -- agent password (default is generated randomly)
-  password: ""
+  password: "1234567890"
 
 # lapi will deploy pod with crowdsec lapi and dashboard as deployment
 lapi:
