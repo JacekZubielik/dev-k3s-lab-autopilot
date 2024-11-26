@@ -245,7 +245,7 @@ metadata:
 spec:
   plugin:
     bouncer:
-      enabled: false
+      enabled: true
       crowdsecMode: stream
       crowdsecLapiScheme: https
       crowdsecLapiHost: crowdsec-service.crowdsec:8080
