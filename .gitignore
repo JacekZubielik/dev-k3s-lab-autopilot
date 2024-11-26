@@ -19,3 +19,6 @@ pre-commit-config.yaml
 readme-draft
 README.md
 old-backup
+.cache
+to-do
+.gitignore
