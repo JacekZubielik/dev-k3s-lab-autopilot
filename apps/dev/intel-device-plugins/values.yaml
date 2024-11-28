@@ -3,6 +3,6 @@ logLevel:  2
 sharedDevNum: 1
 resourceManager: false
 preferredAllocationPolicy: none
-nodeFeatureRule: false # false
+nodeFeatureRule: true # false
 nodeSelector:
   intel.feature.node.kubernetes.io/gpu: "true"
