@@ -12,7 +12,7 @@ resources:
 - resources/gpu-device-plugin.yaml
 # - resources/node-feature-rules.yaml
 # NFD rules for Intel HW
-- https://github.com/intel/intel-device-plugins-for-kubernetes/deployments/nfd/overlays/node-feature-rules?ref=v0.30.0 # 0.31.1
+#- https://github.com/intel/intel-device-plugins-for-kubernetes/deployments/nfd/overlays/node-feature-rules?ref=v0.30.0 # 0.31.1
 helmCharts:
 # - name: intel-device-plugins-gpu
 #   version: 0.30.0
