@@ -7,9 +7,9 @@ spec:
   image: intel/intel-gpu-plugin:0.30.0
   logLevel:  2
   sharedDevNum: 1
-  # resourceManager: false
+  resourceManager: false
   enableMonitoring: true
-  # preferredAllocationPolicy: none
+  preferredAllocationPolicy: none
   nodeFeatureRule: false
   nodeSelector:
     intel.feature.node.kubernetes.io/gpu: "true"
