@@ -29,7 +29,7 @@ generatorOptions:
 
 helmCharts:
 - name: zigbee2mqtt
-  version: 0.0.11
+  version: 0.0.10
   repo: https://jacekzubielik.github.io/jz-helm-charts
   includeCRDs: false
   namespace: zigbee2mqtt
