@@ -6,7 +6,6 @@ metadata:
     dev-k3s: infra
   name: infra
   namespace: argocd
-
 spec:
   goTemplate: true
   goTemplateOptions: ["missingkey=error"]
@@ -26,7 +25,6 @@ spec:
           project: ""
           source:
             repoURL: ""
-
   template:
     metadata:
       annotations:
@@ -38,7 +36,6 @@ spec:
         syncPriority: '{{ .syncPriority }}'
       name: infra-{{ .userGivenName }}
       namespace: argocd
-
     spec:
       project: '{{ .destProject }}'
       source:
@@ -48,7 +45,6 @@ spec:
       destination:
         namespace: '{{ .destNamespace }}'
         server: '{{ .destServer }}'
-
       ignoreDifferences:
       - group: argoproj.io
         kind: Application
@@ -68,12 +64,6 @@ spec:
         jsonPointers:
         - /spec/template/metadata/annotations
         - /spec/template/metadata/labels
-      # - kind: PersistentVolume
-      #   jsonPointers:
-      #   - /spec/claimRef/resourceVersion
-      #   - /spec/claimRef/uid
-      #   - /status/lastPhaseTransitionTime
-
       syncPolicy:
         automated:
           selfHeal: true
@@ -85,7 +75,6 @@ spec:
         - RespectIgnoreDifferences=true
         - ServerSideApply=true
         - SkipDryRunOnMissingResource=true
-
   strategy:
     type: RollingSync
     rollingSync:
@@ -126,12 +115,6 @@ spec:
           values:
           - stage_5
         maxUpdate: 100%
-      # - matchExpressions:
-      #   - key: syncPriority
-      #     operator: In
-      #     values:
-      #     - stage_6
-      #   maxUpdate: 100%
       - matchExpressions:
         - key: syncPriority
           operator: In
