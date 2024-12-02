@@ -3,13 +3,9 @@ fullnameOverride: ""
 revisionHistoryLimit: 2
 replicas: 1
 strategyType: RollingUpdate # Recreate
-
 imagePullSecrets: []
-
 podAnnotations: {}
 podLabels: {}
-
-
 serviceAccount:
   create: true
   annotations: {}
@@ -72,8 +68,9 @@ resources:
   limits:
     cpu: 1000m
     memory: 0.5Gi
-# nodeSelector:
-#   kubernetes.io/hostname: prod-k3s-node-0
+nodeSelector:
+  # kubernetes.io/hostname: prod-k3s-node-0
+  node-role.kubernetes.io/worker=worker
 persistence:
   metadata:
     name: mosquitto-data
