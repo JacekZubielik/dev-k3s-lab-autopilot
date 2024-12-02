@@ -69,8 +69,7 @@ resources:
     cpu: 1000m
     memory: 0.5Gi
 nodeSelector:
-  # kubernetes.io/hostname: prod-k3s-node-0
-  node-role.kubernetes.io/worker=worker
+  kubernetes.io/hostname: dev-k3s-node-0
 persistence:
   metadata:
     name: mosquitto-data
