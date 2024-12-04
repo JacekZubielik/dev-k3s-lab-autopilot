@@ -62,7 +62,7 @@ spec:
   - fast
   - storage
   numberOfReplicas: 1
-  size: '68719476736'
+  size: '10737418240'
   snapshotMaxCount: 10
 
 ---
@@ -96,5 +96,5 @@ spec:
   - fast
   - storage
   numberOfReplicas: 1
-  size: '25769803776'
+  size: '10737418240'
   snapshotMaxCount: 10

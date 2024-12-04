@@ -53,7 +53,7 @@ spec:
   - ReadWriteOnce
   resources:
     requests:
-      storage: 64Gi
+      storage: 10Gi
   volumeName: pv-jellyfin-transcoding # must reference Persistent Volume
   storageClassName: longhorn-retain
 
@@ -73,6 +73,6 @@ spec:
   - ReadWriteOnce
   resources:
     requests:
-      storage: 24Gi
+      storage: 10Gi
   volumeName: pv-jellyfin-cache  # must reference Persistent Volume
   storageClassName: longhorn

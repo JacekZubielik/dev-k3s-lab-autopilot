@@ -60,7 +60,7 @@ metadata:
   name: pv-jellyfin-transcoding
 spec:
   capacity:
-    storage: 64Gi
+    storage: 10Gi
   volumeMode: Filesystem
   accessModes:
   - ReadWriteOnce
@@ -84,7 +84,7 @@ metadata:
   name: pv-jellyfin-cache
 spec:
   capacity:
-    storage: 24Gi
+    storage: 10Gi
   volumeMode: Filesystem
   accessModes:
   - ReadWriteOnce
