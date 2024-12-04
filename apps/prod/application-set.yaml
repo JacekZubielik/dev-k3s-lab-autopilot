@@ -83,7 +83,7 @@ spec:
         - CreateNamespace=true
         - PrunePropagationPolicy=foreground
         - RespectIgnoreDifferences=true
-        - ServerSideApply=true
+        - ServerSideApply=false
         - SkipDryRunOnMissingResource=true
 
   strategy:
