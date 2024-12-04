@@ -25,25 +25,8 @@ generatorOptions:
 helmCharts:
 - name: minio
   version: 5.3.0
-  repo: https://charts.min.io/
+  repo: https://charts.min.io
   includeCRDs: true
   namespace: minio
   releaseName: minio
   valuesFile: values.yaml
-
-
-# patches:
-# - 
-
-# patchesStrategicMerge:
-# - |-
-#   apiVersion: apps/v1
-#   kind: Deployment
-#   metadata:
-#     name: sonarr-deployment
-#   spec:
-#     template:
-#       spec:
-#         containers:
-#         - name: sonarr
-#           image: linuxserver/sonarr:3.0.10
