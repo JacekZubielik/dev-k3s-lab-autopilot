@@ -21,7 +21,7 @@ spec:
   diskSelector:
   - data
   - fast
-  fromBackup: s3://k3s-longhorn@us-east-1/?backup=backup-ecfda147aada45d3&volume=pvc-jellyfin-config
+  fromBackup: s3://k3s-longhorn@us-east-1/?backup=backup-01610d47eba9410b&volume=pvc-jellyfin-config
   frontend: blockdev
   # migratable: true
   nodeSelector:
