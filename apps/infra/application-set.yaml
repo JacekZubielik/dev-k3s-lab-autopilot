@@ -66,7 +66,7 @@ spec:
         - /spec/template/metadata/labels
       syncPolicy:
         automated:
-          selfHeal: true
+          selfHeal: false
           prune: true
         syncOptions:
         - ApplyOutOfSyncOnly=true
