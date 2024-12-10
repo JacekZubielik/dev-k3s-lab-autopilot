@@ -1,0 +1,18 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+    annotations:
+        argocd.argoproj.io/sync-wave: "1"
+    name: argocd-production
+spec:
+    dnsNames:
+        - argocd.infra.anotherlife.org.pl
+    issuerRef:
+        kind: ClusterIssuer
+        name: letsencrypt-production
+    commonName: argocd.infra.anotherlife.org.pl
+    secretName: argocd-cf-production
+    # 90d
+    duration: 2160h0m0s
+    # 30d
+    renewBefore: 720h0m0s

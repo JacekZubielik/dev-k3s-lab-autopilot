@@ -1,0 +1,58 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+    annotations:
+        argocd.argoproj.io/sync-wave: "1"
+    name: argocd-staging
+spec:
+    dnsNames:
+        - ENC[AES256_GCM,data:8g2BUwN5WIvtCe3ld0CZt1EcU67F9Bn3Yzu+m9Nk3w==,iv:sza9y9gFanqGBn+UyEygvuy1WGOQN5FRBdgC3Xgfbac=,tag:4m7gOnnpO7CDjiVDm3Yd2g==,type:str]
+    issuerRef:
+        kind: ClusterIssuer
+        name: letsencrypt-staging
+    commonName: ENC[AES256_GCM,data:FAd+bKdu2ZwDDw/5oWP86uMVxsuVrVo4OI4EmlGpag==,iv:5Ym4+32V+6MAdth4LfOo0LzQUWpaYvY4r7m6XIwkE8g=,tag:MXG7CgIfX4C3+XsXiPYN8w==,type:str]
+    secretName: argocd-cf-staging
+    # 90d
+    duration: 2160h0m0s
+    # 30d
+    renewBefore: 720h0m0s
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1deg9tqt7jtddnqme6nvcl72czns80z0n25u8k9pw5830dn4arsks5pua4h
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBOWUsyK3VSczNhNzRwMnV0
+            YjkxQldENE5jbHNiOVN2aGtQaUFRcnJEcXhrCkpQMGtTcWNFcklCemhwQS9hNXkx
+            NFNrekhrMFk4MUs1N2wrYU9KTHZKTmcKLS0tIGdhSTloWFRtUnhYYlNta3R5emcz
+            V21KN1F2cHEyOFFZL2EwbmpHa0JBQ00KAKr2NHMMEw8Xg7bJ5ILYYx6lBrM4ZQLV
+            19tv0NBExRnx+MNQTmZONaRzT9X/DpI22l9a8q5mdgsl6lX0zxtemw==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2024-10-04T15:55:28Z"
+    mac: ENC[AES256_GCM,data:TslCJHxw5alkrmgFv4KQKt1YukI6tk0+jQ1qdJlO2FkCFqXMOIFpGZlScrtmatyRW8pnduLQnoVWRpAXZWorSPs8nIl8cNoGRVWsw6Yk2Xhtaiuv2Jnly6leiVfXf+phd+X2fqfkPwwntRV9PPGE9RRZYuLt5vU4/MwHOarr+ZM=,iv:UA23VRB3V+KKYNkD1Tr79iVUfpHamLP5dnT7dNbL3Hg=,tag:A6OCbwHABMyQsfaYH1Oc6A==,type:str]
+    pgp:
+        - created_at: "2024-10-04T15:55:28Z"
+          enc: |-
+            -----BEGIN PGP MESSAGE-----
+
+            hQIMA0R6oz1GmNjVARAAjCVbSDziVBBqBTyixoQ4GDnrZrahRX5h3lSWUdhA0Rzw
+            mHb1ux6BJYAjMnAQrjjyuFO19o/3CnvRUlxxKKue4mHhm7/8JgRJzD2U/vWI5XVG
+            VBundwq4EWBjRi7m7QUn3KapuYGPFmKjnPWL4u9F9w5hSVPV4ItmsFWvBfzKiYk0
+            My6FiRScqRw70s08HNE+EELNkJonTmBNqBp3uQsHZ2q9HBp/rfvOAV8Ltx95vBgQ
+            H+oTotzkBRRdTujip//AfdS8Gx6jFHQnJTShv5qYClSwS6wdI+1vqxdlwNs22b0F
+            crVySw+xM66Hf0FMmQEMpvmAA/AwTOzD7hJ3/bs2l+o+TbOWFwTCECCuvnUhY7Nj
+            ZEsVV9eLQyp7eaT/92B6yRc78Ui0aZ3se8r559fYUIRqGVBVBm0OsUN2V4jU/nJU
+            cH93wxTXIZLfhq1j2Qp8uwKTA+oP1sBFDUXOLPLaZfH2bdm7l7h4NFJqMLw2TdRF
+            oZp3NT4wcWIihznLCGnPhzKgLmx5SD6TdJBHVf+DG5q6YvCRgtVTjVyELkzw4dVG
+            drL0zldbBW1g8f/ECidJbKcc2v9jgmiKCcQJBOeACVhFkA1KKiBBrnkMKCcRG4ud
+            K9DyrrAo5klQimBisUE7LjN1nN5wivDktRkk2L7HlmrIft8Q5Pocl/ZIeDE/+8bS
+            XgGuISBwcC+QKA1/+TOzprhfVGETujhlsvTQ9QJ2K2bzuTIvVHxke2ajLLyK5ySY
+            mJj4XEkodnrEb6toeOIYbmSKOtEfPRGmWYwu6kj9Dt+hcjHwmpfLzTFu+8b/6mI=
+            =nt/5
+            -----END PGP MESSAGE-----
+          fp: 6D3FE55384B558E06A1BA364586EFA784A32C981
+    encrypted_regex: ^(externalName|external-dns.alpha.kubernetes.io/hostname|cert-manager.io/common-name|sans|main|match|external-dns.alpha.kubernetes.io/target|dnsNames|commonName|data|stringData|dnsNames|email|accessKeyID|region|hostedZoneID|role|dnsZones)$
+    version: 3.9.0
