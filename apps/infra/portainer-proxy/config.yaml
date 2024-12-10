@@ -7,9 +7,9 @@ destServer: https://kubernetes.default.svc
 exclude: ""
 include: ""
 labels: ""
-srcPath: apps/prod/portainer-proxy
+srcPath: apps/infra/portainer-proxy
 srcRepoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot.git
 srcTargetRevision: ""
-syncPriority: stage_1
+syncPriority: stage_5
 syncWave: 0
 userGivenName: portainer-proxy
