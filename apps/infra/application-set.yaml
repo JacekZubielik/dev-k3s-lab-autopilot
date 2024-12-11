@@ -84,37 +84,37 @@ spec:
           operator: In
           values:
           - stage_crds
-        maxUpdate: 100%
+        maxUpdate: 0 # 100%
       - matchExpressions:
         - key: syncPriority
           operator: In
           values:
           - stage_1
-        maxUpdate: 100%
+        maxUpdate: 0 # 100%
       - matchExpressions:
         - key: syncPriority
           operator: In
           values:
           - stage_2
-        maxUpdate: 100%
+        maxUpdate: 0 # 100%
       - matchExpressions:
         - key: syncPriority
           operator: In
           values:
           - stage_3
-        maxUpdate: 100%
+        maxUpdate: 0 # 100%
       - matchExpressions:
         - key: syncPriority
           operator: In
           values:
           - stage_4
-        maxUpdate: 100%
+        maxUpdate: 0 # 100%
       - matchExpressions:
         - key: syncPriority
           operator: In
           values:
           - stage_5
-        maxUpdate: 100%
+        maxUpdate: 0 # 100%
       - matchExpressions:
         - key: syncPriority
           operator: In
