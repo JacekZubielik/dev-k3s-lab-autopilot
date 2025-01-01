@@ -85,7 +85,7 @@ startupProbe:
 
 resources:
   limits:
-    memory: 1Gi
+    memory: 2Gi
     cpu: 450m
   requests:
     memory: 0.15Gi
