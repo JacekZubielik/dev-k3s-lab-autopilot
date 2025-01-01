@@ -86,10 +86,10 @@ startupProbe:
 resources:
   limits:
     memory: 2Gi
-    cpu: 450m
+    cpu: 4500m
   requests:
-    memory: 0.15Gi
-    cpu: 100m
+    memory: 1.3Gi
+    cpu: 2900m
 
 autoscaling:
   enabled: true
