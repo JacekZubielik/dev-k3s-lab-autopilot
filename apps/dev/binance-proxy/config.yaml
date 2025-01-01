@@ -9,7 +9,7 @@ include: ""
 labels: ""
 srcPath: apps/dev/binance-proxy
 srcRepoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot.git
-srcTargetRevision: ""
+srcTargetRevision: "dev"
 syncPriority: stage_1
 syncWave: 0
 userGivenName: binance-proxy
