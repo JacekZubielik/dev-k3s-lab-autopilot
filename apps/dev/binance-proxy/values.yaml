@@ -85,18 +85,18 @@ startupProbe:
 
 resources:
   limits:
-    memory: 0.2Gi
-    cpu: 250m
+    memory: 2Gi
+    cpu: 450m
   requests:
     memory: 0.15Gi
     cpu: 100m
 
 autoscaling:
   enabled: true
-  minReplicas: 2
-  maxReplicas: 5
-  averageCPUUtilizationPercentage: 50
-  averageMemoryUtilizationPercentage: 50
+  minReplicas: 1
+  maxReplicas: 3
+  averageCPUUtilizationPercentage: 80
+  averageMemoryUtilizationPercentage: 80
 
 nodeSelector: []
   # kubernetes.io/hostname: dev-k3s-master-0
