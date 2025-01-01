@@ -95,8 +95,8 @@ autoscaling:
   enabled: true
   minReplicas: 1
   maxReplicas: 3
-  averageCPUUtilizationPercentage: 50
-  averageMemoryUtilizationPercentage: 50
+  averageCPUUtilizationPercentage: 80
+  averageMemoryUtilizationPercentage: 80
 
 nodeSelector: []
   # kubernetes.io/hostname: dev-k3s-master-0
