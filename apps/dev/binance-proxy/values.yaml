@@ -85,7 +85,7 @@ startupProbe:
 
 resources:
   limits:
-    memory: 0.4Gi
+    memory: 1Gi
     cpu: 450m
   requests:
     memory: 0.15Gi
@@ -93,7 +93,7 @@ resources:
 
 autoscaling:
   enabled: true
-  minReplicas: 2
+  minReplicas: 1
   maxReplicas: 3
   averageCPUUtilizationPercentage: 50
   averageMemoryUtilizationPercentage: 50
