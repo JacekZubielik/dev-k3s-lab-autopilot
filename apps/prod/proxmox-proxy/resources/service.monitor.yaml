@@ -14,7 +14,7 @@ spec:
     matchLabels:
       app.kubernetes.io/name: proxmox-proxy
   namespaceSelector:
-      any: true
+    any: true
   endpoints:
   - interval: 15s
     path: /metrics
