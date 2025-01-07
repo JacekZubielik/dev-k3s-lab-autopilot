@@ -1,0 +1,28 @@
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    app: proxmox-proxy
+    prometheus.io/scrap-with: kube-prometheus-stack
+    release: kube-prometheus-stack
+  name: proxmox-proxy
+  namespace: proxmox-proxy
+spec:
+  jobLabel: app.kubernetes.io/name
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: proxmox-proxy
+  namespaceSelector:
+    any: true
+  endpoints:
+  - interval: 15s
+    path: /metrics
+    port: metrics
+    scheme: http
+    scrapeTimeout: 5s
+  - interval: 15s
+    path: /pve
+    port: pve
+    scheme: http
+    scrapeTimeout: 5s
