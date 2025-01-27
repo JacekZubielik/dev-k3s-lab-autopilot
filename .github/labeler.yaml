@@ -28,5 +28,3 @@ area/apps/infra:
   - any-glob-to-any-file: "apps/infra/**/*"
 feature:
 - head-branch: ['^feature', 'feature']
-release:
-- base-branch: 'main'
