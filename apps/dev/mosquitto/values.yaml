@@ -47,13 +47,13 @@ monitoring:
       replacement: $1
       separator: ;
       sourceLabels:
-        - __meta_kubernetes_pod_node_name
+      - __meta_kubernetes_pod_node_name
       targetLabel: nodename
     metricRelabelings:
     - action: keep
       regex: kube_(daemonset|deployment|pod|namespace|node|statefulset).+
       sourceLabels:
-        - __name__
+      - __name__
     bearerTokenFile: {}
     # (use long lived access tokens)
     bearerTokenSecret: {}
