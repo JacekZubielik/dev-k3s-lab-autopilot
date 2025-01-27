@@ -47,13 +47,13 @@ monitoring:
       replacement: $1
       separator: ;
       sourceLabels:
-        - __meta_kubernetes_pod_node_name
+      - __meta_kubernetes_pod_node_name
       targetLabel: nodename
     metricRelabelings:
     - action: keep
       regex: kube_(daemonset|deployment|pod|namespace|node|statefulset).+
       sourceLabels:
-        - __name__
+      - __name__
     bearerTokenFile: {}
     # (use long lived access tokens)
     bearerTokenSecret: {}
@@ -68,8 +68,11 @@ resources:
   limits:
     cpu: 1000m
     memory: 0.5Gi
+
 nodeSelector:
-  kubernetes.io/hostname: dev-k3s-node-0
+  # kubernetes.io/hostname: dev-k3s-node-0
+  kubernetes.io/os: linux
+
 persistence:
   metadata:
     name: mosquitto-data
@@ -77,8 +80,6 @@ persistence:
   annotations: {}
   existingClaim: mosquitto-data
   # volumeName: mosquitto-data
-
-
 livenessProbe:
   enabled: false
   # scheme: HTTP
