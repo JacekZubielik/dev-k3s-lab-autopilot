@@ -36,14 +36,14 @@ feature:
 
 issue_template:
 - changed-files:
-    - any-glob-to-any-file: ".github/ISSUE_TEMPLATE/*"
+  - any-glob-to-any-file: ".github/ISSUE_TEMPLATE/*"
 
 makefile:
-  - changed-files:
-      - any-glob-to-any-file: "Makefile"
+- changed-files:
+  - any-glob-to-any-file: "Makefile"
 
 documentation:
-  - changed-files:
-    - any-glob-to-any-file: '**/*.md'
-  - changed-files:
-    - any-glob-to-any-file: assets/*
+- changed-files:
+  - any-glob-to-any-file: '**/*.md'
+- changed-files:
+  - any-glob-to-any-file: assets/*
