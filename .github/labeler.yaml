@@ -1,30 +1,49 @@
 ---
-area/github:
+ci:
 - changed-files:
   - any-glob-to-any-file: ".github/**/*"
-area/bootstrap:
+
+bootstrap:
 - changed-files:
   - any-glob-to-any-file: "bootstrap/**/*"
-area/project:
+
+project:
 - changed-files:
   - any-glob-to-any-file: "project/*"
-area/apps/iot:
+
+apps/iot:
 - changed-files:
   - any-glob-to-any-file: "apps/iot/**/*"
-area/apps/media:
+
+apps/media:
 - changed-files:
   - any-glob-to-any-file: "apps/media/**/*"
-area/apps/trade:
+
+apps/trade:
 - changed-files:
   - any-glob-to-any-file: "apps/trade/**/*"
-area/apps/dev:
+
+apps/dev:
 - changed-files:
   - any-glob-to-any-file: "apps/dev/**/*"
-area/apps/crds:
-- changed-files:
-  - any-glob-to-any-file: "apps/crds/**/*"
-area/apps/infra:
+
+apps/infra:
 - changed-files:
   - any-glob-to-any-file: "apps/infra/**/*"
+
 feature:
 - head-branch: ['^feature', 'feature']
+
+issue_template:
+- changed-files:
+  - any-glob-to-any-file: ".github/ISSUE_TEMPLATE/*"
+
+makefile:
+- changed-files:
+  - any-glob-to-any-file: "Makefile"
+
+documentation:
+- changed-files:
+  - any-glob-to-any-file: '**/*.md'
+- changed-files:
+  - any-glob-to-any-file: assets/*
