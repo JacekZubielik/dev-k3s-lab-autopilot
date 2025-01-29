@@ -16,7 +16,7 @@ concurrency:
 jobs:
   stale:
     name: 'Stale'
-    runs-on: ubuntu-latest
+    runs-on: [ubuntu-latest]
     steps:
       - uses: actions/stale@28ca1036281a5e5922ead5184a1bbf96e5fc984e # v9
         with:
@@ -30,7 +30,7 @@ jobs:
             for your contributions. See our [contributing guidelines](https://github.com/gethomepage/homepage/blob/main/CONTRIBUTING.md#automatic-respoistory-maintenance) for more details.
   lock-threads:
     name: 'Lock Old Threads'
-    runs-on: ubuntu-latest
+    runs-on: [ubuntu-latest]
     steps:
       - uses: dessant/lock-threads@1bf7ec25051fe7c00bdd17e6a7cf3d7bfb7dc771 # v5
         with:
@@ -55,7 +55,7 @@ jobs:
             See our [contributing guidelines](https://github.com/gethomepage/homepage/blob/main/CONTRIBUTING.md#automatic-repository-maintenance) for more details.
   close-answered-discussions:
     name: 'Close Answered Discussions'
-    runs-on: ubuntu-latest
+    runs-on: [ubuntu-latest]
     steps:
       - uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea # v7
         with:
@@ -111,7 +111,7 @@ jobs:
             }
   close-outdated-discussions:
     name: 'Close Outdated Discussions'
-    runs-on: ubuntu-latest
+    runs-on: [ubuntu-latest]
     steps:
     - uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea # v7
       with:
@@ -202,7 +202,7 @@ jobs:
           }
   close-unsupported-feature-requests:
     name: 'Close Unsupported Feature Requests'
-    runs-on: ubuntu-latest
+    runs-on: [ubuntu-latest]
     steps:
     - uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea # v7
       with:
