@@ -67,7 +67,6 @@ defaultBackupStore:
   backupTargetCredentialSecret: s3-backup
   pollInterval: ~
 
-
 defaultSettings:
   # backupTarget: s3://k3s-longhorn@us-east-1/
   # backupTargetCredentialSecret: s3-backup
