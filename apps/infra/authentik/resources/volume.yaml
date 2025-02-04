@@ -16,7 +16,7 @@ metadata:
   name: pvc-authentik-psql
   namespace: longhorn-system
 spec:
-  backingImage: authentik-psql
+  backingImage: s3://k3s-longhorn@us-east-1/?backingImage=authentik-psql
   dataLocality: best-effort
   diskSelector:
   - data
