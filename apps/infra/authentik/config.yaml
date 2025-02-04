@@ -9,7 +9,7 @@ include: ""
 labels: ""
 srcPath: apps/infra/authentik
 srcRepoURL: https://github.com/JacekZubielik/dev-k3s-lab-autopilot.git
-srcTargetRevision: "dev"
+srcTargetRevision: ""
 syncPriority: stage_4
 syncWave: 1
 userGivenName: authentik
