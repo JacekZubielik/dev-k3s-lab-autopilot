@@ -4,7 +4,7 @@ metadata:
   name: ksops-generator
 type: Opaque
 files:
-- resources/cert.sops.yaml
-- resources/ingressroute.sops.yaml
-# - resources/cert.staging.sops.yaml
-# - resources/ingressroute.staging.sops.yaml
+# - resources/cert.sops.yaml
+# - resources/ingressroute.sops.yaml
+- resources/cert.staging.sops.yaml
+- resources/ingressroute.staging.sops.yaml
