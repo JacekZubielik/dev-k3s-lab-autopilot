@@ -777,11 +777,11 @@ grafana:
     tlsConfig: {}
     scrapeTimeout: 30s
     relabelings:
-      - sourceLabels:
-        - __address__
-        action: replace
-        targetLabel: job
-        replacement: grafana
+    - sourceLabels:
+      - __address__
+      action: replace
+      targetLabel: job
+      replacement: grafana
 
 ####################################################
 kubernetesServiceMonitors:
@@ -894,7 +894,7 @@ kubeControllerManager:
   service:
     enabled: true
     port: 10252 # null
-    targetPort: 10252 #null
+    targetPort: 10252 # null
   serviceMonitor:
     enabled: true
     interval: ""
@@ -1820,7 +1820,7 @@ prometheus:
     loadBalancerIP: "192.168.40.194"
     loadBalancerSourceRanges: []
     externalTrafficPolicy: Cluster
-    type: LoadBalancer #ClusterIP
+    type: LoadBalancer # ClusterIP
     additionalPorts: []
     # additionalPorts:
     # - name: oauth-proxy
@@ -1991,11 +1991,11 @@ prometheus:
     bearerTokenFile:
     metricRelabelings: []
     relabelings:
-      - sourceLabels:
-        - __address__
-        action: replace
-        targetLabel: job
-        replacement: prometheus
+    - sourceLabels:
+      - __address__
+      action: replace
+      targetLabel: job
+      replacement: prometheus
     additionalEndpoints: []
   ## Settings affecting prometheusSpec
   ## ref: https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api.md#prometheusspec
