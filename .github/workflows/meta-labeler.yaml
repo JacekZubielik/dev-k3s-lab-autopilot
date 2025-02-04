@@ -12,7 +12,7 @@ jobs:
     runs-on: [ubuntu-latest]
     steps:
     - name: Labeler
-      uses: actions/labeler@506e1a00c6c05ba98ac585056a23f16073fa5915
+      uses: actions/labeler@3629d5568b59204f18786372f6d740d649719488
       with:
         configuration-path: .github/labeler.yaml
         repo-token: ${{ secrets.GITHUB_TOKEN }}
