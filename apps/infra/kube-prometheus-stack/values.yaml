@@ -405,7 +405,7 @@ grafana:
           path: /var/lib/grafana/dashboards/device
 
       - name: "extra"
-        orgId: 1
+        orgId: 2
         folder: "Extra"
         type: file
         disableDeletion: false
@@ -415,7 +415,7 @@ grafana:
           path: /var/lib/grafana/dashboards/extra
 
       - name: "freqtrade"
-        orgId: 1
+        orgId: 3
         folder: "Freqtrade"
         type: file
         disableDeletion: false
@@ -424,7 +424,7 @@ grafana:
           path: /var/lib/grafana/dashboards/freqtrade
 
       - name: "k3s"
-        orgId: 1
+        orgId: 4
         folder: "k3s"
         type: file
         disableDeletion: false
@@ -433,7 +433,7 @@ grafana:
           path: /var/lib/grafana/dashboards/k3s
 
       - name: "network"
-        orgId: 1
+        orgId: 5
         folder: "Network"
         type: file
         disableDeletion: false
@@ -442,7 +442,7 @@ grafana:
           path: /var/lib/grafana/dashboards/network
 
       - name: "storage"
-        orgId: 1
+        orgId: 6
         folder: "Storage"
         type: file
         disableDeletion: false
