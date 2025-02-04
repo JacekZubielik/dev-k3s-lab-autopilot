@@ -22,7 +22,8 @@ spec:
   - data
   - fast
   # restoreVolumeRecurringJob: enabled
-  fromBackup: s3://k3s-longhorn@us-east-1/?backup=backup-f41faf3378c345d6&volume=pvc-authentik-psql
+  fromBackup: s3://k3s-longhorn@us-east-1/?backingImage=authentik-psql
+  # fromBackup: s3://k3s-longhorn@us-east-1/?backup=backup-f41faf3378c345d6&volume=pvc-authentik-psql
   frontend: blockdev
   # migratable: true
   nodeSelector:
