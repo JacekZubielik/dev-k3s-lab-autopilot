@@ -62,9 +62,15 @@ csi:
   resizerReplicaCount: ~
   snapshotterReplicaCount: ~
 
-defaultSettings:
+defaultBackupStore:
   backupTarget: s3://k3s-longhorn@us-east-1/
   backupTargetCredentialSecret: s3-backup
+  pollInterval: ~
+
+
+defaultSettings:
+  # backupTarget: s3://k3s-longhorn@us-east-1/
+  # backupTargetCredentialSecret: s3-backup
   allowRecurringJobWhileVolumeDetached: false
   createDefaultDiskLabeledNodes: true
   defaultDataPath: /mnt/data
