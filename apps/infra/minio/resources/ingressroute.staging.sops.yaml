@@ -6,7 +6,7 @@ metadata:
         cert-manager.io/cluster-issuer: letsencrypt-staging
         cert-manager.io/common-name: ENC[AES256_GCM,data:m9gFA6kkS7G4o/8Spcdnroz1EzpWtW88rFaqLds=,iv:vXRlvaHoEWQviLxoZRwDvoRt3Z4fs1ojhcVNyBQOtj8=,tag:vIJgsTWg2iLjbbtHonIlJQ==,type:str]
         external-dns.alpha.kubernetes.io/hostname: ENC[AES256_GCM,data:kNsaaimF292VjZD/3woXnDNnKSTn/21ku+fOIMo=,iv:/g3+7mJsbBpYZJu7MvaDKSimz3X5dP3KOWSPJNwjVE0=,tag:rUBHrw3NUhGwqAmGBxACDw==,type:str]
-        external-dns.alpha.kubernetes.io/target: ENC[AES256_GCM,data:BZZZOUz0jsjKoXmuAz+Vv+fa7Ns0LEjBL8w=,iv:w5wDXAqX+8eDKrY5I2gv4Yoc+kv/v9T1i0OcZXAuEI8=,tag:gifDDlvqJtsCWYSU6erjEg==,type:str]
+        external-dns.alpha.kubernetes.io/target: ENC[AES256_GCM,data:aS0ebCRLw0Z2irJg6MRuHKkICLDyAm27Hp4=,iv:4NkGjOSuXdKR/kNkqJwkIKk1lO085LyXzbBeSjRP4Kw=,tag:wZl/VjOcSE64TWbGiU9U0A==,type:str]
         ingress.kubernetes.io/ssl-passthrough: "true"
         external-dns.alpha.kubernetes.io/ttl: "300"
         kubernetes.io/ingress.class: traefik-external
@@ -18,15 +18,17 @@ spec:
     routes:
         - kind: Rule
           match: ENC[AES256_GCM,data:LcBxN6JMrvCFVEV1+W/XpG9u7ACmbgSPpk+hyKrr36MGd7hmtQ==,iv:eTmAZKNEtSJaQv6gw3/lbEwmf5u7V8SnTQqn/KoQZcE=,tag:OPVjnr6Zl+jUNQ9d/SBmMQ==,type:str]
+          middlewares:
+            - name: redirect-to-https
           services:
             - kind: TraefikService
               name: s3
               namespace: minio
     tls:
         domains:
-            - main: ENC[AES256_GCM,data:eNhnvzMAsMLJe+rG8arbtxNXN9sgW1xJKvI=,iv:MMmYtp2HOKcz0EH6DnfqyFTMU+QMWfWPwNI/IHdSjNs=,tag:JsUBErOQMhcMbiD+lr3Ecw==,type:str]
+            - main: ENC[AES256_GCM,data:P36nbub8+IFhpYIqhdKxloKJe+x1bRv1lPM=,iv:BQhhSBqDrOtbYdj9FOl2S9aG1+bhpt+8lrOFD7KqxTQ=,tag:kqIaXUJEszrCVme0u6OG7A==,type:str]
               sans:
-                - ENC[AES256_GCM,data:6Pxg26YsxPlKZu2UYhJPFggk8VUDuhhmJwuW,iv:/O3gcauXh+UznesvfoDsDmtWTqyISohAMu02HwTV9fM=,tag:1/sDjjFhiPJvDMq0VHO+IA==,type:str]
+                - ENC[AES256_GCM,data:7GW75iT7CC8Inw9XNh23QON6Yg89u8HsESeJ,iv:zzCm5+oxiAL+kTd3r/5SgaHpA0tCXtofeqdLzCGBYFk=,tag:whp6Ox1qi7qdSuyiE9xz7A==,type:str]
         options:
             name: tls-ver13
             namespace: traefik
@@ -46,8 +48,8 @@ sops:
             aERkOXVxc2tiT3o3cWV6U1VLQVpMQnMKiSfSGkJ/Rk0aCQP4eg/FjVe6SWSRtVn7
             C1ApTHeMMM/U/8kt0+IPhKiq2ryYCd8xHyYiJv6JpJQylW1xASTSKg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-10-11T22:20:39Z"
-    mac: ENC[AES256_GCM,data:NSa/OIRQwh7AOhEnm9sm4xxGwmHTVI6A5Kh/MuTXNgsaQp9z4CKf7cEzVj3BdZoq2N9F0TryA6mmwGUNMDcrQ8hS5Gqvn12q7wdMnzVMOGSYcg5jRDc64nu2L3TRQgsh/+z11oOyqn8yNTa1pZnBwChxavSknPwn1/9Yu1uHC3U=,iv:fB6Zt6eMtjkmC0qso8ywb1zkNy3OrhqBx8aTHwU1gQ8=,tag:gdf9hv6DsiPxSANigD/dVA==,type:str]
+    lastmodified: "2025-02-04T23:14:43Z"
+    mac: ENC[AES256_GCM,data:d7/CFt4LayuBUOMrw3VapA3VGk1+Eu4CLzTolMj/DadI6sycARhSukMqZtIckfINpIQ+AZFUWj9/vlm1IISwMoInsmPswyTyYJfKhyCJPXssQOVdS/FBea05g3uDMIhVuAD5HXvYo5LrOEN91dd6trAmkk1yHtGG7fKcZWiskfM=,iv:FXYCWWOh7lv7E+zUgxwSv8sxgJfjfVbSQxELxUExefs=,tag:f6mrEDFSzlL/ANjyLlSvCw==,type:str]
     pgp:
         - created_at: "2024-10-11T22:20:39Z"
           enc: |-
@@ -70,7 +72,7 @@ sops:
             -----END PGP MESSAGE-----
           fp: 6D3FE55384B558E06A1BA364586EFA784A32C981
     encrypted_regex: ^(externalName|external-dns.alpha.kubernetes.io/hostname|cert-manager.io/common-name|sans|main|match|external-dns.alpha.kubernetes.io/target|dnsNames|commonName|data|stringData|dnsNames|email|accessKeyID|region|hostedZoneID|role|dnsZones)$
-    version: 3.9.0
+    version: 3.9.2
 ---
 apiVersion: traefik.io/v1alpha1
 kind: TraefikService
@@ -99,8 +101,8 @@ sops:
             aERkOXVxc2tiT3o3cWV6U1VLQVpMQnMKiSfSGkJ/Rk0aCQP4eg/FjVe6SWSRtVn7
             C1ApTHeMMM/U/8kt0+IPhKiq2ryYCd8xHyYiJv6JpJQylW1xASTSKg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-10-11T22:20:39Z"
-    mac: ENC[AES256_GCM,data:NSa/OIRQwh7AOhEnm9sm4xxGwmHTVI6A5Kh/MuTXNgsaQp9z4CKf7cEzVj3BdZoq2N9F0TryA6mmwGUNMDcrQ8hS5Gqvn12q7wdMnzVMOGSYcg5jRDc64nu2L3TRQgsh/+z11oOyqn8yNTa1pZnBwChxavSknPwn1/9Yu1uHC3U=,iv:fB6Zt6eMtjkmC0qso8ywb1zkNy3OrhqBx8aTHwU1gQ8=,tag:gdf9hv6DsiPxSANigD/dVA==,type:str]
+    lastmodified: "2025-02-04T23:14:43Z"
+    mac: ENC[AES256_GCM,data:d7/CFt4LayuBUOMrw3VapA3VGk1+Eu4CLzTolMj/DadI6sycARhSukMqZtIckfINpIQ+AZFUWj9/vlm1IISwMoInsmPswyTyYJfKhyCJPXssQOVdS/FBea05g3uDMIhVuAD5HXvYo5LrOEN91dd6trAmkk1yHtGG7fKcZWiskfM=,iv:FXYCWWOh7lv7E+zUgxwSv8sxgJfjfVbSQxELxUExefs=,tag:f6mrEDFSzlL/ANjyLlSvCw==,type:str]
     pgp:
         - created_at: "2024-10-11T22:20:39Z"
           enc: |-
@@ -123,7 +125,7 @@ sops:
             -----END PGP MESSAGE-----
           fp: 6D3FE55384B558E06A1BA364586EFA784A32C981
     encrypted_regex: ^(externalName|external-dns.alpha.kubernetes.io/hostname|cert-manager.io/common-name|sans|main|match|external-dns.alpha.kubernetes.io/target|dnsNames|commonName|data|stringData|dnsNames|email|accessKeyID|region|hostedZoneID|role|dnsZones)$
-    version: 3.9.0
+    version: 3.9.2
 ---
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
@@ -146,6 +148,7 @@ spec:
         - kind: Rule
           match: ENC[AES256_GCM,data:HSm7Fww2c4z30E7IeiEAqDEKu0naHW7CRS8Z+z+VTM6Fk+EPSwScuc5K3DMIILyBKAL6OskCIcZjme22xg==,iv:vyWHgAMoKbAih1J7/YaYATFqJidozxBiBEIBPAJWotw=,tag:GU17Xg87tTGHhw4kDUNofg==,type:str]
           middlewares:
+            - name: redirect-to-https
             - name: rate-limit
               namespace: traefik
           services:
@@ -176,8 +179,8 @@ sops:
             aERkOXVxc2tiT3o3cWV6U1VLQVpMQnMKiSfSGkJ/Rk0aCQP4eg/FjVe6SWSRtVn7
             C1ApTHeMMM/U/8kt0+IPhKiq2ryYCd8xHyYiJv6JpJQylW1xASTSKg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-10-11T22:20:39Z"
-    mac: ENC[AES256_GCM,data:NSa/OIRQwh7AOhEnm9sm4xxGwmHTVI6A5Kh/MuTXNgsaQp9z4CKf7cEzVj3BdZoq2N9F0TryA6mmwGUNMDcrQ8hS5Gqvn12q7wdMnzVMOGSYcg5jRDc64nu2L3TRQgsh/+z11oOyqn8yNTa1pZnBwChxavSknPwn1/9Yu1uHC3U=,iv:fB6Zt6eMtjkmC0qso8ywb1zkNy3OrhqBx8aTHwU1gQ8=,tag:gdf9hv6DsiPxSANigD/dVA==,type:str]
+    lastmodified: "2025-02-04T23:14:43Z"
+    mac: ENC[AES256_GCM,data:d7/CFt4LayuBUOMrw3VapA3VGk1+Eu4CLzTolMj/DadI6sycARhSukMqZtIckfINpIQ+AZFUWj9/vlm1IISwMoInsmPswyTyYJfKhyCJPXssQOVdS/FBea05g3uDMIhVuAD5HXvYo5LrOEN91dd6trAmkk1yHtGG7fKcZWiskfM=,iv:FXYCWWOh7lv7E+zUgxwSv8sxgJfjfVbSQxELxUExefs=,tag:f6mrEDFSzlL/ANjyLlSvCw==,type:str]
     pgp:
         - created_at: "2024-10-11T22:20:39Z"
           enc: |-
@@ -200,7 +203,7 @@ sops:
             -----END PGP MESSAGE-----
           fp: 6D3FE55384B558E06A1BA364586EFA784A32C981
     encrypted_regex: ^(externalName|external-dns.alpha.kubernetes.io/hostname|cert-manager.io/common-name|sans|main|match|external-dns.alpha.kubernetes.io/target|dnsNames|commonName|data|stringData|dnsNames|email|accessKeyID|region|hostedZoneID|role|dnsZones)$
-    version: 3.9.0
+    version: 3.9.2
 ---
 apiVersion: traefik.io/v1alpha1
 kind: TraefikService
@@ -229,8 +232,8 @@ sops:
             aERkOXVxc2tiT3o3cWV6U1VLQVpMQnMKiSfSGkJ/Rk0aCQP4eg/FjVe6SWSRtVn7
             C1ApTHeMMM/U/8kt0+IPhKiq2ryYCd8xHyYiJv6JpJQylW1xASTSKg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-10-11T22:20:39Z"
-    mac: ENC[AES256_GCM,data:NSa/OIRQwh7AOhEnm9sm4xxGwmHTVI6A5Kh/MuTXNgsaQp9z4CKf7cEzVj3BdZoq2N9F0TryA6mmwGUNMDcrQ8hS5Gqvn12q7wdMnzVMOGSYcg5jRDc64nu2L3TRQgsh/+z11oOyqn8yNTa1pZnBwChxavSknPwn1/9Yu1uHC3U=,iv:fB6Zt6eMtjkmC0qso8ywb1zkNy3OrhqBx8aTHwU1gQ8=,tag:gdf9hv6DsiPxSANigD/dVA==,type:str]
+    lastmodified: "2025-02-04T23:14:43Z"
+    mac: ENC[AES256_GCM,data:d7/CFt4LayuBUOMrw3VapA3VGk1+Eu4CLzTolMj/DadI6sycARhSukMqZtIckfINpIQ+AZFUWj9/vlm1IISwMoInsmPswyTyYJfKhyCJPXssQOVdS/FBea05g3uDMIhVuAD5HXvYo5LrOEN91dd6trAmkk1yHtGG7fKcZWiskfM=,iv:FXYCWWOh7lv7E+zUgxwSv8sxgJfjfVbSQxELxUExefs=,tag:f6mrEDFSzlL/ANjyLlSvCw==,type:str]
     pgp:
         - created_at: "2024-10-11T22:20:39Z"
           enc: |-
@@ -253,4 +256,4 @@ sops:
             -----END PGP MESSAGE-----
           fp: 6D3FE55384B558E06A1BA364586EFA784A32C981
     encrypted_regex: ^(externalName|external-dns.alpha.kubernetes.io/hostname|cert-manager.io/common-name|sans|main|match|external-dns.alpha.kubernetes.io/target|dnsNames|commonName|data|stringData|dnsNames|email|accessKeyID|region|hostedZoneID|role|dnsZones)$
-    version: 3.9.0
+    version: 3.9.2

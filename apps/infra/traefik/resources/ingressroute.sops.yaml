@@ -18,6 +18,7 @@ spec:
         - kind: Rule
           match: ENC[AES256_GCM,data:/fcxSgIU0Or7VGB9aj0bB5j48ldNIRokwvEQuf0oSD5lD/JxzohQHXP4vP+JaHgo0eRCkm59DV7bt6Sjb63m+WQ1FE3W5Yc+/yEClRCLRfV0N16iEW/QLrsbirc=,iv:cSAV1eetw5pPXrVfdjnqT0F6+p2Cj8PcS7PBEBOt1pk=,tag:Ji4r8u1R46wAgR//1WBo8w==,type:str]
           middlewares:
+            - name: redirect-to-https
             - name: chain-traefik-dashboard
               namespace: traefik
           services:
@@ -47,8 +48,8 @@ sops:
             a3lyeUlKSHI0YkNudms4dytNdHBkcUEKac1EIKX76mUBl0uuyndLfvqR+OE7mMaf
             OqKywZH8Fljl5x9LMAy9N76qwfb4eaSAAyb+7qJoV8l4sScc1SaUWw==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-10-11T22:23:10Z"
-    mac: ENC[AES256_GCM,data:Hahjx6m0spXapKyGqcD8QCet2Oo68fmmbowZhLRhiOoYnlI/UeGPrh2SSuLNO69hNnETRVQhk9hbxBvhEtKsme5VLP7Rxfm+bJxePitzL14HUqirpHQGkaawqEVIXUgl13357JY813SAs0uBgLP+GqpHsz3mFj05+XSEHgu1wH0=,iv:tBolWcSkcF+SOP9rs7Npys6RXKNrTsnxWc7NOkza4is=,tag:RW1XzfcZydb15LsRjdv38A==,type:str]
+    lastmodified: "2025-02-04T23:12:23Z"
+    mac: ENC[AES256_GCM,data:ifdOeCErZ98fo7TaeUo3JXtaryhXMVz8HjGvY4dalRZXh9wiDG4MwIAnQjVuT8cXIG3Y7VijMSU4Lh+lWQVVXLKM2nPmxuiOj/MtoPnnlU24pIa9ARb2h5jddWYEHFU50Gw7J59BsND3narM5URoc95Lp/S8iKHIUXFsgfpFzOY=,iv:Mh7HEuJLZ8hB06s8n0yy/i9om0ABtDOlXMw/BPtkRuo=,tag:JrBMWYJZZHBgBDXR7PHdZg==,type:str]
     pgp:
         - created_at: "2024-10-11T22:23:10Z"
           enc: |-
@@ -71,4 +72,4 @@ sops:
             -----END PGP MESSAGE-----
           fp: 6D3FE55384B558E06A1BA364586EFA784A32C981
     encrypted_regex: ^(externalName|external-dns.alpha.kubernetes.io/hostname|cert-manager.io/common-name|sans|main|match|external-dns.alpha.kubernetes.io/target|dnsNames|commonName|data|stringData|dnsNames|email|accessKeyID|region|hostedZoneID|role|dnsZones)$
-    version: 3.9.0
+    version: 3.9.2
