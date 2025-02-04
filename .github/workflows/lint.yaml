@@ -2,9 +2,9 @@
 name: Lint
 
 on:
-  push:
-    branches:
-    - "renovate/**"
+  # push:
+  #   branches:
+  #   - "renovate/**"
   workflow_dispatch:
   pull_request:
     branches:
@@ -20,11 +20,11 @@ jobs:
     runs-on: [ubuntu-latest]
     steps:
     - name: Checkout
-      uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+      uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
       with:
         fetch-depth: 0
     - name: MegaLinter
-      uses: oxsecurity/megalinter@ec124f7998718d79379a3c5b39f5359952baf21d # v8.4.2
+      uses: oxsecurity/megalinter@ec124f7998718d79379a3c5b39f5359952baf21d
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         PRINT_ALPACA: false
