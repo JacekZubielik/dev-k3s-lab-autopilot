@@ -122,8 +122,8 @@ ingressRoute:
     labels: {}
     matchRule: PathPrefix(`/dashboard`) || PathPrefix(`/api`)
     services:
-      - name: api@internal
-        kind: TraefikService
+    - name: api@internal
+      kind: TraefikService
     entryPoints: ["traefik"]
     middlewares: []
     tls: {}
@@ -133,8 +133,8 @@ ingressRoute:
     labels: {}
     matchRule: PathPrefix(`/ping`)
     services:
-      - name: ping@internal
-        kind: TraefikService
+    - name: ping@internal
+      kind: TraefikService
     entryPoints: ["traefik"]
     middlewares: []
     tls: {}
@@ -462,8 +462,8 @@ ports:
     exposedPort: 9000
     protocol: TCP
   web:
-    redirectTo:
-      port: websecure
+    # redirectTo:
+    #   port: websecure
     port: 80
     expose:
       default: true
@@ -611,9 +611,9 @@ affinity: {}
 nodeSelector: {}
 # tolerations: []
 tolerations:
-  - key: node-role.kubernetes.io/control-plane
-    operator: Equal
-    effect: NoSchedule
+- key: node-role.kubernetes.io/control-plane
+  operator: Equal
+  effect: NoSchedule
 topologySpreadConstraints: []
 # This example topologySpreadConstraints forces the scheduler to put traefik pods
 # on nodes where no other traefik pods are scheduled.
