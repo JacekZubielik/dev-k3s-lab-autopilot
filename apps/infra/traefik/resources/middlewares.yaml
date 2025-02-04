@@ -163,7 +163,7 @@ metadata:
 spec:
   errors:
     status:
-      - "500-599"
+    - "500-599"
     query: /{status}.html
     service:
       name: whoami
@@ -214,7 +214,7 @@ spec:
       X-Forwarded-Proto: https
     referrerPolicy: "same-origin"
     hostsProxyHeaders:
-      - "X-Forwarded-Host"
+    - "X-Forwarded-Host"
     customRequestHeaders:
       X-Forwarded-Proto: "https"
     contentTypeNosniff: true
