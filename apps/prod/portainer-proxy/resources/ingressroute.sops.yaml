@@ -19,7 +19,8 @@ spec:
           # || HostRegexp(`{subdomain:[a-z0-9]+}.anotherlife.org.pl`) && PathPrefix(`/outpost.goauthentik.io/`)
           match: ENC[AES256_GCM,data:FDNBeRTaVqr66Fof5mWyCTTy52fyXSU7Lk5yOzc6ZxlTb4LRM1Dheo8=,iv:ygoxC0A6COS5U08BIkl7rogt2iO6IJ4u1vn5gXNUKHM=,tag:Lyk5mHHZR8CAS7d7MhMkKw==,type:str]
           priority: 10
-          # middlewares:
+          middlewares:
+            - name: redirect-to-https
           #   - name: chain-authentik
           #     namespace: traefik
           services:
@@ -58,8 +59,8 @@ sops:
             TU9nSHVTcTRaaEhqTndZdlpheVdXdEUKmBiNBeMcm7AYz/zfYBuvJuwgOyTBY5d9
             aadwp3W7aReQdNSFQ+yZdBn+cQPE6RDPFNuWU/8hggCRdr/QyZdLUA==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-10-08T22:51:13Z"
-    mac: ENC[AES256_GCM,data:bJ75J9kddDCTbnC9TvyjGgDNuSRfP3UtmQI9Xw1+K39+5KvswU9mcrLGYdcoAtsNVH9P83aSjtbXHcokS8dnyQ8FZPHIDFilnijEd0nAKUbHUQ1JTiFt72pnPo0WIPrvv07mibgWgKFjnsm4kp8yXIUhLMGWCu0ajTesBn2vKTs=,iv:hppFds6jgprGRpKQXVqU7pJV+TCtqRa2Nr/d6UUI6oY=,tag:jq7fIVmNVmSDylKscFozfA==,type:str]
+    lastmodified: "2025-02-04T23:19:32Z"
+    mac: ENC[AES256_GCM,data:d9bIL+VO2vIOZOH6jivxr0lh5CebPjnJLa5lnuRNx0Mkb4JJ48s/5vzvelvUP5zCpIjeXnH2rgBqdTPZg4t89jLBPL03MonKXeb6+AjJBL/n5gsH3iETeUOJjfY0NnoQ11ytaYxlbHtDczrkU4qEBU/GhT6cL90Mz/A4iMtImFQ=,iv:pR8ovQODDPnvvCRYHLvnK8FITIXho5QWwN6OMmMnUSU=,tag:AcSZpWWC5qnxYLVspFRpMA==,type:str]
     pgp:
         - created_at: "2024-10-04T01:04:18Z"
           enc: |-
@@ -82,4 +83,4 @@ sops:
             -----END PGP MESSAGE-----
           fp: 6D3FE55384B558E06A1BA364586EFA784A32C981
     encrypted_regex: ^(externalName|external-dns.alpha.kubernetes.io/hostname|cert-manager.io/common-name|sans|main|match|external-dns.alpha.kubernetes.io/target|dnsNames|commonName|data|stringData|dnsNames|email|accessKeyID|region|hostedZoneID|role|dnsZones)$
-    version: 3.9.0
+    version: 3.9.2

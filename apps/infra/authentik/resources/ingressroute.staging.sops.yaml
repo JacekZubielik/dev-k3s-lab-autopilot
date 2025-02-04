@@ -18,6 +18,7 @@ spec:
         - kind: Rule
           match: ENC[AES256_GCM,data:FxrTrcVDKGSlDZC6ONV7TY8p23REgbMJd+uQc5m1SoRl5j2W,iv:Mtig4fajKzqeEfUQQ5tMcTK1y1E9ImDvVidyXKs2xlU=,tag:vr2kT1oKHNPSd4k551pIag==,type:str]
           middlewares:
+            - name: redirect-to-https
             - name: rate-limit
               namespace: traefik
           services:
@@ -48,8 +49,8 @@ sops:
             RDRpNXArSk9BMXAxTzNWNlF2RE5tanMKtwPkVONnd3E6Dp5GsTFuhSI4gyi/jLwe
             rjNx3yyqAJsdcfS9hN76/axGxLtzKho4iON9a8JcjnWwCahEgQWeWg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-10-11T22:16:15Z"
-    mac: ENC[AES256_GCM,data:TS/dxRhW9zJtJhnnXfz+e9QNZPkIUEcxbxlg3WmMgaqO0+iCjjNc4K/pRhhtIKdIaNS7RL9B7oxaGpwpboh3EmtFNOKpbOpVM+cCbL+smqW2PBd0wYt02BJ9+albXItsh6DNXMGtXp3EMH/Lbcdl2Zz+8ZAjcTCoRwFvIa7eq1g=,iv:TCuHkHsoMG5Af90qlt165nl42XIZwJ1/E2GZw8+hVS0=,tag:eHW/nHrvjHX39yL14z+Hzg==,type:str]
+    lastmodified: "2025-02-04T23:17:02Z"
+    mac: ENC[AES256_GCM,data:bnNH7SwSFlUCN+ybSvlLGbU5Lhcui0RZoXnAlGJj74M4J8YKa84mbt+C21r30tnkgNfnY+zkYht7FMIxyZzveBAu3x+S6K2siLmI0RYbqxNmKxxWVRQ0DxaUhckAEzvToReloyWvsSrs+J+4rhqyX6qajKC6ozjb9Q/ATtHSues=,iv:YL3L9ym70ZeGXjdzsfxvhWvy8ErOEkdNCEu0X1Angbg=,tag:A3gFvG7Y4bDlyFHMpWWgxA==,type:str]
     pgp:
         - created_at: "2024-10-11T22:16:15Z"
           enc: |-
@@ -72,7 +73,7 @@ sops:
             -----END PGP MESSAGE-----
           fp: 6D3FE55384B558E06A1BA364586EFA784A32C981
     encrypted_regex: ^(externalName|external-dns.alpha.kubernetes.io/hostname|cert-manager.io/common-name|sans|main|match|external-dns.alpha.kubernetes.io/target|dnsNames|commonName|data|stringData|dnsNames|email|accessKeyID|region|hostedZoneID|role|dnsZones)$
-    version: 3.9.0
+    version: 3.9.2
 ---
 apiVersion: traefik.io/v1alpha1
 kind: TraefikService
@@ -102,8 +103,8 @@ sops:
             RDRpNXArSk9BMXAxTzNWNlF2RE5tanMKtwPkVONnd3E6Dp5GsTFuhSI4gyi/jLwe
             rjNx3yyqAJsdcfS9hN76/axGxLtzKho4iON9a8JcjnWwCahEgQWeWg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-10-11T22:16:15Z"
-    mac: ENC[AES256_GCM,data:TS/dxRhW9zJtJhnnXfz+e9QNZPkIUEcxbxlg3WmMgaqO0+iCjjNc4K/pRhhtIKdIaNS7RL9B7oxaGpwpboh3EmtFNOKpbOpVM+cCbL+smqW2PBd0wYt02BJ9+albXItsh6DNXMGtXp3EMH/Lbcdl2Zz+8ZAjcTCoRwFvIa7eq1g=,iv:TCuHkHsoMG5Af90qlt165nl42XIZwJ1/E2GZw8+hVS0=,tag:eHW/nHrvjHX39yL14z+Hzg==,type:str]
+    lastmodified: "2025-02-04T23:17:02Z"
+    mac: ENC[AES256_GCM,data:bnNH7SwSFlUCN+ybSvlLGbU5Lhcui0RZoXnAlGJj74M4J8YKa84mbt+C21r30tnkgNfnY+zkYht7FMIxyZzveBAu3x+S6K2siLmI0RYbqxNmKxxWVRQ0DxaUhckAEzvToReloyWvsSrs+J+4rhqyX6qajKC6ozjb9Q/ATtHSues=,iv:YL3L9ym70ZeGXjdzsfxvhWvy8ErOEkdNCEu0X1Angbg=,tag:A3gFvG7Y4bDlyFHMpWWgxA==,type:str]
     pgp:
         - created_at: "2024-10-11T22:16:15Z"
           enc: |-
@@ -126,4 +127,4 @@ sops:
             -----END PGP MESSAGE-----
           fp: 6D3FE55384B558E06A1BA364586EFA784A32C981
     encrypted_regex: ^(externalName|external-dns.alpha.kubernetes.io/hostname|cert-manager.io/common-name|sans|main|match|external-dns.alpha.kubernetes.io/target|dnsNames|commonName|data|stringData|dnsNames|email|accessKeyID|region|hostedZoneID|role|dnsZones)$
-    version: 3.9.0
+    version: 3.9.2
