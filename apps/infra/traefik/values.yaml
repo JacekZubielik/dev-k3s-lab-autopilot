@@ -462,8 +462,8 @@ ports:
     exposedPort: 9000
     protocol: TCP
   web:
-    redirectTo:
-      port: websecure
+    # redirectTo:
+    #   port: websecure
     port: 80
     expose:
       default: true
