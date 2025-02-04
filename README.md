@@ -16,6 +16,8 @@ Please check the following repository for more information:
 | [dev-k3s-lab-autopilot](https://github.com/JacekZubielik/dev-k3s-lab-autopilot) | Deploying applications to the clusters with  ArgoCD Autopilot.           |
 | [jz-helm-charts](https://github.com/JacekZubielik/jz-helm-charts)        | Personal Helm charts for applications deployed to the clusters           |
 
+[![Play movie](assets/images/play.png)](https://odysee.com/$/embed/@dev-k3s-lab-autopilot:6/dev-k3s-lab-autopilot:3?r=2exiFW5MjKi3cxzuB8VRhiE6E8khvcP8)
+
 # Sensitive data
 
 Sensitive data in this project is encrypted using SOPS - [Secrets OPerationS](https://github.com/mozilla/sops), which integrates with both **age** and **GPG** encryption tools.
@@ -53,10 +55,10 @@ This application will then manage the **ArgoCD** installation autonomously, so y
    └── storage.yaml
 ```
 
-[1]  `Makefile` starts the implementation.
-[2]  `/bootstrap`
-[3]  `/projects` contains ApplicationSets for deploying applications.
-[4]   `/apps` allows controlling the order of application deployment in each **ApplicationSet**:  `infra`,  `prod`, `dev`
+- [1] `Makefile` starts the implementation.
+- [2] `/bootstrap`
+- [3] `/projects` contains ApplicationSets for deploying applications.
+- [4] `/apps` allows controlling the order of application deployment in each **ApplicationSet**:  `infra`,  `prod`, `dev`
 
 ## Progressive Syncs
 
@@ -73,8 +75,6 @@ This application will then manage the **ArgoCD** installation autonomously, so y
 **AllAtOnce**: The default strategy where all applications are updated simultaneously.
 
 **RollingSync**: Allows grouping applications by labels and sequentially applying changes to each group, where all applications in a group must be healthy before moving on to the next group.
-
-[![Play movie](assets/images/play.png)](https://odysee.com/$/embed/@dev-k3s-lab-autopilot:6/dev-k3s-lab-autopilot:3?r=2exiFW5MjKi3cxzuB8VRhiE6E8khvcP8)
 
 ## ApplicationSet
 
