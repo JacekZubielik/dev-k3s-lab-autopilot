@@ -19,6 +19,7 @@ spec:
           match: ENC[AES256_GCM,data:rtKukLWnr1vyJbrsCkyZt8i/pPlDRAyfP9oExruI7WdtmBt1RuYa7hj8+/Sd,iv:XcpVECWqNXjLm7gYj1mqFVxZEQe0UgraR6qUlvPDgEU=,tag:hGEfU7vOVOS5Ooqoiflhqw==,type:str]
           middlewares:
             - name: redirect-to-https
+              namespace: traefik
             - name: chain-traefik-dashboard
               namespace: traefik
           services:
@@ -49,8 +50,8 @@ sops:
             ejRFSmFNeVNCVU9JZU5mT2VBRlllc0UKvnWf8KU+ck7IMt8AGWsaLDmiQFgXe8Ai
             D8oRL53PXgrRoeTe2UYM16SUs3AqkumHUT7nxDam7PqyazSsQmAYKA==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-02-04T23:15:59Z"
-    mac: ENC[AES256_GCM,data:UOckHXiT0Cmcuo+bwjij4pfe9OQ+grE+XShZIoQrAMRENBgfqNhcvmv0KJpFPQJHeVbjBz3Fvc0M6oJ+xpC0RRGGFvqO6VZgq4YI0SGMw9bKVDI3UtRVOBZ9hl6vmthgXOBdaoWhj7st/ibK5TyE3V7Ptg7h4BsKm5nqbUQXvO8=,iv:G8U4xKZD/+kQRT02MeaAHCPZ+Js8PVzXG2d5ddqu98M=,tag:l5aGOqmRbp+gAist09892g==,type:str]
+    lastmodified: "2025-02-05T00:22:03Z"
+    mac: ENC[AES256_GCM,data:/RLa2Twd4ubJhJRyjRhvhK6Ok1sou/E0k2IrYxthKHQ2dM3A6mEoa0KRv1fB3KgRzrnRFLq7yJpVlpqST27CJg+6A/yBzyehql5pxo6Pa6DmG0XBmJ/V+fgNf2e8MWFWectomVK7EZ4LPjjQtMCWDlrUXlUePw8jTU3sv5eYoWc=,iv:XO8KcsDvyWA7VuoM/CJpKKOjDAdaZQRGy3IdsSci0QE=,tag:5fHdwuHghlHRITHmS6HBBg==,type:str]
     pgp:
         - created_at: "2024-10-02T21:15:31Z"
           enc: |-
@@ -103,8 +104,8 @@ sops:
             ejRFSmFNeVNCVU9JZU5mT2VBRlllc0UKvnWf8KU+ck7IMt8AGWsaLDmiQFgXe8Ai
             D8oRL53PXgrRoeTe2UYM16SUs3AqkumHUT7nxDam7PqyazSsQmAYKA==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-02-04T23:15:59Z"
-    mac: ENC[AES256_GCM,data:UOckHXiT0Cmcuo+bwjij4pfe9OQ+grE+XShZIoQrAMRENBgfqNhcvmv0KJpFPQJHeVbjBz3Fvc0M6oJ+xpC0RRGGFvqO6VZgq4YI0SGMw9bKVDI3UtRVOBZ9hl6vmthgXOBdaoWhj7st/ibK5TyE3V7Ptg7h4BsKm5nqbUQXvO8=,iv:G8U4xKZD/+kQRT02MeaAHCPZ+Js8PVzXG2d5ddqu98M=,tag:l5aGOqmRbp+gAist09892g==,type:str]
+    lastmodified: "2025-02-05T00:22:03Z"
+    mac: ENC[AES256_GCM,data:/RLa2Twd4ubJhJRyjRhvhK6Ok1sou/E0k2IrYxthKHQ2dM3A6mEoa0KRv1fB3KgRzrnRFLq7yJpVlpqST27CJg+6A/yBzyehql5pxo6Pa6DmG0XBmJ/V+fgNf2e8MWFWectomVK7EZ4LPjjQtMCWDlrUXlUePw8jTU3sv5eYoWc=,iv:XO8KcsDvyWA7VuoM/CJpKKOjDAdaZQRGy3IdsSci0QE=,tag:5fHdwuHghlHRITHmS6HBBg==,type:str]
     pgp:
         - created_at: "2024-10-02T21:15:31Z"
           enc: |-
@@ -180,8 +181,8 @@ sops:
             ejRFSmFNeVNCVU9JZU5mT2VBRlllc0UKvnWf8KU+ck7IMt8AGWsaLDmiQFgXe8Ai
             D8oRL53PXgrRoeTe2UYM16SUs3AqkumHUT7nxDam7PqyazSsQmAYKA==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-02-04T23:15:59Z"
-    mac: ENC[AES256_GCM,data:UOckHXiT0Cmcuo+bwjij4pfe9OQ+grE+XShZIoQrAMRENBgfqNhcvmv0KJpFPQJHeVbjBz3Fvc0M6oJ+xpC0RRGGFvqO6VZgq4YI0SGMw9bKVDI3UtRVOBZ9hl6vmthgXOBdaoWhj7st/ibK5TyE3V7Ptg7h4BsKm5nqbUQXvO8=,iv:G8U4xKZD/+kQRT02MeaAHCPZ+Js8PVzXG2d5ddqu98M=,tag:l5aGOqmRbp+gAist09892g==,type:str]
+    lastmodified: "2025-02-05T00:22:03Z"
+    mac: ENC[AES256_GCM,data:/RLa2Twd4ubJhJRyjRhvhK6Ok1sou/E0k2IrYxthKHQ2dM3A6mEoa0KRv1fB3KgRzrnRFLq7yJpVlpqST27CJg+6A/yBzyehql5pxo6Pa6DmG0XBmJ/V+fgNf2e8MWFWectomVK7EZ4LPjjQtMCWDlrUXlUePw8jTU3sv5eYoWc=,iv:XO8KcsDvyWA7VuoM/CJpKKOjDAdaZQRGy3IdsSci0QE=,tag:5fHdwuHghlHRITHmS6HBBg==,type:str]
     pgp:
         - created_at: "2024-10-02T21:15:31Z"
           enc: |-
@@ -234,8 +235,8 @@ sops:
             ejRFSmFNeVNCVU9JZU5mT2VBRlllc0UKvnWf8KU+ck7IMt8AGWsaLDmiQFgXe8Ai
             D8oRL53PXgrRoeTe2UYM16SUs3AqkumHUT7nxDam7PqyazSsQmAYKA==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-02-04T23:15:59Z"
-    mac: ENC[AES256_GCM,data:UOckHXiT0Cmcuo+bwjij4pfe9OQ+grE+XShZIoQrAMRENBgfqNhcvmv0KJpFPQJHeVbjBz3Fvc0M6oJ+xpC0RRGGFvqO6VZgq4YI0SGMw9bKVDI3UtRVOBZ9hl6vmthgXOBdaoWhj7st/ibK5TyE3V7Ptg7h4BsKm5nqbUQXvO8=,iv:G8U4xKZD/+kQRT02MeaAHCPZ+Js8PVzXG2d5ddqu98M=,tag:l5aGOqmRbp+gAist09892g==,type:str]
+    lastmodified: "2025-02-05T00:22:03Z"
+    mac: ENC[AES256_GCM,data:/RLa2Twd4ubJhJRyjRhvhK6Ok1sou/E0k2IrYxthKHQ2dM3A6mEoa0KRv1fB3KgRzrnRFLq7yJpVlpqST27CJg+6A/yBzyehql5pxo6Pa6DmG0XBmJ/V+fgNf2e8MWFWectomVK7EZ4LPjjQtMCWDlrUXlUePw8jTU3sv5eYoWc=,iv:XO8KcsDvyWA7VuoM/CJpKKOjDAdaZQRGy3IdsSci0QE=,tag:5fHdwuHghlHRITHmS6HBBg==,type:str]
     pgp:
         - created_at: "2024-10-02T21:15:31Z"
           enc: |-
@@ -311,8 +312,8 @@ sops:
             ejRFSmFNeVNCVU9JZU5mT2VBRlllc0UKvnWf8KU+ck7IMt8AGWsaLDmiQFgXe8Ai
             D8oRL53PXgrRoeTe2UYM16SUs3AqkumHUT7nxDam7PqyazSsQmAYKA==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-02-04T23:15:59Z"
-    mac: ENC[AES256_GCM,data:UOckHXiT0Cmcuo+bwjij4pfe9OQ+grE+XShZIoQrAMRENBgfqNhcvmv0KJpFPQJHeVbjBz3Fvc0M6oJ+xpC0RRGGFvqO6VZgq4YI0SGMw9bKVDI3UtRVOBZ9hl6vmthgXOBdaoWhj7st/ibK5TyE3V7Ptg7h4BsKm5nqbUQXvO8=,iv:G8U4xKZD/+kQRT02MeaAHCPZ+Js8PVzXG2d5ddqu98M=,tag:l5aGOqmRbp+gAist09892g==,type:str]
+    lastmodified: "2025-02-05T00:22:03Z"
+    mac: ENC[AES256_GCM,data:/RLa2Twd4ubJhJRyjRhvhK6Ok1sou/E0k2IrYxthKHQ2dM3A6mEoa0KRv1fB3KgRzrnRFLq7yJpVlpqST27CJg+6A/yBzyehql5pxo6Pa6DmG0XBmJ/V+fgNf2e8MWFWectomVK7EZ4LPjjQtMCWDlrUXlUePw8jTU3sv5eYoWc=,iv:XO8KcsDvyWA7VuoM/CJpKKOjDAdaZQRGy3IdsSci0QE=,tag:5fHdwuHghlHRITHmS6HBBg==,type:str]
     pgp:
         - created_at: "2024-10-02T21:15:31Z"
           enc: |-
@@ -365,8 +366,8 @@ sops:
             ejRFSmFNeVNCVU9JZU5mT2VBRlllc0UKvnWf8KU+ck7IMt8AGWsaLDmiQFgXe8Ai
             D8oRL53PXgrRoeTe2UYM16SUs3AqkumHUT7nxDam7PqyazSsQmAYKA==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-02-04T23:15:59Z"
-    mac: ENC[AES256_GCM,data:UOckHXiT0Cmcuo+bwjij4pfe9OQ+grE+XShZIoQrAMRENBgfqNhcvmv0KJpFPQJHeVbjBz3Fvc0M6oJ+xpC0RRGGFvqO6VZgq4YI0SGMw9bKVDI3UtRVOBZ9hl6vmthgXOBdaoWhj7st/ibK5TyE3V7Ptg7h4BsKm5nqbUQXvO8=,iv:G8U4xKZD/+kQRT02MeaAHCPZ+Js8PVzXG2d5ddqu98M=,tag:l5aGOqmRbp+gAist09892g==,type:str]
+    lastmodified: "2025-02-05T00:22:03Z"
+    mac: ENC[AES256_GCM,data:/RLa2Twd4ubJhJRyjRhvhK6Ok1sou/E0k2IrYxthKHQ2dM3A6mEoa0KRv1fB3KgRzrnRFLq7yJpVlpqST27CJg+6A/yBzyehql5pxo6Pa6DmG0XBmJ/V+fgNf2e8MWFWectomVK7EZ4LPjjQtMCWDlrUXlUePw8jTU3sv5eYoWc=,iv:XO8KcsDvyWA7VuoM/CJpKKOjDAdaZQRGy3IdsSci0QE=,tag:5fHdwuHghlHRITHmS6HBBg==,type:str]
     pgp:
         - created_at: "2024-10-02T21:15:31Z"
           enc: |-
