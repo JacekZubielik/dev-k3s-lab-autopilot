@@ -24,7 +24,7 @@ generatorOptions:
 
 helmCharts:
 - name: external-dns
-  version: 8.7.3 # 8.3.12
+  version: 8.7.4 # 8.3.12
   repo: https://charts.bitnami.com/bitnami
   includeCRDs: true
   namespace: external-dns
