@@ -20,6 +20,7 @@ spec:
           priority: 10
           middlewares:
             - name: redirect-to-https
+              namespace: traefik
             - name: chain-authentik
               namespace: traefik
             - name: svc-longhorn-headers
@@ -58,8 +59,8 @@ sops:
             WjRyaGRLajFlT21kdk1NdjFNM1VlRVUK4U2uiwDevsN9/FnZeOXxiNM9UyJQR5Pf
             VeGWFXNHdLsjLJJw4hOpf0jYIcAzgAZoav5jC+YVBAI1fwQnBnvWmg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-02-04T23:15:08Z"
-    mac: ENC[AES256_GCM,data:2x0qoxr4e5jaS3Liu8YHiZFmOVhLY3+aUs91mnd5zdjD53UzvKivgKLTZnDUJd1LdJqRlGyEZRPyD4ikqXLDDQACcrj25MSoTOtrQYnIklpyqrC5u3srpXtKGGvydQvmnbsZNtTdU6kL83lSkA8FRwD4lC2KHnsRZ4VoGLSAE/w=,iv:GIsoVdw+HaMac+5GycTthuxg+y8YDbPu117tB+sH3Rg=,tag:8d7cJ1X8EWGhL2ybEzUzcA==,type:str]
+    lastmodified: "2025-02-05T00:46:09Z"
+    mac: ENC[AES256_GCM,data:mdk9nYOD7QdUwo6qmAG1MRGfqFqN31ZXKkPXvZNu49N7J/BYH6agqs10rPbuXT2SpqwLaIyOs9Mb3Efpw6aLZrlULut0coyj/AVpSfw5t3eKInlgSWPMEwkGMjxnR1Vk4+Twn1VVyxsIV/SbHE3kT8imyy6njdWJPBZ4Xjcz0To=,iv:ojpslJWrPWyJNVF136TC3hbWGzfJSU1dszl44nuv588=,tag:1dNmyBO2kmkpWSofdC2F8Q==,type:str]
     pgp:
         - created_at: "2024-10-09T17:25:19Z"
           enc: |-
@@ -112,8 +113,8 @@ sops:
             WjRyaGRLajFlT21kdk1NdjFNM1VlRVUK4U2uiwDevsN9/FnZeOXxiNM9UyJQR5Pf
             VeGWFXNHdLsjLJJw4hOpf0jYIcAzgAZoav5jC+YVBAI1fwQnBnvWmg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-02-04T23:15:08Z"
-    mac: ENC[AES256_GCM,data:2x0qoxr4e5jaS3Liu8YHiZFmOVhLY3+aUs91mnd5zdjD53UzvKivgKLTZnDUJd1LdJqRlGyEZRPyD4ikqXLDDQACcrj25MSoTOtrQYnIklpyqrC5u3srpXtKGGvydQvmnbsZNtTdU6kL83lSkA8FRwD4lC2KHnsRZ4VoGLSAE/w=,iv:GIsoVdw+HaMac+5GycTthuxg+y8YDbPu117tB+sH3Rg=,tag:8d7cJ1X8EWGhL2ybEzUzcA==,type:str]
+    lastmodified: "2025-02-05T00:46:09Z"
+    mac: ENC[AES256_GCM,data:mdk9nYOD7QdUwo6qmAG1MRGfqFqN31ZXKkPXvZNu49N7J/BYH6agqs10rPbuXT2SpqwLaIyOs9Mb3Efpw6aLZrlULut0coyj/AVpSfw5t3eKInlgSWPMEwkGMjxnR1Vk4+Twn1VVyxsIV/SbHE3kT8imyy6njdWJPBZ4Xjcz0To=,iv:ojpslJWrPWyJNVF136TC3hbWGzfJSU1dszl44nuv588=,tag:1dNmyBO2kmkpWSofdC2F8Q==,type:str]
     pgp:
         - created_at: "2024-10-09T17:25:19Z"
           enc: |-

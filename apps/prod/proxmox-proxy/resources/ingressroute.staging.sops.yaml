@@ -20,6 +20,7 @@ spec:
           priority: 10
           middlewares:
             - name: redirect-to-https
+              namespace: traefik
             - name: chain-traefik-dashboard
               namespace: traefik
           services:
@@ -51,8 +52,8 @@ sops:
             QXNEQ09HYnAraFpUS256bUNYVXcwb28Konu9qyR8+frl0pBNhWv3Pvh5+fVS21P7
             VZJ0AFUjRop5tA2TLLWLs1caJqIr4hF3nJB2PDcN16zBUUupU8AAXA==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-02-04T23:19:54Z"
-    mac: ENC[AES256_GCM,data:3qHdBqIKAdMq0w6JCzp0BC+DwfPL8W6l9bErIRaZPMy+fdSaxKS2xky2nCNCJHHHY/4r8vT3/XPYyHOVib9bRkBafq6gdb6n4NSaR34ot5nnxPvTTTbu3Lnw5GO5Tkt8nLYQAl0HzTpmZTelSYZbr1ZcV4Y/JnQRbZcJJ5EInXY=,iv:LfvB5PFbSz1vM6a1CZuQsRvBqsPa0uDlZXorAqvAvkg=,tag:R5hswZj1HqP/2jpRxC/Y4A==,type:str]
+    lastmodified: "2025-02-05T00:49:05Z"
+    mac: ENC[AES256_GCM,data:l/ljeZwHPKg5XmfraHIFqflb0bK00hLtmHPvJMjwqWPvx5pFlbKuGypY3K9LaEOInAcPE/hYimIEB+9MwLN4H73fOnHY6t/HPzcACzMqNUfnaTgRZplQCggUIY08pepYRRliTwHok5vH2SV5TR/3RhqUvhWbkv8lbJyzGdtYYgU=,iv:o4NcEbPsQsTDeagrSZy3pv41g9aDbg3Z0BJL5GuCEKA=,tag:tPPOPqqvIbr02Gmm888hkg==,type:str]
     pgp:
         - created_at: "2024-10-11T22:22:01Z"
           enc: |-

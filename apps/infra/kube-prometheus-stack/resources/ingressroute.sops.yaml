@@ -19,6 +19,7 @@ spec:
           match: ENC[AES256_GCM,data:HqpGKgWUdmshBhhgLDgOL8mOBRPnnymZnboSaCgpP6tM/BH85hd9oX9YdDpx,iv:WtPPO398eIegDaRTbSnx0fvVCzrHzkZD1GR/YcBvRrU=,tag:02HDKiNdwtngpp21k0AjCA==,type:str]
           middlewares:
             - name: redirect-to-https
+              namespace: traefik
           #   - name: chain-traefik-dashboard
           #     namespace: traefik
           services:
@@ -49,8 +50,8 @@ sops:
             SVFPTGgwZlZ1Wko2Qk5pUXZJZW1Db3MKFRfehTgu5toUTDiUS1rbG8mCQ6Nb/ouC
             hHjiRsf7hh5nNPxpoTYsnijQmYfnKFC87J8cfMYaD7MFyUUI/LDPAQ==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-02-04T23:16:36Z"
-    mac: ENC[AES256_GCM,data:mKLjZFdJuqhTxHRhs4adU4LmO29/jhwkXcREnK3CilPGS1JyN2MsXGh6AsnWSix9I9kHGpzApyu9t2slKGfJZfU/GEs0/r0cct2anUS7bxXPK8KbwKjtbgRXGR2/iQ+fPGmVMp6H6PUltbODdVJddDwYNL9SAJ6FqgV9MBGdiUk=,iv:3H/yea+J4oLLLgSNpePovi77iac9ApPvpISvo+NXKOM=,tag:Fgj3N572irX1LaBBvhaXGw==,type:str]
+    lastmodified: "2025-02-05T00:44:55Z"
+    mac: ENC[AES256_GCM,data:b+DdgcQi7AYcUOfixbt6+CxSd2wL764gBkRJrzVqCAbglItQxhrLMprNzKpD22WSDVaYdttRO1ZBR9JEjhpAsZw30Z4tC+JKtWenolsIuo7RNWfqj27uOf6C8MbUKb9tQ25JJLUsKm1r9cwfyqhKXr8AWwn0lWXyQ5TF7dre9F4=,iv:r4/m1C6H7uAWgV/nIlQFnVdmiZ+jiJtCrEThH0iQHQk=,tag:s04/3edKw7Qsab1lIaXZOw==,type:str]
     pgp:
         - created_at: "2024-10-03T23:39:55Z"
           enc: |-
@@ -103,8 +104,8 @@ sops:
             SVFPTGgwZlZ1Wko2Qk5pUXZJZW1Db3MKFRfehTgu5toUTDiUS1rbG8mCQ6Nb/ouC
             hHjiRsf7hh5nNPxpoTYsnijQmYfnKFC87J8cfMYaD7MFyUUI/LDPAQ==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-02-04T23:16:36Z"
-    mac: ENC[AES256_GCM,data:mKLjZFdJuqhTxHRhs4adU4LmO29/jhwkXcREnK3CilPGS1JyN2MsXGh6AsnWSix9I9kHGpzApyu9t2slKGfJZfU/GEs0/r0cct2anUS7bxXPK8KbwKjtbgRXGR2/iQ+fPGmVMp6H6PUltbODdVJddDwYNL9SAJ6FqgV9MBGdiUk=,iv:3H/yea+J4oLLLgSNpePovi77iac9ApPvpISvo+NXKOM=,tag:Fgj3N572irX1LaBBvhaXGw==,type:str]
+    lastmodified: "2025-02-05T00:44:55Z"
+    mac: ENC[AES256_GCM,data:b+DdgcQi7AYcUOfixbt6+CxSd2wL764gBkRJrzVqCAbglItQxhrLMprNzKpD22WSDVaYdttRO1ZBR9JEjhpAsZw30Z4tC+JKtWenolsIuo7RNWfqj27uOf6C8MbUKb9tQ25JJLUsKm1r9cwfyqhKXr8AWwn0lWXyQ5TF7dre9F4=,iv:r4/m1C6H7uAWgV/nIlQFnVdmiZ+jiJtCrEThH0iQHQk=,tag:s04/3edKw7Qsab1lIaXZOw==,type:str]
     pgp:
         - created_at: "2024-10-03T23:39:55Z"
           enc: |-
@@ -151,6 +152,7 @@ spec:
           priority: 10
           middlewares:
             - name: redirect-to-https
+              namespace: traefik
             - name: chain-authentik
               namespace: traefik
           services:
@@ -188,8 +190,8 @@ sops:
             SVFPTGgwZlZ1Wko2Qk5pUXZJZW1Db3MKFRfehTgu5toUTDiUS1rbG8mCQ6Nb/ouC
             hHjiRsf7hh5nNPxpoTYsnijQmYfnKFC87J8cfMYaD7MFyUUI/LDPAQ==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-02-04T23:16:36Z"
-    mac: ENC[AES256_GCM,data:mKLjZFdJuqhTxHRhs4adU4LmO29/jhwkXcREnK3CilPGS1JyN2MsXGh6AsnWSix9I9kHGpzApyu9t2slKGfJZfU/GEs0/r0cct2anUS7bxXPK8KbwKjtbgRXGR2/iQ+fPGmVMp6H6PUltbODdVJddDwYNL9SAJ6FqgV9MBGdiUk=,iv:3H/yea+J4oLLLgSNpePovi77iac9ApPvpISvo+NXKOM=,tag:Fgj3N572irX1LaBBvhaXGw==,type:str]
+    lastmodified: "2025-02-05T00:44:55Z"
+    mac: ENC[AES256_GCM,data:b+DdgcQi7AYcUOfixbt6+CxSd2wL764gBkRJrzVqCAbglItQxhrLMprNzKpD22WSDVaYdttRO1ZBR9JEjhpAsZw30Z4tC+JKtWenolsIuo7RNWfqj27uOf6C8MbUKb9tQ25JJLUsKm1r9cwfyqhKXr8AWwn0lWXyQ5TF7dre9F4=,iv:r4/m1C6H7uAWgV/nIlQFnVdmiZ+jiJtCrEThH0iQHQk=,tag:s04/3edKw7Qsab1lIaXZOw==,type:str]
     pgp:
         - created_at: "2024-10-03T23:39:55Z"
           enc: |-
@@ -242,8 +244,8 @@ sops:
             SVFPTGgwZlZ1Wko2Qk5pUXZJZW1Db3MKFRfehTgu5toUTDiUS1rbG8mCQ6Nb/ouC
             hHjiRsf7hh5nNPxpoTYsnijQmYfnKFC87J8cfMYaD7MFyUUI/LDPAQ==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-02-04T23:16:36Z"
-    mac: ENC[AES256_GCM,data:mKLjZFdJuqhTxHRhs4adU4LmO29/jhwkXcREnK3CilPGS1JyN2MsXGh6AsnWSix9I9kHGpzApyu9t2slKGfJZfU/GEs0/r0cct2anUS7bxXPK8KbwKjtbgRXGR2/iQ+fPGmVMp6H6PUltbODdVJddDwYNL9SAJ6FqgV9MBGdiUk=,iv:3H/yea+J4oLLLgSNpePovi77iac9ApPvpISvo+NXKOM=,tag:Fgj3N572irX1LaBBvhaXGw==,type:str]
+    lastmodified: "2025-02-05T00:44:55Z"
+    mac: ENC[AES256_GCM,data:b+DdgcQi7AYcUOfixbt6+CxSd2wL764gBkRJrzVqCAbglItQxhrLMprNzKpD22WSDVaYdttRO1ZBR9JEjhpAsZw30Z4tC+JKtWenolsIuo7RNWfqj27uOf6C8MbUKb9tQ25JJLUsKm1r9cwfyqhKXr8AWwn0lWXyQ5TF7dre9F4=,iv:r4/m1C6H7uAWgV/nIlQFnVdmiZ+jiJtCrEThH0iQHQk=,tag:s04/3edKw7Qsab1lIaXZOw==,type:str]
     pgp:
         - created_at: "2024-10-03T23:39:55Z"
           enc: |-
@@ -290,6 +292,7 @@ spec:
           priority: 10
           middlewares:
             - name: redirect-to-https
+              namespace: traefik
             - name: chain-authentik
               namespace: traefik
           services:
@@ -327,8 +330,8 @@ sops:
             SVFPTGgwZlZ1Wko2Qk5pUXZJZW1Db3MKFRfehTgu5toUTDiUS1rbG8mCQ6Nb/ouC
             hHjiRsf7hh5nNPxpoTYsnijQmYfnKFC87J8cfMYaD7MFyUUI/LDPAQ==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-02-04T23:16:36Z"
-    mac: ENC[AES256_GCM,data:mKLjZFdJuqhTxHRhs4adU4LmO29/jhwkXcREnK3CilPGS1JyN2MsXGh6AsnWSix9I9kHGpzApyu9t2slKGfJZfU/GEs0/r0cct2anUS7bxXPK8KbwKjtbgRXGR2/iQ+fPGmVMp6H6PUltbODdVJddDwYNL9SAJ6FqgV9MBGdiUk=,iv:3H/yea+J4oLLLgSNpePovi77iac9ApPvpISvo+NXKOM=,tag:Fgj3N572irX1LaBBvhaXGw==,type:str]
+    lastmodified: "2025-02-05T00:44:55Z"
+    mac: ENC[AES256_GCM,data:b+DdgcQi7AYcUOfixbt6+CxSd2wL764gBkRJrzVqCAbglItQxhrLMprNzKpD22WSDVaYdttRO1ZBR9JEjhpAsZw30Z4tC+JKtWenolsIuo7RNWfqj27uOf6C8MbUKb9tQ25JJLUsKm1r9cwfyqhKXr8AWwn0lWXyQ5TF7dre9F4=,iv:r4/m1C6H7uAWgV/nIlQFnVdmiZ+jiJtCrEThH0iQHQk=,tag:s04/3edKw7Qsab1lIaXZOw==,type:str]
     pgp:
         - created_at: "2024-10-03T23:39:55Z"
           enc: |-
@@ -381,8 +384,8 @@ sops:
             SVFPTGgwZlZ1Wko2Qk5pUXZJZW1Db3MKFRfehTgu5toUTDiUS1rbG8mCQ6Nb/ouC
             hHjiRsf7hh5nNPxpoTYsnijQmYfnKFC87J8cfMYaD7MFyUUI/LDPAQ==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-02-04T23:16:36Z"
-    mac: ENC[AES256_GCM,data:mKLjZFdJuqhTxHRhs4adU4LmO29/jhwkXcREnK3CilPGS1JyN2MsXGh6AsnWSix9I9kHGpzApyu9t2slKGfJZfU/GEs0/r0cct2anUS7bxXPK8KbwKjtbgRXGR2/iQ+fPGmVMp6H6PUltbODdVJddDwYNL9SAJ6FqgV9MBGdiUk=,iv:3H/yea+J4oLLLgSNpePovi77iac9ApPvpISvo+NXKOM=,tag:Fgj3N572irX1LaBBvhaXGw==,type:str]
+    lastmodified: "2025-02-05T00:44:55Z"
+    mac: ENC[AES256_GCM,data:b+DdgcQi7AYcUOfixbt6+CxSd2wL764gBkRJrzVqCAbglItQxhrLMprNzKpD22WSDVaYdttRO1ZBR9JEjhpAsZw30Z4tC+JKtWenolsIuo7RNWfqj27uOf6C8MbUKb9tQ25JJLUsKm1r9cwfyqhKXr8AWwn0lWXyQ5TF7dre9F4=,iv:r4/m1C6H7uAWgV/nIlQFnVdmiZ+jiJtCrEThH0iQHQk=,tag:s04/3edKw7Qsab1lIaXZOw==,type:str]
     pgp:
         - created_at: "2024-10-03T23:39:55Z"
           enc: |-
