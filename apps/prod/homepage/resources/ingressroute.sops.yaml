@@ -20,6 +20,7 @@ spec:
           match: ENC[AES256_GCM,data:fxv/b+2q0ScULTN77bCm0IfnnGv6d6YTZvsA40obPtqsjON24HaQGw==,iv:dhOjm9zNpWn1mAzmUXKz6PPk5u10NFWNVi2gfip98vA=,tag:QTHJqN1rKqfrqJfpo3HPiA==,type:str]
           middlewares:
             - name: redirect-to-https
+              namespace: traefik
             - name: chain-traefik-dashboard
               namespace: traefik
           services:
@@ -50,8 +51,8 @@ sops:
             SzZta3hFYWNuMDIwc3hDajZ2b3VxelEKwT2kDN7/JakEsXYFe3SS/UK7g5cygW7E
             nAn01YlOc62wT7RP6YnsDRQ8RgXqsRk0iTNT4hAzS22Ru2pTGrt66w==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-02-04T23:19:00Z"
-    mac: ENC[AES256_GCM,data:/nWkHMl4ZpUxG1WtH8qyeuoGT7TYHYpZ83bVhmvK+CoUSb090XB/sW+YlNxL0+jBNsuf3RS0H+RX+GDsdHy1XqQ4lj5ZZ/o7ID7ARcTSuZECb05jMiQL8QdnbRWfrtnIuBnFSWy92XzlzWYT8JQKKVUO/DoPrPzqXpJ8vfN0zqM=,iv:L62VZFzuXknWINDlcvCnz8xGH7e0nbetamOW5w4nG+U=,tag:ccpB7ic4Xz8eUwhwUe6kiA==,type:str]
+    lastmodified: "2025-02-05T00:48:19Z"
+    mac: ENC[AES256_GCM,data:rxfGQJdjQFSStHDssc+TCsGn/oU/Siz3S4ad2EC6t36En+pq7BPGBdy3rVbSmaZVe0GgX8AqESpuPGgb6zQaW2KQTSa//QaFmOYPDjtXjrPpVVjnsez4fR/yOCLpbXOplUmIEyrBXnFb8BteNx4dliJ2D8kBhNOMuudoF8SKbOU=,iv:H8W7oppBCtFtN9eKbVrYDA1JhLRGACRtm7Katnx8G7k=,tag:kMp/TTM2dqv4A6/Nd2H4mw==,type:str]
     pgp:
         - created_at: "2024-10-11T22:18:46Z"
           enc: |-
@@ -103,8 +104,8 @@ sops:
             SzZta3hFYWNuMDIwc3hDajZ2b3VxelEKwT2kDN7/JakEsXYFe3SS/UK7g5cygW7E
             nAn01YlOc62wT7RP6YnsDRQ8RgXqsRk0iTNT4hAzS22Ru2pTGrt66w==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-02-04T23:19:00Z"
-    mac: ENC[AES256_GCM,data:/nWkHMl4ZpUxG1WtH8qyeuoGT7TYHYpZ83bVhmvK+CoUSb090XB/sW+YlNxL0+jBNsuf3RS0H+RX+GDsdHy1XqQ4lj5ZZ/o7ID7ARcTSuZECb05jMiQL8QdnbRWfrtnIuBnFSWy92XzlzWYT8JQKKVUO/DoPrPzqXpJ8vfN0zqM=,iv:L62VZFzuXknWINDlcvCnz8xGH7e0nbetamOW5w4nG+U=,tag:ccpB7ic4Xz8eUwhwUe6kiA==,type:str]
+    lastmodified: "2025-02-05T00:48:19Z"
+    mac: ENC[AES256_GCM,data:rxfGQJdjQFSStHDssc+TCsGn/oU/Siz3S4ad2EC6t36En+pq7BPGBdy3rVbSmaZVe0GgX8AqESpuPGgb6zQaW2KQTSa//QaFmOYPDjtXjrPpVVjnsez4fR/yOCLpbXOplUmIEyrBXnFb8BteNx4dliJ2D8kBhNOMuudoF8SKbOU=,iv:H8W7oppBCtFtN9eKbVrYDA1JhLRGACRtm7Katnx8G7k=,tag:kMp/TTM2dqv4A6/Nd2H4mw==,type:str]
     pgp:
         - created_at: "2024-10-11T22:18:46Z"
           enc: |-

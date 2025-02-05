@@ -20,6 +20,7 @@ spec:
           priority: 10
           middlewares:
             - name: redirect-to-https
+              namespace: traefik
             - name: chain-authentik
               namespace: traefik
             - name: svc-longhorn-headers
@@ -58,8 +59,8 @@ sops:
             Yk5zQ003bWw1d0NZOHZLajZrRnFVSVUKaHDKKO3jSQ8JweaeTFStrYEf4F5oMFGx
             uWirxfDti1G7JxUuSFRiqiyNe4+AKw5m26T55dqp3UY+NFqIBYbmew==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-02-04T23:15:15Z"
-    mac: ENC[AES256_GCM,data:PRBvQ1cYJJ7zHKDM2dQeK3GEqwJQ7ZUWdenkBnvOatphDQ1oIDFnd7fpfwkvN2WQTRyAwgcMIqNJ8S01nuJL5n8MfPR1LmljvEC+Ob6n8ym0lG+2T7/dGz9DcxIPn2W/d2vMDb+hWU1WOhconl7wQ+MIdyPK0NTyIwGQIt4AfKE=,iv:7VWIjLQZSSRlCSAX+zqLke5Q8mdBkiJijjFSdj9xyGg=,tag:HDDQy73JWO618ji3w1rWjg==,type:str]
+    lastmodified: "2025-02-05T00:46:25Z"
+    mac: ENC[AES256_GCM,data:3vvYjRPESaarqHhNuj6p5EwP7eMO2vBxn7OqHS3cov2DXeDz7Jxl63lR102ZCGzbXz3CGck2ssfCvXu+7cIc8BArvidSQcwHwbUbuMapyqTy5B1U2A9D4LG3ag2/FOnv8XhV1cILJODP+y1VilFtzr4GPxKFt1OjbnksvkYL4ls=,iv:DrE6+Vfd7b/2CL+b2Uae3hkbKf1W23eBL2t1ZWEeyJo=,tag:3daldDRYWlW+HculY7oNHw==,type:str]
     pgp:
         - created_at: "2024-10-09T17:25:24Z"
           enc: |-
@@ -112,8 +113,8 @@ sops:
             Yk5zQ003bWw1d0NZOHZLajZrRnFVSVUKaHDKKO3jSQ8JweaeTFStrYEf4F5oMFGx
             uWirxfDti1G7JxUuSFRiqiyNe4+AKw5m26T55dqp3UY+NFqIBYbmew==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-02-04T23:15:15Z"
-    mac: ENC[AES256_GCM,data:PRBvQ1cYJJ7zHKDM2dQeK3GEqwJQ7ZUWdenkBnvOatphDQ1oIDFnd7fpfwkvN2WQTRyAwgcMIqNJ8S01nuJL5n8MfPR1LmljvEC+Ob6n8ym0lG+2T7/dGz9DcxIPn2W/d2vMDb+hWU1WOhconl7wQ+MIdyPK0NTyIwGQIt4AfKE=,iv:7VWIjLQZSSRlCSAX+zqLke5Q8mdBkiJijjFSdj9xyGg=,tag:HDDQy73JWO618ji3w1rWjg==,type:str]
+    lastmodified: "2025-02-05T00:46:25Z"
+    mac: ENC[AES256_GCM,data:3vvYjRPESaarqHhNuj6p5EwP7eMO2vBxn7OqHS3cov2DXeDz7Jxl63lR102ZCGzbXz3CGck2ssfCvXu+7cIc8BArvidSQcwHwbUbuMapyqTy5B1U2A9D4LG3ag2/FOnv8XhV1cILJODP+y1VilFtzr4GPxKFt1OjbnksvkYL4ls=,iv:DrE6+Vfd7b/2CL+b2Uae3hkbKf1W23eBL2t1ZWEeyJo=,tag:3daldDRYWlW+HculY7oNHw==,type:str]
     pgp:
         - created_at: "2024-10-09T17:25:24Z"
           enc: |-
