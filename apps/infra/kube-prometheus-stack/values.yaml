@@ -396,170 +396,189 @@ grafana:
       providers:
 
       - name: "devices"
-        orgId: 1
-        folder: "Devices"
-        type: file
+        allowUiUpdates: true
         disableDeletion: false
         editable: true
+        folder: "Devices"
         options:
           path: /var/lib/grafana/dashboards/device
+        orgId: 1
+        type: file
 
       - name: "extra"
-        orgId: 1
-        folder: "Extra"
-        type: file
+        allowUiUpdates: true
         disableDeletion: false
         editable: true
-        allowUiUpdates: true
+        folder: "Extra"
         options:
           path: /var/lib/grafana/dashboards/extra
+        orgId: 1
+        type: file
 
-      # - name: "freqtrade"
-      #   orgId: 3
-      #   folder: "Freqtrade"
-      #   type: file
-      #   disableDeletion: false
-      #   editable: true
-      #   options:
-      #     path: /var/lib/grafana/dashboards/freqtrade
+      - name: "k3s"
+        allowUiUpdates: true
+        disableDeletion: false
+        editable: true
+        folder: "k3s"
+        orgId: 1
+        options:
+          path: /var/lib/grafana/dashboards/k3s
+        type: file
 
-      # - name: "k3s"
-      #   orgId: 4
-      #   folder: "k3s"
-      #   type: file
-      #   disableDeletion: false
-      #   editable: true
-      #   options:
-      #     path: /var/lib/grafana/dashboards/k3s
+      - name: "network"
+        allowUiUpdates: true
+        disableDeletion: false
+        editable: true
+        folder: "Network"
+        orgId: 1
+        options:
+          path: /var/lib/grafana/dashboards/network
+        type: file
 
-      # - name: "network"
-      #   orgId: 5
-      #   folder: "Network"
-      #   type: file
-      #   disableDeletion: false
-      #   editable: true
-      #   options:
-      #     path: /var/lib/grafana/dashboards/network
-
-      # - name: "storage"
-      #   orgId: 6
-      #   folder: "Storage"
-      #   type: file
-      #   disableDeletion: false
-      #   editable: true
-      #   allowUiUpdates: true
-      #   options:
-      #     path: /var/lib/grafana/dashboards/storage
+      - name: "storage"
+        allowUiUpdates: true
+        disableDeletion: false
+        editable: true
+        folder: "Storage"
+        orgId: 1
+        options:
+          path: /var/lib/grafana/dashboards/storage
+        type: file
 
   ## Configure grafana dashboard
   dashboards:
 
     devices:
       prometheus-pve-exporter:
+        datasource:
+        - name: DS_PROMETHEUS
+          value: Prometheus
         gnetId: 10347
         revision: 5
-        datasource:
-        - name: DS_PROMETHEUS
-          value: Prometheus
 
       blackbox-exporter-overview:
-        gnetId: 5345
         datasource:
         - name: DS_PROMETHEUS
           value: Prometheus
+        gnetId: 5345
 
     extra:
       argocd-overview:
+        datasource:
+        - name: DS_PROMETHEUS
+          value: Prometheus
         gnetId: 14584
+
+      freqtrade:
+        datasource:
+        - name: DS_PROMETHEUS
+          value: Prometheus
+        gnetId: 14632
+
+    k3s:
+      k3s-kubelet:
+        datasource:
+        - name: DS_PROMETHEUS
+          value: Prometheus
+        gnetId: 16361
+
+      k3s-proxy:
+        datasource:
+        - name: DS_PROMETHEUS
+          value: Prometheus
+        gnetId: 12129
+
+      k3s-controller-manager:
+        datasource:
+        - name: DS_PROMETHEUS
+          value: Prometheus
+        gnetId: 12122
+
+      k3s-scheduler:
+        datasource:
+        - name: DS_PROMETHEUS
+          value: Prometheus
+        gnetId: 12130
+
+      k3s-etcd:
+        datasource:
+        - name: DS_PROMETHEUS
+          value: Prometheus
+        gnetId: 16359
+
+      k3s-api-server:
+        datasources:
+        - name: DS_PROMETHEUS
+          value: Prometheus
+        gnetId: 12654
+
+    network:
+      mikrotik:
+        datasource:
+        - name: DS_PROMETHEUS
+          value: Prometheus
+        gnetId: 13679
+        revision: 22
+
+      cert-manager:
+        datasource:
+        - name: DS_PROMETHEUS
+          value: Prometheus
+        gnetId: 20842
+        revision: 2
+
+      external-dns:
+        datasource:
+        - name: DS_PROMETHEUS
+          value: Prometheus
+        gnetId: 15038
+        revision: 3
+
+      authentik:
+        datasource:
+        - name: DS_PROMETHEUS
+          value: Prometheus
+        gnetId: 14837
+
+      traefik3:
+        gnetId: 12250
+        revision: 1
         datasource:
         - name: DS_PROMETHEUS
           value: Prometheus
 
-    # freqtrade:
-    #   freqtrade:
-    #     gnetId: 14632
-    #     datasource: Prometheus
+      traefik5:
+        datasource:
+        - name: DS_PROMETHEUS
+          value: Prometheus
+        gnetId: 18111
+        revision: 1
 
-    # k3s:
-    #   k3s-kubelet:
-    #     gnetId: 16361
-    #     datasource: Prometheus
-    #   k3s-proxy:
-    #     gnetId: 12129
-    #     datasource: Prometheus
-    #   k3s-controller-manager:
-    #     gnetId: 12122
-    #     datasource: Prometheus
-    #   k3s-scheduler:
-    #     gnetId: 12130
-    #     datasource: Prometheus
-    #   k3s-etcd:
-    #     gnetId: 16359
-    #     datasource: Prometheus
-    #   k3s-api-server:
-    #     gnetId: 12654
-    #     datasource: Prometheus
+    storage:
+      minio-dashboard:
+        datasources:
+        - name: DS_PROMETHEUS
+          value: Prometheus
+        gnetId: 13502
+        revision: 26
 
-    # network:
-    #   mikrotik:
-    #     gnetId: 13679
-    #     revision: 22
-    #     datasource:
-    #     - name: DS_PROMETHEUS
-    #       value: Prometheus
-    #   cert-manager:
-    #     gnetId: 20842
-    #     revision: 2
-    #     datasource:
-    #     - name: DS_PROMETHEUS
-    #       value: Prometheus
-    #   external-dns:
-    #     gnetId: 15038
-    #     revision: 3
-    #     datasource: Prometheus
-    #   authentik:
-    #     gnetId: 14837
-    #     datasource: Prometheus
-    #   traefik3:
-    #     gnetId: 12250
-    #     revision: 1
-    #     datasource:
-    #     - name: DS_PROMETHEUS
-    #       value: Prometheus
-    #   traefik5:
-    #     gnetId: 18111
-    #     revision: 1
-    #     datasource:
-    #     - name: DS_PROMETHEUS
-    #       value: Prometheus
+      minio-bucket:
+        datasources:
+        - name: DS_PROMETHEUS
+          value: Prometheus
+        gnetId: 19237
 
-    # storage:
-    #   minio-dashboard:
-    #     gnetId: 13502
-    #     revision: 26
-    #     datasource: prometheus
-    #     # datasources:
-    #     # - name: DS_PROMETHEUS
-    #     #   value: Prometheus
-    #   minio-bucket:
-    #     gnetId: 19237
-    #     # datasource: Prometheus
-    #     datasources:
-    #     - name: DS_PROMETHEUS
-    #       value: Prometheus
-    #   longhorn:
-    #     gnetId: 16888
-    #     # datasource: Prometheus
-    #     datasource:
-    #     - name: DS_PROMETHEUS
-    #       value: Prometheus
-    #   velero:
-    #     gnetId: 15469
-    #     # datasource: Prometheus
-    #     datasource:
-    #     - name: DS_PROMETHEUS
-    #       value: Prometheus
+      longhorn:
+        datasource:
+        - name: DS_PROMETHEUS
+          value: Prometheus
+        gnetId: 16888
 
+      velero:
+        datasource:
+        - name: DS_PROMETHEUS
+          value: Prometheus
+        gnetId: 15469
 
 ############# sidecar test ##########
   sidecar:
@@ -621,8 +640,6 @@ grafana:
   #   readOnly: true
 
   deleteDatasources: []
-  # - name: example-datasource
-  #   orgId: 1
 
   additionalDataSources:
   - name: Loki
@@ -653,6 +670,7 @@ grafana:
         timeShiftEnabled: true
         spanStartTimeShift: '1h'
         spanEndTimeShift: '-1h'
+
   - name: prometheus-longhorn
     uid: longhorn
     type: prometheus
@@ -790,6 +808,7 @@ kubeControllerManager:
   endpoints: # ips of servers
   - 192.168.40.110
   - 192.168.40.113
+  - 192.168.40.114
   service:
     enabled: true
     port: 10252 # null
@@ -879,6 +898,7 @@ kubeEtcd:
   endpoints: # ips of servers
   - 192.168.40.110
   - 192.168.40.113
+  - 192.168.40.114
   service:
     enabled: true
     port: 2381
@@ -918,6 +938,7 @@ kubeScheduler:
   endpoints: # ips of servers
   - 192.168.40.110
   - 192.168.40.113
+  - 192.168.40.114
   service:
     enabled: true
     port: 10251 # null
@@ -962,6 +983,7 @@ kubeProxy:
   endpoints: # ips of servers
   - 192.168.40.110
   - 192.168.40.113
+  - 192.168.40.114
   service:
     enabled: true
     port: 10249
