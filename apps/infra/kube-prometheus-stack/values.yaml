@@ -4,7 +4,7 @@ kubeTargetVersionOverride: ""
 kubeVersionOverride: ""
 commonLabels: {}
 crds:
-  enabled: false # true
+  enabled: true
 customRules: {}
 
 defaultRules:
@@ -13,7 +13,7 @@ defaultRules:
   create: true
   rules:
     alertmanager: true
-    etcd: false
+    etcd: true
     configReloaders: true
     general: true
     k8sContainerCpuUsageSecondsTotal: true
@@ -28,8 +28,8 @@ defaultRules:
     kubeApiserverHistogram: false
     kubeApiserverSlos: false
     kubeControllerManager: false
-    kubelet: false
-    kubeProxy: false
+    kubelet: true
+    kubeProxy: true
     kubePrometheusGeneral: true
     kubePrometheusNodeRecording: true
     kubernetesApps: true
@@ -356,9 +356,9 @@ grafana:
   enabled: true
   namespaceOverride: ""
   # fullnameOverride: "grafana"
-  forceDeployDatasources: true # false
+  forceDeployDatasources: true
   forceDeployDashboards: false
-  defaultDashboardsEnabled: true # false
+  defaultDashboardsEnabled: true
   defaultDashboardsTimezone: cet
   defaultDashboardsEditable: true
   admin:
@@ -396,190 +396,182 @@ grafana:
       providers:
 
       - name: "devices"
-        orgId: 1
-        folder: "Devices"
-        type: file
+        allowUiUpdates: true
         disableDeletion: false
         editable: true
+        folder: "Devices"
         options:
           path: /var/lib/grafana/dashboards/device
+        orgId: 1
+        type: file
 
       - name: "extra"
-        orgId: 2
-        folder: "Extra"
-        type: file
+        allowUiUpdates: true
         disableDeletion: false
         editable: true
-        allowUiUpdates: true
+        folder: "Extra"
         options:
           path: /var/lib/grafana/dashboards/extra
-
-      - name: "freqtrade"
-        orgId: 3
-        folder: "Freqtrade"
+        orgId: 1
         type: file
-        disableDeletion: false
-        editable: true
-        options:
-          path: /var/lib/grafana/dashboards/freqtrade
 
       - name: "k3s"
-        orgId: 4
-        folder: "k3s"
-        type: file
+        allowUiUpdates: true
         disableDeletion: false
         editable: true
+        folder: "k3s"
+        orgId: 1
         options:
           path: /var/lib/grafana/dashboards/k3s
+        type: file
 
       - name: "network"
-        orgId: 5
-        folder: "Network"
-        type: file
+        allowUiUpdates: true
         disableDeletion: false
         editable: true
+        folder: "Network"
+        orgId: 1
         options:
           path: /var/lib/grafana/dashboards/network
+        type: file
 
       - name: "storage"
-        orgId: 6
-        folder: "Storage"
-        type: file
+        allowUiUpdates: true
         disableDeletion: false
         editable: true
-        allowUiUpdates: true
+        folder: "Storage"
+        orgId: 1
         options:
           path: /var/lib/grafana/dashboards/storage
+        type: file
 
   ## Configure grafana dashboard
   dashboards:
 
     devices:
       prometheus-pve-exporter:
-        gnetId: 10347
-        revision: 5
-        # datasource: Prometheus
         datasource:
         - name: DS_PROMETHEUS
           value: Prometheus
+        gnetId: 10347
+        revision: 5
+
       blackbox-exporter-overview:
+        datasource:
+        - name: DS_PROMETHEUS
+          value: Prometheus
         gnetId: 5345
-        datasource: Prometheus
 
     extra:
       argocd-overview:
+        datasource:
+        - name: DS_PROMETHEUS
+          value: Prometheus
         gnetId: 14584
-        datasource: Prometheus
 
-    freqtrade:
       freqtrade:
+        datasource:
+        - name: DS_PROMETHEUS
+          value: Prometheus
         gnetId: 14632
-        datasource: Prometheus
 
     k3s:
       k3s-kubelet:
+        datasource:
+        - name: DS_PROMETHEUS
+          value: Prometheus
         gnetId: 16361
-        datasource: Prometheus
+
       k3s-proxy:
+        datasource:
+        - name: DS_PROMETHEUS
+          value: Prometheus
         gnetId: 12129
-        datasource: Prometheus
+
       k3s-controller-manager:
+        datasource:
+        - name: DS_PROMETHEUS
+          value: Prometheus
         gnetId: 12122
-        datasource: Prometheus
+
       k3s-scheduler:
+        datasource:
+        - name: DS_PROMETHEUS
+          value: Prometheus
         gnetId: 12130
-        datasource: Prometheus
+
       k3s-etcd:
+        datasource:
+        - name: DS_PROMETHEUS
+          value: Prometheus
         gnetId: 16359
-        datasource: Prometheus
+
       k3s-api-server:
-        gnetId: 12654
-        datasource: Prometheus
-
-    network:
-      mikrotik:
-        gnetId: 13679
-        revision: 22
-        datasource:
-        - name: DS_PROMETHEUS
-          value: Prometheus
-      cert-manager:
-        gnetId: 20842
-        revision: 2
-        datasource:
-        - name: DS_PROMETHEUS
-          value: Prometheus
-      external-dns:
-        gnetId: 15038
-        revision: 3
-        datasource: Prometheus
-      authentik:
-        gnetId: 14837
-        datasource: Prometheus
-      traefik3:
-        gnetId: 12250
-        revision: 1
-        datasource:
-        - name: DS_PROMETHEUS
-          value: Prometheus
-      traefik5:
-        gnetId: 18111
-        revision: 1
-        datasource:
-        - name: DS_PROMETHEUS
-          value: Prometheus
-
-    storage:
-      minio-dashboard:
-        gnetId: 13502
-        revision: 26
-        datasource: prometheus
-        # datasources:
-        # - name: DS_PROMETHEUS
-        #   value: Prometheus
-      minio-bucket:
-        gnetId: 19237
-        # datasource: Prometheus
         datasources:
         - name: DS_PROMETHEUS
           value: Prometheus
+        gnetId: 12654
+
+    network:
+      mikrotik:
+        datasource:
+        - name: DS_PROMETHEUS
+          value: Prometheus
+        gnetId: 13679
+        revision: 22
+
+      cert-manager:
+        datasource:
+        - name: DS_PROMETHEUS
+          value: Prometheus
+        gnetId: 20842
+        revision: 2
+
+      external-dns:
+        datasource:
+        - name: DS_PROMETHEUS
+          value: Prometheus
+        gnetId: 15038
+        revision: 3
+
+      authentik:
+        datasource:
+        - name: DS_PROMETHEUS
+          value: Prometheus
+        gnetId: 14837
+
+      traefik:
+        datasource:
+        - name: DS_PROMETHEUS
+          value: Prometheus
+        gnetId: 18111
+        revision: 1
+
+    storage:
+      minio-dashboard:
+        datasources:
+        - name: DS_PROMETHEUS
+          value: Prometheus
+        gnetId: 13502
+        revision: 26
+
+      minio-bucket:
+        datasources:
+        - name: DS_PROMETHEUS
+          value: Prometheus
+        gnetId: 19237
+
       longhorn:
+        datasource:
+        - name: DS_PROMETHEUS
+          value: Prometheus
         gnetId: 16888
-        # datasource: Prometheus
-        datasource:
-        - name: DS_PROMETHEUS
-          value: Prometheus
+
       velero:
-        gnetId: 15469
-        # datasource: Prometheus
         datasource:
         - name: DS_PROMETHEUS
           value: Prometheus
-
-  # grafana.ini:
-  #     # server:
-  #     #   root_url: "https://grafana.monitoring.anotherlife.org.pl"
-  #     auth:
-  #         signout_redirect_url: "https://key.infra.anotherlife.org.pl/application/o/grafana/end-session/"
-  #         oauth_auto_login: true
-  #     auth.generic_oauth:
-  #         name: authentik
-  #         enabled: true
-  #         client_id: $__file{/etc/secrets/auth_generic_oauth/client_id}
-  #         client_secret: $__file{/etc/secrets/auth_generic_oauth/client_secret}
-  #         scopes: "openid profile email"
-  #         auth_url: "https://key.infra.anotherlife.org.pl/application/o/authorize/"
-  #         token_url: "https://key.infra.anotherlife.org.pl/application/o/token/"
-  #         api_url: "https://key.infra.anotherlife.org.pl/application/o/userinfo/"
-  #         # Optionally map user groups to Grafana roles
-  #         role_attribute_path: contains(groups, 'Grafana Admins') && 'Admin' || contains(groups, 'Grafana Editors') && 'Editor' || 'Viewer'
-
-  # extraSecretMounts:
-  #   - name: auth-generic-oauth-secret-mount
-  #     secretName: grafana-auth-generic-oauth-secret
-  #     defaultMode: 0440
-  #     mountPath: /etc/secrets/auth_generic_oauth
-  #     readOnly: true
+        gnetId: 15469
 
 ############# sidecar test ##########
   sidecar:
@@ -609,87 +601,6 @@ grafana:
         disableDelete: false
         allowUiUpdates: true
         foldersFromFilesStructure: true
-
-    # dashboards:
-    #   enabled: true
-    #   folder: /var/lib/grafana/dashboards
-    #   folderAnnotation: grafana_folder
-    #   label: grafana_dashboard
-    #   labelValue: "1"
-    #   searchNamespace: ALL
-    #   enableNewTablePanelSyntax: false
-    #   provider:
-    #     allowUiUpdates: true
-    #     foldersFromFilesStructure: true
-    #     folder: ""
-    #     foldersFromFilesStructure: true
-    #     name: sidecarProvider
-    #     orgid: "1"
-    #     type: file
-
-    # dashboards:
-    #   annotations: {}
-    #   defaultFolderName: "Test"
-    #   enabled: true
-    #   # enableNewTablePanelSyntax: false
-    #   folderAnnotation: grafana_folder
-    #   label: grafana_dashboard
-    #   labelValue: "1"
-    #   searchNamespace: ALL
-    #   # multicluster:
-    #   #   global:
-    #   #     enabled: false
-    #   #   etcd:
-    #   #     enabled: false
-    #   provider:
-    #     # allowUiUpdates: true
-    #     # disableDelete: false
-    #     # folder: ""
-    #     foldersFromFilesStructure: true
-    #     # name: sidecarProvider
-    #     # orgid: "1"
-    #     # type: file
-
-    # datasources:
-    #   enabled: true
-    #   label: grafana_datasource
-    #   searchNamespace: ALL
-
-###########################
-
-  # sidecar:
-  #   dashboards:
-  #     enabled: true
-  #     defaultFolderName: "General"
-  #     label: grafana_dashboard
-  #     labelValue: "1"
-  #     folderAnnotation: grafana_folder
-  #     searchNamespace: ALL
-  #     provider:
-  #       foldersFromFilesStructure: true
-
-  #   dashboards:
-  #     annotations: {}
-  #     defaultFolderName: "Test"
-  #     enabled: true
-  #     # enableNewTablePanelSyntax: false
-  #     folderAnnotation: grafana_folder
-  #     label: grafana_dashboard
-  #     labelValue: "1"
-  #     searchNamespace: ALL
-  #     # multicluster:
-  #     #   global:
-  #     #     enabled: false
-  #     #   etcd:
-  #     #     enabled: false
-  #     provider:
-  #       # allowUiUpdates: true
-  #       # disableDelete: false
-  #       # folder: ""
-  #       foldersFromFilesStructure: true
-  #       # name: sidecarProvider
-  #       # orgid: "1"
-  #       # type: file
 
 #############################################
 
@@ -722,8 +633,6 @@ grafana:
   #   readOnly: true
 
   deleteDatasources: []
-  # - name: example-datasource
-  #   orgId: 1
 
   additionalDataSources:
   - name: Loki
@@ -754,6 +663,7 @@ grafana:
         timeShiftEnabled: true
         spanStartTimeShift: '1h'
         spanEndTimeShift: '-1h'
+
   - name: prometheus-longhorn
     uid: longhorn
     type: prometheus
@@ -889,8 +799,9 @@ kubelet:
 kubeControllerManager:
   enabled: true # false
   endpoints: # ips of servers
-  - 192.168.40.110
+  # - 192.168.40.110
   - 192.168.40.113
+  - 192.168.40.114
   service:
     enabled: true
     port: 10252 # null
@@ -978,8 +889,9 @@ kubeDns:
 kubeEtcd:
   enabled: true # false
   endpoints: # ips of servers
-  - 192.168.40.110
+  # - 192.168.40.110
   - 192.168.40.113
+  - 192.168.40.114
   service:
     enabled: true
     port: 2381
@@ -1017,8 +929,9 @@ kubeEtcd:
 kubeScheduler:
   enabled: true # false
   endpoints: # ips of servers
-  - 192.168.40.110
+  # - 192.168.40.110
   - 192.168.40.113
+  - 192.168.40.114
   service:
     enabled: true
     port: 10251 # null
@@ -1061,8 +974,9 @@ kubeScheduler:
 kubeProxy:
   enabled: true # false
   endpoints: # ips of servers
-  - 192.168.40.110
+  # - 192.168.40.110
   - 192.168.40.113
+  - 192.168.40.114
   service:
     enabled: true
     port: 10249
@@ -2588,50 +2502,39 @@ thanosRuler:
 
     ## Additional ports to open for ThanosRuler service
     additionalPorts: []
-
     externalIPs: []
     loadBalancerIP: ""
     loadBalancerSourceRanges: []
 
     ## Denotes if this Service desires to route external traffic to node-local or cluster-wide endpoints
-    ##
     externalTrafficPolicy: Cluster
 
     ## Service type
-    ##
     type: ClusterIP
 
   ## Configuration for creating a ServiceMonitor for the ThanosRuler service
-  ##
   serviceMonitor:
     selfMonitor: true
     interval: ""
-
     additionalLabels:
       prometheus.io/scrap-with: kube-prometheus-stack
 
     ## SampleLimit defines per-scrape limit on number of scraped samples that will be accepted.
-    ##
     sampleLimit: 0
 
     ## TargetLimit defines a limit on the number of scraped targets that will be accepted.
-    ##
     targetLimit: 0
 
     ## Per-scrape limit on number of labels that will be accepted for a sample. Only valid in Prometheus versions 2.27.0 and newer.
-    ##
     labelLimit: 0
 
     ## Per-scrape limit on length of labels name that will be accepted for a sample. Only valid in Prometheus versions 2.27.0 and newer.
-    ##
     labelNameLengthLimit: 0
 
     ## Per-scrape limit on length of labels value that will be accepted for a sample. Only valid in Prometheus versions 2.27.0 and newer.
-    ##
     labelValueLengthLimit: 0
 
     ## proxyUrl: URL of a proxy that should be used for scraping.
-    ##
     proxyUrl: ""
 
     ## scheme: HTTP scheme to use for scraping. Can be used with `tlsConfig` for example if using istio mTLS.
@@ -2640,12 +2543,10 @@ thanosRuler:
     ## tlsConfig: TLS configuration to use when scraping the endpoint. For example if using istio mTLS.
     ## Of type: https://github.com/coreos/prometheus-operator/blob/main/Documentation/api.md#tlsconfig
     tlsConfig: {}
-
     bearerTokenFile:
 
     ## MetricRelabelConfigs to apply to samples after scraping, but before ingestion.
     ## ref: https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api.md#relabelconfig
-    ##
     metricRelabelings: []
     # - action: keep
     #   regex: 'kube_(daemonset|deployment|pod|namespace|node|statefulset).+'
@@ -2653,7 +2554,6 @@ thanosRuler:
 
     ## RelabelConfigs to apply to samples before scraping
     ## ref: https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api.md#relabelconfig
-    ##
     relabelings: []
     # - sourceLabels: [__meta_kubernetes_pod_node_name]
     #   separator: ;
