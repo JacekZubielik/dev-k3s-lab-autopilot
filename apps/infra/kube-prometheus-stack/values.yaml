@@ -404,15 +404,15 @@ grafana:
         options:
           path: /var/lib/grafana/dashboards/device
 
-      # - name: "extra"
-      #   orgId: 2
-      #   folder: "Extra"
-      #   type: file
-      #   disableDeletion: false
-      #   editable: true
-      #   allowUiUpdates: true
-      #   options:
-      #     path: /var/lib/grafana/dashboards/extra
+      - name: "extra"
+        orgId: 2
+        folder: "Extra"
+        type: file
+        disableDeletion: false
+        editable: true
+        allowUiUpdates: true
+        options:
+          path: /var/lib/grafana/dashboards/extra
 
       # - name: "freqtrade"
       #   orgId: 3
@@ -458,18 +458,22 @@ grafana:
       prometheus-pve-exporter:
         gnetId: 10347
         revision: 5
-        # datasource: Prometheus
         datasource:
         - name: DS_PROMETHEUS
           value: Prometheus
+
       blackbox-exporter-overview:
         gnetId: 5345
-        datasource: Prometheus
+        datasource:
+        - name: DS_PROMETHEUS
+          value: Prometheus
 
-    # extra:
-    #   argocd-overview:
-    #     gnetId: 14584
-    #     datasource: Prometheus
+    extra:
+      argocd-overview:
+        gnetId: 14584
+        datasource:
+        - name: DS_PROMETHEUS
+          value: Prometheus
 
     # freqtrade:
     #   freqtrade:
