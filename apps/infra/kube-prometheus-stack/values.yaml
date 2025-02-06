@@ -404,52 +404,52 @@ grafana:
         options:
           path: /var/lib/grafana/dashboards/device
 
-      - name: "extra"
-        orgId: 2
-        folder: "Extra"
-        type: file
-        disableDeletion: false
-        editable: true
-        allowUiUpdates: true
-        options:
-          path: /var/lib/grafana/dashboards/extra
+      # - name: "extra"
+      #   orgId: 2
+      #   folder: "Extra"
+      #   type: file
+      #   disableDeletion: false
+      #   editable: true
+      #   allowUiUpdates: true
+      #   options:
+      #     path: /var/lib/grafana/dashboards/extra
 
-      - name: "freqtrade"
-        orgId: 3
-        folder: "Freqtrade"
-        type: file
-        disableDeletion: false
-        editable: true
-        options:
-          path: /var/lib/grafana/dashboards/freqtrade
+      # - name: "freqtrade"
+      #   orgId: 3
+      #   folder: "Freqtrade"
+      #   type: file
+      #   disableDeletion: false
+      #   editable: true
+      #   options:
+      #     path: /var/lib/grafana/dashboards/freqtrade
 
-      - name: "k3s"
-        orgId: 4
-        folder: "k3s"
-        type: file
-        disableDeletion: false
-        editable: true
-        options:
-          path: /var/lib/grafana/dashboards/k3s
+      # - name: "k3s"
+      #   orgId: 4
+      #   folder: "k3s"
+      #   type: file
+      #   disableDeletion: false
+      #   editable: true
+      #   options:
+      #     path: /var/lib/grafana/dashboards/k3s
 
-      - name: "network"
-        orgId: 5
-        folder: "Network"
-        type: file
-        disableDeletion: false
-        editable: true
-        options:
-          path: /var/lib/grafana/dashboards/network
+      # - name: "network"
+      #   orgId: 5
+      #   folder: "Network"
+      #   type: file
+      #   disableDeletion: false
+      #   editable: true
+      #   options:
+      #     path: /var/lib/grafana/dashboards/network
 
-      - name: "storage"
-        orgId: 6
-        folder: "Storage"
-        type: file
-        disableDeletion: false
-        editable: true
-        allowUiUpdates: true
-        options:
-          path: /var/lib/grafana/dashboards/storage
+      # - name: "storage"
+      #   orgId: 6
+      #   folder: "Storage"
+      #   type: file
+      #   disableDeletion: false
+      #   editable: true
+      #   allowUiUpdates: true
+      #   options:
+      #     path: /var/lib/grafana/dashboards/storage
 
   ## Configure grafana dashboard
   dashboards:
@@ -466,120 +466,96 @@ grafana:
         gnetId: 5345
         datasource: Prometheus
 
-    extra:
-      argocd-overview:
-        gnetId: 14584
-        datasource: Prometheus
+    # extra:
+    #   argocd-overview:
+    #     gnetId: 14584
+    #     datasource: Prometheus
 
-    freqtrade:
-      freqtrade:
-        gnetId: 14632
-        datasource: Prometheus
+    # freqtrade:
+    #   freqtrade:
+    #     gnetId: 14632
+    #     datasource: Prometheus
 
-    k3s:
-      k3s-kubelet:
-        gnetId: 16361
-        datasource: Prometheus
-      k3s-proxy:
-        gnetId: 12129
-        datasource: Prometheus
-      k3s-controller-manager:
-        gnetId: 12122
-        datasource: Prometheus
-      k3s-scheduler:
-        gnetId: 12130
-        datasource: Prometheus
-      k3s-etcd:
-        gnetId: 16359
-        datasource: Prometheus
-      k3s-api-server:
-        gnetId: 12654
-        datasource: Prometheus
+    # k3s:
+    #   k3s-kubelet:
+    #     gnetId: 16361
+    #     datasource: Prometheus
+    #   k3s-proxy:
+    #     gnetId: 12129
+    #     datasource: Prometheus
+    #   k3s-controller-manager:
+    #     gnetId: 12122
+    #     datasource: Prometheus
+    #   k3s-scheduler:
+    #     gnetId: 12130
+    #     datasource: Prometheus
+    #   k3s-etcd:
+    #     gnetId: 16359
+    #     datasource: Prometheus
+    #   k3s-api-server:
+    #     gnetId: 12654
+    #     datasource: Prometheus
 
-    network:
-      mikrotik:
-        gnetId: 13679
-        revision: 22
-        datasource:
-        - name: DS_PROMETHEUS
-          value: Prometheus
-      cert-manager:
-        gnetId: 20842
-        revision: 2
-        datasource:
-        - name: DS_PROMETHEUS
-          value: Prometheus
-      external-dns:
-        gnetId: 15038
-        revision: 3
-        datasource: Prometheus
-      authentik:
-        gnetId: 14837
-        datasource: Prometheus
-      traefik3:
-        gnetId: 12250
-        revision: 1
-        datasource:
-        - name: DS_PROMETHEUS
-          value: Prometheus
-      traefik5:
-        gnetId: 18111
-        revision: 1
-        datasource:
-        - name: DS_PROMETHEUS
-          value: Prometheus
+    # network:
+    #   mikrotik:
+    #     gnetId: 13679
+    #     revision: 22
+    #     datasource:
+    #     - name: DS_PROMETHEUS
+    #       value: Prometheus
+    #   cert-manager:
+    #     gnetId: 20842
+    #     revision: 2
+    #     datasource:
+    #     - name: DS_PROMETHEUS
+    #       value: Prometheus
+    #   external-dns:
+    #     gnetId: 15038
+    #     revision: 3
+    #     datasource: Prometheus
+    #   authentik:
+    #     gnetId: 14837
+    #     datasource: Prometheus
+    #   traefik3:
+    #     gnetId: 12250
+    #     revision: 1
+    #     datasource:
+    #     - name: DS_PROMETHEUS
+    #       value: Prometheus
+    #   traefik5:
+    #     gnetId: 18111
+    #     revision: 1
+    #     datasource:
+    #     - name: DS_PROMETHEUS
+    #       value: Prometheus
 
-    storage:
-      minio-dashboard:
-        gnetId: 13502
-        revision: 26
-        datasource: prometheus
-        # datasources:
-        # - name: DS_PROMETHEUS
-        #   value: Prometheus
-      minio-bucket:
-        gnetId: 19237
-        # datasource: Prometheus
-        datasources:
-        - name: DS_PROMETHEUS
-          value: Prometheus
-      longhorn:
-        gnetId: 16888
-        # datasource: Prometheus
-        datasource:
-        - name: DS_PROMETHEUS
-          value: Prometheus
-      velero:
-        gnetId: 15469
-        # datasource: Prometheus
-        datasource:
-        - name: DS_PROMETHEUS
-          value: Prometheus
+    # storage:
+    #   minio-dashboard:
+    #     gnetId: 13502
+    #     revision: 26
+    #     datasource: prometheus
+    #     # datasources:
+    #     # - name: DS_PROMETHEUS
+    #     #   value: Prometheus
+    #   minio-bucket:
+    #     gnetId: 19237
+    #     # datasource: Prometheus
+    #     datasources:
+    #     - name: DS_PROMETHEUS
+    #       value: Prometheus
+    #   longhorn:
+    #     gnetId: 16888
+    #     # datasource: Prometheus
+    #     datasource:
+    #     - name: DS_PROMETHEUS
+    #       value: Prometheus
+    #   velero:
+    #     gnetId: 15469
+    #     # datasource: Prometheus
+    #     datasource:
+    #     - name: DS_PROMETHEUS
+    #       value: Prometheus
 
-  # grafana.ini:
-  #     # server:
-  #     #   root_url: "https://grafana.monitoring.anotherlife.org.pl"
-  #     auth:
-  #         signout_redirect_url: "https://key.infra.anotherlife.org.pl/application/o/grafana/end-session/"
-  #         oauth_auto_login: true
-  #     auth.generic_oauth:
-  #         name: authentik
-  #         enabled: true
-  #         client_id: $__file{/etc/secrets/auth_generic_oauth/client_id}
-  #         client_secret: $__file{/etc/secrets/auth_generic_oauth/client_secret}
-  #         scopes: "openid profile email"
-  #         auth_url: "https://key.infra.anotherlife.org.pl/application/o/authorize/"
-  #         token_url: "https://key.infra.anotherlife.org.pl/application/o/token/"
-  #         api_url: "https://key.infra.anotherlife.org.pl/application/o/userinfo/"
-  #         # Optionally map user groups to Grafana roles
-  #         role_attribute_path: contains(groups, 'Grafana Admins') && 'Admin' || contains(groups, 'Grafana Editors') && 'Editor' || 'Viewer'
-
-  # extraSecretMounts:
-  #   - name: auth-generic-oauth-secret-mount
-  #     secretName: grafana-auth-generic-oauth-secret
-  #     defaultMode: 0440
-  #     mountPath: /etc/secrets/auth_generic_oauth
-  #     readOnly: true
 
 ############# sidecar test ##########
   sidecar:
@@ -609,87 +585,6 @@ grafana:
         disableDelete: false
         allowUiUpdates: true
         foldersFromFilesStructure: true
-
-    # dashboards:
-    #   enabled: true
-    #   folder: /var/lib/grafana/dashboards
-    #   folderAnnotation: grafana_folder
-    #   label: grafana_dashboard
-    #   labelValue: "1"
-    #   searchNamespace: ALL
-    #   enableNewTablePanelSyntax: false
-    #   provider:
-    #     allowUiUpdates: true
-    #     foldersFromFilesStructure: true
-    #     folder: ""
-    #     foldersFromFilesStructure: true
-    #     name: sidecarProvider
-    #     orgid: "1"
-    #     type: file
-
-    # dashboards:
-    #   annotations: {}
-    #   defaultFolderName: "Test"
-    #   enabled: true
-    #   # enableNewTablePanelSyntax: false
-    #   folderAnnotation: grafana_folder
-    #   label: grafana_dashboard
-    #   labelValue: "1"
-    #   searchNamespace: ALL
-    #   # multicluster:
-    #   #   global:
-    #   #     enabled: false
-    #   #   etcd:
-    #   #     enabled: false
-    #   provider:
-    #     # allowUiUpdates: true
-    #     # disableDelete: false
-    #     # folder: ""
-    #     foldersFromFilesStructure: true
-    #     # name: sidecarProvider
-    #     # orgid: "1"
-    #     # type: file
-
-    # datasources:
-    #   enabled: true
-    #   label: grafana_datasource
-    #   searchNamespace: ALL
-
-###########################
-
-  # sidecar:
-  #   dashboards:
-  #     enabled: true
-  #     defaultFolderName: "General"
-  #     label: grafana_dashboard
-  #     labelValue: "1"
-  #     folderAnnotation: grafana_folder
-  #     searchNamespace: ALL
-  #     provider:
-  #       foldersFromFilesStructure: true
-
-  #   dashboards:
-  #     annotations: {}
-  #     defaultFolderName: "Test"
-  #     enabled: true
-  #     # enableNewTablePanelSyntax: false
-  #     folderAnnotation: grafana_folder
-  #     label: grafana_dashboard
-  #     labelValue: "1"
-  #     searchNamespace: ALL
-  #     # multicluster:
-  #     #   global:
-  #     #     enabled: false
-  #     #   etcd:
-  #     #     enabled: false
-  #     provider:
-  #       # allowUiUpdates: true
-  #       # disableDelete: false
-  #       # folder: ""
-  #       foldersFromFilesStructure: true
-  #       # name: sidecarProvider
-  #       # orgid: "1"
-  #       # type: file
 
 #############################################
 
