@@ -540,19 +540,12 @@ grafana:
           value: Prometheus
         gnetId: 14837
 
-      traefik3:
-        gnetId: 12250
-        revision: 1
+      traefik:
         datasource:
         - name: DS_PROMETHEUS
           value: Prometheus
-
-      # traefik5:
-      #   datasource:
-      #   - name: DS_PROMETHEUS
-      #     value: Prometheus
-      #   gnetId: 18111
-      #   revision: 1
+        gnetId: 18111
+        revision: 1
 
     storage:
       minio-dashboard:
