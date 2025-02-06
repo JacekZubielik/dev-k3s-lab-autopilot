@@ -13,8 +13,8 @@ spec:
   volumeMode: Filesystem
   accessModes:
   - ReadWriteOnce
-  persistentVolumeReclaimPolicy: Retain
-  storageClassName: longhorn-retain
+  persistentVolumeReclaimPolicy: Delete # Retain
+  storageClassName: longhorn # longhorn-retain
   csi:
     driver: driver.longhorn.io
     fsType: ext4
@@ -61,8 +61,8 @@ spec:
   volumeMode: Filesystem
   accessModes:
   - ReadWriteOnce
-  persistentVolumeReclaimPolicy: Retain
-  storageClassName: longhorn-retain
+  persistentVolumeReclaimPolicy: Delete # Retain
+  storageClassName: longhorn # longhorn-retain
   csi:
     driver: driver.longhorn.io
     fsType: ext4
