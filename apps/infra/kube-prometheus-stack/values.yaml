@@ -405,7 +405,7 @@ grafana:
           path: /var/lib/grafana/dashboards/device
 
       - name: "extra"
-        orgId: 2
+        orgId: 1
         folder: "Extra"
         type: file
         disableDeletion: false
