@@ -1,8 +1,8 @@
 ---
 scrape_configs:
-- job_name: 'popos'
+- job_name: 'debian'
   static_configs:
-    - targets: ['192.168.40.5:9100']
+    - targets: ['192.168.40.30:9100']
 
 - job_name: 'master-0'
   scrape_interval: 5s
@@ -17,6 +17,15 @@ scrape_configs:
   scrape_interval: 5s
   static_configs:
     - targets: ['192.168.40.113:9101']
+  metric_relabel_configs:
+    - source_labels: [__name__]
+      action: keep
+      regex: 'node_cpu.*'
+
+- job_name: 'node-1'
+  scrape_interval: 5s
+  static_configs:
+    - targets: ['192.168.40.114:9101']
   metric_relabel_configs:
     - source_labels: [__name__]
       action: keep

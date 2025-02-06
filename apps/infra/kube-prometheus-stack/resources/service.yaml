@@ -26,7 +26,7 @@ subsets:
 - addresses:
   - ip: 192.168.40.110
   - ip: 192.168.40.113
-  # - ip: 192.168.40.112
+  - ip: 192.168.40.114
   ports:
   - name: https-metrics
     port: 10250
