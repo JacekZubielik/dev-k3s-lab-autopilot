@@ -4,7 +4,7 @@ kubeTargetVersionOverride: ""
 kubeVersionOverride: ""
 commonLabels: {}
 crds:
-  enabled: false # true
+  enabled: true
 customRules: {}
 
 defaultRules:
@@ -13,7 +13,7 @@ defaultRules:
   create: true
   rules:
     alertmanager: true
-    etcd: false
+    etcd: true
     configReloaders: true
     general: true
     k8sContainerCpuUsageSecondsTotal: true
@@ -28,8 +28,8 @@ defaultRules:
     kubeApiserverHistogram: false
     kubeApiserverSlos: false
     kubeControllerManager: false
-    kubelet: false
-    kubeProxy: false
+    kubelet: true
+    kubeProxy: true
     kubePrometheusGeneral: true
     kubePrometheusNodeRecording: true
     kubernetesApps: true
@@ -356,9 +356,9 @@ grafana:
   enabled: true
   namespaceOverride: ""
   # fullnameOverride: "grafana"
-  forceDeployDatasources: true # false
+  forceDeployDatasources: true
   forceDeployDashboards: false
-  defaultDashboardsEnabled: true # false
+  defaultDashboardsEnabled: true
   defaultDashboardsTimezone: cet
   defaultDashboardsEditable: true
   admin:
@@ -547,12 +547,12 @@ grafana:
         - name: DS_PROMETHEUS
           value: Prometheus
 
-      traefik5:
-        datasource:
-        - name: DS_PROMETHEUS
-          value: Prometheus
-        gnetId: 18111
-        revision: 1
+      # traefik5:
+      #   datasource:
+      #   - name: DS_PROMETHEUS
+      #     value: Prometheus
+      #   gnetId: 18111
+      #   revision: 1
 
     storage:
       minio-dashboard:
@@ -2509,50 +2509,39 @@ thanosRuler:
 
     ## Additional ports to open for ThanosRuler service
     additionalPorts: []
-
     externalIPs: []
     loadBalancerIP: ""
     loadBalancerSourceRanges: []
 
     ## Denotes if this Service desires to route external traffic to node-local or cluster-wide endpoints
-    ##
     externalTrafficPolicy: Cluster
 
     ## Service type
-    ##
     type: ClusterIP
 
   ## Configuration for creating a ServiceMonitor for the ThanosRuler service
-  ##
   serviceMonitor:
     selfMonitor: true
     interval: ""
-
     additionalLabels:
       prometheus.io/scrap-with: kube-prometheus-stack
 
     ## SampleLimit defines per-scrape limit on number of scraped samples that will be accepted.
-    ##
     sampleLimit: 0
 
     ## TargetLimit defines a limit on the number of scraped targets that will be accepted.
-    ##
     targetLimit: 0
 
     ## Per-scrape limit on number of labels that will be accepted for a sample. Only valid in Prometheus versions 2.27.0 and newer.
-    ##
     labelLimit: 0
 
     ## Per-scrape limit on length of labels name that will be accepted for a sample. Only valid in Prometheus versions 2.27.0 and newer.
-    ##
     labelNameLengthLimit: 0
 
     ## Per-scrape limit on length of labels value that will be accepted for a sample. Only valid in Prometheus versions 2.27.0 and newer.
-    ##
     labelValueLengthLimit: 0
 
     ## proxyUrl: URL of a proxy that should be used for scraping.
-    ##
     proxyUrl: ""
 
     ## scheme: HTTP scheme to use for scraping. Can be used with `tlsConfig` for example if using istio mTLS.
@@ -2561,12 +2550,10 @@ thanosRuler:
     ## tlsConfig: TLS configuration to use when scraping the endpoint. For example if using istio mTLS.
     ## Of type: https://github.com/coreos/prometheus-operator/blob/main/Documentation/api.md#tlsconfig
     tlsConfig: {}
-
     bearerTokenFile:
 
     ## MetricRelabelConfigs to apply to samples after scraping, but before ingestion.
     ## ref: https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api.md#relabelconfig
-    ##
     metricRelabelings: []
     # - action: keep
     #   regex: 'kube_(daemonset|deployment|pod|namespace|node|statefulset).+'
@@ -2574,7 +2561,6 @@ thanosRuler:
 
     ## RelabelConfigs to apply to samples before scraping
     ## ref: https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api.md#relabelconfig
-    ##
     relabelings: []
     # - sourceLabels: [__meta_kubernetes_pod_node_name]
     #   separator: ;
