@@ -70,8 +70,8 @@ resources:
     cpu: 1000m
     memory: 0.5Gi
 
-nodeSelector: {}
-  # kubernetes.io/hostname: prod-k3s-node-0
+nodeSelector:
+  kubernetes.io/hostname: {}
 
 persistence:
   metadata:
@@ -79,7 +79,6 @@ persistence:
   enabled: true
   annotations: {}
   existingClaim: mosquitto-data
-  # volumeName: mosquitto-data
 livenessProbe:
   enabled: false
   # scheme: HTTP
