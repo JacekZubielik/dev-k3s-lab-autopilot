@@ -1,8 +1,9 @@
+---
 nameOverride: ""
 fullnameOverride: ""
 revisionHistoryLimit: 2
 replicas: 1
-strategyType: RollingUpdate # Recreate
+strategyType: RollingUpdate
 imagePullSecrets: []
 podAnnotations: {}
 podLabels: {}
@@ -69,8 +70,8 @@ resources:
     cpu: 1000m
     memory: 0.5Gi
 
-nodeSelector:
-  kubernetes.io/hostname: prod-k3s-node-0
+nodeSelector: {}
+  # kubernetes.io/hostname: prod-k3s-node-0
 
 persistence:
   metadata:
