@@ -66,8 +66,7 @@ resources:
     cpu: 1000m
     memory: 0.5Gi
 
-nodeSelector:
-  kubernetes.io/hostname: {}
+nodeSelector: []
 
 persistence:
   metadata:
