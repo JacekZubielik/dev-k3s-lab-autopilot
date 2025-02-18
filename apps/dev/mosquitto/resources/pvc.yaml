@@ -11,5 +11,4 @@ spec:
   resources:
     requests:
       storage: 1Gi
-  # volumeName: mosquitto-data #pv-mosquitto # must reference Persistent Volume
   storageClassName: longhorn-retain-data
